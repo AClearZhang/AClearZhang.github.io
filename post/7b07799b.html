@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="即用,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文引用和使用的类库 import numpy as np import matplotlib.pyplot as plt from sklearn import datasets  Jupyter Notebook’s Learning to writingToolbar 可以进行 Cell代码行的编写运行   可以切换Cell编写模式——为Markdown的模式 Help当中可以快速浏览并且更">
+<meta name="keywords" content="即用,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python机器学习中常用类库的使用">
+<meta property="og:url" content="http://blog.aclear.top/post/7b07799b.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="本文引用和使用的类库 import numpy as np import matplotlib.pyplot as plt from sklearn import datasets  Jupyter Notebook’s Learning to writingToolbar 可以进行 Cell代码行的编写运行   可以切换Cell编写模式——为Markdown的模式 Help当中可以快速浏览并且更">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python机器学习中常用类库的使用">
+<meta name="twitter:description" content="本文引用和使用的类库 import numpy as np import matplotlib.pyplot as plt from sklearn import datasets  Jupyter Notebook’s Learning to writingToolbar 可以进行 Cell代码行的编写运行   可以切换Cell编写模式——为Markdown的模式 Help当中可以快速浏览并且更">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/7b07799b.html">
+
+
+
+
+
+  <title>Python机器学习中常用类库的使用 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/7b07799b.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python机器学习中常用类库的使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T20:00:56+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/library/" itemprop="url" rel="index">
+                    <span itemprop="name">library</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="本文引用和使用的类库"><a href="#本文引用和使用的类库" class="headerlink" title="本文引用和使用的类库"></a>本文引用和使用的类库</h1><ul>
+<li>import numpy as np</li>
+<li>import matplotlib.pyplot as plt</li>
+<li>from sklearn import datasets</li>
+</ul>
+<h1 id="Jupyter-Notebook’s-Learning-to-writing"><a href="#Jupyter-Notebook’s-Learning-to-writing" class="headerlink" title="Jupyter Notebook’s Learning to writing"></a>Jupyter Notebook’s Learning to writing</h1><h2 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h2><ul>
+<li>可以进行 Cell代码行的编写运行</li>
+</ul>
+<ul>
+<li>可以切换Cell编写模式——为Markdown的模式</li>
+<li>Help当中可以快速浏览并且更改使用的快捷键</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>a/b 快速插入一行(在相应的选中行的上面或者下方)</li>
+<li>x 剪切/删除一行</li>
+<li>m 切换为markdown模式</li>
+<li>y 切换为coding模式</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>每次不用总是重新加载数据<br>只需要加载一次就可以！所以方便<br><code>注意：下面定义的变量，在上方也可以用！除非点击Kernel——Restart &amp; run all</code></p>
+<p>以上就可以充值变量上下文。</p>
+<h1 id="Jupyter-Notebook-高级-魔法命令"><a href="#Jupyter-Notebook-高级-魔法命令" class="headerlink" title="Jupyter Notebook 高级-魔法命令"></a>Jupyter Notebook 高级-魔法命令</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%run    <span class="comment">#调用并且 加载对应的脚本/方法。</span></span><br><span class="line">%timeit <span class="comment">#只能写一句话！测试 耗费时间</span></span><br><span class="line">%%timeit <span class="comment">#测试下面耗时</span></span><br><span class="line">%time <span class="comment">#测试一句话的cpu和人类感知的实际时间</span></span><br><span class="line">%%time <span class="comment">#测试多行代码耗时</span></span><br></pre></td></tr></table></figure>
+<h2 id="run-查看对应方法的-帮助文档"><a href="#run-查看对应方法的-帮助文档" class="headerlink" title="%run? #查看对应方法的 帮助文档"></a>%run? #查看对应方法的 帮助文档</h2><h2 id="lsmagic-查看当前环境下，所有的魔法命令"><a href="#lsmagic-查看当前环境下，所有的魔法命令" class="headerlink" title="lsmagic #查看当前环境下，所有的魔法命令"></a>lsmagic #查看当前环境下，所有的魔法命令</h2><h1 id="numpy-array基础"><a href="#numpy-array基础" class="headerlink" title="numpy.array基础"></a>numpy.array基础</h1><h2 id="选择为什么不选择List"><a href="#选择为什么不选择List" class="headerlink" title="选择为什么不选择List"></a>选择为什么不选择List</h2><h3 id="Python-List-的特点"><a href="#Python-List-的特点" class="headerlink" title="Python List 的特点"></a>Python List 的特点</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">L = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="comment"># 像是cell  可以放置多种不同类型的元素在List中。</span></span><br><span class="line"><span class="comment"># List十分灵活</span></span><br><span class="line"><span class="keyword">import</span> array</span><br><span class="line">arr = array.array(<span class="string">'i'</span>,[ i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>) ])</span><br><span class="line"><span class="comment">#array模块是python中实现的一种高效的数组存储类型。它和list相似，但是所有的数组成员必须是同一种类型，在创建数组的时候，就确定了数组的类型</span></span><br><span class="line"><span class="comment">#array.array(typecode,[initializer]) --typecode:元素类型代码；initializer:初始化器，若数组为空，则省略初始化器</span></span><br><span class="line">arr = array.array(<span class="string">'i'</span>,[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>])</span><br><span class="line">print(arr)</span><br><span class="line"><span class="comment">#array('i', [0, 1, 1, 3])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#array.typecode -- 对象属性</span></span><br><span class="line">print(<span class="string">'\n 输出 用于创建数组的类型代码字符：'</span>)</span><br><span class="line">print(arr.typecode)</span><br><span class="line"><span class="comment"># 输出 用于创建数组的类型代码字符：</span></span><br><span class="line"><span class="comment">#i</span></span><br></pre></td></tr></table></figure>
+<h3 id="区别List-、-array、-numpy-array"><a href="#区别List-、-array、-numpy-array" class="headerlink" title="区别List 、 array、 numpy.array"></a>区别List 、 array、 numpy.array</h3><ul>
+<li>Python的List不要求存储同样的类型，带来效率问题。</li>
+<li>array的缺点是没有将数据当做向量或者矩阵，不支持基本运算。</li>
+<li>nparr.dtype —— 只有一种类型的数据类型在nparr中！<br>  而且 nparr可以有 整型 和 浮点型<br>  而且 nparr可以用来生成 矩阵和向量之类的。<a id="more"></a>
+</li>
+</ul>
+<h3 id="函数方法"><a href="#函数方法" class="headerlink" title="函数方法"></a>函数方法</h3><ul>
+<li>np.arange(0, 20, 2)<blockquote>
+<p>#[0, 20) 步长为2的</p>
+</blockquote>
+</li>
+<li>np.linspace(0, 20, 10)<blockquote>
+<p>#[0, 20] 区间中截取出10个数字</p>
+</blockquote>
+</li>
+<li>np.random.randint( 0, 10, 10/(3,5) )<blockquote>
+<p>[0,10)的随机10 个数字；或者 3行5列！</p>
+</blockquote>
+</li>
+<li>np.random.random( 10/(3, 5) )  <blockquote>
+<h1 id="0-1之间均匀的浮点数"><a href="#0-1之间均匀的浮点数" class="headerlink" title="0-1之间均匀的浮点数"></a>0-1之间均匀的浮点数</h1></blockquote>
+</li>
+<li>np.random.seed( 666 )<blockquote>
+<p>给予一个伪随机数，就能对应生成确定的随机矩阵。</p>
+</blockquote>
+</li>
+<li>np.random.normal( 10, 100, (3,5))<blockquote>
+<p>#默认：均值为0 方差为1,的随机的浮点数。上面是均值为10、方差为100的 3行5列的矩阵！</p>
+</blockquote>
+</li>
+<li>np.random.uniform( 0., 10., size = 100 )<blockquote>
+<p>产生100个 [0,100) 的浮点数</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="查看文档"><a href="#查看文档" class="headerlink" title="查看文档"></a>查看文档</h3><ul>
+<li>np.random?</li>
+<li>help(np.random)</li>
+</ul>
+<h2 id="其它创建numpy-array的方法"><a href="#其它创建numpy-array的方法" class="headerlink" title="其它创建numpy.array的方法"></a>其它创建numpy.array的方法</h2><ul>
+<li>np.zeros(10)</li>
+<li>np.ones((3,5))</li>
+<li>np.full( (3,5), 666 )</li>
+</ul>
+<h1 id="numpy-arrary-的基本操作"><a href="#numpy-arrary-的基本操作" class="headerlink" title="numpy.arrary 的基本操作"></a>numpy.arrary 的基本操作</h1><ul>
+<li>X = np.arange(15).reshape((3, 5))<br>  15个元素 重新构成3*5的矩阵</li>
+<li>X.ndim    #2(二维数组)</li>
+<li>X.shape   #(3,5)<blockquote>
+<p>注意: X.shape[0] == 3</p>
+</blockquote>
+</li>
+<li>X.size    #15<h2 id="数据访问方法"><a href="#数据访问方法" class="headerlink" title="数据访问方法"></a>数据访问方法</h2>多维数组不建议:<code>X[0][0]</code><br>建议使用：<code>X[0, 0]</code><h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2>切片访问： <code>x[0:5:2]</code>  【0,5） 步长为2 NOT <code>X</code><br>X[:2, :3] #前两行的 前三列<br>X[ :, 0]    #取第一列<blockquote>
+<p>子矩阵 在父亲矩阵中使用的引用！所以也会改变 父亲矩阵！<br>除非 X[:2, :3].copy()  —— 来进行非引用拷贝</p>
+</blockquote>
+<h2 id="Reshape"><a href="#Reshape" class="headerlink" title="Reshape"></a>Reshape</h2>不改变 原来的数据、而是改变成矩阵！但是需要复制！不会</li>
+<li>B = x.reshape(1, 10)</li>
+<li>B<blockquote>
+<p>注意这个有两个维度！ </p>
+</blockquote>
+</li>
+<li>array([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])</li>
+<li>x.reshape( 2, -1)<blockquote>
+<p>注意这里是让 x转化成两行的元素，自动化分列数</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="np-array的合并和分割"><a href="#np-array的合并和分割" class="headerlink" title="np.array的合并和分割"></a>np.array的合并和分割</h1><h2 id="np-concatenate"><a href="#np-concatenate" class="headerlink" title="np.concatenate()"></a>np.concatenate()</h2><ul>
+<li>A = np.array([[1, 2, 3],<pre><code>[4, 5, 6]])
+</code></pre></li>
+<li>np.concatenate([A, A])<blockquote>
+<p>array([[1, 2, 3],</p>
+<pre><code>[4, 5, 6],
+[1, 2, 3],
+[4, 5, 6]])
+</code></pre></blockquote>
+</li>
+<li>np.concatenate([A, A], axis=1)</li>
+<li>array([[1, 2, 3, 1, 2, 3],<pre><code>[4, 5, 6, 4, 5, 6]])
+</code></pre><blockquote>
+<p>默认为：(轴)axis=0，表示进行第一维度链接<br>等于1 表示进行第二维度连接</p>
+</blockquote>
+</li>
+<li><p>np.concatenate([A, z.reshape(1, -1)])</p>
+<blockquote>
+<p>注意concat 只能进行相同纬度的叠加！需要把z向量转化为 矩阵！</p>
+</blockquote>
+</li>
+<li><p>np.vstack([A, z])</p>
+<blockquote>
+<p>进行A z的纵向链接， 相当于加上一行，在自己这一行后面</p>
+</blockquote>
+</li>
+<li>np.hstack([A, z])   #加上一列<blockquote>
+<p>进行A z的横向矩阵链接, 相当于加上一列，在自己这一行一列 后面</p>
+</blockquote>
+<h2 id="强制转化-数据类型"><a href="#强制转化-数据类型" class="headerlink" title="强制转化 数据类型"></a>强制转化 数据类型</h2><blockquote>
+<p>x = np.array( X, dtype=float )</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="np-slit"><a href="#np-slit" class="headerlink" title="np.slit()"></a>np.slit()</h2><ul>
+<li>x1, x2, x3 = np.split(x, [3, 7])<blockquote>
+<p>切分点 0–2 3–6 7–9（x = 0–9)</p>
+</blockquote>
+</li>
+<li>A1, A2 = np.split(A, [2], axis=1)<blockquote>
+<p>切分矩阵，默认0-第一维度-行方向 第二行切割<code>注意：矩阵是从第0行开始的！，所以  第二行在A2中！</code></p>
+</blockquote>
+</li>
+<li>upper, lower = np.vsplit(A, [2])<blockquote>
+<p>进行垂直方向 上下切分矩阵。</p>
+</blockquote>
+</li>
+<li>left, right = np.hsplit(A , [2])<blockquote>
+<p>进行水平方向  进行左右切分</p>
+</blockquote>
+</li>
+<li>y = array([[ 3],<pre><code>[ 7],
+[11],
+[15]])
+</code></pre><blockquote>
+<p>为了进行4行1列的矩阵–转变为向量</p>
+</blockquote>
+</li>
+<li>y[:, 0]<blockquote>
+<p>抽出所有的行，只要第一列。变为：array([ 3,  7, 11, 15]) —— 向量了！</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>是为了，对数据进行  预处理而进行学习使用的！</p>
+</blockquote>
+<h2 id="np-delete"><a href="#np-delete" class="headerlink" title="np.delete()"></a>np.delete()</h2><p>X.shape  </p>
+<blockquote>
+<p>(150,2)<br>X_new = np.delete( X, 138, axis=0 )<br>直接把X的第138行给删除了</p>
+</blockquote>
+<h1 id="numpy-array中的运算"><a href="#numpy-array中的运算" class="headerlink" title="numpy.array中的运算"></a><code>numpy.array</code>中的运算</h1><h2 id="numpy直接就能-数组看做矩阵、向量进行运算！"><a href="#numpy直接就能-数组看做矩阵、向量进行运算！" class="headerlink" title="numpy直接就能 数组看做矩阵、向量进行运算！"></a>numpy直接就能 数组看做矩阵、向量进行运算！</h2><h2 id="Universal-Functions"><a href="#Universal-Functions" class="headerlink" title="Universal Functions"></a>Universal Functions</h2><h3 id="numpy-遵循这个直接运算要求而且快！"><a href="#numpy-遵循这个直接运算要求而且快！" class="headerlink" title="numpy 遵循这个直接运算要求而且快！"></a>numpy 遵循这个直接运算要求而且快！</h3><blockquote>
+<p>直接 + - ×<br>/  浮点数出发<br>// 证书的出发！<br>x ** 2 幂运算<br>x % 2<br>1 / x</p>
+<ul>
+<li>np.abs()</li>
+<li>np.sin()</li>
+<li>np.cos()</li>
+<li>np.tan()</li>
+<li>np.exp(x)  #e的x次方</li>
+<li>np.power(3, x) #3的x次方</li>
+<li>np.log(x) #以e为底的 函数</li>
+<li>np.log2(x) # 以2为底的函数</li>
+<li>np.log10(x) #以10为底的 函数</li>
+</ul>
+</blockquote>
+<h3 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h3><ul>
+<li>A + - * B<blockquote>
+<p>A*B 是指对应元素及进行运算！ 不是标准矩阵之间惩罚</p>
+</blockquote>
+</li>
+<li>A.dot(B) <blockquote>
+<p>A和B 两矩阵进行标准的惩罚运算。</p>
+</blockquote>
+</li>
+<li>A.T<blockquote>
+<p>矩阵转置方法。</p>
+</blockquote>
+<h3 id="向量v和矩阵A的运算"><a href="#向量v和矩阵A的运算" class="headerlink" title="向量v和矩阵A的运算"></a>向量v和矩阵A的运算</h3></li>
+<li>v+A <blockquote>
+<p>相当于: <code>np.vstack([v] * A.shape[0]) + A</code></p>
+</blockquote>
+</li>
+<li>np.tile(v, (2, 1))<blockquote>
+<p>堆叠向量v， 行堆叠2次，列堆叠1次相当于上方！</p>
+</blockquote>
+</li>
+<li>v*A<blockquote>
+<p>v.dot(A)  —— 矩阵乘法！<br>  A.dot(v) —— v会根据矩阵A进行 自动调整自己是行向量，还是列向量！</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="矩阵的逆"><a href="#矩阵的逆" class="headerlink" title="矩阵的逆"></a>矩阵的逆</h3><ul>
+<li>np.linalg.inv(A)<blockquote>
+<p>linear algebra //线性代数<br>方阵才有 逆矩阵</p>
+</blockquote>
+</li>
+<li>pinvA = np.linalg.pinv(X)<blockquote>
+<p>伪 逆矩阵！可求出不是方阵的伪逆矩阵！</p>
+</blockquote>
+</li>
+<li>X.dot(pinvA) <blockquote>
+<p>仍然是一个  方阵.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="向量的模"><a href="#向量的模" class="headerlink" title="向量的模"></a>向量的模</h3><ul>
+<li>w1 = np.linalg.norm(w)<blockquote>
+<p>求出向量w的模</p>
+</blockquote>
+</li>
+<li>w / w1<blockquote>
+<p>对应求出 w的单位向量</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="矩阵的聚合操作"><a href="#矩阵的聚合操作" class="headerlink" title="矩阵的聚合操作"></a>矩阵的聚合操作</h1><ul>
+<li>np.sum(L)</li>
+<li>np.min()  /  np.max()<blockquote>
+<p>等同于 array.min()</p>
+</blockquote>
+</li>
+<li>np.sum( X, axis=0 )<blockquote>
+<p>沿着行方向进行运算 相加，所以最终是列加和。</p>
+</blockquote>
+</li>
+<li>np.prod(X)<blockquote>
+<p>X中进行乘积</p>
+</blockquote>
+</li>
+<li>np.mean(X)  /  np.median(X)<blockquote>
+<p>求均值   和   中位数</p>
+</blockquote>
+</li>
+<li>np.percentile( big_arrary, q=50 )<blockquote>
+<p>找百分位 for percent in [0,25,50,75,100]:</p>
+</blockquote>
+</li>
+<li>np.var(big_array) / np.std(big_array)<blockquote>
+<p>求方差/  标准差</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="arg方式"><a href="#arg方式" class="headerlink" title="arg方式"></a>arg方式</h2><blockquote>
+<p>为了查看最小值，以及最小值的位置在哪</p>
+<ul>
+<li>np.argmin(x)<br>198532   ==  x[198532]</li>
+</ul>
+</blockquote>
+<h2 id="排序和使用索引"><a href="#排序和使用索引" class="headerlink" title="排序和使用索引"></a>排序和使用索引</h2><ul>
+<li>np.random.shuffle(x) <blockquote>
+<p>直接进行乱序处理</p>
+</blockquote>
+</li>
+<li>np.sort(x)<blockquote>
+<p>返回修改后的数组</p>
+</blockquote>
+</li>
+<li>x.sort()<blockquote>
+<p>排好x的顺序</p>
+</blockquote>
+</li>
+<li>np.sort(X , axis=1)<blockquote>
+<p>沿着列进行排序，  把每一行排好顺序了。</p>
+</blockquote>
+</li>
+<li>np.argsort(x)<blockquote>
+<p>拍好  索引顺序的数组，通过索引，找大小。</p>
+</blockquote>
+</li>
+<li>np.partition(x, 3)<blockquote>
+<p>标定点3，  小于3的在左边， 大于3的在右边</p>
+</blockquote>
+</li>
+<li>np.argpartition(x, 3)<blockquote>
+<p>仍然是进行  索引的标定3</p>
+</blockquote>
+<h2 id="将数组打乱随机排列-两种方法："><a href="#将数组打乱随机排列-两种方法：" class="headerlink" title="将数组打乱随机排列 两种方法："></a>将数组打乱随机排列 两种方法：</h2></li>
+<li>np.random.shuffle(x)：在原数组上进行，改变自身序列，无返回值。</li>
+<li>np.random.permutation(x)：不在原数组上进行，返回新的数组，不改变自身数组。</li>
+</ul>
+<h1 id="Fancy-Indexing"><a href="#Fancy-Indexing" class="headerlink" title="Fancy Indexing"></a>Fancy Indexing</h1><ul>
+<li>x[3:9:2]<blockquote>
+<p>2为步长 进行索引</p>
+</blockquote>
+</li>
+<li>ind = [3, 5 ,8]</li>
+<li>x[ind]<blockquote>
+<p>对应进行索引！</p>
+</blockquote>
+</li>
+<li>ind = np.array([[0, 2], [1, 3]])</li>
+<li>x[ind]<blockquote>
+<p>对应进行索引，根据ind索引，建立 新的x矩阵。</p>
+</blockquote>
+</li>
+<li>col = np.array([1, 2, 3])</li>
+<li>x[:2, col]<blockquote>
+<p>x中前两行的<code>第0行 和 第1行</code>， 1 2 3列</p>
+</blockquote>
+</li>
+<li>col = [True, False, True, False]<blockquote>
+<p>x[ 1:3, col]</p>
+</blockquote>
+<h2 id="numpy-array的比较"><a href="#numpy-array的比较" class="headerlink" title="numpy.array的比较"></a>numpy.array的比较</h2></li>
+<li>example_digits = noisy_digits[y==0,:][:10] <blockquote>
+<h1 id="只要对应前十行"><a href="#只要对应前十行" class="headerlink" title="只要对应前十行"></a>只要对应前十行</h1></blockquote>
+</li>
+<li>x &gt; 3 <blockquote>
+<p>返回bool值</p>
+</blockquote>
+</li>
+<li>np.sum(x&lt;=3)    //统计x中  小于等于3的个数。<blockquote>
+<p>np.count_nonzero(x&lt;=3)</p>
+</blockquote>
+</li>
+<li>np.any(x==0)  //true  有就行<blockquote>
+<p>np.all(x&gt;=0)  //true</p>
+</blockquote>
+</li>
+<li>np.sum( x%2==0 )<blockquote>
+<p>np.sum(x%2==0, axis=1)</p>
+</blockquote>
+</li>
+<li>np.all( x &gt; 0, axis=1 )<blockquote>
+<p>np.sum( (x&gt;3) &amp; (x&lt;10) )</p>
+</blockquote>
+</li>
+<li>np.sum(  (x%2==0) | (x &gt; 10) )<blockquote>
+<p>np.sum( ~(x==0) )</p>
+</blockquote>
+</li>
+<li>x[x[:,3]%3==0, :]<blockquote>
+<p>最后一列被三整除为 0，3个True——转化为第0行和第3行</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><ul>
+<li>Pandas进行预处理——然后转化为 numpy——再把numpy加入到 sklearn之中进行处理、操作！<blockquote>
+<p>以上！numpy进行机器学习矩阵进行处理的方法，完成。<br>因为 sklearn是需要numpy的数据进行操作的，然而Pandas方便进行处理，所以 需要进行这样的过度。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="matplotlib-基础"><a href="#matplotlib-基础" class="headerlink" title="matplotlib 基础"></a>matplotlib 基础</h1><ul>
+<li>import matplotlib as mpl</li>
+<li>import matplotlib.pyplot as plt<h2 id="plt-plot绘制直线图"><a href="#plt-plot绘制直线图" class="headerlink" title="plt.plot绘制直线图"></a>plt.plot绘制直线图</h2></li>
+<li>plt.plot(x, y, color=”red”, linestyle=”–”, label=”cos(x)” )</li>
+</ul>
+<blockquote>
+<p>应该再加上： <code>plt.legend()</code>  用来显示对应曲线的图例</p>
+</blockquote>
+<ul>
+<li>plt.show()<blockquote>
+<p>linestyle 绘制出来 : -, – -不同的图像形式。</p>
+</blockquote>
+</li>
+<li>plt.xlim(-5, 15)</li>
+<li>plt.ylim(0, 1)<blockquote>
+<p>更改 x，y轴的范围.</p>
+</blockquote>
+</li>
+<li>plt.axis([-1 ,11 ,-2 ,2])<blockquote>
+</blockquote>
+</li>
+<li>plt.xlabel(“”x value)/ pltylabel(“y value”)<blockquote>
+</blockquote>
+</li>
+<li>plt.title(“添加对应标题.”)<h2 id="plt-scatter-绘制散点图"><a href="#plt-scatter-绘制散点图" class="headerlink" title="plt.scatter 绘制散点图"></a>plt.scatter 绘制散点图</h2></li>
+<li>plot.scatter(x, siny, alpha=0.5)<blockquote>
+<p>通常绘制二维特征/两个特征的时候  用散点图。<br>不透明度—— 0完全透明，1完全不透明。</p>
+</blockquote>
+</li>
+<li>plt.scatter(X[y==0,0], X[y==0,1], color=”red”, marker=”o”)<br>plt.scatter(X[y==1,0], X[y==1,1], color=”blue”, marker=”+”)<br>plt.scatter(X[y==2,0], X[y==2,1], color=”green”, marker=”x”)<br>plt.show()</li>
+</ul>
+<h2 id="高斯核函数讲解"><a href="#高斯核函数讲解" class="headerlink" title="高斯核函数讲解"></a>高斯核函数讲解</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">l1, l2 = <span class="number">-1</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">X_new = np.empty((len(x), <span class="number">2</span>))</span><br><span class="line"><span class="comment"># 将一维数据 映射到二维上面了，利用 高斯核函数.</span></span><br><span class="line"><span class="keyword">for</span> i, data <span class="keyword">in</span> enumerate(x):</span><br><span class="line">    X_new[i, <span class="number">0</span>] = gaussian(data, l1)</span><br><span class="line">    X_new[i, <span class="number">1</span>] = gaussian(data, l2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># enumerate( x ) 讲x的数值放入到data中，索引放入到i中.</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关键学会 enumerate的使用。</p>
+</blockquote>
+<h1 id="读取数据和简单的数据探索"><a href="#读取数据和简单的数据探索" class="headerlink" title="读取数据和简单的数据探索"></a>读取数据和简单的数据探索</h1><ul>
+<li>from sklearn import datasets</li>
+<li>iris = datasets.load_iris() # 鸢尾花数据集</li>
+<li>iris.keys()</li>
+<li>iris.data     #相对应的数据</li>
+<li>iris.target   #相对应的种类<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">y = iris.target</span><br><span class="line">plt.scatter(X[y==<span class="number">0</span>,<span class="number">0</span>], X[y==<span class="number">0</span>,<span class="number">1</span>], color=<span class="string">"red"</span>)  <span class="comment">#找出鸢尾花对应的种类所在行，</span></span><br><span class="line"><span class="comment">#然后显示  这一行的，0\1两个特征～ OK～</span></span><br><span class="line">plt.scatter(X[y==<span class="number">1</span>,<span class="number">0</span>], X[y==<span class="number">1</span>,<span class="number">1</span>], color=<span class="string">"blue"</span>)</span><br><span class="line">plt.scatter(X[y==<span class="number">2</span>,<span class="number">0</span>], X[y==<span class="number">2</span>,<span class="number">1</span>], color=<span class="string">"green"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="数据处理代码操作注意事项"><a href="#数据处理代码操作注意事项" class="headerlink" title="数据处理代码操作注意事项"></a>数据处理代码操作注意事项</h1><blockquote>
+<p>使用copy（）数值<br>y = digits.target<br>y = digits.target.copy()  # 这样写作为一个拷贝才正确</p>
+</blockquote>
+<blockquote>
+<p>使用try except<br>try:<br>        return 2 <em> precision </em> recall / (precision + recall)<br>    except:<br>        return 0.0 </p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="http://blog.aclear.top/post/7b07799b.html" title="Python机器学习中常用类库的使用">http://blog.aclear.top/post/7b07799b.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/即用/" rel="tag"><i class="fa fa-tag"></i> 即用</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/24123a35.html" rel="next" title="scikit-learn在机器学习算法中的代码使用">
+                <i class="fa fa-chevron-left"></i> scikit-learn在机器学习算法中的代码使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本文引用和使用的类库"><span class="nav-number">1.</span> <span class="nav-text">本文引用和使用的类库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jupyter-Notebook’s-Learning-to-writing"><span class="nav-number">2.</span> <span class="nav-text">Jupyter Notebook’s Learning to writing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Toolbar"><span class="nav-number">2.1.</span> <span class="nav-text">Toolbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">2.2.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">2.3.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jupyter-Notebook-高级-魔法命令"><span class="nav-number">3.</span> <span class="nav-text">Jupyter Notebook 高级-魔法命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#run-查看对应方法的-帮助文档"><span class="nav-number">3.1.</span> <span class="nav-text">%run? #查看对应方法的 帮助文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lsmagic-查看当前环境下，所有的魔法命令"><span class="nav-number">3.2.</span> <span class="nav-text">lsmagic #查看当前环境下，所有的魔法命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-array基础"><span class="nav-number">4.</span> <span class="nav-text">numpy.array基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择为什么不选择List"><span class="nav-number">4.1.</span> <span class="nav-text">选择为什么不选择List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-List-的特点"><span class="nav-number">4.1.1.</span> <span class="nav-text">Python List 的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别List-、-array、-numpy-array"><span class="nav-number">4.1.2.</span> <span class="nav-text">区别List 、 array、 numpy.array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数方法"><span class="nav-number">4.1.3.</span> <span class="nav-text">函数方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0-1之间均匀的浮点数"><span class="nav-number">5.</span> <span class="nav-text">0-1之间均匀的浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文档"><span class="nav-number">5.0.1.</span> <span class="nav-text">查看文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它创建numpy-array的方法"><span class="nav-number">5.1.</span> <span class="nav-text">其它创建numpy.array的方法</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-arrary-的基本操作"><span class="nav-number">6.</span> <span class="nav-text">numpy.arrary 的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据访问方法"><span class="nav-number">6.1.</span> <span class="nav-text">数据访问方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">6.2.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reshape"><span class="nav-number">6.3.</span> <span class="nav-text">Reshape</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#np-array的合并和分割"><span class="nav-number">7.</span> <span class="nav-text">np.array的合并和分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#np-concatenate"><span class="nav-number">7.1.</span> <span class="nav-text">np.concatenate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制转化-数据类型"><span class="nav-number">7.2.</span> <span class="nav-text">强制转化 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-slit"><span class="nav-number">7.3.</span> <span class="nav-text">np.slit()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-delete"><span class="nav-number">7.4.</span> <span class="nav-text">np.delete()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-array中的运算"><span class="nav-number">8.</span> <span class="nav-text">numpy.array中的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy直接就能-数组看做矩阵、向量进行运算！"><span class="nav-number">8.1.</span> <span class="nav-text">numpy直接就能 数组看做矩阵、向量进行运算！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Universal-Functions"><span class="nav-number">8.2.</span> <span class="nav-text">Universal Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy-遵循这个直接运算要求而且快！"><span class="nav-number">8.2.1.</span> <span class="nav-text">numpy 遵循这个直接运算要求而且快！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵运算"><span class="nav-number">8.2.2.</span> <span class="nav-text">矩阵运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量v和矩阵A的运算"><span class="nav-number">8.2.3.</span> <span class="nav-text">向量v和矩阵A的运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的逆"><span class="nav-number">8.2.4.</span> <span class="nav-text">矩阵的逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量的模"><span class="nav-number">8.2.5.</span> <span class="nav-text">向量的模</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵的聚合操作"><span class="nav-number">9.</span> <span class="nav-text">矩阵的聚合操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">10.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arg方式"><span class="nav-number">10.1.</span> <span class="nav-text">arg方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序和使用索引"><span class="nav-number">10.2.</span> <span class="nav-text">排序和使用索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将数组打乱随机排列-两种方法："><span class="nav-number">10.3.</span> <span class="nav-text">将数组打乱随机排列 两种方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fancy-Indexing"><span class="nav-number">11.</span> <span class="nav-text">Fancy Indexing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy-array的比较"><span class="nav-number">11.1.</span> <span class="nav-text">numpy.array的比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#只要对应前十行"><span class="nav-number">12.</span> <span class="nav-text">只要对应前十行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas"><span class="nav-number">12.1.</span> <span class="nav-text">Pandas</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matplotlib-基础"><span class="nav-number">13.</span> <span class="nav-text">matplotlib 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#plt-plot绘制直线图"><span class="nav-number">13.1.</span> <span class="nav-text">plt.plot绘制直线图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plt-scatter-绘制散点图"><span class="nav-number">13.2.</span> <span class="nav-text">plt.scatter 绘制散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯核函数讲解"><span class="nav-number">13.3.</span> <span class="nav-text">高斯核函数讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据和简单的数据探索"><span class="nav-number">14.</span> <span class="nav-text">读取数据和简单的数据探索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理代码操作注意事项"><span class="nav-number">15.</span> <span class="nav-text">数据处理代码操作注意事项</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

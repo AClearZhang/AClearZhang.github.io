@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="权限分类 normal permissions dangerous permissions   检查权限 请求权限 解释为何需要这个权限 请求权限 处理请求结果   何时请求权限  从Android Marshmallow开始，应用权限是在运行时获得的，而不是6.0之前的安装时获得，当然这是为用户的使用体验考虑，毕竟安装应用时一长串的权限说明看起来也是挺晕的（这是对于在Google Play商店">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android M之权限请求（Android 6.0 M系统TargetsdkVersion on 23 (含)）">
+<meta property="og:url" content="http://blog.aclear.top/post/8bbe80d9.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="权限分类 normal permissions dangerous permissions   检查权限 请求权限 解释为何需要这个权限 请求权限 处理请求结果   何时请求权限  从Android Marshmallow开始，应用权限是在运行时获得的，而不是6.0之前的安装时获得，当然这是为用户的使用体验考虑，毕竟安装应用时一长串的权限说明看起来也是挺晕的（这是对于在Google Play商店">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20160820205456632">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.954Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android M之权限请求（Android 6.0 M系统TargetsdkVersion on 23 (含)）">
+<meta name="twitter:description" content="权限分类 normal permissions dangerous permissions   检查权限 请求权限 解释为何需要这个权限 请求权限 处理请求结果   何时请求权限  从Android Marshmallow开始，应用权限是在运行时获得的，而不是6.0之前的安装时获得，当然这是为用户的使用体验考虑，毕竟安装应用时一长串的权限说明看起来也是挺晕的（这是对于在Google Play商店">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160820205456632">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/8bbe80d9.html">
+
+
+
+
+
+  <title>Android M之权限请求（Android 6.0 M系统TargetsdkVersion on 23 (含)） | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/8bbe80d9.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android M之权限请求（Android 6.0 M系统TargetsdkVersion on 23 (含)）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T21:23:23+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-Studio/" itemprop="url" rel="index">
+                    <span itemprop="name">Android Studio</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="http://blog.csdn.net/u013400743/article/details/52262254" target="_blank" rel="noopener">权限分类</a><ul>
+<li>normal permissions</li>
+<li>dangerous permissions</li>
+</ul>
+</li>
+<li>检查权限</li>
+<li>请求权限<ul>
+<li>解释为何需要这个权限</li>
+<li>请求权限</li>
+<li>处理请求结果</li>
+</ul>
+</li>
+<li>何时请求权限</li>
+</ul>
+<p>从Android Marshmallow开始，应用权限是在运行时获得的，而不是6.0之前的安装时获得，当然这是为用户的使用体验考虑，毕竟安装应用时一长串的权限说明看起来也是挺晕的（这是对于在Google Play商店下载安装应用而言，安装未知来源APK对于6.0和pre6.0都会在安装时看到一长串的权限说明） 当然也并不是说对与pre6.0的版本就没有用，用户是有可能在安装应用后限制应用的权限的（虽然原生的权限管理是Android M才开始加入的，不过很多定制系统都有加入权限管理功能，因此这也是需要考虑的），所以运行时的权限检查是有必要的，因此Google也提供了相对应的support包 本篇将对Android Support Library提供的权限请求功能，进行相应的学习和研究</p>
+<hr>
+<h2 id="权限分类"><a href="#权限分类" class="headerlink" title="权限分类"></a>权限分类</h2><p>Android M对权限进行了分类。系统权限可以分为两种：一般的（normal）和危险的（dangerous）</p>
+<h3 id="normal-permissions"><a href="#normal-permissions" class="headerlink" title="normal permissions"></a>normal permissions</h3><p>那些可能需要访问数据和资源，但对用户的隐私的影响比较小的权限。如果应用已经在Android Manifest中声明了需要这些权限，系统会默认允许，而不会和用户交互。包含的权限有：</p>
+<ul>
+<li>ACCESS_LOCATION_EXTRA_COMMANDS</li>
+<li>ACCESS_NETWORK_STATE</li>
+<li>ACCESS_NOTIFICATION_POLICY</li>
+<li>ACCESS_WIFI_STATE</li>
+<li>BLUETOOTH</li>
+<li>BLUETOOTH_ADMIN</li>
+<li>BROADCAST_STICKY</li>
+<li>CHANGE_NETWORK_STATE</li>
+<li>CHANGE_WIFI_MULTICAST_STATE</li>
+<li>CHANGE_WIFI_STATE</li>
+<li>DISABLE_KEYGUARD</li>
+<li>EXPAND_STATUS_BAR</li>
+<li>GET_PACKAGE_SIZE</li>
+<li>INSTALL_SHORTCUT</li>
+<li>INTERNET</li>
+<li>KILL_BACKGROUND_PROCESSES</li>
+<li>MODIFY_AUDIO_SETTINGS</li>
+<li>NFC</li>
+<li>READ_SYNC_SETTINGS</li>
+<li>READ_SYNC_STATS</li>
+<li>RECEIVE_BOOT_COMPLETED</li>
+<li>REORDER_TASKS</li>
+<li>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</li>
+<li>REQUEST_INSTALL_PACKAGES</li>
+<li>SET_ALARM</li>
+<li>SET_TIME_ZONE</li>
+<li>SET_WALLPAPER</li>
+<li>SET_WALLPAPER_HINTS</li>
+<li>TRANSMIT_IR</li>
+<li>UNINSTALL_SHORTCUT</li>
+<li>USE_FINGERPRINT</li>
+<li>VIBRATE</li>
+<li>WAKE_LOCK</li>
+<li>WRITE_SYNC_SETTINGS</li>
+</ul>
+<h3 id="dangerous-permissions"><a href="#dangerous-permissions" class="headerlink" title="dangerous permissions"></a>dangerous permissions</h3><p>可能会访问用户隐私数据，修改用户和其他应用的数据的权限。危险的权限需要运行时进行请求</p>
+<ul>
+<li><p>权限分组 任何一个危险权限都归属与一个权限分组。权限组有如下行为：</p>
+<ol>
+<li>当应用请求一个权限，且该应用还未有该权限所在的权限组中的其他的权限时，请求权限所显示的对话框将会对该权限组进行描述，而不是这个权限</li>
+<li>当应用请求一个权限，且该应用已经具有该权限所在的权限组中一个权限时，系统将会默认地允许该请求，而不会显式地让用户决定</li>
+</ol>
+<p>这些分组可能会在未来发生改变，所以不要太依赖权限分组，需要用到的权限还是要一个一个去检查和请求 各个组别如下：</p>
+<p>组名</p>
+<p>权限</p>
+<p>CALENDAR</p>
+<p>READ_CALENDAR WRITE_CALENDAR</p>
+<p>CAMERA</p>
+<p>CAMERA</p>
+<p>CONTACTS</p>
+<p>READ_CONTACTS WRITE_CONTACTS GET_ACCOUNTS</p>
+<p>LOCATION</p>
+<p>ACCESS_FINE_LOCATION ACCESS_COARSE_LOCATION</p>
+<p>MICROPHONE</p>
+<p>RECORD_AUDIO</p>
+<p>PHONE</p>
+<p>READ_PHONE_STATE CALL_PHONE READ_CALL_LOG WRITE_CALL_LOG ADD_VOICEMAIL USE_SIP PROCESS_OUTGOING_CALLS</p>
+<p>SENSORS</p>
+<p>BODY_SENSORS</p>
+<p>SMS</p>
+<p>SEND_SMS RECEIVE_SMS READ_SMS RECEIVE_WAP_PUSH RECEIVE_MMS</p>
+<p>STORGE</p>
+<p>READ_EXTERNAL_STORAGE WRITE_EXTERNAL_STORAGE</p>
+</li>
+</ul>
+<hr>
+<h2 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h2><p>在进行涉及危险权限的操作前，需要先检查应用是否具有对应的权限。建议总是在操作前检查权限，因为用户有可能会在设置面板取消对应的权限 调用<code>ActivityCompat.checkSelfPermission()</code>进行检查：</p>
+<pre><code>int isPermissionReady = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+</code></pre><p>需要提供的参数是当前的上下文和对应的权限。<code>android.Manifest.permission</code>中定义了各个权限对应的标志 如果已经拥有该权限，则会返回<code>PackageManager.PERMISSION_GRANTED</code>，否则返回<code>PackageManager.PERMISSION_DENIED</code></p>
+<hr>
+<h2 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h2><h3 id="解释为何需要这个权限"><a href="#解释为何需要这个权限" class="headerlink" title="解释为何需要这个权限"></a>解释为何需要这个权限</h3><p>Android考虑到用户的体验，当用户拒绝了第一次的权限请求后，再次收到该权限请求时，对话框中会有一个“Don’t ask again”的checkbox，用户勾选了这个CB后将不会再收到这个权限的请求。那么开发者该如何知道呢？ <code>ActivityCompat</code>有一个方法<code>shouldShowRequestPermissionRationale()</code>，字面意思是“是否应该显示所请求权限的理由”，表示你是否需要对用户说明这个功能是怎样的，为何需要这个权限。如果用户已经拒绝了之前的请求，该方法会返回true；当用户拒绝了之前的请求并勾选了Don’t ask again”的checkbox，或者用户主动在权限管理中取消了该权限，则会返回false</p>
+<h3 id="请求权限-1"><a href="#请求权限-1" class="headerlink" title="请求权限"></a>请求权限</h3><p>请求权限使用<code>ActivityCompat.requestPermissions()</code>方法，需要提供参数是上下文，权限标志数组，以及这次请求对应的请求码。 当然权限的请求必须是异步的，因为从显示对话框，再到用户对对话框做出选择都是需要时间的，<code>requestPermissions()</code>会立即返回，至于请求的结果则会在回掉函数中体现（下面讲） 结合上面的内容，一次请求应该这么写：</p>
+<pre><code>private void readContacts() {
+    if (Activity.checkSelfPermission(this,
+            Manifest.permission.READ_CONTACTS) !=
+        PackageManager.PERMISSION_GRANTED) {
+        //如果没有该权限，进行请求
+        requestReadContactsPermission();
+    } else {
+        //进行联系人读取
+    }
+}
+private void requestReadContactsPermission() {
+    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+               Manifest.permission.READ_CONTACTS)) {
+        //进行相应的解释。要注意必须是异步的，不要阻塞主线程
+    } else {
+        //直接请求
+        ActivityCompat.requestPermissions(thisActivity,
+            new String[]{Manifest.permission.READ_CONTACTS},
+            REQUEST_READ_CONTACTS};
+    }
+}
+</code></pre><h3 id="处理请求结果"><a href="#处理请求结果" class="headerlink" title="处理请求结果"></a>处理请求结果</h3><p>由于权限请求是异步的，因此请求结果将会以回调的形式返回，ActivityCompat类中有一个回调接口<code>OnRequestPermissionsResultCallback</code>，因此请求代码所处的Activity需要实现这个接口 这个接口中只有一个方法：</p>
+<pre><code>onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+</code></pre><p>参数依次是你的请求所设置的请求码，权限列表，以及每个权限对应的请求结果 具体实现可以这么写：</p>
+<pre><code>@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[],
+    @NonNull int[] grantResults) {
+    switch (requestCode) {
+        case REQUEST_READ_CONTACTS:
+            if (grantResults.length &gt; 0 &amp;&amp; grantResults[0]
+                == PackageManager.PERMISSION_GRANTED) {
+                //获得权限，继续对应的操作
+                readContacts();
+            } else {
+                //未能获得权限，取消该操作但不要让应用退出
+            }
+            break;
+        //...
+    }
+}
+</code></pre><p>参数中的权限数组和结果数组是一一对应的。根据请求码判断是哪个请求，并对各个权限进行检查</p>
+<hr>
+<h2 id="何时请求权限"><a href="#何时请求权限" class="headerlink" title="何时请求权限"></a>何时请求权限</h2><p>根据Android Developer的介绍，权限请求的情况有两个因素：权限的重要性，以及用户对权限必要性的认识 讲权限的重要性分为重要的（critical）和次要的（secondary），用户的认识分为清除的（clear）和不清楚的（unclear）。对于一款相机应用来说，可以有如下四种情况： 1. 如果该权限对应用来说很重要，而且用户也很清楚，例如CAMERA权限。直接启动时请求权限，不需要多余地说明 2. 如果该权限对应用来说很重要，但用户不能马上认识到其必要，例如记录相片地理位置的功能。对于这种很吸引人的功能，或者是更新后加入的新特性，可以在用户教程（tutorial）界面时进行介绍，然后再请求权限 3. 如果该权限是比较次要的，但用户很清楚权限的必要，例如给相片加入语音。对于这种功能，当用户点击使用，直接在上下文种请求权限就行了 4. 如果该权限是比较次要的，而且用户不能马上认识到其必要，例如读取短信中的验证码。自动读取短信中的验证码是有用的，但用户有时并不能马上认识到它的便利，这样的话可以在上下文中适当地说明这个功能，当用户启动该功能时再请求权限 引用官方的说明图： <img src="http://img.blog.csdn.net/20160820205456632" alt=""></p>
+<hr>
+<p>关于Android M的权限请求大概就是这么多。从官方的说明文档可以看出来，权限请求这个改动其实是充满了设计感的，无论是请求策略，还是请求代码，都体现了Android在用户体验，以及帮助开发者开发更优质的应用，所做出的努力。谷歌在优质化应用上所做的其实并不止是Material Design，很多小细节都在大大地改变Android应用在人们心中的印象。 另附： <a href="https://developer.android.com/guide/topics/security/permissions.html#normal-dangerous" target="_blank" rel="noopener">官方说明文档</a> <a href="https://github.com/googlesamples/android-RuntimePermissions" target="_blank" rel="noopener">android-RuntimePermissions</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="859.html" title="Android M之权限请求（Android 6.0 M系统TargetsdkVersion on 23 (含)）">859.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/1ead2caf.html" rel="next" title="专题Android开发之路——改头换面之属性重写配置">
+                <i class="fa fa-chevron-left"></i> 专题Android开发之路——改头换面之属性重写配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/d10c68c3.html" rel="prev" title="TableLayout表格布局详解">
+                TableLayout表格布局详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#权限分类"><span class="nav-number">1.</span> <span class="nav-text">权限分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-permissions"><span class="nav-number">1.1.</span> <span class="nav-text">normal permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dangerous-permissions"><span class="nav-number">1.2.</span> <span class="nav-text">dangerous permissions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查权限"><span class="nav-number">2.</span> <span class="nav-text">检查权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求权限"><span class="nav-number">3.</span> <span class="nav-text">请求权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解释为何需要这个权限"><span class="nav-number">3.1.</span> <span class="nav-text">解释为何需要这个权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求权限-1"><span class="nav-number">3.2.</span> <span class="nav-text">请求权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理请求结果"><span class="nav-number">3.3.</span> <span class="nav-text">处理请求结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何时请求权限"><span class="nav-number">4.</span> <span class="nav-text">何时请求权限</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

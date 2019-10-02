@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. JFrame窗体需要用户进行设置的属性不多，通常有：  defaultCloseOperation：HIDE、EXIT_ON_CLOSE（默认设置）、DO_NOTHING、DISPOSE。若要在窗体关闭前实现用户的自定义操作，则需要设置为DO_NOTHING，但此时点击“关闭”按钮就不能关闭窗体了，需要自己添加相应的代码实现。 title：窗体的标题，默认没有。此处可设为自己喜欢的标题。 r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java界面设计基础">
+<meta property="og:url" content="http://blog.aclear.top/post/9cd339a4.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="1. JFrame窗体需要用户进行设置的属性不多，通常有：  defaultCloseOperation：HIDE、EXIT_ON_CLOSE（默认设置）、DO_NOTHING、DISPOSE。若要在窗体关闭前实现用户的自定义操作，则需要设置为DO_NOTHING，但此时点击“关闭”按钮就不能关闭窗体了，需要自己添加相应的代码实现。 title：窗体的标题，默认没有。此处可设为自己喜欢的标题。 r">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java界面设计基础">
+<meta name="twitter:description" content="1. JFrame窗体需要用户进行设置的属性不多，通常有：  defaultCloseOperation：HIDE、EXIT_ON_CLOSE（默认设置）、DO_NOTHING、DISPOSE。若要在窗体关闭前实现用户的自定义操作，则需要设置为DO_NOTHING，但此时点击“关闭”按钮就不能关闭窗体了，需要自己添加相应的代码实现。 title：窗体的标题，默认没有。此处可设为自己喜欢的标题。 r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/9cd339a4.html">
+
+
+
+
+
+  <title>Java界面设计基础 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/9cd339a4.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java界面设计基础</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-10T23:36:03+08:00">
+                2016-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/JavaClass/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaClass</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/JavaClass/JavaPrimary/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaPrimary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1. JFrame窗体需要用户进行设置的属性不多，通常有：</p>
+<ul>
+<li>defaultCloseOperation：HIDE、EXIT_ON_CLOSE（默认设置）、DO_NOTHING、DISPOSE。若要在窗体关闭前实现用户的自定义操作，则需要设置为DO_NOTHING，但此时点击“关闭”按钮就不能关闭窗体了，需要自己添加相应的代码实现。</li>
+<li>title：窗体的标题，默认没有。此处可设为自己喜欢的标题。</li>
+<li>resizable：窗体尺寸是否可调整，默认为true。</li>
+</ul>
+<p>2.Swing容器，比较常用的共同属性有：background、border，对于工具栏，还有floatable、orientation(方向）可以设置，而其他一些容器，则有一些特有的属性可以设置.</p>
+<p>拆分窗格（JSplitPane）：一、在netbeans中新建拆分窗格，设置orientation属性为VERTICAL_SPLIT上下拆分。<br>二、右击拆分窗格，选择从组件面板中添加，选择自己需要添加的组件，设置完表属性后继续添加第二个。<br>三、设置拆分窗格属性：dividerlocation属性为上窗格的大小，dividerSize为中间的拆分条宽度，continuousLayout设置是否可以拖动拆分条，oneTouchExpandable设置拆分窗格是否可以展开或收起，resizeWeight按比例调整两个窗格的大小(主意先调整resizeWeight再把dividerLocation设为-1，否则无效)</p>
+<h3 id="2、创建Swing容器"><a href="#2、创建Swing容器" class="headerlink" title="2、创建Swing容器"></a>2、创建Swing容器</h3><p>重点练习面板（JPanel）、标签化窗格（JTabbledPane）、拆分窗格（JSplitPane）、工具栏（JToolbar）等容器，分别将它们从“组件面板”中拖入JFrame窗体中，注意观察它们的样子、属性设置等内容。 对于Swing容器，比较常用的共同属性有：background、border，对于工具栏，还有floatable、orientation可以设置，而其他一些容器，则有一些特有的属性可以设置。</p>
+<h4 id="（1）JPanel"><a href="#（1）JPanel" class="headerlink" title="（1）JPanel"></a>（1）JPanel</h4><p>面板是最纯洁的一种容器，她就相当于一张白纸，可以将若干相关的组件布局在一起，形成一个组合体。JPanel默认是没有边框的，有时为了更清晰地展示界面，就需要对其进行边框、颜色等属性设置。</p>
+<h4 id="（2）JTabbedPane"><a href="#（2）JTabbedPane" class="headerlink" title="（2）JTabbedPane"></a>（2）JTabbedPane</h4><p>标签化窗格是能够将若干个不同的容器按照标签化的方式组织在一起的一种容器，用户可以通过点击标签实现各容器之间的快速切换，能够节省大量显示空间。</p>
+<h4 id="（3）JSplitPane"><a href="#（3）JSplitPane" class="headerlink" title="（3）JSplitPane"></a>（3）JSplitPane</h4><p>拆分窗格是一种能够将若干容器按照横向或纵向方式进行布局的容器，并且可以通过拖拽分割符实现容器尺寸的改变。</p>
+<h4 id="（4）JToolbar"><a href="#（4）JToolbar" class="headerlink" title="（4）JToolbar"></a>（4）JToolbar</h4><p>工具栏是一种将若干常用的功能组织在一起以方便用户进行操作的容器，通常结合文本和图标以更加形象直观的方式进行展示，一般位于菜单栏的下方，也可以设置为可浮动的形式。  </p>
+<h3 id="3、创建Swing控件"><a href="#3、创建Swing控件" class="headerlink" title="3、创建Swing控件"></a>3、创建Swing控件</h3><p>这一部分是使用最多的内容，它们一般都是用户直接进行操作的组件。这里重点练习标签（JLabel）、按钮（JButton）、复选框（JCheckBox）、单选按钮（JRadioButton）、按钮组（ButtonGroup）、组合框（JComboBox）、列表（JList）、文本字段（JTextField）、文本区域（JTextArea）、口令字段（JPasswordField）、分隔符（JSeparator）、表（JTable）等组件的使用，分别将它们从“组件面板”中拖入JFrame窗体中的某些容器中，注意观察它们的样子、属性设置等内容。</p>
+<h4 id="（1）JLabel"><a href="#（1）JLabel" class="headerlink" title="（1）JLabel"></a>（1）JLabel</h4><p>标签通常用来表示静态的文本或图标内容，用于提示某些组件的作用等。</p>
+<h4 id="（2）JButton"><a href="#（2）JButton" class="headerlink" title="（2）JButton"></a>（2）JButton</h4><p>按钮是一种大量使用的控件，它会触发动作事件以实现若干功能和操作。</p>
+<h4 id="（3）JCheckBox"><a href="#（3）JCheckBox" class="headerlink" title="（3）JCheckBox"></a>（3）JCheckBox</h4><p>复选框是一种展示选中与否的组件，方便进行某个状态的设置。</p>
+<h4 id="（4）JRadioButton"><a href="#（4）JRadioButton" class="headerlink" title="（4）JRadioButton"></a>（4）JRadioButton</h4><p>单选按钮也是一种展示选中与否的组件，与复选框不同的是，它常用于将若干互斥的状态或功能组织在一起，并通过按钮组实现，也可以不使用按钮组而采用编写代码的方式进行控制。</p>
+<h4 id="（5）ButtonGroup"><a href="#（5）ButtonGroup" class="headerlink" title="（5）ButtonGroup"></a>（5）ButtonGroup</h4><p>按钮组是一个将若干单选按钮形成一个组的特殊组件，其特殊之处在于它在界面上是不可见的。通过选定若干单选按钮并将它们的“buttonGroup”属性设置为同一个按钮组对象而实现将这些单选按钮形成互斥的一个组。</p>
+<h4 id="（6）JComboxBox"><a href="#（6）JComboxBox" class="headerlink" title="（6）JComboxBox"></a>（6）JComboxBox</h4><p>组合框是一种将若干条目组织在一起，通过下拉列表的形式进行选择，通常只显示其中的一个条目，占用界面空间少。</p>
+<h4 id="（7）JList"><a href="#（7）JList" class="headerlink" title="（7）JList"></a>（7）JList</h4><p>列表框也是一种将若干条目组织在一起的组件，它可以同时显示出多个条目，并结合滚动条实现条目的滚动显示，并能够以图标方式进行更加直观的展示。</p>
+<h4 id="（8）JTextField"><a href="#（8）JTextField" class="headerlink" title="（8）JTextField"></a>（8）JTextField</h4><p>文本字段用于输入单行文本。</p>
+<h4 id="（9）JTextArea"><a href="#（9）JTextArea" class="headerlink" title="（9）JTextArea"></a>（9）JTextArea</h4><p>文本区域用于输入多行文本，该组件自动与滚动窗格相结合实现文本的横向和纵向滚动。</p>
+<h4 id="（10）JPasswordField"><a href="#（10）JPasswordField" class="headerlink" title="（10）JPasswordField"></a>（10）JPasswordField</h4><p>口令字段用于输入口令的内容，它以设定的回显字符对实际输入的内容进行显示屏蔽。</p>
+<h4 id="（11）JSeparator"><a href="#（11）JSeparator" class="headerlink" title="（11）JSeparator"></a>（11）JSeparator</h4><p>分割符是将界面中不同的区域进行横向或纵向分割的组件，它能够使界面的区域划分看上去更加清晰。</p>
+<h4 id="（12）JTable"><a href="#（12）JTable" class="headerlink" title="（12）JTable"></a>（12）JTable</h4><p>表格是一种比较复杂的组件，它能够以二维表格的形式展示数据，并可以进行大量的属性设置，支持与滚动窗格的自动结合。</p>
+<ul>
+<li>设计下列方法：</li>
+<li>public static void fitJTableColumns(JTable table, double[] columnWidths)</li>
+</ul>
+<p>功能：将表格table中各列的宽度按照columnWidths数组中的值进行设置。表格在默认情况下各列的宽度是相同的，使用该方法可以使各列的宽度不同，以适应表格中数据的实际情况。</p>
+<h4 id="4、创建Swing菜单"><a href="#4、创建Swing菜单" class="headerlink" title="4、创建Swing菜单"></a>4、创建Swing菜单</h4><p>主要包括菜单栏（JMenuBar）、菜单（JMenu）、菜单项（JMenuItem）、菜单项/复选框（JCheckBoxMenuItem）、菜单项/单选按钮（JRadioButtonMenuItem）、分隔符（JSeparator）、弹出式菜单（JPopupMenu）等的使用。</p>
+<h4 id="（1）JMenuBar"><a href="#（1）JMenuBar" class="headerlink" title="（1）JMenuBar"></a>（1）JMenuBar</h4><p>菜单栏是将若干菜单组织在一起的组件，它通常位于标题栏的下方。</p>
+<h4 id="（2）JMenu"><a href="#（2）JMenu" class="headerlink" title="（2）JMenu"></a>（2）JMenu</h4><p>菜单是将若干菜单项、分割符等组织在一起的组件。</p>
+<h4 id="（3）JMenuItem"><a href="#（3）JMenuItem" class="headerlink" title="（3）JMenuItem"></a>（3）JMenuItem</h4><p>菜单项有两种展示方式：一种是级联菜单，可以引出下一级菜单；另一种是终端菜单项，与一个具体的功能相对应。</p>
+<ul>
+<li>有趣的是：JMenuItem是JMenu的父类！</li>
+</ul>
+<h4 id="（4）JCheckBoxMenuItem"><a href="#（4）JCheckBoxMenuItem" class="headerlink" title="（4）JCheckBoxMenuItem"></a>（4）JCheckBoxMenuItem</h4><p>复选框菜单项与JCheckBox的特点相同，只是展示方式不同。</p>
+<h4 id="（5）JRadioButtonMenuItem"><a href="#（5）JRadioButtonMenuItem" class="headerlink" title="（5）JRadioButtonMenuItem"></a>（5）JRadioButtonMenuItem</h4><p>单选按钮菜单项与JRadioButton的特点相同，只是展示方式不同。</p>
+<h4 id="（6）JPopupMenu"><a href="#（6）JPopupMenu" class="headerlink" title="（6）JPopupMenu"></a>（6）JPopupMenu</h4><p>弹出式菜单是一种用途非常广泛的组件，它通常通过右键单击进行显示，对于用户执行相关的功能带来了极大的方便。弹出式菜单也是一种在界面上是不可见的组件。</p>
+<h4 id="（7）JSeparator"><a href="#（7）JSeparator" class="headerlink" title="（7）JSeparator"></a>（7）JSeparator</h4><p>分割符与控件中的分隔符相同，它们是同一种组件，用于将不同用途的菜单项进行分割显示。</p>
+<ul>
+<li>JFrame用于一个系统的主界面，对一个系统而言，一般只有一个。而JDialog则用于系统操作过程中的需要与用户进行数据交互的各个对话框，一个系统中往往会有若干个对话框。</li>
+<li>对话框分为“有模式”对话框和“无模式”对话框两种，对于“有模式”对话框，其执行方式是阻塞型的，即当这种对话框显示时，不能操作其依附的父窗体，只有将该对话框关闭后其父窗体才进行响应。而“无模式”对话框则是不阻塞的，当这类对话框显示时，其所依附的父窗体依然能够进行响应。至于选择哪一种对话框，要根据具体情况而定。基本的原则是：如果操作流程中需要从对话框中获取数据来进行后续的操作，则需要使用“有模式”对话框，否则将不能得到对话框中的数据；若无此需要，可使用“无模式”对话框。在实际应用中，通常“有模式”对话框比“无模式”对话框用的要多。</li>
+<li>JFrame与JDialog的设计基本一致，此处可选择其一熟悉界面设计的一般步骤和基本方法。下面以JFrame为例进行说明。</li>
+</ul>
+<h4 id="（3）设置属性"><a href="#（3）设置属性" class="headerlink" title="（3）设置属性"></a>（3）设置属性</h4><p>一般情况下，JFrame窗体需要用户进行设置的属性不多，通常有：</p>
+<ul>
+<li>defaultCloseOperation：HIDE、EXIT_ON_CLOSE（默认设置）、DO_NOTHING、DISPOSE。若要在窗体关闭前实现用户的自定义操作，则需要设置为DO_NOTHING，但此时点击“关闭”按钮就不能关闭窗体了，需要自己添加相应的代码实现。</li>
+<li>title：窗体的标题，默认没有。此处可设为自己喜欢的标题。</li>
+<li>resizable：窗体尺寸是否可调整，默认为true。</li>
+</ul>
+<h3 id="2、创建Swing容器-1"><a href="#2、创建Swing容器-1" class="headerlink" title="2、创建Swing容器"></a>2、创建Swing容器</h3><p>重点练习面板（JPanel）、标签化窗格（JTabbledPane）、拆分窗格（JSplitPane）、工具栏（JToolbar）等容器，分别将它们从“组件面板”中拖入JFrame窗体中，注意观察它们的样子、属性设置等内容。 对于Swing容器，比较常用的共同属性有：background、border，对于工具栏，还有floatable、orientation可以设置，而其他一些容器，则有一些特有的属性可以设置。</p>
+<h4 id="（1）JPanel-1"><a href="#（1）JPanel-1" class="headerlink" title="（1）JPanel"></a>（1）JPanel</h4><p>面板是最纯洁的一种容器，她就相当于一张白纸，可以将若干相关的组件布局在一起，形成一个组合体。JPanel默认是没有边框的，有时为了更清晰地展示界面，就需要对其进行边框、颜色等属性设置。</p>
+<h4 id="（2）JTabbedPane-1"><a href="#（2）JTabbedPane-1" class="headerlink" title="（2）JTabbedPane"></a>（2）JTabbedPane</h4><p>标签化窗格是能够将若干个不同的容器按照标签化的方式组织在一起的一种容器，用户可以通过点击标签实现各容器之间的快速切换，能够节省大量显示空间。</p>
+<h4 id="（3）JSplitPane-1"><a href="#（3）JSplitPane-1" class="headerlink" title="（3）JSplitPane"></a>（3）JSplitPane</h4><p>拆分窗格是一种能够将若干容器按照横向或纵向方式进行布局的容器，并且可以通过拖拽分割符实现容器尺寸的改变。</p>
+<h4 id="（4）JToolbar-1"><a href="#（4）JToolbar-1" class="headerlink" title="（4）JToolbar"></a>（4）JToolbar</h4><p>工具栏是一种将若干常用的功能组织在一起以方便用户进行操作的容器，通常结合文本和图标以更加形象直观的方式进行展示，一般位于菜单栏的下方，也可以设置为可浮动的形式。</p>
+<h3 id="3、创建Swing控件-1"><a href="#3、创建Swing控件-1" class="headerlink" title="3、创建Swing控件"></a>3、创建Swing控件</h3><p>这一部分是使用最多的内容，它们一般都是用户直接进行操作的组件。这里重点练习标签（JLabel）、按钮（JButton）、复选框（JCheckBox）、单选按钮（JRadioButton）、按钮组（ButtonGroup）、组合框（JComboBox）、列表（JList）、文本字段（JTextField）、文本区域（JTextArea）、口令字段（JPasswordField）、分隔符（JSeparator）、表（JTable）等组件的使用，分别将它们从“组件面板”中拖入JFrame窗体中的某些容器中，注意观察它们的样子、属性设置等内容。</p>
+<h4 id="（1）JLabel-1"><a href="#（1）JLabel-1" class="headerlink" title="（1）JLabel"></a>（1）JLabel</h4><p>标签通常用来表示静态的文本或图标内容，用于提示某些组件的作用等。</p>
+<h4 id="（2）JButton-1"><a href="#（2）JButton-1" class="headerlink" title="（2）JButton"></a>（2）JButton</h4><p>按钮是一种大量使用的控件，它会触发动作事件以实现若干功能和操作。</p>
+<h4 id="（3）JCheckBox-1"><a href="#（3）JCheckBox-1" class="headerlink" title="（3）JCheckBox"></a>（3）JCheckBox</h4><p>复选框是一种展示选中与否的组件，方便进行某个状态的设置。</p>
+<h4 id="（4）JRadioButton-1"><a href="#（4）JRadioButton-1" class="headerlink" title="（4）JRadioButton"></a>（4）JRadioButton</h4><p>单选按钮也是一种展示选中与否的组件，与复选框不同的是，它常用于将若干互斥的状态或功能组织在一起，并通过按钮组实现，也可以不使用按钮组而采用编写代码的方式进行控制。</p>
+<h4 id="（5）ButtonGroup-1"><a href="#（5）ButtonGroup-1" class="headerlink" title="（5）ButtonGroup"></a>（5）ButtonGroup</h4><p>按钮组是一个将若干单选按钮形成一个组的特殊组件，其特殊之处在于它在界面上是不可见的。通过选定若干单选按钮并将它们的“buttonGroup”属性设置为同一个按钮组对象而实现将这些单选按钮形成互斥的一个组。</p>
+<h4 id="（6）JComboxBox-1"><a href="#（6）JComboxBox-1" class="headerlink" title="（6）JComboxBox"></a>（6）JComboxBox</h4><p>组合框是一种将若干条目组织在一起，通过下拉列表的形式进行选择，通常只显示其中的一个条目，占用界面空间少。</p>
+<h4 id="（7）JList-1"><a href="#（7）JList-1" class="headerlink" title="（7）JList"></a>（7）JList</h4><p>列表框也是一种将若干条目组织在一起的组件，它可以同时显示出多个条目，并结合滚动条实现条目的滚动显示，并能够以图标方式进行更加直观的展示。</p>
+<h4 id="（8）JTextField-1"><a href="#（8）JTextField-1" class="headerlink" title="（8）JTextField"></a>（8）JTextField</h4><p>文本字段用于输入单行文本。</p>
+<h4 id="（9）JTextArea-1"><a href="#（9）JTextArea-1" class="headerlink" title="（9）JTextArea"></a>（9）JTextArea</h4><p>文本区域用于输入多行文本，该组件自动与滚动窗格相结合实现文本的横向和纵向滚动。</p>
+<h4 id="（10）JPasswordField-1"><a href="#（10）JPasswordField-1" class="headerlink" title="（10）JPasswordField"></a>（10）JPasswordField</h4><p>口令字段用于输入口令的内容，它以设定的回显字符对实际输入的内容进行显示屏蔽。</p>
+<h4 id="（11）JSeparator-1"><a href="#（11）JSeparator-1" class="headerlink" title="（11）JSeparator"></a>（11）JSeparator</h4><p>分割符是将界面中不同的区域进行横向或纵向分割的组件，它能够使界面的区域划分看上去更加清晰。</p>
+<h4 id="（12）JTable-1"><a href="#（12）JTable-1" class="headerlink" title="（12）JTable"></a>（12）JTable</h4><p>表格是一种比较复杂的组件，它能够以二维表格的形式展示数据，并可以进行大量的属性设置，支持与滚动窗格的自动结合。</p>
+<ul>
+<li>设计下列方法：</li>
+<li>public static void fitJTableColumns(JTable table, double[] columnWidths)</li>
+</ul>
+<p>功能：将表格table中各列的宽度按照columnWidths数组中的值进行设置。表格在默认情况下各列的宽度是相同的，使用该方法可以使各列的宽度不同，以适应表格中数据的实际情况。</p>
+<h4 id="4、创建Swing菜单-1"><a href="#4、创建Swing菜单-1" class="headerlink" title="4、创建Swing菜单"></a>4、创建Swing菜单</h4><p>主要包括菜单栏（JMenuBar）、菜单（JMenu）、菜单项（JMenuItem）、菜单项/复选框（JCheckBoxMenuItem）、菜单项/单选按钮（JRadioButtonMenuItem）、分隔符（JSeparator）、弹出式菜单（JPopupMenu）等的使用。</p>
+<h4 id="（1）JMenuBar-1"><a href="#（1）JMenuBar-1" class="headerlink" title="（1）JMenuBar"></a>（1）JMenuBar</h4><p>菜单栏是将若干菜单组织在一起的组件，它通常位于标题栏的下方。</p>
+<h4 id="（2）JMenu-1"><a href="#（2）JMenu-1" class="headerlink" title="（2）JMenu"></a>（2）JMenu</h4><p>菜单是将若干菜单项、分割符等组织在一起的组件。</p>
+<h4 id="（3）JMenuItem-1"><a href="#（3）JMenuItem-1" class="headerlink" title="（3）JMenuItem"></a>（3）JMenuItem</h4><p>菜单项有两种展示方式：一种是级联菜单，可以引出下一级菜单；另一种是终端菜单项，与一个具体的功能相对应。</p>
+<ul>
+<li>有趣的是：JMenuItem是JMenu的父类！</li>
+</ul>
+<h4 id="（4）JCheckBoxMenuItem-1"><a href="#（4）JCheckBoxMenuItem-1" class="headerlink" title="（4）JCheckBoxMenuItem"></a>（4）JCheckBoxMenuItem</h4><p>复选框菜单项与JCheckBox的特点相同，只是展示方式不同。</p>
+<h4 id="（5）JRadioButtonMenuItem-1"><a href="#（5）JRadioButtonMenuItem-1" class="headerlink" title="（5）JRadioButtonMenuItem"></a>（5）JRadioButtonMenuItem</h4><p>单选按钮菜单项与JRadioButton的特点相同，只是展示方式不同。</p>
+<h4 id="（6）JPopupMenu-1"><a href="#（6）JPopupMenu-1" class="headerlink" title="（6）JPopupMenu"></a>（6）JPopupMenu</h4><p>弹出式菜单是一种用途非常广泛的组件，它通常通过右键单击进行显示，对于用户执行相关的功能带来了极大的方便。弹出式菜单也是一种在界面上是不可见的组件。</p>
+<h4 id="（7）JSeparator-1"><a href="#（7）JSeparator-1" class="headerlink" title="（7）JSeparator"></a>（7）JSeparator</h4><p>分割符与控件中的分隔符相同，它们是同一种组件，用于将不同用途的菜单项进行分割显示。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="254.html" title="Java界面设计基础">254.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/e0a1dfb0.html" rel="next" title="GoalofHTML_HCC">
+                <i class="fa fa-chevron-left"></i> GoalofHTML_HCC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/72263aa3.html" rel="prev" title="Java对话框静态界面设计">
+                Java对话框静态界面设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2、创建Swing容器"><span class="nav-number">1.</span> <span class="nav-text">2、创建Swing容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JPanel"><span class="nav-number">1.1.</span> <span class="nav-text">（1）JPanel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JTabbedPane"><span class="nav-number">1.2.</span> <span class="nav-text">（2）JTabbedPane</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JSplitPane"><span class="nav-number">1.3.</span> <span class="nav-text">（3）JSplitPane</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JToolbar"><span class="nav-number">1.4.</span> <span class="nav-text">（4）JToolbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、创建Swing控件"><span class="nav-number">2.</span> <span class="nav-text">3、创建Swing控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JLabel"><span class="nav-number">2.1.</span> <span class="nav-text">（1）JLabel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JButton"><span class="nav-number">2.2.</span> <span class="nav-text">（2）JButton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JCheckBox"><span class="nav-number">2.3.</span> <span class="nav-text">（3）JCheckBox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JRadioButton"><span class="nav-number">2.4.</span> <span class="nav-text">（4）JRadioButton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）ButtonGroup"><span class="nav-number">2.5.</span> <span class="nav-text">（5）ButtonGroup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）JComboxBox"><span class="nav-number">2.6.</span> <span class="nav-text">（6）JComboxBox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）JList"><span class="nav-number">2.7.</span> <span class="nav-text">（7）JList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（8）JTextField"><span class="nav-number">2.8.</span> <span class="nav-text">（8）JTextField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（9）JTextArea"><span class="nav-number">2.9.</span> <span class="nav-text">（9）JTextArea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（10）JPasswordField"><span class="nav-number">2.10.</span> <span class="nav-text">（10）JPasswordField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（11）JSeparator"><span class="nav-number">2.11.</span> <span class="nav-text">（11）JSeparator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（12）JTable"><span class="nav-number">2.12.</span> <span class="nav-text">（12）JTable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、创建Swing菜单"><span class="nav-number">2.13.</span> <span class="nav-text">4、创建Swing菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JMenuBar"><span class="nav-number">2.14.</span> <span class="nav-text">（1）JMenuBar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JMenu"><span class="nav-number">2.15.</span> <span class="nav-text">（2）JMenu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JMenuItem"><span class="nav-number">2.16.</span> <span class="nav-text">（3）JMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JCheckBoxMenuItem"><span class="nav-number">2.17.</span> <span class="nav-text">（4）JCheckBoxMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）JRadioButtonMenuItem"><span class="nav-number">2.18.</span> <span class="nav-text">（5）JRadioButtonMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）JPopupMenu"><span class="nav-number">2.19.</span> <span class="nav-text">（6）JPopupMenu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）JSeparator"><span class="nav-number">2.20.</span> <span class="nav-text">（7）JSeparator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）设置属性"><span class="nav-number">2.21.</span> <span class="nav-text">（3）设置属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、创建Swing容器-1"><span class="nav-number">3.</span> <span class="nav-text">2、创建Swing容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JPanel-1"><span class="nav-number">3.1.</span> <span class="nav-text">（1）JPanel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JTabbedPane-1"><span class="nav-number">3.2.</span> <span class="nav-text">（2）JTabbedPane</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JSplitPane-1"><span class="nav-number">3.3.</span> <span class="nav-text">（3）JSplitPane</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JToolbar-1"><span class="nav-number">3.4.</span> <span class="nav-text">（4）JToolbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、创建Swing控件-1"><span class="nav-number">4.</span> <span class="nav-text">3、创建Swing控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JLabel-1"><span class="nav-number">4.1.</span> <span class="nav-text">（1）JLabel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JButton-1"><span class="nav-number">4.2.</span> <span class="nav-text">（2）JButton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JCheckBox-1"><span class="nav-number">4.3.</span> <span class="nav-text">（3）JCheckBox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JRadioButton-1"><span class="nav-number">4.4.</span> <span class="nav-text">（4）JRadioButton</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）ButtonGroup-1"><span class="nav-number">4.5.</span> <span class="nav-text">（5）ButtonGroup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）JComboxBox-1"><span class="nav-number">4.6.</span> <span class="nav-text">（6）JComboxBox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）JList-1"><span class="nav-number">4.7.</span> <span class="nav-text">（7）JList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（8）JTextField-1"><span class="nav-number">4.8.</span> <span class="nav-text">（8）JTextField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（9）JTextArea-1"><span class="nav-number">4.9.</span> <span class="nav-text">（9）JTextArea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（10）JPasswordField-1"><span class="nav-number">4.10.</span> <span class="nav-text">（10）JPasswordField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（11）JSeparator-1"><span class="nav-number">4.11.</span> <span class="nav-text">（11）JSeparator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（12）JTable-1"><span class="nav-number">4.12.</span> <span class="nav-text">（12）JTable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、创建Swing菜单-1"><span class="nav-number">4.13.</span> <span class="nav-text">4、创建Swing菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）JMenuBar-1"><span class="nav-number">4.14.</span> <span class="nav-text">（1）JMenuBar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）JMenu-1"><span class="nav-number">4.15.</span> <span class="nav-text">（2）JMenu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）JMenuItem-1"><span class="nav-number">4.16.</span> <span class="nav-text">（3）JMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）JCheckBoxMenuItem-1"><span class="nav-number">4.17.</span> <span class="nav-text">（4）JCheckBoxMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）JRadioButtonMenuItem-1"><span class="nav-number">4.18.</span> <span class="nav-text">（5）JRadioButtonMenuItem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（6）JPopupMenu-1"><span class="nav-number">4.19.</span> <span class="nav-text">（6）JPopupMenu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（7）JSeparator-1"><span class="nav-number">4.20.</span> <span class="nav-text">（7）JSeparator</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

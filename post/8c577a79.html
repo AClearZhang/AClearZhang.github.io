@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="如果你要经常使用Photoshop，那么你需要了解Photoshop一个简单却不容易理解的特性——混合模式。在Photoshop众多酷炫功能中，这是个很容易被人忽略的功能，但是看完这篇文章之后，希望会引起你的注意。 混合模式在哪里？ 混合模式容易被忽略的最大原因就是它所处的位置——在图层面板右上部的角落里。  混合模式是什么？ 你可以将混合模式按照下拉菜单中的分组来将它们分为不同类别：变暗模式、变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转]带你认识Photoshop的混合模式">
+<meta property="og:url" content="http://blog.aclear.top/post/8c577a79.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="如果你要经常使用Photoshop，那么你需要了解Photoshop一个简单却不容易理解的特性——混合模式。在Photoshop众多酷炫功能中，这是个很容易被人忽略的功能，但是看完这篇文章之后，希望会引起你的注意。 混合模式在哪里？ 混合模式容易被忽略的最大原因就是它所处的位置——在图层面板右上部的角落里。  混合模式是什么？ 你可以将混合模式按照下拉菜单中的分组来将它们分为不同类别：变暗模式、变">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/8dffe1db9842cf15758f39e0158a81db.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/4418374cc6c0432693b8ad6ed9720ca2.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/50b8b6f788cd73d6b890557833589901.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/e441ff22dc2ffaa1c83abb5b11cfad91.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/edc1d66c78739b00e5181811654a583d.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/0fb0e238bed088415f0153fdc2631d9c.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/f1bf24111e941f2d1e7b4d863454503e.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/910c4212d00d374925584e0b35575d0d.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/4096d008d7b41e5536a09f5a37f5e457.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/54b34cdc418f5026f5b1987653edd772.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/0aee9f9e19dfc9918db9e1dafaebdd95.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/f4eac56e17a6d0f295355a509078e2f7.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/bb7f7c449784ec8501f11857c66c2e1a.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/e20d1bece60595be21c4462c3403b6eb.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/cd785c424406579c95e4eaa4695417dd.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/7b0747429de7b1a3d11bf4dd002b1df5.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/7f16500941a07dc3cd92a4eb64a42624.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/272c60ac3ce9944305bacf0ebfbc8a05.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/38321242e583ecada38f8ded43ec6916.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/87dbd94c2a859bcbe6ae9a1c5adc00c2.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/344473a9f2f6a1db66b75fe2f84ca3a3.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/49db495b6a8020ccda1a8aff76a474a5.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/921b156e6654245a49dd9500d19adace.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/829ec8160376d280743dcb6f03afe001.jpg">
+<meta property="og:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/f9e1a92b479b5844be9e17959d172e7d.jpg">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转]带你认识Photoshop的混合模式">
+<meta name="twitter:description" content="如果你要经常使用Photoshop，那么你需要了解Photoshop一个简单却不容易理解的特性——混合模式。在Photoshop众多酷炫功能中，这是个很容易被人忽略的功能，但是看完这篇文章之后，希望会引起你的注意。 混合模式在哪里？ 混合模式容易被忽略的最大原因就是它所处的位置——在图层面板右上部的角落里。  混合模式是什么？ 你可以将混合模式按照下拉菜单中的分组来将它们分为不同类别：变暗模式、变">
+<meta name="twitter:image" content="http://www.shejipai.cn/wp-content/uploads/2013/11/8dffe1db9842cf15758f39e0158a81db.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/8c577a79.html">
+
+
+
+
+
+  <title>[转]带你认识Photoshop的混合模式 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/8c577a79.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">[转]带你认识Photoshop的混合模式</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-06T16:44:21+08:00">
+                2016-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PS/" itemprop="url" rel="index">
+                    <span itemprop="name">PS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PS/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如果你要经常使用Photoshop，那么你需要了解Photoshop一个简单却不容易理解的特性——混合模式。在Photoshop众多酷炫功能中，这是个很容易被人忽略的功能，但是看完这篇文章之后，希望会引起你的注意。</p>
+<p><strong>混合模式在哪里？</strong> 混合模式容易被忽略的最大原因就是它所处的位置——在图层面板右上部的角落里。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/8dffe1db9842cf15758f39e0158a81db.jpg" alt=""> <strong>混合模式是什么？</strong> 你可以将混合模式按照下拉菜单中的分组来将它们分为不同类别：变暗模式、变亮模式、饱和度模式、差集模式和颜色模式。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/4418374cc6c0432693b8ad6ed9720ca2.jpg" alt=""> 现在你知道了混合模式的分类，那么便很容易理解何时使用相关的模式来达到自己想要的效果了。 <strong>什么时候使用混合模式？</strong> 混合模式有非常广泛的用途，学会了混合模式，那些现成的照片滤镜便显得多余了。让我们来看一个使用混合模式调整照片色调的例子： <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/50b8b6f788cd73d6b890557833589901.jpg" alt=""> 我们可以在原图片的上方新建一层，填充颜色，然后设置混合模式就可以调整成我们想要的色调了，这种方式可以代替色相/饱和度或其他照片滤镜。选中混合模式之后，你可以使用键盘上的上下箭头来快速调整不同的模式。 混合模式是没有修改选项的，事实证明你也不需要这些选项，只是改变图层的不透明度和填充度就可以了。如果你觉得每个混合模式的效果都不满意，那么你可以使用图层不透明度和填充的选项了。 正如混合模式的名字，你可以将多个图层混合创造出各种惊人的效果。 <strong>混合模式近距离接触：</strong> <strong>1.正常模式（Normal）</strong> 在“正常”模式下，“混合色”的显示与不透明度的设置有关。当“不透明度”为100%，也就是说完全不透明时，“结果色”的像素将完全由所用的“混合色”代替；当“不透明度”小于100%时，混合色的像素会透过所用的颜色显示出来，显示的程度取决于不透明度的设置与“基色”的颜色，如下图所示是将“不透明度”设为60%后的效果。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/e441ff22dc2ffaa1c83abb5b11cfad91.jpg" alt=""> <strong>2. 溶解模式(Dissolve)</strong> 在“溶解”模式中，主要是在编辑或绘制每个像素时，使其成为“结果色”。但是，根据任何像素位置的不透明度，“结果色”由“基色”或“混合色”的像素随机替换。因此，“溶解”模式最好是同Photoshop中的一些着色工具一同使用效果比较好，如“画笔”、“仿制图章”、“橡皮擦”工具等，也可以使用文字。 当“混合色”没有羽化边缘，而且具有一定的透明度时，“混合色”将溶入到“基色”内。如果“混合色”没有羽化边缘，并且“不透明度”为100%，那么“溶解”模式不起任何作用。下图是将“混合色”的“不透明度”设为50%后产生的效果，否则“混合色”和“结果色”是不会有太大的区别的，只是边缘有一点变化。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/edc1d66c78739b00e5181811654a583d.jpg" alt=""> <strong>3. 变暗模式(Darken)</strong> 在“变暗”模式中，查看每个通道中的颜色信息，并选择“基色”或“混合色”中较暗的颜色作为“结果色”。比“混合色”亮的像素被替换，比“混合色”暗的像素保持不变。“变暗”模式将导致比背景颜色更淡的颜色从“结果色”中被去掉了，如下图所示可以看到，亮色的天空被比它颜色深的玻璃的颜色替换掉了。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/0fb0e238bed088415f0153fdc2631d9c.jpg" alt=""> <strong>4. 正片叠底模式(Multiply)</strong> 在“正片叠底”模式中，查看每个通道中的颜色信息，并将“基色”与“混合色”复合。“结果色”总是较暗的颜色。任何颜色与黑色复合产生黑色。任何颜色与白色复合保持不变。当用黑色或白色以外的颜色绘画时，绘画工具绘制的连续描边产生逐渐变暗的过渡色。其实“正片叠底”模式就是从“基色”中减去“混合色”的亮度值，得到最终的“结果色”。如果在“正片叠底”模式中使用较淡的颜色对图像的“结果色”是没有影响的。 利用“正片叠底”模式可以形成一种光线穿透图层的幻灯片效果。其实就是将“基色”颜色与“混合色”颜色的数值相乘，然后再除以255，便得到了“结果色”的颜色值。例如，红色与黄色的“结果色”是橙色，红色与绿色的“结果色”是褐色，红色与蓝色的“结果色”是紫色等。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/f1bf24111e941f2d1e7b4d863454503e.jpg" alt=""> <strong>5. 颜色加深模式(Color Burn)</strong> 在“颜色加深”模式中，查看每个通道中的颜色信息，并通过增加对比度使基色变暗以反映混合色，如果与白色混合的话将不会产生变化，如下图所示除了背景上的较淡区域消失，且图像区域呈现尖锐的边缘特性之外，“颜色加深”模式创建的效果和“正片叠底”模式创建的效果比较类似。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/910c4212d00d374925584e0b35575d0d.jpg" alt=""> <strong>6. 线性加深模式(Linear Burn)</strong> 在“线性加深”模式中，查看每个通道中的颜色信息，并通过减小亮度使“基色”变暗以反映混合色。如果“混合色”与“基色”上的白色混合后将不会产生变化。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/4096d008d7b41e5536a09f5a37f5e457.jpg" alt=""> <strong>7. 变亮模式(Lighten)</strong> 在“变亮”模式中，查看每个通道中的颜色信息，并选择“基色”或“混合色”中较亮的颜色作为“结果色”。比“混合色”暗的像素被替换，比“混合色”亮的像素不变。 在这种与“变暗”模式相反的模式下，较淡的颜色区域在最终的“合成色”中占主要地位。较暗区域并不出现在最终结“合成色”中。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/54b34cdc418f5026f5b1987653edd772.jpg" alt=""> <strong>8. 滤色模式(Screen)</strong> “滤色”模式与“正片叠底”模式正好相反，它将图像的“基色”颜色与“混合色”颜色结合起来产生比两种颜色都浅的第三种颜色，如下图所示。其实就是并将“混合色”的互补色与“基色”复合。“结果色”总是较亮的颜色。用黑色过滤时颜色保持不变。用白色过滤将产生白色。无论在“滤色”模式下用着色工具采用一种颜色，还是对“滤色”模式指定一个层，合并的“结果色”始终是相同的合成颜色或一种更淡的颜色。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/0aee9f9e19dfc9918db9e1dafaebdd95.jpg" alt=""> <strong>9. 颜色减淡模式(Color Dodge)</strong> 在“颜色减淡”模式中，查看每个通道中的颜色信息，并通过减小对比度使基色变亮以反映混合色。与黑色混合则不发生变化。除了指定在这个模式的层上边缘区域更尖锐，以及在这个模式下着色的笔划之外，“颜色减淡”模式类似于“滤色”模式创建的效果，如下图所示。另外，不管何时定义“颜色减淡”模式混合“混合色”与“基色”像素，“基色”上的暗区域都将会消失。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/f4eac56e17a6d0f295355a509078e2f7.jpg" alt=""> <strong>10. 线性减淡模式(Linear Dodge)</strong> 在“线性减淡”模式中，查看每个通道中的颜色信息，并通过增加亮度使基色变亮以反映混合色，如下图所示。但是大家可不要与黑色混合，那样是不会发生变化的。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/bb7f7c449784ec8501f11857c66c2e1a.jpg" alt=""> <strong>11. 叠加模式(Overlay)</strong> “叠加”模式把图像的“基色”颜色与“混合色”颜色相混合产生一种中间色。“基色”内颜色比“混合色”颜色暗的颜色使“混合色”颜色倍增，比“混合色”颜色亮的颜色将使“混合色”颜色被遮盖，而图像内的高亮部分和阴影部分保持不变，因此对黑色或白色像素着色时“叠加”模式不起作用。“叠加”模式以一种非艺术逻辑的方式把放置或应用到一个层上的颜色同背景色进行混合，然而，却能得到有趣的效果。背景图像中的纯黑色或纯白色区域无法在“叠加”模式下显示层上的“叠加”着色或图像区域。背景区域上落在黑色和白色之间的亮度值同“叠加”材料的颜色混合在一起，产生最终的合成颜色。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/e20d1bece60595be21c4462c3403b6eb.jpg" alt=""> <strong>12. 柔光模式(Soft Light)</strong> “柔光”模式会产生一种柔光照射的效果。如果“混合色”颜色比“基色颜色的像素更亮一些，那么“结果色”将更亮；如果“混合色”颜色比“基色”颜色的像素更暗一些，那么“结果色”颜色将更暗，使图像的亮度反差增大。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/cd785c424406579c95e4eaa4695417dd.jpg" alt=""> <strong>13.强光模式(Hard Light)</strong> “强光”模式将产生一种强光照射的效果。如果“混合色”颜色“基色”颜色的像素更亮一些，那么“结果色”颜色将更亮；如果“混合色”颜色比“基色”颜色的像素更暗一些，那么“结果色”将更暗。除了根据背景中的颜色而使背景色是多重的或屏蔽的之外，这种模式实质上同“柔光”模式是一样的。它的效果要比“柔光”模式更强烈一些，同“叠加”一样，这种模式也可以在背景对象的表面模拟图案或文本。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/7b0747429de7b1a3d11bf4dd002b1df5.jpg" alt=""> <strong>14. 亮光模式(Vivid Light)</strong> 通过增加或减小对比度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比 50% 灰色亮，则通过减小对比度使图像变亮。如果混合色比 50% 灰色暗，则通过增加对比度使图像变暗 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/7f16500941a07dc3cd92a4eb64a42624.jpg" alt=""> <strong>15. 线性光模式(Linear Light)</strong> 通过减小或增加亮度来加深或减淡颜色，具体取决于混合色。如果混合色（光源）比 50% 灰色亮，则通过增加亮度使图像变亮。如果混合色比 50% 灰色暗，则通过减小亮度使图像变暗。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/272c60ac3ce9944305bacf0ebfbc8a05.jpg" alt=""> <strong>16. 点光模式(Pin Light)</strong> “点光”模式其实就是替换颜色，其具体取决于“混合色”。如果“混合色”比 50% 灰色亮，则替换比“混合色”暗的像素，而不改变比“混合色”亮的像素。如果“混合色”比 50% 灰色暗，则替换比“混合色”亮的像素，而不改变比“混合色”暗的像素。这对于向图像添加特殊效果非常有用。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/38321242e583ecada38f8ded43ec6916.jpg" alt=""> <strong>17. 差值模式(Diference)</strong> 在“差值”模式中，查看每个通道中的颜色信息，“差值”模式是将从图像中“基色”颜色的亮度值减去“混合色”颜色的亮度值，如果结果为负，则取正值，产生反相效果。由于黑色的亮度值为0，白色的亮度值为255，因此用黑色着色不会产生任何影响，用白色着色则产生被着色的原始像素颜色的反相。“差值”模式创建背景颜色的相反色彩。例如，在“差值”模式下，当把蓝色应用到绿色背景中时将产生一种青绿组合色。“差值”模式适用于模拟原始设计的底片，而且尤其可用来在其背景颜色从一个区域到另一区域发生变化的图像中生成突出效果。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/87dbd94c2a859bcbe6ae9a1c5adc00c2.jpg" alt=""> <strong>18. 排除模式(Exclusion)</strong> “排除”模式与“差值”模式相似，但是具有高对比度和低饱和度的特点。比用“差值”模式获得的颜色要柔和、更明亮一些。建议你在处理图像时，首先选择“差值”模式，若效果不够理想，可以选择“排除”模式来试试。其中与白色混合将反转“基色”值，而与黑色混合则不发生变化。其实无论是“差值”模式还是“排除”模式都能使人物或自然景色图像产生更真实或更吸引人的图像合成。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/344473a9f2f6a1db66b75fe2f84ca3a3.jpg" alt=""> <strong>19. 色相模式(Hue)</strong> “色相”模式只用“混合色”颜色的色相值进行着色，而使饱和度和亮度值保持不变。当“基色”颜色与“混合色”颜色的色相值不同时，才能使用描绘颜色进行着色，如下图所示。但是要注意的是“色相”模式不能用于灰度模式的图像。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/49db495b6a8020ccda1a8aff76a474a5.jpg" alt=""> <strong>20.饱和度模式(Saturation)</strong> “饱和度”模式的作用方式与“色相”模式相似，它只用“混合色”颜色的饱和度值进行着色，而使色相值和亮度值保持不变。当“基色”颜色与“混合色”颜色的饱和度值不同时，才能使用描绘颜色进行着色处理，如图31所示。 在无饱和度的区域上（也就是灰色区域中）用“饱和度”模式是不会产生任何效果的。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/921b156e6654245a49dd9500d19adace.jpg" alt=""> <strong>21. 颜色模式(Color)</strong> “颜色”模式能够使用“混合色”颜色的饱和度值和色相值同时进行着色，而使“基色”颜色的亮度值保持不变。“颜色”模式模式可以看成是“饱合度”模式和“色相”模式的综合效果。该模式能够使灰色图像的阴影或轮廓透过着色的颜色显示出来，产生某种色彩化的效果。这样可以保留图像中的灰阶，并且对于给单色图像上色和给彩色图像着色都会非常有用。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/829ec8160376d280743dcb6f03afe001.jpg" alt=""> <strong>22. 亮度模式(Luminosity)</strong> “亮度”模式能够使用“混合色”颜色的亮度值进行着色，而保持“基色”颜色的饱和度和色相数值不变。其实就是用“基色”中的“色相”和“饱和度”以及“混合色”的亮度创建“结果色”。此模式创建的效果是与“颜色”模式创建的效果相反。 <img src="http://www.shejipai.cn/wp-content/uploads/2013/11/f9e1a92b479b5844be9e17959d172e7d.jpg" alt=""> PS：<a href="http://www.shejipai.cn/blending-modes.html" target="_blank" rel="noopener">http://www.shejipai.cn/blending-modes.html</a> 设计派  南辰</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="125.html" title="[转]带你认识Photoshop的混合模式">125.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/5a53fc94.html" rel="next" title="新人手册！初级设计师应该掌握的9个工作习惯（【转】推荐新人阅读）">
+                <i class="fa fa-chevron-left"></i> 新人手册！初级设计师应该掌握的9个工作习惯（【转】推荐新人阅读）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/7dd88298.html" rel="prev" title="10,7Java00">
+                10,7Java00 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

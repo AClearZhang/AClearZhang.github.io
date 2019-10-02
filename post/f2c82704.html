@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SQLSERVER T-SQL函数大全　　聚合函数对一组值计算后返回单个值。除了count(统计项数)函数以外，其他的聚合函数在计算式都会忽略空值(null)。所有的聚合函数均为确定性函数。即任何时候使用一组相同的输入值调用聚合函数执行后的返回值都是相同的，无二义性。 聚合函数通常会在下列场合使用。 1、select语句的选择列表，包括子查询和外部查询。 2、使用compute或compute b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】[字典类]SQLServer T-SQL函数大全">
+<meta property="og:url" content="http://blog.aclear.top/post/f2c82704.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="SQLSERVER T-SQL函数大全　　聚合函数对一组值计算后返回单个值。除了count(统计项数)函数以外，其他的聚合函数在计算式都会忽略空值(null)。所有的聚合函数均为确定性函数。即任何时候使用一组相同的输入值调用聚合函数执行后的返回值都是相同的，无二义性。 聚合函数通常会在下列场合使用。 1、select语句的选择列表，包括子查询和外部查询。 2、使用compute或compute b">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】[字典类]SQLServer T-SQL函数大全">
+<meta name="twitter:description" content="SQLSERVER T-SQL函数大全　　聚合函数对一组值计算后返回单个值。除了count(统计项数)函数以外，其他的聚合函数在计算式都会忽略空值(null)。所有的聚合函数均为确定性函数。即任何时候使用一组相同的输入值调用聚合函数执行后的返回值都是相同的，无二义性。 聚合函数通常会在下列场合使用。 1、select语句的选择列表，包括子查询和外部查询。 2、使用compute或compute b">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/f2c82704.html">
+
+
+
+
+
+  <title>【转】[字典类]SQLServer T-SQL函数大全 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/f2c82704.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【转】[字典类]SQLServer T-SQL函数大全</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T10:52:14+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/课程设计-12/" itemprop="url" rel="index">
+                    <span itemprop="name">课程设计_12</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  35
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SQLSERVER-T-SQL函数大全"><a href="#SQLSERVER-T-SQL函数大全" class="headerlink" title="SQLSERVER T-SQL函数大全"></a><a href="http://blog.csdn.net/benben_1678/article/details/9003913" target="_blank" rel="noopener">SQLSERVER T-SQL函数大全</a></h1><p>　　聚合函数对一组值计算后返回单个值。除了count(统计项数)函数以外，其他的聚合函数在计算式都会忽略空值(null)。所有的聚合函数均为确定性函数。即任何时候使用一组相同的输入值调用聚合函数执行后的返回值都是相同的，无二义性。 聚合函数通常会在下列场合使用。 1、select语句的选择列表，包括子查询和外部查询。 2、使用compute或compute by产生汇总列时。 3、having子句对分组的数据记录进行条件筛选。 一、常用聚合函数 1、计算平均值AVG AVG函数用于计算精确型或近似型数据类型的平均值，bit类型除外，忽略null值。AVG函数计算时将计算一组数的总和，然后除以为null的个数，得到平均值。 语法结构： _avg( [ all | distinct ] expression )　_ all：为默认值，表示对所用的数据都计算平均值。 distinct：每个值的唯一值计算平均值，不管相同的值出现多次，多个行相同的值仅仅出现一次作为计算。 expression：精确或近似值的表达式。表达式内部不允许使用子查询和其他聚合函数。 示例：</p>
+<p>　　　　select avg(distinct age) from person    – 查询person表里的年龄的平均值，相同值只计算一次</p>
+<p>2、计算最小值MIN MIN函数用于计算最小值，MIN函数可以适用于numeric、char、varchar或datetime、money或smallmoney列，但不能用于bit列。不允许使用聚合函数和子查　　　　　　询，忽略null值。 语法结构： <em>min( [ all | distinct ] expression )</em> 示例：</p>
+<p>　　　　select min(age) from person    – 查询person表里的年龄的最小值</p>
+<p>3、计算最大值MAX MAX函数用于计算最大值，忽略null值。max函数可以使用于numeric、char、varchar、money、smallmoney、或datetime列，但不能用于bit列。不允许使用　　　　　　聚合函数和子查询。 语法结构： MAX ( [ all | distinct ] expression ) 示例：</p>
+<p>　　　　select max(age) from person    – 查询person表里的年龄的最大值</p>
+<p>4、计算求和值SUM SUM函数用于求和，只能用于精确或近似数字类型列(bit类型除外)，忽略null值，不允许使用聚合函数和子查询。 1、语法结构 SUM ( [ all | distinct ] expression ) 示例:</p>
+<p>　　　　select sum(age) from person    – 查询person表里的年龄的总和</p>
+<p>5、计算项数值count(count_big) count函数用于计算满足条件的数据项数，返回int数据类型的值。 1、语法结构 <em>count( {[[ all | distinct] expression ] | * }  )</em> 这里的表达式是除text、image或ntext以外任何数据类型的表达式。但不允许使用聚合函数和子查询。 2、常见使用方法 count(*) ： 返回所有的项数，包括null值和重复项。 count(all表达式)：返回非空的项数。 count(distinct表达式)：返回唯一非空的项数 count_big的语法与count完全一样，只不过返回值为bigint数据类型，这样返回的数值范围就可以大大超过count。 注意：count(字段名)，如果字段名为NULL，则count函数不会统计。例如count(name)，如果name为空，则不会统计到结果。 示例：</p>
+<p>　　　　select count(distinct age) from person    – 查询person表里的年龄唯一且非空的项数</p>
+<p>6、计算标准偏差值STDEV 语法结构： <em>STDEV( [all | distinct ] expression )</em> 这里的expression必须是一个数值表达式，不允许使用聚合函数和子查询。表达式的值是精确或近似数值类型，但不包括bit数据类型。将忽略null值。 标准偏差是高中的东西，忘记干什么用的了，用到的时候再学回来吧。 示例：</p>
+<p>　　　　select stdev(age) from person    – 查询person表里的年龄的标准偏差</p>
+<p>7、计算方差VAR VAR函数用于计算指定表达式中所有值的方差。 语法结构 VAR( [ all | distinct ] expression ) 这里的expression表达式必须是一个数值表达式，不允许使用聚合函数和子查询。表达式的值是精确或近似数值类型，但不包括bit数据类型，将忽略null值。 方差也是高中学的东西，忘了。 示例：</p>
+<p>　　　　select var(age) from person    – 查询person表里的年龄的方差</p>
+<p>二、常用日期时间函数 1、获取当前日期getdate getdate函数以datetime数据类型的格式返回当前SQLServer服务器所在计算机的日期和时间。其语法格式为getdate()。返回值舍入到最近的秒小数部分，精度　　　　为.333秒<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="noopener">数据库</a>十七偏移量不包含在内。 示例：</p>
+<p>　　select getdate() –输出 2013-03-09 15:16:00.570</p>
+<p>2、获取年度信息YEAR year函数以int数据类型的格式返回特定日期的年度信息。其语法格式为YEAR(date数据)。其中的date数据时一个可以解析为time、date、smalldatetime、　　　　　　datetime、datetime2或datetimeoffset值的表达式，列表达式、用户定义的变量或字符串文字。 示例：</p>
+<p>　　select year(getdate()) –输出 2013</p>
+<p>3、获取月份信息MONTH month函数以int数据类型的格式返回特定日期的月份信息。其语法格式为month(date数据)。其中的date数据时一个可以解析为time、date、smalldatetime、　　　　　　datetime、datetime2或datetimeoffset值的表达式，列表达式、用户定义的变量或字符串文字。 示例：</p>
+<p>　　select month(getdate()) –输出 3</p>
+<p>4、获取天数信息day day函数以int数据类型的格式返回特定日期的天数信息。其语法格式为day(date数据)。其中的date数据时一个可以解析为time、date、smalldatetime、　　　　　　datetime、datetime2或datetimeoffset值的表达式，列表达式、用户定义的变量或字符串文字。 示例:</p>
+<p>　　select day(getdate()) –输出 9</p>
+<p>5、获取任意时间值DATEPART datepart函数以int数据类型的格式返回某个日期时间数据的指定部分。 1、语法格式 <em>datepart( datepart , date数据 )</em> datepart：特定的要返回的数据的格式代码。 date数据：一个可以解析为time、date、smalldatetime、datetime、datetime2或者datetimeoffset值的表达式、列表表达式、用户定义的变量或字符串文　　　　　　　　字。 2、Datepart取值 Datepart部分的取值如下表所示： 说明　　　　　　　　　　　　　　　　取值 返回年度信息　　　　　　　　　　　　Year、YYYY、YY 返回月份信息　　　　　　　　　　　　Month、MM、M 返回日期信息　　　　　　　　　　　　Day、DD、D 返回周信息　　　　　　　　　　　　　Week、WK、WW 返回每周星期几信息　　　　　　　　　WeekDay、DW 返回季度信息　　　　　　　　　　　　Quarter、QQ、Q 返回一年中第几天的信息　　　　　　　DayOfYear、DY、Y 返回小时信息　　　　　　　　　　　　Hour、HH 返回分钟信息　　　　　　　　　　　　Minute、MI、N 返回秒信息　　　　　　　　　　　　　Second、SS、SS 返回毫秒信息　　　　　　　　　　　　MillSecond、MS   示例：</p>
+<p>　　select datepart(Quarter,getdate()) –输出 1 现在是第几季度</p>
+<p>6、日期加法DATEADD dateadd函数将某个日期加上一个特定的时间间隔值后返回datetime数据类型的值。 1、语法格式 dateadd (datepart,numer,date数据) numer：用于与detepart相加的值。如果指定了非整数值，则将舍弃该值的小数部分。 date数据：一个用于解析为time、date、smalldatetime、datetime、datetime2、或datetimeoffset值的表达式、列表达式、用户定义的变量或字符串文字。 datepart：时间部分。上节。 示例：</p>
+<p>　　select getdate()    –输出 2013-03-09 16:03:59.293<br>　　select dateadd(YYYY,<strong>10</strong>,getdate())    –加了十年    输出2023-03-09 16:04:36.893</p>
+<p>7、日期减法DATEDIFF datediff函数将两个特定的日期数据相减，得到的结果可以按照detepart指定的格式返回特定的数据。 1、语法格式 <em>datediff(datepart,startdate,enddate)</em> 执行中将使用enddate减以startdate的值，如果startdate晚于enddate将返回负值。执行结果如果超出整数范围将提示错误。 startdate：一个可以解析为time、date、smalldate、datetime、datetime2或datetimeoffset值的表达式、列表达式、用户定义的变量或字符串文字。 enddate：一个可以解析为time、date、smalldate、datetime、datetime2或datetimeoffset值的表达式、列表达式、用户定义的变量或字符串文字。 datepart：时间部分。 示例：</p>
+<p>　　select datediff(YYYY,’2011-11-11’,’2012-12-12’)    –输出1 年份相减之后的确是1<br>　　select datediff(day,’2011-11-11’,’2012-12-12’)     –输出 397 两个日期相差的天数</p>
+<p>2013-3-13日补充，用此方法查询当前的记录：</p>
+<p>select * from test where datediff(day,Rq,getdate()) = <strong>0</strong> –其中Rq为日期列，此行代码的意思是什么呢?getdate()减去Rq列的值为0，Rq列的值与今天相减，号数为0</p>
+<p>8、SQLServer 2008中新增的日期时间型函数 1、获取系统时间SYSDATETIME sysdatetime函数以datetime2(7)数据类型的格式返回当前系统的日期和时间。其语法格式为sysdatetime()。返回值有七个小数位，但只精确到10毫秒。数　　　　　　　　据库偏移量未包含在内。 2、获取当前日期和时间sysdatetimeoffset sysdatetimeoffset函数以datetimeoffset(7)数据类型的格式返回当前系统的日期和时间。其语法格式为sysdatetimeoffset()。返回值有七个小数位，但只　　　　　　　　精确到10毫秒。数据库时区偏移量包含在内。 9、判断是否为日期数据ISDATE ISDATE函数可以验证某个输入值是否为有效的日期数据 1、语法结构 <em>ISDATE(expression)</em> 2、返回值 若表达式为有效日期则返回 1 ，否则返回 0 。 示例：</p>
+<p>　　　　select isdate(‘2012-12-12’)    – 输出1<br>　　　　select isdate(‘xxxx-12-12’)– 输出0</p>
+<p>三、常用字符串函数 在开发T-SQL时，经常会需要对字符串进行各种各样的操作，下面介绍常用的字符串函数。 1、获取字符的ASCII码ASCII ASCII码是对字符的标准编码。要获取字符的ASCII码就可以通过调用ASCII函数来实现。 语法结构： <em>ASCII(espression)</em> 这里的expression是一个返回char或varchar数据类型的表达式，ASCII函数仅对表达式最左侧的字符返回ASCII码值。 返回值：int数据类型。 示例：</p>
+<p>　　　　select ascii(‘f’)    –输出 102</p>
+<p>注意如果是多个字符的字符串，也只是返回第一个字符的ASCII码值。 2、获取ASCII码对应的字符char 语法结构： _char(integer_expression)_ 返回值类型：char型字符 示例：</p>
+<p>　　　　select char(<strong>102</strong>)    -- 输出f</p>
+<p>3、获取字符的unicode编码unicode unicode函数可以获得字符的unicode编码。 语法结构 _unicode(‘ncharacter_expression’)_ 这里的ncharacter_expression是nchar或nvarchar类型的表达式。函数仅会返回第一个字符的unicode编码。 返回值：int类型数据 示例：</p>
+<p>　　　　　select unicode(‘飞’)    – 输出 39134</p>
+<p>4、获取unicode编码对应的字符nchar nchar能够根据unicode标准的定义，返回具有指定的整数代码的unicode字符。 语法结构： _nchar(integer_expression)_ 返回值：unicode字符 示例：</p>
+<p>　　　　　select nchar(<strong>39134</strong>)        -- 输出 飞</p>
+<p>5、获取字符串第一次出现位置PATINDEX patindex函数返回指定表达式中某模式第一次出现的其实位置；如果在全部有效的文本和字符数据类型中没有找到该模式则返回0。 语法结构： <em>patindex( ‘%pattenr%’ , expression )</em> 参数说明： pattern：一个文本字符串。可以使用通配符，但pattern之前和之后必须有%字符(搜索第一个或自后一个字符时除外)。因为在T-SQL中，%代表模式匹配。 返回值：如果expression的数据类型为varchar(max)或nvarchar(max)，则为bigint，否则int，即pattern指定的字符串在expression中第一次出现的位置。 示例：</p>
+<p>　　　　select patindex(‘%llo%’,’hello world’)    –输出3，第一次出现llo是在第3个字符位置</p>
+<p>6、生成空格字符串SPACE space函数可以生成任意多个空格组成的字符串。 语法结构： _space ( integer_expression )_ 这里的integer_expression为指示空格个数的正整数。如果要在unicode数据中包含空格或超过8000个以上的空格。需要使用replicate函数。 返回值：char数据类型的字符。 示例：</p>
+<p>　　　　select (‘hello’ + space(<strong>5</strong>) + ‘world’)    –输出 hello     world</p>
+<p>7、按指定次数重复生成字符串REPLICATE replicate函数可以按照指定的整数次数，重复生成一个字符串形式的表达式，结果为字符串。 语法结构： _replicate( character_expression,integer_expression )_ 参数说明： character_expression：字符数据的字母数字表达式，或者可隐式转换为varchar的数据类型的字母数字表达式。 integer_expression：一个正整数。如果integer_expression为负，则会返回错误。integer_expression可以使bigint类型。 返回值：与character_expression相同数据类型的字符串。 示例：</p>
+<p>　　　　select replicate(‘hello’,<strong>5</strong>)    –输出hellohellohellohellohello</p>
+<p>8、截取字符串SUBSTRING substring函数可以对字符串进行字串的截取操作。 语法结构: <em>substring( expression,start,length)</em> 参数说明： expression：是字符串、二进制字符串、文本、图像、列或包含列的表达式，但不要使用包含聚合函数的表达式。 start：指定子字符串开始位置的整数，start可以使bigint类型。 length：一个正整数，指定要返回的expression的字符数或字节数。如果length为负，则会返回错误。length可以使bigint数据类型。 返回值： 如果expression是受支持的字符数据类型，则返回字符数据。 如果expression是受支持的binary数据类型，则返回二进制数据。 示例：</p>
+<p>　　　　select substring(‘hello’,<strong>1</strong>,<strong>2</strong>)    –输出 he 与C#有点不同，它第一个字符是从1开始的</p>
+<p>9、获取字符串长度LEN len函数用于获取字符串的长度(字符数)，但不包括右边的空格。左边的空格和右边的空格计算在内。 语法结构： len( string_expression ) 参数说明： string_expression：要计算长度的字符串。 返回值：expression数据类型为varchar(max)、nvarchar(max)或varbinary(max)，则为bigint。否则为int。 示例：</p>
+<p>　　　　select len(‘天下之大，无奇不有’)    – 输出 9</p>
+<p>10、替换字符串内容STUFF stuff函数用于在指定的字符串中删除指定长度的字符，并在起点处插入另外一组字符。 语法结构： stuff(source_character_expression，start，length，destination_character_expression) 参数说明： source_character_expression：源字符串。可以是常量、变量，也可以使字符列或二进制数据列。 start：一个整数，指定删除和插入的开始位置。如果start或length为负，则返回空字符串。如果start比第一个character_expression长，则返回空字符串。　　　　　　　　　　start可以是bingint类型。 length：一个赠书，指定要删除的字符个数。如果length比第一个charter_expression长，则最多删除到最后一个character_expression中最后一个字符。　　　　　　　　　　length可以是bigint类型。 destination_character_expression：目的字符串。可以是常量、变量，也可以使字符列或二进制数据列。将在源字符串中执行插入。 示例：</p>
+<p>　　　　select stuff(‘123456789’,<strong>5</strong>,<strong>2</strong>,’xyz’)    –输出1234xyz780    从第5个字符开始，将第5 6两个字符替换成xyz字符串</p>
+<p>11、指定位置搜索字符串中的内容CHARINDEX charindex函数用于在指定的字符串中搜索特定的字符串，并可以指定开始搜索的位置，返回第一次找到目标字符串的字符数。 语法结构： charindex ( expression1 , expression2 [ , start_location] ) 参数说明： expression1：一个字符串数据类型的表达式，其中包含要查找的字符的序列。 expression2：一个字符串数据类型的表达式，通常是一个为指定序列搜索的列。 start_location：开始在expression2中搜索expression1是的字符位置。如果start_location未被指定、是一个负数或零，则将从expression2的开头开始搜索。　　　　　　start_location可以是bingint类型。 返回值：如果expression2的数据类型为varchar(max)、nvarchar(max)或varbinary(max)，则为bigint，否则为int。 示例：</p>
+<p>　　　　select charindex(‘456’,’123456789’)    – 输出 4    从123456789中检索456出现的位置<br>　　　　select charindex(‘456’,’123456789’,<strong>4</strong>)    -- 输出 4</p>
+<p>12、生成带分隔符的unicode字符串QUOTENAME QUOTENAME函数用于生成带有分隔符的Unicode字符串。 (1)、分隔符 可以是单引号(‘)、左右方括号([])或者英文双引号(“)。如果不指定，则使用方括号。带有方括号的Unicode字符串如：[hello]。 (2)、语法结构 _quotename( ‘character_string’ [ , ‘quote_character’] )_ 参数说明： character_string：Unicode字符串数据构成的字符串。 quote_character：用做分隔符的单字符字符串。 (3)、返回值 nvarchar(258)，生成带有分隔符的字符串长度不能超过258 示例：</p>
+<p>　　　　select quotename(‘我是一个兵’)    – 输出[我是一个兵]<br>　　　　select quotename(‘我是一个兵’,’”‘)    – 输出”我是一个兵”</p>
+<p>13、转换浮点数字为字符串STR str函数用于将浮点数转换为字符串 语法结构： _str(float_expression[,length[,decimal]])_ float_espression：带小数点的近似数字(float)数据类型的表达式。 length：总长度。它包括小数点、符号、数字以及空格。默认值为10. decimal：小数点后的位数。decimal必须小于或等于16.如果decimal大于16，则会截断结果，使其保持为小数点后只有16位。 返回值： char：定长字符串。 示例：</p>
+<p>　　　　select str(<strong>123.456789</strong>)    -- 输出 123<br>　　　　select str(<strong>123.456789</strong>,<strong>7</strong>) –输出    123    注意前面的是4个空格，因为不写小数点后保留多少位，所以自动填充空格<br>　　　　select str(<strong>123.456789</strong>,<strong>7</strong>,<strong>3</strong>)    -- 输出123.457    最后一位 四舍五入了，总长度为7小数点后保留3位</p>
+<p>14、截取左边字符串LEFT left函数用于截取从左边第一个字符开始，指定长度的字符串。其执行效果等于substring(expression,1,length)。 语法结构： _left(character_expression,integer_expression)_ 参数说明： character_expression：字符或二进制表达式，可以是常量、变量或表达式。 integer_expression：正整数，指定返回的字符数。 返回值： varchar或nvarchar，变长字符串。 示例：</p>
+<p>　　　　select left(‘123456789’,<strong>3</strong>)    –输出 123</p>
+<p>15、截取右边字符串RIGHT RIGHT函数用于截取从右边第一个字符开始，指定长度的字符串。其执行效果等于SUNSTRING(expression,len(expression)-length+1,length)。 语法结构： _right(character_expression,integer_expression)　　　_ 参数说明： character_expression：字符或二进制表达式，可以是常量、变量或表达式。 integer_expression：正整数，指定返回的字符数。 返回值： varchar或nvarchar，变长字符串。 示例：</p>
+<p>　　　　select right(‘123456789’,<strong>3</strong>)    –输出 789</p>
+<p>16、清除左边空格LTRIM 如果字符串的字一个字符为空格，LTRIM函数用于清除连续的左边空格。 语法结构： _ltrim(character_expression)_ character_expression为字符或二进制数据表达式，可以是常量、变量或数据列。 返回值： varchar或nvarchar，变长字符串。 示例：</p>
+<p>　　　　select ltrim(‘    123456789’)  –输出 123456789，注意左边的空格已被删除了，输出字符串左边是没空格的</p>
+<p>17、清除右边空格RTRIM RTRIM函数用于清空右边连续的空格。 语法结构： _rtrim(character_expression)_ character_expression为字符或二进制数据表达式，可以是常量、变量或数据列。 返回值： varchar或nvarchar，变长字符串。 示例：</p>
+<p>　　　　select rtrim(‘123456789   ‘)    –输出123456789，注意右边的空格已经被清除了</p>
+<p>18、转换为小写字符串LOWER lower函数将字符串全部转换为小写字符后返回。 语法结构： _lower(character_expression)_ 返回值： varchar或nvarchar，变长字符串 示例：</p>
+<p>　　　　select lower(‘ABCDEFG’)    –输出 abcdefg 已经全部转换为小写了</p>
+<p>19、转换为大写字符串UPPER upper函数用于将字符串全部转换为大写字符后返回。 语法结构： _upper(character_expression)_ character_expression为字符或二进制表达式，可以是常量，变量或数据列。 返回值： varchar或nvarchar，变长字符串。 示例：</p>
+<p>　　　　select upper(‘abcdefg’)    –输出 ABCDEFG 留意到已经全部转换为大写了</p>
+<p>20、反序字符串REVERSE reverse函数用于将字符串内容反序后返回。 语法结构： _reverse(character_expression)_ character_expression：为二进制或二进制数据表达式，可以是常量、变量或数据列。 返回值： varchar或nvarchar，变长字符串 示例：</p>
+<p>　　　　select reverse(‘123456789’)    –输出 987654321 注意到顺序已经反转过来了</p>
+<p>21、获取字符串字节数DATALENGTH datalength函数用于获取字符串的字节数，而不是字符数。该函数不仅适合字符串数据，还适合文本(text、ntext)、二进制数据(varbinary、binary)和图像　　　　　　　　(image)等任意类型的数据。 语法结构： <em>datalength(expression)</em> 返回值： 如果expression数据类型为varchar(max)、nvarchar(max)或varbinary(max)数据类型，则返回bigint；否则返回int。 示例：</p>
+<p>　　　　select datalength(‘我是一个兵’)    –输出 10<br>　　　　select len(‘我是一个兵’)    –输出 5<br>　　　　select datalength(‘abcde’)    –输出5<br>　　　　select len(‘abcde’)    –输出5</p>
+<p>四、常用文本和图像函数 1、查找特定字符串PATINDEX 语法与字符串的patindex一样。 2、获取文本指针TEXTPTR SQLServer在存储文本类型(ntext、text)和图像数据类型(image)时，默认情况是与常见的基本数据类型(如char、int等)这样的数据时单独存储的，也就是说，如　　　　　　果一个表中的字段有基本类型和图像文本类型，那么，在输入数据时，基本类型和图像文件数据并不是保存在同一个页面上，而是分离存储的。分离存储后，那么基本　　　　　　类型数据和文本图像类型数据所在的页面就是通过文本指针建立联系，是一个16字节的二进制类型指针。在基本类型数据页面中存储的就是这些指向数据的指针，这样　　　　　　在需要的时候通过指针来操作文本和图像数据。Textptr函数就可以用于获得文本和图像数据存储的文本指针，这个指针获得后就可以被操作文本和图像数据的函数　　　　　　(wrutetext、readtext和updatetext等)进行操作。如果没有有效的指针，文本和图像函数是无法操作数据的。 语法结构： <em>textptr( column )</em> 这里的column就是表中的文本和图像数据列(text、ntext和image)名称。 返回值： varbinary类型16字节指针。 配合使用的函数： 在编写含有TEXTPTR函数的T-SQL代码时，下表所示的函数经常被使用。 格式　　　　　　　　　　　　　　　　　　　　　　　　　　说明 patindex(‘%pattern%’,expression)　　　　　　　　　　  返回字符串在text或ntext列中的字符位置 datalength(expression)　　　　　　　　　　　　　　　　 返回text、ntext和image列中数据的长度 set textsize　　　　　　　　　　　　　　　　　　　　　　 返回对select语句所返回的text、ntext或image数据的限制(字节数)。settextsize 0表示不限制。 substring(text_column,start,length)　　　　　　　　　　返回二进制列中又指定的start偏移量和length指定的varchar类型的字符串。字符串的长度硬小于8kb 示例：shit，还不懂。 3、检测文本指针是否有效TEXTVALID textvalid函数用于检测文本指针是否有效。 语法结构： _textvalid( ‘table.column’,text_ptr )_ 参数说明： table：表的名称，必须包含 column：表中的二进制数据列(text、ntext和image)名称 text_ptr：要检测的文本指针 返回值： int，如果指针有效返回1，否则分那会0。 4、读取文本图像列内容READTEXT readtext函数用于读取文本或图像列的内容，按照指定的偏移量开始读取指定字节数。如果是图像列(image)，这样读取的是字节数，而不是现实图像本身。 语法结构： readtext{ table.column text_ptr offset size } [holdlock] 参数说明： table：表名称 column：列名称 text_ptr：有效的文本指针，即16字节的binary数据。 offset：开始读取text、image类型数据之前，要跳过的字节数。读取ntext类型数据之前要跳过的字符数。 size：读取的字节数(使用text或image数据类型时)或字符数(使用ntext数据类型时)。如果size为0，则读取4KB数据。 holdlock：使文本值被锁定以进行读取，直到十五结束为止。其他用户可以读取该值，但不能对其进行修改。 返回值： varchar字符。 示例：以后写 5、写入文本图像列内容WRITETEXT writetext函数用于向文本或图像写入内容，同时可以选择为最小日志记录，这样写入操作产生的日志写的I/O次数少，对数据库性能影响小。 语法结构： writetext{ table.column text_ptr } [ with log ] { data } 参数说明： table：表名称 column：列名称 text_ptr：有效的文本指针，即16字节的binary数据。 with log：由数据库的恢复模式来决定writetext操作产生的日志行为。因为text、ntext、imge类型的数据一般情况下都比较大。比如一幅图片可能上百KB，我们　　　　　　知道一个数据页面的容量是标准的8KB。所以一幅图片很可能就需要几时个甚至更多的数据页面，所以writetext操作所产生的I/O次数是很多的，而过多的I/O次数将　　　　　　影响数据库的性能。该参数的引入是交给数据库的恢复模式来决定的writetext操作将产生的日志行为。当数据库公仔在完全恢复模式时，产生的日志最多，因此对数　　　　　　据库性能的影响也最大。当工作在简单恢复模式时，产生的日志最少。 data：要存储的text、ntext或image类型的数据。writetext以交互方式插入的最大文本长度约为120KB。 示例：以后补上。 6、更新文本图像列内容UPDATETEXT updatetext函数更新文本或图像列中的内容。与writetext的区别在于该函数可以仅更新列中的一部分，而writetext是更新整个列。 语法结构： updatetext{ table.name.dest_column_name dest_text_ptr } { null | insert_offset } { with log } { inserted_data | { table.name.src_column_name src_text_ptr } } 语法中的参数说明如下。 table_name：表名称。 dest_column_name：列名称。 dest_text_ptr：有效的文本指针，即16字节的binary数据。 insert_offset：以0为基础的更新其实位置，对于Text或image列，insert_offset是在插入新数据前要从现有列的起点跳过的字节数。对于ntext列，　　　　　　　　　　insert_offset是字符数(每个ntext字符占用2个字节)。从此基数为零的起始点开始的现有text、ntext或image数据向右移，为新数据留出空间。值为0表示将新数据　　　　　　插入现有数据的开始处。值为null则将新数据追加到享有数据值后。 delete_length：从insert_offset位置开始、要从现有text、ntext、或image列中删除的数据长度。delete_length值对于text和image列用字节指定，对于　　　　　　　　ntext列用字符指定。每个ntext字符占用2个字节。值为0表示不删除数据。值为null则删除现有text或image列中从insert_offset位置开始到末尾的所有数据。 withlog：日子记录由数据库的当前模式决定。 inserted_date：要插入现有text、ntext或image列的insert_offset位置的数据。这是单个char、nchar、varchar、nvarchar、binary、varbinary、text、　　　　　　ntext或image值。inserted_data可以是文字或变量。 table_name.src_column_name：用作插入数据源的表或text、ntext、image列的名称。 src_text_ptr：指向用作插入数据源的text、ntext或image列的文本指针值，通常使用textptr函数获得。 示例：不懂。 五、常用数学函数 1、计算绝对值ABS ABS函数对一个数值表达式结果计算绝对值(bit数据类型除外)，返回整数。 语法结构： <em>ABS(数值表达式)</em> 返回值：与数值表达式类型一致的数据 示例：</p>
+<p>　　　　select abs(-<strong>1</strong>)    –输出 1</p>
+<p>2、获取大于等于最小整数值CEILING CEILING函数返回大于等于数值表达式(bit数据类型除外)的最小整数值。俗称天花板函数，尽量往大的取整。 语法结构： <em>CEILING(数值表达式)</em> 返回值：与数值表达式类型一致的数据。 示例：</p>
+<p>　　　　select ceiling(<strong>123.1</strong>)    –输出124</p>
+<p>3、获取小于等于最大整数值FLOOR floor函数返回小于等于数值表达式(bit数据类型除外)的最大整数值。俗称地板函数，尽量往小的取整。 语法结构： <em>floor(数值表达式)</em> 返回值： 与数值表达式类型一致的数据。 示例：</p>
+<p>　　　　select floor(<strong>123.9999</strong>)    –输出123</p>
+<p>4、获取随机数RAND rand函数返回随机的从0到1之间的浮点数。 语法结构： <em>rand([ seed ])</em> 语法中的seed是种子值，是一个整数类型的表达式(tinyint、smallint、int)，使用指定的种子值反复调用rand将返回相同的结果、。 不指定种子值，rand函数将随机产生结果。 返回值： 0到1之间的浮点数。 示例：</p>
+<p>　　　　　　select rand()    – 输出 0.36925407993302</p>
+<p>5、获取指定长度和精度ROUND round函数对数值表达式舍入到指定长度和精度。 语法结构： _round( numeric_expression , length[ , function] )_ 参数说明： numeric_rxpression：精确或近似数值类型的表达式，bit数据类型除外。 length：舍入精度。length必须是tinyint、smallint或int。如果length为整数，则将numeric_expression舍入到length指定的小数位数。如果length为负数，则　　　　　　将numeric_expression小数点左边部分舍入到length指定的长度。 function：要执行的操作的类型。function必须为tinyint、smallint或int。如果省略function或其值为0(默认值)，则将舍入numeric_expression。如果指定了0以外的值，则将截断numeric_expression。 返回值：与numeric_expression相同类型的数值。 示例：</p>
+<p>　　　　select round(<strong>123.456789</strong>,<strong>3</strong>) -- 输出 123.457000    精确到小数点后3位</p>
+<p>六、常用元数据函数 1、获取数据库标识符DB_ID DB_ID函数用于获取当前数据库的唯一ID(int数据类型)，数据库ID用于服务器上唯一区分书库。 语法结构： _DB_ID ([‘database_name’])　　_ 参数中的database_name是sysname类型的数据库名称，为可选参数。如果没有指定则返回当前工作数据库的ID. 返回值： int数据类型的数据库标识符。 示例：</p>
+<p>　　　　select DB_ID()    –输出 8</p>
+<p>2、获取数据库名称DB_NAME DB_NAME函数用于红区当前数据库的名称(nvarchar数据类型) 语法结构： _DB_NAME([‘database_id’])_ 参数中的database是int数据类型的数据库标识符，为可选参数。如果没有指定则返回当前工作数据库的名称。 示例：</p>
+<p>　　　　select DB_Name()    –输出 NHibernate</p>
+<p>3、获取数据库属性DATABASEPROPERTYEX databasepropertyex函数用于获得指定的某个数据库的某个属性的当前设置。执行一次返回一个属性值，若要返回多个属性值，可以查询master系统数据库的　　　　　　sys.database系统视图。 语法结构： <em>databasepropertyex(database,property)</em> 参数说明： database：表示要为其返回命名属性的信息的数据库名称，nvarchar(128)数据类型 property：表示要返回的数据库属性，数据类型为Varchar(128) 示例：</p>
+<p>　　　　select databasepropertyex(‘NHibernate’,’recovery’)    –输出 SIMPLE 这是数据库的恢复模式</p>
+<p>Property属性的取值以及说明如下: 属性值　　　　　　　　说明　　　　　　　　　　　　　　　　　　返回值 Collation　　　　　　　排序规则名称　　　　　　　　　　　　　　nvarchar(128)、null IsAutoClose　　　　　 数据库的自动关闭功能是否启用　　　　　　Int、null IsAutoCreateStatistics 是否自动创建统计信息　　　　　　　　　　Int、null IsAutoShrink　　　　　是否定期收缩　　　　　　　　　　　　　　Int、null IsAutoUpdateStatistics是否自动能够更新统计信息　　　　　　　　Int、null Recovery　　　　　　　数据库的恢复模式　　　　　　　　　　　　nvarchar(128) Status　　　　　　　　 数据库的状态　　　　　　　　　　　　　　nvarchar(128) Updateability　　　　　是否可以修改数据　　　　　　　　　　　　 nvarchar(128) UserAccess　　　　　　哪些用户可以访问数据库　　　　　　　　　nvarchar(128) Version　　　　　　　　数据库内部版本号　　　　　　　　　　　　Int 4、获取文件组标识符FILEGROUP_ID filegropy_id函数用于获取文件组的唯一标识符(int数据类型) 语法结构: _filegropy_id( ‘filegropy_name’ )_ 参数中的filegropy_name是sysname类型的数据库名称，可以从sys.filegroups系统视图中查询得到。 返回值： Int数据类型的文件组标识符。 示例：</p>
+<p>　　　　select filegroup_id(‘NHiberna’)    –输出 null<br>　　　　select filegroup_id(‘PRIMARY’)    –输出 1</p>
+<p>5、获取文件组名称FILEGROUP_NAME filegroup_name函数用于获取文件组的名称(nvarchar数据类型)。 语法结构： _filegroup_name(filegroup_id)_ 参数中的filegroup_id是int数据类型的文件组标识符，要获得该标识符，可以查询sys.filegroups系统视图 返回值 nvarchar(128)数据类型的文件组名称 示例：</p>
+<p>　　　　select filegroup_name(<strong>1</strong>)    –输出 PRIMARY</p>
+<p>6、获取文件组属性值FILEGROUPPROPERTY filegroupproperty函数用于获得指定文件组的指定属性值。 语法结构： <em>filegroupproperty(filegroupname,property)</em> 参数说明： filegroup_name：表示要为其返回属性信息的文件组名称，nvarchar(128)数据类型，可以通过sys.filegroups列获得。 property：表示要返回的属性，数据类型为varchar(128)。 常见的property属性值列表 属性值　　　　　　　　说明　　　　　　　　　　返回值 IsReadOnly　　　　　文件组是否只读　　　　　　Int、Null IsUserDefinedEG　　 是否为用户定义的文件组　　Int、Null IsDefault　　　　　　 是否默认的文件组　　　　　Int、Null 示例：</p>
+<p>　　　　select filegroupproperty(‘PRIMARY’,’isreadonly’)    –输出 0</p>
+<p>7、获得文件标识符FILE_ID file_id函数用于获取数据库的文件，包括日志文件和数据文件的标识符。文件标识符用于在数据库中唯一区分。 语法结构： _FILE_ID( file_name )_ 参数中的file_name是sysname类型的文件名称，可以通过查询系统视图sys.database_files中的name列来获得。 返回值： smallint数据类型的文件标识符。 示例：</p>
+<p>　　　　select * from sys.database_files    –查出有哪些数据库文件<br>　　　　select file_id(‘NHibernate’)    –输出 1 查出NHibernate数据库文件对应的fileid</p>
+<p>8、获取文件名称FILE_NAME file_name函数用于获取当前数据库的逻辑名称(nvarchar数据类型)，这里是逻辑名称而不是包含路径的物理名称。 语法结构： _file_name(file_id)_ 参数中的file_id是int数据类型的数据库标识符。可以查询master数据库的sys.master_files系统视图的file_id列获得服务器上所有数据库的文件ID，也可以查询某　　　　　　个数据库的sys.database_files系统视图的file_id列获得该数据库的文件的ID。 返回值： nvarchar(128)数据类型的逻辑文件名称。 示例：</p>
+<p>　　　　select * from sys.database_files    –查出有哪些数据库文件<br>　　　　select file_id(‘NHibernate’)    –输出 1 查出NHibernate数据库文件对应的fileid<br>　　　　select  file_name(<strong>1</strong>)        -- 输出 NHibernate</p>
+<p>9、获取文件属性值FILEPROPERTY fileproperty函数用于获得指定文件的指定属性值。 语法结构： _fileproperty ( file_name ,property )_ file_name：表示要为其返回属性信息的文件的逻辑名称，nvarchar(128)数据类型，可以通过sys.database_files系统视图查询name列获得。 property：表示要返回的属性，数据类型为varchar(128)。 常见的property属性值的取值如下： 属性值　　　　　　　　说明　　　　　　　　　　返回值 IsReadOnly　　　　　文件是否只读　　　　　　Int 1代表True，0代表False IsPrimaryFile　　　　 是否为主要数据文件　　　Int 1代表True，0代表False IsLogFile　　　　　　 是否为日志文件　　　　   Int 1代表True，0代表False SpaceUsed　　　　　 文件空间的使用量　　　　Int 示例：</p>
+<p>　　　　select fileproperty(‘nhibernate’,’isreadonly’)    –输出 0<br>　　　　select fileproperty(‘nhibernate’,’isprimaryfile’)–输出1<br>　　　　select fileproperty(‘nhibernate’,’islogfile’)    –输出0<br>　　　　select fileproperty(‘nhibernate’,’spaceused’)    –输出184</p>
+<p>10、获取数据库对象标识符OBJECT_ID object_id函数用于获取特定数据库、特定<a href="http://lib.csdn.net/base/architecture" title="大型网站架构知识库" target="_blank" rel="noopener">架构</a>下特定数据对象的唯一ID(int数据类型)，对象的ID用于在数据库内区分唯一。 语法结构： _　　　　　　object_id( ‘[database_name . [schema_name] . | schema_name . ]object_name’ [,’object_type’] ‘)_   参数说明： database_name：数据库名称 schema_name：架构名称 object_name：对象名称 object_type：对象类型 返回值： Int数据类型的对象标识符。 示例：不懂 11、获取数据库对象名称OBJECT_NAME object_name函数用于获取指定数据库、指定架构下的数据对象的逻辑名称。该名称可以通过查询sys.objects系统视图的name列得到。 语法结构： _object_name(object_id)_ 参数中的object_id是int数据类型的对象标识符 返回值 sysname数据类型的逻辑对象名称。 示例：不懂 12、获取文件属性值OBJECTPROPERTY objectproperty函数用于获得指定数据库、指定架构下的指定对象的指定属性的值。 语法结构： objectproperty(id,property) 参数说明： id:表示要为其返回命名属性信息的对象的ID，int数据类型。 property：表示要返回的属性，数据类型为sql_variant，即变体。 常见的property属性值 属性值　　　　　　　　　　说明　　　　　　　　　　　　　　返回值 TableHasTextImage　　　表中是否含有text、image列　　　Int　　1代表True　　0代表False TableHasPrimaryKey　　　表中是否含有主键　　　　　　　  Int　　1代表True　　0代表False TableHasIndex　　　　　 表中是否含有索引　　　　　　　   Int　　1代表True　　0代表False TableHasForeignKey　　　表中是否含有外键　　　　　　　  Int　　1代表True　　0代表False SchemaId　　　　　　　　 对象的架构ID　　　　　　　　　 Int OwnerId　　　　　　　　　对象的所有者　　　　　　　　　  Int IsView　　　　　　　　　　是否视图　　　　　　　　　　　  Int　　1代表True　　0代表False IsUserTable　　　　　　　 是否用户创建表　　　　　　　　 Int　　1代表True　　0代表False IsTable　　　　　　　　　  是否是表　　　　　　　　　　　 Int　　1代表True　　0代表False IsSystemTable　　　　　　是否系统表　　　　　　　　　　 Int　　1代表True　　0代表False IsPrimaryKey　　　　　　　是否主键　　　　　　　　　　　 Int　　1代表True　　0代表False   示例：不懂 七、运算符 1、算术运算符 算术运算符　　　　　　说明 +　　　　　　　　　　 加法 _　　　　　　　　　　 减法 <em>　　　　　　　　　　 乘法 /　　　　　　　　　　  除法 %　　　　　　　　　　取模，两个整数相除后的余数 2、位运算符 位运算符　　　　　　　　说明 &amp;(与、and)　　　　 按位逻辑与运算 |(或、OR)　　　　　按位逻辑或运算 ~(非、NOT)　　　　按位逻辑非运算 ^(互斥OR)　　　　  按位互斥运算         3、比较运算符 比较运算符　　　　　　说明 &gt;　　　　　　　　　　 大于 =　　　　　　　　　　等于 &gt;=　　　　　　　　　  大于等于 &lt;　　　　　　　　　　  小于 &lt;=　　　　　　　　　　小于等于 &lt;&gt;　　　　　　　　　　不等于 !=　　　　　　　　　　 不等于 !&gt;　　　　　　　　　　 不大于 !&lt;　　　　　　　　　　 不小于 4、逻辑运算符 逻辑运算符　　　　　　　　　　说明 AND　　　　　　　　　　　　　对两个布尔表达式进行逻辑与运算 OR　　　　　　　　　　　　　  对两个布尔表达式进行逻辑或运算 Not　　　　　　　　　　　　　 对两个布尔表达式进行逻辑非运算 BETWEEN　　　　　　　　　　 用于<a href="http://lib.csdn.net/base/softwaretest" title="软件测试知识库" target="_blank" rel="noopener">测试</a>某一表达式的值是否在某个指定的范围内 LIKE　　　　　　　　　　　　　模式匹配运算符 IN　　　　　　　　　　　　　　 列表运算符，测试表达式的值在或不在某些列表值内 ALL\SOME\ANY　　　　　　　  用于判断表达式和子查询之间的值的关系 5、字符串连接运算符 字符串连接运算符形式上个加法运算符”+”是完全一致的。但用于字符串时表示字符串连接。 6、赋值运算符 赋值运算符形式上和”=”是完全一致的，但用于变量时表示赋值。 7、运算符的优先级 在T-SQL程序中包含多种运算符时，需要注意这些运算符的优先级 优先级　　　　　　　　　　运算符　　　　　　　　　　　　　　　　　　　　　　说明 1　　　　　　　　　　　　 ()　　　　　　　　　　　　　　 　　　　　　　　　　小括号 2　　　　　　　　　　　　 +、-、~　　　　　　　　　　　 　　　　　　　　　　正、负、逻辑非 3　　　　　　　　　　　　 </em>、/、%　　　　　　　　　　　 　　　　　　　　　　乘 除 取模 4　　　　　　　　　　　　 +、-、+　　　　　　　　　　　 　　　　　　　　　　加、减、连接 5 　　　　　　　　　　　 =、&gt;、&lt;、&gt;=、&lt;=、&lt;&gt;、!=、!&gt;、!&lt;　　　　　　　 各种比较运算符 6　　　　　　　　　　　　 ^、&amp;、|　　　　　　　　　　　 　　　　　　　　　　位运算符 7　　　　　　　　　　　　 NOT　　　　　　　　　　　　　 　　　　　　　　　　逻辑非 8　　　　　　　　　　　　 AND　　　　　　　　　　　　　 　　　　　　　　　　逻辑与 9　　　　　　　　　　　　ALL、ANY、BETWEEN、IN、LIKE、OR、SOM　　     逻辑运算符 10　　　　　　　　　　　 =　　　　　　　　　　　　　　　　　　　　　　　      赋值运算符</p>
+<p><a href="http://www.cnblogs.com/fanyong/archive/2013/10/04/3351702.html" target="_blank" rel="noopener">实用</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="676.html" title="【转】[字典类]SQLServer T-SQL函数大全">676.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/b37d3c9.html" rel="next" title="【转】T-SQL常用函数">
+                <i class="fa fa-chevron-left"></i> 【转】T-SQL常用函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/d01e61bb.html" rel="prev" title="PhpStorm使用手册丶总结">
+                PhpStorm使用手册丶总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLSERVER-T-SQL函数大全"><span class="nav-number">1.</span> <span class="nav-text">SQLSERVER T-SQL函数大全</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

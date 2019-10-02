@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux常用软件安装 课程目标  1.1.  熟练使用Linux常用命令1.2.  熟练修改Linux的基本配置1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件 修改Linux的基本配置  3.   NAT之以太网局域网的配置**IP地址配置，最简单的一种 在命令运行  setup，带提示，按照提示修改即可      修改主机名  vi /etc/sysconfig/net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day01_hadoop渐进学习，aclear，fire">
+<meta property="og:url" content="http://blog.aclear.top/post/6a8a330a.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="Linux常用软件安装 课程目标  1.1.  熟练使用Linux常用命令1.2.  熟练修改Linux的基本配置1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件 修改Linux的基本配置  3.   NAT之以太网局域网的配置**IP地址配置，最简单的一种 在命令运行  setup，带提示，按照提示修改即可      修改主机名  vi /etc/sysconfig/net">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.aclear.top/域名服务的工作流程.png">
+<meta property="og:image" content="http://pic.aclear.top/桥接和hostonly虚拟网络配置-1024x726.png">
+<meta property="og:image" content="http://pic.aclear.top/ssh免密登陆机制示意图-1024x726.png">
+<meta property="og:image" content="http://pic.aclear.top/NAT虚拟网络配置-1024x656.png">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day01_hadoop渐进学习，aclear，fire">
+<meta name="twitter:description" content="Linux常用软件安装 课程目标  1.1.  熟练使用Linux常用命令1.2.  熟练修改Linux的基本配置1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件 修改Linux的基本配置  3.   NAT之以太网局域网的配置**IP地址配置，最简单的一种 在命令运行  setup，带提示，按照提示修改即可      修改主机名  vi /etc/sysconfig/net">
+<meta name="twitter:image" content="http://pic.aclear.top/域名服务的工作流程.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/6a8a330a.html">
+
+
+
+
+
+  <title>day01_hadoop渐进学习，aclear，fire | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/6a8a330a.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">day01_hadoop渐进学习，aclear，fire</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T20:33:13+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux常用软件安装"><a href="#Linux常用软件安装" class="headerlink" title="Linux常用软件安装"></a>Linux常用软件安装</h1><ol>
+<li><h1 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h1></li>
+</ol>
+<h2 id="1-1-熟练使用Linux常用命令"><a href="#1-1-熟练使用Linux常用命令" class="headerlink" title="1.1.  熟练使用Linux常用命令"></a>1.1.  熟练使用<a href="#console">Linux常用命令</a></h2><h2 id="1-2-熟练修改Linux的基本配置"><a href="#1-2-熟练修改Linux的基本配置" class="headerlink" title="1.2.  熟练修改Linux的基本配置"></a>1.2.  熟练修改Linux的基本配置</h2><h2 id="1-3-熟练在Linux上安装JDK、Tomcat、MySQL软件"><a href="#1-3-熟练在Linux上安装JDK、Tomcat、MySQL软件" class="headerlink" title="1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件"></a>1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件</h2><ol start="2">
+<li><h1 id="修改Linux的基本配置"><a href="#修改Linux的基本配置" class="headerlink" title="修改Linux的基本配置"></a>修改Linux的基本配置</h1></li>
+</ol>
+<h1 id="3-NAT之以太网局域网的配置"><a href="#3-NAT之以太网局域网的配置" class="headerlink" title="3.   NAT之以太网局域网的配置"></a><a href="#image">3.   NAT之以太网局域网的配置</a></h1><p>**IP地址配置，最简单的一种 在命令运行  setup，带提示，按照提示修改即可    </p>
+<ul>
+<li>修改主机名</li>
+</ul>
+<p>vi /etc/sysconfig/network</p>
+<p>NETWORKING=yes HOSTNAME=server1.itcast.cn</p>
+<ul>
+<li>修改ip地址</li>
+</ul>
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth0</p>
+<p>DEVICE=eth0 HWADDR=00:0c:29:7d:a5:f3 TYPE=Ethernet UUID=ec6ae84a-f295-4e8e-9e2e-a9b7160ab8d4 ONBOOT=yes NM_CONTROLLED=yes BOOTPROTO=none IPADDR=192.168.78.200 NETMASK=255.255.255.0 GATEWAY=192.168.78.2 DNS1=192.168.78.2 IPV6INIT=no USERCTL=no</p>
+<p>service network restart</p>
+<ul>
+<li>修改ip地址和主机名的映射关系</li>
+</ul>
+<p>vi /etc/hosts</p>
+<p>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 192.168.0.101 server1.itcast.cn</p>
+<ul>
+<li>关闭iptables并设置其开机启动/不启动</li>
+</ul>
+<p>service iptables stop chkconfig iptables on chkconfig iptables off</p>
+<ol start="3">
+<li><h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1></li>
+</ol>
+<ul>
+<li>上传jdk-7u45-linux-x64.tar.gz到Linux上</li>
+<li>解压jdk到/usr/local目录</li>
+</ul>
+<p>tar -zxvf jdk-7u45-linux-x64.tar.gz -C /usr/local/</p>
+<ul>
+<li>设置环境变量，在/etc/profile文件最后追加相关内容</li>
+</ul>
+<p>vi /etc/profile</p>
+<p>export JAVA_HOME=/usr/local/jdk1.7.0_45 export PATH=$PATH:$JAVA_HOME/bin</p>
+<ul>
+<li>刷新环境变量</li>
+</ul>
+<p>source /etc/profile</p>
+<ul>
+<li>测试java命令是否可用</li>
+</ul>
+<p>java -version</p>
+<ol start="4">
+<li><h1 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h1></li>
+</ol>
+<ul>
+<li>上传apache-tomcat-7.0.68.tar.gz到Linux上</li>
+<li>解压tomcat</li>
+</ul>
+<p>tar -zxvf apache-tomcat-7.0.68.tar.gz -C /usr/local/</p>
+<ul>
+<li>启动tomcat</li>
+</ul>
+<p>/usr/local/apache-tomcat-7.0.68/bin/startup.sh</p>
+<ul>
+<li>查看tomcat进程是否启动</li>
+</ul>
+<p>jps</p>
+<ul>
+<li>查看tomcat进程端口</li>
+</ul>
+<p>netstat -anpt | grep 2465</p>
+<ul>
+<li>通过浏览器访问tomcat</li>
+</ul>
+<p><a href="http://192.168.0.101:8080/" target="_blank" rel="noopener">http://192.168.0.101:8080/</a></p>
+<ol start="5">
+<li><h1 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h1></li>
+</ol>
+<ul>
+<li>上传MySQL-server-5.5.48-1.linux2.6.x86_64.rpm、MySQL-client-5.5.48-1.linux2.6.x86_64.rpm到Linux上</li>
+<li>使用rpm命令安装MySQL-server-5.5.48-1.linux2.6.x86_64.rpm，缺少perl依赖</li>
+</ul>
+<p>rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm</p>
+<ul>
+<li>安装perl依赖，上传6个perl相关的rpm包</li>
+</ul>
+<p>rpm -e perl-*</p>
+<ul>
+<li>再安装MySQL-server，rpm包冲突</li>
+</ul>
+<p>rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm</p>
+<ul>
+<li>卸载冲突的rpm包</li>
+</ul>
+<p>rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 –nodeps</p>
+<ul>
+<li>再安装MySQL-client和MySQL-server</li>
+</ul>
+<p>rpm -ivh MySQL-client-5.5.48-1.linux2.6.x86_64.rpm rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm</p>
+<ul>
+<li>启动MySQL服务，然后初始化MySQL</li>
+</ul>
+<p>service mysql start /usr/bin/mysql_secure_installation</p>
+<ul>
+<li>测试MySQL</li>
+</ul>
+<p>mysql -u root -p</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p>课程中所用的linux命令：<br>linux的命令操作<br>1、日常操作命令<br><strong>查看当前所在的工作目录<br>pwd
+</strong>查看当前系统的时间<br>date<br><strong>查看有谁在线（哪些人登陆到了服务器）<br>who  查看当前在线<br>last 查看最近的登陆历史记录<br>2、文件系统操作
+</strong><br>ls /    查看根目录下的子节点（文件夹和文件）信息<br>ls -al  -a是显示隐藏文件   -l是以更详细的列表形式显示<br><strong>切换目录<br>cd  /home
+</strong>创建文件夹<br>mkdir aaa     这是相对路径的写法<br>mkdir -p aaa/bbb/ccc<br>mkdir  /data    这是绝对路径的写法<br><strong>删除文件夹<br>rmdir   可以删除空目录<br>rm -r aaa   可以把aaa整个文件夹及其中的所有子节点全部删除<br>rm -rf aaa   强制删除aaa
+</strong>修改文件夹名称<br>mv aaa angelababy<br><strong>创建文件<br>touch  somefile.1   创建一个空文件<br>echo “i miss you,my baby” &gt; somefile.2  利用重定向“&gt;”的功能，将一条指令的输出结果写入到一个文件中，会覆盖原文件内容<br>echo “huangxiaoming ,gun dan” &gt;&gt; somefile.2     将一条指令的输出结果追加到一个文件中，不会覆盖原文件内容<br>用vi文本编辑器来编辑生成文件<br><em>**</em></strong>最基本用法<br>vi  somefile.4<br>1、首先会进入“一般模式”，此模式只接受各种快捷键，不能编辑文件内容<br>2、按i键，就会从一般模式进入编辑模式，此模式下，敲入的都是文件内容<br>3、编辑完成之后，按Esc键退出编辑模式，回到一般模式；<br>4、再按：，进入“底行命令模式”，输入wq命令，回车即可<br><strong>**</strong>一些常用快捷键<br>一些有用的快捷键（在一般模式下使用）：<br>a  在光标后一位开始插入<br>A   在该行的最后插入<br>I   在该行的最前面插入<br>gg   直接跳到文件的首行<br>G    直接跳到文件的末行<br>dd   删除行，如果  5dd   ，则一次性删除光标后的5行<br>yy  复制当前行,  复制多行，则  3yy，则复制当前行附近的3行<br>p   粘贴<br>v  进入字符选择模式，选择完成后，按y复制，按p粘贴<br>ctrl+v  进入块选择模式，选择完成后，按y复制，按p粘贴<br>shift+v  进入行选择模式，选择完成后，按y复制，按p粘贴<br>查找并替换（在底行命令模式中输入）<br>%s/sad/88888888888888     效果：查找文件中所有sad，替换为88888888888888<br>/you       效果：查找文件中出现的you，并定位到第一个找到的地方，按n可以定位到下一个匹配位置（按N定位到上一个）<br><strong><strong>后退与前进<br>在vi中按u可以撤销一次操作<br>u   撤销上一步的操作<br>Ctrl+r 恢复上一步被撤销的操作<br>注意：<br>如果你输入“u”两次，你的文本恢复原样，那应该是你的Vim被配置在Vi兼容模式了。<br>重做<br>如果你撤销得太多，你可以输入CTRL-R（redo）回退前一个命令。换句话说，它撤销一个撤销。要看执行的例子，输入CTRL-R两次。字符A和它后面的空格就出现了：<br>young intelligent turtle<br>有一个特殊版本的撤销命令：“U”（行撤销）。行撤销命令撤销所有在前一个编辑行<br>上的操作。 输入这些命令两次取消前一个“U”：<br>A very intelligent turtle<br>xxxx 删除very<br>A intelligent turtle<br>xxxxxx 删除turtle<br>A intelligent<br>用“U”恢复行<br>A very intelligent turtle<br>用“u”撤销“U”<br>A intelligent<br>“U”命令自己改变自己，“u”命令撤销操作，CTRL-R命令重做操作。这有点乱，但不用<br>担心，用“u”和CTRL-R命令你可以切换到任何状态。<br>流行的文本编辑器通常都有前进和后退功能，可以在文件中曾经浏览过的位置之间来回移动。在 vim 中使用 Ctrl-O 执行后退，使用 Ctrl-I 执行前进。<br>相关帮助：  :help CTRL-O  :help CTRL-I   :help jump-motions
+</strong></strong>拷贝文件<br>cp somefile.1  /home/hadoop/somefile.2<br><strong>*</strong>查看文件内容<br>cat    somefile     一次性将文件内容全部输出（控制台）<br>more   somefile     可以翻页查看, 下翻一页(空格)    上翻一页（b）   退出（q）<br>less   somefile     可以翻页查看,下翻一页(空格)    上翻一页（b），上翻一行(↑)  下翻一行（↓）  可以搜索关键字（/keyword）<br>tail -10  install.log    查看文件尾部的10行<br>tail -f   install.log    小f跟踪文件的唯一inode号，就算文件改名后，还是跟踪原来这个inode表示的文件<br>tail -F   install.log    大F按照文件名来跟踪<br>head -10  install.log   查看文件头部的10行<br>3、文件权限的操作<br><strong><strong>linux文件权限的描述格式解读<br>drwxr-xr-x      （也可以用二进制表示  111 101 101  –&gt;  755）<br>d：标识节点类型（d：文件夹   -：文件  l:链接）<br>r：可读   w：可写    x：可执行<br>第一组rwx：  表示这个文件的拥有者对它的权限：可读可写可执行<br>第二组r-x：  表示这个文件的所属组对它的权限：可读，不可写，可执行<br>第三组r-x：  表示这个文件的其他用户（相对于上面两类用户）对它的权限：可读，不可写，可执行
+</strong></strong>修改文件权限<br>chmod g-rw haha.dat    表示将haha.dat对所属组的rw权限取消<br>chmod o-rw haha.dat     表示将haha.dat对其他人的rw权限取消<br>chmod u+x haha.dat      表示将haha.dat对所属用户的权限增加x<br>也可以用数字的方式来修改权限<br>chmod 664 haha.dat<br>就会修改成   rw-rw-r–<br>如果要将一个文件夹的所有内容权限统一修改，则可以-R参数<br>chmod -R 770 aaa/<br>chown angela:angela aaa/    &lt;只有root能执行&gt;<br>目录没有执行权限的时候普通用户不能进入<br>文件只有读写权限的时候普通用户是可以删除的(删除文件不是修改它,是操作父及目录),只要父级目录有执行和修改的权限<br>注意：当我们的 bbb目录下”haha.dat”权限是400时 我们照样可以删除 haha.dat ————即W权限是对haha.dat做出了写修改！<br>     如果不让删除haha.dat  就把bbb 目录的权限修改为不让写（dr-x——）这样子，haha.dat就删除不了了！<br>     因为我们删除haha.dat的操作是对父目录进行的！<br>4、基本的用户管理<br><strong>*</strong>添加用户<br>useradd  angela<br>要修改密码才能登陆<br>passwd angela  按提示输入密码即可<br>chown root:root haha.dat<br>将文件当前的用户和组修改为 root<br><strong>为用户配置sudo权限<br>用root编辑 vi /etc/sudoers<br>在文件的如下位置，为hadoop添加一行即可<br>root    ALL=(ALL)       ALL<br>hadoop  ALL=(ALL)       ALL<br>然后，hadoop用户就可以用sudo来执行系统级别的指令<br>[hadoop@shizhan ~]$ sudo useradd huangxiaoming<br>5、系统管理操作<br>***</strong>查看主机名<br>hostname<br><strong><strong>修改主机名(重启后无效)<br>hostname hadoop<br>*</strong></strong>修改主机名(重启后永久生效)<br>vi /ect/sysconfig/network<br><strong><strong>修改IP(重启后无效)<br>ifconfig eth0 192.168.12.22
+</strong></strong>修改IP(重启后永久生效)<br>vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>mount <strong><strong>  挂载外部存储设备到文件系统中<br>mkdir   /mnt/cdrom      创建一个目录，用来挂载<br>mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom/ 将设备/dev/cdrom(挂在上就在这)挂载到 挂载点 ： /mnt/cdrom中（默认是在media中）<br>       文件系统     读写权限（read only） 光驱的设备名称<br>*</strong></strong>umount<br>umount /mnt/cdrom<br><strong>*</strong>统计文件或文件夹的大小<br>du -sh  /mnt/cdrom/Packages<br>//du -sh /<em>  查看根目录下所有文件夹 统计的大小<br>df -h    查看磁盘的空间！！！<br><strong><strong>关机<br>halt
+</strong></strong>重启<br>reboot<br><strong>**</strong>shell里面如果新建session或者使用命令行直接登录系统<br>ssh <a href="mailto:root@192.168" target="_blank" rel="noopener">root@192.168</a>.**</em>.<strong>*<br><em>**</em></strong>远程拷贝到另一台 linux远程服务器上面<br>scp haha.dat  <a href="mailto:root@192.168.78.199" target="_blank" rel="noopener">root@192.168.78.199</a>:/home/<br>//下一步就让输入 root对应的密码<br><strong>**</strong>配置主机之间的免密ssh登陆<br>假如 A  要登陆  B<br>在A上操作：<br>%%首先生成密钥对<br>ssh-keygen   (提示时，直接回车即可)<br>%%再将A自己的公钥拷贝并追加到B的授权列表文件authorized_keys中<br>ssh-copy-id   B<br><strong>**</strong>后台服务管理<br>service network status   查看指定服务的状态<br>service network stop     停止指定服务<br>service network start    启动指定服务<br>service network restart  重启指定服务<br>service –status-all  查看系统中所有的后台服务<br>设置后台服务的自启配置<br>chkconfig   查看所有服务器自启配置<br>chkconfig iptables off   关掉指定服务的自动启动<br>chkconfig iptables on   开启指定服务的自动启动<br>//vi /etc/inittab  下面的配置，表示 0 1 2 3 4 5 6 对应在什么系统，进行自启动的关闭或开启<br><strong>*</strong>系统启动级别管理<br>vi  /etc/inittab<br># Default runlevel. The runlevels used are:<br>#   0 - halt (Do NOT set initdefault to this)<br>#   1 - Single user mode<br>#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)<br>#   3 - Full multiuser mode<br>#   4 - unused<br>#   5 - X11<br>#   6 - reboot (Do NOT set initdefault to this)<br>#<br>id:3:initdefault:<br>---------<br>注意用自己的公钥存放在自己的 密钥池中<br>自动化操作  启动某些进程，不一定在哪进行   本机不确定启不启动。<br>所以最好在windows当中启动一下ssh。然后在此时再 ssh <a href="mailto:root@192.168.78.199" target="_blank" rel="noopener">root@192.168.78.199</a>  在连接一次本机！ --------- service –status-all | grep httpd 注意这个 “|” 是管道函数——即前方命令 的输出 ，当做管道后方的输入；然后在输入当中查找 httpd！</p>
+<p>注意：在进行平时的学习 </p>
+<p><img src="http://pic.aclear.top/域名服务的工作流程.png" alt="高并发网站技术架构演变">  </p>
+<p><img src="http://pic.aclear.top/桥接和hostonly虚拟网络配置-1024x726.png" alt="高并发网站技术架构演变">  </p>
+<p><img src="http://pic.aclear.top/ssh免密登陆机制示意图-1024x726.png" alt="高并发网站技术架构演变">  </p>
+<p><img src="http://pic.aclear.top/NAT虚拟网络配置-1024x656.png" alt="高并发网站技术架构演变"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="985.html" title="day01_hadoop渐进学习，aclear，fire">985.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/8c2d4240.html" rel="next" title="6级复习">
+                <i class="fa fa-chevron-left"></i> 6级复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/d7aef0f8.html" rel="prev" title="ssh免密码登陆及其原理">
+                ssh免密码登陆及其原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux常用软件安装"><span class="nav-number">1.</span> <span class="nav-text">Linux常用软件安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程目标"><span class="nav-number">2.</span> <span class="nav-text">课程目标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-熟练使用Linux常用命令"><span class="nav-number">2.1.</span> <span class="nav-text">1.1.  熟练使用Linux常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-熟练修改Linux的基本配置"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.  熟练修改Linux的基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-熟练在Linux上安装JDK、Tomcat、MySQL软件"><span class="nav-number">2.3.</span> <span class="nav-text">1.3.  熟练在Linux上安装JDK、Tomcat、MySQL软件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改Linux的基本配置"><span class="nav-number">3.</span> <span class="nav-text">修改Linux的基本配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-NAT之以太网局域网的配置"><span class="nav-number">4.</span> <span class="nav-text">3.   NAT之以太网局域网的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK"><span class="nav-number">5.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">6.</span> <span class="nav-text">安装Tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装MySQL"><span class="nav-number">7.</span> <span class="nav-text">安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命令"><span class="nav-number">7.0.0.1.</span> <span class="nav-text">命令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

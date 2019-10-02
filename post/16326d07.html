@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="【转】 更多请参考:ECMAScript6入门 ● let ● variable hoisting ● arrow Function, Lambda表达式 ● Destructuring Assignments 解构赋值 ● 默认参数值 Default Parameters ● 可变参数 ● 解构参数 ● 解构数组 ● 解构对象 ● 遍历 ● Generators ● String Templat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6的一些基本用法及个别的区别">
+<meta property="og:url" content="http://blog.aclear.top/post/16326d07.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="【转】 更多请参考:ECMAScript6入门 ● let ● variable hoisting ● arrow Function, Lambda表达式 ● Destructuring Assignments 解构赋值 ● 默认参数值 Default Parameters ● 可变参数 ● 解构参数 ● 解构数组 ● 解构对象 ● 遍历 ● Generators ● String Templat">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6的一些基本用法及个别的区别">
+<meta name="twitter:description" content="【转】 更多请参考:ECMAScript6入门 ● let ● variable hoisting ● arrow Function, Lambda表达式 ● Destructuring Assignments 解构赋值 ● 默认参数值 Default Parameters ● 可变参数 ● 解构参数 ● 解构数组 ● 解构对象 ● 遍历 ● Generators ● String Templat">
+<meta name="twitter:image" content="https://common.cnblogs.com/images/copycode.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/16326d07.html">
+
+
+
+
+
+  <title>ES6的一些基本用法及个别的区别 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/16326d07.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ES6的一些基本用法及个别的区别</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T17:29:47+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.cnblogs.com/darrenji/p/4999646.html" target="_blank" rel="noopener">【转】</a> 更多请参考:<a href="http://es6.ruanyifeng.com/?search=promise&amp;x=0&amp;y=0" target="_blank" rel="noopener">ECMAScript6入门</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#a">let</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#b">variable hoisting</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#c">arrow Function, Lambda表达式</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#d">Destructuring Assignments 解构赋值</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#e">默认参数值 Default Parameters</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#f">可变参数</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#g">解构参数</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#h">解构数组</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#i">解构对象</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#j">遍历</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#k">Generators</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#l">String Templates</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#m">快速创建对象</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#n">只读变量</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#o">Sets</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#p">Maps</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#q">Symbols</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#r">WeakMaps</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#s">Promises</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#t">创建类</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#u">Modules</a> ● <a href="http://blog.aclear.top/2017/11/23/some-basic-usages-and-individual-differences-of-es6/#v">内置函数</a>  </p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>使用let声明的变量只在语句块内有效。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>“use strict”;<br>function blockBindingDemo(){<br>  let a = 123;<br>  var b = 123;<br>  if(true){<br>    let a = 456;<br>    b = 456;<br>    console.log(“使用let语句块中的a为” +a);//456<br>    console.log(“使用var语句块中的b为” +b)<br>  }<br>  console.log(“使用let语句块外的a为” +a);//123<br>  console.log(“使用var语句块外的b为” +b);//456<br>}<br>blockBindingDemo();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  以上，以let方式声明的变量只在语句块内有效，而以var方式的变量是一个全局变量。  </p>
+<h2 id="variable-hoisting"><a href="#variable-hoisting" class="headerlink" title="variable hoisting"></a>variable hoisting</h2><p>可以先初始化变量，再声明变量，如下是可以的：   x=6; var x; console.log(x);   相当于：   var x; x = 6;   变量首先得初始化，否则会呈现undefined   var x = 5; console.log(x + “ “ + y); //5 undefined var y = 7;   因为在声明变量y之前还没有初始化，y还没有被hoisted。  </p>
+<h2 id="Arrow-Function-Lambda表达式"><a href="#Arrow-Function-Lambda表达式" class="headerlink" title="Arrow Function, Lambda表达式"></a>Arrow Function, Lambda表达式</h2><p>  在es6之前，通常这样定义和使用函数：  </p>
+<p>var helloWorld = function(name, greeting){<br>  return name + “ “ + greeting;<br>}<br>console.log(helloWorld(“darren”,”hello”));</p>
+<p>  es6中可以使用Lambda表达式：  </p>
+<p>var newGreeting = (name, greeting) =&gt; {<br>  return name + “ “ + greeting;<br>}<br>console.log(newGreeting(“darren”,”hello”));</p>
+<p>  还可以简化成这样的写法：  </p>
+<p>var newGreeting = (name, greeting) =&gt; name + “ “ + greeting;<br>console.log(newGreeting(“darren”,”hello”));</p>
+<p>  如果只有一个参数，可以写成： var greeting = greeting =&gt; “Hello “ + greeting;   如果没有参数，可以写成： var greeting = () =&gt; “Hello Darren”;   ■ 遍历一个数组，把数组内的元素变成大写。  </p>
+<p>var courses = [‘hello’,’world’];<br>cosnole.log(courses.map(course =&gt; {<br>    return course.toUpperCase();<br>}))</p>
+<p>  ■ 对数组排序。  </p>
+<p>var myArr = [2, 4.6];<br>var sortedArr = myArr.sort((a, b) =&gt; a &lt; b ? 1 : -1);<br>console.log(sortedArr);</p>
+<p>  ■ this的作用域。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function Course(){<br>    this.name = “”;<br>    this.description = “”;<br>    this.author = “”;<br>    this.getSummary = function(){<br>        return this.name + “, “ + this.description;<br>    };<br>    this.getDetails = fuction(){<br>        window.setTimeout(() =&gt; {console.log(this.getSummary() + “ “ + this.author)},1000);<br>    }<br>}<br>var course = new Course();<br>course.getDetails();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  以上，this的作用域指的是Course，而不是window。也就是说，lambda表达式中的this的作用域的指向取决于在哪里定义，而不是取决于在哪里使用。  </p>
+<h2 id="Destructuring-Assignments-解构赋值"><a href="#Destructuring-Assignments-解构赋值" class="headerlink" title="Destructuring Assignments 解构赋值"></a>Destructuring Assignments 解构赋值</h2><p>es6之前这样写： var x=1,y=2,z=3;   现在可以这样写： var [x, y, z] = [1, 2, 3]; [y,z] =[z,y];   ■ 从数组中解构赋值  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function getDate(){<br>    return [15,07,2015];<br>}<br>var [x, y] = getDate();<br>var [,,z] = getDate();<br>console.log(x);<br>console.log(y);<br>console.log(z);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  ■ 从对象中解构赋值  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function currentDate(){<br>    return {x:1, y:2, z:3};<br>}<br>var {y: myy, z: myz} = currentDate();<br>console.log(myy);<br>console.log(myz);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="默认参数值-Default-Parameters"><a href="#默认参数值-Default-Parameters" class="headerlink" title="默认参数值 Default Parameters"></a>默认参数值 Default Parameters</h2><p>es6之前，这样写默认参数值：  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function sayHi(firstname, lastname){<br>  firstname = firstname || “darren”;<br>  lastname = lastname || “ji”;<br>  console.log(firstname + “ “ + lastname);<br>}<br>sayHi();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  现在可以这么写：  </p>
+<p>function sayHi(firstname=”darren”,lastname=”ji”){<br>  console.log(firstname + “ “ + lastname);<br>}<br>sayHi();</p>
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>把可变参数拼接成字符串，以前这样写：  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function joinArgus(){<br>    return Array.prototype.slice.call(arguments).join(‘ ‘);<br>}<br>var result = joinArgus(‘hello’,’world’ );<br>console.log(result);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  现在可以这么写：  </p>
+<p>function joinArgus(…words){<br>    return words.join(‘ ‘);<br>}<br>var result = joinArgus(‘’,’’);<br>console.log(result);</p>
+<p>  可以结合Spread Operator来处理可变参数。  </p>
+<p>function logMessages(message, …args){<br>    console.log(message, …args);<br>}<br>logMessages(“he %s : %s”, “”,””);</p>
+<h2 id="解构参数"><a href="#解构参数" class="headerlink" title="解构参数"></a>解构参数</h2><p>function logMessage(msg, {name: courseName, publisher: publisherName}){<br>    console.log(msg + “ “ + courseName + “ by “ + publisherName);<br>}<br>logMessage(“”, {name:””,publisher:””});</p>
+<h2 id="解构数组"><a href="#解构数组" class="headerlink" title="解构数组"></a>解构数组</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>//赋值的时候解构<br>var numbers = [1, 2, 3, 4, 5];<br>var [first, second, third, , fifth] = numbers;<br>console.log(fifth);<br>//使用参数的时候解构<br>function arrayDestructuring([first, second,…rest]){<br>    console.log(first);<br>    console.log(second);<br>    console.log(rest);<br>}<br>arrayDestructuring(numbers);<br>//嵌套数组的解构<br>var numbers_nested = [1, 2, [3, 4, 5]];<br>var [first, second, [third,,fifth]] = numbers_nested;<br>console.log(first);<br>console.log(second);<br>console.log(third);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="解构对象"><a href="#解构对象" class="headerlink" title="解构对象"></a>解构对象</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>引用如下：<br>browser.min.js</p>
+<p><script src="some.js" type="text/babel"></script><br>“use strict”;<br>var course = {<br>    name: “”,<br>    publisher: “”<br>};<br>function courseDetails(course){<br>    let {name, publisher} = course;<br>    console.log(name + “ “ + publisher);<br>}<br>courseDetails(course);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>“use strict”;<br>var words = [‘’,’’,’’];<br>//输出键和值<br>for(let word of words.etrieis()){<br>    console.log(word);<br>}<br>//输出值<br>for(let word of words.values()){<br>    console.log(word);<br>}<br>//输出键<br>for(let word of words.keys()){<br>    console.log(word);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h2><p>有以下的一个Generator的写法：    </p>
+<p>function* greet(){<br>    console.log(<code>调用了greet方法</code>);<br>}<br>greet();</p>
+<p>  显示结果： 什么都不显示   按照以往调用函数的方式调用，结果什么都不显示。greet()到底是什么呢？不妨打印出一探究竟。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    console.log(<code>调用了greet方法</code>);<br>}<br>let greeter = greet();<br>console.log(greeter);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  显示结果： {next:[Function], throw:[Function]}   原来，当调用greet()的时候并没有执行方法，而是返回一个object对象。   既然next是greet()返回结果中的一个函数，那就调用next()。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    console.log(<code>调用了greet方法</code>);<br>}<br>let greeter = greet();<br>let next = greeter.next();<br>console.log(next);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  显示结果： 调用了greet方法 {value:undefined, done: true}   value:undfined说明还没有从generator中返回任何值，done:true说明yield已经被执行,这里是null。   yield到底是什么？  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    console.log(<code>调用了greet方法</code>);<br>    yield “hello”;<br>}<br>let greeter = greet();<br>let next = greeter.next();<br>console.log(next);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  显示结果： 调用了greet方法 {value:’hello’, done: false}   value:’hello’说明yield返回一个hello值, done:false说明yield还没被执行。如果再执行一次next方法会怎样？  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    console.log(<code>调用了greet方法</code>);<br>    yield “hello”;<br>}<br>let greeter = greet();<br>let next = greeter.next();<br>console.log(next);<br>let done = greeter.next();<br>console.log(done);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  显示结果： 调用了greet方法 {value:’hello’, done: false} {value:undefined, done:true}   可见，当第一次执行next方法时，yield返回hello,但还没真正执行yield语句；当第二次执行next方法时，执行了yield语句，value再次变为undefined。   ● 多个yield语句   如果有多个yield语句呢？  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>      console.log(`Generators会延迟加载,第一次调用next方法时执行`);<br>      yield “How”;<br>        console.log(<code>第二次调用next方法时执行</code>);<br>      yield “are”;<br>        console.log(<code>第三次调用next方法时执行</code>);<br>}<br>var greeter = greet();<br>console.log(greeter.next());<br>console.log(greeter.next());<br>console.log(greeter.next());</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： Generators会延迟加载,第一次调用next方法时执行 {value: ‘How’, done:false} 第二次调用next方法时执行 {value: ‘are’, done:false} 第三次调用next方法时执行 {value: undefined, done:true}   还可以通过遍历greet()来分别执行。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>     console.log(`Generators会延迟加载,第一次调用next方法时执行`);<br>      yield “How”;<br>    console.log(<code>第二次调用next方法时执行</code>);<br>    yield “are”;<br>    console.log(<code>第三次调用next方法时执行</code>);<br>}<br>var greeter = greet();<br>for(let word of greeter){<br>    console.log(word);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： Generators会延迟加载,第一次调用next方法时执行 How 第二次调用next方法时执行 are 第三次调用next方法时执行   可见，greet()集合的集合元素是每一个yield的返回值，也就是调用next方法后返回对象中的value字段对应的值。   也就是按如下写也能获取相同的返回结果：  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>     console.log(`Generators会延迟加载,第一次调用next方法时执行`);<br>      yield “How”;<br>    console.log(<code>第二次调用next方法时执行</code>);<br>    yield “are”;<br>    console.log(<code>第三次调用next方法时执行</code>);<br>}<br>var greeter = greet();<br>console.log(greeter.next().value);<br>console.log(greeter.next().value);<br>console.log(greeter.next().value);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  ● yield赋值  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    let a = yield “first”;<br>      console.log(a);<br>      yield “second”;<br>}<br>var greeter = greet();<br>console.log(greeter.next().value);<br>console.log(greeter.next().value);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： first undefined second   而预期的结果是： first first second   真实的结果和预期的结果不一样，yield语句并不能赋值。那么，变量a该如何赋值呢？  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    let a = yield “first”;<br>      console.log(a);<br>      yield “second”;<br>}<br>var greeter = greet();<br>console.log(greeter.next().value);<br>console.log(greeter.next(‘给上一个yield中的变量a赋的值’).value);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： first 给上一个yield中的变量a赋的值 second   所以，通过next方法可以给上一个yield语句中的变量赋值。   再看一个yield赋值的例子。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* greet(){<br>    let a = yield “first”;<br>      a = yield a + “hello”;<br>      yield a + “hello”;<br>}<br>var greeter = greet();<br>console.log(greeter.next().value);<br>console.log(greeter.next(“first”).value);<br>console.log(greeter.next(“second”).value);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： first firsthello secondhello   → 当执行console.log(greeter.next().value);时，把第一个yield的返回结果first打印出来。 → 当执行console.log(greeter.next(“first”).value);先把first赋值给上一个yield,即第一个yield中的变量a，打印出firsthello。 → 当执行console.log(greeter.next(“second”).value);先把second赋值给上一个yield,即第二个yield中的变量a，打印出secondhello。  </p>
+<h2 id="String-Templates"><a href="#String-Templates" class="headerlink" title="String Templates"></a>String Templates</h2><p>  以前这样拼接字符串。 var a = “Hello”; var greeting = a + “, World”; console.log(greeting);   ES6中可以这样写： var a = “Hello”; var greeting = <code>${a} , World</code>; console.log(greeting);   在<code>之内的接受空白、换行等，可以把变量放在${}之内。 var msg = \`it&#39;s time ${new Date().getHours()}, I&#39;m sleeping\`; console.log(msg);</code>之内还可以作为参数传递给某个方法并分别取出字符串和变量：  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function conclude(strings, …values){<br>    console.log(strings);<br>      console.log(values);<br>}<br>conclude`it’s time ${new Date().getHours()} I’m sleeping`;</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： it’s time , I’m sleeping 20   以上<code>之内的字符串自动拼接以逗号分隔，</code>之内变量赋值给 values。  </p>
+<h2 id="快速创建对象"><a href="#快速创建对象" class="headerlink" title="快速创建对象"></a>快速创建对象</h2><p>  <em>let firstName = “Darren”;</em> <em>let lastName = “Ji”; let person = {firstName, lastName}; console.log(person);</em>   结果： {firstName: ‘Darren’, lastName: ‘Ji’}   甚至可以创建嵌套对象。 let firstName = “Darren”; let lastName = “Ji”; let person = {firstName, lastName}; let teamName = “恒大”; let team = {person, teamName}; console.log(team);   结果： {person:{firstName: ‘Darren’, lastName: ‘Ji’}, teamName: ‘恒大’}  </p>
+<h2 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h2><p>  变量值通常可以改变：   let a = 100; a = 200; console.log(a);   ES6中多了一个修饰符const，把变量设置成只读。   const val = ‘hi’; val = ‘yes’; console.log(val);  </p>
+<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><p>  ES6使用Set类构造集合。   let s = new Set([10, 20, 30]); s.add(40); console.log(s); s.delete(30); console.log(s);   结果： [10, 20, 30, 40] [10, 20, 40]  </p>
+<h2 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h2><p>  ES6使用Map类处理键值对集合。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>var map = new Map();<br>var myKey = {name: ‘darren’};<br>map.set(myKey, ‘my favorite book’);<br>//是否包含某键<br>console.log(map.has(myKey));<br>//根据键获取值<br>console.log(map.get(myKey));<br>//遍历值<br>for(var item of map.values()){<br>    console.log(item);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： true my favorite book my favorite book  </p>
+<h2 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h2><p>ES6是唯一、不可变的，使用Symbol类创建Symbol实例。   Symbol可以作为键。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let a = new Map();<br>{<br>    let key = Symbol();<br>      a.set(key, ‘book’);<br>    console.log(a.get(key));<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  Symbol还可以作为对象的字段。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let courseName = Symbol();<br>let course = {<br>      publisher: ‘hd’,<br>    [courseName]: ‘lesson’<br>};<br>console.log(course);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： {publisher: ‘hd’, Symbol(): ‘lesson’}   如果想遍历Couse对象的字段，Symbol()是获取不到的。使用这一特点可以隐藏某些信息。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let courseName = Symbol();<br>let course = {<br>      publisher: ‘hd’,<br>    [courseName]: ‘lesson’<br>};<br>console.log(course);<br>var props = [];<br>for(var c in course){<br>    props.push(c);<br>}<br>console.log(props.length);<br>console.log(props);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  结果： {publisher: ‘hd’, Symbol(): ‘lesson’} 1 publisher   但可以通过以下方式获取到Symbol以及对应的值。 console.log(Object.getOwnPropertySymbols(course)[0]); let keySymbol = Object.getOwnPropertySymbols(course)[0]; console.log(course[keySymbol]);  </p>
+<h2 id="WeakMaps"><a href="#WeakMaps" class="headerlink" title="WeakMaps"></a>WeakMaps</h2><p>不能使用字符串作为键。键只能是对象、函数。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>var w = new WeakMap();<br>var course = {name: ‘t’, publisher:’hd’};<br>var company = {name: ‘sup’};<br>w.set(course, {price:59});<br>w.set(company, ‘s’);<br>console.log(w.has(course));<br>w.delete(course);<br>w.clear(course);<br>console.log(w.get(company));</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="Promises"><a href="#Promises" class="headerlink" title="Promises"></a>Promises</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>fetch(“<a href="http://services.odata.org/V4/Northwind/Northwind.svc/&quot;,{" target="_blank" rel="noopener">http://services.odata.org/V4/Northwind/Northwind.svc/&quot;,{</a><br>    method: ‘get’<br>}).then(function(response){<br>    return response.json();<br>}).then(function(data){<br>    console.log(data.value);<br>}).catch(function(){<br>    console.log(‘failed’);<br>});</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  还可以这么写：  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>var promise = new Promise(function(resolve, reject){<br>    $.ajax(“<a href="http://services.odata.org/V4/Northwind/Northwind.svc/&quot;,{" target="_blank" rel="noopener">http://services.odata.org/V4/Northwind/Northwind.svc/&quot;,{</a><br>        success: function(data){<br>            resolve(data);<br>        },<br>        error: function(){<br>            reject(“Error”);<br>        }<br>    })<br>});<br>promise.then(function(result){<br>    console.log(result);<br>}, function(err){<br>    console.log)(err);<br>});<br>//如果有多个promise<br>//Promise.all([promise]).then(function(results){<br>    //results[0]   results[1]   …<br>},function(){<br>})<br>//Promise.race([promise]);<br>//Promise.reject(reason);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>class Shape{<br>    constructor(w,l){<br>        this.w = w;<br>        this.l = l;<br>    }<br>    render(){<br>        console.log(“开始构建图形…”)<br>    }<br>}<br>class Circle extens Shape{<br>    constructor(w, l, radius){<br>        super(w, l);<br>        this.radius = radius;<br>    }<br>    static getpi(){<br>        return 3014;<br>    }<br>    get area(){<br>        return Circle.pi <em> this.radius</em>this.radius;<br>    }<br>    render(){<br>        console.log(“正在构建圆形…”);<br>    }<br>}<br>var obj = new Circle(0, 0, 20);<br>obj.l = 40;<br>obj.render();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h2><p>  Module中的函数除非使用export，否则对外不可用。使用import使用某个函数。   ● 通过export方法导出函数   addition.js</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function sum(a, b){<br>    return a + b;<br>}<br>function sumThree(a, b, c){<br>    return a + b + c;<br>}<br>export {sum, sumThree};</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  main.js</p>
+<p>import {sum, sumThree} from ‘addition’<br>console.log(sum(2,3));<br>console.log(sumTrhee(2, 3, 4));</p>
+<p>  ● 通过函数上的export方法导出   addition.js</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>export function sum(a, b){<br>    return a + b;<br>}<br>export function sumThree(a, b, c){<br>    return a + b + c;<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>  ● 导入函数使用别名   main.js</p>
+<p>mport {sum as addTwoNumbers,<br>sumThree} from ‘addition’;<br>console.log(addTwoNumbers(2,3));<br>console.log(sumTrhee(2, 3, 4));</p>
+<p>  ● 给导入的函数统一的命名空间。  </p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>import * as addition from ‘addition’;<br>import {sum as addTwoNumbers,<br>sumThree} from ‘addition’;<br>console.log(addition.sum(2,3));<br>console.log(addition.sumTrhee(2, 3, 4));</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>//字符串<br>conole.log(‘ha’.repeat(2));<br>console.log(“world”.includes(“rl”));<br>console.log(“Skill”.startsWith(“Skill”));<br>console.log(“Hello”.endsWith(“lo”));<br>//遍历字符串<br>for(var ch of ‘hello’){<br>    console.log(ch);<br>}<br>//近似值检查<br>Math.trunc(39.7); //39<br>Math.trunc(0.5);//0<br>Math.trunc(-0.3);//-0<br>//数值类型检查<br>Number.isNan(45)<br>Number.isFinite();<br>//Sign<br>Math.sign();<br>//数值安全性检查<br>Number.isSafeInteger(42);<br>//过滤数组<br>var result = [“”,””,””].find(x =&gt; x == “”);<br>console.log(result);<br>//从某个源获取数组<br>var result = Array.from(document.querySelectorAll(‘*’));<br>console.log(result);<br>//从Map从获取数组<br>var m = new Map([[1,2],[2,4],[4,8]]);<br>console.log(Array.from(m));<br>//从字符串中获取数组<br>console.log(Array.from(“hello”));<br>//创建数组<br>var arr = Array.of(1, 2, 3);<br>//其它数组方法<br>[0, 0, 0].fill(7, 1);<br>[1, 2, 3].findIndex( x =&gt; x == 2);<br>[1, 2, 3, 4, 5].copyWithin(3, 1);<br>//对象属性赋值<br>//{distance:40, duration:20, interval:10, start:0}<br>var first = {start:0};<br>var second = {interval:10, duration:20};<br>var third = {distance: 40};<br>Object.assign(first, second, third);<br>console.log(first);</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="916.html" title="ES6的一些基本用法及个别的区别">916.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/210ada31.html" rel="next" title="理解 $nextTick 的作用">
+                <i class="fa fa-chevron-left"></i> 理解 $nextTick 的作用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/d6d0aa3f.html" rel="prev" title="ES6数组方法汇总">
+                ES6数组方法汇总 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let"><span class="nav-number">1.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variable-hoisting"><span class="nav-number">2.</span> <span class="nav-text">variable hoisting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrow-Function-Lambda表达式"><span class="nav-number">3.</span> <span class="nav-text">Arrow Function, Lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Destructuring-Assignments-解构赋值"><span class="nav-number">4.</span> <span class="nav-text">Destructuring Assignments 解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数值-Default-Parameters"><span class="nav-number">5.</span> <span class="nav-text">默认参数值 Default Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变参数"><span class="nav-number">6.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构参数"><span class="nav-number">7.</span> <span class="nav-text">解构参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构数组"><span class="nav-number">8.</span> <span class="nav-text">解构数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构对象"><span class="nav-number">9.</span> <span class="nav-text">解构对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">10.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generators"><span class="nav-number">11.</span> <span class="nav-text">Generators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Templates"><span class="nav-number">12.</span> <span class="nav-text">String Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速创建对象"><span class="nav-number">13.</span> <span class="nav-text">快速创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读变量"><span class="nav-number">14.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sets"><span class="nav-number">15.</span> <span class="nav-text">Sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maps"><span class="nav-number">16.</span> <span class="nav-text">Maps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbols"><span class="nav-number">17.</span> <span class="nav-text">Symbols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WeakMaps"><span class="nav-number">18.</span> <span class="nav-text">WeakMaps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promises"><span class="nav-number">19.</span> <span class="nav-text">Promises</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建类"><span class="nav-number">20.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modules"><span class="nav-number">21.</span> <span class="nav-text">Modules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置函数"><span class="nav-number">22.</span> <span class="nav-text">内置函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

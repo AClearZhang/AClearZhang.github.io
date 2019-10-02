@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="libsvm 训练后的模型参数讲解主要就是讲解利用libsvm-mat工具箱建立分类（回归模型）后，得到的模型model里面参数的意义都是神马？以及如果通过model得到相应模型的表达式，这里主要以分类问题为例子。 测试数据使用的是libsvm-mat自带的heart_scale.mat数据（270*13的一个属性据矩阵，共有270个样本，每个样本有13个属性），方便大家自己测试学习。 首先上一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="libsvm参数介绍">
+<meta property="og:url" content="http://blog.aclear.top/post/4c21898f.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="libsvm 训练后的模型参数讲解主要就是讲解利用libsvm-mat工具箱建立分类（回归模型）后，得到的模型model里面参数的意义都是神马？以及如果通过model得到相应模型的表达式，这里主要以分类问题为例子。 测试数据使用的是libsvm-mat自带的heart_scale.mat数据（270*13的一个属性据矩阵，共有270个样本，每个样本有13个属性），方便大家自己测试学习。 首先上一个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710181948606">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710182734392">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710182952814">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710183021302">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718001756187">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710183654952">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710183724661">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710183753551">
+<meta property="og:image" content="http://img.blog.csdn.net/20160710183839001">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="libsvm参数介绍">
+<meta name="twitter:description" content="libsvm 训练后的模型参数讲解主要就是讲解利用libsvm-mat工具箱建立分类（回归模型）后，得到的模型model里面参数的意义都是神马？以及如果通过model得到相应模型的表达式，这里主要以分类问题为例子。 测试数据使用的是libsvm-mat自带的heart_scale.mat数据（270*13的一个属性据矩阵，共有270个样本，每个样本有13个属性），方便大家自己测试学习。 首先上一个">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160710181948606">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/4c21898f.html">
+
+
+
+
+
+  <title>libsvm参数介绍 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/4c21898f.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">libsvm参数介绍</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T00:24:56+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SVM/" itemprop="url" rel="index">
+                    <span itemprop="name">SVM</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SVM/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="libsvm-训练后的模型参数讲解"><a href="#libsvm-训练后的模型参数讲解" class="headerlink" title="libsvm 训练后的模型参数讲解"></a><a href="http://blog.sina.com.cn/s/blog_6646924501018fqc.html" target="_blank" rel="noopener">libsvm 训练后的模型参数讲解</a></h2><p>主要就是讲解利用libsvm-mat工具箱建立分类（回归模型）后，得到的模型model里面参数的意义都是神马？以及如果通过model得到相应模型的表达式，这里主要以分类问题为例子。 测试数据使用的是libsvm-mat自带的heart_scale.mat数据（270*13的一个属性据矩阵，共有270个样本，每个样本有13个属性），方便大家自己测试学习。 首先上一个简短的测试代码：</p>
+<ol>
+<li>%% ModelDecryption</li>
+<li>% by faruto @ faruto’s Studio~</li>
+<li>% <a href="http://blog.sina.com.cn/faruto" target="_blank" rel="noopener">http://blog.sina.com.cn/faruto</a></li>
+<li>% Email:<a href="mailto:faruto@163.com" target="_blank" rel="noopener">faruto@163.com</a></li>
+<li>% <a href="http://www.matlabsky.com" target="_blank" rel="noopener">http://www.matlabsky.com</a></li>
+<li>% <a href="http://www.mfun.la" target="_blank" rel="noopener">http://www.mfun.la</a></li>
+<li>% <a href="http://video.ourmatlab.com" target="_blank" rel="noopener">http://video.ourmatlab.com</a></li>
+<li>% last modified by 2011.01.06</li>
+<li>%% a litte clean work</li>
+<li>tic;</li>
+<li>close all;</li>
+<li>clear;</li>
+<li>clc;</li>
+<li>format compact;</li>
+<li>%%</li>
+<li>% 首先载入数据</li>
+<li>load heart_scale;</li>
+<li>data = heart_scale_inst;</li>
+<li>label = heart_scale_label;</li>
+<li>% 建立分类模型</li>
+<li>model = svmtrain(label,data,’-s 0 -t 2 -c 1.2 -g 2.8’);</li>
+<li>model</li>
+<li>% 利用建立的模型看其在训练集合上的分类效果</li>
+<li>[PredictLabel,accuracy] = svmpredict(label,data,model);</li>
+<li>accuracy</li>
+<li>%%</li>
+<li><p>toc;</p>
+<p>运行结果：</p>
+</li>
+<li><p>model =</p>
+</li>
+<li>Parameters: [5x1 double]</li>
+<li>nr_class: 2</li>
+<li>totalSV: 259</li>
+<li>rho: 0.0514</li>
+<li>Label: [2x1 double]</li>
+<li>ProbA: []</li>
+<li>ProbB: []</li>
+<li>nSV: [2x1 double]</li>
+<li>sv_coef: [259x1 double]</li>
+<li>SVs: [259x13 double]</li>
+<li>Accuracy = 99.6296% (269/270) (classification)</li>
+<li>accuracy =</li>
+<li>99.6296</li>
+<li>0.0148</li>
+<li>0.9851</li>
+<li><p>Elapsed time is 0.040155 seconds.</p>
+<p>这里面为了简单起见没有将测试数据进行训练集和测试集的划分，这里仅仅是为了简单明了而已，分类结果估计可以不要管，参数优化也不要管，另有帖子讲解。 下面我们就看看 model这个结构体里面的各种参数的意义都是神马，model如下： model = Parameters: [5x1 double] nr_class: 2 totalSV: 259 rho: 0.0514 Label: [2x1 double] ProbA: [] ProbB: [] nSV: [2x1 double] sv_coef: [259x1 double] SVs: [259x13 double] <strong>model.Parameters</strong> 我们先来看一下model.Parameters里面承装的都是什么：</p>
+</li>
+<li><blockquote>
+<p>> model.Parameters</p>
+</blockquote>
+</li>
+<li>ans =</li>
+<li>0</li>
+<li>2.0000</li>
+<li>3.0000</li>
+<li>2.8000</li>
+<li><p>0</p>
+<p><strong>重要知识点：</strong> model.Parameters参数意义从上到下依次为： -s svm类型：SVM设置类型(默认0) -t 核函数类型：核函数设置类型(默认2) -d degree：核函数中的degree设置(针对多项式核函数)(默认3) -g r(gama)：核函数中的gamma函数设置(针对多项式/rbf/sigmoid核函数) (默认类别数目的倒数) -r coef0：核函数中的coef0设置(针对多项式/sigmoid核函数)((默认0) 即在本例中通过model.Parameters我们可以得知 –s 参数为0；-t 参数为 2；-d 参数为3；-g 参数为2.8（这也是我们自己的输入）；-r 参数为0。 关于libsvm参数的一点小说明： Libsvm中参数设置可以按照SVM的类型和核函数所支持的参数进行任意组合，如果设置的参数在函数或SVM类型中没有也不会产生影响，程序不会接受该参数；如果应有的参数设置不正确，参数将采用默认值。 <strong>model.Label model.nr_class</strong></p>
+</li>
+<li><blockquote>
+<p>> model.Label</p>
+</blockquote>
+</li>
+<li>ans =</li>
+<li>1</li>
+<li>-1</li>
+<li><blockquote>
+<p>> model.nr_class</p>
+</blockquote>
+</li>
+<li>ans =</li>
+<li><p>2</p>
+<p><strong>重要知识点：</strong> model.Label表示数据集中类别的标签都有什么，这里是 1，-1； model.nr_class表示数据集中有多少类别，这里是二分类。 <strong>model.totalSV model.nSV</strong></p>
+</li>
+<li><blockquote>
+<p>> model.totalSV</p>
+</blockquote>
+</li>
+<li>ans =</li>
+<li>259</li>
+<li><blockquote>
+<p>> model.nSV</p>
+</blockquote>
+</li>
+<li>ans =</li>
+<li>118</li>
+<li><p>141</p>
+<p><strong>重要知识点：</strong> model.totalSV代表总共的支持向量的数目，这里共有259个支持向量； model.nSV表示每类样本的支持向量的数目，这里表示标签为1的样本的支持向量有118个，标签为-1的样本的支持向量为141。 注意：这里model.nSV所代表的顺序是和model.Label相对应的。 <strong>model.ProbA model.ProbB</strong> 关于这两个参数这里不做介绍，使用-b参数时才能用到，用于概率估计。 -b probability_estimates: whether to train a SVC or SVR model for probability estimates, 0 or 1 (default 0) <strong>model.sv_coef model.SVs model.rho</strong></p>
+</li>
+<li><p>sv_coef: [259x1 double]</p>
+</li>
+<li>SVs: [259x13 double]</li>
+<li><p>model.rho = 0.0514</p>
+<p><strong>重要知识点：</strong> model.sv_coef是一个259*1的矩阵，承装的是259个支持向量在决策函数中的系数； model.SVs是一个259*13的稀疏矩阵，承装的是259个支持向量。 model.rho是决策函数中的常数项的相反数（-b） 在这里首先我们看一下 通过 –s 0 参数（C-SVC模型）得到的最终的分类决策函数的表达式是怎样的？ 这里如果有关于C-SVC模型不懂的地方，请看这个pdf文件： libsvm_library.pdf 附件： 最终的决策函数为： 在由于我们使用的是RBF核函数（前面参数设置 –t 2），故这里的决策函数即为： 其中|| x-y ||是二范数距离 ; 这里面的 b就是-model.rho（一个标量数字）; b = -model.rho; n代表支持向量的个数即 n = model.totalSV（一个标量数字）； 对于每一个i： wi =model.sv_coef(i); 支持向量的系数（一个标量数字） xi = model.SVs(i,:) 支持向量（1*13的行向量） x 是待预测标签的样本 （1*13的行向量） gamma 就是 -g 参数 好的下面我们通过model提供的信息自己建立上面的决策函数如下：</p>
+</li>
+<li><p>%% DecisionFunction</p>
+</li>
+<li><p>function plabel = DecisionFunction(x,model)</p>
+</li>
+<li><p>gamma = model.Parameters(4);</p>
+</li>
+<li><p>RBF = @(u,v)( exp(-gamma.*sum( (u-v).^2) ) );</p>
+</li>
+<li><p>len = length(model.sv_coef);</p>
+</li>
+<li><p>y = 0;</p>
+</li>
+<li><p>for i = 1:len</p>
+</li>
+<li>u = model.SVs(i,:);</li>
+<li>y = y + model.sv_coef(i)*RBF(u,x);</li>
+<li>end</li>
+<li>b = -model.rho;</li>
+<li><p>y = y + b;</p>
+</li>
+<li><p>if y &gt;= 0</p>
+</li>
+<li>plabel = 1;</li>
+<li>else</li>
+<li>plabel = -1;</li>
+<li><p>end</p>
+<p>有了这个决策函数，我们就可以自己预测相应样本的标签了：</p>
+</li>
+<li><p>%%</p>
+</li>
+<li>plable = zeros(270,1);</li>
+<li>for i = 1:270</li>
+<li>x = data(i,:);</li>
+<li>plabel(i,1) = DecisionFunction(x,model);</li>
+<li><p>end</p>
+</li>
+<li><p>%% 验证自己通过决策函数预测的标签和svmpredict给出的标签相同</p>
+</li>
+<li>flag = sum(plabel == PredictLabel)</li>
+<li><p>over = 1;</p>
+<p>最终可以看到 flag = 270 ，即自己建立的决策函数是正确的，可以得到和svmpredict得到的一样的样本的预测标签，事实上svmpredict底层大体也就是这样实现的。 <strong>最后我们来看一下，svmpredict得到的返回参数的意义都是什么</strong> 在下面这段代码中 :</p>
+</li>
+<li><p>%%</p>
+</li>
+<li>% 首先载入数据</li>
+<li>load heart_scale;</li>
+<li>data = heart_scale_inst;</li>
+<li>label = heart_scale_label;</li>
+<li>% 建立分类模型</li>
+<li>model = svmtrain(label,data,’-s 0 -t 2 -c 1.2 -g 2.8’);</li>
+<li>model</li>
+<li>% 利用建立的模型看其在训练集合上的分类效果</li>
+<li>[PredictLabel,accuracy] = svmpredict(label,data,model);</li>
+<li><p>accuracy</p>
+<p>运行可以看到</p>
+</li>
+<li><p>model =</p>
+</li>
+<li>Parameters: [5x1 double]</li>
+<li>nr_class: 2</li>
+<li>totalSV: 259</li>
+<li>rho: 0.0514</li>
+<li>Label: [2x1 double]</li>
+<li>ProbA: []</li>
+<li>ProbB: []</li>
+<li>nSV: [2x1 double]</li>
+<li>sv_coef: [259x1 double]</li>
+<li>SVs: [259x13 double]</li>
+<li>Accuracy = 99.6296% (269/270) (classification)</li>
+<li>accuracy =</li>
+<li>99.6296</li>
+<li>0.0148</li>
+<li><p>0.9851</p>
+<p>这里面要说一下返回参数accuracy的三个参数的意义。 <strong>重要的知识点：</strong> 返回参数accuracy从上到下依次的意义分别是： 分类准率（分类问题中用到的参数指标） 平均平方误差（MSE (mean squared error)） [回归问题中用到的参数指标] 平方相关系数（r2 (squared correlation coefficient)）[回归问题中用到的参数指标] 其中mse 和r2的计算公式分别为： 插图： 写在后面的话，至此关于model中相应参数的一些意义，以及到底如果得到决策函数的表达式或者计算方式的就算是说的很明了了。 可能还有的同学会问，如何得到分类决策函数中的那个alpha系数【这个肯定会有人问】，还是再磨叽说一下吧： 上面的wi其实是alpha和支持向量的类别标签（1或-1的乘积），原始决策函数的表达式如下： 插图： 上面的yi是支持向量的类别标签（1或者-1），在libsvm中将yi和alpha的乘积放在一起用model.sv_coef（w）来承装。 都说到这份上，应该能明白了吗？ 再说点废话：就是在关于SVM的学习中，我发现很多朋友都不主动思考和尝试，老是在问，这样很不好，这样很被动，上面这些也没有人教我，都是我自己思考出来，然后编程验证，如果出现不合理的地方就再继续思考，反正道理和书籍里面都有讲解，总能洞穿的啊。O(∩_∩)O•</p>
+</li>
+</ol>
+<h2 id="svm-train的用法"><a href="#svm-train的用法" class="headerlink" title="svm-train的用法"></a>svm-train的用法</h2><p>用法： svm-train [options] training_set_file [model_file] 其中， -s svm训练，默认0, 其中前三种用来做分类问题，后两种用来实现回归问题。 0 c-SVC，<img src="http://img.blog.csdn.net/20160710181948606" alt="这里写图片描述"> 1 nu-SVC， <img src="http://img.blog.csdn.net/20160710182734392" alt="这里写图片描述"> 2 one-class SVM，<img src="http://img.blog.csdn.net/20160710182952814" alt="这里写图片描述"> 3 epsilon-SVR，<img src="http://img.blog.csdn.net/20160710183021302" alt="这里写图片描述"> 4. v-SVR，<img src="http://img.blog.csdn.net/20160718001756187" alt="这里写图片描述"> -t 核函数类型 0 线性核函数，<img src="http://img.blog.csdn.net/20160710183654952" alt="这里写图片描述"> 1 多项式核函数，<img src="http://img.blog.csdn.net/20160710183724661" alt="这里写图片描述"> 2 RBF核函数，<img src="http://img.blog.csdn.net/20160710183753551" alt="这里写图片描述"> 3 sigmoid核函数，<img src="http://img.blog.csdn.net/20160710183839001" alt="这里写图片描述"> 4 自定义核函数 -v n, n-fold交叉验证。 -d degree，设置多项式核函数的参数d，默认为3。 -g gamma，设置多项式、RBF 、sigmoid核函数的参数，在多项式和sigmoid中gamma表示为a，在RBF中表示为r，默认为1/num_features。 -r 设置多项式和sigmoid核函数中的常数项c，默认为0。 -c cost，设置c-svc，epsilon-SVR，nu-SVR类型的惩罚系数C，默认为1。 -n nu，设置nu-SVC，one-class SVM，nu-SVR类型的参数v，默认为0.5。 -p epsilon，设置epsilon-SVR的loss function参数，默认为0.1。 -m cachesize ，设置cache大小，默认为100MB。 -e epsilon，设置终止条件，默认为0.001。 -h shrinking，是否运用shrinking启发式，默认为1。 -b probability_estimates，是否使用概率估计模型，默认0。 -wi weight，将i类的参数C设置为weight*C，默认为1。 -v n， n-fold交叉验证。 使用示例： svmtrain train3.scale train3.model 训练 train3.scale， 将模型保存于文件 train3.model， 并在 dos 窗口中输出如下结果：</p>
+<pre><code>optimization finished, #iter = 1756
+nu = 0.464223
+obj = -551.002342, rho = -0.337784
+nSV = 604, nBSV = 557
+Total nSV = 604
+</code></pre><ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li><p>5</p>
+</li>
+<li><p>1</p>
+</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+<p>其中，#iter 为迭代次数，nu 与前面的操作参数-n ν 相同，obj 为 SVM 文件转换为的二次规划求解得到的最小值，rho 为判决函数的常数项 b ，nSV 为支持向量个数，nBSV 为边界上的支持向量个数，Total nSV 为支持向量总个数。 模型文件介绍：</p>
+<pre><code>svm_type c_svc % 训练所采用的svm类型，此处为C SVC −
+kernel_type rbf % 训练采用的核函数类型，此处为RBF核
+gamma 0.047619 % 与操作参数设置中的 γ 含义相同
+nr_class 2 % 分类时的类别数，此处为两分类问题
+total_sv 604 % 总共的支持向量个数
+rho -0.337784 % 决策函数中的常数项 b
+label 0 1 % 类别标签
+nr_sv 314 290 % 各类别标签对应的支持向量个数
+SV % 以下为支持向量
+1 1:-0.963808 2:0.906788 ... 19:-0.197706 20:-0.928853 21:-1
+1 1:-0.885128 2:0.768219 ... 19:-0.452573 20:-0.980591 21:-1
+... ... ...
+1 1:-0.847359 2:0.485921 ... 19:-0.541457 20:-0.989077 21:-1 
+</code></pre><ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li><p>13</p>
+</li>
+<li><p>1</p>
+</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+</ul>
+<h2 id="svm-predict的用法"><a href="#svm-predict的用法" class="headerlink" title=" svm-predict的用法"></a> svm-predict的用法</h2><p>用法：svm-predict [options] test_file model_file output_file 其中 -b probability_estimates，是否需要进行概率估计预测，可选值为 0 或者 1，默认值为 0。 est_file 是要进行预测的数据文件； model_file 是由 svmtrain 产生的模型文件； output_file 是 svmpredict 的输出文件，表示预测的结果值。 svmpredict 没有其它的选项。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="698.html" title="libsvm参数介绍">698.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/d47ea840.html" rel="next" title="MATLAB2016b下配置libsvm">
+                <i class="fa fa-chevron-left"></i> MATLAB2016b下配置libsvm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/8ee03fb7.html" rel="prev" title="SVM算法实现——基于libsvm的模型原理建立">
+                SVM算法实现——基于libsvm的模型原理建立 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#libsvm-训练后的模型参数讲解"><span class="nav-number">1.</span> <span class="nav-text">libsvm 训练后的模型参数讲解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-train的用法"><span class="nav-number">2.</span> <span class="nav-text">svm-train的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#svm-predict的用法"><span class="nav-number">3.</span> <span class="nav-text"> svm-predict的用法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

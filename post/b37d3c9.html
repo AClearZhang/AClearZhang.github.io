@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="T-SQL之常用函数 数据操作  SELECT –从数据库表中检索数据行和列INSERT –向数据库表添加新数据行DELETE –从数据库表中删除数据行UPDATE –更新数据库表中的数据   数据定义   CREATE TABLE –创建一个数据库表DROP TABLE –从数据库中删除表ALTER TABLE –修改数据库表结构CREATE VIEW –创建一个视图DROP VIEW –从数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】T-SQL常用函数">
+<meta property="og:url" content="http://blog.aclear.top/post/b37d3c9.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="T-SQL之常用函数 数据操作  SELECT –从数据库表中检索数据行和列INSERT –向数据库表添加新数据行DELETE –从数据库表中删除数据行UPDATE –更新数据库表中的数据   数据定义   CREATE TABLE –创建一个数据库表DROP TABLE –从数据库中删除表ALTER TABLE –修改数据库表结构CREATE VIEW –创建一个视图DROP VIEW –从数据">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】T-SQL常用函数">
+<meta name="twitter:description" content="T-SQL之常用函数 数据操作  SELECT –从数据库表中检索数据行和列INSERT –向数据库表添加新数据行DELETE –从数据库表中删除数据行UPDATE –更新数据库表中的数据   数据定义   CREATE TABLE –创建一个数据库表DROP TABLE –从数据库中删除表ALTER TABLE –修改数据库表结构CREATE VIEW –创建一个视图DROP VIEW –从数据">
+<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/b37d3c9.html">
+
+
+
+
+
+  <title>【转】T-SQL常用函数 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/b37d3c9.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【转】T-SQL常用函数</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T10:47:18+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/课程设计-12/" itemprop="url" rel="index">
+                    <span itemprop="name">课程设计_12</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="T-SQL之常用函数"><a href="#T-SQL之常用函数" class="headerlink" title="T-SQL之常用函数"></a><a href="http://blog.csdn.net/qq_36456952/article/details/56288041" target="_blank" rel="noopener">T-SQL之常用函数</a></h1><ul>
+<li><strong>数据操作</strong></li>
+</ul>
+<p>SELECT –从数据库表中检索数据行和列<br>INSERT –向数据库表添加新数据行<br>DELETE –从数据库表中删除数据行<br>UPDATE –更新数据库表中的数据</p>
+<ul>
+<li><strong> 数据定义</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>CREATE TABLE –创建一个数据库表<br>DROP TABLE –从数据库中删除表<br>ALTER TABLE –修改数据库表结构<br>CREATE VIEW –创建一个视图<br>DROP VIEW –从数据库中删除视图<br>CREATE INDEX –为数据库表创建一个索引<br>DROP INDEX –从数据库中删除索引<br>CREATE PROCEDURE –创建一个存储过程<br>DROP PROCEDURE –从数据库中删除存储过程<br>CREATE TRIGGER –创建一个触发器<br>DROP TRIGGER –从数据库中删除触发器<br>CREATE SCHEMA –向数据库添加一个新模式<br>DROP SCHEMA –从数据库中删除一个模式<br>CREATE DOMAIN –创建一个数据值域<br>ALTER DOMAIN –改变域定义<br>DROP DOMAIN –从数据库中删除一个域</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>数据控制</strong></li>
+</ul>
+<p>GRANT –授予用户访问权限<br>DENY –拒绝用户访问<br>REVOKE –解除用户访问权限</p>
+<ul>
+<li><strong>事务控制</strong></li>
+</ul>
+<p>COMMIT –结束当前事务<br>ROLLBACK –中止当前事务<br>SET TRANSACTION –定义当前事务数据访问特征</p>
+<ul>
+<li><strong>程序化SQL</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>DECLARE –为查询设定游标<br>EXPLAN –为查询描述数据访问计划<br>OPEN –检索查询结果打开一个游标<br>FETCH –检索一行查询结果<br>CLOSE –关闭游标<br>PREPARE –为动态执行准备SQL 语句<br>EXECUTE –动态地执行SQL 语句<br>DESCRIBE –描述准备好的查询</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>局部变量</strong></li>
+</ul>
+<p>declare @id char(<strong>10</strong>)<br>set @id = ‘10010001’<br>select @id = ‘10010001’</p>
+<ul>
+<li><strong>全局变量 </strong></li>
+</ul>
+<p>必须以@@开头</p>
+<ul>
+<li><strong>IF ELSE </strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>declare @x int,@y,int @z int<br>select @x = <strong>1</strong>,@y = <strong>2</strong>,@z=<strong>3</strong><br>if @x &gt; @y<br>    print ‘x &gt; y’ –打印字符串’x &gt; y’<br>else if @y &gt; @z<br>    print ‘y &gt; z’<br>else print ‘z &gt; y’</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>CASE</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>use pangu<br>update employee<br>set e_wage =<br>    case<br>        when job_level = ’<strong>1</strong>’ then e_wage<strong>*1.08</strong><br>        when job_level = ’<strong>2</strong>’ then e_wage<strong>*1.07</strong><br>        when job_level = ’<strong>3</strong>’ then e_wage<strong>*1.06</strong><br>        else e_wage<strong>*1.05</strong><br>    end</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>WHILE CONTINUE BREAK</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>declare @x int @y int @c int<br>select @x = <strong>1</strong> @y=<strong>1</strong><br>while @x &lt; <strong>3</strong><br>    begin<br>        print @x –打印变量x 的值<br>        while @y &lt; <strong>3</strong><br>            begin<br>                select @c = <strong>100*</strong>@x + @y<br>                print @c –打印变量c 的值<br>                select @y = @y + <strong>1</strong><br>            end<br>        select @x = @x + <strong>1</strong><br>        select @y = <strong>1</strong><br>    end</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>WAITFOR</strong></li>
+</ul>
+<p>–例:等待1 小时2 分零3 秒后才执行SELECT 语句<br>waitfor delay ‘00:00:03’<br>select <strong>1</strong><br>–例:等到晚上11 点零8 分后才执行SELECT 语句<br>waitfor time ‘15:03:00’<br>select <strong>2</strong></p>
+<ul>
+<li><strong>SELECT　</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>select <em>(列名) from table_name(表名) where column_name operator value<br>ex:(宿主)<br>select </em> from stock_information where stockid = str(nid)<br>    stockname = ‘str_name’<br>    stockname like ‘% find this %’<br>    stockname like ‘[a-zA-Z]%’ —- ([]指定值的范围)<br>    stockname like ‘[^F-M]%’   —- (^排除指定范围)<br>    --------- 只能在使用like关键字的where子句中使用通配符)<br>    or stockpath = ‘stock_path’<br>    or stocknumber &lt; <strong>1000</strong><br>    and stockindex = <strong>24</strong><br>    not stocksex = ‘man’<br>    stocknumber between <strong>20</strong> and <strong>100</strong><br>    stocknumber in(<strong>10</strong>,<strong>20</strong>,<strong>30</strong>)<br>    order by stockid desc(asc) ——— 排序，desc-降序，asc-升序<br>    order by <strong>1</strong>,<strong>2</strong> --------- by列号<br>        stockname = (select stockname from stock_information  where stockid = <strong>4</strong>)<br>     --------- 子查询<br>     --------- 除非能确保内层select只返回一个行的值，否则应在外层where子句中用一个in限定符<br>select distinct column_name from table_name ——— distinct指定检索独有的列值，不重复<br>select stocknumber ,”stocknumber + <strong>10</strong>“ = stocknumber + <strong>10</strong> from table_name<br>select stockname , “stocknumber” = count(<em>) from table_name group by stockname having count(</em>) = <strong>2</strong><br>    --------- group by 将表按行分组,指定列中有相同的值<br>    --------- having选定指定的组<br>select <em> from table1, table2<br>where table1.id </em>= table2.id ——– 左外部连接，table1中有的而table2中没有得以null表示<br>   table1.id =* table2.id ——– 右外部连接<br>select stockname from table1<br>union [all]  —–  union合并查询结果集，all-保留重复行<br>select stockname from table2</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>insert　</strong></li>
+</ul>
+<p>insert into table_name (Stock_name,Stock_number) value (“xxx”,”xxxx”)<br>value (select Stockname , Stocknumber from Stock_table2)—value为select语句</p>
+<ul>
+<li><strong>update</strong></li>
+</ul>
+<p>update table_name set Stockname = “xxx” [where Stockid = 3]<br>                      Stockname = default<br>                      Stockname = null<br>                      Stocknumber = Stockname + <strong>4</strong></p>
+<ul>
+<li><strong>delete　</strong></li>
+</ul>
+<p>delete from table_name where Stockid = <strong>3</strong><br>truncate table_name ———– 删除表中所有行，仍保持表的完整性<br>drop table table_name ————— 完全删除表</p>
+<ul>
+<li>alter table ——– 修改数据库表结构</li>
+</ul>
+<p>alter table database.owner.table_name add column_name char(<strong>2</strong>) null …..<br>sp_help table_name —- 显示表已有特征<br>create table table_name (name char(<strong>20</strong>), age smallint, lname varchar(<strong>30</strong>))<br>insert into table_name select ……… —– 实现插入列的方法（创建新表）<br>alter table table_name drop constraint Stockname_default —- 删除Stockname的default约束</p>
+<p>常用函数</p>
+<p>—–统计函数—–</p>
+<p>AVG –求平均值<br>COUNT –统计数目<br>MAX –求最大值<br>MIN –求最小值<br>SUM –求和</p>
+<ul>
+<li><strong>AVG</strong></li>
+</ul>
+<p>use pangu<br>select avg(e_wage) as dept_avgWage<br>from employee<br>group by dept_id</p>
+<ul>
+<li><strong>MAX</strong></li>
+</ul>
+<p>–求工资最高的员工姓名<br>use pangu<br>select e_name from employee<br>    where e_wage = (select max(e_wage) from employee)</p>
+<ul>
+<li><strong>STDEV()</strong></li>
+</ul>
+<p>STDEV()函数返回表达式中所有数据的标准差</p>
+<ul>
+<li><strong>STDEVP()</strong></li>
+</ul>
+<p>STDEVP()函数返回总体标准差</p>
+<ul>
+<li><strong>VAR()</strong></li>
+</ul>
+<p>VAR()函数返回表达式中所有值的统计变异数</p>
+<ul>
+<li><strong>VARP()</strong></li>
+</ul>
+<p>VARP()函数返回总体变异数</p>
+<p>—–算术函数—–</p>
+<ul>
+<li><strong>三角函数</strong></li>
+</ul>
+<p>SIN(float_expression) –返回以弧度表示的角的正弦<br>COS(float_expression) –返回以弧度表示的角的余弦<br>TAN(float_expression) –返回以弧度表示的角的正切<br>COT(float_expression) –返回以弧度表示的角的余切</p>
+<ul>
+<li><strong>反三角函数</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>ASIN(float_expression) –返回正弦是FLOAT 值的以弧度表示的角<br>ACOS(float_expression) –返回余弦是FLOAT 值的以弧度表示的角<br>ATAN(float_expression) –返回正切是FLOAT 值的以弧度表示的角<br>ATAN2(float_expression1,float_expression2) –返回正切是float_expression1 /float_expres-sion2的以弧度表示的角<br>DEGREES(numeric_expression) –把弧度转换为角度返回与表达式相同的数据类型可为INTEGER/MONEY/REAL/FLOAT 类型<br>RADIANS(numeric_expression) –把角度转换为弧度返回与表达式相同的数据类型可为INTEGER/MONEY/REAL/FLOAT 类型<br>EXP(float_expression) –返回表达式的指数值<br>LOG(float_expression) –返回表达式的自然对数值<br>LOG10(float_expression)–返回表达式的以为底的对数值<br>SQRT(float_expression) –返回表达式的平方根</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<ul>
+<li><strong>取近似值函数</strong></li>
+</ul>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>CEILING(numeric_expression) –返回&gt;=表达式的最小整数返回的数据类型与表达式相同可为INTEGER/MONEY/REAL/FLOAT 类型<br>FLOOR(numeric_expression) –返回&lt;=表达式的最小整数返回的数据类型与表达式相同可为INTEGER/MONEY/REAL/FLOAT 类型<br>ROUND(numeric_expression) –返回以integer_expression 为精度的四舍五入值返回的数据类型与表达式相同可为INTEGER/MONEY/REAL/FLOAT 类型<br>ABS(numeric_expression) –返回表达式的绝对值返回的数据类型与表达式相同可为INTEGER/MONEY/REAL/FLOAT 类型<br>SIGN(numeric_expression) –测试参数的正负号返回零值正数或-1 负数返回的数据类型与表达式相同可为INTEGER/MONEY/REAL/FLOAT 类型<br>PI() –返回值为π即.1415926535897936<br>RAND([integer_expression]) –用任选的[integer_expression]做种子值得出 -1 间的随机浮点数</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>—–字符串函数—–</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>ASCII() –函数返回字符表达式最左端字符的ASCII 码值<br>CHAR() –函数用于将ASCII 码转换为字符, 如果没有输入~ 255之间的ASCII 码值CHAR 函数会返回一个NULL 值<br>LOWER() –函数把字符串全部转换为小写<br>UPPER() –函数把字符串全部转换为大写<br>STR() –函数把数值型数据转换为字符型数据<br>LTRIM() –函数把字符串头部的空格去掉<br>RTRIM() –函数把字符串尾部的空格去掉<br>LEFT(),RIGHT(),SUBSTRING() –函数返回部分字符串<br>CHARINDEX(),PATINDEX() –函数返回字符串中某个指定的子串出现的开始位置<br>SOUNDEX() –函数返回一个四位字符码, SOUNDEX函数可用来查找声音相似的字符串但SOUNDEX函数对数字和汉字均只返回值<br>DIFFERENCE() –函数返回由SOUNDEX 函数返回的两个字符表达式的值的差异<br>             –0:两个SOUNDEX 函数返回值的第一个字符不同<br>             –1:两个SOUNDEX 函数返回值的第一个字符相同<br>             –2:两个SOUNDEX 函数返回值的第一二个字符相同<br>             –3:两个SOUNDEX 函数返回值的第一二三个字符相同<br>             –4:两个SOUNDEX 函数返回值完全相同同<br>QUOTENAME() –函数返回被特定字符括起来的字符串<br>    select quotename(‘abc’, ‘{‘),quotename(‘abc’)<br>    –运行结果如下: {abc} [abc]<br>REPLICATE() –函数返回一个重复character_expression 指定次数的字符串<br>    select replicate(‘abc’, <strong>3</strong>),replicate( ‘abc’, -<strong>2</strong>)<br>    –运行结果如下: abcabcabc NULL<br>REVERSE() –函数将指定的字符串的字符排列顺序颠倒<br>REPLACE() –函数返回被替换了指定子串的字符串<br>    select replace(‘abc123g’, ‘123’, ‘def’)<br>    –运行结果如下: abcdefg<br>SPACE() –函数返回一个有指定长度的空白字符串<br>STUFF() –函数用另一子串替换字符串指定位置长度的子串</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>—–数据类型转换函数—–</p>
+<ul>
+<li><strong>CAST() 函数</strong></li>
+</ul>
+<p>语法：CAST() (<expression> AS &lt;data_ type&gt;[ length ])</expression></p>
+<ul>
+<li><strong>CONVERT() 函数</strong></li>
+</ul>
+<p>语法：CONVERT() (&lt;data_ type&gt;[ length ], <expression> [, style])</expression></p>
+<p>select cast(<strong>100</strong>+<strong>99</strong> as char),convert(varchar(<strong>12</strong>), getdate())<br>–运行结果如下: 199   10 17 2012</p>
+<p>—–日期函数—–</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>DAY() –函数返回date_expression 中的日期值<br>MONTH() –函数返回date_expression 中的月份值<br>YEAR() –函数返回date_expression 中的年份值<br>DATEADD(<datepart> ,<number> ,<date>) –函数返回指定日期date 加上指定的额外日期间隔number 产生的新日期<br>DATEDIFF(<datepart> ,<number> ,<date>) –函数返回两个指定日期在datepart 方面的不同之处<br>DATENAME(<datepart> , <date>) –函数以字符串的形式返回日期的指定部分<br>DATEPART(<datepart> , <date>) –函数以整数值的形式返回日期的指定部分<br>GETDATE() –函数以DATETIME 的缺省格式返回系统当前的日期和时间<br>–取某年某月的 第一天和最后一天 以当前日期为例<br>–当月天数<br>select day(dateadd(ms,-<strong>3</strong>,DATEADD(m, DATEDIFF(m,<strong>0</strong>,getdate())+<strong>1</strong>,<strong>0</strong>)))<br>—当月第一天<br>select dateadd(d,-day(getdate())+<strong>1</strong>,getdate())<br>—当月最后一天<br>select dateadd(d,-day(getdate()),dateadd(m,<strong>1</strong>,getdate()))<br>–明年上月的最后一天此时<br>select dateadd(d,-day(getdate()),dateadd(m,<strong>12</strong>,getdate()))<br>–当月第一个星期一<br>SELECT DATEADD(wk, DATEDIFF(wk, ‘’, DATEADD(dd, <strong>6</strong> - DAY(getdate()), getdate())), ‘’)</date></datepart></date></datepart></date></number></datepart></date></number></datepart></p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>—–系统函数—–</p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>APP_NAME() –函数返回当前执行的应用程序的名称<br>COALESCE() –函数返回众多表达式中第一个非NULL 表达式的值<br>COL_LENGTH(&lt;’table_name’&gt;, &lt;’column_name’&gt;) –函数返回表中指定字段的长度值<br>COL_NAME(&lt;table_id&gt;, &lt;column_id&gt;)   –函数返回表中指定字段的名称即列名<br>DATALENGTH() –函数返回数据表达式的数据的实际长度<br>DB_ID([‘database_name’]) –函数返回数据库的编号<br>DB_NAME(database_id) –函数返回数据库的名称<br>HOST_ID() –函数返回服务器端计算机的名称<br>HOST_NAME() –函数返回服务器端计算机的名称<br>IDENTITY(&lt;data_type&gt;[, seed increment]) [AS column_name])<br>    –IDENTITY() 函数只在SELECT INTO 语句中使用用于插入一个identity column列到新表中<br>    select identity(int, <strong>1</strong>, <strong>1</strong>) as column_name into newtable from oldtable<br>ISDATE()  –函数判断所给定的表达式是否为合理日期<br>    SELECT ISDATE(GETDATE())<br>    –运行结果为：1<br>ISNULL(&lt;check_expression&gt;, &lt;replacement_value&gt;) –函数将表达式中的NULL 值用指定值替换<br>ISNUMERIC() –函数判断所给定的表达式是否为合理的数值<br>NEWID() –函数返回一个UNIQUEIDENTIFIER 类型的数值<br>    select NEWID()<br>    –运行结果为：D9F0E16E-DABF-4170-916F-0660A9B7EAF5<br>NULLIF(<expression1>, <expression2>)<br>    –NULLIF 函数在expression1 与expression2 相等时返回NULL 值若不相等时则返回expression1 的值<br>    SELECT NULLIF(‘dsssdsadasdasdd’,’dsssdsadasdasdd’)<br>    –运行结果为：NULL</expression2></expression1></p>
+<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="674.html" title="【转】T-SQL常用函数">674.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/d648d87d.html" rel="next" title="Datebase丶KS----相信自己，努力走出舒服区|改变时间空间扭曲作用域！">
+                <i class="fa fa-chevron-left"></i> Datebase丶KS----相信自己，努力走出舒服区|改变时间空间扭曲作用域！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f2c82704.html" rel="prev" title="【转】[字典类]SQLServer T-SQL函数大全">
+                【转】[字典类]SQLServer T-SQL函数大全 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#T-SQL之常用函数"><span class="nav-number">1.</span> <span class="nav-text">T-SQL之常用函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

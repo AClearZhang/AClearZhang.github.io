@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="课本到了第八章：过渡（动画）第九章：Methods  第十章：Vue实例方法  第十一章：组件 第十二章：表单校验  第十三章：与服务端通信  第十四章：陆游与视图  第十五章： vue-cli      所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&amp;gt;  (前端)包管理器 npm  install node.js安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NODE_GCC6.1.0安装更新+问题解决+Vue.js之中学习进度记录">
+<meta property="og:url" content="http://blog.aclear.top/post/46f00fc9.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="课本到了第八章：过渡（动画）第九章：Methods  第十章：Vue实例方法  第十一章：组件 第十二章：表单校验  第十三章：与服务端通信  第十四章：陆游与视图  第十五章： vue-cli      所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&amp;gt;  (前端)包管理器 npm  install node.js安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NODE_GCC6.1.0安装更新+问题解决+Vue.js之中学习进度记录">
+<meta name="twitter:description" content="课本到了第八章：过渡（动画）第九章：Methods  第十章：Vue实例方法  第十一章：组件 第十二章：表单校验  第十三章：与服务端通信  第十四章：陆游与视图  第十五章： vue-cli      所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&amp;gt;  (前端)包管理器 npm  install node.js安装">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/46f00fc9.html">
+
+
+
+
+
+  <title>NODE_GCC6.1.0安装更新+问题解决+Vue.js之中学习进度记录 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/46f00fc9.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">NODE_GCC6.1.0安装更新+问题解决+Vue.js之中学习进度记录</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T22:12:37+08:00">
+                2017-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/VUEJS/" itemprop="url" rel="index">
+                    <span itemprop="name">VUEJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>课本到了第八章：过渡（动画）第九章：Methods  第十章：Vue实例方法  第十一章：组件 第十二章：表单校验  第十三章：与服务端通信  第十四章：陆游与视图  第十五章： vue-cli    </p>
+<hr>
+<p>所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&gt;  (前端)包管理器 npm  install node.js安装：  基于centeos <em><strong>下载：</strong></em> <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a> <a href="http://ftp.gnu.org/gnu/gcc/" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/</a> <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">http://www.runoob.com/nodejs/nodejs-install-setup.html</a> <em><strong>vuejs  中文官方文档：</strong></em> <a href="https://cn.vuejs.org/v2/guide/transitions.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/transitions.html</a> === make[1]: <strong><em> [/usr/local/src/node-v6.11.4/out/Release/obj.target/v8_base/deps/v8/src/accessors.o] Error 1 make[1]: Leaving directory `/usr/local/src/node-v6.11.4/out’ make: </em></strong> [node] Error 2 其中出现两个错误！ –centos 6.5安装更新 G++/GCC —恢复内容开始— CentOS 6.6 升级GCC G++ (当前最新GCC/G++版本为v6.1.0) 没有便捷方式, yum update….   yum install 或者 添加yum 的 repo 文件 也不行, 只能更新到 4.4.7! then,  只能手动编译安装了,那么开始第一步下载源代码吧,GO! <strong>1、</strong> <strong>获取安装包并解压</strong> wget <a href="http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2</a> tar -jxvf gcc-6.1.0.tar.bz2 当然，<a href="http://ftp.gnu.org/gnu/gcc" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc </a> 里面有所有的gcc版本供下载，最新版本已经有6.1.0啦. 建议下载.bz2的压缩包,文件更小,下载时间更少. <strong>2、</strong> <strong>下载供编译需求的依赖项</strong> 参考文献[1]中说：这个神奇的脚本文件会帮我们下载、配置、安装依赖库，可以节约我们大量的时间和精力。 cd gcc-6.1.0 ./contrib/download_prerequisites <strong>3、</strong> <strong>建立一个目录供编译出的文件存放</strong> mkdir gcc-build-6.1.0 cd gcc-build-6.1.0 <strong>4、</strong> <strong>生成**</strong>Makefile<strong>**文件</strong> ../configure -enable-checking=release -enable-languages=c,c++ -disable-multilib <strong>5、</strong> <strong>编译</strong> make -j4 -j4选项是make对多核处理器的优化，如果不成功请使用 <strong><em>make</em></strong>，(进行单核处理)相关优化选项可以移步至参考文献[2]。 <strong>（注意：此步骤非常耗时,我虚拟机耗时近3小时; 实体机近80分钟,CPU基本是满的,内存也使用不少）</strong> 注意<code>make</code>的<code>-j</code>选项可以指定同时运行的作业数量，即CPU核数，如果有4核则可以加上<code>-j4</code></p>
+<h1 id="出错解决"><a href="#出错解决" class="headerlink" title="出错解决"></a>出错解决</h1><p>1.make过程中可能会出现以下错误信息：</p>
+<p> build/genattrtab ../.././gcc/config/i386/i386.md insn-conditions.md \<br>  -Atmp-attrtab.c -Dtmp-dfatab.c -Ltmp-latencytab.c<br>make[3]: <strong><em> [s-attrtab] Killed<br>make[3]: Leaving directory `/usr/src/gcc-4.9.2/host-x86_64-unknown-linux-gnu/gcc’<br>make[2]: </em></strong> [all-stage1-gcc] Error 2<br>make[2]: Leaving directory <code>/usr/src/gcc-4.9.2&#39;
+make\[1\]: *** \[stage1-bubble\] Error 2
+make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Error 2</p>
+<p>可以通过添加swap分区的方法解决： <a href="http://blog.csdn.net/qq_20480611/article/details/52144399" target="_blank" rel="noopener">http://blog.csdn.net/qq_20480611/article/details/52144399</a> 2.动态库<strong>libstdc++.so.6</strong>版本不匹配 可以正常编译程序，但是运行时出现以下问题： <a href="http://stackoverflow.com/questions/5216399/usr-lib-libstdc-so-6-version-glibcxx-3-4-15-not-found" target="_blank" rel="noopener"><strong>/usr/lib/libstdc++.so.6: version `GLIBCXX_3.4.15’ not found</strong></a> 添加<strong>LD_LIBRARY_PATH</strong>环境变量即可解决：</p>
+<p># vim ~/.bash_profile<br>export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64<br># source ~/.bash_profile</p>
+<h1 id="GCC新特征"><a href="#GCC新特征" class="headerlink" title="GCC新特征"></a>GCC新特征</h1><p>GCC 6.1 发布了，该版本较之前GCC5 新怎了大量的功能特性，默认采用C++14为新的标准，替代了之前的C++98。OpenMP 4.5规范将在本版本中被支持。此外，GCC 6.1 增强了对 C++17 的试验性支持；大大改进了诊断特性，包括位置，位置范围，拼写错误标识符建议，选项名字等等改进；新增了修复提示和一些警告提示。改进记录如下：</p>
+<ul>
+<li>UndefinedBehaviorSanitizer gained a new sanitization option, -fsanitize=bounds-strict, which enables strict checking of array bounds. In particular, it enables -fsanitize=bounds as well as instrumentation of flexible array member-like arrays.</li>
+<li>Type-based alias analysis now disambiguates accesses to different pointers. This improves precision of the alias oracle by about 20-30% on higher-level C++ programs. Programs doing invalid type punning of pointer types may now need -fno-strict-aliasing to work correctly.</li>
+<li>Alias analysis now correctly supports weakref and alias attributes. This makes it possible to access both a variable and its alias in one translation unit which is common with link-time optimization.</li>
+<li>Value range propagation now assumes that the this pointer of C++ member functions is non-null. This eliminates common null pointer checks but also breaks some non-conforming code-bases (such as Qt-5, Chromium, KDevelop). As a temporary work-around-fno-delete-null-pointer-checks can be used. Wrong code can be identified by using-fsanitize=undefined.</li>
+</ul>
+<p>完整发布说明，可以在<a href="https://gcc.gnu.org/gcc-6/changes.html" target="_blank" rel="noopener">这里</a>查看。</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="http://blog.csdn.net/tangyi2008/article/details/42100049" target="_blank" rel="noopener">CentOS下安装gcc-4.9.2</a> <a href="http://www.cnblogs.com/destim/p/5643574.html" target="_blank" rel="noopener">centos6.5安装gcc6.1等c++环境</a> <a href="https://gcc.gnu.org/onlinedocs/libstdc++/faq.html#faq.how_to_set_paths" target="_blank" rel="noopener">https://gcc.gnu.org/onlinedocs/libstdc++/faq.html#faq.how_to_set_paths</a> （CSDN的Markdown不好用）</p>
+<h4 id="6、-安装"><a href="#6、-安装" class="headerlink" title="6、 安装"></a>6、 安装</h4><p>make install</p>
+<p><strong>(安装需要root权限!)</strong> 查看安装 ls /usr/local/bin | grep gcc</p>
+<h4 id="7、-重启，然后查看gcc版本"><a href="#7、-重启，然后查看gcc版本" class="headerlink" title="7、 重启，然后查看gcc版本"></a>7、 重启，然后查看gcc版本</h4><p>gcc -v</p>
+<h4 id="8、-写个C-11-特性的程序段-测试"><a href="#8、-写个C-11-特性的程序段-测试" class="headerlink" title="8、 写个C++11 特性的程序段 测试"></a>8、 写个C++11 特性的程序段 测试</h4><p>tryCpp11.cc 代码省略…. g++ -std=c++11 -o tryCpp11 tryCpp11.cc   <strong>9、升级<code>gcc</code>，生成的动态库没有替换老版本<code>gcc</code>的动态库</strong> 源码编译升级安装了<code>gcc</code>后，编译程序或运行其它程序时，有时会出现类似<code>/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#39; not found</code>的问题。这是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库导致的，将<code>gcc</code>最新版本的动态库替换系统中老版本的动态库即可解决。 9.1 运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 从输出可以看出，<code>gcc</code>的动态库还是旧版本的。说明出现这些问题，是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库。 9.2 执行以下命令，查找编译<code>gcc</code>时生成的最新动态库： find / -name “libstdc++.so*” 将上面的最新动态库<code>libstdc++.so.6.0.22</code>复制到<code>/usr/lib64</code>目录下 cd /usr/lib64 cp /root/Downloads/gcc-6.1.0/gcc-build-6.1.0/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.22 ./ 9.3 删除原来软连接： rm -rf libstdc++.so.6 9.4 将默认库的软连接指向最新动态库： ln -s libstdc++.so.6.0.22 libstdc++.so.6 9.5 默认动态库升级完成。重新运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 可以看到 输出有”GLIBCXX_3.4.21” 了     [注:摘抄自<a href="http://www.linuxidc.com/Linux/2015-01/112595.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-01/112595.htm</a>,  <a href="http://itbilu.com/linux/management/NymXRUieg.html" target="_blank" rel="noopener">http://itbilu.com/linux/management/NymXRUieg.html</a>, <em>原作者编译有出错过,但是我编译没有出错过</em>] [参考1:<a href="http://www.tuicool.com/articles/FVN7jez\]" target="_blank" rel="noopener">http://www.tuicool.com/articles/FVN7jez\]</a> [参考2:<a href="http://blog.chinaunix.net/uid-14735472-id-5546560.html\]" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-14735472-id-5546560.html\]</a></p>
+<h2 id="10-新的主题（npm下安装node-js）"><a href="#10-新的主题（npm下安装node-js）" class="headerlink" title="10.新的主题（npm下安装node.js）"></a>10.新的主题（npm下安装node.js）</h2><p>参考：【1】<a href="http://blog.csdn.net/haoaiqian/article/details/72453286" target="_blank" rel="noopener">http://blog.csdn.net/haoaiqian/article/details/72453286</a> 【2】<a href="http://blog.csdn.net/sinat_29412671/article/details/53690658" target="_blank" rel="noopener">http://blog.csdn.net/sinat_29412671/article/details/53690658</a> 【3】<a href="http://www.runoob.com/vue2/vue-install.html" target="_blank" rel="noopener">http://www.runoob.com/vue2/vue-install.html</a> <strong>一、开发环境</strong> vue推荐开发环境: Node.js: javascript运行环境(runtime),不同系统直接运行各种编程语言 npm: Nodejs下的包管理器。 webpack: 它主要的用途是通过 CommonJS 的语法把所有浏览器端需要发布的静态资源做相应的准备，比如资源的合并和打包。 vue-cli: 用户生成Vue工程模板 <strong>二、环境搭建</strong> 安装node.js： 1. 从node.js官网下载并安装node，安装过程很简单。 2. npm 版本需要大于 3.0，如果低于此版本需要升级它：</p>
+<p># 查看版本<br>$ npm -v<br>2.3.0</p>
+<p>#升级 npm<br>cnpm install npm -g</p>
+<p>3.基于node.js,利用淘宝npm镜像安装相关依赖。由于国内使用npm会很慢,这里推荐使用淘宝NPM镜像（<a href="http://npm.taobao.org/" target="_blank" rel="noopener">http://npm.taobao.org/</a>）</p>
+<p>$ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>完成之后，我们就可以用cnpm代替npm来安装依赖包了。 <strong>三、安装vue-cli脚手架构建工具</strong> 安装全局vue-cli脚手架,用于帮助搭建所需的模板框架</p>
+<p>$ cnpm install -g vue-cli<br># 回车，等待安装…<br>$ vue<br># 回车，若出现vue信息说明表示成功</p>
+<p><strong>四、用vue-cli构建项目</strong></p>
+<p># 创建一个基于 webpack 模板的新项目<br>$ vue init webpack my-project<br># 这里需要进行一些配置，默认回车即可<br>This will install Vue 2.x version of the template.<br>For Vue 1.x use: vue init webpack#1.0 my-project<br>? Project name my-project<br>? Project description A Vue.js project<br>? Author runoob <a href="mailto:&#x74;&#x65;&#x73;&#116;&#x40;&#114;&#117;&#110;&#x6f;&#x6f;&#98;&#46;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x74;&#x65;&#x73;&#116;&#x40;&#114;&#117;&#110;&#x6f;&#x6f;&#98;&#46;&#x63;&#x6f;&#109;</a><br>? Vue build standalone<br>? Use ESLint to lint your code? Yes<br>? Pick an ESLint preset Standard<br>? Setup unit tests with Karma + Mocha? Yes<br>? Setup e2e tests with Nightwatch? Yes<br>   vue-cli · Generated “my-project”.<br>   To get started:<br>     cd my-project<br>     npm install<br>     npm run dev<br>Documentation can be found at <a href="https://vuejs-templates.github.io/webpack" target="_blank" rel="noopener">https://vuejs-templates.github.io/webpack</a></p>
+<p><strong>五、安装依赖</strong> 在cmd里</p>
+<p>1).输入：cd my-project（项目名），回车，进入到具体项目文件夹<br>2).输入：cnpm install，回车，等待一小会儿</p>
+<p>回到项目文件夹，会发现项目结构里，多了一个node_modules文件夹（该文件里的内容就是之前安装的依赖） <strong>六、测试环境是否搭建成功</strong> 方法1：在cmd里输入：npm run dev 方法2：在浏览里输入：localhost:8080(默认端口为8080)  </p>
+<hr>
+<h2 id="解决在-make当中出错的问题：由于temp-分区过小："><a href="#解决在-make当中出错的问题：由于temp-分区过小：" class="headerlink" title="解决在  make当中出错的问题：由于temp 分区过小："></a>解决在  <a href="http://blog.csdn.net/qq_20480611/article/details/52144399" target="_blank" rel="noopener">make当中出错的问题</a>：由于temp 分区过小：</h2><p>根据Redhat公司的建议,Linux系统swap分区最适合的大小是物理内存的1-2倍.不过Linux上有些软件对swap分区得需求较大,例如要顺利执行Oracle数据库软件,swap分区至少需要400MB或者物理内存2倍以上的空间.当然我们在安装Linux的时候,就能直接讲swap分区设置到足够的大小,但如果已经安装好Linux了,之后又想再安装类似Oracle的软件,却发现swap分区空间不够,该如何处理? 针对此种情况,有两种解决方法:一是创建新的swap分区;另一则是创建swap文件. <a href="http://blog.csdn.net/qq_20480611/article/details/50234945" target="_blank" rel="noopener"><strong>点此查看如何创建新分区</strong></a> 下面介绍创建swap文件的过程： 如果你的硬盘空间已经全部分配给其他分区,也没有多余的预算新添购硬盘,我们可以利用swap文件的方式增加虚拟的swap空间,不过执行性能会较实际的swap分区差.</p>
+<h1 id="产生swap文件"><a href="#产生swap文件" class="headerlink" title="产生swap文件"></a>产生swap文件</h1><p>执行<strong>dd</strong>命令新增一个1G的swap文件：</p>
+<p># dd if=/dev/zero of=/opt/swapfile bs=1M count=1000</p>
+<p>更多关于<strong>dd</strong>命令的解释请参考man手册<code>man dd</code></p>
+<h1 id="格式化swap文件"><a href="#格式化swap文件" class="headerlink" title="格式化swap文件"></a>格式化swap文件</h1><p>接下来执行<strong>mkswap</strong>命令,将myswap文件格式化成swap文件系统： 注意  我的在  </p>
+<p>/opt/swapfile 下面有1G的空间！ 下面的的 /tmp/myswap 全部修改为 /opt/swapfile</p>
+<p># mkswap /tmp/myswap</p>
+<h1 id="使能swap文件"><a href="#使能swap文件" class="headerlink" title="使能swap文件"></a>使能swap文件</h1><p>执行<strong>swapon</strong>命令可以使能myswap文件为swap分区，对应的执行<strong>swapoff</strong>命令可以关闭这种效果：</p>
+<p># swapon /tmp/myswap</p>
+<p>此时可以通过 <code>free -h</code> 查看内存使用情况及swap分区</p>
+<h1 id="自动挂载"><a href="#自动挂载" class="headerlink" title="自动挂载"></a>自动挂载</h1><p>编辑<code>/etc/fstab</code>文件，添加开机使能swap文件项：</p>
+<p># vim /tmp/myswap<br>/tmp/myswap swap swap defaults 0 0 # 待添加的行</p>
+<p>最后执行以下命令自动挂载所有在fstab中的文件系统</p>
+<p># mount -a</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="799.html" title="NODE_GCC6.1.0安装更新+问题解决+Vue.js之中学习进度记录">799.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/32060da8.html" rel="next" title="JSP中关于中文编码的解释">
+                <i class="fa fa-chevron-left"></i> JSP中关于中文编码的解释
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2326e2a0.html" rel="prev" title="近期工作反思">
+                近期工作反思 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#出错解决"><span class="nav-number">1.</span> <span class="nav-text">出错解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC新特征"><span class="nav-number">2.</span> <span class="nav-text">GCC新特征</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6、-安装"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">6、 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、-重启，然后查看gcc版本"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">7、 重启，然后查看gcc版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、-写个C-11-特性的程序段-测试"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">8、 写个C++11 特性的程序段 测试</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#10-新的主题（npm下安装node-js）"><span class="nav-number">3.1.</span> <span class="nav-text">10.新的主题（npm下安装node.js）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决在-make当中出错的问题：由于temp-分区过小："><span class="nav-number">3.2.</span> <span class="nav-text">解决在  make当中出错的问题：由于temp 分区过小：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产生swap文件"><span class="nav-number">4.</span> <span class="nav-text">产生swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#格式化swap文件"><span class="nav-number">5.</span> <span class="nav-text">格式化swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使能swap文件"><span class="nav-number">6.</span> <span class="nav-text">使能swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动挂载"><span class="nav-number">7.</span> <span class="nav-text">自动挂载</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

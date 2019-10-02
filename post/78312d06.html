@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struts2：OGNL表达式，遍历List、Map集合；投影的使用">
+<meta property="og:url" content="http://blog.aclear.top/post/78312d06.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog/490648/201312/12110039-1bb9961daaa041bcbda938c6669749a1.png">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Struts2：OGNL表达式，遍历List、Map集合；投影的使用">
+<meta name="twitter:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/78312d06.html">
+
+
+
+
+
+  <title>Struts2：OGNL表达式，遍历List、Map集合；投影的使用 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/78312d06.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Struts2：OGNL表达式，遍历List、Map集合；投影的使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T19:22:37+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&lt;&gt;[之间的这个地方]&lt;/&gt;）。 然而生命周期结束就会被放置在，JavaEE的OGNL自己的“银行”（sc）当中去！（有利于值栈资源的利用.） 阅读文章时理解难点是：值栈和sc 标签的使用 和 Servlet Request、ActionContext对于Servlet访问的理解，前者是jsp、Http提供的方法类，而后者是Struts2提供的访问Servlet的方法。</p>
+</blockquote>
+<h2 id="OGNL中-、-、-、-、-、-标签的使用简介"><a href="#OGNL中-、-、-、-、-、-标签的使用简介" class="headerlink" title="OGNL中$、%、#、{}、^、$ 标签的使用简介"></a><a href="http://www.xuebuyuan.com/1337243.html?mobile=0" target="_blank" rel="noopener">OGNL中$、%、#、{}、^、$ 标签的使用简介</a></h2><p>Struts2的ActionContext是来自于Ognl的上下文，是OGNL的一个增强，在Struts2的Context的根对象就是Action。因为只有根对象时可以直接访问的，不需要加任何标记，比如request,session,application这些对象在访问时都不需要加#号。<img src="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png" alt=""></p>
+<p><strong>OGNL中$号的使用</strong> <strong>1..</strong>在国际化资源文件中，引用OGNL表达式 <strong>2..</strong>在struts.xml文件中，引用OGNL表达式</p>
+<p><strong>OGNL中%号的使用</strong></p>
+<p>“%”符号的用途是在标签的属性值被理解为字符串类型时，告诉执行环境%{}里的是OGNL表达式。</p>
+<p>这个类似js中的eval，很暴力。</p>
+<p><strong>1..</strong>使用<strong>%{}</strong>可以取出保存在值堆栈中的Action对象，直接调用它的方法 <strong>2..</strong>如果Action继承了ActionSupport，那么在页面标签中可以使用<strong>%{getText(‘key’)}</strong>获取国际化信息</p>
+<p><strong>OGNL中#号的使用</strong> OGNL中的#号可以取出堆栈上下文中存放的对象</p>
+<p>名称</p>
+<p>作用</p>
+<p>例子</p>
+<p>attr</p>
+<p>用于按request&gt;&gt;session&gt;&gt;application顺序访问其属性</p>
+<p>#attr.userName相当于按顺序从三个范围读取userName属性直到找到为止</p>
+<p>request</p>
+<p>包含当前HttpServletRequest的属性的Map</p>
+<p>#request.userName相当于request.getAttribute(“userName”)</p>
+<p>session</p>
+<p>包含当前HttpSession的属性的Map</p>
+<p>#session.userName相当于session.getAttribute(“userName”)</p>
+<p>application</p>
+<p>包含当前应用的ServletContext的属性的Map</p>
+<p>#application.userName相当于application.getAttribute(“userName”)</p>
+<p>parameters</p>
+<p>包含当前HTTP请求参数的Map</p>
+<p>#parameters.id[0]相当于request.getParameter(“id”)</p>
+<p>  <strong>#符号的用途一般有三种：</strong> <strong>— 、</strong>访问非根对象属性，例如#session.msg表达式，由于Struts 2中值栈被视为根对象，所以访问其他非根对象时，需要加#前缀。实际上，#相当于ActionContext. getContext()；#session.msg表达式相当于ActionContext.getContext().getSession(). getAttribute(“msg”) 。 <strong>二、</strong>用于过滤和投影（projecting）集合，如persons.{?#this.age&gt;25}，persons.{?#this.name==’pla1’}.{age}[0]。 <strong>三、</strong>用来构造Map，例如示例中的#{‘foo1’:’bar1’, ‘foo2’:’bar2’}。</p>
+<p><strong>利用投影获取属性</strong> 利用投影获取List中对象的username属性时，其中<strong>{}</strong>表示的是一个集合 <strong>stus.{username}</strong>就表示将suts中所有的username属性取出组成一个新的列表</p>
+<p><strong>利用选择获取属性</strong></p>
+<p><strong>OGNL表达式是很灵活的，可以同时使用选择技术与投影技术获取属性 使用选择技术时，#this代表当前元素，问号?是把所有满足条件的元素都取出来。 上箭头^是开始的意思，即取符合条件的数据索引中第一条数据，所以stus.{^#this.grade&gt;=60}.{username}输出的是[张三] 注意，此时输出文本中包含中括号，这表示它是一个列表。 而stus.{?#this.grade&gt;=60}.{username}[0]输出的是张三，是字符串，二者是不同的。 美元符号$是结束的意思，即取符合条件的数据索引中最后一条数据，所以stus.{$#this.grade&gt;=60}.{username}输出的是[王五] 这三个符号：问号、上箭头、美元符所返回的都是List</strong></p>
+<p>  <strong>另符两语法：</strong> <strong>使用Top语法</strong>获取值栈中的第二个对象的属性：<strong>&lt;s:property value=”[1].top.username”/&gt;</strong> <strong>使用 N 语法</strong>获取值栈中的第二个对象的属性：<strong>&lt;s:propertyvalue=”[1].username”/&gt;</strong></p>
+<p><a href="https://www.cnblogs.com/nayitian/archive/2013/12/10/3467557.html" target="_blank" rel="noopener">OGNL</a>是Object-Graph Navigation Language的缩写，它是一种功能强大的表达式语言（Expression Language，简称为EL），通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。</p>
+<h1 id="片头（ognl-jsp）"><a href="#片头（ognl-jsp）" class="headerlink" title="片头（ognl.jsp）"></a>片头（ognl.jsp）</h1><p>&lt;%<br>    request.setAttribute(“para”, “request scope attribute”);<br>    request.getSession().setAttribute(“para”, “session scope attribute”);<br>    request.getSession().getServletContext().setAttribute(“para”, “aplication scope attribute”);<br>    List<student> listStudent = new ArrayList<student>();<br>    listStudent.add(new Student(1, “张三”, new Date()));<br>    listStudent.add(new Student(2, “李四”, new Date()));<br>    listStudent.add(new Student(3, “赵五”, new Date()));<br>    listStudent.add(new Student(4, “孙六”, new Date()));<br>    listStudent.add(new Student(5, “钱七”, new Date()));<br>    pageContext.setAttribute(“listStudent”, listStudent);<br>%&gt;</student></student></p>
+<h1 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h1><p><a href="http://127.0.0.1:8080/st/ssh/demo6/ognl.jsp?para=hello" target="_blank" rel="noopener">http://127.0.0.1:8080/st/ssh/demo6/ognl.jsp?para=hello</a></p>
+<h2 id="1-通过OGNL表达式获取属性范围中的值"><a href="#1-通过OGNL表达式获取属性范围中的值" class="headerlink" title="1. 通过OGNL表达式获取属性范围中的值"></a>1. 通过OGNL表达式获取属性范围中的值</h2><pre><code>&lt;br/&gt;
+HTTP parameters para = &lt;s:property value=&quot;#parameters.para&quot; /&gt;
+&lt;br/&gt;
+request attribute para = &lt;s:property value=&quot;#request.para&quot; /&gt;
+&lt;br/&gt;
+session attribute para = &lt;s:property value=&quot;#session.para&quot; /&gt;
+&lt;br/&gt;
+application attribute para = &lt;s:property value=&quot;#application.para&quot; /&gt;
+&lt;br/&gt;
+attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
+&lt;br/&gt;
+&lt;hr&gt;
+</code></pre><h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p>HTTP parameters para = hello request attribute para = request scope attribute session attribute para = session scope attribute application attribute para = aplication scope attribute attr attribute para = request scope attribute</p>
+<h2 id="2-通过OGNL表达式创建list集合，并且遍历出集合中的值"><a href="#2-通过OGNL表达式创建list集合，并且遍历出集合中的值" class="headerlink" title="2. 通过OGNL表达式创建list集合，并且遍历出集合中的值"></a>2. 通过OGNL表达式创建list集合，并且遍历出集合中的值</h2><pre><code>&lt;br&gt;
+&lt;s:set name=&quot;list&quot; value=&quot;{&apos;eeeee&apos;,&apos;ddddd&apos;,&apos;ccccc&apos;,&apos;bbbbb&apos;,&apos;aaaaa&apos;}&quot;&gt;&lt;/s:set&gt;
+&lt;s:iterator value=&quot;#list&quot; var=&quot;o&quot;&gt;
+    ${o}&lt;br/&gt;
+    &lt;!--&lt;s:property /&gt;--&gt;
+&lt;/s:iterator&gt;
+&lt;br/&gt;
+&lt;hr&gt;
+</code></pre><p><strong>输出：</strong> eeeee ddddd ccccc bbbbb aaaaa</p>
+<h2 id="3-通过OGNL表达式创建Map集合，并且遍历出集合中的值"><a href="#3-通过OGNL表达式创建Map集合，并且遍历出集合中的值" class="headerlink" title="3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值"></a>3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值</h2><pre><code>&lt;br&gt;
+&lt;s:set name=&quot;map&quot;
+    value=&quot;#{&apos;1&apos;:&apos;eeeee&apos;,&apos;2&apos;:&apos;ddddd&apos;,&apos;3&apos;:&apos;ccccc&apos;,&apos;4&apos;:&apos;bbbbb&apos;,&apos;5&apos;:&apos;aaaaa&apos;}&quot;&gt;&lt;/s:set&gt;
+&lt;s:iterator value=&quot;#map&quot; var=&quot;o&quot;&gt;
+    ${o.key}-&gt;${o.value}&lt;br/&gt;
+    &lt;!\-\-    &lt;s:property value=&quot;#o.key&quot;/&gt;-&gt;&lt;s:property value=&quot;#o.value&quot;/&gt;&lt;br/&gt;   --&gt;
+    &lt;!\-\-    &lt;s:property value=&quot;key&quot; /&gt;-&gt;&lt;s:property value=&quot;value&quot; /&gt; --&gt;
+&lt;/s:iterator&gt;
+&lt;br/&gt;
+&lt;hr&gt;
+</code></pre><p><strong>输出：</strong> 1-&gt;eeeee 2-&gt;ddddd 3-&gt;ccccc 4-&gt;bbbbb 5-&gt;aaaaa</p>
+<h2 id="4-通过OGNL表达式，进行逻辑判断"><a href="#4-通过OGNL表达式，进行逻辑判断" class="headerlink" title="4. 通过OGNL表达式，进行逻辑判断"></a>4. 通过OGNL表达式，进行逻辑判断</h2><pre><code>&lt;br&gt;
+&lt;s:if test=&quot;&apos;aaa&apos; in {&apos;aaa&apos;,&apos;bbb&apos;}&quot;&gt;
+    aaa 在 集合{&apos;aaa&apos;,&apos;bbb&apos;}中；
+&lt;/s:if&gt;
+&lt;s:else&gt;
+    aaa 不在 集合{&apos;aaa&apos;,&apos;bbb&apos;}中；
+&lt;/s:else&gt;
+&lt;br/&gt;
+&lt;s:if test=&quot;#request.req not in #list&quot;&gt;
+    不 在 集合list中；
+&lt;/s:if&gt;
+&lt;s:else&gt;
+    在 集合list中；
+&lt;/s:else&gt;
+&lt;br/&gt;
+&lt;hr&gt;
+</code></pre><p><strong>输出：</strong> aaa 在 集合{‘aaa’,’bbb’}中； 不 在 集合list中；</p>
+<h2 id="5-通过OGNL表达式的投影功能进行数据筛选"><a href="#5-通过OGNL表达式的投影功能进行数据筛选" class="headerlink" title="5. 通过OGNL表达式的投影功能进行数据筛选"></a>5. 通过OGNL表达式的投影功能进行数据筛选</h2><pre><code>&lt;s:iterator value=&quot;#attr.listStudent.{?#this.id % 2 != 0}&quot; var=&quot;cur&quot;&gt;
+    &lt;s:property value=&quot;#cur.username&quot;/&gt;
+&lt;/s:iterator&gt;
+&lt;br/&gt;
+&lt;s:iterator value=&quot;#attr.listStudent.{^#this.id % 2 != 0}&quot; var=&quot;cur&quot;&gt;
+    &lt;s:property value=&quot;#cur.username&quot;/&gt;
+&lt;/s:iterator&gt;
+&lt;br/&gt;
+&lt;s:iterator value=&quot;#attr.listStudent.{$#this.id % 2 != 0}&quot; var=&quot;cur&quot;&gt;
+    &lt;s:property value=&quot;#cur.username&quot;/&gt;
+&lt;/s:iterator&gt;
+&lt;br/&gt;
+&lt;s:property value=&quot;#attr.listStudent.{username}\[0\]&quot;/&gt;
+&lt;br/&gt;
+&lt;s:property value=&quot;#attr.listStudent.{$#this.id == 3}.{username}\[0\]&quot;/&gt;
+&lt;br/&gt;
+</code></pre><p><strong>输出：</strong> 张三   赵五    钱七 张三 钱七 张三 赵五</p>
+<h2 id="6-通过OGNL表达式访问某个类的静态方法和值"><a href="#6-通过OGNL表达式访问某个类的静态方法和值" class="headerlink" title="6. 通过OGNL表达式访问某个类的静态方法和值"></a>6. 通过OGNL表达式访问某个类的静态方法和值</h2><pre><code>&lt;br&gt;
+&lt;s:property value=&quot;@java.lang.Maths@floor(32.56)&quot; /&gt;
+&lt;br/&gt;
+&lt;hr&gt;
+</code></pre><p><strong>输出：</strong> 32.0</p>
+<h2 id="7-OGNL表达式-迭代标签-详细"><a href="#7-OGNL表达式-迭代标签-详细" class="headerlink" title="7. OGNL表达式 迭代标签 详细"></a>7. OGNL表达式 迭代标签 详细</h2><pre><code>&lt;br&gt;
+&lt;s:set name=&quot;list2&quot;
+    value=&quot;{&apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;,&apos;dd&apos;,&apos;ee&apos;,&apos;ff&apos;,&apos;gg&apos;,&apos;hh&apos;,&apos;ii&apos;,&apos;jj&apos;}&quot;&gt;&lt;/s:set&gt;
+&lt;table border=&quot;1&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            索引
+        &lt;/td&gt;
+        &lt;td&gt;
+            值
+        &lt;/td&gt;
+        &lt;td&gt;
+            奇？
+        &lt;/td&gt;
+        &lt;td&gt;
+            偶？
+        &lt;/td&gt;
+        &lt;td&gt;
+            首？
+        &lt;/td&gt;
+        &lt;td&gt;
+            尾？
+        &lt;/td&gt;
+        &lt;td&gt;
+            当前迭代数量
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;s:iterator value=&quot;#list2&quot; var=&quot;o&quot; status=&quot;s&quot;&gt;
+        &lt;tr bgcolor=&quot;&lt;s:if test=&quot;#s.even&quot;&gt;pink&lt;/s:if&gt;&quot;&gt;
+            &lt;td&gt;
+                &lt;s:property value=&quot;#s.getIndex()&quot; /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;s:property /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;s:if test=&quot;#s.odd&quot;&gt;Y&lt;/s:if&gt;
+                &lt;s:else&gt;N&lt;/s:else&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;s:if test=&quot;#s.even&quot;&gt;Y&lt;/s:if&gt;
+                &lt;s:else&gt;N&lt;/s:else&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;s:if test=&quot;#s.first&quot;&gt;Y&lt;/s:if&gt;
+                &lt;s:else&gt;N&lt;/s:else&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;s:if test=&quot;#s.isLast()&quot;&gt;Y&lt;/s:if&gt;
+                &lt;s:else&gt;N&lt;/s:else&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+            &lt;s:property value=&quot;#s.getCount()&quot;/&gt;
+        &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/s:iterator&gt;
+&lt;/table&gt;
+</code></pre><p><strong>输出：</strong> <img src="https://images0.cnblogs.com/blog/490648/201312/12110039-1bb9961daaa041bcbda938c6669749a1.png" alt=""></p>
+<h2 id="8-完整代码（ognl-jsp）"><a href="#8-完整代码（ognl-jsp）" class="headerlink" title="8. 完整代码（ognl.jsp）"></a>8. 完整代码（ognl.jsp）</h2><p>&lt;%@ page language=”java” import=”java.util.*,com.clzhang.ssh.demo6.Student” pageEncoding=”utf-8”%&gt;<br>&lt;%@ taglib uri=”/struts-tags” prefix=”s”%&gt;<br>&lt;%<br>    request.setAttribute(“para”, “request scope attribute”);<br>    request.getSession().setAttribute(“para”, “session scope attribute”);<br>    request.getSession().getServletContext().setAttribute(“para”, “aplication scope attribute”);<br>    List<student> listStudent = new ArrayList<student>();<br>    listStudent.add(new Student(1, “张三”, new Date()));<br>    listStudent.add(new Student(2, “李四”, new Date()));<br>    listStudent.add(new Student(3, “赵五”, new Date()));<br>    listStudent.add(new Student(4, “孙六”, new Date()));<br>    listStudent.add(new Student(5, “钱七”, new Date()));<br>    pageContext.setAttribute(“listStudent”, listStudent);<br>%&gt;<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;</student></student></p>
+<html><br><body><br>1. 通过OGNL表达式获取属性范围中的值<br>    <br><br>    HTTP parameters para = &lt;s:property value=”#parameters.para” /&gt;<br>    <br><br>    request attribute para = &lt;s:property value=”#request.para” /&gt;<br>    <br><br>    session attribute para = &lt;s:property value=”#session.para” /&gt;<br>    <br><br>    application attribute para = &lt;s:property value=”#application.para” /&gt;<br>    <br><br>    attr attribute para = &lt;s:property value=”#attr.para” /&gt;<br>    <br><br>    <hr><br>2. 通过OGNL表达式创建list集合，并且遍历出集合中的值<br>    <br><br>    &lt;s:set name=”list” value=”{‘eeeee’,’ddddd’,’ccccc’,’bbbbb’,’aaaaa’}”&gt;&lt;/s:set&gt;<br>    &lt;s:iterator value=”#list” var=”o”&gt;<br>        ${o}<br><br>        <!--<s:property />--><br>    &lt;/s:iterator&gt;<br>    <br><br>    <hr><br>3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值<br>    <br><br>    &lt;s:set name=”map”<br>        value=”#{‘1’:’eeeee’,’2’:’ddddd’,’3’:’ccccc’,’4’:’bbbbb’,’5’:’aaaaa’}”&gt;&lt;/s:set&gt;<br>    &lt;s:iterator value=”#map” var=”o”&gt;<br>        ${o.key}-&gt;${o.value}<br><br>        &lt;!--    &lt;s:property value=”#o.key”/&gt;-&gt;&lt;s:property value=”#o.value”/&gt;<br>   –&gt;<br>        &lt;!--    &lt;s:property value=”key” /&gt;-&gt;&lt;s:property value=”value” /&gt; –&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    <hr><br>4. 通过OGNL表达式，进行逻辑判断<br>    <br><br>    &lt;s:if test=”‘aaa’ in {‘aaa’,’bbb’}”&gt;<br>        aaa 在 集合{‘aaa’,’bbb’}中；<br>    &lt;/s:if&gt;<br>    &lt;s:else&gt;<br>        aaa 不在 集合{‘aaa’,’bbb’}中；<br>    &lt;/s:else&gt;<br>    <br><br>    &lt;s:if test=”#request.req not in #list”&gt;<br>        不 在 集合list中；<br>    &lt;/s:if&gt;<br>    &lt;s:else&gt;<br>        在 集合list中；<br>    &lt;/s:else&gt;<br>    <br><br>    <hr><br>5. 通过OGNL表达式的投影功能进行数据筛选<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{?#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{^#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{$#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:property value=”#attr.listStudent.{username}[0]“/&gt;<br>    <br><br>    &lt;s:property value=”#attr.listStudent.{$#this.id == 3}.{username}[0]“/&gt;<br>    <br><br>    <hr><br>6. 通过OGNL表达式访问某个类的静态方法和值<br>    <br><br>    &lt;s:property value=”@java.lang.Math@floor(32.56)” /&gt;<br>    <br><br>    <hr><br>7. OGNL表达式 迭代标签 详细<br>    <br><br>    &lt;s:set name=”list2”<br>        value=”{‘aa’,’bb’,’cc’,’dd’,’ee’,’ff’,’gg’,’hh’,’ii’,’jj’}”&gt;&lt;/s:set&gt;<br>    <table border="1"><br>        <tr><br>            <td><br>                索引<br>            </td><br>            <td><br>                值<br>            </td><br>            <td><br>                奇？<br>            </td><br>            <td><br>                偶？<br>            </td><br>            <td><br>                首？<br>            </td><br>            <td><br>                尾？<br>            </td><br>            <td><br>                当前迭代数量<br>            </td><br>        </tr><br>        &lt;s:iterator value=”#list2” var=”o” status=”s”&gt;<br>            &lt;tr bgcolor=”&lt;s:if test=”#s.even”&gt;pink&lt;/s:if&gt;”&gt;<br>                <td><br>                    &lt;s:property value=”#s.getIndex()” /&gt;<br>                </td><br>                <td><br>                    &lt;s:property /&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.odd”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.even”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.first”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.isLast()”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                &lt;s:property value=”#s.getCount()”/&gt;<br>            </td><br>            <br>        &lt;/s:iterator&gt;<br>    </table><br></body><br></html>
+
+
+
+<p><strong>Student.java（只用到部分方法）</strong></p>
+<p>package com.clzhang.ssh.demo6;<br>import java.util.*;<br>public class Student {<br>    private int id;<br>    private String username;<br>    private int grade;<br>    private Date birthday;<br>    //只要是重写一个类的构造方法，就必须要为这个类保留空的构造方法<br>    //因为框架默认的都会去调用无参的空的构造方法<br>    public Student(){};<br>    public Student(int id, String username, Date birthday) {<br>        this.id = id;<br>        this.username = username;<br>        this.birthday = birthday;<br>    }<br>    public Student(String username,int grade){<br>        this.username = username;<br>        this.grade = grade;<br>    }<br>    public String getUsername() {<br>        return username;<br>    }<br>    public void setUsername(String username) {<br>        this.username = username;<br>    }<br>    public int getGrade() {<br>        return grade;<br>    }<br>    public void setGrade(int grade) {<br>        this.grade = grade;<br>    }<br>    public int getId() {<br>        return id;<br>    }<br>    public void setId(int id) {<br>        this.id = id;<br>    }<br>    public Date getBirthday() {<br>        return birthday;<br>    }<br>    public void setBirthday(Date birthday) {<br>        this.birthday = birthday;<br>    }<br>    @Override<br>    public String toString() {<br>        //如果不重写它的toString()方法的话，默认调用toString()将输出【类型+@+内存地址的哈希值】<br>        return “{学生姓名：” + username + “，成绩：” + grade + “}”;<br>    }<br>}</p>
+<h2 id="更多阅读参考："><a href="#更多阅读参考：" class="headerlink" title="更多阅读参考："></a><strong>更多阅读参考：</strong></h2><p><a href="http://www.cnblogs.com/nayitian/articles/3465339.html" target="_blank" rel="noopener">struts2中的OGNL表达式（转）</a> <a href="http://www.cnblogs.com/nayitian/p/3503824.html" target="_blank" rel="noopener">struts2：遍历自定义字符串数组，遍历Action实例所引用对象中的数组</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="1221.html" title="Struts2：OGNL表达式，遍历List、Map集合；投影的使用">1221.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/e364ff6f.html" rel="next" title="全科全程复习计划-考研">
+                <i class="fa fa-chevron-left"></i> 全科全程复习计划-考研
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/172ad485.html" rel="prev" title="Hibernate存取图片小实例">
+                Hibernate存取图片小实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OGNL中-、-、-、-、-、-标签的使用简介"><span class="nav-number">1.</span> <span class="nav-text">OGNL中$、%、#、{}、^、$ 标签的使用简介</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#片头（ognl-jsp）"><span class="nav-number"></span> <span class="nav-text">片头（ognl.jsp）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用"><span class="nav-number"></span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-通过OGNL表达式获取属性范围中的值"><span class="nav-number">1.</span> <span class="nav-text">1. 通过OGNL表达式获取属性范围中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出："><span class="nav-number">2.</span> <span class="nav-text">输出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过OGNL表达式创建list集合，并且遍历出集合中的值"><span class="nav-number">3.</span> <span class="nav-text">2. 通过OGNL表达式创建list集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过OGNL表达式创建Map集合，并且遍历出集合中的值"><span class="nav-number">4.</span> <span class="nav-text">3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过OGNL表达式，进行逻辑判断"><span class="nav-number">5.</span> <span class="nav-text">4. 通过OGNL表达式，进行逻辑判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-通过OGNL表达式的投影功能进行数据筛选"><span class="nav-number">6.</span> <span class="nav-text">5. 通过OGNL表达式的投影功能进行数据筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-通过OGNL表达式访问某个类的静态方法和值"><span class="nav-number">7.</span> <span class="nav-text">6. 通过OGNL表达式访问某个类的静态方法和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-OGNL表达式-迭代标签-详细"><span class="nav-number">8.</span> <span class="nav-text">7. OGNL表达式 迭代标签 详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-完整代码（ognl-jsp）"><span class="nav-number">9.</span> <span class="nav-text">8. 完整代码（ognl.jsp）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多阅读参考："><span class="nav-number">10.</span> <span class="nav-text">更多阅读参考：</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

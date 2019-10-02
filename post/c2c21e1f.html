@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本配置: http://www.cnblogs.com/huligong1234/p/4136331.html https://www.cnblogs.com/huligong1234/p/4137133.html 浏览器查看 浏览器打开 http://ubuntu-V01:50070/，会看到hdfs管理页面 浏览器打开 http://ubuntu-V01:8088/，会看到hadoop进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day07_BigData渐进学习_aclear_fire">
+<meta property="og:url" content="http://blog.aclear.top/post/c2c21e1f.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="基本配置: http://www.cnblogs.com/huligong1234/p/4136331.html https://www.cnblogs.com/huligong1234/p/4137133.html 浏览器查看 浏览器打开 http://ubuntu-V01:50070/，会看到hdfs管理页面 浏览器打开 http://ubuntu-V01:8088/，会看到hadoop进">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day07_BigData渐进学习_aclear_fire">
+<meta name="twitter:description" content="基本配置: http://www.cnblogs.com/huligong1234/p/4136331.html https://www.cnblogs.com/huligong1234/p/4137133.html 浏览器查看 浏览器打开 http://ubuntu-V01:50070/，会看到hdfs管理页面 浏览器打开 http://ubuntu-V01:8088/，会看到hadoop进">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/c2c21e1f.html">
+
+
+
+
+
+  <title>day07_BigData渐进学习_aclear_fire | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/c2c21e1f.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">day07_BigData渐进学习_aclear_fire</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T22:04:55+08:00">
+                2018-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  <strong>基本配置:</strong> <a href="http://www.cnblogs.com/huligong1234/p/4136331.html" target="_blank" rel="noopener">http://www.cnblogs.com/huligong1234/p/4136331.html</a> <a href="https://www.cnblogs.com/huligong1234/p/4137133.html" target="_blank" rel="noopener">https://www.cnblogs.com/huligong1234/p/4137133.html</a> <strong>浏览器查看</strong> 浏览器打开 <a href="http://ubuntu-V01:50070/，会看到hdfs管理页面" target="_blank" rel="noopener">http://ubuntu-V01:50070/，会看到hdfs管理页面</a> 浏览器打开 <a href="http://ubuntu-V01:8088/，会看到hadoop进程管理页面" target="_blank" rel="noopener">http://ubuntu-V01:8088/，会看到hadoop进程管理页面</a> 浏览器打开 <a href="http://ubuntu-v01:8088/cluster" target="_blank" rel="noopener">http://ubuntu-v01:8088/cluster</a> 查看cluster情况 <strong>day06问题总结：</strong> 1/运行mr程序出错 connecting to resoucemanager retrying …. retrying ….. 原因是没有启动yarn或者启动失败   sudo date -s “2018-1-21 09:00:00” 2/初始化工作目录结构 hdfs namenode -format 只是初始化了namenode的工作目录 而datanode的工作目录是在datanode启动后自己初始化的 3/datanode不被namenode识别的问题 namenode在format初始化的时候会形成两个标识： blockPoolId： clusterId： 新的datanode加入时，会获取这两个标识作为自己工作目录中的标识 一旦namenode重新format后，namenode的身份标识已变，而datanode如果依然 持有原来的id，就不会被namenode识别 4/datanode下线后多久看到效果 datanode不是一下线就会被namenode认定为下线的，有一个超时时间 5/关于副本数量的问题 副本数由客户端的参数dfs.replication决定（优先级： conf.set &gt; 自定义配置文件 &gt; jar包中的hdfs-default.xml） <em>hadoop-dfs.jar &gt; hdfs-site.xml &gt; 代码中的 configuration（执行顺序，后来执行的会覆盖后面执行的。）</em></p>
+<h4 id="Day07开始我们开始-4-1关于服务器HDFS内部的工作原理开始进行-研究-探讨。"><a href="#Day07开始我们开始-4-1关于服务器HDFS内部的工作原理开始进行-研究-探讨。" class="headerlink" title="Day07开始我们开始 4.1关于服务器HDFS内部的工作原理开始进行 研究 探讨。"></a>Day07开始我们开始 4.1关于服务器HDFS内部的工作原理开始进行 研究 探讨。</h4><pre><code>离线计算机系统-目录 [课程大纲（HDFS详解）.................................................................................................... 2](#_Toc439077207)
+</code></pre><ol>
+<li><a href="#_Toc439077208">HDFS前言…………………………………………………………………………………………………….. 3</a></li>
+<li><a href="#_Toc439077209">HDFS的概念和特性…………………………………………………………………………………………. 3</a></li>
+<li><a href="#_Toc439077210">HDFS的shell(命令行客户端)操作……………………………………………………………………….. 4</a></li>
+</ol>
+<p><a href="#_Toc439077211">3.1 HDFS命令行客户端使用…………………………………………………………………………… 4</a> <a href="#_Toc439077212">3.2命令行客户端支持的命令参数…………………………………………………………………… 4</a> <a href="#_Toc439077213">3.2 常用命令参数介绍………………………………………………………………………………….. 5</a></p>
+<ol start="4">
+<li><a href="#_Toc439077214">hdfs的工作机制……………………………………………………………………………………………… 8</a></li>
+</ol>
+<p><a href="#_Toc439077215">4.1 概述：…………………………………………………………………………………………………. 8</a> <a href="#_Toc439077216">4.2 HDFS写数据流程…………………………………………………………………………………….. 9</a> <a href="#_Toc439077217">4.2.1 概述……………………………………………………………………………………………. 9</a> <a href="#_Toc439077218">4.2.2 详细步骤图…………………………………………………………………………………… 9</a> <a href="#_Toc439077219">4.2.3 详细步骤解析……………………………………………………………………………….. 9</a> <a href="#_Toc439077220">4.3. HDFS读数据流程………………………………………………………………………………….. 10</a> <a href="#_Toc439077221">4.3.1 概述………………………………………………………………………………………….. 10</a> <a href="#_Toc439077222">4.3.2 详细步骤图：……………………………………………………………………………… 10</a> <a href="#_Toc439077223">4.3.3 详细步骤解析……………………………………………………………………………… 10</a></p>
+<ol start="5">
+<li><a href="#_Toc439077224">NAMENODE工作机制…………………………………………………………………………………….. 11</a></li>
+</ol>
+<p><a href="#_Toc439077225">5.1 概述…………………………………………………………………………………………………… 11</a> <a href="#_Toc439077226">5.2元数据管理………………………………………………………………………………………….. 11</a> <a href="#_Toc439077227">5.2.1 元数据存储机制…………………………………………………………………………… 11</a> <a href="#_Toc439077228">5.2.2 元数据手动查看…………………………………………………………………………… 11</a> <a href="#_Toc439077229">5.2.3 元数据的checkpoint……………………………………………………………………… 12</a></p>
+<ol start="6">
+<li><a href="#_Toc439077230">DATANODE的工作机制……………………………………………………………………………………. 13</a></li>
+</ol>
+<p><a href="#_Toc439077231">6.1 概述…………………………………………………………………………………………………… 13</a> <a href="#_Toc439077232">6.2 观察验证DATANODE功能………………………………………………………………………. 13</a></p>
+<ol start="7">
+<li><a href="#_Toc439077233">HDFS的java操作………………………………………………………………………………………….. 13</a></li>
+</ol>
+<p><a href="#_Toc439077234">7.1 搭建开发环境………………………………………………………………………………………. 13</a> <a href="#_Toc439077235">7.2 获取api中的客户端对象……………………………………………………………………….. 14</a> <a href="#_Toc439077236">7.3 DistributedFileSystem实例对象所具备的方法………………………………………………. 14</a> <a href="#_Toc439077237">7.4 HDFS客户端操作数据代码示例：……………………………………………………………… 15</a> <a href="#_Toc439077238">7.4.1 文件的增删改查…………………………………………………………………………… 15</a> <a href="#_Toc439077239">7.4.2 通过流的方式访问hdfs…………………………………………………………………. 18</a>          </p>
+<h1 id="课程大纲（HDFS详解）"><a href="#课程大纲（HDFS详解）" class="headerlink" title="课程大纲（HDFS详解）"></a>课程大纲（HDFS详解）</h1><p>Hadoop HDFS</p>
+<p>分布式文件系统DFS简介</p>
+<p>HDFS的系统组成介绍</p>
+<p>HDFS的组成部分详解</p>
+<p>副本存放策略及路由规则</p>
+<p>命令行接口</p>
+<p>Java接口</p>
+<p>客户端与HDFS的数据流讲解</p>
+<pre><code>学习目标： 掌握hdfs的shell操作 掌握hdfs的java api操作 理解hdfs的工作原理                  
+</code></pre><h1 id="HDFS基本概念篇"><a href="#HDFS基本概念篇" class="headerlink" title="******HDFS基本概念篇******"></a>******HDFS基本概念篇******</h1><h1 id="1-HDFS前言"><a href="#1-HDFS前言" class="headerlink" title="1. HDFS前言"></a>1. HDFS前言</h1><ul>
+<li>设计思想</li>
+</ul>
+<p>分而治之：将大文件、大批量文件，分布式存放在大量服务器上，<strong>以便于采取分而治之的方式对海量数据进行运算分析；</strong>  </p>
+<ul>
+<li>在大数据系统中作用：</li>
+</ul>
+<p>为各类分布式运算框架（如：mapreduce，spark，tez，……）提供数据存储服务  </p>
+<ul>
+<li>重点概念：文件切块，副本存放，元数据</li>
+</ul>
+<h1 id="2-HDFS的概念和特性"><a href="#2-HDFS的概念和特性" class="headerlink" title="2. HDFS的概念和特性"></a>2. HDFS的概念和特性</h1><p><strong>首先，它是一个文件系统</strong>，用于存储文件，通过统一的命名空间——目录树来定位文件  <strong>其次，它是分布式的</strong>，由很多服务器联合起来实现其功能，集群中的服务器有各自的角色；  <strong>重要特性如下：</strong></p>
+<ul>
+<li><p>HDFS中的文件在物理上是<strong>分块存储（**</strong>block<strong>**）</strong>，块的大小可以通过配置参数( dfs.blocksize)来规定，默认大小在x版本中是128M，老版本中是64M</p>
+</li>
+<li><p>HDFS文件系统会给客户端提供一个<strong>统一的抽象目录树</strong>，客户端通过路径来访问文件，形如：hdfs://namenode:port/dir-a/dir-b/dir-c/file.data</p>
+</li>
+</ul>
+<ul>
+<li><strong>目录结构及文件分块信息(**</strong>元数据)**的管理由namenode节点承担</li>
+</ul>
+<p>——namenode是HDFS集群主节点，负责维护整个hdfs文件系统的目录树，以及每一个路径（文件）所对应的block块信息（block的id，及所在的datanode服务器）    </p>
+<ul>
+<li>文件的各个block的存储管理由datanode节点承担</li>
+</ul>
+<p>---- datanode是HDFS集群从节点，每一个block都可以在多个datanode上存储多个副本（副本数量也可以通过参数设置dfs.replication）  </p>
+<ul>
+<li><p>HDFS是设计成适应一次写入，多次读出的场景，且不支持文件的修改</p>
+<p><em>(__注：适合用来做数据分析，并不适合用来做网盘应用，因为，不便修改，延迟大，网络开销大，成本太高)</em></p>
+</li>
+</ul>
+<h1 id="HDFS基本操作篇"><a href="#HDFS基本操作篇" class="headerlink" title="******HDFS基本操作篇******"></a>******HDFS基本操作篇******</h1><h1 id="3-HDFS的shell-命令行客户端-操作"><a href="#3-HDFS的shell-命令行客户端-操作" class="headerlink" title="3. HDFS的shell(命令行客户端)操作"></a>3. HDFS的shell(命令行客户端)操作</h1><h2 id="3-1-HDFS命令行客户端使用"><a href="#3-1-HDFS命令行客户端使用" class="headerlink" title="3.1 HDFS命令行客户端使用"></a>3.1 HDFS命令行客户端使用</h2><p>HDFS提供shell命令行客户端，使用方法如下：    </p>
+<h2 id="3-2-命令行客户端支持的命令参数"><a href="#3-2-命令行客户端支持的命令参数" class="headerlink" title="3.2 命令行客户端支持的命令参数"></a>3.2 命令行客户端支持的命令参数</h2><pre><code>\[-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;\] \[-cat \[-ignoreCrc\] &lt;src&gt; ...\] \[-checksum &lt;src&gt; ...\] \[-chgrp \[-R\] GROUP PATH...\] \[-chmod \[-R\] &lt;MODE\[,MODE\]... | OCTALMODE&gt; PATH...\] \[-chown \[-R\] \[OWNER\]\[:\[GROUP\]\] PATH...\] \[-copyFromLocal \[-f\] \[-p\] &lt;localsrc&gt; ... &lt;dst&gt;\] \[-copyToLocal \[-p\] \[-ignoreCrc\] \[-crc\] &lt;src&gt; ... &lt;localdst&gt;\] \[-count \[-q\] &lt;path&gt; ...\] \[-cp \[-f\] \[-p\] &lt;src&gt; ... &lt;dst&gt;\] \[-createSnapshot &lt;snapshotDir&gt; \[&lt;snapshotName&gt;\]\] \[-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;\] \[-df \[-h\] \[&lt;path&gt; ...\]\] \[-du \[-s\] \[-h\] &lt;path&gt; ...\] \[-expunge\] \[-get \[-p\] \[-ignoreCrc\] \[-crc\] &lt;src&gt; ... &lt;localdst&gt;\] \[-getfacl \[-R\] &lt;path&gt;\] \[-getmerge \[-nl\] &lt;src&gt; &lt;localdst&gt;\] \[-help \[cmd ...\]\] \[-ls \[-d\] \[-h\] \[-R\] \[&lt;path&gt; ...\]\] \[-mkdir \[-p\] &lt;path&gt; ...\] \[-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;\] \[-moveToLocal &lt;src&gt; &lt;localdst&gt;\] \[-mv &lt;src&gt; ... &lt;dst&gt;\] \[-put \[-f\] \[-p\] &lt;localsrc&gt; ... &lt;dst&gt;\] \[-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;\] \[-rm \[-f\] \[-r|-R\] \[-skipTrash\] &lt;src&gt; ...\] \[-rmdir \[--ignore-fail-on-non-empty\] &lt;dir&gt; ...\] \[-setfacl \[-R\] \[{-b|-k} {-m|-x &lt;acl\_spec&gt;} &lt;path&gt;\]|\[--set &lt;acl\_spec&gt; &lt;path&gt;\]\] \[-setrep \[-R\] \[-w\] &lt;rep&gt; &lt;path&gt; ...\] \[-stat \[format\] &lt;path&gt; ...\] \[-tail \[-f\] &lt;file&gt;\] \[-test -\[defsz\] &lt;path&gt;\] \[-text \[-ignoreCrc\] &lt;src&gt; ...\] \[-touchz &lt;path&gt; ...\] \[-usage \[cmd ...\]\]
+</code></pre><h2 id="3-2-常用命令参数介绍"><a href="#3-2-常用命令参数介绍" class="headerlink" title="3.2 常用命令参数介绍"></a>3.2 常用命令参数介绍</h2><p>注意： hdfs fs -du -s -h hdfs://aclear1:9000/*     //是从这里面uri去访问的资源！全称是这样的！</p>
+<p>-help 功能：输出这个命令参数手册</p>
+<p><strong>-ls</strong> <strong>功能：显示目录信息</strong> <em>示例： hadoop fs -ls hdfs://hadoop-server01:9000/</em> <em>备注：这些参数中，所有的hdfs__路径都可以简写</em> <em>–&gt;hadoop fs -ls /</em> <em>等同于上一条命令的效果</em></p>
+<p><strong>-mkdir</strong> <strong>功能：在hdfs**</strong>上创建目录** <em>示例：hadoop fs  -mkdir  -p  /aaa/bbb/cc/dd</em></p>
+<p><strong>-moveFromLocal</strong> <strong>功能：从本地剪切粘贴到hdfs</strong> <em>示例：hadoop  fs  - moveFromLocal  /home/hadoop/a.txt  /aaa/bbb/cc/dd</em> <strong>-moveToLocal</strong> <strong>功能：从hdfs**</strong>剪切粘贴到本地** <em>示例：hadoop  fs  - moveToLocal   /aaa/bbb/cc/dd  /home/hadoop/a.txt</em></p>
+<p><strong>–appendToFile</strong> <strong>功能：追加一个文件到已经存在的文件末尾</strong> <em>示例：hadoop  fs  -appendToFile  ./hello.txt  hdfs://hadoop-server01:9000/hello.txt</em> <em>可以简写为：</em> <em>Hadoop  fs  -appendToFile  ./hello.txt  /hello.txt</em>  </p>
+<p><strong>-cat</strong> <strong>功能：显示文件内容</strong> <em>示例：hadoop fs -cat  /hello.txt</em> //Hadoop fs -cat /hello.txt | more      //就会出现可以翻页的more.   <strong>-tail</strong> <strong>功能：显示一个文件的末尾</strong> _示例：hadoop  fs  -tail  /weblog/access_log.1_ <strong>-text</strong> <strong>功能：以字符形式打印一个文件的内容</strong> _示例：hadoop  fs  -text  /weblog/access_log.1_</p>
+<p><strong>-chgrp    //**</strong>改组<strong> </strong>-chmod   //<strong>**该权限</strong> <strong>-chown   //**</strong>改组<strong> </strong>和<strong> </strong>该用户！<strong> </strong>功能：linux<strong>**文件系统中的用法一样，对文件所属权限</strong> <em>示例：</em> <em>hadoop  fs  -chmod  666  /hello.txt</em> <em>hadoop  fs  -chown  someuser:somegrp   /hello.txt   //someuser__用户(<strong>但是不回去检查是否存在！)   somegrp</strong>组</em></p>
+<p><strong>-copyFromLocal</strong> <strong>功能：从本地文件系统中拷贝文件到hdfs**</strong>路径去<strong> <em>示例：hadoop  fs  -copyFromLocal  ./jdk.tar.gz  /aaa/</em> </strong>-copyToLocal<strong> </strong>功能：从hdfs<strong>**拷贝到本地</strong> <em>示例：hadoop fs -copyToLocal /aaa/jdk.tar.gz</em></p>
+<p><strong>-cp</strong> <strong>功能：从hdfs**</strong>的一个路径拷贝hdfs<strong>**的另一个路径</strong> <em>示例： hadoop  fs  -cp  /aaa/jdk.tar.gz  /bbb/jdk.tar.gz.2</em>   <strong>-mv</strong> <strong>功能：在hdfs**</strong>目录中移动文件** <em>示例： hadoop  fs  -mv  /aaa/jdk.tar.gz  /</em></p>
+<p><strong>-get</strong> <strong>功能：等同于copyToLocal**</strong>，就是从hdfs<strong>**下载文件到本地</strong> 示例：hadoop fs -get  /aaa/jdk.tar.gz <strong>-getmerge</strong> <strong>功能：合并下载多个文件   //**</strong>注意是合并成一个文件了，txt<strong> </strong>等*<em> <em>示例：<strong>比如hdfs</strong>的目录 /aaa/__下有多个文件:log.1, log.2,log.3,…</em> hadoop fs -getmerge /aaa/log.</em> ./log.sum</p>
+<p><strong>-put</strong> <strong>功能：等同于copyFromLocal</strong> <em>示例：hadoop  fs  -put  /aaa/jdk.tar.gz  /bbb/jdk.tar.gz.2</em>  </p>
+<p><strong>-rm</strong> <strong>功能：删除文件或文件夹</strong> <em>示例：hadoop fs -rm -r /aaa/bbb/</em>   <strong>-rmdir</strong> <strong>功能：删除空目录</strong> <em>示例：hadoop  fs  -rmdir   /aaa/bbb/ccc</em></p>
+<p><strong>-df</strong> <strong>功能：统计文件系统的可用空间信息</strong> <em>示例：hadoop  fs  -df  -h  /</em>   <strong>-du</strong> <strong>功能：统计文件夹的大小信息</strong> <em>示例：</em> <em>hadoop  fs  -du  -s  -h /aaa/*</em>  </p>
+<p><strong>-count</strong> <strong>功能：统计一个指定目录下的文件节点数量</strong> <em>示例：hadoop fs -count /aaa/</em>  </p>
+<p><strong>-setrep</strong> <strong>功能：设置hdfs**</strong>中文件的副本数量** <em>示例：hadoop fs -setrep 3 /aaa/jdk.tar.gz</em>   但是注意： 中间只开启了DataNode三个机器——<em>&lt;<strong>这里设置的副本数只是记录在namenode</strong>的元数据中，是否真的会有这么多副本，还得看datanode__的数量！现在只有三个，当有三个以上的DataNode__节点的时候，会自动从namenode</em> <em>元数据当中知道有十个，当然就会在新建的DataNode__中添加此结点。&gt;</em>  </p>
+<h1 id="HDFS原理篇"><a href="#HDFS原理篇" class="headerlink" title="******HDFS原理篇******"></a>******HDFS原理篇******</h1><h1 id="4-hdfs的工作机制"><a href="#4-hdfs的工作机制" class="headerlink" title="4. hdfs的工作机制"></a>4. hdfs的工作机制</h1><p><em>（工作机制的学习主要是为加深对分布式系统的理解，以及增强遇到各种问题时的分析解决能力，形成一定的集群运维能力）</em>  <em>注：很多不是真正理解hadoop__技术体系的人会常常觉得HDFS__可用于网盘类应用，但实际并非如此。要想将技术准确用在恰当的地方，必须对技术有深刻的理解</em></p>
+<h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><ol>
+<li>HDFS集群分为两大角色：NameNode、DataNode</li>
+<li>NameNode负责管理整个文件系统的元数据</li>
+<li>DataNode 负责管理用户的文件数据块</li>
+<li>文件会按照固定的大小（blocksize）切成若干块后分布式存储在若干台datanode上</li>
+<li>每一个文件块可以有多个副本，并存放在不同的datanode上</li>
+<li>Datanode会定期向Namenode汇报自身所保存的文件block信息，而namenode则会负责保持文件的副本数量</li>
+<li>HDFS的内部工作机制对客户端保持透明，客户端请求访问HDFS都是通过向namenode申请来进行</li>
+</ol>
+<h2 id="4-2-HDFS写数据流程"><a href="#4-2-HDFS写数据流程" class="headerlink" title="4.2 HDFS写数据流程"></a>4.2 HDFS写数据流程</h2><h3 id="4-2-1-概述"><a href="#4-2-1-概述" class="headerlink" title="4.2.1 概述"></a>4.2.1 概述</h3><p>客户端要向HDFS写数据，首先要跟namenode通信以确认可以写文件并获得接收文件block的datanode，然后，客户端按顺序将文件逐个block传递给相应datanode，并由接收到block的datanode负责向其他datanode复制block的副本</p>
+<h3 id="4-2-2-详细步骤图"><a href="#4-2-2-详细步骤图" class="headerlink" title="4.2.2 详细步骤图"></a>4.2.2 详细步骤图</h3><h3 id="4-2-3-详细步骤解析"><a href="#4-2-3-详细步骤解析" class="headerlink" title="4.2.3 详细步骤解析"></a>4.2.3 详细步骤解析</h3><p>1、根namenode通信请求上传文件，namenode检查目标文件是否已存在，父目录是否存在 2、namenode返回是否可以上传 3、client请求第一个 block该传输到哪些datanode服务器上 4、namenode返回3个datanode服务器ABC 5、client请求3台dn中的一台A上传数据（本质上是一个RPC调用，建立pipeline），A收到请求会继续调用B，然后B调用C，将真个pipeline建立完成，逐级返回客户端 6、client开始往A上传第一个block（先从磁盘读取数据放到一个本地内存缓存），以packet为单位，A收到一个packet就会传给B，B传给C；A每传一个packet会放入一个应答队列等待应答 7、当一个block传输完成之后，client再次请求namenode上传第二个block的服务器。</p>
+<h2 id="4-3-HDFS读数据流程"><a href="#4-3-HDFS读数据流程" class="headerlink" title="4.3. HDFS读数据流程"></a>4.3. HDFS读数据流程</h2><h3 id="4-3-1-概述"><a href="#4-3-1-概述" class="headerlink" title="4.3.1 概述"></a>4.3.1 概述</h3><p>客户端将要读取的文件路径发送给namenode，namenode获取文件的元信息（主要是block的存放位置信息）返回给客户端，客户端根据返回的信息找到相应datanode逐个获取文件的block并在客户端本地进行数据追加合并从而获得整个文件  </p>
+<h3 id="4-3-2-详细步骤图"><a href="#4-3-2-详细步骤图" class="headerlink" title="4.3.2 详细步骤图"></a>4.3.2 详细步骤图</h3><h3 id="4-3-3-详细步骤解析"><a href="#4-3-3-详细步骤解析" class="headerlink" title="4.3.3 详细步骤解析"></a>4.3.3 详细步骤解析</h3><p>1、跟namenode通信查询元数据，找到文件块所在的datanode服务器 2、挑选一台datanode（就近原则，然后随机）服务器，请求建立socket流 3、datanode开始发送数据（从磁盘里面读取数据放入流，以packet为单位来做校验） 4、客户端以packet为单位接收，现在本地缓存，然后写入目标文件                  </p>
+<h1 id="5-NAMENODE工作机制"><a href="#5-NAMENODE工作机制" class="headerlink" title="5. NAMENODE工作机制"></a>5. NAMENODE工作机制</h1><p>学习目标：理解namenode的工作机制尤其是<strong>元数据管理</strong>机制，以增强对HDFS工作原理的理解，及培养hadoop集群运营中“性能调优”、“namenode”故障问题的分析解决能力  <em>问题场景：</em> <em>1__、集群启动后，可以查看文件，但是上传文件时报错，打开web__页面可看到namenode__正处于safemode__状态，怎么处理？</em> <em>2__、Namenode__服务器的磁盘故障导致namenode__宕机，如何挽救集群及数据？</em> <em>3__、Namenode__是否可以有多个？namenode__内存要配置多大？namenode__跟集群数据存储能力有关系吗？</em> <em>4__、文件的blocksize__究竟调大好还是调小好？</em> _……_  <em>诸如此类问题的回答，都需要基于对namenode__自身的工作原理的深刻理解</em> </p>
+<h2 id="5-1-NAMENODE职责"><a href="#5-1-NAMENODE职责" class="headerlink" title="5.1 NAMENODE职责"></a>5.1 NAMENODE职责</h2><p>NAMENODE职责： 负责客户端请求的响应 元数据的管理（查询，修改）</p>
+<h2 id="5-2-元数据管理"><a href="#5-2-元数据管理" class="headerlink" title="5.2 元数据管理"></a>5.2 元数据管理</h2><p>namenode对数据的管理采用了三种存储形式： 内存元数据(NameSystem) 磁盘元数据镜像文件 数据操作日志文件（可通过日志运算出元数据）</p>
+<h3 id="5-2-1-元数据存储机制"><a href="#5-2-1-元数据存储机制" class="headerlink" title="5.2.1 元数据存储机制"></a>5.2.1 元数据存储机制</h3><p>A、内存中有一份完整的元数据(<strong>内存meta data</strong>) B、磁盘有一个“准完整”的元数据镜像（<strong>fsimage</strong>）文件(在namenode的工作目录中) C、用于衔接内存metadata和持久化元数据镜像fsimage之间的操作日志（<strong>edits**</strong>文件**）<em>注：当客户端对<strong>hdfs</strong>中的文件进行新增或者修改操作，操作记录首先被记入edits__日志文件中，当客户端操作成功后，相应的元数据会更新到内存meta.data__中</em></p>
+<h3 id="5-2-2-元数据手动查看"><a href="#5-2-2-元数据手动查看" class="headerlink" title="5.2.2 元数据手动查看"></a>5.2.2 元数据手动查看</h3><p>可以通过hdfs的一个工具来查看edits中的信息 bin/hdfs oev -i edits -o edits.xmlbin/hdfs oiv -i fsimage_0000000000000000087 -p XML -o fsimage.xml</p>
+<h3 id="5-2-3-元数据的checkpoint"><a href="#5-2-3-元数据的checkpoint" class="headerlink" title="5.2.3 元数据的checkpoint"></a>5.2.3 元数据的checkpoint</h3><p>每隔一段时间，会由secondary namenode将namenode上积累的所有edits和一个最新的fsimage下载到本地，并加载到内存进行merge（这个过程称为checkpoint）  </p>
+<h4 id="checkpoint的详细过程"><a href="#checkpoint的详细过程" class="headerlink" title="checkpoint的详细过程"></a>checkpoint的详细过程</h4><h4 id="checkpoint操作的触发条件配置参数"><a href="#checkpoint操作的触发条件配置参数" class="headerlink" title="checkpoint操作的触发条件配置参数"></a>checkpoint操作的触发条件配置参数</h4><p>dfs.namenode.checkpoint.check.period=60  #检查触发条件是否满足的频率，60秒 dfs.namenode.checkpoint.dir=file://${hadoop.tmp.dir}/dfs/namesecondary #以上两个参数做checkpoint操作时，secondary namenode的本地工作目录 dfs.namenode.checkpoint.edits.dir=${dfs.namenode.checkpoint.dir}   dfs.namenode.checkpoint.max-retries=3  #最大重试次数 dfs.namenode.checkpoint.period=3600  #两次checkpoint之间的时间间隔3600秒 dfs.namenode.checkpoint.txns=1000000 #两次checkpoint之间最大的操作记录</p>
+<h4 id="checkpoint的附带作用"><a href="#checkpoint的附带作用" class="headerlink" title="checkpoint的附带作用"></a>checkpoint的附带作用</h4><p>namenode和secondary namenode的工作目录存储结构完全相同，所以，当namenode故障退出需要重新恢复时，可以从secondary namenode的工作目录中将fsimage拷贝到namenode的工作目录，以恢复namenode的元数据    </p>
+<h1 id="6-DATANODE的工作机制"><a href="#6-DATANODE的工作机制" class="headerlink" title="6. DATANODE的工作机制"></a>6. DATANODE的工作机制</h1><p><em>问题场景：</em> <em>1__、集群容量不够，怎么扩容？</em> <em>2__、如果有一些datanode__宕机，该怎么办？</em> <em>3__、datanode__明明已启动，但是集群中的可用datanode__列表中就是没有，怎么办？</em>  <em>以上这类问题的解答，有赖于对datanode__工作机制的深刻理解</em></p>
+<h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><p>1、Datanode工作职责： 存储管理用户的文件块数据 定期向namenode汇报自身所持有的block信息（通过心跳信息上报） （这点很重要，因为，当集群中发生某些block副本失效时，集群如何恢复block初始副本数量的问题）  </p>
+<property> <name>dfs.blockreport.intervalMsec</name> <value>3600000</value> <description>Determines block reporting interval in milliseconds.</description> </property>
+
+<p>  2、Datanode掉线判断时限参数 datanode进程死亡或者网络故障造成datanode无法与namenode通信，namenode不会立即把该节点判定为死亡，要经过一段时间，这段时间暂称作超时时长。HDFS默认的超时时长为10分钟+30秒。如果定义超时时间为timeout，则超时时长的计算公式为： timeout  = 2 <em> heartbeat.recheck.interval + 10 </em> dfs.heartbeat.interval。 而默认的heartbeat.recheck.interval 大小为5分钟，dfs.heartbeat.interval默认为3秒。 需要注意的是hdfs-site.xml 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。所以，举个例子，如果heartbeat.recheck.interval设置为5000（毫秒），dfs.heartbeat.interval设置为3（秒，默认），则总的超时时间为40秒。  </p>
+  <property> <name>heartbeat.recheck.interval</name> <value>2000</value> </property> <property> <name>dfs.heartbeat.interval</name> <value>1</value> </property>
+
+
+
+<h2 id="6-2-观察验证DATANODE功能"><a href="#6-2-观察验证DATANODE功能" class="headerlink" title="6.2 观察验证DATANODE功能"></a>6.2 观察验证DATANODE功能</h2><p>上传一个文件，观察文件的block具体的物理存放情况：   在每一台datanode机器上的这个目录中能找到文件的切块： /home/hadoop/app/hadoop-2.4.1/tmp/dfs/data/current/BP-193442119-192.168.2.120-1432457733977/current/finalized   更新当前目录为： /home/hadoop/hdpdata/dfs/data/current/BP-1525464751-192.168.78.201-1515703290610/current/finalized/subdir0/subdir0</p>
+<h1 id="HDFS应用开发篇"><a href="#HDFS应用开发篇" class="headerlink" title="******HDFS应用开发篇******"></a>******HDFS应用开发篇******</h1><p>hdfs dfsadmin -report   //注意这里进行shell中的集群状态的打印。 大数据list hashmap&lt;不常用&gt;；常常是在 iterator当中 进行迭代取值（或者在hashmap的数据池当中进行获取），这样大数据  方便拿到数据！ HDFS加上MR在上层跑应用程序的框架来说，我们需要进行MR在HDFS中调用一小片的数据！</p>
+<h1 id="7-HDFS的java操作"><a href="#7-HDFS的java操作" class="headerlink" title="7. HDFS的java操作"></a>7. HDFS的java操作</h1><p><em>hdfs__在生产应用中主要是客户端的开发，其核心步骤是从hdfs__提供的api__中构造一个HDFS__的访问客户端对象，然后通过该客户端对象操作（增删改查）HDFS__上的文件</em></p>
+<h2 id="7-1-搭建开发环境"><a href="#7-1-搭建开发环境" class="headerlink" title="7.1 搭建开发环境"></a>7.1 搭建开发环境</h2><p>1、引入依赖</p>
+<dependency> <groupid>org.apache.hadoop</groupid> <artifactid>hadoop-client</artifactid> <version>2.6.1</version> </dependency>
+
+<p><em>注：如需手动引入jar__包，hdfs__的jar__包—-hadoop__的安装目录的share__下</em> 2、window下开发的说明 建议在linux下进行hadoop应用的开发，不会存在兼容性问题。如在window上做客户端应用开发，需要设置以下环境：</p>
+<ul>
+<li>在windows的某个目录下解压一个hadoop的安装包</li>
+<li>将安装包下的lib和bin目录用对应windows版本平台编译的本地库替换</li>
+<li>在window系统中配置HADOOP_HOME指向你解压的安装包</li>
+<li>在windows系统的path变量中加入hadoop的bin目录</li>
+</ul>
+<h2 id="7-2-获取api中的客户端对象"><a href="#7-2-获取api中的客户端对象" class="headerlink" title="7.2 获取api中的客户端对象"></a>7.2 获取api中的客户端对象</h2><p>在java中操作hdfs，首先要获得一个客户端实例</p>
+<p>Configuration conf = new Configuration() FileSystem fs = FileSystem.get(conf)</p>
+<p>  而我们的操作目标是HDFS，所以获取到的fs对象应该是DistributedFileSystem的实例； get方法是从何处判断具体实例化那种客户端类呢？ <strong>——从conf**</strong>中的一个参数 fs.defaultFS<strong>**的配置值判断；</strong>   如果我们的代码中没有指定fs.defaultFS，并且工程classpath下也没有给定相应的配置，conf中的默认值就来自于hadoop的jar包中的core-default.xml，默认值为： file:///，则获取的将不是一个DistributedFileSystem的实例，而是一个本地文件系统的客户端对象    </p>
+<h2 id="7-3-DistributedFileSystem实例对象所具备的方法"><a href="#7-3-DistributedFileSystem实例对象所具备的方法" class="headerlink" title="7.3 DistributedFileSystem实例对象所具备的方法"></a>7.3 DistributedFileSystem实例对象所具备的方法</h2><h2 id="7-4-HDFS客户端操作数据代码示例："><a href="#7-4-HDFS客户端操作数据代码示例：" class="headerlink" title="7.4 HDFS客户端操作数据代码示例："></a>7.4 HDFS客户端操作数据代码示例：</h2><h3 id="7-4-1-文件的增删改查"><a href="#7-4-1-文件的增删改查" class="headerlink" title="7.4.1 文件的增删改查"></a>7.4.1 文件的增删改查</h3><p>public class HdfsClient {   FileSystem fs = null;   @Before public void init() throws Exception {   // 构造一个配置参数对象，设置一个参数：我们要访问的hdfs的URI // 从而FileSystem.get()方法就知道应该是去构造一个访问hdfs文件系统的客户端，以及hdfs的访问地址 // new Configuration();的时候，它就会去加载jar包中的hdfs-default.xml // 然后再加载classpath下的hdfs-site.xml Configuration conf = new Configuration(); conf.set(“fs.defaultFS”, “hdfs://hdp-node01:9000”); /<strong> <em> 参数优先级： 1、客户端代码中设置的值 2、classpath下的用户自定义配置文件 3、然后是服务器的默认配置 </em>/ conf.set(“dfs.replication”, “3”);   // 获取一个hdfs的访问客户端，根据参数，这个实例应该是DistributedFileSystem的实例 // fs = FileSystem.get(conf);   // 如果这样去获取，那conf里面就可以不要配”fs.defaultFS”参数，而且，这个客户端的身份标识已经是hadoop用户 fs = FileSystem.get(new URI(“hdfs://hdp-node01:9000”), conf, “hadoop”);   }   /</strong> <em> 往hdfs上传文件 </em> <em> @throws Exception </em>/ @Test public void testAddFileToHdfs() throws Exception {   // 要上传的文件所在的本地路径 Path src = new Path(“g:/redis-recommend.zip”); // 要上传到hdfs的目标路径 Path dst = new Path(“/aaa”); fs.copyFromLocalFile(src, dst); fs.close(); }   /<strong> <em> 从hdfs中复制文件到本地文件系统 </em> <em> @throws IOException </em> @throws IllegalArgumentException */ @Test public void testDownloadFileToLocal() throws IllegalArgumentException, IOException { fs.copyToLocalFile(new Path(“/jdk-7u65-linux-i586.tar.gz”), new Path(“d:/“)); fs.close(); }   @Test public void testMkdirAndDeleteAndRename() throws IllegalArgumentException, IOException {   // 创建目录 fs.mkdirs(new Path(“/a1/b1/c1”));   // 删除文件夹 ，如果是非空文件夹，参数2必须给值true fs.delete(new Path(“/aaa”), true);   // 重命名文件或文件夹 fs.rename(new Path(“/a1”), new Path(“/a2”));   }   /</strong> <em> 查看目录信息，只显示文件 </em> <em> @throws IOException </em> @throws IllegalArgumentException <em> @throws FileNotFoundException </em>/ @Test public void testListFiles() throws FileNotFoundException, IllegalArgumentException, IOException {   // 思考：为什么返回迭代器，而不是List之类的容器 RemoteIterator<locatedfilestatus> listFiles = fs.listFiles(new Path(“/“), true);   while (listFiles.hasNext()) { LocatedFileStatus fileStatus = listFiles.next(); System.out.println(fileStatus.getPath().getName()); System.out.println(fileStatus.getBlockSize()); System.out.println(fileStatus.getPermission()); System.out.println(fileStatus.getLen()); BlockLocation[] blockLocations = fileStatus.getBlockLocations(); for (BlockLocation bl : blockLocations) { System.out.println(“block-length:” + bl.getLength() + “–” + “block-offset:” + bl.getOffset()); String[] hosts = bl.getHosts(); for (String host : hosts) { System.out.println(host); } } System.out.println(“————–为angelababy打印的分割线————–”); } }   /*<em> </em> 查看文件及文件夹信息 <em> </em> @throws IOException <em> @throws IllegalArgumentException </em> @throws FileNotFoundException */ @Test public void testListAll() throws FileNotFoundException, IllegalArgumentException, IOException {   FileStatus[] listStatus = fs.listStatus(new Path(“/“));   String flag = “d–             “; for (FileStatus fstatus : listStatus) { if (fstatus.isFile())  flag = “f–         “; System.out.println(flag + fstatus.getPath().getName()); } } }</locatedfilestatus></p>
+<h3 id="7-4-2-通过流的方式访问hdfs"><a href="#7-4-2-通过流的方式访问hdfs" class="headerlink" title="7.4.2 通过流的方式访问hdfs"></a>7.4.2 通过流的方式访问hdfs</h3><p><em>/**</em> _*_ <em>相对那些封装好的方法而言的更底层一些的操作方式</em> _*_ <em>上层那些<strong>mapreduce   spark</strong>等运算框架，去<strong>hdfs</strong>中获取数据的时候，就是调的这种底层的__api</em> _ * @author_ _ <em>_ _ </em>/_ <em>public class StreamAccess {</em>  _         FileSystem fs = null;_  _         @Before_ _         public void init() throws Exception {_  _                   Configuration conf = new Configuration();_ _                   fs = FileSystem.get(new URI(“hdfs://hdp-node01:9000”), conf, “hadoop”);_  _         }_  _                  /<strong>_ _*_ <em>通过流的方式上传文件到__hdfs</em> _          * @throws Exception_ _          */_ _         @Test_ _         public void testUpload() throws Exception {_  _                   FSDataOutputStream outputStream = fs.create(new Path(“/angelababy.love”), true);_ _                   FileInputStream inputStream = new FileInputStream(“c:/angelababy.love”);_  _                   IOUtils.copy(inputStream, outputStream);_  _         }_  _         @Test_ _         public void testDownLoadFileToLocal() throws IllegalArgumentException, IOException{_  _                   //<strong>先获取一个文件的输入流</strong>----<strong>针对</strong>hdfs__上的_ _                   FSDataInputStream in = fs.open(new Path(“/jdk-7u65-linux-i586.tar.gz”));_  _                   //<strong>再构造一个文件的输出流</strong>----<strong>针对本地的_ _                   FileOutputStream out = new FileOutputStream(new File(“c:/jdk.tar.gz”));_  _                   //</strong>再将输入流中数据传输到输出流_ _                   IOUtils.copyBytes(in, out, 4096);_   _         }_   _         /</strong>_ _          * hdfs__支持随机定位进行文件读取，而且可以方便地读取指定长度_ _*_ <em>用于上层分布式运算框架并发处理数据</em> _          * @throws IllegalArgumentException_ _          * @throws IOException_ _          <em>/_ _         @Test_ _         public void testRandomAccess() throws IllegalArgumentException, IOException{_ _                   //<strong>先获取一个文件的输入流</strong>----<strong>针对</strong>hdfs__上的_ _                   FSDataInputStream in = fs.open(new Path(“/iloveyou.txt”));_   _                   //<strong>可以将流的起始偏移量进行自定义_ _                   in.seek(22);_  _                   //</strong>再构造一个文件的输出流<strong>----</strong>针对本地的_ _                   FileOutputStream out = new FileOutputStream(new File(“c:/iloveyou.line.2.txt”));_  _                   IOUtils.copyBytes(in,out,19L,true);_  _         }_    _         /**_ _\</em>_ <em>显示<strong>hdfs</strong>上文件的内容</em> <em>* @throws IOException</em> <em>* @throws IllegalArgumentException</em> _          */_ _         @Test_ _         public void testCat() throws IllegalArgumentException, IOException{_  _                   FSDataInputStream in = fs.open(new Path(“/iloveyou.txt”));_  _                   IOUtils.copyBytes(in, System.out, 1024);_ _         }_ _}_</p>
+<h3 id="7-4-3-场景编程"><a href="#7-4-3-场景编程" class="headerlink" title="7.4.3 场景编程"></a>7.4.3 场景编程</h3><p>在mapreduce 、spark等运算框架中，有一个核心思想就是将运算移往数据，或者说，就是要在并发计算中尽可能让运算本地化，这就需要获取数据所在位置的信息并进行相应范围读取 以下模拟实现：获取一个文件的所有block位置信息，然后读取指定block中的内容</p>
+<p>_         @Test_ _         public void testCat() throws IllegalArgumentException, IOException{_  _                   FSDataInputStream in = fs.open(new Path(“/weblog/input/access.log.10”));_ _                   //<strong>拿到文件信息_ _                   FileStatus[] listStatus = fs.listStatus(new Path(“/weblog/input/access.log.10”));_ _                   //</strong>获取这个文件的所有<strong>block</strong>的信息_ _                   BlockLocation[] fileBlockLocations = fs.getFileBlockLocations(listStatus[0], 0L, listStatus[0].getLen());_ _                   //<strong>第一个</strong>block__的长度_ _                   long length = fileBlockLocations[0].getLength();_ _                   //<strong>第一个</strong>block__的起始偏移量_ _                   long offset = fileBlockLocations[0].getOffset();_  _                   System.out.println(length);_ _                   System.out.println(offset);_  _                   //<strong>获取第一个</strong>block__写入输出流_ <em>//               IOUtils.copyBytes(in, System.out, (int)length);</em> _                   byte[] b = new byte[4096];_  _                   FileOutputStream os = new FileOutputStream(new File(“d:/block0”));_ _                   while(in.read(offset, b, 0, 4096)!=-1){_ _                            os.write(b);_ _                            offset += 4096;_ _                            if(offset&gt;=length) return;_ _                   };_ _                   os.flush();_ _                   os.close();_ _                   in.close();_ _         }_</p>
+<p>  //注意：其实在client //只需要导入 hadooop-common.jar //还有对应的 Hadoopjars-common-lib对应上方 jar包的依赖也是需要的！ //《Hadoop 技术内幕》可以看一下，研究源代码！-自己打断点这样学习源码更加省力一点。 //注意 源码调试可以看一下：视频day07-06 第一个视频！已经跳过         原理：1.写一个java定时收集数据的程序，进行shell脚本的定时数据的手机、 Timer、线程池、scheduler、code？进行java定时 或者利用服务器进行定时启动-à天 小时  时间段，每隔多少小时，linux文档当中启动服务器进行采集数据–&gt; 2.然后 copyFromLocal() 放入hdfs当中，每一个小时进行一次的数据分析！   有需求/挑战 就是有市场–&gt;数据的采集也是有相应的api文档进行开发的！   首先过滤（上传到一个地方检查是否合法），然后 上传hdfs ！要进行改名！   脚本因为没有对应的代码规范、编译检错。所以需要我们自己对于这种开发进行 代码模板规范 看懂老师相应的代码就好！慢慢的一点点看  去开发！   模板：先export 再定义一些 固定文件目录常量   编写代码</p>
+<h1 id="8-案例1：开发shell采集脚本"><a href="#8-案例1：开发shell采集脚本" class="headerlink" title="8. 案例1：开发shell采集脚本"></a>8. 案例1：开发shell采集脚本</h1><h2 id="8-1需求说明"><a href="#8-1需求说明" class="headerlink" title="8.1需求说明"></a>8.1需求说明</h2><p>点击流日志每天都10T，在业务应用服务器上，需要准实时上传至数据仓库（Hadoop HDFS）上</p>
+<h2 id="8-2需求分析"><a href="#8-2需求分析" class="headerlink" title="8.2需求分析"></a>8.2需求分析</h2><p>一般上传文件都是在凌晨24点操作，由于很多种类的业务数据都要在晚上进行传输，为了减轻服务器的压力<strong>，避开高峰期</strong>。 如果需要伪实时的上传，则采用定时上传的方式  </p>
+<h2 id="8-3技术分析"><a href="#8-3技术分析" class="headerlink" title="8.3技术分析"></a>8.3技术分析</h2><p><strong>HDFS SHELL</strong>:  hadoop fs –put xxxx.tar  /data    还可以使用 Java Api 满足上传一个文件，不能满足定时、周期性传入。 <strong>定时调度器</strong>： <strong>Linux crontab</strong> crontab -e <em>/5 </em> <em> </em> * $home/bin/command.sh   //五分钟执行一次 系统会自动执行脚本，每5分钟一次，执行时判断文件是否符合上传规则，符合则上传</p>
+<h2 id="8-4实现流程"><a href="#8-4实现流程" class="headerlink" title="8.4实现流程"></a>8.4实现流程</h2><h3 id="8-4-1日志产生程序"><a href="#8-4-1日志产生程序" class="headerlink" title="8.4.1日志产生程序"></a>8.4.1日志产生程序</h3><p>日志产生程序将日志生成后，产生一个一个的文件，使用滚动模式创建文件名。 日志生成的逻辑由业务系统决定，比如在log4j配置文件中配置生成规则，如：当xxxx.log 等于10G时，滚动生成新日志</p>
+<p> <em>log4j.logger.msg=info,msg</em> <em>log4j.appender.msg=cn.maoxiangyi.MyRollingFileAppender</em> <em>log4j.appender.msg.layout=org.apache.log4j.PatternLayout</em> <em>log4j.appender.msg.layout.ConversionPattern=%m%n</em> <em>log4j.appender.msg.datePattern=’.’yyyy-MM-dd</em> <em>log4j.appender.msg.Threshold=info</em> <em>log4j.appender.msg.append=true</em> <em>log4j.appender.msg.encoding=UTF-8</em> <em>log4j.appender.msg.MaxBackupIndex=100</em> <em>log4j.appender.msg.MaxFileSize=10GB</em> <em>log4j.appender.msg.File=/home/hadoop/logs/log/access.log</em></p>
+<p>  细节：</p>
+<ul>
+<li>如果日志文件后缀是1\2\3等数字，该文件满足需求可以上传的话。把该文件移动到准备上传的工作区间。</li>
+<li>工作区间有文件之后，可以使用hadoop put命令将文件上传。</li>
+</ul>
+<p>阶段问题：</p>
+<ul>
+<li>待上传文件的工作区间的文件，在上传完成之后，是否需要删除掉。</li>
+</ul>
+<h3 id="8-4-2伪代码"><a href="#8-4-2伪代码" class="headerlink" title="8.4.2伪代码"></a>8.4.2伪代码</h3><p>使用ls命令读取指定路径下的所有文件信息， ls  | while read  line //判断line这个文件名称是否符合规则 if       line=access.log.* ( 将文件移动到待上传的工作区间 )   //批量上传工作区间的文件 hadoop fs  –put   xxx     <strong>脚本写完之后</strong>，配置linux定时任务，每5分钟运行一次。  </p>
+<h2 id="8-5代码实现"><a href="#8-5代码实现" class="headerlink" title="8.5代码实现"></a>8.5代码实现</h2><p>代码第一版本，实现基本的上传功能和定时调度功能   代码第二版本：增强版V2(基本能用，还是不够健全)</p>
+<h2 id="8-6效果展示及操作步骤"><a href="#8-6效果展示及操作步骤" class="headerlink" title="8.6效果展示及操作步骤"></a>8.6效果展示及操作步骤</h2><p>1、日志收集文件收集数据，并将数据保存起来，效果如下：   2、上传程序通过crontab定时调度 3、程序运行时产生的临时文件 4、Hadoo hdfs上的效果 作业：第七节都要自己敲一遍！ 然而第八节  这个是企业里面实实在在就是这样写的！所以自己最好实实在在敲一遍！</p>
+<h1 id="9-案例2：开发JAVA采集程序"><a href="#9-案例2：开发JAVA采集程序" class="headerlink" title="9. 案例2：开发JAVA采集程序"></a>9. 案例2：开发JAVA采集程序</h1><h2 id="9-1-需求"><a href="#9-1-需求" class="headerlink" title="9.1 需求"></a>9.1 需求</h2><p>从外部购买数据，数据提供方会实时将数据推送到6台FTP服务器上，我方部署6台接口采集机来对接采集数据，并上传到HDFS中   提供商在FTP上生成数据的规则是以小时为单位建立文件夹(2016-03-11-10)，每分钟生成一个文件（00.dat,01.data,02.dat,……..）   提供方不提供数据备份，推送到FTP服务器的数据如果丢失，不再重新提供，且FTP服务器磁盘空间有限，最多存储最近10小时内的数据   由于每一个文件比较小，只有150M左右，因此，我方在上传到HDFS过程中，需要将15分钟时段的数据合并成一个文件上传到HDFS   为了区分数据丢失的责任，我方在下载数据时最好进行校验</p>
+<h2 id="9-2-设计分析"><a href="#9-2-设计分析" class="headerlink" title="9.2 设计分析"></a>9.2 设计分析</h2><pre><code>Kotlin
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="1124.html" title="day07_BigData渐进学习_aclear_fire">1124.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/b7a2b11.html" rel="next" title="VMWare中CentOS 6.7_x64mini版本安装(NAT方式)">
+                <i class="fa fa-chevron-left"></i> VMWare中CentOS 6.7_x64mini版本安装(NAT方式)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/8416728a.html" rel="prev" title="hadoop 2.4.1集群搭建手册">
+                hadoop 2.4.1集群搭建手册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Day07开始我们开始-4-1关于服务器HDFS内部的工作原理开始进行-研究-探讨。"><span class="nav-number">1.</span> <span class="nav-text">Day07开始我们开始 4.1关于服务器HDFS内部的工作原理开始进行 研究 探讨。</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#课程大纲（HDFS详解）"><span class="nav-number"></span> <span class="nav-text">课程大纲（HDFS详解）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS基本概念篇"><span class="nav-number"></span> <span class="nav-text">******HDFS基本概念篇******</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HDFS前言"><span class="nav-number"></span> <span class="nav-text">1. HDFS前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-HDFS的概念和特性"><span class="nav-number"></span> <span class="nav-text">2. HDFS的概念和特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS基本操作篇"><span class="nav-number"></span> <span class="nav-text">******HDFS基本操作篇******</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-HDFS的shell-命令行客户端-操作"><span class="nav-number"></span> <span class="nav-text">3. HDFS的shell(命令行客户端)操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-HDFS命令行客户端使用"><span class="nav-number"></span> <span class="nav-text">3.1 HDFS命令行客户端使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-命令行客户端支持的命令参数"><span class="nav-number"></span> <span class="nav-text">3.2 命令行客户端支持的命令参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-常用命令参数介绍"><span class="nav-number"></span> <span class="nav-text">3.2 常用命令参数介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS原理篇"><span class="nav-number"></span> <span class="nav-text">******HDFS原理篇******</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-hdfs的工作机制"><span class="nav-number"></span> <span class="nav-text">4. hdfs的工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-概述"><span class="nav-number"></span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-HDFS写数据流程"><span class="nav-number"></span> <span class="nav-text">4.2 HDFS写数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-概述"><span class="nav-number"></span> <span class="nav-text">4.2.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-详细步骤图"><span class="nav-number"></span> <span class="nav-text">4.2.2 详细步骤图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-详细步骤解析"><span class="nav-number"></span> <span class="nav-text">4.2.3 详细步骤解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-HDFS读数据流程"><span class="nav-number"></span> <span class="nav-text">4.3. HDFS读数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-概述"><span class="nav-number"></span> <span class="nav-text">4.3.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-详细步骤图"><span class="nav-number"></span> <span class="nav-text">4.3.2 详细步骤图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-详细步骤解析"><span class="nav-number"></span> <span class="nav-text">4.3.3 详细步骤解析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-NAMENODE工作机制"><span class="nav-number"></span> <span class="nav-text">5. NAMENODE工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-NAMENODE职责"><span class="nav-number"></span> <span class="nav-text">5.1 NAMENODE职责</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-元数据管理"><span class="nav-number"></span> <span class="nav-text">5.2 元数据管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-元数据存储机制"><span class="nav-number"></span> <span class="nav-text">5.2.1 元数据存储机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-元数据手动查看"><span class="nav-number"></span> <span class="nav-text">5.2.2 元数据手动查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-3-元数据的checkpoint"><span class="nav-number"></span> <span class="nav-text">5.2.3 元数据的checkpoint</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#checkpoint的详细过程"><span class="nav-number">1.</span> <span class="nav-text">checkpoint的详细过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#checkpoint操作的触发条件配置参数"><span class="nav-number">2.</span> <span class="nav-text">checkpoint操作的触发条件配置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#checkpoint的附带作用"><span class="nav-number">3.</span> <span class="nav-text">checkpoint的附带作用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-DATANODE的工作机制"><span class="nav-number"></span> <span class="nav-text">6. DATANODE的工作机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-概述"><span class="nav-number"></span> <span class="nav-text">6.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-观察验证DATANODE功能"><span class="nav-number"></span> <span class="nav-text">6.2 观察验证DATANODE功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS应用开发篇"><span class="nav-number"></span> <span class="nav-text">******HDFS应用开发篇******</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-HDFS的java操作"><span class="nav-number"></span> <span class="nav-text">7. HDFS的java操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-搭建开发环境"><span class="nav-number"></span> <span class="nav-text">7.1 搭建开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-获取api中的客户端对象"><span class="nav-number"></span> <span class="nav-text">7.2 获取api中的客户端对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-DistributedFileSystem实例对象所具备的方法"><span class="nav-number"></span> <span class="nav-text">7.3 DistributedFileSystem实例对象所具备的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-HDFS客户端操作数据代码示例："><span class="nav-number"></span> <span class="nav-text">7.4 HDFS客户端操作数据代码示例：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-1-文件的增删改查"><span class="nav-number"></span> <span class="nav-text">7.4.1 文件的增删改查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-2-通过流的方式访问hdfs"><span class="nav-number"></span> <span class="nav-text">7.4.2 通过流的方式访问hdfs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-3-场景编程"><span class="nav-number"></span> <span class="nav-text">7.4.3 场景编程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-案例1：开发shell采集脚本"><span class="nav-number"></span> <span class="nav-text">8. 案例1：开发shell采集脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1需求说明"><span class="nav-number"></span> <span class="nav-text">8.1需求说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2需求分析"><span class="nav-number"></span> <span class="nav-text">8.2需求分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3技术分析"><span class="nav-number"></span> <span class="nav-text">8.3技术分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-4实现流程"><span class="nav-number"></span> <span class="nav-text">8.4实现流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-1日志产生程序"><span class="nav-number"></span> <span class="nav-text">8.4.1日志产生程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-2伪代码"><span class="nav-number"></span> <span class="nav-text">8.4.2伪代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-5代码实现"><span class="nav-number"></span> <span class="nav-text">8.5代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-6效果展示及操作步骤"><span class="nav-number"></span> <span class="nav-text">8.6效果展示及操作步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-案例2：开发JAVA采集程序"><span class="nav-number"></span> <span class="nav-text">9. 案例2：开发JAVA采集程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-需求"><span class="nav-number"></span> <span class="nav-text">9.1 需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-设计分析"><span class="nav-number"></span> <span class="nav-text">9.2 设计分析</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

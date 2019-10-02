@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="VS2015 Git 源码管理工具简单入门 平时自己只是在和小组进行开发时才用的github.com，以为只用外国有，但是上传下载速度慢，所以一直自己没有用过。 最近自己写的小程序多了：1：担心代码丢失2：可以方便我们多终端查看代码3：发现开源中国也有git，速度也可以而且免费。可以创建私有项目！ 简单的Git+全宇宙最好用的IDE——Microsoft Visual Studio简直神器一枚所以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS2015超永久代码防丢失）——托管代码到Git">
+<meta property="og:url" content="http://blog.aclear.top/post/b19f29e.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="VS2015 Git 源码管理工具简单入门 平时自己只是在和小组进行开发时才用的github.com，以为只用外国有，但是上传下载速度慢，所以一直自己没有用过。 最近自己写的小程序多了：1：担心代码丢失2：可以方便我们多终端查看代码3：发现开源中国也有git，速度也可以而且免费。可以创建私有项目！ 简单的Git+全宇宙最好用的IDE——Microsoft Visual Studio简直神器一枚所以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131527825-999432432.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131528793-1820414506.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131530231-965359205.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131532403-608168091.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131533840-1501899603.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131539840-79119431.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131541668-737464102.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131543434-100898609.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131545465-776498546.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131547372-618956570.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131549153-1969275355.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131550465-1770613473.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124422887-9036473.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124424215-1292562800.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124425122-989750728.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124426793-361200821.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131551778-526873369.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131553215-885134623.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131554747-1725336746.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131555825-1656071181.jpg">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131556887-64115289.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131558184-478125510.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131559278-1201749660.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131603825-1633761032.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131605559-1022007669.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131607325-1787519837.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131611278-770215806.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131615528-109964128.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131616997-1451624868.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131618731-1368987989.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131620559-1833344644.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131624356-1256679696.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131626184-1176036482.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131630309-1268180578.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131632637-1885331880.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723115913482-1266981810.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100127388-1914845840.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723115543341-1107009959.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100739826-262650702.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100609997-936457296.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110844341-1652919074.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110356294-1416514241.png">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VS2015超永久代码防丢失）——托管代码到Git">
+<meta name="twitter:description" content="VS2015 Git 源码管理工具简单入门 平时自己只是在和小组进行开发时才用的github.com，以为只用外国有，但是上传下载速度慢，所以一直自己没有用过。 最近自己写的小程序多了：1：担心代码丢失2：可以方便我们多终端查看代码3：发现开源中国也有git，速度也可以而且免费。可以创建私有项目！ 简单的Git+全宇宙最好用的IDE——Microsoft Visual Studio简直神器一枚所以">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131527825-999432432.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/b19f29e.html">
+
+
+
+
+
+  <title>VS2015超永久代码防丢失）——托管代码到Git | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/b19f29e.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">VS2015超永久代码防丢失）——托管代码到Git</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T16:09:57+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/git/GitHub/" itemprop="url" rel="index">
+                    <span itemprop="name">GitHub</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="VS2015-Git-源码管理工具简单入门"><a href="#VS2015-Git-源码管理工具简单入门" class="headerlink" title="VS2015 Git 源码管理工具简单入门"></a><a href="https://www.cnblogs.com/newP/p/5732431.html" target="_blank" rel="noopener">VS2015 Git 源码管理工具简单入门</a></h1><blockquote>
+<p>平时自己只是在和小组进行开发时才用的github.com，以为只用外国有，但是上传下载速度慢，所以一直自己没有用过。 最近自己写的小程序多了：1：担心代码丢失2：可以方便我们多终端查看代码3：发现开源中国也有git，速度也可以而且免费。可以创建私有项目！ 简单的Git+全宇宙最好用的IDE——Microsoft Visual Studio简直神器一枚所以才用了起来。 其实现在国内也有很多git平台了，大家不妨去试一下。另外一点是vs2015自带git使用起来很简单，不需要懂git命令行，很方便就能克隆和托管项目，网上也有一些vs2015链接git的教程，大家可以去搜一下。 虽然是方便，但是一开始用还是会遇到一些问题，就拿链接到oschina码云的gitee.com的git为例吧。</p>
+<ol>
+<li>新建的项目需要托管到远程git，存储库设置-》添加远程的名称应该写<strong>origin</strong>，写成别的名称是不能发布的。origin是默认的远程版本库名称，约定俗成的；</li>
+<li>新建项目点击发布按钮时如果提示“无法将分支 master 发布到远程 origin，因为远程存储库中已存在具有同一名称的分支。发布此分支将导致远程存储库中的分支发生非快进更新”，解决方法是先点击提取，然后到分支设置里合并本地和远程分支，然后再去发布就成功了。</li>
+<li>另注明：VS2013有人说，当你在新建项目而不创建 ReadMe.md 时。会提示你自己用git 命令行进行 git仓库的创建——当然这样也能导入你本地的已存在的git项目了。也就不会和未有的master产生冲突了。目前只是听说，碰到问题时，可以朝这方面尝试下。</li>
+</ol>
+</blockquote>
+<p>  附加如何用 GIT BASH 提交已有项目到GIT：</p>
+<h4 id="快速设置—-如果你知道该怎么操作，直接使用下面的地址"><a href="#快速设置—-如果你知道该怎么操作，直接使用下面的地址" class="headerlink" title="快速设置— 如果你知道该怎么操作，直接使用下面的地址"></a>快速设置— 如果你知道该怎么操作，直接使用下面的地址</h4><p>HTTPS</p>
+<p>SSH</p>
+<p>我们强烈建议所有的git仓库都有一个<code>README</code>, <code>LICENSE</code>, <code>.gitignore</code>文件</p>
+<p>Git入门？查看 <a href="https://gitee.com/oschina/git-osc/wikis/%E5%B8%AE%E5%8A%A9" target="_blank" rel="noopener">帮助</a> , <a href="http://my.oschina.net/gal/blog/141442" target="_blank" rel="noopener">Visual Studio</a> / <a href="http://my.oschina.net/longxuu/blog/141699" target="_blank" rel="noopener">TortoiseGit</a> / <a href="http://my.oschina.net/songxinqiang/blog/192567" target="_blank" rel="noopener">Eclipse</a> / <a href="http://my.oschina.net/zxs/blog/142544" target="_blank" rel="noopener">Xcode</a> 下如何连接本站, <a href="http://www.oschina.net/question/82993_133520" target="_blank" rel="noopener">如何导入项目</a></p>
+<h4 id="简易的命令行入门教程"><a href="#简易的命令行入门教程" class="headerlink" title="简易的命令行入门教程:"></a>简易的命令行入门教程:</h4><p>Git 全局设置:</p>
+<p>git config –global user.name “***”<br>git config –global user.email “<a href="mailto:aclearzhang@qq.com" target="_blank" rel="noopener">aclearzhang@qq.com</a>“</p>
+<p>创建 git 仓库:</p>
+<p>mkdir OS_Unix_or_Linux<br>cd OS_Unix_or_Linux<br>git init<br>touch README.md<br>git add README.md<br>git commit -m “first commit”<br>git remote add origin 你的链接<br>git push -u origin master</p>
+<p>已有项目?</p>
+<p>touch README.md //新建说明文件<br>git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录<br>git add . //添加当前目录中的所有文件到索引<br>git commit -m “first commit” //提交到本地源码库，并附加提交注释<br>git remote add origin 粘贴复制的地址 //添加到远程项目，别名为origin<br>git push -u origin master //把本地源码库push到github 别名为origin的远程项目中，确认提交</p>
+<p><strong>更新代码：</strong></p>
+<p>cd 根目录<br>git add .<br>git commit -m “update test” //检测文件改动并附加提交注释<br>git push -u origin master //提交修改到项目主线</p>
+<p>THE END.   <strong>1.VS Git插件</strong></p>
+<hr>
+<p><strong>1.1 环境</strong></p>
+<blockquote>
+<p>VS2015+GitLab</p>
+</blockquote>
+<p><strong>1.2 Git操作过程图解</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131527825-999432432.png" alt="image" title="image"> <strong>1.3 常见名词解释</strong></p>
+<blockquote>
+<p><strong>拉取（Pull）：</strong>将远程版本库合并到本地版本库，相当于（Fetch+Meger） <strong>获取（Fetch）：</strong>从远程版本库获得最新版本 <strong>合并（Meger）：</strong>将两个版本库进行合并操作 <strong>提交（Commit）：</strong>将所做的更改，存入本地暂存库 <strong>推送（Push）：</strong>将所做的更改，存入远程版本库 <strong>同步（Pull+Push）：</strong>先将远程库拉取，再将本地库推送到远程库，相当于（Pull+Push） <strong>变基到（Switch）：</strong>切换分支（双击即可切换）</p>
+</blockquote>
+<p><strong>1.4 常用功能简单说明</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131528793-1820414506.png" alt="image003" title="image003"></p>
+<blockquote>
+<p><strong>【更改】</strong> 负责文件的修改、添加、忽略文件、删除文件提交到本地服务器，主要是：提交 <strong>【分支】</strong> 负责合并分支，切换分支，主要是合并、变基到、解决冲突 <strong>【同步】</strong>   远程Git存储库与本地Git存储库操作，主要是：推送、同步、拉取、获取 <strong>【设置】</strong> 设置用户名、密码、远程地址、对比工具等</p>
+</blockquote>
+<p><strong>2. **</strong>GitLab<strong>**创建远端Git存储库</strong></p>
+<hr>
+<p><strong>2.1 GitLab中创建一个项目</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131530231-965359205.png" alt="image005" title="image005"> <strong>2.2 填写项目名称</strong></p>
+<blockquote>
+<p>填写项目名称叫testDemo。其中Visibility Level根据项目需求设定</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131532403-608168091.png" alt="image007" title="image007"> <strong>2.3 获取远程Git存储库地址</strong></p>
+<blockquote>
+<p>添加成功后，点击Projects会出现【Git的HTTP链接①】</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131533840-1501899603.png" alt="image009" title="image009"> <strong>3. **</strong>本地代码推送到远端Git存储库**</p>
+<hr>
+<p><strong>3.1 将DEMO项目添加到Git源码管理</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131539840-79119431.png" alt="image011" title="image011"> <strong>3.2 选择源码管理为Git</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131541668-737464102.png" alt="image013" title="image013"> <strong>3.3 填写提交注释，提交到本地Git存储库中</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131543434-100898609.png" alt="image015" title="image015"> <strong>3.4 同步Git本地库到远端Git存储库</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131545465-776498546.png" alt="image017" title="image017"> <strong>3.5 发布到远端Git存储库</strong></p>
+<blockquote>
+<p>下图将需要的【Git的HTTP链接①】填写好，点击发布（第一次需要Git用户名、密码）或者提前安装Git用命令行设置Git用户名密码</p>
+<p>git config –global user.name “Your Name”<br>git config –global user.email <a href="mailto:you@email.com" target="_blank" rel="noopener">you@email.com</a></p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131547372-618956570.png" alt="image019" title="image019"></p>
+<blockquote>
+<p>发布成功（最好从上图添加到存储库地址，如果从“设置”里第一次之前就添加好存储库地址，有可能“推送”是不可用的）</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131549153-1969275355.png" alt="image021" title="image021"></p>
+<blockquote>
+<p>登录gitlabs查看发布项目</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131550465-1770613473.png" alt="image023" title="image023"> <strong>4. **</strong>工作中常见操作**</p>
+<hr>
+<p><strong>4.1 文件提交操作</strong></p>
+<blockquote>
+<p>【<strong>常见文件状态</strong>】 未操作状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124422887-9036473.jpg" alt="clip_image026" title="clip_image026"> 修改状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124424215-1292562800.jpg" alt="clip_image028" title="clip_image028"> 添加状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124425122-989750728.jpg" alt="clip_image030" title="clip_image030"> 删除状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124426793-361200821.jpg" alt="clip_image032" title="clip_image032">（只有在提交代码时候可见）</p>
+</blockquote>
+<blockquote>
+<p><strong>【提交代码:**</strong>方法一】** 1) 找到需要提交的文件或者找到解决方案，右键，找到源代码管理-&gt;提交 2) 同时在这里也可以做源码的查看历史记录、撤销、批注等 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131551778-526873369.png" alt="image033" title="image033"></p>
+</blockquote>
+<blockquote>
+<p><strong>【提交代码:**</strong>方法二】<strong> 1）找到“团队资源管理器” <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131553215-885134623.png" alt="image035" title="image035"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131554747-1725336746.png" alt="image037" title="image037"> 2）见到如下图，没有的话点击<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131555825-1656071181.jpg" alt="image040" title="image040">即可到主页 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131556887-64115289.png" alt="image041" title="image041"> 3）会出现整个项目的文件状态 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131558184-478125510.png" alt="image043" title="image043"> </strong>排除的更改<strong>：一般是被排除的文件，如果不包含提交时候不会提交到源码中 </strong>未跟踪的文件**：未跟踪的文件有时候也会出现，一些没有通过VS2015直接添加的文件（找到目录人工添加文件就会出这个问题），不添加也不会提交到源码中</p>
+</blockquote>
+<p><strong>4.2 文件推送操作</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131559278-1201749660.png" alt="image045" title="image045"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131603825-1633761032.png" alt="image047" title="image047">  </p>
+<blockquote>
+<p>找到团队资源管理器-&gt;同步-&gt;点击“推送”即可，注意一般master分支和有些分支是保护分支，只有特定账号可以推送，所以推送时候要及时切换分支并推送到正确分支上。</p>
+</blockquote>
+<p><strong>4.3 分支操作</strong> <strong>4.3.1 分支介绍</strong></p>
+<blockquote>
+<p>找到资源管理器-&gt;分支 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131605559-1022007669.png" alt="image049" title="image049"> 可以看到分支列表，如下图，黑体加粗的文字为当前分支（下图当前分支为master），remoters/origin为远端分支不能切换。注意：如果发现缺少分支，请通过资源管理器-&gt;同步-&gt;提取（或者拉取）功能得到分支列表 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131607325-1787519837.png" alt="image051" title="image051"></p>
+</blockquote>
+<p><strong>4.3.2 创建分支</strong></p>
+<blockquote>
+<p>找到克隆的分支，点击“从选定项创建本地分支…”，填写分支名即可 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131611278-770215806.png" alt="image053" title="image053"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131615528-109964128.png" alt="image055" title="image055"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131616997-1451624868.png" alt="image057" title="image057"></p>
+</blockquote>
+<p><strong>4.3.3 切换分支</strong></p>
+<blockquote>
+<p>双击本地分支即可切换，或者使用变基到。</p>
+</blockquote>
+<p><strong>4.3.4 合并分支</strong></p>
+<blockquote>
+<p>分支上，右键：合并自…，选择分支即可，“从分支合并”为源，“到当前分支”为目的</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131618731-1368987989.png" alt="image059" title="image059"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131620559-1833344644.png" alt="image061" title="image061"> <strong>4.3.5 删除分支</strong></p>
+<blockquote>
+<p>右键删除分支即可（注意，当前分支不可删除、远端分支慎重删除）</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131624356-1256679696.png" alt="image063" title="image063"> <strong>4.4 解决冲突</strong></p>
+<blockquote>
+<p>本地Git存储库和远端Git存储库同个文件不匹配时候会出现，一般拉取、提取、同步、推送会出现冲突，然后人工解决冲突即可 如下图</p>
+</blockquote>
+<p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131626184-1176036482.png" alt="image065" title="image065"> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131630309-1268180578.png" alt="image067" title="image067"> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131632637-1885331880.png" alt="image069" title="image069"></p>
+<p>在VS2013中使用git发布解决方案master分支的时候出现“<strong>无法将本地分支 master 发布到远程存储库 origin，因为此处已存在具有同一名称的分支。您可能需要重命名您的本地分支，然后重试</strong>”，如下图所示</p>
+<p><img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723115913482-1266981810.png" alt=""></p>
+<p><img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100127388-1914845840.png" alt=""> 其实官网创建时已经给出了解决办法： 1.创建项目的时候不需要选择自动创建ReadMe文件，如果已经创建可以选择清空项目 <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723115543341-1107009959.png" alt="">   创建项目后（不含ReadMe文件）Code版块会自动跳转到该提示 <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100739826-262650702.png" alt=""> 根据该提示如果已经存在可以最后一项指令可以解决该问题：   <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723100609997-936457296.png" alt=""> 控制台执行最后一组指令即可</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p><code>cd existing_git_repo    --进入GIT项目根目录 执行下述2个指令</code></p>
+<p><code>git remote add origin https:`</code>//git.oschina.net/weiki.shaw/yufukaweb.git`</p>
+<p><code>git push -u origin master</code></p>
+<p>  <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110844341-1652919074.png" alt=""> 再次点击同步 就可以了 <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110356294-1416514241.png" alt=""> C:\Users\acanprince\Source\Repos\TestMFC1</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="1274.html" title="VS2015超永久代码防丢失）——托管代码到Git">1274.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/77be685a.html" rel="next" title="Python第五节文件访问与函数式编程入门">
+                <i class="fa fa-chevron-left"></i> Python第五节文件访问与函数式编程入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/800e61d6.html" rel="prev" title="Python第四节面向对象基础">
+                Python第四节面向对象基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VS2015-Git-源码管理工具简单入门"><span class="nav-number">1.</span> <span class="nav-text">VS2015 Git 源码管理工具简单入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速设置—-如果你知道该怎么操作，直接使用下面的地址"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">快速设置— 如果你知道该怎么操作，直接使用下面的地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简易的命令行入门教程"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">简易的命令行入门教程:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

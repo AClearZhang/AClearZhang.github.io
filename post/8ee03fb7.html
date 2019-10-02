@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="-s 0 [caption id=”attachment_703” align=”alignleft” width=”184”] -s 0 C-SVC[/caption]       [caption id=”attachment_704” align=”alignleft” width=”172”] -t 2 RBF核函数[/caption]            关键字(keywords)：S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM算法实现——基于libsvm的模型原理建立">
+<meta property="og:url" content="http://blog.aclear.top/post/8ee03fb7.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="-s 0 [caption id=”attachment_703” align=”alignleft” width=”184”] -s 0 C-SVC[/caption]       [caption id=”attachment_704” align=”alignleft” width=”172”] -t 2 RBF核函数[/caption]            关键字(keywords)：S">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.aclear.top/C-SVC-1.jpg">
+<meta property="og:image" content="http://pic.aclear.top/RBF-3.jpg">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:image" content="file:///C:/Users/acanprince/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF(TYDYECOKVDYB.png">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVM算法实现——基于libsvm的模型原理建立">
+<meta name="twitter:description" content="-s 0 [caption id=”attachment_703” align=”alignleft” width=”184”] -s 0 C-SVC[/caption]       [caption id=”attachment_704” align=”alignleft” width=”172”] -t 2 RBF核函数[/caption]            关键字(keywords)：S">
+<meta name="twitter:image" content="http://pic.aclear.top/C-SVC-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/8ee03fb7.html">
+
+
+
+
+
+  <title>SVM算法实现——基于libsvm的模型原理建立 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/8ee03fb7.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SVM算法实现——基于libsvm的模型原理建立</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T00:48:39+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SVM/" itemprop="url" rel="index">
+                    <span itemprop="name">SVM</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SVM/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>-s 0 [caption id=”attachment_703” align=”alignleft” width=”184”]<img src="http://pic.aclear.top/C-SVC-1.jpg" alt="dream"> -s 0 C-SVC[/caption]       [caption id=”attachment_704” align=”alignleft” width=”172”]<img src="http://pic.aclear.top/RBF-3.jpg" alt="dream"> -t 2 RBF核函数[/caption]          </p>
+<blockquote>
+<p><strong>关键字(keywords)：SVM 支持向量机 SMO</strong><a href="http://lib.csdn.net/base/datastructure" target="_blank" rel="noopener">算法</a><strong> 实现 </strong><a href="http://lib.csdn.net/base/machinelearning" target="_blank" rel="noopener">机器学习</a><strong>**   如果对SVM原理不是很懂的，可以先看一下入门的[</strong>视频<strong>](<a href="http://www.ilovematlab.cn/thread-62252-1-1.html)，对帮助理解很有用的，然后再深入一点可以看看这几篇[" target="_blank" rel="noopener">http://www.ilovematlab.cn/thread-62252-1-1.html)，对帮助理解很有用的，然后再深入一点可以看看这几篇[</a></strong>入门文章<strong>](<a href="http://www.blogjava.net/zhenandaci/archive/2009/02/13/254519.html)，作者写得挺详细，看完以后SVM的基础就了解得差不多了，再然后买本《支持向量机导论》作者是Nello" target="_blank" rel="noopener">http://www.blogjava.net/zhenandaci/archive/2009/02/13/254519.html)，作者写得挺详细，看完以后SVM的基础就了解得差不多了，再然后买本《支持向量机导论》作者是Nello</a> Cristianini 和 John Shawe-Taylor，电子工业出版社的。然后把书本后面的那个SMO算法实现就基本上弄懂了SVM是怎么一回事，最后再编写一个SVM库出来，比如说像libsvm等工具使用，呵呵，差不多就这样。这些是我学习SVM的整个过程，也算是经验吧。 下面是SVM的简化版SMO算法，我将结合</strong><a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener">Java</a>*<em>代码来解释一下整个SVM的学习训练过程，即所谓的train训练过程。那么什么是SMO算法呢？ SMO算法的目的无非是找出一个函数f(x)，这个函数能让我们把输入的数据x进行分类。既然是分类肯定需要一个评判的标准，比如分出来有两种情况A和B,那么怎么样才能说x是属于A类的，或不是B类的呢？就是需要有个边界，就好像两个国家一样有边界，如果边界越明显，则就越容易区分，因此，我们的目标是最大化边界的宽度，使得非常容易的区分是A类还是B类。 在SVM中，要最大化边界则需要最小化这个数值：     w：是参量，值越大边界越明显 C代表惩罚系数，即如果某个x是属于某一类，但是它偏离了该类，跑到边界上后者其他类的地方去了，C越大表明越不想放弃这个点，边界就会缩小 代表：松散变量 但问题似乎还不好解，又因为SVM是一个凸二次规划问题，凸二次规划问题有最优解，于是问题转换成下列形式（KKT条件）： …………(1) 这里的ai是拉格朗日乘子(问题通过拉格朗日乘法数来求解) 对于（a）的情况，表明ai是正常分类，在边界内部（我们知道正确分类的点yi</em>f(xi)&gt;=0） 对于（b）的情况，表明了ai是支持向量，在边界上 对于（c）的情况，表明了ai是在两条边界之间 而最优解需要满足KKT条件，即满足（a）（b）（c）条件都满足 以下几种情况出现将会出现不满足： yiui&lt;=1但是ai&lt;C则是不满足的,而原本ai=C yiui&gt;=1但是ai&gt;0则是不满足的而原本ai=0 yiui=1但是ai=0或者ai=C则表明不满足的，而原本应该是0&lt;ai&lt;C 所以要找出不满足KKT的这些ai，并更新这些ai，但这些ai又受到另外一个约束，即     因此，我们通过另一个方法，即同时更新ai和aj，满足以下等式   就能保证和为0的约束。   利用yiai+yjaj=常数，消去ai，可得到一个关于单变量aj的一个凸二次规划问题，不考虑其约束0&lt;=aj&lt;=C,可以得其解为：   ………………………………………(2) 这里………………(3) 表示旧值，然后考虑约束0&lt;=aj&lt;=C可得到a的解析解为： …………(4) 对于 那么如何求得ai和aj呢？ 对于ai，即第一个乘子，可以通过刚刚说的那几种不满足KKT的条件来找，第二个乘子aj可以找满足条件   …………………………………………………………………………（5） b的更新： 在满足条件：下更新b。……………（6）   最后更新所有ai，y和b，这样模型就出来了，然后通过函数： ……………………………………………………（7） 输入是x，是一个数组，组中每一个值表示一个特征。 输出是A类还是B类。（正类还是负类）   ！以下是主要的代码段：  </p>
+<p> /*<br> * 默认输入参数值<br> * C: regularization parameter<br> * tol: numerical tolerance<br> * max passes<br> <em>/<br> double C = 1; //对不在界内的惩罚因子<br> double tol = 0.01;//容忍极限值<br> int maxPasses = 5; //表示没有改变拉格朗日乘子的最多迭代次数<br> /\</em><br> * 初始化a[], b, passes<br> <em>/<br> double a[] = new double[x.length];//拉格朗日乘子<br> this.a = a;<br> //将乘子初始化为0<br> for (int i = 0; i &lt; x.length; i++) {<br> a[i] = 0;<br> }<br> int passes = 0;<br> while (passes &lt; maxPasses) {<br> //表示改变乘子的次数（基本上是成对改变的）<br> int num_changed_alphas = 0;<br> for (int i = 0; i &lt; x.length; i++) {<br> //表示特定阶段由a和b所决定的输出与真实yi的误差<br> //参照公式(7)<br> double Ei = getE(i);<br> /\</em><br> * 把违背KKT条件的ai作为第一个<br> * 满足KKT条件的情况是：<br> * yi<em>f(i) &gt;= 1 and alpha == 0 (正确分类)<br> \</em> yi<em>f(i) == 1 and 0&lt;alpha &lt; C (在边界上的支持向量)<br> \</em> yi<em>f(i) &lt;= 1 and alpha == C (在边界之间)<br> \</em><br> *<br> *<br> * ri = y[i] <em> Ei = y[i] </em> f(i) - y[i]^2 &gt;= 0<br> * 如果ri &lt; 0并且alpha &lt; C 则违反了KKT条件<br> * 因为原本ri &lt; 0 应该对应的是alpha = C<br> * 同理，ri &gt; 0并且alpha &gt; 0则违反了KKT条件<br> * 因为原本ri &gt; 0对应的应该是alpha =0<br> <em>/<br> if ((y[i] </em> Ei &lt; -tol &amp;&amp; a[i] &lt; C) ||<br> (y[i] <em> Ei &gt; tol &amp;&amp; a[i] &gt; 0))<br> {<br> /\</em><br> * ui<em>yi=1边界上的点 0 &lt; a[i] &lt; C<br> \</em> 找MAX|E1 - E2|<br> <em>/<br> int j;<br> /\</em><br> * boundAlpha表示x点处于边界上所对应的<br> * 拉格朗日乘子a的集合<br> <em>/<br> if (this.boundAlpha.size() &gt; 0) {<br> //参照公式(5)<br> j = findMax(Ei, this.boundAlpha);<br> } else<br> //如果边界上没有，就随便选一个j != i的aj<br> j = RandomSelect(i);<br> double Ej = getE(j);<br> //保存当前的ai和aj<br> double oldAi = a[i];<br> double oldAj = a[j];<br> /\</em><br> * 计算乘子的范围U, V<br> * 参考公式(4)<br> <em>/<br> double L, H;<br> if (y[i] != y[j]) {<br> L = Math.max(0, a[j] - a[i]);<br> H = Math.min(C, C - a[i] + a[j]);<br> } else {<br> L = Math.max(0, a[i] + a[j] - C);<br> H = Math.min(0, a[i] + a[j]);<br> }<br> /\</em><br> * 如果eta等于0或者大于0 则表明a最优值应该在L或者U上<br> <em>/<br> double eta = 2 </em> k(i, j) - k(i, i) - k(j, j);//公式(3)<br> if (eta &gt;= 0)<br> continue;<br> a[j] = a[j] - y[j] <em> (Ei - Ej)/ eta;//公式(2)<br> if (0 &lt; a[j] &amp;&amp; a[j] &lt; C)<br> this.boundAlpha.add(j);<br> if (a[j] &lt; L)<br> a[j] = L;<br> else if (a[j] &gt; H)<br> a[j] = H;<br> if (Math.abs(a[j] - oldAj) &lt; 1e-5)<br> continue;<br> a[i] = a[i] + y[i] </em> y[j] <em> (oldAj - a[j]);<br> if (0 &lt; a[i] &amp;&amp; a[i] &lt; C)<br> this.boundAlpha.add(i);<br> /\</em><br> * 计算b1， b2<br> * 参照公式(6)<br> <em>/<br> double b1 = b - Ei - y[i] </em> (a[i] - oldAi) <em> k(i, i) - y[j] </em> (a[j] - oldAj) <em> k(i, j);<br> double b2 = b - Ej - y[i] </em> (a[i] - oldAi) <em> k(i, j) - y[j] </em> (a[j] - oldAj) * k(j, j);<br> if (0 &lt; a[i] &amp;&amp; a[i] &lt; C)<br> b = b1;<br> else if (0 &lt; a[j] &amp;&amp; a[j] &lt; C)<br> b = b2;<br> else<br> b = (b1 + b2) / 2;<br> num_changed_alphas = num_changed_alphas + 1;<br> }<br> }<br> if (num_changed_alphas == 0) {<br> passes++;<br> } else<br> passes = 0;<br> }<br> return new SVMModel(a, y, b);</p>
+<p>运行后的结果还算可以吧，<strong><a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="noopener">测试</a></strong>数据主要是用了libsvm的heart_scale的数据。 预测的正确率达到73%以上。 如果我把核函数从线性的改为基于RBF将会更好点。 最后，说到SVM算法实现包，应该有很多，包括svm light，libsvm，有matlab本身自带的svm工具包等。       另外，浅显易懂的个人理解  SVM文章请看<a href="http://www.cnblogs.com/zhizhan/p/4430253.html" target="_blank" rel="noopener">这里</a>。</p>
+</blockquote>
+<p>豆丁网 上有很多很好的libsvm原理以及源码文档看<a href="http://www.docin.com/search.do?nkey=libsvm&amp;searchcat=1001&amp;fnorePage=&amp;currentPage=1" target="_blank" rel="noopener">这里</a>。  </p>
+<blockquote>
+<p>如理解有误敬请指正！谢谢！</p>
+</blockquote>
+<p>更新：（关注的链接/参考网址） <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://qing0991.blog.51cto.com/1640542/1770756配置以及使用的参数说明" target="_blank" rel="noopener">http://qing0991.blog.51cto.com/1640542/1770756配置以及使用的参数说明</a> <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/on2way/article/details/47733861附属上个）" target="_blank" rel="noopener">http://blog.csdn.net/on2way/article/details/47733861附属上个）</a> <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/taohuaxinmu123/article/details/20628173" target="_blank" rel="noopener">http://blog.csdn.net/taohuaxinmu123/article/details/20628173</a> 交叉验证 <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/zhaomengszu/article/details/67634992" target="_blank" rel="noopener">http://blog.csdn.net/zhaomengszu/article/details/67634992</a> 参数调优) <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/zhaomengszu/article/details/66971919?locationNum=12&amp;fps=1" target="_blank" rel="noopener">http://blog.csdn.net/zhaomengszu/article/details/66971919?locationNum=12&amp;fps=1</a> 参数调优算法设计） <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/u014772862/article/details/51835192" target="_blank" rel="noopener">http://blog.csdn.net/u014772862/article/details/51835192</a> 底层源码。 <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.sina.com.cn/s/blog_6646924501018fqc.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_6646924501018fqc.html</a> 返回的参数详解 <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/u014772862/article/details/51873590" target="_blank" rel="noopener">http://blog.csdn.net/u014772862/article/details/51873590</a> 附属上） <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://blog.csdn.net/techq/article/details/6171688" target="_blank" rel="noopener">http://blog.csdn.net/techq/article/details/6171688</a> SVM算法实现参数说明 <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://www.cnblogs.com/zhizhan/p/4430253.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhizhan/p/4430253.html</a> 通俗易懂概念说明） <img src="file:///C:\Users\acanprince\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png" alt=""><a href="http://www.cnblogs.com/zhizhan/p/4430279.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhizhan/p/4430279.html</a> 使用libsvm对MNIST数据集进行实验—浅显易懂！）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="702.html" title="SVM算法实现——基于libsvm的模型原理建立">702.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/4c21898f.html" rel="next" title="libsvm参数介绍">
+                <i class="fa fa-chevron-left"></i> libsvm参数介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f04a8c24.html" rel="prev" title="2017暑期数学建模_三模">
+                2017暑期数学建模_三模 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

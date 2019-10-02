@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ssr,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="小白福利-全网最详细的SSR免流教程作者：可乐，转载 前言： 本教程纯粹为小白而写，老司机不必看，也请口下留情  教程分为三部分：  第一部分：性价比最高的服务器-Vultr的购买与创建 第二部分：SSR搭建、配置、提速，适用于所有服务器 第三部分：抓包（端口和混淆参数）   第一部分：性价比最高的服务器-Vultr的购买与创建  提前介绍下SSR免流，SSR免流和OPENVPN免流一样，都属于云">
+<meta name="keywords" content="ssr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白教程-一看就懂得SSR免流量教程">
+<meta property="og:url" content="http://blog.aclear.top/post/7d83c3a.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="小白福利-全网最详细的SSR免流教程作者：可乐，转载 前言： 本教程纯粹为小白而写，老司机不必看，也请口下留情  教程分为三部分：  第一部分：性价比最高的服务器-Vultr的购买与创建 第二部分：SSR搭建、配置、提速，适用于所有服务器 第三部分：抓包（端口和混淆参数）   第一部分：性价比最高的服务器-Vultr的购买与创建  提前介绍下SSR免流，SSR免流和OPENVPN免流一样，都属于云">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901145908835?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150033999?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150128518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150253183?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150501675?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150542018?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150557223?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150620426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901150734207?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://www.wn789.com/wp-content/uploads/2017/02/20170223223251-1.png">
+<meta property="og:image" content="https://www.wn789.com/wp-content/uploads/2017/02/20170223223313-1.png">
+<meta property="og:image" content="https://www.wn789.com/wp-content/uploads/2017/02/20170223223441-1.png">
+<meta property="og:image" content="https://www.wn789.com/wp-content/uploads/2017/02/20170223220631-1.png">
+<meta property="og:image" content="https://www.wn789.com/wp-content/uploads/2017/02/20170223220726.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901153220491?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901153412305?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白教程-一看就懂得SSR免流量教程">
+<meta name="twitter:description" content="小白福利-全网最详细的SSR免流教程作者：可乐，转载 前言： 本教程纯粹为小白而写，老司机不必看，也请口下留情  教程分为三部分：  第一部分：性价比最高的服务器-Vultr的购买与创建 第二部分：SSR搭建、配置、提速，适用于所有服务器 第三部分：抓包（端口和混淆参数）   第一部分：性价比最高的服务器-Vultr的购买与创建  提前介绍下SSR免流，SSR免流和OPENVPN免流一样，都属于云">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170901145908835?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/7d83c3a.html">
+
+
+
+
+
+  <title>小白教程-一看就懂得SSR免流量教程 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/7d83c3a.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">小白教程-一看就懂得SSR免流量教程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T21:48:03+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-etc/" itemprop="url" rel="index">
+                    <span itemprop="name">工具_etc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="小白福利-全网最详细的SSR免流教程"><a href="#小白福利-全网最详细的SSR免流教程" class="headerlink" title="小白福利-全网最详细的SSR免流教程"></a><a href="http://blog.csdn.net/qq_25386583/article/details/77773127?locationNum=2&amp;fps=1" target="_blank" rel="noopener">小白福利-全网最详细的SSR免流教程</a></h2><p>作者：可乐，转载 前言： 本教程纯粹为小白而写，老司机不必看，也请口下留情</p>
+<hr>
+<p><strong>教程分为三部分：</strong></p>
+<blockquote>
+<p>第一部分：性价比最高的服务器-Vultr的购买与创建 第二部分：SSR搭建、配置、提速，适用于所有服务器 第三部分：抓包（端口和混淆参数）</p>
+</blockquote>
+<hr>
+<p><strong>第一部分：性价比最高的服务器-Vultr的购买与创建</strong></p>
+<blockquote>
+<p>提前介绍下SSR免流，SSR免流和OPENVPN免流一样，都属于云免，不同的是SSR免流暂时没有成熟的流控，所以不适用于商业化，适合自用，相对于OPENVPN免流来说更简单、更省电； 要用SSR免流，首先要有服务器，既然是自用，那国内服务器显然太贵，一般都用国外服务器搭建，免流的同时还能翻 Q，翻Q就是可以浏览国外网站，外面的世界很精彩，有什么好处，老司机都懂的；</p>
+</blockquote>
+<p><strong>国外服务器，这里推荐Vultr，看下去你就明白为什么推荐它。</strong></p>
+<blockquote>
+<p>Vultr简介：机器采用E3的CPU，清一色<strong>SSD硬盘</strong>，全球15个数据中心，全天24小时都可创建，60秒内部署好，所有的VPS都配备了真正的root权限和一个独立的IP地址，按小时计费，最便宜的套餐2.5美元/月(日本只有5的了,纽约有2.5的)<strong>(最新支持支付宝支付10$==66人民币的样子</strong>)（<strong>共享带宽100M，流量1TB/月</strong>），换算成小时是0.007美元/小时，也就是不足人民币5分钱，用多少算多少，不想用可以<strong>随时删除，删除后不再计费</strong>,有人说5美元/月的价格相对于大把十几二十美元包年的国外服务器来说太贵，但vultr家最厉害的是新用户优惠，新注册用户使用PayPal支付5美元可获得25美元、使用信用卡不用花钱即可获得20美元，都是一年有效期，也就是说，如果你有信用卡，你可以免费用5美元的套餐4个月，如果你只有银行卡，你也只需要支付5美元就可以用5美元的套餐5个月，而且最重要的是，Vultr家的VPS都是<strong>kvm架构</strong>，可以安装<strong>锐速</strong>或BBR（作者亲测<strong>vultr日本机房装完锐速后延迟140ms，下载7m/s</strong>），相对于OVZ架构的VPS拥有巨大优势，而十几二十美元包年或二三美元包月的国外服务器一般都是OVZ架构，延迟感人，速度堪忧</p>
+</blockquote>
+<p><strong>下面介绍怎么购买vultr</strong></p>
+<blockquote>
+<p><strong>1、</strong>首先，购买前要确认你的信用卡或银行卡是否支持多币种，请自行百度，不支持的话请直接看本教程第二部分，支持的话继续往下看</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>2、</strong>如果你有多币种信用卡，那没什么说的，按后续教程输入信用卡信息购买即可；如果你只有多币种银行卡的话，由于国内银行卡不能直接用于国外网付，所以要先注册PayPal绑定银行卡，注册步骤如下： 一、打开PayPal官网<a href="https://www.paypal.com" target="_blank" rel="noopener">https://www.paypal.com</a>，免费注册 二、输入邮箱，要设置的密码 三、输入姓、名、出生日期、地址（可随意）、邮编（与地址对应）、手机号码，除地址和邮编外 其他一定要保证真实 四、点同意并创建用户 五、输入银行卡号、与银行卡对应的手机号码，点下一步（用PayPal付款必须绑定信用卡或者支持双币支付的银行卡，如62开头的光大银行） 六、输入手机验证码，点验证，按提示操作，如提示扣款不用担心，这是预付款验证，不会真扣，即使扣了也会返还你的账户余额里 七、点转至您的账户 八、点验证邮箱地址 九、点发送电子邮件 十、登陆邮箱，打开PayPal发来的邮件，选择点击此处激活账户 十一、输入你设置的密码，点验证邮箱地址 十二、大功告成，可以在支持PayPal的国外网站购物了</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>3、</strong>注册Vultr 一、注册地址：<a href="http://www.vultr.com/?ref=7142841" target="_blank" rel="noopener">http://www.vultr.com/?ref=7142841</a> （使用本地址注册才能得到20美元的赠送），进入后按图输入邮箱和要设置的密码（最少10位，要同时有数字和大小写字母），最后点击create account创建 <img src="http://img.blog.csdn.net/20170901145908835?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>二、注册成功后，首先确认右侧有$20字样，然后再继续用信用卡或者PayPal充值激活账户，在右侧选中Credit Card或PayPal(最新支持支付宝)，分别按对应截图填入信息购买 <img src="http://img.blog.csdn.net/20170901150033999?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150128518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150253183?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>4、</strong>注意事项 一、信用卡可能会扣取1美元用作验证，成功后过段时间会自动返回账户 二、一个信用卡或PayPal只能给一个账号付款，如果用不同的邮箱去注册多个账号，然后用同一个信用卡或PayPal付款，最后的结果是这个PayPal付过款的所有的vultr关联账号会被官方封杀，且不会退款，一定要注意，不要贪心</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>④</strong>在Vultr中创建VPS，依次按照下面的截图创建即可 <img src="http://img.blog.csdn.net/20170901150501675?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150542018?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150557223?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150620426?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> <img src="http://img.blog.csdn.net/20170901150734207?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<hr>
+<h2 id="第二部分：SSR搭建、配置、提速，适用于所有服务器"><a href="#第二部分：SSR搭建、配置、提速，适用于所有服务器" class="headerlink" title="第二部分：SSR搭建、配置、提速，适用于所有服务器"></a>第二部分：SSR搭建、配置、提速，适用于所有服务器</h2><blockquote>
+<p>SSR简介：一款优秀的代理软件，本意是让更多的网友畅游网络，却被天朝的大神开发成了免流</p>
+</blockquote>
+<p><strong>SSR免流方式：免流端口加混淆参数</strong></p>
+<blockquote>
+<p>免流端口常见的有移动：137,138,8080,80，440,443.8989.351.366,电信：189,8080,80,443,440,3389,联通：8080,80,53(空中卡),130,131,132,155,156,185,186,145,176,443,440,3389 混淆参数就是免流网址，由于最近和谐了很多，就不写了，请自行收集测试，也可以自己抓包，抓包教程在最后面</p>
+</blockquote>
+<p><strong>SSR客户端下载：</strong></p>
+<blockquote>
+<p>安卓<a href="https://github.com/shadowsocksr/shadowsocksr-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocksr/shadowsocksr-android/releases</a>、或者直接百度 IOS登录商店下载wingy（免费）、LIFI（免费）、netkit（收费）、pototso（俗称土豆丝，收费）、surge（收费，很贵）、shadowsocks（俗称小火箭，最好用，也是用的人最多的，收费）、或者用电脑端爱思助手连接手机直接下载shadowsocks（免费，推荐此方法）</p>
+</blockquote>
+<p><strong>④SSR搭建</strong></p>
+<blockquote>
+<p>一、准备好你的服务器，确认账号（一般是root）和密码，系统建议Centos6 ×64 二、手机用juicessh连接服务器，(电脑Xshell 5 )教程如下 <strong>#juicessh使用教程</strong> 0.进入juicessh 1.点上侧连接 2.点右下角+ 3.昵称随意，类型SSH，地址你的服务器ip，端口默认22不变（映射端口和自设端口除外） 4.认证选新建 5.昵称随意，用户名一般为root，密码填你的服务器密码 6.√ 7.√ 8.点你设置的配置，如无昵称就是以服务器ip命名 9.如无意外，这时就自动登陆服务器了，如果提示你输入密码，再输一遍就行 了，输入后记得点保存 10.进入服务器后，就可以运行代码了，本机键盘手打或者复制粘帖均可</p>
+</blockquote>
+<hr>
+<p><strong>三、电脑用xshell连接服务器，教程如下</strong></p>
+<blockquote>
+<p>xshell使用教程: 0.进入xshell 1、 点左上角文件 2、点新建 3、名称随意，协议SSH，主机你的服务器IP，端口默认22不变（映射端口和自设端口除外） 4、确定 5、选中设置的配置双击打开 6、提示输入账号和密码，输入后记得点保存 7、进入服务器后，就可以运行代码了，本机键盘手打或者复制粘帖均可</p>
+</blockquote>
+<hr>
+<p><strong>四、进入服务器后，就可以运行SSR代码了，这里推荐用西门吹雪的，当然 也可以用其他的，网上代码很多</strong></p>
+<blockquote>
+<p>wget <a href="http://vpn.ximcx.cn/SSR/SSR" target="_blank" rel="noopener">http://vpn.ximcx.cn/SSR/SSR</a> &amp;&amp; bash SSR 如提示 : wget not found 请先执行：yum install -y wget</p>
+</blockquote>
+<hr>
+<p><strong>五、</strong>运行后，会首先提示你输入授权码（yaohuo.me，界面最上方有），然后提示你设置端口（port）和密码（password），端口一般是移动137、138、8080，联通和电信80和8080，具体设置哪个视自己情况而定，设置错了也不要紧，后面有配置多端口方法</p>
+<hr>
+<p><strong>七、</strong>SSR常用命令</p>
+<hr>
+<h1 id="SSR常用命令"><a href="#SSR常用命令" class="headerlink" title="SSR常用命令"></a>SSR常用命令</h1><blockquote>
+<p>启动：/etc/init.d/shadowsocks start 停止：/etc/init.d/shadowsocks stop 重启：/etc/init.d/shadowsocks restart 状态：/etc/init.d/shadowsocks status 卸载（仅限本教程西门吹雪脚本）：wget <a href="http://vpn.ximcx.cn/SSR/SSR" target="_blank" rel="noopener">http://vpn.ximcx.cn/SSR/SSR</a> &amp;&amp; bash SSR uninstall</p>
+</blockquote>
+<hr>
+<p><strong>八、SSR修改密码、配置多端口</strong></p>
+<pre><code>*#SSR修改密码、配置多端口教程*
+</code></pre><blockquote>
+<p>1、输入vi /etc/shadowsocks.json 2、按“i”进入编辑模式，编辑如下</p>
+</blockquote>
+<p>{<br>    “server”: “0.0.0.0”,<br>    “server_ipv6”: “::”,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”: 1081,<br>    “port_password”:{<br>        “端口1”:”密码1”,<br>        “端口2”:”密码2”,<br>        “端口3”:”密码3”,<br>        “端口4”:”密码4”<br>    },<br>    “timeout”: 120,<br>    “udp_timeout”: 60,<br>    “method”: “chacha20”,<br>    “protocol”: “auth_sha1_compatible”,<br>    “protocol_param”: “”,<br>    “obfs”: “http_simple_compatible”,<br>    “obfs_param”: “”,<br>    “dns_ipv6”: false,<br>    “connect_verbose_info”: 0,<br>    “redirect”: “”,<br>    “fast_open”: false,<br>    “workers”: 1<br>}</p>
+<blockquote>
+<p>3、按esc返回，输入:wq回车保存 4、输入/etc/init.d/shadowsocks restart重启ssr 5、如不能联网，则关闭防火墙（逐条输入）</p>
+<pre><code>service iptables stop
+chkconfig iptables off
+</code></pre></blockquote>
+<hr>
+<p><strong>⑤SSR手机端配置（安卓，IOS作者不熟悉，请自行学习）</strong> #SSR软件配置教程</p>
+<blockquote>
+<p>0.进入SSR 1.配置名称随意 2.服务器你的IP 3.远程端口你设置的端口 4.本地端口默认 5.密码你设置的密码 6.加密方法chacha20 7.协议auth-sha1 8.混淆方式http-simple 9.混淆参数填对应运营商免流网址，网上很多 10.点右上角飞机图标 11、让SSR软件保留在后台 12、百度输入“ip”回车 13、如果显示的是你的服务器IP即证明配置成功 14、接下来就是测试免不免流量了，方法是先关闭网络，开关几次飞行模式，5分钟后打开网络按上面的教程连接SSR后进移动app查询流量，然后下载5M左右的文件，再重复开头的方法关网开飞行等5分钟后再查流量，如果流量没少，即证明99%免流成功 15、注意，SSR软件一定要保留在后台运行，不然会扣流量</p>
+</blockquote>
+<hr>
+<p><strong>⑥SSR提速之锐速（仅支持KVM,Xen,vmare架构）</strong> <em>由于锐速对内核要求严格，所以要先更换内核</em></p>
+<blockquote>
+<p>在<a href="https://www.wn789.com/4678.html" title="锐速ServerSpeeder无限带宽破解版Linux一键自动安装包-蜗牛789" target="_blank" rel="noopener">锐速ServerSpeeder无限带宽破解版Linux一键自动安装包</a>文章中介绍了如何使用一键包安装锐速，优化服务器网络速度。其实要想在自己的VPS安装锐速，首先内核必须要匹配锐速版本。如果内核不支持安装锐速，我们需要手动修改内核为支持安装锐速版本，不过OpenVZ虚拟技术架设的VPS是无法是无法更换内核，另外并不是所有的XEN和KVM虚拟技术架设的VPS都支持更换内核，像Linode VPS就不支持以下方法修改，需在VPS管理页面修改（<a href="https://www.wn789.com/4666.html" title="Linode VPS如何在管理页面更换内核-蜗牛789" target="_blank" rel="noopener">Linode VPS如何在管理页面更换内核</a>）。</p>
+<h2 id="一、CentOS-6内核更换教程："><a href="#一、CentOS-6内核更换教程：" class="headerlink" title="一、CentOS 6内核更换教程："></a>一、CentOS 6内核更换教程：</h2><p>CentOS 6支持安装锐速的内核：2.6.32-504.3.3.el6.x86_64 1、首先运行下面命令为自己的VPS下载安装内核。</p>
+<p>uname -r #查看当前内核版本 rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</a> rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm</a> –force</p>
+<p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223251-1.png" alt=""> 2、执行命令“rpm -qa | grep kernel”，查看内核是否安装成功。如果显示你安装的内核版本，表示安装成功。</p>
+<p>rpm -qa | grep kernel</p>
+<p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223313-1.png" alt=""> 3、重启VPS，查看内核是否修改成功。</p>
+<p>reboot #重启VPS uname -r #当前使用内核版本</p>
+<p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223441-1.png" alt=""> <strong>二、CentOS 7内核更换教程</strong> CentOS 7支持安装锐速的内核：3.10.0-327.el7.x86_64 1、首先使用下面命令下载及更换内核，</p>
+<p>rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm</a> –force rpm -qa | grep kernel #查看内核是否安装成功</p>
+<p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223220631-1.png" alt=""> 2、重启VPS，查看内核是否修改成功。</p>
+<p>reboot #重启VPS uname -r #当前使用内核版本</p>
+<p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223220726.png" alt=""> 3、目前Centos 7小问题比较多，锐速针对centos 7的版版本较少。推荐在CentOS 6.中安装。</p>
+</blockquote>
+<blockquote>
+<p><strong>再安装锐速</strong></p>
+<p>wget -N –no-check-certificate <a href="https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh</a><br>bash serverspeeder.sh</p>
+</blockquote>
+<p><strong>（centos6 64位）</strong></p>
+<blockquote>
+<p>wget <a href="http://wget.ca/Sh/Serverspeeder/rscentos&amp;&amp;sh" target="_blank" rel="noopener">http://wget.ca/Sh/Serverspeeder/rscentos&amp;&amp;sh</a> rscentos</p>
+</blockquote>
+<p><strong>（centos7 64位）</strong></p>
+<blockquote>
+<p>wget <a href="http://wget.ca/Sh/Serverspeeder/rscentos7&amp;&amp;sh" target="_blank" rel="noopener">http://wget.ca/Sh/Serverspeeder/rscentos7&amp;&amp;sh</a> rscentos7  </p>
+</blockquote>
+<h1 id="锐速常用命令"><a href="#锐速常用命令" class="headerlink" title="锐速常用命令"></a>锐速常用命令</h1><p>5、锐速serverspeeder常用命令：</p>
+<p>service serverSpeeder start #启动<br>service serverSpeeder stop #停止<br>service serverSpeeder reload #重新加载配置<br>service serverSpeeder restart #重启<br>service serverSpeeder status #状态<br>service serverSpeeder stats #统计<br>service serverSpeeder renewLic #更新许可文件<br>service serverSpeeder update #更新<br>chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f #卸载</p>
+<blockquote>
+<p>启动：/serverspeeder/bin/serverSpeeder.sh start 停止：/serverspeeder/bin/serverSpeeder.sh stop 状态：service serverSpeeder status 检查是否有appex0模块：lsmod</p>
+</blockquote>
+<p><strong>⑦SSR提速之BBR（仅支持KVM,Xen,vmare架构，且不可与锐速共存）</strong></p>
+<blockquote>
+<p>使用root用户登录，运行以下命令（逐行运行）： wget –no-check-certificate <a href="https://github.com/teddysun/across/raw/master/bbr.sh" target="_blank" rel="noopener">https://github.com/teddysun/across/raw/master/bbr.sh</a> chmod +x bbr.sh ./bbr.sh 安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启。 重启完成后，进入 VPS，验证一下是否成功安装最新内核并开启 TCP BBR，输入以下命令： uname -r 查看内核版本，含有 4.9.0 就表示 OK 了 sysctl net.ipv4.tcp_available_congestion_control 返回值一般为： net.ipv4.tcp_available_congestion_control = bbr cubic reno sysctl net.ipv4.tcp_congestion_control 返回值一般为： net.ipv4.tcp_congestion_control = bbr sysctl net.core.default_qdisc 返回值一般为： net.core.default_qdisc = fq lsmod | grep bbr 返回值有 tcp_bbr 模块即说明bbr已启动。</p>
+</blockquote>
+<hr>
+<p><strong>⑧SSR提速之NetSpeed（支持KVM、OVZ）</strong></p>
+<blockquote>
+<p>这个直接搬砖了，有大神已经写好了教程： <a href="https://www.dou-bi.co/netspeeder-jc1/" target="_blank" rel="noopener">https://www.dou-bi.co/netspeeder-jc1/</a></p>
+</blockquote>
+<hr>
+<p><strong>⑨SSR提速之KCPTun</strong></p>
+<blockquote>
+<p>仍然直接搬砖： 服务器配置<a href="https://www.dou-bi.co/ss-jc36/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc36/</a> 电脑客户端配置<a href="https://www.dou-bi.co/ss-jc37/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc37/</a> 安卓客户端配置<a href="https://www.dou-bi.co/ss-jc38/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc38/</a></p>
+</blockquote>
+<hr>
+<p><strong>⑩SSR提速之FinalSpeed（仅支持电脑，不支持手机）</strong></p>
+<blockquote>
+<p>同样直接搬砖 服务器配置<a href="https://www.dou-bi.co/ss-jc19/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc19/</a> 客户端配置<a href="https://www.dou-bi.co/ss-jc18/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc18/</a> 电脑端局域网内共享给安卓<a href="https://www.dou-bi.co/ss-jc21/" target="_blank" rel="noopener">https://www.dou-bi.co/ss-jc21/</a></p>
+</blockquote>
+<hr>
+<p><strong>⑪SSR开热点</strong></p>
+<blockquote>
+<p>ROOT或越狱了的手机才能开热点 1、安卓用openvpn工具箱，请自行百度下载，开热点步骤如下</p>
+</blockquote>
+<h1 id="openvpn工具箱开热点教程"><a href="#openvpn工具箱开热点教程" class="headerlink" title="openvpn工具箱开热点教程"></a>openvpn工具箱开热点教程</h1><blockquote>
+<p>一、先打开热点，让其他设备连上你的热点 二、打开openvpn工具箱 三、点VPN共享向导 四、点通用模式 五、点起点 六、搞定，接着在连接你热点的设备上百度输入“IP”,如果显示的是你的服务器IP，那就没错了 七、如果不能正常上网，就需要设置静态IP，方法就是打开对方设备的WiFi高级设置，IP设为192.168.43.2-255，子网掩码255.255.255.0，网关192.168.43.1，DNS8.8.8.8，然后就可以正常连接了（PS，也可以用路由器中继热点，在路由器里同样按以上静态IP方法设置，路由器中继的好处就是设备可以随连随上、发射信号更远更强） 2、IOS添加雷锋源下载TETHERME插件，由于作者没用过，所以请自行学习，听说很简单，安装后点开启即可</p>
+</blockquote>
+<h2 id="第三部分：抓包（端口和混淆参数）"><a href="#第三部分：抓包（端口和混淆参数）" class="headerlink" title="第三部分：抓包（端口和混淆参数）"></a>第三部分：抓包（端口和混淆参数）</h2><p><em>作者一直用移动，不熟悉联通和电信，不过三网原理都一样，熟悉了后自然可以举一反三</em> <strong>SSR免流靠混淆参数和端口(没有的话就只能光fan qiang用了)</strong> 混淆参数，就是免流网址，就是host，其实能免的host几乎都能在网上找到，不过还是自己学会怎么抓比较好，万一哪天就抓到了新的host了呢。作者常用的抓包软件有两个，一个是wi.cap，一个是packet capture，但是wi.cap需要root和xp框架，要求比较高，所以本教程只介绍不用root也不用框架的packet capture <strong>#packet capture抓包教程</strong></p>
+<blockquote>
+<p>1、首先安装packet capture，可以百度，也可以去我分享的百度链接里下载 2、关闭所有联网软件，打开手机网络（net和wap都可以试下） 3、打开packet capture 4、点击上方绿色三角形按钮 5、打开要抓包的软件（免流量软件，比如掌厅、咪咕、沃TV等），随便操作软件，尽可能多操作几次 6、返回packet capture 7、点进去上方日期、时间命名的标题栏 8、找到Host字样的信息，那就是混淆参数，如下图 <img src="http://img.blog.csdn.net/20170901153220491?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</blockquote>
+<p><strong>#端口</strong> 以前137、138基本可免全国移动，现在和谐的差不多了，基本只有8080可用（有的host也可以用80和443），怎么确认一个host打开了哪些端口呢？最简单的自然是用站长工具，当然，老司机可以用各种扫端口软件，比如安卓软件IPScanner就不错，支持自定义端口范围、逐个扫描</p>
+<blockquote>
+<p>站长工具-端口扫描<a href="http://tool.chinaz.com/port/" target="_blank" rel="noopener">http://tool.chinaz.com/port/</a>，用法很简单，具体如下图</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20170901153412305?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<blockquote>
+<p>④你用哪个远程端口，对应的混淆参数一定要打开这个端口，不然99%不会免，抓到host后扫描下host开了哪些端口，然后就剩测试了。 好了，本教程到此结束，祝各位小伙伴早日用上SSR免流。</p>
+</blockquote>
+<p>  yum install -y wget &amp;&amp; wget -O install.sh <a href="http://download.bt.cn/install/install.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install.sh</a> &amp;&amp; sh install.sh  #宝塔安装</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="816.html" title="小白教程-一看就懂得SSR免流量教程">816.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ssr/" rel="tag"><i class="fa fa-tag"></i> ssr</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/2326e2a0.html" rel="next" title="近期工作反思">
+                <i class="fa fa-chevron-left"></i> 近期工作反思
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/f09d9872.html" rel="prev" title="记一次搭建SS服务器，完整的过程。">
+                记一次搭建SS服务器，完整的过程。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小白福利-全网最详细的SSR免流教程"><span class="nav-number">1.</span> <span class="nav-text">小白福利-全网最详细的SSR免流教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：SSR搭建、配置、提速，适用于所有服务器"><span class="nav-number">2.</span> <span class="nav-text">第二部分：SSR搭建、配置、提速，适用于所有服务器</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#SSR常用命令"><span class="nav-number"></span> <span class="nav-text">SSR常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、CentOS-6内核更换教程："><span class="nav-number">1.</span> <span class="nav-text">一、CentOS 6内核更换教程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锐速常用命令"><span class="nav-number"></span> <span class="nav-text">锐速常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openvpn工具箱开热点教程"><span class="nav-number"></span> <span class="nav-text">openvpn工具箱开热点教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分：抓包（端口和混淆参数）"><span class="nav-number">1.</span> <span class="nav-text">第三部分：抓包（端口和混淆参数）</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

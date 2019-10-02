@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于汇编语言的CPTH机的一点学习记录 简要复习常用的汇编指令：  ·堆栈相关指令 对于指令的详细了解，应该查阅Intel发布的指令手册。但是从头开始阅读那些手册是一件令人望而生畏的事情。读者暂时可以只初步了解，忽略一些细节，当实际用到的时候，再具体查阅相关指令。  push：把一个32位的操作数压入堆栈中。这个操作导致esp被减4。Esp被形象地成为栈顶。我们认为顶部是地址小的区域，那么，压入堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言_简单入门相关_zcylkcsj">
+<meta property="og:url" content="http://blog.aclear.top/post/305ad71c.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="关于汇编语言的CPTH机的一点学习记录 简要复习常用的汇编指令：  ·堆栈相关指令 对于指令的详细了解，应该查阅Intel发布的指令手册。但是从头开始阅读那些手册是一件令人望而生畏的事情。读者暂时可以只初步了解，忽略一些细节，当实际用到的时候，再具体查阅相关指令。  push：把一个32位的操作数压入堆栈中。这个操作导致esp被减4。Esp被形象地成为栈顶。我们认为顶部是地址小的区域，那么，压入堆">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.aclear.top/注意咱们的堆栈.png">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汇编语言_简单入门相关_zcylkcsj">
+<meta name="twitter:description" content="关于汇编语言的CPTH机的一点学习记录 简要复习常用的汇编指令：  ·堆栈相关指令 对于指令的详细了解，应该查阅Intel发布的指令手册。但是从头开始阅读那些手册是一件令人望而生畏的事情。读者暂时可以只初步了解，忽略一些细节，当实际用到的时候，再具体查阅相关指令。  push：把一个32位的操作数压入堆栈中。这个操作导致esp被减4。Esp被形象地成为栈顶。我们认为顶部是地址小的区域，那么，压入堆">
+<meta name="twitter:image" content="http://pic.aclear.top/注意咱们的堆栈.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/305ad71c.html">
+
+
+
+
+
+  <title>汇编语言_简单入门相关_zcylkcsj | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/305ad71c.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">汇编语言_简单入门相关_zcylkcsj</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T22:05:16+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/汇编语言学习/" itemprop="url" rel="index">
+                    <span itemprop="name">汇编语言学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于汇编语言的CPTH机的一点学习记录"><a href="#关于汇编语言的CPTH机的一点学习记录" class="headerlink" title="关于汇编语言的CPTH机的一点学习记录"></a>关于汇编语言的CPTH机的一点学习记录</h1><hr>
+<h3 id="简要复习常用的汇编指令："><a href="#简要复习常用的汇编指令：" class="headerlink" title="简要复习常用的汇编指令："></a>简要复习常用的汇编指令：</h3><p>  ·<strong>堆栈相关指令</strong> 对于指令的详细了解，应该查阅Intel发布的指令手册。但是从头开始阅读那些手册是一件令人望而生畏的事情。读者暂时可以只初步了解，忽略一些细节，当实际用到的时候，再具体查阅相关指令。</p>
+<ul>
+<li>push：把一个32位的操作数压入堆栈中。这个操作导致esp被减4。<strong>Esp</strong>被形象地成为栈顶。我们认为顶部是地址小的区域，那么，压入堆栈的数据越多，这个堆栈也就越堆越高，esp也就越来越小。在32位平台上，esp每次减少4字节。</li>
+<li>pop：相反，esp被加4，一个数据出栈。Pop的参数一般是一个寄存器，栈顶的数据被弹出到这个寄存器中。</li>
+</ul>
+<p>一般不会把sub、add这样的算术指令，以及call、ret这样的跳转指令归入堆栈相关指令中。但是实际上在函数参数传递过程中，sub和add是最常用来操作堆栈；call和ret对堆栈也有影响。所以这里做特殊处理。</p>
+<ul>
+<li>sub：减法。第一个参数是被减数所在的寄存器；第二个参数是减数。（对应的还有add指令。）</li>
+<li>add：加法。</li>
+<li>ret：返回。相当于跳转回调用函数的地方。（对应的call指令来调用函数，返回到call之后的下一条指令。）</li>
+<li>call：调用函数。</li>
+</ul>
+<p><strong>说道这里，有必要详述一些指令对堆栈的影响。某些指令会“自动”地操作堆栈，这就是call和jmp的不同之处。Call指令会把它的下一条指令的地址压入堆栈中，然后跳转到它调用的函数的开头处；而单纯的jmp是不会这样做的。同时，ret会自动地弹出返回地址。</strong> <strong>（小提示：call的本质相当于push+jmp。ret的本质相当于pop+jmp）</strong> 不但push、pop、call和ret会操作堆栈，sub和add也可以用于操作堆栈。如果我们要一次在堆栈中分配4个4字节长整型空间，那么没有必要4次调用push，很简单地把esp减去4*4=16即可。当然，也可以同样地用add指令来恢复它。这常常用于分配函数局部变量空间，因为C语言函数的局部变量保存在堆栈里。   ··<strong>数据传送指令</strong></p>
+<ul>
+<li>mov：数据移动。第一个参数是目的，第二个参数是来源。在C语言中相当于赋值号。这是最广为人知的指令。</li>
+<li>xor：异或。这虽是逻辑运算指令，但是有趣的是，xor eax，eax这样的操作常常用来代替mov eax，0。好处是速度更快，占用字节数更少。</li>
+<li>lea：取地址（第二个参数）后放入到前面的寄存器（第一个参数）中。</li>
+</ul>
+<p>（小提示：见到xor eax，eax，应该马上明白这是清零操作。） 但是实际上，有时候用lea用来做和mov同样的事情，比如赋值。看下面一条指令： lea dei,[ebp-0cch] 方括弧表示存储器，也就是ebp-0cch这个地址所指向的存储内容。但是lea要求取[ebp-0cch]的地址，那么地址就是ebp-0cch，这个地址将被放入到edi中。换句话说，这等同于： mov dei,ebp-0cch 但是以上mov指令是错误的，因为mov不支持后一个操作数写成寄存器减去数字。但是lea支持，所以可以用lea来代替它。 指令的操作数能采用的运算符号有非常复杂的限制。如果需要使用，应该查询指令手册。 为了讲解stos，下面解说前面提到的代码： mov  ecx,30h mov   eax,0cccccccch rep    stos dword ptr es:[edi] Stos是串存储指令，它的功能是将eax中的数据放入edi所指的地址中，同时，edi会增加4（字节数）。Rep使指令重复执行ecx中填写的次数。方括弧表示存储器，这个地址实际上就是edi的内容所指向的地址。这里的stos其实是对应的stosd，其他还有stosb、stosw，分别对应于处理4、1、2个字节，这里对堆栈中30h*4（0c0h）个字节初始化为0cch（也就是int3指令的机器码），这样发生意外时执行堆栈里面的内容会引发调试中断。   <strong>···跳转与比较指令</strong> 部分跳转指令如下：</p>
+<ul>
+<li>jmp：无条件跳转。这也是多年后我依然未忘记的少量指令之一。</li>
+<li>jg：顾名思义，大于的时候跳转。通常前面有一条比较指令。</li>
+<li>jl：顾名思义，小于的时候跳转。通常前面有一条比较指令。</li>
+<li>jge：顾名思义，大于等于的时候跳转。通常前面有一条比较指令。</li>
+</ul>
+<p>类似的指令还有一些，这里就不介绍了。 下面介绍一条比较指令。</p>
+<ul>
+<li>cmp：顾名思义，比较。往往是jg、jl、jge之类的条件跳转指令的执行条件。</li>
+</ul>
+<p>[caption id=”attachment_646” align=”alignnone” width=”607”]<img src="http://pic.aclear.top/注意咱们的堆栈.png" alt="dream"> 1. 对战说明<br>一般用于：组成原理、操作系统的保护；<br>还用于数据指令。<br>bakke：堆栈都是一种数据项按序排列的数据结构，只能在一端(称为栈顶(top))对数据项进行插入和删除。在单片机应用中，堆栈是个特殊的存储区，主要功能是暂时存放数据和地址，通常用来保护断点和现场。要点：堆，队列优先,先进先出（FIFO—first in first out）[1] 。栈，先进后出(FILO—First-In/Last-Out)。[/caption]     </p>
+<p>2. 二进制是b（binary），十六进制是h（hexdecimal）。十进制一般不需标示，特殊情况下需要区分时标注d（decimal）。</p>
+<h4 id="3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）"><a href="#3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）" class="headerlink" title="3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）"></a>3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）</h4><p>一般说来,加方括号 [ ] 表示一种间接的取操作数方式,有点类似于C语言中的指针概念. 第一条指令 ADD AL ,[SI] 中,[SI] 表示寄存器间接寻址. 也就是说,与AL中内容相加的加数,不是SI寄存器的内容,而是以SI的内容作为地址指针的内存操作数. 假设SI的内容是1234H,这条加法指令,不是将1234H加到AL里（也加不了,数据类型不对）,而是以1234H作为地址,从内存的数据段（DS所指）中,段内偏移地址为1234H的那个内存单元中取出一个字节的数据来,加到AL中. 同样的,第二条指令 MOV [20H],AL,是将AL中的内容传送到内存里的一个单元中去.这个单元的有效地址就是[20H]. 这里,加了方括号的20H,不是运算所用的数据,而是数据的地址. ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 对问题补充的回复： AL是不可能加方括号的. 8086汇编中,能加方括号的只有4个寄存器：SI,DI,BX,BP 常数也可以加方括号,比如 [020H] 另外,变量名可以加方括号,但与上面两种情况不同,加了方括号的变量名,意义不变. 至于方括号内,可以出现BX+DI,SI+2这样的表达式,这是一些不同的寻址方式. SI 是寄存器寻址 [SI]是寄存器间接寻址 [SI+2]是相对的寄存器间接寻址,又称直接变址寻址,它也可以写成2[SI]这样的形式 [BX+SI]是基址变址寻址,也可写成[BX][SI] [BX+SI+20H]是相对的基址变址寻址,可以写成20H[BX][SI]之类的形式,将20H换成变量名也可以.  </p>
+<p>mov ax, [bx]；该指令中，bx中存储的值为一个偏移地址，该指令是将bx中存储的数据段偏移地址所对应的存储器中的值传送给ax。<br>mov ax，bx是把bx中存储的值传送给ax<br>不能互换</p>
+<hr>
+<p>--- c:\users\acanprince\desktop\文档_ssd\2017_春\zuchengyuanli\zuchengyuanli\main.c</p>
+<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>00851680 push ebp<br>00851681 mov ebp,esp<br>00851683 sub esp,108h<br>00851689 push ebx<br>0085168A push esi<br>0085168B push edi<br>0085168C lea edi,[ebp-108h]<br>00851692 mov ecx,42h<br>00851697 mov eax,0CCCCCCCCh<br>0085169C rep stos dword ptr es:[edi]<br> int a[10] = {25,-12,16,38,-22,56,46,109,127,-1};<br>0085169E mov dword ptr [a],19h<br>008516A5 mov dword ptr [ebp-28h],0FFFFFFF4h<br>008516AC mov dword ptr [ebp-24h],10h<br>008516B3 mov dword ptr [ebp-20h],26h<br>008516BA mov dword ptr [ebp-1Ch],0FFFFFFEAh<br>008516C1 mov dword ptr [ebp-18h],38h<br>008516C8 mov dword ptr [ebp-14h],2Eh<br>008516CF mov dword ptr [ebp-10h],6Dh<br>008516D6 mov dword ptr [ebp-0Ch],7Fh<br>008516DD mov dword ptr [ebp-8],0FFFFFFFFh<br> int i = 0,sum = 0;<br>008516E4 mov dword ptr [i],0<br>008516EB mov dword ptr [sum],0<br> for (; i &lt; 10; i++)<br>008516F2 jmp main+7Dh (08516FDh)<br>008516F4 mov eax,dword ptr [i]<br>008516F7 add eax,1<br>008516FA mov dword ptr [i],eax<br>008516FD cmp dword ptr [i],0Ah<br>00851701 jge main+92h (0851712h)<br> {<br> sum += a[i];<br>00851703 mov eax,dword ptr [i]<br>00851706 mov ecx,dword ptr [sum]<br>00851709 add ecx,dword ptr a[eax*4]<br>0085170D mov dword ptr [sum],ecx<br> }<br>00851710 jmp main+74h (08516F4h)<br> return 0;<br>00851712 xor eax,eax<br>}<br>00851714 push edx<br>00851715 mov ecx,ebp<br>00851717 push eax<br>00851718 lea edx,ds:[85172Ch]<br>0085171E call @_RTC_CheckStackVars@8 (0851244h)<br>00851723 pop eax<br>00851724 pop edx<br>00851725 pop edi<br>00851726 pop esi<br>00851727 pop ebx<br>00851728 mov esp,ebp<br>0085172A pop ebp<br>0085172B ret<br>0085172C add dword ptr [eax],eax<br>0085172E add byte ptr [eax],al<br>00851730 xor al,17h<br>00851732 test dword ptr [eax],eax<br>00851734 aamb 0FFh<br>00851736 ?? ??<br>00851737 jmp fword ptr [eax]<br>00851739 add byte ptr [eax],al<br>0085173B add byte ptr [eax+17h],al<br>0085173E test dword ptr [eax],eax<br>00851740 popad<br>00851741 add ah,cl<br>--- 无源文件 ———————————————————————–</p>
+<h1 id="有关于课程设计："><a href="#有关于课程设计：" class="headerlink" title="有关于课程设计："></a>有关于课程设计：</h1><p>1. MOV R2,#0A<br>2. loop:<br>    - MOV a,R2<br>    - ADD a,#7F     //数据段起始地址<br>    - MOV R3,a<br>    - MOV a,@R3<br>    - ADDC a,#80<br>    JC ##;          //判断正负<br>    MOV a,@R3<br>    ADD a,R1<br>    MOV R1,a<br>    MOV a,#00<br>    ADDC a,R0<br>    MOV R0,a<br>    MOV a,R2<br>    SUB a,#01<br>    JZ out;        //跳出的<br>    MOV R2,a<br>    JMP loop;</p>
+<p>##:<br>    MOV a,@R3<br>    SUB a,#80<br>    CPL a<br>    ADD a,#1<br>    ADD a,R1<br>    MOV R1,a<br>    MOV a,#FF<br>    ADDC a,R0<br>    MOV R0,a<br>    MOV a,R2<br>    SUB a,#01<br>    JZ out;        //跳出的<br>    MOV R2,a<br>    JMP loop;<br>3. out:<br>        MOV a,R0<br>        ADD a,#80<br>        JC ###;<br>                //THE END</p>
+<p>###:<br>    MOV a,R0<br>    CPL a<br>    MOV R0,a<br>    MOV a,R1<br>    CPL a<br>    ADD a,#01      //低位<br>    MOV R1,a<br>    MOV a,R0<br>    ADDC a,#80      //+C  +符号位<br>    MOV R0,a;       //负数取原码 结束</p>
+<p># 题目<br>   10个单字节有符号数的加法，要求数组里面有负数且和的绝对值要大于255D，数据用源码表示，计算过程要求使用补码。<br># ———代码段——–<br>00 8E   //MOV R2, #0A<br>01 0A<br>02 72   //MOV A, R2<br>03 1C   //ADD A, #7F<br>04 7F<br>05 83   //MOV R3, A<br>06 77   //MOV A, @R3<br>07 1C   //ADD A, #80<br>08 80<br>09 A0   //JC -&gt; 26<br>10 26<br>11 77   //MOV A, @R3<br>12 11   //ADD A, R1<br>13 81   //MOV R1, A<br>14 7C   //MOV A, #00<br>15 00<br>16 20   //ADDC A, R0<br>17 80   //MOV R0, A<br>18 72   //MOV A, R2<br>19 3C   //SUB A, #01<br>20 01<br>21 A4   //JZ -&gt; 45<br>22 45<br>23 82   //MOV R2, A<br>24 AC   //JMP -&gt; 02<br>25 02<br>26 77   //MOV A, @R3<br>27 3C   //SUB A, #80<br>28 80<br>29 E4   //CPL A<br>30 1C   //ADD A, #01<br>31 01<br>32 11   //ADD A, R1<br>33 81   //MOV R1, A<br>34 7C   //MOV A, #FF<br>35 FF<br>36 20   //ADDC A, R0<br>37 80   //MOV R0, A<br>38 72   //MOV A, R2<br>39 3C   //SUB A, #01<br>40 A4   //JZ -&gt; 45<br>41 45<br>42 82   //MOV R2, A<br>43 AC   //JMP -&gt; 02<br>44 02<br>45 70   //MOV A, R0<br>46 1C   //ADD A, #80<br>47 80<br>48 A0   //JC -&gt; 52<br>49 52<br>50<br>51<br>52 70   //MOV A, R0<br>53 E4   //CPL A<br>54 80   //MOV R0, A<br>55 71   //MOV A, R1<br>56 E4   //CPL A<br>57 1C   //ADD A, #01<br>58 01<br>59 81   //MOV R1, A<br>60 70   //MOV A, R0<br>61 2C   //ADDC A, #80<br>62 80<br>63 80   //MOV R0, A<br>64<br>65<br># ———数据段——–<br>80 19   //25   0001 1001<br>81 8C   //-12  1000 1100<br>82 10   //16   0001 0000<br>83 26   //38   0010 0110<br>84 96   //-22  1001 0110<br>85 38   // 56  0011 1000<br>86 2E   //46   0010 1110<br>87 A1   //-33  1010 0001<br>88 6D   //109  0110 1101<br>89 21   //33   0010 0001</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="642.html" title="汇编语言_简单入门相关_zcylkcsj">642.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/27ef7655.html" rel="next" title="TP5的php think 命令激发的--centos 修改文件及文件夹权限的操作详解。">
+                <i class="fa fa-chevron-left"></i> TP5的php think 命令激发的--centos 修改文件及文件夹权限的操作详解。
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/9bbc0ae3.html" rel="prev" title="CET6-冲刺刷题计划">
+                CET6-冲刺刷题计划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于汇编语言的CPTH机的一点学习记录"><span class="nav-number">1.</span> <span class="nav-text">关于汇编语言的CPTH机的一点学习记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要复习常用的汇编指令："><span class="nav-number">1.0.1.</span> <span class="nav-text">简要复习常用的汇编指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#有关于课程设计："><span class="nav-number">2.</span> <span class="nav-text">有关于课程设计：</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

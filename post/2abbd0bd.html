@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="！区分好 ： 1:&amp;amp;p  2:p  3:*p  4:&amp;amp;*p!!!!int *p; 不要再钻牛角尖啦！！！！！！http://blog.sina.com.cn/s/blog_59c804b60102vzcf.html《即只有  类、结构体的 对象具有浅拷贝和深拷贝！operate》 结构体的浅拷贝！ 注意  必看： /缺省拷贝构造函数在拷贝过程中是按字节复制的，对于指针型成员变量只复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指针Review">
+<meta property="og:url" content="http://blog.aclear.top/post/2abbd0bd.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="！区分好 ： 1:&amp;amp;p  2:p  3:*p  4:&amp;amp;*p!!!!int *p; 不要再钻牛角尖啦！！！！！！http://blog.sina.com.cn/s/blog_59c804b60102vzcf.html《即只有  类、结构体的 对象具有浅拷贝和深拷贝！operate》 结构体的浅拷贝！ 注意  必看： /缺省拷贝构造函数在拷贝过程中是按字节复制的，对于指针型成员变量只复">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p.blog.csdn.net/images/p_blog_csdn_net/porscheyin/EntryImages/20081206/2-3.gif">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="指针Review">
+<meta name="twitter:description" content="！区分好 ： 1:&amp;amp;p  2:p  3:*p  4:&amp;amp;*p!!!!int *p; 不要再钻牛角尖啦！！！！！！http://blog.sina.com.cn/s/blog_59c804b60102vzcf.html《即只有  类、结构体的 对象具有浅拷贝和深拷贝！operate》 结构体的浅拷贝！ 注意  必看： /缺省拷贝构造函数在拷贝过程中是按字节复制的，对于指针型成员变量只复">
+<meta name="twitter:image" content="http://p.blog.csdn.net/images/p_blog_csdn_net/porscheyin/EntryImages/20081206/2-3.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/2abbd0bd.html">
+
+
+
+
+
+  <title>指针Review | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/2abbd0bd.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">指针Review</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T14:39:36+08:00">
+                2016-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/D-S/" itemprop="url" rel="index">
+                    <span itemprop="name">D.S.</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  12.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  47
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="！区分好-：-1-amp-p-2-p-3-p-4-amp-p"><a href="#！区分好-：-1-amp-p-2-p-3-p-4-amp-p" class="headerlink" title="！区分好 ： 1:&amp;p  2:p  3:*p  4:&amp;*p!!!!"></a>！区分好 ： 1:&amp;p  2:p  3:*p  4:&amp;*p!!!!</h2><h2 id="int-p"><a href="#int-p" class="headerlink" title="int *p;"></a>int *p;</h2><h2 id="不要再钻牛角尖啦！！！！！！"><a href="#不要再钻牛角尖啦！！！！！！" class="headerlink" title=" 不要再钻牛角尖啦！！！！！！"></a> 不要再钻牛角尖啦！！！！！！</h2><p><a href="http://blog.sina.com.cn/s/blog_59c804b60102vzcf.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_59c804b60102vzcf.html《即只有  类、结构体的 对象具有浅拷贝和深拷贝！operate》</a> 结构体的浅拷贝！</p>
+<p>注意  必看：</p>
+<p>/<em>缺省拷贝构造函数在拷贝过程中是按字节复制的，对于指针型成员变量只复制指针本身，而不复制指针所指向的目标–浅拷贝。<br>    只是  一一复制      p指向的地址！<br>    其中 当中的<br>    stu【i】  = P260  可以看   自己复制内容进去！
+</em>/</p>
+<h1 id="C语言指针的初始化和赋值"><a href="#C语言指针的初始化和赋值" class="headerlink" title="C语言指针的初始化和赋值"></a><a href="http://blog.csdn.net/mhjcumt/article/details/7351032" target="_blank" rel="noopener">C语言指针的初始化和赋值</a></h1><p>1、指针的初始化</p>
+<p>指针初始化时，“=”的右操作数必须为内存中数据的地址，不可以是变量，也不可以直接用整型地址值(但是int*p=0;除外，该语句表示指针为空)。此时，*p只是表示定义的是个指针变量，并没有间接取值的意思。</p>
+<p>例如：int a = 25; int *ptr = &a; int b[10]; int *point = b; int *p = &amp;b[0]; 如果：int  *p; *p = 7; 则编译器（vs2008）会提示The variable ‘p’ is being used without being initialized.即使用了未初始化的变量p。 因为p是指向7所在的地址，*p = 7给p所指向的内存赋值，p没有赋值，所以p所指向的内存位置是随机的，没有初始化的。 int k; int *p; p = &k;  //给p赋值 *p = 7; //给p所指向的内存赋值，即k= 7 2、指针的赋值 int *p; int a; int b[1]; p = &a; p = b; 指针的赋值，“=”的左操作数可以是*p，也可以是p。</p>
+<p>当“=”的左操作数是*p时，改变的是p所指向的地址存放的数据；</p>
+<p>当“=”的左操作数是p时，改变的是p所指向的地址。</p>
+<p>数组的变量名b表示该数组的首地址，因此p=b；也是正确的 同类型的指针赋值： int val1 = 18,val2 = 19; int *p1,*p2; p1 = &val1; p2 = &val2; p1 = p2;   //注意啦，p1指向了val2，而没有指向val1 备注：字符串与指针的初始化和赋值 初始化： char <em>cp = “abcdefg”; //这个初始化过程，是将指针cp指向字符串的首地址，而并不是传递字符串的值。因为，在<a href="http://lib.csdn.net/base/c" title="C语言知识库" target="_blank" rel="noopener">C语言</a>里面，没有整体处理一个字符串的机制 赋值： cp = “abcdefg”; \</em>cp=”abcdefg” ;//错误！字符串常量传递的是它的首地址，不可以通过*cp修改该字符串的值，因为该字符串为常量，而它只是简单的将指针指向该字符串常量 3、指针常量 在C语言中没有一种内建（built-in）的方法去表示指针常量，所以当我们使用它的时候通常先写成整型常量的形式，然后再通过强制类型转换把它转换成相应的类型，如：int <em> , double </em> , char <em>等。 所以后面所示的做法是不行的： int \</em>p = 0x12345678 ; 正确的方式应为：int *p = (int <em>) 0x12345678; 要注意指针中只能存放地址，不能将一个非0值整型常量表达式或者其他非地址类型的数据赋给一个指针，原因就在此。在大多数计算机中，内存地址确实是以无符号整型数来表示的，而且多以16进制表示，但我们在C语言中不能用整型数去表示地址，只能用指针常量来表示，因为它是被用来赋给一个指针的。 对于这个赋值问题还可以换一个角度去理解，在C语言中，使用赋值操作符时，赋值操作符左边和右边的表达式类型应该是相同的，如果不是，赋值操作符将试图把右边表达式的值转换为左边的类型。所以如果写出int \</em>p = 0x12345678 ; 这条语句编译器会报错：’=’ : cannot convert from ‘ const int ‘ to ‘ int * ‘ ，因为赋值操作符左边和右边的表达式的类型应该相同，而0x12345678是int型常量，p是一个指向int型的指针，两者类型不同，所以正确的方式是：int *p = (int *) 0x12345678 ; 4、指针初始化补充 ANSI C定义了零指针常量的概念：一个具有0值的整形常量表达式，或者此类表达式被强制转换为void <em>类型，则称为空指针常量，它可以用来初始化或赋给任何类型的指针。也就是说，我们可以将0、0L、’/0’、2–2、0\</em>5以及(void *)0赋给一个任何类型的指针，此后这个指针就成为一个空指针，由系统保证空指针不指向任何对象或函数。 ANSI C还定义了一个宏<strong>NULL</strong>，用来表示空指针常量。大多数C语言的实现中NULL是采用后面这种方式定义的：#define  NULL  ((void <em>)0)。 对指针进行初始化时常用的有以下几种方式： 1.采用NULL或空指针常量，如：int \</em>p = NULL;或 char *p = 2-2; 或float *p = 0; 2.取一个对象的地址然后赋给一个指针，如：int i = 3;  int *ip = &amp;i； 3.将一个指针常量赋给一个指针，如：long *p = (long *)0xfffffff0; 4.将一个T类型数组的名字赋给一个相同类型的指针，如：char ary[100]; char *cp = ary; 5.将一个指针的地址赋给一个指针，如：int i = 3;  int *ip = &amp;i；int **pp = &ip; 6.将一个字符串常量赋给一个字符指针，如：char *cp = “abcdefg”; 对指针进行初始化或赋值的实质是将<strong>一</strong>个<strong>地址或同类型(或相兼容的类型)的指针</strong>赋给它，而不管这个地址是怎么取得的。要注意的是：<strong>对于一个不确定要指向何种类型的指针，在定义它之后最好把它初始化为NULL，并在解引用这个指针时对它进行检验，防止解引用空指针。另外，为程序中任何新创建的变量提供一个合法的初始值是一个好习惯，它可以帮你避免一些不必要的麻烦。</strong> 5、<strong>void *型指针</strong> ANSI C定义了一种void <em>型指针，表示定义一个指针，但不指定它指向何种类型的数据。void </em>型指针作为一种通用的指针，可以和其它任何类型的指针(函数指针除外)相互转化而不需要类型强制转换，但不能对它进行解引用及下标操作。C语言中的malloc函数的返回值就是一个void <em>型指针，我们可以把它直接赋给一个其他类型的指针，但从安全的编程风格角度以及兼容性上讲，最好还是将返回的指针强制转换为所需的类型，另外，malloc在无法满足请求时会通过返回一个空指针来作为“内存分配失败”的信号，所以要注意返回值指针的判空。 6、指向指针的指针 在指针初始化的第5种方式中提到了用一个指针的地址来初始化一个指针。回忆一下上一讲的内容：指针是一种变量，它也有自己的地址，所以它本身也是可用指针指向的对象。我们可以将指针的地址存放在另一个指针中，如： int i = 5000; int \</em>pi = &i; int **ppi = &pi; 此时的ppi即是一个指向指针的指针,下图表示了这些对象： <img src="http://p.blog.csdn.net/images/p_blog_csdn_net/porscheyin/EntryImages/20081206/2-3.gif" alt=""> i的地址为108，pi的内容就是i的地址，而pi的地址为104，ppi的内容即是pi的地址。对ppi解引用照常会得到ppi所指的对象，所获得的对象是指向int型变量的指针pi。想要真正地访问到i.，必须对ppi进行两次解引用，如下面代码所示： printf(“%d”, i ); printf(“%d”, *pi ); printf(“%d”, **ppi ); 以上三条语句的输出均为5000</p>
+<p>彻底搞定C语言指针详解-完整版-时候初学者-必备</p>
+<p>1.语言中变量的实质 要理解C指针，我认为一定要理解C中“变量”的存储实质， 所以我就从“变量”这个东西开始讲起吧！ 先来理解理解内存空间吧！请看下图： 内存地址→　 6　　　　　 7　　 8　　　　　 9　　 10　　　　　 11　　　　　 12　 　　　　 13 —————————————————————– 。。。 |　　 |　　 |　　 |　　 |　　|　　 |　　 |.。 ——————————- ———————————- 如图所示，内存只不过是一个存放数据的空间，就好像我 的看电影时的电影院中的座位一样。每个座位都要编号，我们的内存要存放各种各样的数据，当然我们 要知道我们的这些数据存放在什么位置吧！所以内存也要象座位一样进行编号了，这就是我们所说的内 存编址。座位可以是按一个座位一个号码的从一号开始编号，内存则是按一个字节一个字节进行编址， 如上图所示。每个字节都有个编号，我们称之为内存地址。好了，我说了这么多，现在你能理解内存空 间这个概念吗？ 我们继续看看以下的C、C++语言变量申明： int I； char a； 每次我们要使用某变量时都要事先这样申明它，它其实是内存中申请了一个名为i的整型变量宽 度的空间（DOS下的16位编程中其宽度为二个字节），和一个名为a的字符型变量宽度的空间（占一个字 节）。 我们又如何来理解变量是如何存在的呢。当我们如下申明变量时： int I； char a； 内存中的映象可能如下图： 内存地址→　　 6　　　　　 7　　 8 　　　　　 9　　　　　 10　　　　　 11　　　 12　　　　　 13 ———————– ——————————————- 。。。|　　 |　　 |　　 |　　 |　　 |　　 |　　 |.。 —————————————————————— 变量名|→i　　　 ←|→a　 ←| 图中可看出，i在内存起始地址为6上申请了 两个字节的空间（我这里假设了int的宽度为16位，不同系统中int的宽度是可能不一样的），并命名为 i. a在内存地址为8上申请了一字节的空间，并命名为a.这样我们就有两个不同类型的变量了。 2.赋值给变量 再看下面赋值： i=30 a=‘t’ 你当然知 道个两个语句是将30存入i变量的内存空间中，将‘t’字符存入a变量的内存空间中。我们可 以这样的形象理解啦： 内存地址→　　 6　　　　　 7　　 8　　　　　 9　　　　　 10 　　　　　 11　　　 12　　　　　 13 ———————————————— ———————– 。。。 |　　 30　　　　　 |　 ‘t’　 |　　 |　　 | 　　 |　　 |.。 ——————————————————————– — |→i　　　 ←|→a　 ←| 3.变量在哪里？（即我想知道变量的地 址） 好了，接下来我们来看看&amp;i是什么意思？ 是取i变量所在的地址编号嘛！我们可 以这样读它：返回i变量的地址编号。你记住了吗？ 我要在屏幕上显示变量的地址值的话，可以 写如下代码： printf（“%d”，&amp;i）； 以上图的内存映象所例，屏幕上 显示的不是i值30，而是显示i的内存地址编号6了。当然实际你操作的时，i变量的地址值不会是这个数 了。 这就是我认为作为初学者们所应想象的变量存储实质了。请这样理解吧！ 最后总结代码如下： int main() { int i=39; printf(“%d\n”,i); 　　 //① printf(“%d\n”, &amp;i);　 //② } 现在你可知道 ①、②两个printf分别在屏幕上输出的是i的什么东西啊？ 好啦！下面我们就开始真正进入指针 的学习了。 二、指针是什么东西 想说弄懂你不容易啊！我们许多初学指针的人都要这样的感慨。我常常在思索它，为什么呢？其实生活中处处都有指针。我们也处处在使用它。有了它我们的生活才更加方便 了。没有指针，那生活才不方便。不信？你看下面的例子。 这是一个生活中的例子：比如说你要 我借给你一本书，我到了你宿舍，但是你人不在宿舍，于是我把书放在你的2层3号的书架上，并写了一 张纸条放在你的桌上。纸条上写着：你要的书在第2层3号的书架上。当你回来时，看到这张纸条。你就 知道了我借与你的书放在哪了。你想想看，这张纸条的作用，纸条本身不是书，它上面也没有放着书。 那么你又如何知道书的位置呢？因为纸条上写着书的位置嘛！其实这张纸条就是一个指针了。它上面的 内容不是书本身，而是书的地址，你通过纸条这个指针找到了我借给你的本书。 那么我们C，C++ 中的指针又是什么呢？请继续跟我来吧，看下面看一个申明一整型指针变量的语句如下： int <em> pi； pi是一个指针，当然我们知道啦，但是这样说，你就以为pi一定是个多么特别的东西了。其 实，它也只过是一个变量而已。与上一篇中说的变量并没有实质的区别。不信你看下面图。 内存 地址→6　　　　 7　　 8　　　　　 9　　　　 10　　　　 11　　　　　 12　　　　 13　　　 　 14 ————————————————————– …|　　　 30　　　　　 |　 ‘t’ |　　　　　 |　　　　　 |　　　　　 |　　　　　 |　　　　 　 |　　　　　 |…… ————————————————— ———– 变量 |→i　　 ←|→a　　 ←|　　　　　　 |→ pi　　　 　　 ←| （说明：这里我假设了指针只占2个字节宽度，实际上在32位系统中，指针的宽度 是4个字节宽的，即32位。）由图示中可以看出，我们使用int \</em>Pi申明指针变量； 其实是在内存的某处 申明一个一定宽度的内存空间，并把它命名为Pi.你能在图中看出pi与前面的i，a 变量有什么本质区别 吗，没有，当然没有！pi也只不过是一个变量而已嘛！那么它又为什么会被称为指针？关键是我们要让 这个变量所存储的内容是什么。现在我要让pi成为真正有意义上的指针。请接着看下面语句： pi=&amp;i； 你应该知道 &amp;i是什么意思吧！再次提醒你啦：这是返回i变量的地址编 号。整句的意思就是把i地址的编号赋值给pi，也就是你在pi上写上i的地址编号。结果如下图所示： 内存地址→6　　　　 7　　 8　　 9　　 10　　　　 11　　　 12　　　　 13　　　　 14 —————————————————————— …|　　 　　 30　　　　　 |　 ‘t’　 |　　　　　 |　　　　　 |　　　　 6　　　　　 |　　 　　　 |　　　　　 |…… ———————————————– ——————- 变量 |→i　　 ←|→a　　　 ←|　　　　　　 |→ pi　　　　 ←| 你看，执行完pi=&amp;i；后，在图示中的系统中，pi的值是6.这 个6就是i变量的地址编号，这样pi就指向了变量i了。你看，pi与那张纸条有什么区别？pi不就是那张纸 条嘛！上面写着i的地址，而i就是那个本书。你现在看懂了吗？因此，我们就把pi称为指针。所以你要 记住，指针变量所存的内容就是内存的地址编号！好了，现在我们就可以通过这个指针pi来访问到i这个 变量了，不是吗？。看下面语句： printf（“%d”，*pi）； 那么<em>pi什么意 思呢？你只要这样读它：pi内容所指的地址的内容（嘻嘻，看上去好像在绕口令了），就pi这张“ 纸条”上所写的位置上的那本 “书”——i .你看，Pi内容是6，也就是说 pi指向内存编号为6的地址。\</em>pi嘛！就是它所指地址的内容，即地址编号6上的内容了。当然就是30的值 了。所以这条语句会在屏幕上显示30.也就是说printf（“%d”，*pi）；语句等价于printf （ “%d”， i ） ，请结合上图好好体会吧！ 到此为止，你掌握了类似&amp;i ， *pi写法的含义和相关操作吗。总的一句话 ，我们的纸条就是我们的指针，同样我们的pi也就是我们的纸条！剩下的就是我们如何应用这张纸条了 。最后我给你一道题： 程序如下 char　 a,*pa a=10 pa=&amp;a *pa=20 printf( “%d”, a) 你能直接看出输出的结果是什么吗？如 果你能，我想本篇的目的就达到了。好了，就说到这了。Happy to Study！在下篇中我将谈谈“指 针的指针”即对int * <em> ppa；中ppa 的理解。 1.数组元素 看下面代码 int i,a[]={3,4,5,6,7,3,7,4,4,6}; for (i=0;i&lt;=9;i++) { printf ( “%d”, a[i] ); } 很显然，它是显示a 数组的各元素值。 我们还可以这样访问元素，如下 int i,a[]={3,4,5,6,7,3,7,4,4,6}; for (i=0;i&lt;=9;i++) { printf ( “%d”,　 </em>(a+i) ); } 它的结果和作用完全一样 2. 通过指针访问数组元素 int i,*pa,a[]={3,4,5,6,7,3,7,4,4,6}; pa =a　 ;//请注意数组名a直接赋值给指针 pa for (i=0;i&lt;=9;i++) { printf ( “%d”, pa[i] ); } 很显然，它也是显示a 数组的各元素值。 另外与数组名一样也可如下： int i,*pa,a[]={3,4,5,6,7,3,7,4,4,6}; pa =a; for (i=0;i&lt;=9;i++) { printf ( “%d”, <em>(pa+i) ); } 看pa=a即数组名赋值给指针，以及通过数组名、指针对元素的访问形式看，它们并没有什么区别，从 这里可以看出数组名其实也就是指针。难道它们没有任何区别？有，请继续。 3. 数组名与指针变量的区别 请看下面的代码： int i,\</em>pa,a[]={3,4,5,6,7,3,7,4,4,6}; pa =a; for (i=0;i&lt;=9;i++) { printf ( “%d”, *pa ); pa++ ;　 //注意这里，指针值被修改 } 可以看出，这段代码也是将数组各元素值输出。不过，你把{}中的pa改成a试试。你会发现程序编译 出错，不能成功。看来指针和数组名还是不同的。其实上面的指针是指针变量，而数组名只是一个指针 常量。这个代码与上面的代码不同的是，指针pa在整个循环中，其值是不断递增的，即指针值被修改了 。数组名是指针常量，其值是不能修改的，因此不能类似这样操作：a++.前面4，5节中pa[i]，<em>（pa+i ）处，指针pa的值是使终没有改变。所以变量指针pa与数组名a可以互换。 4. 申明指针常量 再请看下面的代码： int i, a[]={3,4,5,6,7,3,7,4,4,6}; int </em> const pa=a;//注意const的位置：不是 const int <em> pa， for (i=0;i&lt;=9;i++) { printf ( “%d”, \</em>pa ); pa++ ;　 //注意这里，指针值被修改 } 这时候的代码能成功编译吗？不能。因为pa指针被定义为常量指针了。这时与数组名a已经没有不同 。这更说明了数组名就是常量指针。但是… int * const a={3，4，5，6，7，3，7，4，4，6}；//不行 int a[]={3，4，5，6，7，3，7，4，4，6}；//可以，所以初始化数组时必定要这样。 以上都是在VC6.0上实验。 1 int i 说起 你知道我们申明一个变量时象这样int i ；这个i是可能在它处重新变赋值的。 如下： int i=0； //… i=20；//这里重新赋值了 不过有一天我的程 序可能需要这样一个变量（暂且称它变量），在申明时就赋一个初始值。之后我的程序在其它任何处都 不会再去重新对它赋值。那我又应该怎么办呢？用const . //<strong><strong><strong>**</strong></strong></strong> const int ic =20； //… ic=40；//这样是不可以的，编译时是无法通过，因为我们不能对 const 修饰的ic重新赋值的。 //这样我们的程序就会更早更容易发现问题了。 //<strong><strong><strong>**</strong></strong></strong> 有了const修饰的ic 我们不称它为变量，而称符号常量，代表着20这 个数。这就是const 的作用。ic是不能在它处重新赋新值了。 认识了const 作用之后，另外，我 们还要知道格式的写法。有两种：const int ic=20；与int const ic=20；。它们是完全相同的。这一 点我们是要清楚。总之，你务必要记住const 与int哪个写前都不影响语义。有了这个概念后，我们来看 这两个家伙：const int <em> pi与int const </em> pi ，按你的逻辑看，它们的语义有不同吗？呵呵，你只要 记住一点，int 与const 哪个放前哪个放后都是一样的，就好比const int ic；与int const ic；一样 。也就是说，它们是相同的。 好了，我们现在已经搞定一个“双包胎”的问题。那么 int <em> const pi与前两个式子又有什么不同呢？我下面就来具体分析它们的格式与语义吧！ 2 const int </em> pi的语义 我先来说说const int <em> pi是什么作用 （当然int const </em> pi也是一样 的，前面我们说过，它们实际是一样的）。看下面的例子： //<strong><strong><strong>*</strong></strong></strong>代码开始 <strong><strong><strong>***</strong></strong></strong> int i1=30; int i2=40; const int <em> pi=&i1; pi=&i2;　　　 //4.注意这里，pi可以在任意时候重新赋值一个新内存地址 i2=80;　　　 //5.想想看：这里能用\</em>pi=80;来代替吗？当然不能 printf( “%d”, *pi ) ;　 //6. 输出是80 //<strong><strong><strong>*</strong></strong></strong>代码结束<strong><strong><strong>***</strong></strong></strong> 语义分析： 看出来了 没有啊，pi的值是可以被修改的。即它可以重新指向另一个地址的，但是，不能通过<em>pi来修改i2的值。 这个规则符合我们前面所讲的逻辑吗？当然符合了！ 首先const　 修饰的是整个</em>pi（注意，我 写的是*pi而不是pi）。所以*pi是常量，是不能被赋值的（虽然pi所指的i2是变量，不是常量）。 其次，pi前并没有用const 修饰，所以pi是指针变量，能被赋值重新指向另一内存地址的。你可 能会疑问：那我又如何用const 来修饰pi呢？其实，你注意到int <em> const pi中const 的位置就大概可 以明白了。请记住，通过格式看语义。哈哈，你可能已经看出了规律吧？那下面的一节也就没必要看下 去了。不过我还得继续我的战斗！ 3 再看int </em> const pi 确实，int <em> const pi与前面 的int const </em> pi会很容易给混淆的。注意：前面一句的const 是写在pi前和<em>号后的，而不是写在\</em>pi 前的。很显然，它是修饰限定pi的。我先让你看例子： //*************代码开始 <strong><strong><strong>***</strong></strong></strong> int i1=30; int i2=40; int <em> const pi=&i1; //pi=&i2;　　　 4.注意这里，pi不能再这样重新赋值了，即不能再指向另一个新地址。 //所以我已经注释了它。 i1=80;　　　 //5.想想看：这里能用</em>pi=80;来代替吗？可以，这 里可以通过*pi修改i1的值。 //请自行与前面一个例子比较。 printf( “% d”, *pi ) ;　 //6.输出是80 //<strong><strong><strong>***</strong></strong></strong>代码结束 <strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong> 语义分析： 看了这段代码，你明白了什么？有没有发现 pi值是不能重新赋值修改了。它只能永远指向初始化时的内存地址了。相反，这次你可以通过*pi来修改 i1的值了。与前一个例子对照一下吧！看以下的两点分析 1）pi因为有了const 的修饰，所以只 是一个指针常量：也就是说pi值是不可修改的（即pi不可以重新指向i2这个变量了）（看第4行）。 2）整个*pi的前面没有const 的修饰。也就是说，*pi是变量而不是常量，所以我们可以通过 *pi来修改它所指内存i1的值（看5行的注释） 总之一句话，这次的pi是一个指向int变量类型数 据的指针常量。 我最后总结两句： 1) 如果const 修饰在*pi前则不能改的是*pi（即不能 类似这样：*pi=50；赋值）而不是指pi. 2) 如果const 是直接写在pi前则pi不能改（即不能类似 这样：pi=&amp;i；赋值）。 请你务必先记住这两点，相信你一定不会再被它们给搞糊了。现在 再看这两个申明语句int const *pi和int * const pi时，呵呵，你会头昏脑胀还是很轻松惬意？它们各 自申明的pi分别能修改什么，不能修改什么？再问问自己！</p>
+<p>3)　 补充三种情况。这里， 我再补充以下三种情况。其实只要上面的语义搞清楚了，这三种情况也就已经被包含了。不过作为三种 具体的形式，我还是简单提一下吧！ 情况一：int <em> pi指针指向const int i常量的情况 //\</em>*********begin***************** const int i1=40; int *pi; pi=&i1;　//这样可以吗？不行，VC下是编译错。 //const int 类型的i1的地址 是不能赋值给指向int 类型地址的指针pi的。否则pi岂不是能修改i1的值了吗！ pi=(int* ) &i1;　　//　这样可以吗？强制类型转换可是C所支持的。 //ＶＣ下编译通过，但是仍 不能通过*pi=80来修改i1的值。去试试吧！看看具体的怎样。 //***********end<strong><strong><strong>***</strong></strong></strong> 情况二：const int <em> pi指针指向const int i1的 情况 //\</em>********begin**************** const int i1=40; const int <em> pi; pi=&i1;//两个类型相同，可以这样赋值。很显然，i1的值无论是通过pi还是i1都不能修 改的。 //\</em>********end***************** 情况三：用const int <em> const pi申明 的指针 //\</em>**********begin**************** int i const int <em> const pi=&i;//你能想象pi能够作什么操作吗？pi值不能改，也不能通过pi修改i的值。因为不管是\</em>pi还 是pi都是const的。 //************end<strong><strong><strong><em>**</em></strong></strong></strong> 下篇预告：函数参数的 指针传递，值传递，引用传递 迷惑（以为a，b已经代替了x，y，对x，y的操作就是对a，b的操作了，这 是一个错误的观点啊！）。 一、三道考题 开讲之前，我先请你做三道题目。（嘿嘿，得先把你的头脑搞昏才行 ……唉呀，谁扔我鸡蛋？） 1.考题一：程序代码如下： void Exchg1(int x, int y) { int tmp; tmp=x; x=y; y=tmp; printf (“x=%d,y=%d\n”,x,y) } void main() { int a=4,b=6; Exchg1 (a,b) ; printf(“a=%d,b=%d\n”,a,b) } 输出的结果 ： x=<strong><strong>， y=</strong></strong> a=<strong><strong>， b=</strong></strong> 问下划线的部分应是什么，请完成。 2.考题二：代码如下。 Exchg2(int *px, int *py) { int tmp=*px; *px=*py; *py=tmp; print(“*px=%d,*py=%d\n”,*px,*py); } main() { int a=4; int b=6; Exchg2( &amp;a,&amp;b); Print (“a=%d,b=%d\n”, a, b); } 输出的结果为： *px=<strong><strong>， *py=</strong></strong> a=<strong><strong>， b=</strong></strong> 问下划线的部分应是什么，请完成。 3.考题三： Exchg2(int &amp;x, int &amp;y) { int tmp=x; x=y; y=tmp; print(“x=%d,y=%d\n”,x,y); } main() { int a=4; int b=6; Exchg2(a,b); Print(“a=%d,b=%d\n”, a, b); } 输 出的结果： x=<strong><strong>， y=</strong></strong> a=<strong><strong>， b=</strong></strong> 问下划线的部分输出的应是什么， 请完成。 你不在机子上试，能作出来吗？你对你写出的答案有多大的把握？ 正确的答案 ，想知道吗？（呵呵，让我慢慢地告诉你吧！） 好，废话少说，继续我们的探索之旅了。 我们都知道：C语言中函数参数的传递有：值传递，地址传递，引用传递这三种形式。题一为值 传递，题二为地址传递，题三为引用传递。不过，正是这几种参数传递的形式，曾把我给搞得晕头转向 。我相信也有很多人与我有同感吧？ 下面请让我逐个地谈谈这三种传递形式。 二、函数 参数传递方式之一：值传递 1.值传递的一个错误认识 先看题一中Exchg1函数的定义： void Exchg1(int x, int y)　　 //定义中的x,y变量被称为Exchg1函数的形式参数 { int tmp; tmp=x; x=y; y=tmp; printf(“x=%d,y=% d\n”,x,y) } 问：你认为这个函数是在做什么呀？ 答：好像是对参数 x，y的值对调吧？ 请往下看，我想利用这个函数来完成对a，b两个变量值的对调，程序如下： void main() { int a=4,b=6; Exchg1 (a,b)　　　　 //a,b变量为 Exchg1函数的实际参数。 /　 printf(“a=%d,b=%d\n”,a,b) } 我问：Exchg1 （）里头的　 printf（“x=%d，y=%d\n”，x，y）语句会输出什么啊？ 我再问：Exchg1 （）后的　 printf（“a=%d，b=%d\n”，a，b）语句输出的是什么 ？ 程序输出的结果是： x=6 ， y=4 a=4 ， b=6　 //为什么不是a=6，b=4呢？ 奇怪，明明我把a，b分别代入了x，y中，并在函数里完成了两个变量值的交换，为什么a，b变量 值还是没有交换（仍然是a==4，b==6，而不是a==6，b==4）？如果你也会有这个疑问，那是因为你跟本 就不知实参a，b与形参x，y的关系了。 2.一个预备的常识 为了说明这个问题，我先给出 一个代码： int a=4； int x； x=a； x=x+3； 看好了没，现在我问 你：最终a值是多少，x值是多少？ （怎么搞的，给我这个小儿科的问题。还不简单，不就是a==4 　 x==7嘛！） 在这个代码中，你要明白一个东西：虽然a值赋给了x，但是a变量并不是x变量哦 。我们对x任何的修改，都不会改变a变量。呵呵！虽然简单，并且一看就理所当然，不过可是一个很重 要的认识喔。 3.理解值传递的形式 看调用Exch1函数的代码： main() { int a=4,b=6; Exchg1(a,b) //这里调用了Exchg1函数 printf(“a=% d,b=%d”,a,b) } Exchg1(a,b)时所完成的操作代码如下所示。 int x=a;//← int y=b;//←注意这里，头两行是调用函数时的隐含操作 int tmp; tmp=x; x=y; y=tmp; 请注意在调用执行Exchg1函数的操作中我人为地加上 了头两句： int x=a； int y=b； 这是调用函数时的两个隐含动作。它确实存在， 现在我只不过把它显式地写了出来而已。问题一下就清晰起来啦。（看到这里，现在你认为函数里面交 换操作的是a，b变量或者只是x，y变量呢？） 原来 ，其实函数在调用时是隐含地把实参a，b 的 值分别赋值给了x，y，之后在你写的Exchg1函数体内再也没有对a，b进行任何的操作了。交换的只是x， y变量。并不是a，b.当然a，b的值没有改变啦！函数只是把a，b的值通过赋值传递给了x，y，函数里头 操作的只是x，y的值并不是a，b的值。这就是所谓的参数的值传递了。 哈哈，终于明白了，正是 因为它隐含了那两个的赋值操作，才让我们产生了前述的迷惑（以为a，b已经代替了x，y，对x，y的操 作就是对a，b的操作了，这是一个错误的观点啊！）。 指向另一指针的指针 一、针概念： 早在本系列第二篇中我就对指针的实质进行了阐述 。今天我们又要学习一个叫做指向另一指针地址的指针。让我们先回顾一下指针的概念吧！ 当我 们程序如下申明变量： short int i； char a； short int <em> pi； 程序会 在内存某地址空间上为各变量开辟空间，如下图所示。 内存地址→6　　　　 7　　8　　　 　 9　　　　 10　　　　 11　　　 12　　　 13　　　　 14　　　 15 ——————- —————————————————————— …　 |　　　 　 |　　|　　|　　|　　|　　|　　|　　|　　| ————————————— ———————————————- |short int i |char a|　　|short int </em> pi| 图中所示中可看出： i 变量在内存地址5的位置，占两个字节。 a变量在内存 地址7的位置，占一个字节。 pi变量在内存地址9的位置，占两个字节。（注：pi 是指针，我这 里指针的宽度只有两个字节，32位系统是四个字节） 接下来如下赋值： i=50； pi=&amp;i； 经过上在两句的赋值，变量的内存映象如下： 内存地址→6　　 　　 7　　8　　　　 9　　　　 10　　　　 11　　　 12　　　 13　　14　　　　 15 —– ——————————————————————————— …　 |　　　 50　　|　　|　　|　　　 6　　 |　　|　　|　　| ———– ————————————————————————— |short int i |char a|　　|short int <em> pi| 看到没有：短整型指针变量pi的值为6，它就是I变量的内 存起始地址。所以，这时当我们对\</em>pi进行读写操作时，其实就是对i变量的读写操作。如： *pi=5；　　 //就是等价于I=5； 你可以回看本系列的第二篇，那里有更加详细的解说。 二、指针的地址与指向另一指针地址的指针 在上一节中，我们看到，指针变量本身与其 它变量一样也是在某个内存地址中的，如pi的内存起始地址是10.同样的，我们也可能让某个指针指向这 个地址。 看下面代码： short int <em> </em> ppi；　　　 //这是一个指向指针的指针，注意 有两个<em>号 ppi=π 第一句：short int </em> <em> ppi；——申明了一个指针变量 ppi，这个ppi是用来存储（或称指向）一个short int </em> 类型指针变量的地址。 第二句： &amp;pi那就是取pi的地址，ppi=π就是把pi的地址赋给了ppi.即将地址值10赋值给ppi.如下图： 内存地址→6　　　　 7　　8　 9　　10　　 11　 12　　　 13　　 14　　　 15 ———————————————————————— ———— …　 |　　　 50　　　　 |　　|　　|　　6　　|　　10　　|　　 | ———————————————————————————- – |short int i|char a|　　|short int <em> pi|short int ** ppi| 从图中看出，指针变 量ppi的内容就是指针变量pi的起始地址。于是…… ppi的值是多少呢？ ——10. </em>ppi的值是多少呢？——6，即pi的值。 **ppi的值是多少 呢？——50，即I的值，也是*pi的值。 呵呵！不用我说太多了，我相信你应明白这种 指针了吧！ 三、一个应用实例 1. 设计一个函数：void find1（char array[]， char search， char <em> pi） 要求：这个函数参数中的数组array是以0值为结束的字符串，要求在字符 串array中查找字符是参数search里的字符。如果找到，函数通过第三个参数（pa）返回值为array字符 串中第一个找到的字符的地址。如果没找到，则为pa为0. 设计：依题意，实现代码如下 void find1(char [] array, char search, char </em> pa) { int i; for (i=0;<em>(array+i)!=0;i++) { if (</em>(array+i)==search) { pa=array+i break; } else if (<em>(array+i)==0) { pa=0; break; } } } 你觉得这个函数能实现所要求的功能吗？ 调试： 我下面调用这个函数 试试。 void main() { char str[]={“afsdfsdfdf\0”};　 //待 查找的字符串 char a=’d’;　　 //设置要查找的字符 char </em> p=0;　 //如果 查找到后指针p将指向字符串中查找到的第一个字符的地址。 find1(str,a,p);　 //调用函数以实 现所要操作。 if (0==p ) { printf (“没找到！\n”);//1.如果没找到则 输出此句 } else { printf(“找到了，p=%d”,p);　 //如果找到则 输出此句 } } 分析： 上面代码，你认为会是输出什么呢？ 运 行试试。 唉！怎么输出的是：没有找到！ 而不是：找到了，……。 明明a值为‘d’，而str字符串的第四个字符是‘d’，应该找得到呀！ 再 看函数定义处：void find1（char [] array， char search， char <em> pa） 看调用处：find1（ str，a，p）； 依我在第五篇的分析方法，函数调用时会对每一个参数进行一个隐含的赋值操作 。 整个调用如下： array=str; search=a; pa=p;　　　 //请注意：以 上三句是调用时隐含的动作。 int i; for (i=0;</em>(array+i)!=0;i++) { if (<em> (array+i)==search) { pa=array+i break; } else if (</em>(array+i)==0) { pa=0; break; } } 哦！参数pa与参数search的传递并没 有什么不同，都是值传递嘛（小语：地址传递其实就是地址值传递嘛）！所以对形参变量pa值（当然值 是一个地址值）的修改并不会改变实参变量p值，因此p的值并没有改变（即p的指向并没有被改变）。 （如果还有疑问，再看一看《第五篇：函数参数的传递》了。） 修正： void find2(char [] array, char search, char *<em> ppa) { int i; for (i=0;</em>(array+i)!=0;i++) { if (<em>(array+i)==search) { \</em>ppa=array+i break; } else if (*(array+i)==0) { *ppa=0; break; } } } 主函数的调用处改如下： find2（str，a， &amp;p）；　 //调用函数以实现所要操作。 再分析： 这样调用函数时的整个操作变成如 下： array=str; search=a; ppa=&p;　　　 //请注意：以上三句是调用 时隐含的动作。 int i; for (i=0;*(array+i)!=0;i++) { if (<em>(array+i) ==search) { \</em>ppa=array+i break; } else if (*(array+i)==0) { *ppa=0; break; } } 看明白了吗？ ppa指向指针p的地址 。 对*ppa的修改就是对p值的修改。 你自行去调试。 经过修改后的程序就可以完 成所要的功能了。 看懂了这个例子，也就达到了本篇所要求的目的。 函数名与函数指针 一 数调用 一个通常的函数调用的例子： //自行包含 头文件 void MyFun(int x);　　　 //此处的申明也可写成：void MyFun( int ); int main(int argc, char<em> argv[]) { MyFun(10);　　　　 //这里是调用MyFun(10);函数 return 0; } void MyFun(int x)　 //这里定义一个MyFun函数 { printf (“%dn”,x); } 这个MyFun函数是一个无返回值的函数，它并不完成什 么事情。这种调用函数的格式你应该是很熟悉的吧！看主函数中调用MyFun函数的书写格式： MyFun（10）； 我们一开始只是从功能上或者说从数学意义上理解MyFun这个函数，知道 MyFun函数名代表的是一个功能（或是说一段代码）。 直到—— 学习到函数指 针概念时。我才不得不在思考：函数名到底又是什么东西呢？ （不要以为这是没有什么意义的事 噢！呵呵，继续往下看你就知道了。） 二 函数指针变量的申明 就象某一数据变量的内存 地址可以存储在相应的指针变量中一样，函数的首地址也以存储在某个函数指针变量里的。这样，我就 可以通过这个函数指针变量来调用所指向的函数了。 在C系列语言中，任何一个变量，总是要先 申明，之后才能使用的。那么，函数指针变量也应该要先申明吧？那又是如何来申明呢？以上面的例子 为例，我来申明一个可以指向MyFun函数的函数指针变量FunP.下面就是申明FunP变量的方法： void （\</em>FunP）（int） ；　　 //也可写成void （*FunP）（int x）； 你看，整个函 数指针变量的申明格式如同函数MyFun的申明处一样，只不过——我们把MyFun改成（*FunP） 而已，这样就有了一个能指向MyFun函数的指针FunP了。（当然，这个FunP指针变量也可以指向所有其它 具有相同参数及返回值的函数了。） 三 通过函数指针变量调用函数 有了FunP指针变量后 ，我们就可以对它赋值指向MyFun，然后通过FunP来调用MyFun函数了。看我如何通过FunP指针变量来调 用MyFun函数的： //自行包含头文件 void MyFun(int x);　　　 //这个申明也可写 成：void MyFun( int ); void (*FunP)(int );　　 //也可申明成void(*FunP)(int x)，但习惯 上一般不这样。 int main(int argc, char* argv[]) { MyFun(10);　　　　 //这是 直接调用MyFun函数 FunP=&MyFun;　 //将MyFun函数的地址赋给FunP变量 (*FunP)(20); 　　　 //这是通过函数指针变量FunP来调用MyFun函数的。 } void MyFun(int x)　 //这里 定义一个MyFun函数 { printf(“%dn”,x); } 请看黑体字部 分的代码及注释。 运行看看。嗯，不错，程序运行得很好。 哦，我的感觉是：MyFun与 FunP的类型关系类似于int 与int *的关系。函数MyFun好像是一个如int的变量（或常量），而FunP则像 一个如int <em>一样的指针变量。 int i，\</em>pi； pi=&amp;i；　　　 //与FunP=&amp;MyFun 比较。 （你的感觉呢？） 呵呵，其实不然—— 四 调用函数的其它书 写格式 函数指针也可如下使用，来完成同样的事情： //自行包含头文件 void MyFun(int x); void (*FunP)(int );　　　 //申明一个用以指向同样参数，返回值函数 的指针变量。 int main(int argc, char<em> argv[]) { MyFun(10);　　　　 //这里是 调用MyFun(10);函数 FunP=MyFun;　 //将MyFun函数的地址赋给FunP变量 FunP(20);　　　 //这是通过函数指针变量来调用MyFun函数的。 return 0; } void MyFun(int x)　 // 这里定义一个MyFun函数 { printf(“%dn”,x); } 我改了黑 体字部分（请自行与之前的代码比较一下）。 运行试试，啊！一样地成功。 咦？ FunP=MyFun； 可以这样将MyFun值同赋值给FunP，难道MyFun与FunP是同一数据类型（即 如同的int 与int的关系），而不是如同int 与int</em>的关系了？（有没有一点点的糊涂了？） 看 来与之前的代码有点矛盾了，是吧！所以我说嘛！ 请容许我暂不给你解释，继续看以下几种情况 （这些可都是可以正确运行的代码哟！）： 代码之三： int main(int argc, char<em> argv[]) { MyFun(10);　　　　 //这里是调用MyFun(10);函数 FunP=&MyFun;　 //将MyFun函数的地址赋给FunP变量 FunP(20);　　　 //这是通过函数指 针变量来调用MyFun函数的。 return 0; } 代码之四： int main(int argc, char</em> argv[]) { MyFun(10);　　　　 //这里是调用MyFun(10);函数 FunP=MyFun;　 //将MyFun函数的地址赋给FunP变量 (*FunP)(20);　　　 //这是通过函数指针 变量来调用MyFun函数的。 return 0; } 真的是可以这样的噢！ （哇 ！真是要晕倒了！） 还有呐！看—— int main(int argc, char* argv[]) { （*MyFun）(10);　　　　 //看，函数名MyFun也可以有这样的调用格式 return 0; } 你也许第一次见到吧：函数名调用也可以是这样写的啊！（只不过 我们平常没有这样书写罢了。） 那么，这些又说明了什么呢？ 呵呵！依据以往的知识和 经验来推理本篇的“新发现”，我想就连“福尔摩斯”也必定会由此分析并推断 出以下的结论： 1. 其实，MyFun的函数名与FunP函数指针都是一样的，即都是函数指针。MyFun 函数名是一个函数指针常量，而FunP是一个函数数指针变量，这是它们的关系。 2. 但函数名调 用如果都得如（*MyFun）（10）；这样，那书写与读起来都是不方便和不习惯的。所以C语言的设计者们 才会设计成又可允许MyFun（10）；这种形式地调用（这样方便多了并与数学中的函数形式一样，不是吗 ？）。 3. 为统一起见，FunP函数指针变量也可以FunP（10）的形式来调用。 4. 赋值时 ，即可FunP=&amp;MyFun形式，也可FunP=MyFun. 上述代码的写法，随便你爱怎么着！ 请 这样理解吧！这可是有助于你对函数指针的应用喽！ 最后—— 补充说明一点 ：在函数的申明处： void MyFun（int ）；　　　 //不能写成void （*MyFun）（int ）。 void （*FunP）（int ）；　　 //不能写成void FunP（int ）。 （请看注释）这一点 是要注意的。 五 定义某一函数的指针类型： 就像自定义数据类型一样，我们也可以先定 义一个函数指针类型，然后再用这个类型来申明函数指针变量。 我先给你一个自定义数据类型的 例子。 typedef int<em> PINT;　　　 //为int</em> 类型定义了一个PINT的别名 int main() { int x; PINT px=&x;　　 //与int <em> px=&x;是等价的。PINT类型其 实就是int </em> 类型 *px=10;　　//px就是int*类型的变量 return 0; } 根据注释，应该不难看懂吧！（虽然你可能很少这样定义使用，但以后学习Win32编程时会经常见到的。 ） 下面我们来看一下函数指针类型的定义及使用：（请与上对照！） //自行包含 头文件 void MyFun(int x);　　　 //此处的申明也可写成：void MyFun( int ); typedef void (*FunType)(int );　　 //这样只是定义一个函数指针类型 FunType FunP;　　　　//然后 用FunType类型来申明全局FunP变量 int main(int argc, char* argv[]) { //FunType FunP;　　　 //函数指针变量当然也是可以是局部的 ，那就请在这里申明了。 MyFun(10); FunP=&MyFun; (*FunP)(20); return 0; } void MyFun(int x) { printf(“%dn”,x); } 看黑体部分： 首先，在void （*FunType）（int ）； 前加了一个typedef .这样只是定义一个名为FunType函数指针类型，而不是一 个FunType变量。 然后，FunType FunP；　 这句就如PINT px；一样地申明一个FunP变量。 其它相同。整个程序完成了相同的事。 这样做法的好处是： 有了FunType类型后 ，我们就可以同样地、很方便地用FunType类型来申明多个同类型的函数指针变量了。如下： FunType FunP2； FunType FunP3； //…… 六 函数指针作为某个函数的参数 既然函数指针变量是一个变量，当然也可以作为某个函数的参数来使用的。所以 ，你还应知道函数指针是如何作为某个函数的参数来传递使用的。 给你一个实例： 要求 ：我要设计一个CallMyFun函数，这个函数可以通过参数中的函数指针值不同来分别调用MyFun1、MyFun2 、MyFun3这三个函数（注：这三个函数的定义格式应相同）。 实现：代码如下： //自行包含头文件 void MyFun1(int x); void MyFun2(int x); void MyFun3(int x); typedef void (*FunType)(int ); //②. 定义一个函数指针类型FunType,与①函 数类型一至 void CallMyFun(FunType fp,int x); int main(int argc, char* argv[]) { CallMyFun(MyFun1,10);　　 //⑤. 通过CallMyFun函数分别调用三个不同的函数 CallMyFun(MyFun2,20); CallMyFun(MyFun3,30); } void CallMyFun(FunType fp,int x) //③. 参数fp的类型是FunType。 { fp(x);//④. 通过fp的指针执行传递进来的 函数，注意fp所指的函数是有一个参数的 } void MyFun1(int x) // ①. 这是个有一个参数 的函数，以下两个函数也相同 { printf(“函数MyFun1中输出：%dn”,x); } void MyFun2(int x) { printf(“函数MyFun2中输出：%dn”,x); } void MyFun3(int x) { printf(“函数MyFun3中输出：%dn”,x); } 输出结果：略 分析：（看我写的注释。你可按我注释的①②③④⑤顺序自行 分析。）</p>
+<p>拷贝构造函数：<a href="http://blog.csdn.net/lwbeyond/article/details/6202256" target="_blank" rel="noopener">http://blog.csdn.net/lwbeyond/article/details/6202256</a> C++指针传递内存：<a href="http://www.cnblogs.com/kaituorensheng/p/3246900.html" target="_blank" rel="noopener">http://www.cnblogs.com/kaituorensheng/p/3246900.html</a> 临时变量和副本：<a href="https://zhidao.baidu.com/question/496856248.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/496856248.html</a> C++指针详解：<a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/13/2286391.html" target="_blank" rel="noopener">http://www.cnblogs.com/ggjucheng/archive/2011/12/13/2286391.html</a> C指针入门：<a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/13/2286391.html" target="_blank" rel="noopener">http://www.cnblogs.com/ggjucheng/archive/2011/12/13/2286391.html</a> 堆栈相关：<a href="http://blog.csdn.net/hairetz/article/details/4141043" target="_blank" rel="noopener">http://blog.csdn.net/hairetz/article/details/4141043</a> <a href="http://www.cnblogs.com/tgyf/p/3670855.html" target="_blank" rel="noopener">C++指针分配小细节</a></p>
+<p>char *pc = NULL; pc = new char[0]; pc[0] = ‘1’; 相信初学者看见上面这段代码，都会觉得奇怪，new char[n]中的n指定给指针变量分配多少内存空间，而n=0时代表什么呢？ 其实上面的程序编译、运行都是正确的。因为编译器识别到指定大小为0时，会自动为其分配1BYTE的内存空间。 尝试过的小伙伴会发现，给p[1]赋值也不会报错，原因留到后面讲*1。 但是，此时若想用delete [] p; 去释放内存空间就会报错，程序强制中断，因为编译器并没有真正意义上内指针变量分配内存，去释放肯定是不行的。 这就像对一个成功分配内存的指针变量，连续释放两次造成的错误，例子见后面<em>2。 好了，马上看一下成功分配内存的情况是怎么样的。 char \</em>pc = NULL; pc = new char[5]; pc[0] = ‘1’; 这里的n=5，意味着给指针变量分配5个BYTE内存空间（因类型为char），当然不管是什么类型，指针变量本身均占4BYTE。 先来看上面遗留的第一个问题*1：此时不但可以给p[0]到p[4]赋值，还可以给后面的地址赋值，如p[5],p[10]等。 这就是C/C++完美之余的一个历史遗留缺陷，不进行越界检查。 导致编译没有任何问题，运行阶段有时一不小心也察觉不出，这就要求程序员养成良好的习惯：new后面必出现delete。 若我们在给p[5]或之后的地址赋过值，在运行到delete [] p;语句时，会报错，程序强制中断。错误原因如提示的信息：damage:after normal block。 这就是上面遗留的第二个问题*2：对同一个指针变量指向的内存释放两次，与释放一个没有成功分配内存或引用越界的指针变量类似，都是不允许的。 还有一个值得注意的地方：若new时n&gt;0，delete后只是释放了原来内存地址中对应的值，指针变量仍然指向该内存地址，即： 仍可以赋值、取值进行运算，只是若没有重新赋值，取出的值为不确定值，换句话说就是，p成了传说中的野指针。 所以，这又是一个要求养成良好习惯的地方，看文章开头的地方，声明一个指针但未分配内存空间时，最好将其置为NULL。 这样做有两个好处：1、方便后面进行判断，if(!P){…}表示无内存分配，若当初没有将其置为NULL，则!p为真也代表不了什么； 2、在delete后，重新分配内存之前，将其置回为NULL，避免其成为野指针。 而对于malloc与free，情况类似，有兴趣的小伙伴可以尝试下。 刚开始学习这一块，有哪里不对的地方欢迎大家指出，谢谢！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="387.html" title="指针Review">387.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/e897f956.html" rel="next" title="C_confidence、helloc、hcc、clanguage、 concept、courage_MAXC_PLAN_12.16_X">
+                <i class="fa fa-chevron-left"></i> C_confidence、helloc、hcc、clanguage、 concept、courage_MAXC_PLAN_12.16_X
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/2ee7607e.html" rel="prev" title="Android:前端开发&&设计_12_24_开题">
+                Android:前端开发&&设计_12_24_开题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#！区分好-：-1-amp-p-2-p-3-p-4-amp-p"><span class="nav-number">1.</span> <span class="nav-text">！区分好 ： 1:&amp;p  2:p  3:*p  4:&amp;*p!!!!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int-p"><span class="nav-number">2.</span> <span class="nav-text">int *p;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要再钻牛角尖啦！！！！！！"><span class="nav-number">3.</span> <span class="nav-text"> 不要再钻牛角尖啦！！！！！！</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#C语言指针的初始化和赋值"><span class="nav-number"></span> <span class="nav-text">C语言指针的初始化和赋值</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

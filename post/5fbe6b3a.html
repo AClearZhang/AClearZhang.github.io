@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="工具,Android,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="说在最前面● tasker的使用比较复杂，称它为神器，其实它能做出不同的软件功能。由于tasker太强大了，所以在制作阶段根本没有易用性可言。● tasker官方版本有7天的试用，售价约35.00RMB，以下此链接是一个破解过的，能用10年。相对来说破解版调试功能不能正常运行，但并不会对实际使用造成问题，对于不需要自己开发研究的朋友只要用破解版就行了。● 基本多数TX看到这么长的教程就不打算弄了，">
+<meta name="keywords" content="工具,Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android神器-Tasker应用教程">
+<meta property="og:url" content="http://blog.aclear.top/post/5fbe6b3a.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="说在最前面● tasker的使用比较复杂，称它为神器，其实它能做出不同的软件功能。由于tasker太强大了，所以在制作阶段根本没有易用性可言。● tasker官方版本有7天的试用，售价约35.00RMB，以下此链接是一个破解过的，能用10年。相对来说破解版调试功能不能正常运行，但并不会对实际使用造成问题，对于不需要自己开发研究的朋友只要用破解版就行了。● 基本多数TX看到这么长的教程就不打算弄了，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="en-resource://database/1432:0">
+<meta property="og:image" content="en-resource://database/1434:0">
+<meta property="og:image" content="en-resource://database/1436:0">
+<meta property="og:image" content="en-resource://database/1438:0">
+<meta property="og:image" content="en-resource://database/1440:0">
+<meta property="og:image" content="en-resource://database/1442:0">
+<meta property="og:image" content="en-resource://database/1444:1">
+<meta property="og:image" content="en-resource://database/1446:0">
+<meta property="og:image" content="en-resource://database/1448:0">
+<meta property="og:image" content="en-resource://database/1450:0">
+<meta property="og:image" content="en-resource://database/1452:0">
+<meta property="og:image" content="en-resource://database/1454:0">
+<meta property="og:image" content="en-resource://database/1456:0">
+<meta property="og:image" content="en-resource://database/1458:0">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android神器-Tasker应用教程">
+<meta name="twitter:description" content="说在最前面● tasker的使用比较复杂，称它为神器，其实它能做出不同的软件功能。由于tasker太强大了，所以在制作阶段根本没有易用性可言。● tasker官方版本有7天的试用，售价约35.00RMB，以下此链接是一个破解过的，能用10年。相对来说破解版调试功能不能正常运行，但并不会对实际使用造成问题，对于不需要自己开发研究的朋友只要用破解版就行了。● 基本多数TX看到这么长的教程就不打算弄了，">
+<meta name="twitter:image" content="en-resource://database/1432:0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/5fbe6b3a.html">
+
+
+
+
+
+  <title>Android神器-Tasker应用教程 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/5fbe6b3a.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android神器-Tasker应用教程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-14T15:56:02+08:00">
+                2019-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  12.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  43
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="说在最前面"><a href="#说在最前面" class="headerlink" title="说在最前面"></a>说在最前面</h1><p>● tasker的使用比较复杂，称它为神器，其实它能做出不同的软件功能。由于tasker太强大了，所以在制作阶段根本没有易用性可言。<br>● tasker官方版本有7天的试用，售价约35.00RMB，以下<a href="http://bbs.gfan.com/android-1057321-1-1.html" target="_blank" rel="noopener">此链接</a>是一个破解过的，能用10年。相对来说破解版调试功能不能正常运行，但并不会对实际使用造成问题，对于不需要自己开发研究的朋友只要用破解版就行了。<br>● 基本多数TX看到这么长的教程就不打算弄了，当然你要放弃我不拦你，但是你愿意跟着我，一步一步啃下去，相信不久你就会发现Android真正的魅力——什么才叫做智能机！<br><a id="more"></a></p>
+<h1 id="Tasker的定义"><a href="#Tasker的定义" class="headerlink" title="Tasker的定义"></a>Tasker的定义</h1><p>每个软件，其实都有它们自己面向的功能范围，例如闹钟软件，那么它们定义为管理时间，达到指定时间后进行提醒，它们只管提醒，不会在乎你的信息，邮件，电量。因为不是它们的功能所在。定义为短信的软件，只管理短信，彩信收发，它不会去做与短信无关的事情。这些就是软件的定义，那么Tasker定义是什么呢？大家不去关注它，其实是因为很多人无法给它一个定义，也就根本不知道怎么更好利用它了。Tasker能做闹钟，能管理来电，能管短信，能美化，能省电，能管CPU，能保密，能防盗，能……还有很多。其实Tasker的定义是‘简易开发平台’，它上面所提到的功能，都是靠用户自己做命令来决定它如何工作，它就像口袋妖怪里的No.132百变怪一样，无性别无属性，但它能变成任何性别和属性。为什么叫做‘简易’呢？因为Tasker虽然是开发平台，但它却不需要写代码，相对来讲会容易理解一点（当然如果换作是程序员，倒是宁愿写代码）。可惜的是由于牺牲了代码，导致一些API或一些函数不能完全支持，变化能力也有所限制，但是够我们用了，当你能操作它时，你会发现其实够用了。tasker其实也支持脚本功能，也就能弥补代码问题，当然这是后话，是高级的使用方面了。     </p>
+<p>Tasker = 简易开发平台</p>
+<h1 id="Tasker-基本操作设想："><a href="#Tasker-基本操作设想：" class="headerlink" title="Tasker 基本操作设想："></a>Tasker 基本操作设想：</h1><ol>
+<li>每天早上起床时自动播放喜欢的播客作为闹钟，同时音量会逐渐变大，再也不怕闹钟「毁歌」。</li>
+<li>每天定时自动从 Pixiv 和 Bing 等网站获取壁纸然后自动更换。</li>
+<li>运行地图软件自动打开 GPS，关闭软件时自动关闭 GPS。</li>
+<li>利用彩云分钟级天气预报制作下雨预警（在下雨前 20 分钟自动发送通知/微信/短信提醒）。</li>
+<li>静音模式如果有超过三次同一来电自动关闭静音模式，然后向对方发送一条说明短信。</li>
+<li>利用人工智能自动回复短信。</li>
+<li>定时开启与关闭小飞机。</li>
+</ol>
+<h1 id="Tasker相关"><a href="#Tasker相关" class="headerlink" title="Tasker相关"></a>Tasker相关</h1><h2 id="入门与理解"><a href="#入门与理解" class="headerlink" title="入门与理解"></a>入门与理解</h2><p>首先，我不喜欢传统那种系统式的学习方法，那样会给人感觉很枯燥无味，什么三月通的，我呸，我这里是30分钟通，3小时就用，3天就发明创造！我们需要的是一种只需要了解重点和原理，然后靠自己理解去举一反三，一边做一边学的方式。所以我不会在这里列出tasker的所有功能或给它们定义，如果你真的需要，你可以在我们机锋论坛里找到相关帖子。或者你可以在维基百科里找到相关内容，但是前提你要懂鸟语……1.让它动起来&nbsp; &nbsp;&nbsp;&nbsp;关于tasker，我们首先需要了解它的工作原理，对于语言逻辑比较好或者是学过写程序的同学应该会比较好理解，当然你如果没有以上条件，也没关系，这个帖子就是为了让你去了解它。每时每刻，你的手机都在发生不同的事件，例如信息来了，指定时间到了，运行了某个程序，手机某个按钮被按了，屏幕关闭或打开了，插上数据线了等……这些事件我们称为触发条件。只要条件符合了，那么tasker就会动起来，那么怎么动呢？那就要靠我们去给指令了。tasker也可以多条件，例如条件1：来电，条件2：屏幕向下。那么如果只满足其中一个条件，tasker不会触发命令，当两个条件都满足了，那么它才动。2.什么叫变量/常量&nbsp; &nbsp;&nbsp;&nbsp;量，在写程序里是常用到的东西，主要分：常量和变量。在tasker里也如此，只是有一定的格式或规则而已。变量通俗形容其实就像一个烟盒，它里面放有5根烟。那么它的名字叫：烟盒，量是：5 。转换来说变量名叫做%YanHe&nbsp;&nbsp;它里面的数字是5。如果%YanHe=%YanHe - 1 ，那么这时候烟盒里就变成4根烟了。这个盒子里面除了烟，也能放其他，或者我们不要放烟了，给它放一个纸条，叫做“再来一盒”。那么现在%YanHe就等于‘再来一盒’了。它能放数字，能放英语，能放中文，甚至能放一个运算结果，或者混合内容。&nbsp; &nbsp;&nbsp;&nbsp;常量。它是里面的内容是固定的，它就像一包新的烟。怎样也好，它都是20根烟（假定%XinYan是常量）。你只能知道里面的内容，却不能更改它。例如你20岁了，别人问你几岁，你说：“我的岁数等于一包烟里烟的数量。”那么别人就知道你是20了。变量%AGE=%XinYan，最后结果就是%AGE=20，当然，常量也是会变的，但只能系统改变它，你不能改变它，就像某天一包烟规格控制到只有10根了，那么这个常量也跟着是10了。常量在tasker里是已经固定的，并且提供。<br>&nbsp; &nbsp;&nbsp;&nbsp;它们在tasker的规则：&nbsp; &nbsp;&nbsp;&nbsp;必须%开头，后面是大于等于三个数字或英文字母组合，第一个必须是字母，大小写敏感。变量可读写，常量只读。3.界面的要点&nbsp; &nbsp;&nbsp;&nbsp;● 每当你设置好一个配置后，对应的配置下面就会出现左右两个框框，左边的是条件框，右边的是代码框。<br>&nbsp; &nbsp;&nbsp;&nbsp;● 配置后面的勾是代表是否运行的意思。<br><img src="en-resource://database/1432:0" alt="c04967bae2d8bd9da6070b45a648fa82.jpeg"></p>
+<h2 id="Tasker由以下几个部分组成："><a href="#Tasker由以下几个部分组成：" class="headerlink" title="Tasker由以下几个部分组成："></a>Tasker由以下几个部分组成：</h2><ul>
+<li>配置文件：文件决定了触发条件，Tasker 提供了非常多样的触发条件，从特定地理位置到接到某个电话，从收到某条通知到手机倾斜了多少度应有尽有。甚至安装支持的第三方应用后还能拓展触发条件。在这个例子中触发条件是收到短信。</li>
+<li>任务：任务是为了达到某个目的所做操作的集合，Tasker 满足触发条件后执行的就是一个或是多个任务，任务可以暂停，中止或者反转。在这个例子中任务是获取，然后复制验证码。</li>
+<li>操作：操作时 Tasker 的基本「单位」，一个操作只能执行一种动作，多个操作组合起来的任务就能满足种各样千奇百怪的需求。比如获取验证码是一个操作，复制验证码也是一个操作。</li>
+<li>场景（非必需）：上面三个已经可以组成完整的 Tasker 了。但是有的操作不仅是在后台默默执行，一些数据还需要被展示，这个时候就需要展示用的界面，在 Tasker 里面则是「场景」。场景有点像我们平时用的桌面小部件，Tasker 可以在图层，对话框甚至是 Activity 上绘制场景。场景的所有部分和所有动作都可以由用户自己定义。</li>
+</ul>
+<h2 id="帮助和支持"><a href="#帮助和支持" class="headerlink" title="帮助和支持"></a>帮助和支持</h2><p>●常见问题       最常见的问题无非就是设置失败，导致不能实现所说的功能，很多人都为此发私信给我，其实教程的内容和设置，都是我亲自做出来后，然后再一边一步一步重新做，一边写的教程，然后经过多次的核对并且在此试验。所以，如果发现不成功，请重新对着教程核对你的设置，一个一个细节，常见的是运算符号输入错误，缺少空格，大小写没注意，单词拼错。<br>       例如乘号，在代码里应该用”*”表达，并不是”×”，”x”或”X”，除以号是”/“(保留小数)和”\”(四舍五入保留整数)，并不是”÷”。<br>       例如进行一个变量运算 %VAR1 - %VAR2 ，很容易被写成 %VAR1-%VAR2 。<br>       例如某变量 %LOSTBATT ，写成 %LOTSBATT 。<br>       最后，就是请检查你的软件版本，是否最新版，自从我发这个教程以来，tasker已经进行多次升级。请尝试重新安装或更新版本。<br>这些情况是非常容易出现的，却是导致你程序无法正常运行的主要原因。<br>       由于软件的支持能力有限，某些新机型可能不能设置一些功能，那么我也无能为力了，请等待tasker的再次更新吧。●关于提供配置文件问题       之前曾经有个例子我提供了配置文件，可是基本大家都不能使用，因为tasker是需要付费后才能支持配置文件还原，但是我相信99.9%的人都是使用破解版的，所以无法导入。而且后来想想，我提供配置了，也就违反了这帖的初衷了，这里为了学习和交流，并不是培养伸手党，所以你要怨的话就怨吧，怨自己拿不起这个逆天的神器，我是不提供的了。●如何联系我和个人申明其实很多眼尖的朋友都会从我的ID判断这是不是QQ号，尝试着加。好了，我这里就说吧，这是我QQ号，你们可以加QQ群:137313213，我在里面，别直接加我了，太多人加了……QQ要满了我……。<br>       请大家注意了：<br>       第一，我不是软件作者，我只是对此软件的喜爱而进行比较深入的研究而已。作者是谁？我也不知道，我也想跟他聊聊并且更好利用这软件，本人官方语言支持中文英文日文。<br>       第二，大家如果嫌我更新慢的话，请自行去维基百科找相关内容，那里很丰富，但是我发的教程都是来自自己的生活判断和出于对国人的习惯制作的，我只发实用的，精品的。我也有自己的生活和工作，好的灵感不是随时会有的，并且不一定成立，所以请不要催。<br>       第三，加我QQ请填写验证内容，表明身份，否则一律不加的。也可以发E-mail：<a href="mailto:man19860704.lj@gmail.com" target="_blank" rel="noopener">man19860704.lj@gmail.com</a>。<br>       第四，我希望加我的人是来自问我教程以外的扩展问题，并不是教程说了，却加我来验证真实，问一些已经解释好的问题。当然你如果确实不懂，但又很想要这个功能，我也很乐意为你解答。<br>       第五，我是一名程序员，但我不懂JAVA，我不会开发Android软件，我只有开发经验与思路，所以请不要加我后让我为你做软件，如果你懂Android开发打算合作的话我很乐意。<br>       第六，加我的人请确定已满十八岁，没有心脏病史，承受能力强，无语言障碍，做好五问一答的心理准备。本人男，GG们别看头像就过来跟我聊感情，我不喜这好，MM例外～</p>
+<h1 id="正式教程"><a href="#正式教程" class="headerlink" title="正式教程"></a>正式教程</h1><h2 id="初级篇"><a href="#初级篇" class="headerlink" title="初级篇"></a>初级篇</h2><blockquote>
+<p>初级主要为指令设置，不涉及变量或更多。</p>
+</blockquote>
+<h3 id="第一刀：对应不同的程序，使用不同的CPU频率运行"><a href="#第一刀：对应不同的程序，使用不同的CPU频率运行" class="headerlink" title="第一刀：对应不同的程序，使用不同的CPU频率运行"></a>第一刀：对应不同的程序，使用不同的CPU频率运行</h3><p>目的很简单：省电或者提高效能。<br>       目前主流的CPU频率格式大约是500MB～1G左右，待机，打电话，发个信息，难道要让它1G去跑吗？高射炮打蚊啊！噢，有人想到SetCPU这软件了，那么再举例，我用手机玩连连看，最佳性能500MB够了，然后我再玩极品飞车，起码800MB以上，难道每次去设置SetCPU吗？就不能自动调整吗？我们这次要做的是SetCPU做不到的。<br>       前些时间我玩暖暖温泉乡，其实800MB就够流畅运行了，但我CPU是1G，但是玩久了就发热，这经营类的游戏一长时间玩，热，耗电。那么我每次玩这游戏，就让手机自动调整为800MB吧！我们开始吧！<br>打开tasker，点击 新建 - 确定 - 应用程序<br>然后要等一会，等tasker加载程序列表，选择你需要自动调整的程序，这里以暖暖温泉乡为例，选中后按 完成新建任务 - 杂项 - CPU最高频率按后面的放大镜图标，选择：800000          &lt;————-视你程序需求所定，能超频或降频（超频者请注意！请你确认你的手机真的能在指定频率里正常运行，否则会过热死机或导致严重后果，例如里程碑1本来是500M的，它能超到900MB而正常运行，但是P1000本来是1G，有些超到1.4就会死机）完成完成解释：当条件：某应用程序运行 满足后，将CPU的最大频率控制在我们要求的范围，最小频率就不用设置了，越小越好。<br>点一下代码框（参考入门与理解），点击 添加退出任务新建任务 - 杂项 - CPU最高频率按后面的放大镜，选择你正常CPU的频率。完成完成<br>解释：我们必须设置退出任务，其实它的意思就是当这应用程序结束后，将要做的动作，如果你不设置，那么就算退出了，手机会仍然以刚刚设定的频率运行，如果你本来就是降频运行就还好，但是如果你超频呢？那么待机也耗电了。应用这时候就完成了，不要小看这设置，它能直接影响你手机续航能力。我做过一个实验，同样长时间运行一个程序，续航能力就能加强20%以上～（注意了，请不要设置后台程序，否则会乱套的。）</p>
+<h3 id="第二刀：屏幕亮度高级控制，补全自动亮度的不足"><a href="#第二刀：屏幕亮度高级控制，补全自动亮度的不足" class="headerlink" title="第二刀：屏幕亮度高级控制，补全自动亮度的不足"></a>第二刀：屏幕亮度高级控制，补全自动亮度的不足</h3><p>目的：省电是第一，接着大家有没有发现一点，系统自带的自动亮度不是很完美，有时在室内用，同一个位置，屏幕也会一会亮点一会暗点，纠结呢，但是我们固定了亮度后呢，太亮也耗电（屏幕是超级电池杀手），如果调成合适室内的，到室外阳光好的时候又觉得屏幕暗得看不清，晚上睡觉前床上看看小说，那个自动亮度虽然是暗了，但是还是觉得比需求中要亮很多，就这样重重复复，自动也不是，固定也不是，设置也烦，不设置也烦。有木有？有木有？<br>      所以我们这次要对手机的屏幕亮度进行缺点补全，既能最大化地省电，也能最大化地适应眼睛使用！<br>      首先我们整理一下思路和设计方向，假如：<br>      8点起床，8点半到9点在上班路上，9点到下午5点在外工作，6点回到家，11点上床看看小说睡觉<br>      8:00~8:30 —— 8:30~18:00  ——– 18:00~23:00 —— 23:00~8:00<br>      固定室内亮度       室外自动亮度             固定室内亮度          晚上熄灯用最低亮度 动手！<br>打开tasker，点击 新建 - 确定 - 时间8:008:30<br>完成解释：呃……这次的教程基本大家都能从中文表达上知道是代表什么意思吧，应该不用解释了吧……新建任务 - 确定 - ‘+’ - 显示 - 自动亮度调整关完成‘+’ - 显示 - 显示亮度级别：90        &lt;———-室内亮度适当范围70～100，似乎你家里的亮度和你接受的范围忽略当前级别打勾立即生效打勾完成完成新建 - 确定 - 时间8:3118:00完成<br>新建任务 - 确定 - ‘+’ - 显示 - 自动亮度调整开完成接着是跟第一个设置是一样的，只是时间段不一样（18:01~23:00），大家可以自己尝试设置，不行就继续看下面。新建 - 确定 - 时间18:0123:00<br>完成新建任务 - 确定 - ‘+’ - 显示 - 自动亮度调整关完成‘+’ - 显示 - 显示亮度级别：90        &lt;———-室内亮度适当范围70～100，似乎你家里的亮度和你接受的范围忽略当前级别打勾立即生效打勾完成完成新建 - 确定 - 时间23:018:30完成新建任务 - 确定 - ‘+’ - 显示 - 显示亮度级别：40        &lt;———-晚上台灯亮度适当范围50～80，熄灯亮度适当范围30～50，这是我个人经验标准，并不代表所有，请大家实际试试合适自己的。忽略当前级别打勾立即生效打勾完成完成应用省电，护眼，省心，哈哈！希望大家喜欢！==========================================</p>
+<h3 id="第三刀：加快开机速度"><a href="#第三刀：加快开机速度" class="headerlink" title="第三刀：加快开机速度"></a>第三刀：加快开机速度</h3><p>当系统使用时间长了，安装的软件多了，开机的时间就会越来越长，甚至会导致FC。有时候死机了，重启后还要拿着手机等开机完毕，那个也很纠结啊。<br>我们这次利用超频的方法，在开机后对CPU进行超频，然后再调会正常频率，而实现加快开机速度的功能。动手！打开tasker，点击 新建 - 确定 - 事件 - 系统 - 设备已启动 - 新建任务 - 确定 - ‘+’ - 杂项 - CPU按一下 最高频率 后面的 放大镜 图标适当选择你手机能超频的频率，如1G的朋友，就选择1200000，好像MOTO的里程碑1，500MB的CPU，能稳定超到900MB，注意了！必须确定你的手机能稳定运行在指定的频率，否则可能导致不可逆后果！一般超频一两节就好了，别过分<br>然后会出现一个警告，按 确定完成‘+’ - Tasker - 等待分 的地方，选择 2             &lt;————（预计开机完成在两分钟内，自己按需求衡量）完成‘+’ - 杂项 - CPU<br>按一下 最高频率 后面的 放大镜 图标选择你正常的CPU频率完成完成应用==========================================</p>
+<h2 id="中级篇"><a href="#中级篇" class="headerlink" title="中级篇"></a>中级篇</h2><blockquote>
+<p>中级篇涉及到变量的使用，利用变量做出比较高级行为</p>
+</blockquote>
+<h3 id="第一刀：来电翻转静音"><a href="#第一刀：来电翻转静音" class="headerlink" title="第一刀：来电翻转静音"></a>第一刀：来电翻转静音</h3><p>实际应用里，当在某些特殊场合，你忘记给手机静音，却有人不知趣的来电，情急之下却令你手忙脚乱，这时你只要悠然地将手机翻个面，它就不响了，再悠然地离开，接电话。——&gt;!  可能某些TX说安卓不是自带这功能吗？答案是否的，某些手机可能在定制手机系统的时候就已经做上这功能（如HTC某些型号），但是很大部分人的手机却没有这功能，或者某些第三方Rom却没这功能，不要盲目认为系统本来就有这功能，有这功能的TX请路过。没有这功能的TX，我们就自己动手做～！打开tasker，点击 新建 - 确定 - State - 方向 - 面向下 - 完成新建任务 - 确定 - 按左下角的‘+’ - 变量 - 变量设置名称：%CALLVOL发往：0完成完成解释：我们首先要判断手机的现在状态是正面还是反面，由于重力的判断在tasker里是归类为条件，所以我们要事先将这个条件变为一个变量，这样才能带到下一个条件里判断，并且也能在别的条件进程在运行中动态改变。<br>然后你会看到你添加的任务出来了，有两个框框，左边的写着‘方向’，右边写着‘变量设置…’，点一下右边的框框。<br>选 添加退出任务 - 新建任务 - ‘+’ - 变量 - 变量设置名称：%CALLVOL发往：1完成完成解释：退出任务其实意思就是当前条件反过来的意思了，就是说面朝上了，那么我们也将它带到%CALL这个值里，0代表面朝下，1反之。新建 - 确定 - 事件 - 电话 - 电话振铃 - 优先级：最高 - 完成新建任务 - 变量 - 变量设置名称：%CALLVOLTIME发往：1完成解释：这里是初始化这行代码已被运行的次数。左下角‘+’ - Tasker - 等待<br><strong><em>1秒完成解释：等待1秒，如果不等待，tasker触发代码的时候会比来电响铃要早，那么就会设置静音失败，并且由于到最后代码是一个循环，所以我们等待一秒也能方便循环时间的计算。‘+’ - 铃声静音if 打勾第一个空%CALLVOL第二个空0完成解释：假如%CALLVOL为0（电话面向下了），那么静音。‘+’ - Tasker - 停止if 打勾%CALLVOL0完成解释：如果电话面向下了，那么进程的任务也完成了，就退出任务，不做多余操作了。否则的话继续走下面代码。‘+’ - 变量 - 变量设置%CALLVOLTIME%CALLVOLTIME + 1        &lt;———-注意运算符号之间有空格无匹配打勾完成解释：记录的代码已被运行次数。‘+’ - Tasker - 停止if 打勾%CALLVOLTIME点中间的～按钮，选 大于30                 &lt;———–这里是持续判断时长，秒为单位，例如30秒后翻不翻转它都不受理了，目的是省电，因为Tasker没有接通来电的条件，所以我们一般设置25～50完成解释：假如运行次数超过了指定的次数/秒，则停止进程，如果我们不停止，那么代码将无限制运行下去，最后导致的结果就是长时间工作而导致耗电。运行时间越短，越省电，但是翻转静音功能的判断时间也就越短。越长，相对就会耗电，虽然几十秒浪费不了你多少电，但是由于tasker无法判断接通电话的条件，所以无论你是在指定时间内将电话接了或者是挂了，这个进程还是会持续工作下去，所以没必要设置很大。适当设置在你常用范围内就行了。（其实真的要用到静音功能，难道还有人让它响了半天才静它吗？）‘+’ - Tasker - 转到操作数字2if 打勾%CALLVOL1完成完成解释：这里是跳回去第二行代码（</em></strong>的地方），做成一个循环，让响铃的时候一直让代码进行重复判断。前提是电话仍在正面（if %CALLVOL = 1）。应用教程完毕！～<br>另外找台手机打电话给自己试试吧～！==========================================</p>
+<h3 id="第二刀：电量监控与预测器"><a href="#第二刀：电量监控与预测器" class="headerlink" title="第二刀：电量监控与预测器"></a>第二刀：电量监控与预测器</h3><p><img src="en-resource://database/1434:0" alt="12675fd17729219e7e3c8ca3a33555bc.jpeg"></p>
+<p>利用tasker的功能，我们今天来自制一个电量监控器，它能统计你的使用时间，还能预测按照当前使用的情况，告诉你剩下待机时间。<br>实际应用里，让你能更好的控制手机的电量消耗，而且用tasker制作的监控器，相比那些插件，要省电得多。传统的监控插件会不停在你的后台进行检测与更新，在这段时间里，你手机的电量在悄悄的流失，并且也不会告诉你在当前情况下如何更好的控制耗电。现在让我们的Android更强大吧！！打开tasker，点击 ‘任务’ - ‘新建任务’点左下角的 ‘+’ - 变量 - 变量设置，分别填入名称：%LOSTBATT发往：%SBATT - %BATT      &lt;—–注意：运算符号之间互相有空格，下文相同。无匹配打勾完成解释：获得已失去电量，%SBATT是开机后或者USB拔出后设置的一个电量级别，%BATT是当前电量级别，%LOSTBATT就是失去的电量，失去电量=拔出后电量-当前电量‘+’ - 变量 - 变量设置，分别填入名称：%LOSTBATT发往：1      &lt;—–注意：运算符号之间互相有空格，下文相同。无匹配打勾if打勾%LOSTBATT 等于 0完成解释：因为后面要进行一个除法运算，所以如果%LOSTBATT小于0 会出错的，所以假如小于1，那么%LOSTBATT等于1，这里感谢kennyhuhu 同学的指出‘+’ - 变量 - 变量设置%STARSEC%UPS - %SUPS无匹配打勾完成解释：%UPS=开机持续时间，%SUPS=拔出USB充电前的持续时间，%STARSEC=当前有效的持续时间（秒），有效时间=开机时间-拔出前时间‘+’ - 变量 - 变量设置%STARMIN%STARSEC / 60无匹配打勾完成解释：将有效持续时间单位换成分钟‘+’ - 变量 - 变量设置%KEEPSEC%STARSEC / %LOSTBATT <em> %SBATT无匹配打勾完成解释：计算剩余电量能用多少时间（秒），利用公式：持续时间/失去电量</em>剩余电量。‘+’ - 变量 - 变量设置%KEEPSEC充电中无匹配打勾if打勾%KEEPSEC 小于 0完成解释：如果计算出的时间小于0，那么手机就是正在充电中，感谢kennyhuhu 同学提出建议。‘+’ - 变量 - 变量设置%KEEPTIME%KEEPSEC / 3600无匹配打勾完成解释：转换单位为小时。‘+’ - 警报 - 弹出框标题：剩余续航时间文字：（注意空格）自上次充电器拔出消耗电量 %LOSTBATT %运行时间 %STARMIN 分钟估计剩余待机 %KEEPTIME 小时完成右下角有个红叉，旁边的按钮是设置图标，随便自己选一个按 ‘完成’‘新建’ - 确定 - State - USB已连接 - ‘反转’打勾 - 完成 - 新建任务 - 确定‘+’ - 变量 - 变量设置%SBATT%BATT完成‘+’ - 变量 - 变量设置%SUPS<br>%UPS完成完成解释：USB/充电器拔出后，将电量和持续时间都初始化一次，避免几天没关机，却计算了一直的开机时间，我们只需要充电后的有效时间。‘新建’-  确定 - 事件 - 系统 - 设备已启动 - 新建任务 - 确定‘+’ - 变量 - 变量设置%SBATT<br>%BATT完成‘+’ - 变量 - 变量设置%SUPS%UPS完成完成解释：开机后初始化电量和持续时间。应用长按桌面空白处 - 插件/小部件 - 任务 - 剩余续航 - 创建小工具完毕！～==========================================</p>
+<h2 id="高级篇"><a href="#高级篇" class="headerlink" title="高级篇"></a>高级篇</h2><blockquote>
+<p>高级篇是利用Tasker与其它软件融合发动合体技！~</p>
+</blockquote>
+<h3 id="第一刀：美化桌面显示来电和信息统计"><a href="#第一刀：美化桌面显示来电和信息统计" class="headerlink" title="第一刀：美化桌面显示来电和信息统计"></a>第一刀：美化桌面显示来电和信息统计</h3><p>首先，相信不少人看过类似这样的界面：<br><img src="en-resource://database/1436:0" alt="9064684a11f4cb13207a4549ad746427.png"><br><img src="en-resource://database/1438:0" alt="cafeb90ae39624e1e22ee96cf66bd747.png"></p>
+<p>在有短信到或者漏接电话后的时候，则会变成这样：<br><img src="en-resource://database/1440:0" alt="71b6e0ae3b71106d9f69917f746588ae.png"><br><img src="en-resource://database/1442:0" alt="207e809b37ba508bfe36a4c0dc446910.png"></p>
+<p>很漂亮吧，今天就教大家如何制作这漂亮的界面。第一步，我们要先获得app，分别是Minimalistic text和tasker两个，前者（下文称MNML）可以在论坛搜索出来，有汉化过的，比较容易获得，或者有些TX已经在用了，只不过不知道如何做出这样的效果。后者就比较难找了，电子市场也难搜到，我就上传到附件里，自带中文，非常好。在弄之前，我们要先懂MNML怎么用，这个不在此教程范围内，请第一次使用的TX自行琢磨，下个汉化过的，上手不难，此教程里的MNML使用也不会高要求，主要是tasker。MNML是桌面的文字型美化软件，就像你上图看到的文字效果，就是用MNML做的，这次我们要利用它的一个高级功能：本地变量，很多TX都不会用这个功能，网上也几乎没有类似的中文教程，希望大家看完此教程后能举一反三弄出其他新花样～！好了，废话说多了，现在我们开始吧。我们先给这两个软件定义：MNML是一个显示用的界面软件，tasker是一个后台处理完数据，递给MNML显示出来的工具。（此教程跨过了基础设置的一点，可能一下内容难懂，但是按着设置就没错了，如果能理解就更好，本来SMS应该有无短信后面都是显示白色的数字，但是我这里是变成如果没新短信就是白色的0，否则就会变红色的统计数字）首先我们打开taskertasker界面：(我这个是有建立任务的)<br><img src="en-resource://database/1444:1" alt="617ad08a636e9471eb979ce45e3a0d51.png"></p>
+<p>按 新建要求输入配置文件命名，我们不用输入，直接确定。第一条件选择<br>事件事件类别选择 电话 - 收到的短信 - 完成出来一个任务选择对话框，选<br>新建任务 名称不用填，直接确定然后看到任务编辑窗口，类似这样：（我这个是已有任务的，大家的应该是空的）<br><img src="en-resource://database/1446:0" alt="9e74b1478af520361a6ecd597a0e999c.png"></p>
+<p>我们点左下角的 </p>
+<ul>
+<li>出来操作类别，选 变量 - 变量设置然后会看到这样的界面：</li>
+</ul>
+<p><img src="en-resource://database/1448:0" alt="e9902a6ed0b27c657e57d390e53cbcde.png"></p>
+<p>名称填%MSG发往填%MSG + 1      &lt;————-（中间有空格）无匹配打勾完成解释：这个设置表示了当满足条件“收到短信”时，我们赋予变量%MSG一个值，这个值就是比%MSG大1，例如%MSG这时候是1，那么+1后就变成2，这是统计短信数量用的。无匹配的意思应该是翻译上的问题，在英文版里显示是”进行计算”。接着我们做第二步。+ - 插件 - Minimalistic Text variable settings(MNML变量设置) - 编辑出来类似这样的界面：<br><img src="en-resource://database/1450:0" alt="d581fa1c9d33b6e36a518a57d03b7618.png"></p>
+<p>Variable name（输出变量名）填%MSGN                           &lt;————–（这个是之后要对应MNML的值，%MSGN代表无短信，变量可以自行定义，好记就可以了，%大写英文）Variable countent（变量连接）填空格                              &lt;—————不是‘空格’两字，是一个空格符号<br>OK+ - 插件 - Minimalistic Text variable settings(MNML变量设置) - 编辑分别填%MSGC                 &lt;—————-代表短信数量%MSG完成那么第一个任务设置完成了。点完成解释：这两个任务分别是各给MNML传递一个值，%MSGN=空白，代表没短信的情况下MNML显示空白，%MSGC=%MSG，代表有短信的情况下MNML的%MSGC值显示短信数量。这时回到主界面了，按 新建 - 确定 - 应用程序 - 选择你的短信软件例如我这里的是 超级短信 ，找出来点一下，然后按完成新建任务 - 确定 - + - 变量 - 变量设置名称填%MSG发往填0无匹配打勾完成解释：此任务意思是，当超级短信被运行（也就是查看短信了），那么将%MSG里的数量统计设置回0，就是说看过短信了，那么计数器变回0+ - 插件 - Minimalistic Text variable settings第一个填%MSGC 第二个填 空格完成再添加插件任务第一个填%MSGN第二个填0完成现在返回到了任务编辑界面，按完成解释：给MNML传递%MSGC为显示空白，给%MSGN传递0到这里我们对tasker的设置就完成了，右下角有个开关，确认它是开启，如果显示关闭，点它一下开启，否则tasker是不工作的。点应用就会退出tasker了。=================MNML部分=================好了，我们要开始添加MNML了在桌面空白处长按 - 插件 - MNML（SIZE大小方面的话自己衡量吧），然后就会进入MNML的设置模式了。显示背景（Show background） - 去勾显示阴影（Shadow settings） - 点进去 - 打勾 - 返回界面类型（Predefined layout） - 自定义（Coustom…）自定义界面（Custom layout）变成可选，点进去会看到长方形三个方块，长按它，拖到垃圾桶删除，都删，然后按右边的 + 号，选 其他（Misc），有两项，分别是 本地变量（Locale variable） 和 静态文本（Static text）。长按静态文本，拖到长方形里，再拖两个本地变量上去。<br><img src="en-resource://database/1452:0" alt="6985cb4f9b8c578657d52697631d60b2.png"></p>
+<h2 id="现在长方形一共有三个方块，按顺序分别是："><a href="#现在长方形一共有三个方块，按顺序分别是：" class="headerlink" title="现在长方形一共有三个方块，按顺序分别是："></a>现在长方形一共有三个方块，按顺序分别是：</h2><p>|  静态文本    |       本地变量       |      本地变量         | </p>
+<h2 id="Static-text-Locale-variable-Locale-variable"><a href="#Static-text-Locale-variable-Locale-variable" class="headerlink" title="| Static text  |   Locale variable  |   Locale variable  |  "></a>| Static text  |   Locale variable  |   Locale variable  |  </h2><p>点击一下静态文本的方框，显示内容（Static text）填：SMS:<br>下面的 外观（Style）选择<br>着重（Accented）<br>点一下第一个 本地变量 方框变量名称（Variable name）填：%MSGC外观选择 非着重（Non-Accented）<br>点第二个本地变量方框变量名称填%MSGN外观选 普通（Normal）<br>按返回（就是手机的返回键）<br>然后下面是字体外观设置，对应刚刚设置的外观进行设置，点 普通<br>第一项是字体选择（Font family）可以选择你自己喜欢的字体，系统自带的字体很少，但是可以自行添加，后面会提到如何更换。<br>找到 字体大小（SIZE），设置为 20 dip<br>发光（Blur radius）可以自行设置，一般2～4<br>就够了。返回<br>然后设置 着重 ，和前面设置成一样就可以了。<br>非着重将字体颜色（Color）设置成红色或粉红色，橙色也可以，看你怎么和你的主题搭配了。<br>在点击动作（Tap behavior）那里选择 运行其他程序（Start another activity）<br>选择程序（Select activity）一栏变可选，点进去，找到你的短信软件，例如超级短信，选它。<br>往下看有一个全局设置（Global Settings），点进去，有个 字库位置（Fonts folder），将你喜欢的字库文件放到SD卡的某个位置，再从这里指定文件夹，那么在之前的字体选择就有你的字库了。<br>退回去，点OK，这时候你的桌面就会出现一个显示着“SMS：”的图案了，当收到短信后面就会显示数量了，点它就会进入指定的程序了，但是为什么不是显示“SMS：0”呢？要点一下后出来才显示，那是因为tasker的条件没触发，所以那个变量是空白，什么都没有，就没显示了。<br>对于完美主义者来说，每次开机都不是显示SMS：0，却只是SMS：，感觉不舒服，那么我们回到tasker，再给它加个条件吧。==========================================<br>回到Tasker。新建事件 - 系统 - 设备已启动<br>任务是变量设置%MSG0<br>再加一个任务，插件%MSGC%MSG<br>那么就完美了。<br>至于来电漏接的地方，其实和短信的设置基本一样，我就不再大篇幅了，只是条件选择了来电漏接，自己试试动手吧。<br>牛刀小试，玩出新花样：<br>眼尖的TX可能会发现我发的图片里CALL是在没电话的时候不显示的，有电话才出来，是怎么做到的呢？<br>其实是给插件赋值的时候，第二项填成 Call： %Call，那么就显示成Call：1这样子了，当点进拨号器后，就赋值空白，那么看上去就不见了～<br>还有就是我的来电下面是会显示漏接人的姓名，那个是%CNAME变量，tasker自带的，有兴趣动手的朋友可以自己试试，只要理解了就不难。</p>
+<h3 id="第二刀：定时在桌面上显示你的余额和可用的免费信息"><a href="#第二刀：定时在桌面上显示你的余额和可用的免费信息" class="headerlink" title="第二刀：定时在桌面上显示你的余额和可用的免费信息"></a>第二刀：定时在桌面上显示你的余额和可用的免费信息</h3><p>不废话，我们先来看看图：<br><img src="en-resource://database/1454:0" alt="50350b01f323e42d2ff87812cc32f799.png"></p>
+<p>主要是为了让大家省心（做起来很不省心……），定时向10086发送一个短信，然后根据回复的内容将其显示在桌面上。       首先我们要有第三方软件 Minimalistic text ，在电子市场可以找到，机锋也可以找到，有汉化的，下文称MNML。       这次的教程，教大家两个tasker的变量功能，第一个是条件语句：if  ，第二个是变量分割（split），我们必须先理解了这两个功能，才能更完美去完成这个任务，毕竟不是所有人都是用同样的SIM卡营运商，可能返回的短信内容不一样，照教程做就未必可以成功了，我是动感地带的卡，中国移不动的，如果你跟我一样，或许你能照抄教程……       以理解教程说明为基础制作，如果你是一直不知道tasker所云，只是抄教程的话，那么你可以放弃这次的磨刀练习了。       第一个我们先讲讲分割，分割就是一段内容，我们指定一个关键字，分割后就会以关键字为点，将内容分成若干份，（关键字只能为一个字，在编程里其实能若干个字符的，但是我在Tasker里试了几次，发现好像只能1个字符，没办法，只能勉为其难做了）例如：       %TEST=吃葡萄不吐葡萄皮       分割%TEST，关键字：葡       那么就会变成：       %TEST1=吃       %TEST2=萄不吐       %TEST3=萄皮       内容会随关键字分割成0份到无限份，然后在被分割的变量名后面加上索引数字，所以%TEST分割后会变成 %TEST1，%TEST2 …… %TESTN，假如我们将%TEST2再分割，就变成 %TEST21，%TEST22 …… %TEST2N       实战例子：我发给10086查询余额后，它返回给我的内容：       尊敬的客户：您当前帐户余额58.20元，其中基本帐户为58.20元，赠送帐户为0.00元，（剩余免费短信128条） 月结为2011-08-14。温馨提醒：赠送话费不能扣减信息费。中国移动       短信内容会保存在tasker的常量：%SMSRB 里面， 首先我们分割关键字 “ ：” （注意全角半角问题，基本国内的这些短信都是全角）       就会变成       %SMSRB1 = 尊敬的客户       %SMSRB2 = 您当前帐户余额58.20元，其中基本帐户为58.20元，赠送帐户为0.00元，（剩余免费短信128条） 月结为2011-08-14。温馨提醒<br>       %SMSRB3 = 赠送话费不能扣减信息费。中国移动       可以拿到我们需要的内容保存在了 %SMSRB2 里面，那么我们继续分割，分割关键字 “额”，出现：       %SMSRB21 = 您当前帐户余<br>       %SMSRB22 = 58.20元，其中基本帐户为58.20元，赠送帐户为0.00元，（剩余免费短信128条） 月结为2011-08-14。温馨提醒<br>       关键内容在 %SMSRB22 里，继续分割“元”       %SMSRB221 = 58.20                              &lt;————-我们要的内容       %SMSRB222 = ，其中基本帐户为58.20       %SMSRB223 = ，赠送帐户为0.00       %SMSRB224 = ，（剩余免费短信128条） 月结为2011-08-14。温馨提醒<br>       我们将余额分离出来了！在 %SMSRB221 里，有木有！有木有！别急，先记下来，还有，除了余额我们还需要免费短信的数量，它在 %SMSRB224 里，我们再次分割，关键字 “信”       %SMSRB2241 = ，（剩余免费短       %SMSRB2242 = 128条） 月结为2011-08-14。温馨提醒</p>
+<pre><code>将 %SMSRB2242 继续分，关键字是啥来着，相信你能看到这里应该知道了，对，没错关键字 “条”%SMSRB22421 = 128                              &lt;-------------我们要的内容       %SMSRB22422 = ） 月结为2011-08-14。温馨提醒       哦耶，免费短信的数量就在  %SMSRB22421里面。       好啦，现在我们已经将两个最需要的内容都弄出来了，分别是：%SMSRB221 和 %SMSRB22421 。       第二个变量功能：条件语句，if 中文意思“如果”，简单理解，就是假如某某条件成立了，那么就进行下面的代码行，否则跳到 End If 处，假如没有 End If ，那么直接结束当前配置的所有代码。              相信如果你能看到这里，这个练习应该知道该如何制作了，只不过可能还是有点头晕晕的，或者有这概念了，只是不知道怎么弄，没事，其实制作起来没有上面的那么罗嗦，我只是讲解讲解，我们开始弄了！       首先我们要先给10086发短信（不发短信它怎么回你呢？不回你你怎么去分割内容呢？没内容分割怎么显示呢？没显示这教程还有什么意义呢？没意义还活着干什么呢？没什么干那么就发信息呗，不发信息它怎么回你呢？………………）按 新建 - 确定 - 时间只留第一个勾，时间设置成你每天需要发短信的时间，例如0点，或者早上8点。完成新建任务 - 确定 - “+” - 电话 - 发送短信数字                               &lt;--------------------哪个SB翻译的那么烂，Num就直接翻译成“数字”，明显这个是翻译成“号码”。10086内容ye                                  &lt;--------------------这个是发送的内容，中国移动的查询代码是“ye”（余额），其他营运上的是怎样我就不知道了，大家按情况改吧。完成完成好了，定时发送发送短信的就这么简单，下面是重点了：新建 - 确定 - 事件 - 电话 - 收到的短信发件人10086完成解释：从这里开始一直到最后，解析跟原理都在前面的实战例子里面说得清楚了，这里也就不再重复了，我会累。新建任务 - 确定 - “+” - 变量 - 变量拆分名称%SMSRB                    &lt;--------------------这个是tasker里的一个常量，并不是我们自己定义的变量，它的功能就是保存最新短信内容。分离：                              &lt;--------------------注意！是 “：” ，而不是 “:” ，全角和半角的区别，全角的是特别宽点的，半角的光标会紧跟后面！完成“+” - 变量 - 变量拆分名称%SMSRB2                  &lt;--------------------为什么是它？怎么来的？回去看之前的实战例子！ 分离额完成“+” - Tasker - If第一个填%SMSRB21第二个填您当前帐户总余             &lt;--------------------注意！是“您”，不是“你”，是“帐户”，不是“账户”，最后是“余”，不是“余额”，每一个字一定要对，否则就不成功。完成解释：在10086的短信里，相信未必只有一种内容，我们为了分辨出它究竟是不是我们所需要的，所以就要识别短信特征，就像杀毒软件一样，就是说，假如 %SMSRB21 的内容是我们指定的内容，那么就判断这信息就是我们要的那个，否则就直接结束代码，这里很关键，否则可能因为10086的骚扰信息导致你的显示出错。“+” - 变量 - 变量拆分名称%SMSRB22分离元完成“+” - 变量 - 变量拆分名称%SMSRB224分离信完成“+” - 变量 - 变量拆分名称%SMSRB2242分离条完成+ - 插件 - Minimalistic Text variable settings第一个填%SYYE第二个填 剩余话费：%SMSRB221 元                            &lt;--------------------注意变量两边的空格完成+ - 插件 - Minimalistic Text variable settings第一个填%SYYE第二个填 免费短信：%SMSRB22421 条                            &lt;--------------------注意变量两边的空格完成+ - 输入 - 按钮 默认Back完成解释：其实就是按一下返回键，干什么用滴？有部分童鞋应该会用一些第三方的短信软件，这些软件会收到短信后直接弹出框显示短信，按一下返回键就是取消它，不让它老是挡着，当然，这一条你可以弄上去，也可以不弄完成=================MNML部分=================tasker就设置完毕了，现在我们要设置MNML了。在桌面空白处长按 - 插件 - MNML（SIZE大小方面的话自己衡量吧，推荐2*1），然后就会进入MNML的设置模式了。显示背景（Show background） - 去勾显示阴影（Shadow settings） - 点进去 - 打勾 - 返回界面类型（Predefined layout） - 自定义（Coustom...）自定义界面（Custom layout）变成可选，点进去会看到长方形三个方块，长按它，拖到垃圾桶删除，都删，然后按右边的 + 号，选 其他（Misc），有两项，分别是 本地变量（Locale variable） 和 静态文本（Static text）。长按本地变量，拖到长方形里，右边有个绿色的减号，按一下，就会多一行，再放一个本地变量去第二行。------------------|     本地变量       | | Locale variable  |    ------------------|     本地变量       | | Locale variable  |    ------------------点击一下上面的本地变量的方框，变量名填：%SYYE点击一下下面的本地变量的方框，变量名填：%SYDX按返回（就是手机的返回键）==========================================剩余的就是什么字体大小啊，外观之类的，大家可以参考高级教程第一刀里面的解释，或者按个人喜好去设置吧，我不想多写了，一来罗嗦二来累……好了，教程到这里了，想立刻看看效果吗？手动发一条查询短信去看看吧！！
+</code></pre><h2 id="超级篇"><a href="#超级篇" class="headerlink" title="超级篇"></a>超级篇</h2><blockquote>
+<p>超级篇我们将tasker大技巧，打开脚本之路，发动终极技能。</p>
+</blockquote>
+<h3 id="第一刀：指定时间后台发送来电记录于收到短信到指定邮箱"><a href="#第一刀：指定时间后台发送来电记录于收到短信到指定邮箱" class="headerlink" title="第一刀：指定时间后台发送来电记录于收到短信到指定邮箱"></a>第一刀：指定时间后台发送来电记录于收到短信到指定邮箱</h3><p>注意！这个第一刀的功能其实是比较敏感的，大家如何使用和修改，就见仁见智了，不要干坏事哦，如果你干坏事被XXOO了，我可不负任何责任的，先声明好了，如果你同意，就继续往下看吧！首先，我们需要Python语言支持工具，它叫<br><em>“Python for Android”</em>;我们先将它下载并运行后如下图：<br><img src="en-resource://database/1456:0" alt="a2d4bbaa609a2b4e447c7861c4658a79.jpeg"></p>
+<p>按Install，等待下载安装脚本运行所需的文件。然后再下载脚本运行工具：<br><em>“SL4A.apk”</em><br>安装并运行，如下图所示：<br><img src="en-resource://database/1458:0" alt="b19cb9cd5869b3bb7063ace5bd3e8a13.jpeg"></p>
+<p>如果看到跟我的是一样，那么表示你已经安装成功了，否则的话请重新安装“Python for Android”接着按菜单键-Preferences-Hide Notifications(各种内涵，懂英文的童鞋应该明白)最后一步了，下载一份脚本：<br><em>“sendemailA.rar”</em><br>解压，放到手机里，位置：sdcard/sl4a/scripts/ 里面。铺垫到此结束了，那么到底刚刚我们做了什么呢？首先，我们先让手机支持Python语言，脚本的制作就是用Python语言的，为什么非要它呢？因为SL4A支持的脚本是有指定语言的，好像只有三种，Python就是其中一种，tasker的脚本功能只支持SL4A，所以必须用它了～最后下载的那个就是已经做好的脚本了，我们只需要使用tasker就能完成任务了。至于Python脚本怎么写，就和这帖子的关系不大了……什么？想学？好！这样……以下省略16W字……。反正，相信懂Python的人不多，脚本我已经帮大家做好了，如果你懂，那么可以自己写其他功能来玩了，脚本能强大到什么程度呢？它能控制系统最底层的绝大部分功能，你如果足够强大，它能让你在Android里山寨个Windows出来！一些老外用它记录模拟火箭模型发射到坠落的各项数据：加速度，方向，弧线，高度，耗时，平衡度，阻力，动力，下坠起点位置等等，然后进行统计，用于开发大型火箭（或飞行器）的调试工程……我了个去啊，看他们视频在个火箭里包个G7，发射一次毁一台……好了，废话到这里了，现在开始tasker了。打开tasker+ - 确定 - 事件 - 电话 - 收到的短信 - 确定+ - 文件 - 写入文件文件：tasker/temp.txt&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;———————–这里是保存的文件位置，我们要先将收到的短信内容放到一个指定的文件里，这个内容其实可以自己去写，或者放在更隐蔽的地方……文字：%SMSRTsay:%SMSRB-解释：以上内容是从“%”开始到“-”，这个其实就是生成的文件格式。附加打勾确定确定+ - 确定 - 时间从：03:30&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&lt;———————————这里是设置发送邮件的时间，可自行设定，为什么是凌晨三点半呢？内涵……内涵……至：勾去掉确定新建任务 - 确定 - + - 变量 - 变量设置名称：%EMAIL_NAME发往：手机主人名字或自定确定+ - 变量 - 变量设置名称：%EMAIL_TO发往：接收的邮箱，ex:<a href="mailto:123123@gmail.com" target="_blank" rel="noopener">123123@gmail.com</a>或qq.com等确定+ - 变量 - 变量设置名称：%EMAIL_SUBJECT发往：SMSChick确定+ - 变量 - 变量设置名称：%EMAIL_BODY发往：%DATE , %TIME&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&lt;————————–注意空格！确定+ - 变量 - 变量设置名称：%EMAIL_ATTACH发往：/sdcard/tasker/temp.txt确定+ - 杂项 - 运行脚本名称：sendemailA.py传递变量：%EMAIL_NAME , %EMAIL_TO , %EMAIL_SUBJECT , %EMAIL_BODY , %EMAIL_ATTACH&nbsp; &nbsp;&nbsp;&nbsp;&lt;—————————-注意变量与逗号之间的空格！确定+ - 任务 - 等待分：3确定+ - 文件 - 删除文件文件：/sdcard/tasker/temp.txt遇到错误后继续运行任务：打勾确定确定好了，完成了，至于发来电内容，其实认真看过并制作过这个教程内容后，相信你能做到的，我这里就不大篇幅了，因为这帖子已经很大篇幅了…………</p>
+<h3 id="The-End…"><a href="#The-End…" class="headerlink" title="The End…"></a>The End…</h3><p>这功能该如何正确使用，请大家考虑后再弄，出什么事我可不负任何责任哦～！==========================================</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="http://blog.aclear.top/post/5fbe6b3a.html" title="Android神器-Tasker应用教程">http://blog.aclear.top/post/5fbe6b3a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/3de28e71.html" rel="next" title="HccACan">
+                <i class="fa fa-chevron-left"></i> HccACan
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/4a17b156.html" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说在最前面"><span class="nav-number">1.</span> <span class="nav-text">说在最前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tasker的定义"><span class="nav-number">2.</span> <span class="nav-text">Tasker的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tasker-基本操作设想："><span class="nav-number">3.</span> <span class="nav-text">Tasker 基本操作设想：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tasker相关"><span class="nav-number">4.</span> <span class="nav-text">Tasker相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门与理解"><span class="nav-number">4.1.</span> <span class="nav-text">入门与理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tasker由以下几个部分组成："><span class="nav-number">4.2.</span> <span class="nav-text">Tasker由以下几个部分组成：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助和支持"><span class="nav-number">4.3.</span> <span class="nav-text">帮助和支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式教程"><span class="nav-number">5.</span> <span class="nav-text">正式教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初级篇"><span class="nav-number">5.1.</span> <span class="nav-text">初级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一刀：对应不同的程序，使用不同的CPU频率运行"><span class="nav-number">5.1.1.</span> <span class="nav-text">第一刀：对应不同的程序，使用不同的CPU频率运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二刀：屏幕亮度高级控制，补全自动亮度的不足"><span class="nav-number">5.1.2.</span> <span class="nav-text">第二刀：屏幕亮度高级控制，补全自动亮度的不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三刀：加快开机速度"><span class="nav-number">5.1.3.</span> <span class="nav-text">第三刀：加快开机速度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级篇"><span class="nav-number">5.2.</span> <span class="nav-text">中级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一刀：来电翻转静音"><span class="nav-number">5.2.1.</span> <span class="nav-text">第一刀：来电翻转静音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二刀：电量监控与预测器"><span class="nav-number">5.2.2.</span> <span class="nav-text">第二刀：电量监控与预测器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级篇"><span class="nav-number">5.3.</span> <span class="nav-text">高级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一刀：美化桌面显示来电和信息统计"><span class="nav-number">5.3.1.</span> <span class="nav-text">第一刀：美化桌面显示来电和信息统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在长方形一共有三个方块，按顺序分别是："><span class="nav-number">5.4.</span> <span class="nav-text">现在长方形一共有三个方块，按顺序分别是：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-text-Locale-variable-Locale-variable"><span class="nav-number">5.5.</span> <span class="nav-text">| Static text  |   Locale variable  |   Locale variable  |  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二刀：定时在桌面上显示你的余额和可用的免费信息"><span class="nav-number">5.5.1.</span> <span class="nav-text">第二刀：定时在桌面上显示你的余额和可用的免费信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超级篇"><span class="nav-number">5.6.</span> <span class="nav-text">超级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一刀：指定时间后台发送来电记录于收到短信到指定邮箱"><span class="nav-number">5.6.1.</span> <span class="nav-text">第一刀：指定时间后台发送来电记录于收到短信到指定邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-End…"><span class="nav-number">5.6.2.</span> <span class="nav-text">The End…</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

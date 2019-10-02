@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="BP（backward propogation）神经网络 简单理解，神经网络就是一种高端的拟合技术。教程也非常多，但实际上个人觉得看看斯坦福的相关学习资料就足够，并且国内都有比较好的翻译： 人工神经网络概论，直接翻译与斯坦福教程：《神经网络 - Ufldl》 BP原理，直接翻译与斯坦福教程：《反向传导算法 - Ufldl》 网上公开课笔记：《Andrew Ng Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前向传播以及BP（反向传播）.">
+<meta property="og:url" content="http://blog.aclear.top/post/9e23a3c4.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="BP（backward propogation）神经网络 简单理解，神经网络就是一种高端的拟合技术。教程也非常多，但实际上个人觉得看看斯坦福的相关学习资料就足够，并且国内都有比较好的翻译： 人工神经网络概论，直接翻译与斯坦福教程：《神经网络 - Ufldl》 BP原理，直接翻译与斯坦福教程：《反向传导算法 - Ufldl》 网上公开课笔记：《Andrew Ng Machine Learning">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20151027220611320">
+<meta property="og:image" content="https://img-blog.csdn.net/20151027224736611">
+<meta property="og:updated_time" content="2019-10-02T03:40:40.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前向传播以及BP（反向传播）.">
+<meta name="twitter:description" content="BP（backward propogation）神经网络 简单理解，神经网络就是一种高端的拟合技术。教程也非常多，但实际上个人觉得看看斯坦福的相关学习资料就足够，并且国内都有比较好的翻译： 人工神经网络概论，直接翻译与斯坦福教程：《神经网络 - Ufldl》 BP原理，直接翻译与斯坦福教程：《反向传导算法 - Ufldl》 网上公开课笔记：《Andrew Ng Machine Learning">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20151027220611320">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/9e23a3c4.html">
+
+
+
+
+
+  <title>前向传播以及BP（反向传播）. | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/9e23a3c4.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前向传播以及BP（反向传播）.</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T21:07:52+08:00">
+                2018-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:40+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/DeepLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">DeepLearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li><strong>BP（backward propogation）神经网络</strong> 简单理解，神经网络就是一种高端的拟合技术。教程也非常多，但实际上个人觉得看看斯坦福的相关学习资料就足够，并且国内都有比较好的翻译：<ul>
+<li>人工神经网络概论，直接翻译与斯坦福教程：<a href="http://deeplearning.stanford.edu/wiki/index.php/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">《神经网络 - Ufldl》</a></li>
+<li>BP原理，直接翻译与斯坦福教程：<a href="http://deeplearning.stanford.edu/wiki/index.php/%E5%8F%8D%E5%90%91%E4%BC%A0%E5%AF%BC%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">《反向传导算法 - Ufldl》</a></li>
+<li>网上公开课笔记：<a href="http://blog.csdn.net/ironyoung/article/details/48412631" target="_blank" rel="noopener">《Andrew Ng Machine Learning 专题【Neural Networks】下》</a>三篇文章，详细的数学推导已经在里面，不赘述了。下面记录我在实现过程中碰到的一些总结与错误.</li>
+</ul>
+</li>
+<li><p><strong>神经网络的过程</strong> <img src="https://img-blog.csdn.net/20151027220611320" alt=""></p>
+<ol>
+<li>简单说，就是我有一堆已知的输入向量（每个向量可能有多维），每次读取一个向量（可能会有多维度），每个特征维度成为上图的输入层中一个输入节点。</li>
+<li>每个维度的数值，将自己的一部分按照权值分配送给隐藏层。写程序时第一次的权值怎么办呢？其实（-1，1）随机化（绝不是0~1随机化）就好了，后续会逐渐修正。</li>
+<li>这样隐含层每个节点同样有了自己的数值，同样道理，乘以权值再经过<strong>激活函数</strong>（根据需求选择，分类问题一般是 sigmoid 函数，数值拟合一般是 purelin 函数，也有特殊函数），最后传给输出节点。每个输出节点的每个值对应输出向量的一个特征维度</li>
+</ol>
+<p>至此，我们完成了一次 forward pass 过程，方向是：<strong>输入层⇒⇒输出层</strong>。</p>
+<ol>
+<li>熟悉神经网络的同学肯定知道，神经网络使用时有“训练”、“测试”两部分。我们现在考虑训练过程。每次 forward pass 过程之后，输出层的值与真实值之间，存在一个差，这个差记为 δδ。 此时我们根据公式，将误差作为参数传给隐藏层节点。</li>
+<li>这些误差有什么用呢？还记得我们各个层之间的随机化的权值么？就是用来修正这个权值的。同理，修改输入层与隐藏层之间的权值，我们的视角到达输入层。</li>
+</ol>
+<p>至此，我们完成了一次 backward pass 过程，方向是：<strong>输入层⇐⇐输出层</strong>。 第一个样本的一套做完了，即 forward pass + backward pass。 接下来呢？再做第二个样本的一套，并把误差与上一个样本误差相加；第三个样本的一套，加误差；……第N个样本的一套，加误差。等到所有样本都过了一遍，看<strong>误差和是否小于阈值</strong>（根据实际情况自由设定）时。如果不小于则进行下一整套样本，即：</p>
+<ul>
+<li>清零误差；第一个样本，加误差；第二个样本，加误差；……第N个样本，加误差。误差和是否小于阈值……</li>
+<li>误差和达到阈值，妥了，不训练了此时输入一个测试样本，将各个特征维度的数值输入到输入层节点，一次 forward pass，得到的输出值就是我们的预测值。</li>
+</ul>
+</li>
+<li><p><strong>易错点</strong> 既然这么通俗易懂，为什么实现中会出现错误呢？下面说说几个遇到的错误：</p>
+<ol>
+<li>输入节点，究竟是每个样本的特征维度一个节点？还是每个样本一个节点？以为每个样本对应一个输出节点，是错误的。答案是每个特征一个输入节点；</li>
+<li><strong>bias 必不可少</strong>！bias 是一个数值偏移量，<strong>不受上一层神经元的影响</strong>，在每个神经元汇总上一层的信息之后，都需要进行<strong>偏移之后再作为激活函数的输入</strong>。开头教程中有说明，这是为什么呢？举个例子，如果我们学习 XOR 问题，2个输入节点是0、0，如果没有 bias 所有隐含层节点都是同一个值，产生<strong>对称失效</strong>问题；</li>
+<li>神经网络有多少隐含层、每个隐含层多少神经元、学习效率，都是需要调试的。没有确解，但要保证每次循环中，样本的误差和呈下降趋势</li>
+</ol>
+<p>最后，是我参考的<strong>C++实现</strong>代码：</p>
+</li>
+</ol>
+<hr>
+<p>·BP神经网络头文件</p>
+<p>#pragma once</p>
+<p>#include <iostream></iostream></p>
+<p>#include <cmath></cmath></p>
+<p>#include <vector></vector></p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;time.h&gt;<br>using namespace std;</p>
+<p>#define innode 2        //输入结点数</p>
+<p>#define hidenode 4      //隐含结点数</p>
+<p>#define hidelayer 1     //隐含层数</p>
+<p>#define outnode 1       //输出结点数</p>
+<p>#define learningRate 0.9//学习速率，alpha<br>// --- -1~1 随机数产生器 —<br>inline double get_11Random()    // -1 ~ 1<br>{<br>    return ((2.0<em>(double)rand()/RAND_MAX) - 1);<br>}<br>// --- sigmoid 函数 —<br>inline double sigmoid(double x)<br>{<br>    double ans = 1 / (1+exp(-x));<br>    return ans;<br>}<br>// --- 输入层节点。包含以下分量：—<br>// 1.value:     固定输入值；<br>// 2.weight:    面对第一层隐含层每个节点都有权值；<br>// 3.wDeltaSum: 面对第一层隐含层每个节点权值的delta值累积<br>typedef struct inputNode<br>{<br>    double value;<br>    vector<double> weight, wDeltaSum;<br>}inputNode;<br>// --- 输出层节点。包含以下数值：—<br>// 1.value:     节点当前值；<br>// 2.delta:     与正确输出值之间的delta值；<br>// 3.rightout:  正确输出值<br>// 4.bias:      偏移量<br>// 5.bDeltaSum: bias的delta值的累积，每个节点一个<br>typedef struct outputNode   // 输出层节点<br>{<br>    double value, delta, rightout, bias, bDeltaSum;<br>}outputNode;<br>// --- 隐含层节点。包含以下数值：—<br>// 1.value:     节点当前值；<br>// 2.delta:     BP推导出的delta值；<br>// 3.bias:      偏移量<br>// 4.bDeltaSum: bias的delta值的累积，每个节点一个<br>// 5.weight:    面对下一层（隐含层/输出层）每个节点都有权值；<br>// 6.wDeltaSum： weight的delta值的累积，面对下一层（隐含层/输出层）每个节点各自积累<br>typedef struct hiddenNode   // 隐含层节点<br>{<br>    double value, delta, bias, bDeltaSum;<br>    vector<double> weight, wDeltaSum;<br>}hiddenNode;<br>// --- 单个样本 —<br>typedef struct sample<br>{<br>    vector<double> in, out;<br>}sample;<br>// --- BP神经网络 —<br>class BpNet<br>{<br>public:<br>    BpNet();    //构造函数<br>    void forwardPropagationEpoc();  // 单个样本前向传播<br>    void backPropagationEpoc();     // 单个样本后向传播<br>    void training (static vector<sample> sampleGroup, double threshold);// 更新 weight, bias<br>    void predict  (vector<sample>&amp; testGroup);                          // 神经网络预测<br>    void setInput (static vector<double> sampleIn);     // 设置学习样本输入<br>    void setOutput(static vector<double> sampleOut);    // 设置学习样本输出<br>public:<br>    double error;<br>    inputNode</double></double></sample></sample></double></double></double></em> inputLayer[innode];                      // 输入层（仅一层）<br>    outputNode<em> outputLayer[outnode];                   // 输出层（仅一层）<br>    hiddenNode</em> hiddenLayer[hidelayer][hidenode];       // 隐含层（可能有多层）<br>};</p>
+<p>·BP神经网络源文件</p>
+<p>#include “BPnet.h”<br>using namespace std;<br>BpNet::BpNet()<br>{<br>    srand((unsigned)time(NULL));        // 随机数种子<br>    error = 100.f;                      // error初始值，极大值即可<br>    // 初始化输入层<br>    for (int i = 0; i &lt; innode; i++)<br>    {<br>        inputLayer[i] = new inputNode();<br>        for (int j = 0; j &lt; hidenode; j++)<br>        {<br>            inputLayer[i]-&gt;weight.push_back(get_11Random());<br>            inputLayer[i]-&gt;wDeltaSum.push_back(0.f);<br>        }<br>    }<br>    // 初始化隐藏层<br>    for (int i = 0; i &lt; hidelayer; i++)<br>    {<br>        if (i == hidelayer - 1)<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                hiddenLayer[i][j] = new hiddenNode();<br>                hiddenLayer[i][j]-&gt;bias = get_11Random();<br>                for (int k = 0; k &lt; outnode; k++)<br>                {<br>                    hiddenLayer[i][j]-&gt;weight.push_back(get_11Random());<br>                    hiddenLayer[i][j]-&gt;wDeltaSum.push_back(0.f);<br>                }<br>            }<br>        }<br>        else<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                hiddenLayer[i][j] = new hiddenNode();<br>                hiddenLayer[i][j]-&gt;bias = get_11Random();<br>                for (int k = 0; k &lt; hidenode; k++) {hiddenLayer[i][j]-&gt;weight.push_back(get_11Random());}<br>            }<br>        }<br>    }<br>    // 初始化输出层<br>    for (int i = 0; i &lt; outnode; i++)<br>    {<br>        outputLayer[i] = new outputNode();<br>        outputLayer[i]-&gt;bias = get_11Random();<br>    }<br>}<br>void BpNet::forwardPropagationEpoc()<br>{<br>    // forward propagation on hidden layer<br>    for (int i = 0; i &lt; hidelayer; i++)<br>    {<br>        if (i == 0)<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                double sum = 0.f;<br>                for (int k = 0; k &lt; innode; k++)<br>                {<br>                    sum += inputLayer[k]-&gt;value <em> inputLayer[k]-&gt;weight[j];<br>                }<br>                sum += hiddenLayer[i][j]-&gt;bias;<br>                hiddenLayer[i][j]-&gt;value = sigmoid(sum);<br>            }<br>        }<br>        else<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                double sum = 0.f;<br>                for (int k = 0; k &lt; hidenode; k++)<br>                {<br>                    sum += hiddenLayer[i-1][k]-&gt;value </em> hiddenLayer[i-1][k]-&gt;weight[j];<br>                }<br>                sum += hiddenLayer[i][j]-&gt;bias;<br>                hiddenLayer[i][j]-&gt;value = sigmoid(sum);<br>            }<br>        }<br>    }<br>    // forward propagation on output layer<br>    for (int i = 0; i &lt; outnode; i++)<br>    {<br>        double sum = 0.f;<br>        for (int j = 0; j &lt; hidenode; j++)<br>        {<br>            sum += hiddenLayer[hidelayer-1][j]-&gt;value <em> hiddenLayer[hidelayer-1][j]-&gt;weight[i];<br>        }<br>        sum += outputLayer[i]-&gt;bias;<br>        outputLayer[i]-&gt;value = sigmoid(sum);<br>    }<br>}<br>void BpNet::backPropagationEpoc()<br>{<br>    // backward propagation on output layer<br>    // -- compute delta<br>    for (int i = 0; i &lt; outnode; i++)<br>    {<br>        double tmpe = fabs(outputLayer[i]-&gt;value-outputLayer[i]-&gt;rightout);<br>        error += tmpe </em> tmpe / 2;<br>        outputLayer[i]-&gt;delta<br>            = (outputLayer[i]-&gt;value-outputLayer[i]-&gt;rightout)<em>(1-outputLayer[i]-&gt;value)</em>outputLayer[i]-&gt;value;<br>    }<br>    // backward propagation on hidden layer<br>    // -- compute delta<br>    for (int i = hidelayer - 1; i &gt;= 0; i–)    // 反向计算<br>    {<br>        if (i == hidelayer - 1)<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                double sum = 0.f;<br>                for (int k=0; k&lt;outnode; k++){sum += outputLayer[k]-&gt;delta <em> hiddenLayer[i][j]-&gt;weight[k];}<br>                hiddenLayer[i][j]-&gt;delta = sum </em> (1 - hiddenLayer[i][j]-&gt;value) <em> hiddenLayer[i][j]-&gt;value;<br>            }<br>        }<br>        else<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                double sum = 0.f;<br>                for (int k=0; k&lt;hidenode; k++){sum += hiddenLayer[i + 1][k]-&gt;delta </em> hiddenLayer[i][j]-&gt;weight[k];}<br>                hiddenLayer[i][j]-&gt;delta = sum <em> (1 - hiddenLayer[i][j]-&gt;value) </em> hiddenLayer[i][j]-&gt;value;<br>            }<br>        }<br>    }<br>    // backward propagation on input layer<br>    // -- update weight delta sum<br>    for (int i = 0; i &lt; innode; i++)<br>    {<br>        for (int j = 0; j &lt; hidenode; j++)<br>        {<br>            inputLayer[i]-&gt;wDeltaSum[j] += inputLayer[i]-&gt;value <em> hiddenLayer[0][j]-&gt;delta;<br>        }<br>    }<br>    // backward propagation on hidden layer<br>    // -- update weight delta sum &amp; bias delta sum<br>    for (int i = 0; i &lt; hidelayer; i++)<br>    {<br>        if (i == hidelayer - 1)<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                hiddenLayer[i][j]-&gt;bDeltaSum += hiddenLayer[i][j]-&gt;delta;<br>                for (int k = 0; k &lt; outnode; k++)<br>                { hiddenLayer[i][j]-&gt;wDeltaSum[k] += hiddenLayer[i][j]-&gt;value </em> outputLayer[k]-&gt;delta; }<br>            }<br>        }<br>        else<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                hiddenLayer[i][j]-&gt;bDeltaSum += hiddenLayer[i][j]-&gt;delta;<br>                for (int k = 0; k &lt; hidenode; k++)<br>                { hiddenLayer[i][j]-&gt;wDeltaSum[k] += hiddenLayer[i][j]-&gt;value <em> hiddenLayer[i+1][k]-&gt;delta; }<br>            }<br>        }<br>    }<br>    // backward propagation on output layer<br>    // -- update bias delta sum<br>    for (int i = 0; i &lt; outnode; i++) outputLayer[i]-&gt;bDeltaSum += outputLayer[i]-&gt;delta;<br>}<br>void BpNet::training(static vector<sample> sampleGroup, double threshold)<br>{<br>    int sampleNum = sampleGroup.size();<br>    while(error &gt; threshold)<br>    //for (int curTrainingTime = 0; curTrainingTime &lt; trainingTime; curTrainingTime++)<br>    {<br>        cout &lt;&lt; “training error: “ &lt;&lt; error &lt;&lt; endl;<br>        error = 0.f;<br>        // initialize delta sum<br>        for (int i = 0; i &lt; innode; i++) inputLayer[i]-&gt;wDeltaSum.assign(inputLayer[i]-&gt;wDeltaSum.size(), 0.f);<br>        for (int i = 0; i &lt; hidelayer; i++){<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                hiddenLayer[i][j]-&gt;wDeltaSum.assign(hiddenLayer[i][j]-&gt;wDeltaSum.size(), 0.f);<br>                hiddenLayer[i][j]-&gt;bDeltaSum = 0.f;<br>            }<br>        }<br>        for (int i = 0; i &lt; outnode; i++) outputLayer[i]-&gt;bDeltaSum = 0.f;<br>        for (int iter = 0; iter &lt; sampleNum; iter++)<br>        {<br>            setInput(sampleGroup[iter].in);<br>            setOutput(sampleGroup[iter].out);<br>            forwardPropagationEpoc();<br>            backPropagationEpoc();<br>        }<br>        // backward propagation on input layer<br>        // -- update weight<br>        for (int i = 0; i &lt; innode; i++)<br>        {<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                inputLayer[i]-&gt;weight[j] -= learningRate </sample></em> inputLayer[i]-&gt;wDeltaSum[j] / sampleNum;<br>            }<br>        }<br>        // backward propagation on hidden layer<br>        // -- update weight &amp; bias<br>        for (int i = 0; i &lt; hidelayer; i++)<br>        {<br>            if (i == hidelayer - 1)<br>            {<br>                for (int j = 0; j &lt; hidenode; j++)<br>                {<br>                    // bias<br>                    hiddenLayer[i][j]-&gt;bias -= learningRate <em> hiddenLayer[i][j]-&gt;bDeltaSum / sampleNum;<br>                    // weight<br>                    for (int k = 0; k &lt; outnode; k++)<br>                    { hiddenLayer[i][j]-&gt;weight[k] -= learningRate </em> hiddenLayer[i][j]-&gt;wDeltaSum[k] / sampleNum; }<br>                }<br>            }<br>            else<br>            {<br>                for (int j = 0; j &lt; hidenode; j++)<br>                {<br>                    // bias<br>                    hiddenLayer[i][j]-&gt;bias -= learningRate <em> hiddenLayer[i][j]-&gt;bDeltaSum / sampleNum;<br>                    // weight<br>                    for (int k = 0; k &lt; hidenode; k++)<br>                    { hiddenLayer[i][j]-&gt;weight[k] -= learningRate </em> hiddenLayer[i][j]-&gt;wDeltaSum[k] / sampleNum; }<br>                }<br>            }<br>        }<br>        // backward propagation on output layer<br>        // -- update bias<br>        for (int i = 0; i &lt; outnode; i++)<br>        { outputLayer[i]-&gt;bias -= learningRate <em> outputLayer[i]-&gt;bDeltaSum / sampleNum; }<br>    }<br>}<br>void BpNet::predict(vector<sample>&amp; testGroup)<br>{<br>    int testNum = testGroup.size();<br>    for (int iter = 0; iter &lt; testNum; iter++)<br>    {<br>        testGroup[iter].out.clear();<br>        setInput(testGroup[iter].in);<br>        // forward propagation on hidden layer<br>        for (int i = 0; i &lt; hidelayer; i++)<br>        {<br>            if (i == 0)<br>            {<br>                for (int j = 0; j &lt; hidenode; j++)<br>                {<br>                    double sum = 0.f;<br>                    for (int k = 0; k &lt; innode; k++)<br>                    {<br>                        sum += inputLayer[k]-&gt;value </sample></em> inputLayer[k]-&gt;weight[j];<br>                    }<br>                    sum += hiddenLayer[i][j]-&gt;bias;<br>                    hiddenLayer[i][j]-&gt;value = sigmoid(sum);<br>                }<br>            }<br>            else<br>            {<br>                for (int j = 0; j &lt; hidenode; j++)<br>                {<br>                    double sum = 0.f;<br>                    for (int k = 0; k &lt; hidenode; k++)<br>                    {<br>                        sum += hiddenLayer[i-1][k]-&gt;value <em> hiddenLayer[i-1][k]-&gt;weight[j];<br>                    }<br>                    sum += hiddenLayer[i][j]-&gt;bias;<br>                    hiddenLayer[i][j]-&gt;value = sigmoid(sum);<br>                }<br>            }<br>        }<br>        // forward propagation on output layer<br>        for (int i = 0; i &lt; outnode; i++)<br>        {<br>            double sum = 0.f;<br>            for (int j = 0; j &lt; hidenode; j++)<br>            {<br>                sum += hiddenLayer[hidelayer-1][j]-&gt;value </em> hiddenLayer[hidelayer-1][j]-&gt;weight[i];<br>            }<br>            sum += outputLayer[i]-&gt;bias;<br>            outputLayer[i]-&gt;value = sigmoid(sum);<br>            testGroup[iter].out.push_back(outputLayer[i]-&gt;value);<br>        }<br>    }<br>}<br>void BpNet::setInput(static vector<double> sampleIn)<br>{<br>    for (int i = 0; i &lt; innode; i++) inputLayer[i]-&gt;value = sampleIn[i];<br>}<br>void BpNet::setOutput(static vector<double> sampleOut)<br>{<br>    for (int i = 0; i &lt; outnode; i++) outputLayer[i]-&gt;rightout = sampleOut[i];<br>}</double></double></p>
+<p>·BP神经网络main函数实现：（我们这里使用典型非线性问题：XOR 测试）：</p>
+<p>#include “BPnet.h”<br>int main()<br>{<br>    BpNet testNet;<br>    // 学习样本<br>    vector<double> samplein[4];<br>    vector<double> sampleout[4];<br>    samplein[0].push_back(0); samplein[0].push_back(0); sampleout[0].push_back(0);<br>    samplein[1].push_back(0); samplein[1].push_back(1); sampleout[1].push_back(1);<br>    samplein[2].push_back(1); samplein[2].push_back(0); sampleout[2].push_back(1);<br>    samplein[3].push_back(1); samplein[3].push_back(1); sampleout[3].push_back(0);<br>    sample sampleInOut[4];<br>    for (int i = 0; i &lt; 4; i++)<br>    {<br>        sampleInOut[i].in = samplein[i];<br>        sampleInOut[i].out = sampleout[i];<br>    }<br>    vector<sample> sampleGroup(sampleInOut, sampleInOut + 4);<br>    testNet.training(sampleGroup, 0.0001);<br>    // 测试数据<br>    vector<double> testin[4];<br>    vector<double> testout[4];<br>    testin[0].push_back(0.1);   testin[0].push_back(0.2);<br>    testin[1].push_back(0.15);  testin[1].push_back(0.9);<br>    testin[2].push_back(1.1);   testin[2].push_back(0.01);<br>    testin[3].push_back(0.88);  testin[3].push_back(1.03);<br>    sample testInOut[4];<br>    for (int i = 0; i &lt; 4; i++) testInOut[i].in = testin[i];<br>    vector<sample> testGroup(testInOut, testInOut + 4);<br>    // 预测测试数据，并输出结果<br>    testNet.predict(testGroup);<br>    for (int i = 0; i &lt; testGroup.size(); i++)<br>    {<br>        for (int j = 0; j &lt; testGroup[i].in.size(); j++) cout &lt;&lt; testGroup[i].in[j] &lt;&lt; “\t”;<br>        cout &lt;&lt; “– prediction :”;<br>        for (int j = 0; j &lt; testGroup[i].out.size(); j++) cout &lt;&lt; testGroup[i].out[j] &lt;&lt; “\t”;<br>        cout &lt;&lt; endl;<br>    }<br>    system(“pause”);<br>    return 0;<br>}</sample></double></double></sample></double></double></p>
+<p>-- 最终的实验结果基本正确： <img src="https://img-blog.csdn.net/20151027224736611" alt="这里写图片描述"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="1246.html" title="前向传播以及BP（反向传播）.">1246.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/f59f2a56.html" rel="next" title="科普-机器学习、深度学习、神经网络、深度神经网络之间有何区别？">
+                <i class="fa fa-chevron-left"></i> 科普-机器学习、深度学习、神经网络、深度神经网络之间有何区别？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/d55cbe97.html" rel="prev" title="Python第一二节">
+                Python第一二节 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

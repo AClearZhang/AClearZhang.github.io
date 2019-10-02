@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目标  1.1.  了解反向代理和负载均衡的概念1.2.  掌握Nginx的安装和使用1.3.  利用Nginx实现负载均衡 Nginx相关概念  2.1.  反向代理反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx和keepalived教程">
+<meta property="og:url" content="http://blog.aclear.top/post/54e297a4.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="目标  1.1.  了解反向代理和负载均衡的概念1.2.  掌握Nginx的安装和使用1.3.  利用Nginx实现负载均衡 Nginx相关概念  2.1.  反向代理反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pic.aclear.top/01_nginx-1.jpg">
+<meta property="og:image" content="http://pic.aclear.top/02_nignx-1.jpg">
+<meta property="og:image" content="http://pic.aclear.top/03_nignx-1.jpg">
+<meta property="og:image" content="http://pic.aclear.top/04_nignx-1.jpg">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx和keepalived教程">
+<meta name="twitter:description" content="目标  1.1.  了解反向代理和负载均衡的概念1.2.  掌握Nginx的安装和使用1.3.  利用Nginx实现负载均衡 Nginx相关概念  2.1.  反向代理反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务">
+<meta name="twitter:image" content="http://pic.aclear.top/01_nginx-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/54e297a4.html">
+
+
+
+
+
+  <title>Nginx和keepalived教程 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/54e297a4.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Nginx和keepalived教程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T13:41:17+08:00">
+                2017-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li><h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1></li>
+</ol>
+<h2 id="1-1-了解反向代理和负载均衡的概念"><a href="#1-1-了解反向代理和负载均衡的概念" class="headerlink" title="1.1.  了解反向代理和负载均衡的概念"></a>1.1.  了解反向代理和负载均衡的概念</h2><h2 id="1-2-掌握Nginx的安装和使用"><a href="#1-2-掌握Nginx的安装和使用" class="headerlink" title="1.2.  掌握Nginx的安装和使用"></a>1.2.  掌握Nginx的安装和使用</h2><h2 id="1-3-利用Nginx实现负载均衡"><a href="#1-3-利用Nginx实现负载均衡" class="headerlink" title="1.3.  利用Nginx实现负载均衡"></a>1.3.  利用Nginx实现负载均衡</h2><ol start="2">
+<li><h1 id="Nginx相关概念"><a href="#Nginx相关概念" class="headerlink" title="Nginx相关概念"></a>Nginx相关概念</h1></li>
+</ol>
+<h2 id="2-1-反向代理"><a href="#2-1-反向代理" class="headerlink" title="2.1.  反向代理"></a>2.1.  反向代理</h2><p>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。<img src="http://pic.aclear.top/01_nginx-1.jpg" alt="dream"></p>
+<h2 id="2-2-负载均衡"><a href="#2-2-负载均衡" class="headerlink" title="2.2.  负载均衡"></a>2.2.  负载均衡</h2><p>负载均衡，英文名称为Load Balance，是指建立在现有网络结构之上，并提供了一种廉价有效透明的方法扩展网络设备和服务器的带宽、增加吞吐量、加强网络数据处理能力、提高网络的灵活性和可用性。其原理就是数据流量分摊到多个服务器上执行，减轻每台服务器的压力，多台服务器共同完成工作任务，从而提高了数据的吞吐量。<img src="http://pic.aclear.top/02_nignx-1.jpg" alt="dream"></p>
+<ol start="3">
+<li><h1 id="Nginx的安装"><a href="#Nginx的安装" class="headerlink" title="Nginx的安装"></a>Nginx的安装</h1></li>
+</ol>
+<h2 id="3-1-下载nginx"><a href="#3-1-下载nginx" class="headerlink" title="3.1.  下载nginx"></a>3.1.  下载nginx</h2><p>官网：<a href="http://nginx.org/" target="_blank" rel="noopener">http://nginx.org/</a></p>
+<h2 id="3-2-上传并解压nginx-注意因为上传的是源码需编译"><a href="#3-2-上传并解压nginx-注意因为上传的是源码需编译" class="headerlink" title="3.2.  上传并解压nginx  //注意因为上传的是源码需编译"></a>3.2.  上传并解压nginx  //注意因为上传的是源码需编译</h2><p>tar -zxvf nginx-1.8.1.tar.gz -C /usr/local/src</p>
+<h2 id="3-3-编译nginx"><a href="#3-3-编译nginx" class="headerlink" title="3.3.  编译nginx"></a>3.3.  编译nginx</h2><p>#进入到nginx源码目录 cd /usr/local/src/nginx-1.8.1   #检查安装环境,并指定将来要安装的路径 //prefix 指定路径 ./configure –prefix=/usr/local/nginx   #缺包报错 ./configure: error: C compiler cc is not found   #使用YUM安装缺少的包 yum -y install gcc pcre-devel openssl openssl-devel   #编译安装   //make进行编译；    make install:可执行文件，库放荡相应的安装目录去 make &amp;&amp; make install   安装完后测试是否正常： /usr/loca/nginx/sbin/nginx 查看端口是否有ngnix进程监听 netstat -ntlp | grep 80 // || netstat -nltp</p>
+<ol start="4">
+<li><h1 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h1></li>
+</ol>
+<h2 id="4-1-配置反向代理"><a href="#4-1-配置反向代理" class="headerlink" title="4.1.  配置反向代理"></a>4.1.  配置反向代理</h2><ul>
+<li>修改nginx配置文件</li>
+</ul>
+<p>server { listen       80; server_name  nginx-01.itcast.cn;    #nginx所在服务器的主机名 #反向代理的配置 location / {             #拦截所有请求 / 这个请求（即所以URL请求） root html; proxy_pass <a href="http://192.168.0.21:8080;" target="_blank" rel="noopener">http://192.168.0.21:8080;</a>   #这里是代理走向的目标服务器：tomcat } }</p>
+<ul>
+<li><p>启动tomcat-01上的tomcat</p>
+<p>3.启动nginx-01上的nginx ./nginx   重启: kill -HUP `cat /usr/local/nginx/logs/nginx.pid ` 参考网址:<a href="http://www.cnblogs.com/jianxie/p/3990377.html" target="_blank" rel="noopener">http://www.cnblogs.com/jianxie/p/3990377.html</a> <img src="http://pic.aclear.top/03_nignx-1.jpg" alt="dream"></p>
+</li>
+</ul>
+<h2 id="4-2-动静分离"><a href="#4-2-动静分离" class="headerlink" title="4.2.  动静分离(/ )"></a>4.2.  动静分离(/ )</h2><p>#动态资源 index.jsp (nignx当中 根据后缀名进行代理返回。  删除上方的代理所有的’/’ ！)</p>
+<p>location ~ .*\.(jsp|do|action)$ { proxy_pass <a href="http://tomcat-01.itcast.cn:8080" target="_blank" rel="noopener">http://tomcat-01.itcast.cn:8080</a>; }</p>
+<p>  #静态资源</p>
+<p>location ~ .*\.(html|js|css|gif|jpg|jpeg|png)$ { expires 3d; }</p>
+<h2 id="4-3-负载均衡"><a href="#4-3-负载均衡" class="headerlink" title="4.3.  负载均衡"></a>4.3.  负载均衡</h2><p>在http这个节下面配置一个叫upstream的，后面的名字可以随意取，但是要和location下的proxy_pass http://后的保持一致。</p>
+<p>http { 是在http里面的, 已有http, 不是在server里,在server外面 upstream tomcats { server shizhan02:8080 weight=1;#weight表示多少个 server shizhan03:8080 weight=1; server shizhan04:8080 weight=1; } #卸载server里   ~.<em>\.  是正则表达式 location ~ .</em>\.(jsp|do|action) { proxy_pass <a href="http://tomcats;" target="_blank" rel="noopener">http://tomcats;</a>        #tomcats是后面的tomcat服务器组的逻辑组号 } }</p>
+<ol start="5">
+<li><h1 id="利用keepalived实现高可靠（HA）"><a href="#利用keepalived实现高可靠（HA）" class="headerlink" title="利用keepalived实现高可靠（HA）"></a>利用keepalived实现高可靠（HA）</h1></li>
+</ol>
+<h2 id="5-1-高可靠概念"><a href="#5-1-高可靠概念" class="headerlink" title="5.1.  高可靠概念"></a>5.1.  高可靠概念</h2><p>HA(High Available), 高可用性集群，是保证业务连续性的有效解决方案，一般有两个或两个以上的节点，且分为活动节点及备用节点。 <img src="http://pic.aclear.top/04_nignx-1.jpg" alt="dream"></p>
+<h2 id="5-2-高可靠软件keepalived"><a href="#5-2-高可靠软件keepalived" class="headerlink" title="5.2.  高可靠软件keepalived"></a>5.2.  高可靠软件keepalived</h2><p>keepalive是一款可以实现高可靠的软件，通常部署在2台服务器上，分为一主一备。Keepalived可以对本机上的进程进行检测，一旦Master检测出某个进程出现问题，将自己切换成Backup状态，然后通知另外一个节点切换成Master状态。</p>
+<h2 id="5-3-keepalived安装"><a href="#5-3-keepalived安装" class="headerlink" title="5.3.  keepalived安装"></a>5.3.  keepalived安装</h2><p>下载keepalived官网:<a href="http://keepalived.org" target="_blank" rel="noopener">http://keepalived.org</a>   将keepalived解压到/usr/local/src目录下 tar -zxvf  keepalived-1.2.19.tar.gz -C /usr/local/src   进入到/usr/local/src/keepalived-1.2.19目录 cd /usr/local/src/keepalived-1.2.19   开始configure ./configure –prefix=/usr/local/keepalived   #编译并安装 make &amp;&amp; make install  </p>
+<h2 id="5-4-将keepalived添加到系统服务中-service-就可以启动了"><a href="#5-4-将keepalived添加到系统服务中-service-就可以启动了" class="headerlink" title="5.4.  将keepalived添加到系统服务中(service 就可以启动了)"></a>5.4.  将keepalived添加到系统服务中(service 就可以启动了)</h2><p>拷贝执行文件 cp /usr/local/keepalived/sbin/keepalived /usr/sbin/ 将init.d文件拷贝到etc下,加入开机启动项 cp /usr/local/keepalived/etc/rc.d/init.d/keepalived /etc/init.d/keepalived 将keepalived文件拷贝到etc下 cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/ 创建keepalived文件夹 mkdir -p /etc/keepalived 将keepalived配置文件拷贝到etc下 cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf 添加可执行权限 chmod +x /etc/init.d/keepalived   ##以上所有命令一次性执行：</p>
+<p>cp /usr/local/keepalived/sbin/keepalived /usr/sbin/ cp /usr/local/keepalived/etc/rc.d/init.d/keepalived /etc/init.d/keepalived cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/ mkdir -p /etc/keepalived cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf chmod +x /etc/init.d/keepalived chkconfig –add keepalived chkconfig keepalived on</p>
+<p>  添加keepalived到开机启动 chkconfig –add keepalived chkconfig keepalived on        </p>
+<h2 id="5-5-配置keepalived虚拟IP"><a href="#5-5-配置keepalived虚拟IP" class="headerlink" title="5.5.  配置keepalived虚拟IP"></a>5.5.  配置keepalived虚拟IP</h2><p>修改配置文件： /etc/keepalived/keepalived.conf #MASTER节点</p>
+<p>global_defs { } vrrp_instance VI_1 { state MASTER   #指定A节点为主节点 备用节点上设置为BACKUP即可 interface eth0    #绑定虚拟IP的网络接口 virtual_router_id 51   #VRRP组名，两个节点的设置必须一样，以指明各个节点属于同一VRRP组 priority 100   #主节点的优先级（1-254之间），备用节点必须比主节点优先级低 advert_int 1  #组播信息发送间隔，两个节点设置必须一样 authentication {    #设置验证信息，两个节点必须一致《传输加密的密文》 auth_type PASS auth_pass 1111 } virtual_ipaddress {    #指定虚拟IP, 两个节点设置必须一样 192.168.33.60/24    #如果两个nginx的ip分别是192.168.33.61,,…62，则此处的虚拟ip跟它俩同一个网段即可 } }</p>
+<p>  #BACKUP节点</p>
+<p>global_defs { } vrrp_instance VI_1 { state BACKUP interface eth0 virtual_router_id 51 priority 99 advert_int 1 authentication { auth_type PASS auth_pass 1111 } virtual_ipaddress { 192.168.33.60/24 } }</p>
+<p>  #分别启动两台机器上的keepalived service keepalived start 测试： 杀掉master上的keepalived进程，你会发现，在slave机器上的eth0网卡多了一个ip地址 查看ip地址的命令：  ip addr //注意 eth0多了一个ip地址就是。虚拟的那个IP地址。就是这样实现的把虚拟ip切换给对应的 master 或者 backup的那台机器。</p>
+<h2 id="5-6-配置keepalived心跳检查"><a href="#5-6-配置keepalived心跳检查" class="headerlink" title="5.6.  配置keepalived心跳检查"></a>5.6.  配置keepalived心跳检查</h2><p>原理： Keepalived并不跟nginx耦合，它俩完全不是一家人 但是keepalived提供一个机制：让用户自定义一个shell脚本去检测用户自己的程序，返回状态给keepalived就可以了     #MASTER节点</p>
+<p>global_defs { } #注意： vrrp_script chk_health { script “[[ `ps -ef | grep nginx | grep -v grep | wc -l` -ge 2 ]] &amp;&amp; exit 0 || exit 1 #发生异常调用脚本最下面看色 interval 1    #每隔1秒执行上述的脚本，去检查用户的程序ngnix,老师dang机weight权重减减 weight -2 }   vrrp_instance VI_1 { state MASTER interface eth0 virtual_router_id 1 priority 100 advert_int 2 authentication { auth_type PASS auth_pass 1111 } #跟踪用户程序的脚本 track_script { chk_health }   virtual_ipaddress { 10.0.0.10/24 } #给我们的对应的接口，传去需要进行调用的脚本文件 notify_master “/usr/local/keepalived/sbin/notify.sh master” notify_backup “/usr/local/keepalived/sbin/notify.sh backup” notify_fault “/usr/local/keepalived/sbin/notify.sh fault”       # }</p>
+<p>  #添加切换通知脚本 vi /usr/local/keepalived/sbin/notify.sh</p>
+<p>#!/bin/bash   case “$1” in master) /usr/local/nginx/sbin/nginx exit 0 ;; backup) /usr/local/nginx/sbin/nginx -s stop /usr/local/nginx/sbin/nginx exit 0 ;; fault) /usr/local/nginx/sbin/nginx -s stop exit 0 ;; *) echo ‘Usage: notify.sh {master|backup|fault}’ exit 1 ;; esac</p>
+<p>  #添加执行权限 chmod +x /usr/local/keepalived/sbin/notify.sh</p>
+<p>global_defs { }   vrrp_script chk_health { script “[[ `ps -ef | grep nginx | grep -v grep | wc -l` -ge 2 ]] &amp;&amp; exit 0 || exit 1” interval 1 weight -2 }   vrrp_instance VI_1 { state BACKUP interface eth0 virtual_router_id 1 priority 99 advert_int 1 authentication { auth_type PASS auth_pass 1111 }   track_script { chk_health }   virtual_ipaddress { 10.0.0.10/24 }   notify_master “/usr/local/keepalived/sbin/notify.sh master” notify_backup “/usr/local/keepalived/sbin/notify.sh backup” notify_fault “/usr/local/keepalived/sbin/notify.sh fault” }</p>
+<p>  #在第二台机器上添加notify.sh脚本 #分别在两台机器上启动keepalived service keepalived start chkconfig keepalived on</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="1042.html" title="Nginx和keepalived教程">1042.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/52de762d.html" rel="next" title="Linux shell编程">
+                <i class="fa fa-chevron-left"></i> Linux shell编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/19085dd3.html" rel="prev" title="day03_BigData渐进学习_aclear_fire">
+                day03_BigData渐进学习_aclear_fire <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-了解反向代理和负载均衡的概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.  了解反向代理和负载均衡的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-掌握Nginx的安装和使用"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.  掌握Nginx的安装和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-利用Nginx实现负载均衡"><span class="nav-number">1.3.</span> <span class="nav-text">1.3.  利用Nginx实现负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx相关概念"><span class="nav-number">2.</span> <span class="nav-text">Nginx相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-反向代理"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.  反向代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-负载均衡"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.  负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx的安装"><span class="nav-number">3.</span> <span class="nav-text">Nginx的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-下载nginx"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.  下载nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-上传并解压nginx-注意因为上传的是源码需编译"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.  上传并解压nginx  //注意因为上传的是源码需编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-编译nginx"><span class="nav-number">3.3.</span> <span class="nav-text">3.3.  编译nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置nginx"><span class="nav-number">4.</span> <span class="nav-text">配置nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-配置反向代理"><span class="nav-number">4.1.</span> <span class="nav-text">4.1.  配置反向代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-动静分离"><span class="nav-number">4.2.</span> <span class="nav-text">4.2.  动静分离(/ )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-负载均衡"><span class="nav-number">4.3.</span> <span class="nav-text">4.3.  负载均衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用keepalived实现高可靠（HA）"><span class="nav-number">5.</span> <span class="nav-text">利用keepalived实现高可靠（HA）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-高可靠概念"><span class="nav-number">5.1.</span> <span class="nav-text">5.1.  高可靠概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-高可靠软件keepalived"><span class="nav-number">5.2.</span> <span class="nav-text">5.2.  高可靠软件keepalived</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-keepalived安装"><span class="nav-number">5.3.</span> <span class="nav-text">5.3.  keepalived安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-将keepalived添加到系统服务中-service-就可以启动了"><span class="nav-number">5.4.</span> <span class="nav-text">5.4.  将keepalived添加到系统服务中(service 就可以启动了)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-配置keepalived虚拟IP"><span class="nav-number">5.5.</span> <span class="nav-text">5.5.  配置keepalived虚拟IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-配置keepalived心跳检查"><span class="nav-number">5.6.</span> <span class="nav-text">5.6.  配置keepalived心跳检查</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

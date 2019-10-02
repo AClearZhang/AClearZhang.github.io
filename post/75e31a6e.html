@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MORE.安装问题请点击 这. 本文章转载自：dukecui  出现的一些问题及解决方法：  markdown 的omnimarkupview 404 错误时：  我用了第一种解决了问题。 Sublime Text &amp;gt; Preferences &amp;gt; Package Settings &amp;gt; OmniMarkupPreviewer &amp;gt; Settings - User 复制粘贴下面代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime &amp; Markdown &amp; Cloud synchronization（Sublime + Evernote 印象笔记，Dropbox）">
+<meta property="og:url" content="http://blog.aclear.top/post/75e31a6e.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="MORE.安装问题请点击 这. 本文章转载自：dukecui  出现的一些问题及解决方法：  markdown 的omnimarkupview 404 错误时：  我用了第一种解决了问题。 Sublime Text &amp;gt; Preferences &amp;gt; Package Settings &amp;gt; OmniMarkupPreviewer &amp;gt; Settings - User 复制粘贴下面代">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1859130-dfb28aae4c0a9c90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1859130-62a249f2e907e6f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1859130-accd271ba0e00d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1859130-8c3e65f4d7d10b08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-02T03:40:41.021Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sublime &amp; Markdown &amp; Cloud synchronization（Sublime + Evernote 印象笔记，Dropbox）">
+<meta name="twitter:description" content="MORE.安装问题请点击 这. 本文章转载自：dukecui  出现的一些问题及解决方法：  markdown 的omnimarkupview 404 错误时：  我用了第一种解决了问题。 Sublime Text &amp;gt; Preferences &amp;gt; Package Settings &amp;gt; OmniMarkupPreviewer &amp;gt; Settings - User 复制粘贴下面代">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1859130-dfb28aae4c0a9c90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/75e31a6e.html">
+
+
+
+
+
+  <title>Sublime & Markdown & Cloud synchronization（Sublime + Evernote 印象笔记，Dropbox） | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/75e31a6e.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Sublime & Markdown & Cloud synchronization（Sublime + Evernote 印象笔记，Dropbox）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T14:59:56+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
+                2019-10-02
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/thinkphpALi/" itemprop="url" rel="index">
+                    <span itemprop="name">thinkphpALi</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/thinkphpALi/工具-etc/" itemprop="url" rel="index">
+                    <span itemprop="name">工具_etc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MORE.安装问题请点击 <a href="https://packagecontrol.io/installation#st3" target="_blank" rel="noopener">这.</a> 本文章转载自：<a href="http://www.jianshu.com/p/31d284b009ae" target="_blank" rel="noopener">dukecui</a></p>
+<hr>
+<p>出现的一些问题及解决方法：</p>
+<ol>
+<li>markdown 的omnimarkupview 404 错误时：</li>
+</ol>
+<p>我用了第一种解决了问题。 <code>Sublime Text &gt; Preferences &gt; Package Settings &gt; OmniMarkupPreviewer &gt; Settings - User</code> 复制粘贴下面代码保存。</p>
+<pre><code>{
+    &quot;renderer_options-MarkdownRenderer&quot;: {
+        &quot;extensions&quot;: [&quot;tables&quot;, &quot;fenced_code&quot;, &quot;codehilite&quot;]
+    }
+}
+</code></pre><p>2.   保存的后缀名要为 .md 3.   快捷键：（最快： ctrl+shift+P  进行相应的插件搜索、操作）</p>
+<p>About OmniMarkupPreviwer &amp; markdownpreviewer<br>1. OmniMarkupPreviewer 插件的使用命令如下：<br> Ctrl+Alt+O: Preview Markup in Browser.<br> Ctrl+Alt+X: Export Markup as HTML.<br> Ctrl+Alt+C: Copy Markup as HTML.<br>2. MarkdownPreview的编译指令为<br> Ctrl + B<br>之后会在同样的文件夹下生成html的文件，打开即可预览效果。如果更改了文章，需要再次编译，打开才能看到更改的效果。<br>3.以上两者之间的区别主要有这几个方面：<br>前者可以进行实时的预览，后者不可以，后者需要先进行编译生成HTML文件，再查看。<br>前者很多语法格式无效果，后者均有，例如，目录的生成，参考角标的生成，待办事项的显示等等。<br>总结，前者可以实现文本的实时更新，后者可以更加完整有效的显示Markdown的语法格式。</p>
+<ol start="4">
+<li>便捷方法  </li>
+</ol>
+<p>结合配置文件注释，来一起看下让 OmniMarkupPreviewer 更好用的诸多选项:</p>
+<p><code>&quot;server_host&quot;: &quot;192.168.1.100&quot;,</code></p>
+<p>开启预览服务的 IP 地址, 默认为 localhost.<br>此处建议设置为本机固定 IP. 其好处在于：从局域网内的任意一台设备均可访问，可多设备同时在线，实现 <strong>一处编辑、多端预览</strong> 的效果。<br>你完全可以在 Mac 上编辑 Markdown 文档，而把 iPad 当作外接显示器来实时预览。</p>
+<p><a href="http://blog.leanote.com/post/54bfa17b8404f03097000000" target="_blank" rel="noopener">http://blog.leanote.com/post/54bfa17b8404f03097000000</a> <a href="http://www.jianshu.com/p/31d284b009ae" target="_blank" rel="noopener">http://www.jianshu.com/p/31d284b009ae</a></p>
+<hr>
+<p>“为什么会写这样的一个主题，最主要的痛点来自于以下两个方面。首先，立志经常写博客的我，希望能拥有优雅地写作体验和得心应手的编辑环境，而对于经常码代码的我来说最喜欢的编辑器莫过于Sublime，这个在业界被赞誉无数皇冠加冕的神器，让你遇见就会产生恨晚的感觉，那么自然而然就需要建立一个基于Sublime的舒畅的Markdown编辑环境。再者，我需要在多终端编辑自己的博客，例如我在公司的PC上写了一篇博客，当我回到家的时候，仍然希望继续完成刚才的那篇博客，而如果每次都需要用硬盘来回复制粘贴拷贝，那简直如同回到了石器时代一样low的不得了，这时就需要一个舒适好用便捷的云同步的解决方案来搞定它。基于此，我花了一些时间解决了这些问题，也应运而生了这篇文章。 至于为什么要用Markdown来编辑，网上已经有无数关于Markdown的介绍和赞誉，同时对于经常混迹于全球最大同性交友网站GitHub的码农，Markdown是必不可少的技能。而且Hexo天生集成了Markdown，因此我们可以采用这样的语法来编写博客。Markdown简单的语法易用的规则，可以使我们更加专注于内容的编写，同时自动生成极为美观的排版，总之，带给我们良好的编辑体验。当然，Markdown的编辑器有很多很多，对于纯码字的文字工作者而言，大可选择更为简单方便的编辑器，这里有一篇文章可供参考（<a href="http://www.williamlong.info/archives/4319.html" target="_blank" rel="noopener">好用的Markdown编辑器一览</a>），但是对于程序员而言，最好的就是Sublime！</p>
+<h1 id="构建基于Sublime的良好的Markdown编辑环境"><a href="#构建基于Sublime的良好的Markdown编辑环境" class="headerlink" title="构建基于Sublime的良好的Markdown编辑环境"></a>构建基于Sublime的良好的Markdown编辑环境</h1><h2 id="1-Sublime主题的选择"><a href="#1-Sublime主题的选择" class="headerlink" title="1. Sublime主题的选择"></a>1. Sublime主题的选择</h2><p>选择一款自己喜欢的主题配色可以让我们工作的时候更加的愉悦，效率也更高。我自己选择的主题是<a href="https://github.com/equinusocio/material-theme" target="_blank" rel="noopener"><strong>Material Theme</strong></a>, 这个在GitHub上获得6000+Star的精品，它的大概配色如下图所示（官方配图）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1859130-dfb28aae4c0a9c90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>一开始选择Material Theme这个主题，完全是因为它的名字，因为我是一名Android开发者，所以对Google的Material Design有一种不能抗拒的感觉，虽然这两者之间似乎除了名字相同之外没有任何关系，但我还是喜欢上了它。 前人种树，后人乘凉，这里有一篇关于Sublime 主题推荐的文章：<a href="http://www.jianshu.com/p/13fedee165f1" target="_blank" rel="noopener"><strong>Sublime插件：主题篇</strong></a></p>
+<h2 id="2-插件的安装"><a href="#2-插件的安装" class="headerlink" title="2. 插件的安装"></a>2. 插件的安装</h2><p>Sublime 拥有非常好的扩展性，因为使用之广泛，因此全球有很多的开发者为其开发了大量优秀的第三方插件，而如何安装卸载和管理第三方的插件，就需要 Package Control 这款插件，安装的方法如下链接：<a href="https://packagecontrol.io/installation" target="_blank" rel="noopener"><strong>Package Control Install</strong></a>。 之后就可以进行第三方插件的安装了，Ctrl+Shift+P 之后打开命令板，输入 Package Control：Install Package，选择确认之后，就可以打开选择安装第三方库的面板，例如要安装上面的 Material Theme 主题，输入 Material Theme 之后选择即可安装。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1859130-62a249f2e907e6f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="3-Markdown编辑环境插件：Markdown-Editing"><a href="#3-Markdown编辑环境插件：Markdown-Editing" class="headerlink" title="3. Markdown编辑环境插件：Markdown Editing"></a>3. Markdown编辑环境插件：<a href="https://github.com/SublimeText-Markdown/MarkdownEditing" target="_blank" rel="noopener">Markdown Editing</a></h2><p>Markdown Editing 是一款侧重于Markdown语法编辑的插件，它主要有以下的一些特点:</p>
+<ul>
+<li>更好的句法理解，</li>
+<li>更好的着色方案以及代码高亮</li>
+<li>实用的Markdown编辑特性，即对插入图片，链接，角标，引用，标题等等，有快捷键的实现</li>
+<li>支持 Standard Markdown, GitHub flavored Markdown, MultiMarkdown 三种语法</li>
+</ul>
+<p>官方给的配图是这样子的</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1859130-accd271ba0e00d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>但是偏白色的背景让我感觉很别扭，与刚才设定的主题相差太大了，不能忍啊~ 好在这个也是可以修改自定的，在 Sublime 菜单栏打开 Preferences &gt; Package Settings &gt; Markdown Editing &gt; Markdown GFM settings - User 添加以下的代码，设置成我们自己喜欢的主题配色</p>
+<pre><code>{
+    &quot;color_scheme&quot;: &quot;Packages/Material Theme/schemes/OLD/Material-Theme.tmTheme&quot;,
+}
+</code></pre><h2 id="4-Markdown预览插件：主要有两个-OmniMarkupPreviwer-和-MarkdownPreview"><a href="#4-Markdown预览插件：主要有两个-OmniMarkupPreviwer-和-MarkdownPreview" class="headerlink" title="4. Markdown预览插件：主要有两个 OmniMarkupPreviwer 和 MarkdownPreview"></a>4. Markdown预览插件：主要有两个 <a href="https://github.com/timonwong/OmniMarkupPreviewer" target="_blank" rel="noopener">OmniMarkupPreviwer</a> 和 <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="noopener">MarkdownPreview</a></h2><p>通常我们还有需要预览用Markdown语法编写的文章的最终排版的需求，以上提到的两个插件实现了这样的功能。OmniMarkupPreviewer 插件的使用命令如下：</p>
+<pre><code>Ctrl+Alt+O: Preview Markup in Browser.
+Ctrl+Alt+X: Export Markup as HTML.
+Ctrl+Alt+C: Copy Markup as HTML.
+</code></pre><p>MarkdownPreview的编译指令为</p>
+<pre><code>Ctrl + B
+</code></pre><p>之后会在同样的文件夹下生成html的文件，打开即可预览效果。如果更改了文章，需要再次编译，打开才能看到更改的效果。 以上两者之间的区别主要有这几个方面：</p>
+<ul>
+<li>前者可以进行实时的预览，后者不可以，后者需要先进行编译生成HTML文件，再查看。</li>
+<li>前者很多语法格式无效果，后者均有，例如，目录的生成，参考角标的生成，待办事项的显示等等。</li>
+</ul>
+<p>总结，前者可以实现文本的实时更新，后者可以更加完整有效的显示Markdown的语法格式。 <strong>至此，基于Sublime的Markdown的编辑环境已经搭建完成。</strong></p>
+<h1 id="文档云端自动同步的方案"><a href="#文档云端自动同步的方案" class="headerlink" title="文档云端自动同步的方案"></a>文档云端自动同步的方案</h1><p>关于云端同步，我的核心需求是，可以无需去操心所有的要同步的操作，当我在一个终端编辑好之后，不再需要做任何别的事情，文件会自动同步到我的另一个终端，而比如百度云盘则需要手动上传下载。这也正是我上面提到的需要在公司和家里都编辑同一份博客的需求。这里有以下的两种解决方案</p>
+<h2 id="一、Dropbox"><a href="#一、Dropbox" class="headerlink" title="一、Dropbox"></a>一、<a href="https://www.dropbox.com/" target="_blank" rel="noopener">Dropbox</a></h2><p>Dropbox 是最实用的文件同步工具，能够将存储在本地的文件自动同步到云端的服务器。但是令人遗憾的是，这款软件的服务在国内无法使用，必须要科学上网才行。而作为程序员需要经常的科学上网，所以这对我来说是可以接受的。Dropbox需要申请一个个人账号，之后安装相应的客户端，如Windows端，Dropbox会创建在 $env:userprofile\Dropbox 路径下的一个文件夹，而你需要把希望同步到云端的所有文件，放在这个文件夹中，并保持处于科学上网的状态下，即可自动同步到Dropbox云端。同时，在另一台终端登录相同的Dropbox账号，即可自动将云端的文件同步到本地。</p>
+<h3 id="1-同步Sublime的配置"><a href="#1-同步Sublime的配置" class="headerlink" title="1. 同步Sublime的配置"></a>1. <a href="https://packagecontrol.io/docs/syncing#dropbox-windows" target="_blank" rel="noopener">同步Sublime的配置</a></h3><p>首先碰到的一个问题是，要在多终端使用Sublime，但是又希望我们在一个电脑上更改的配置能自动同步到另一台电脑。这时便可以采用Dropbox的方案，具体实现如下。在 Sublime 菜单栏打开 Preferences &gt; Browse Packages… 打开Sublime的文件夹，将Users的文件夹剪切到Dropbox目录（如Windows平台的$env:userprofile\Dropbox）下，再在刚才的Sublime文件夹下创建一个User的文件夹，符号链接到Dropbox下的User文件夹，其中Windows下创建符号链接的命令如下：</p>
+<pre><code>cmd /c mklink /D 带链接符号的文件夹 目标文件夹
+</code></pre><p>比如，先命令行进入刚才打开的Sublime文件夹下，然后创建符号链接的命令如下：</p>
+<pre><code>cmd /c mklink /D User $env:userprofile\Dropbox\User
+</code></pre><p>这是一种值得借鉴的方式，你想同步的任何软件的任何配置文件，都可以采用符号链接的方式进行，将真正的文件存储在Dropbox文件夹下，再在它原来需要出现的位置，创建符号链接指向Dropbox下的相应的文件，即可实现文件的自动云端同步。</p>
+<h3 id="2-Hexo博客博文的云端同步"><a href="#2-Hexo博客博文的云端同步" class="headerlink" title="2. Hexo博客博文的云端同步"></a>2. Hexo博客博文的云端同步</h3><p>借鉴以上创建符号链接的方式，在Hexo博客的根目录下，将source文件夹放在Dropbox目录下，再在原Hexo博客根目录下创建source文件夹到Dropbox文件夹下source文件夹的符号链接，即可实现云端自动同步博客所有资源的方案。从此便可随心所欲的在公司和家里操作编辑同样一份博文喽。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1859130-8c3e65f4d7d10b08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>符号链接</p>
+<p>同时，Dropbox在移动端也有相应的产品，我在我的Android手机安装了Dropbox的客户端，这样就可以在随时随地查看我编辑的博文，而博文是Markdown文件，可以下载MarkdownX的一款App，这是一款在移动端非常棒的可以查看预览编辑Markdown文件的应用，最重要的是，它可以和Dropbox联动！！！ <strong>云端同步的全套解决方案搭建完成。</strong></p>
+<h2 id="二、Sublime-Evernote（印象笔记）"><a href="#二、Sublime-Evernote（印象笔记）" class="headerlink" title="二、Sublime + Evernote（印象笔记）"></a>二、Sublime + <a href="https://github.com/bordaigorl/sublime-evernote" target="_blank" rel="noopener">Evernote</a>（印象笔记）</h2><p>云端同步的另一个方案的出发点是这样的。我习惯每日会写工作日报，包括自己当天的工作计划，工作总结，学到的内容，一些感悟等等。我希望可以在 Sublime 中编辑它，而且它能够自动同步到移动端和另一台电脑，使我可以随时随地的查看和编辑。当然使用第一种方案也是可以的。但是这个需求的核心是我需要的是笔记的同步，而不需要同步文件，因此我更喜欢用专业的云端笔记产品。而在国内知名度很高的有道云笔记，我之所以没有选择它，是因为没有和Sublime联动的插件可以供我使用，我无法在Sublime中去编辑我的工作日报，只能在有道云笔记的客户端编辑，而且客户端暂不支持Markdown编辑，因此还要考虑排版云云，啊，简直不能忍！选择印象笔记就是因为这款在Sublime上的插件：<a href="https://github.com/bordaigorl/sublime-evernote" target="_blank" rel="noopener"><strong>Evernote</strong></a>。这使得我可以直接在Sublime中创建一个新的工作日报，并且以Markdownd的语法去编写，之后同步到印象笔记，自动生成排版，体验实在太棒啦！下面就来看如何搭建这套方案</p>
+<h3 id="1-安装-Evernote-插件"><a href="#1-安装-Evernote-插件" class="headerlink" title="1. 安装 Evernote 插件"></a>1. 安装 <a href="https://github.com/bordaigorl/sublime-evernote" target="_blank" rel="noopener">Evernote</a> 插件</h3><p>在Sublime中按 Ctrl+Shift+P 打开命令板，输入 Package Control:Install Package 打开下载仓库，输入 Evernote 下载安装。</p>
+<h3 id="2-连接Sublime到你的印象笔记账号"><a href="#2-连接Sublime到你的印象笔记账号" class="headerlink" title="2. 连接Sublime到你的印象笔记账号"></a>2. 连接Sublime到你的印象笔记账号</h3><p>第一次使用Evernote需要连接你的账号，访问该网站 <a href="https://app.yinxiang.com/api/DeveloperToken.action" target="_blank" rel="noopener">https://app.yinxiang.com/api/DeveloperToken.action</a> 获取到你的账号对应的Token，这个Token就是你的账号的认证标志，所以要切记保密，任何人拿到这个Token就如同拿到你的密码一样，可以进行你印象笔记中的任何操作。获取到Token之后，打开 Sublime 菜单栏中 Preferences &gt; Package Settings &gt; Evernote &gt; Settings-User 键入上述网页所显示的 noteStoreUrl 和 token 字段。保存，并重新启动 Sublime ，完成账号的关联。</p>
+<pre><code>{
+    &quot;noteStoreUrl&quot;: &quot;your noteStoreurl XXX&quot;,
+    &quot;token&quot;: &quot;your token XXX&quot;,
+}
+</code></pre><h3 id="3-使用-Evernote"><a href="#3-使用-Evernote" class="headerlink" title="3. 使用 Evernote"></a>3. 使用 Evernote</h3><p>可以通过 Ctrl+Shift+P 打开命令板，键入 Evernote 就会出现所有的关于Evernote插件的指令，常用的指令包括</p>
+<pre><code>Command Palette &gt; Evernote: New empty note
+Command Palette &gt; Evernote: Open Evernote Note
+Command Palette &gt; Evernote: Send to Evernote
+Command Palette &gt; Evernote: Update Evernote Note
+</code></pre><p>以上指令的详细解释，可参照 Evernote 的官方 GitHub：<a href="https://github.com/bordaigorl/sublime-evernote" target="_blank" rel="noopener"><strong>Evernote</strong></a> 当然，我们可以直接设置快捷键完成相应的操作。在Sublime的菜单栏中打开 Preferences &gt; Key Bindings - User 键入以下的设置</p>
+<pre><code>[
+    { &quot;keys&quot;: [&quot;ctrl+e&quot;, &quot;ctrl+p&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;command_palette&quot;, &quot;text&quot;: &quot;Evernote: &quot;} },
+    { &quot;keys&quot;: [&quot;ctrl+e&quot;, &quot;ctrl+o&quot;], &quot;command&quot;: &quot;open_evernote_note&quot; },
+    { &quot;keys&quot;: [&quot;ctrl+s&quot;], &quot;command&quot;: &quot;save_evernote_note&quot;, &quot;context&quot;: [{&quot;key&quot;: &quot;evernote_note&quot;}, {&quot;key&quot;: &quot;evernote_has_guid&quot;}] },
+    { &quot;keys&quot;: [&quot;ctrl+s&quot;], &quot;command&quot;: &quot;send_to_evernote&quot;, &quot;context&quot;: [{&quot;key&quot;: &quot;evernote_note&quot;}, {&quot;key&quot;: &quot;evernote_has_guid&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: false}] },
+]
+</code></pre><p>以上快捷键的解释，第二个设置表示，连续按 “ctrl+e”, “ctrl+o” 会在Sublime中打开云端的印象笔记，可以进行相应的文件夹和文件的选择，确认即可打开。第三个设置表示，在打开的是一个印象笔记文本的情况下，按”ctrl+s”可以直接保存到云端。第四个设置表示，如果是一个新建的笔记（例如通过 Command Palette &gt; Evernote: New empty note 命令在 Sublime 中新建的一个笔记），还没有在云端，按”ctrl+s”可以将此笔记发送到云端。</p>
+<h3 id="4-建立模板"><a href="#4-建立模板" class="headerlink" title="4. 建立模板"></a>4. 建立模板</h3><p>每次新建一个文件，我们可能需要一些模板，这是可以实现的。在 Sublime 的菜单栏打开 Preferences &gt; Package Settings &gt; Evernote &gt; Settings-User 键入以下的字段</p>
+<pre><code>&quot;default_template&quot;: &quot;Packages/User/EvernoteNote.md&quot;,
+</code></pre><p>然后打开 Preferences &gt; Browse Packages… 打开User文件夹，新建一个EvernoteNote.md文件作为一个模板，需要注意的是，需要把这个文件转换为UNIX格式，才能正常的使用。</p>
+<h3 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5. 注意事项"></a>5. 注意事项</h3><p>在印象笔记的如上使用过程中，发现一个非常严重的问题，就是如果我本地的一个 Markdown 在 Sublime 中打开编辑，之后发送到云端，如果直接在打开的这个文件继续编辑保存，是可以继续上传到云端的，而假如我此时在 Sublime 中关闭这个本地的文件，再次打开，此时系统将无法确认这个文件是和云端的印象笔记的某个文件是关联的，也就是说，这个时候，你无法再将新的更改添加到刚才的那个云端笔记中，只能重新发送一个相当于新的笔记到云端。这是一个非常不好的体验和痛点，我也在开发这款插件的作者的Github中看到了有关这个问题的讨论，可能因为确实十分棘手，作者最终并没有给出解决方案。 而我们可以通过改变我们的使用方式来绕开以上的痛点。使用流程如下，先通过 Command Palette &gt; Evernote: New empty note 新建一个笔记，定义好我们笔记的文件名和所在的文件夹，保存这个笔记，相当于发送到云端，这时我们就可以编辑了，当编辑完成关闭之后，下次通过 Command Palette &gt; Evernote: Open Evernote Note 命令直接打开云端的一个笔记进行修改和编辑，这很好的解决了本地文件与云端文件的关联问题。 总之，核心的思想就是，不在本地进行编辑，只编辑云端。Sublime只是一个用来编辑云端笔记的编辑器，真正的存储位置就是在云端。 以上的所有关于 Evernote 的设置可以参考 <a href="https://github.com/bordaigorl/sublime-evernote" target="_blank" rel="noopener"><strong>Evernote</strong></a> 的GitHub主页。 <strong>至此，Sublime + Evernote 的云端同步方案搭建完成，可以享受畅爽的多端同步笔记了。在公司电脑写的工作日报，可以直接在家里PC和手机端进行查看和编辑，从此走向人生巅峰~~~</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="589.html" title="Sublime & Markdown & Cloud synchronization（Sublime + Evernote 印象笔记，Dropbox）">589.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/88c3f6f7.html" rel="next" title="Markdown: Basics （快速入门）">
+                <i class="fa fa-chevron-left"></i> Markdown: Basics （快速入门）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/b7004b30.html" rel="prev" title="MaxHeap_KnapsackofBranchandBound">
+                MaxHeap_KnapsackofBranchandBound <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构建基于Sublime的良好的Markdown编辑环境"><span class="nav-number">1.</span> <span class="nav-text">构建基于Sublime的良好的Markdown编辑环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Sublime主题的选择"><span class="nav-number">1.1.</span> <span class="nav-text">1. Sublime主题的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-插件的安装"><span class="nav-number">1.2.</span> <span class="nav-text">2. 插件的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Markdown编辑环境插件：Markdown-Editing"><span class="nav-number">1.3.</span> <span class="nav-text">3. Markdown编辑环境插件：Markdown Editing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Markdown预览插件：主要有两个-OmniMarkupPreviwer-和-MarkdownPreview"><span class="nav-number">1.4.</span> <span class="nav-text">4. Markdown预览插件：主要有两个 OmniMarkupPreviwer 和 MarkdownPreview</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档云端自动同步的方案"><span class="nav-number">2.</span> <span class="nav-text">文档云端自动同步的方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Dropbox"><span class="nav-number">2.1.</span> <span class="nav-text">一、Dropbox</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-同步Sublime的配置"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 同步Sublime的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hexo博客博文的云端同步"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Hexo博客博文的云端同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Sublime-Evernote（印象笔记）"><span class="nav-number">2.2.</span> <span class="nav-text">二、Sublime + Evernote（印象笔记）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装-Evernote-插件"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 安装 Evernote 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-连接Sublime到你的印象笔记账号"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 连接Sublime到你的印象笔记账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用-Evernote"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 使用 Evernote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-建立模板"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 建立模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-注意事项"><span class="nav-number">2.2.5.</span> <span class="nav-text">5. 注意事项</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">445.2k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>
