@@ -469,7 +469,7 @@
 }
 </code></pre><p>2.   保存的后缀名要为 .md 3.   快捷键：（最快： ctrl+shift+P  进行相应的插件搜索、操作）</p>
 <p>About OmniMarkupPreviwer &amp; markdownpreviewer<br>1. OmniMarkupPreviewer 插件的使用命令如下：<br> Ctrl+Alt+O: Preview Markup in Browser.<br> Ctrl+Alt+X: Export Markup as HTML.<br> Ctrl+Alt+C: Copy Markup as HTML.<br>2. MarkdownPreview的编译指令为<br> Ctrl + B<br>之后会在同样的文件夹下生成html的文件，打开即可预览效果。如果更改了文章，需要再次编译，打开才能看到更改的效果。<br>3.以上两者之间的区别主要有这几个方面：<br>前者可以进行实时的预览，后者不可以，后者需要先进行编译生成HTML文件，再查看。<br>前者很多语法格式无效果，后者均有，例如，目录的生成，参考角标的生成，待办事项的显示等等。<br>总结，前者可以实现文本的实时更新，后者可以更加完整有效的显示Markdown的语法格式。</p>
-<ol start="4">
+<ol>
 <li>便捷方法  </li>
 </ol>
 <p>结合配置文件注释，来一起看下让 OmniMarkupPreviewer 更好用的诸多选项:</p>
@@ -497,11 +497,11 @@
     &quot;color_scheme&quot;: &quot;Packages/Material Theme/schemes/OLD/Material-Theme.tmTheme&quot;,
 }
 </code></pre><h2 id="4-Markdown预览插件：主要有两个-OmniMarkupPreviwer-和-MarkdownPreview"><a href="#4-Markdown预览插件：主要有两个-OmniMarkupPreviwer-和-MarkdownPreview" class="headerlink" title="4. Markdown预览插件：主要有两个 OmniMarkupPreviwer 和 MarkdownPreview"></a>4. Markdown预览插件：主要有两个 <a href="https://github.com/timonwong/OmniMarkupPreviewer" target="_blank" rel="noopener">OmniMarkupPreviwer</a> 和 <a href="https://github.com/revolunet/sublimetext-markdown-preview" target="_blank" rel="noopener">MarkdownPreview</a></h2><p>通常我们还有需要预览用Markdown语法编写的文章的最终排版的需求，以上提到的两个插件实现了这样的功能。OmniMarkupPreviewer 插件的使用命令如下：</p>
-<pre><code>Ctrl+Alt+O: Preview Markup in Browser.
-Ctrl+Alt+X: Export Markup as HTML.
-Ctrl+Alt+C: Copy Markup as HTML.
+<pre><code>    Ctrl+Alt+O: Preview Markup in Browser.
+    Ctrl+Alt+X: Export Markup as HTML.
+    Ctrl+Alt+C: Copy Markup as HTML.
 </code></pre><p>MarkdownPreview的编译指令为</p>
-<pre><code>Ctrl + B
+<pre><code>    Ctrl + B
 </code></pre><p>之后会在同样的文件夹下生成html的文件，打开即可预览效果。如果更改了文章，需要再次编译，打开才能看到更改的效果。 以上两者之间的区别主要有这几个方面：</p>
 <ul>
 <li>前者可以进行实时的预览，后者不可以，后者需要先进行编译生成HTML文件，再查看。</li>
@@ -509,8 +509,8 @@ Ctrl+Alt+C: Copy Markup as HTML.
 </ul>
 <p>总结，前者可以实现文本的实时更新，后者可以更加完整有效的显示Markdown的语法格式。 <strong>至此，基于Sublime的Markdown的编辑环境已经搭建完成。</strong></p>
 <h1 id="文档云端自动同步的方案"><a href="#文档云端自动同步的方案" class="headerlink" title="文档云端自动同步的方案"></a>文档云端自动同步的方案</h1><p>关于云端同步，我的核心需求是，可以无需去操心所有的要同步的操作，当我在一个终端编辑好之后，不再需要做任何别的事情，文件会自动同步到我的另一个终端，而比如百度云盘则需要手动上传下载。这也正是我上面提到的需要在公司和家里都编辑同一份博客的需求。这里有以下的两种解决方案</p>
-<h2 id="一、Dropbox"><a href="#一、Dropbox" class="headerlink" title="一、Dropbox"></a>一、<a href="https://www.dropbox.com/" target="_blank" rel="noopener">Dropbox</a></h2><p>Dropbox 是最实用的文件同步工具，能够将存储在本地的文件自动同步到云端的服务器。但是令人遗憾的是，这款软件的服务在国内无法使用，必须要科学上网才行。而作为程序员需要经常的科学上网，所以这对我来说是可以接受的。Dropbox需要申请一个个人账号，之后安装相应的客户端，如Windows端，Dropbox会创建在 $env:userprofile\Dropbox 路径下的一个文件夹，而你需要把希望同步到云端的所有文件，放在这个文件夹中，并保持处于科学上网的状态下，即可自动同步到Dropbox云端。同时，在另一台终端登录相同的Dropbox账号，即可自动将云端的文件同步到本地。</p>
-<h3 id="1-同步Sublime的配置"><a href="#1-同步Sublime的配置" class="headerlink" title="1. 同步Sublime的配置"></a>1. <a href="https://packagecontrol.io/docs/syncing#dropbox-windows" target="_blank" rel="noopener">同步Sublime的配置</a></h3><p>首先碰到的一个问题是，要在多终端使用Sublime，但是又希望我们在一个电脑上更改的配置能自动同步到另一台电脑。这时便可以采用Dropbox的方案，具体实现如下。在 Sublime 菜单栏打开 Preferences &gt; Browse Packages… 打开Sublime的文件夹，将Users的文件夹剪切到Dropbox目录（如Windows平台的$env:userprofile\Dropbox）下，再在刚才的Sublime文件夹下创建一个User的文件夹，符号链接到Dropbox下的User文件夹，其中Windows下创建符号链接的命令如下：</p>
+<h2 id="一、Dropbox"><a href="#一、Dropbox" class="headerlink" title="一、Dropbox"></a>一、<a href="https://www.dropbox.com/" target="_blank" rel="noopener">Dropbox</a></h2><p>Dropbox 是最实用的文件同步工具，能够将存储在本地的文件自动同步到云端的服务器。但是令人遗憾的是，这款软件的服务在国内无法使用，必须要科学上网才行。而作为程序员需要经常的科学上网，所以这对我来说是可以接受的。Dropbox需要申请一个个人账号，之后安装相应的客户端，如Windows端，Dropbox会创建在 $env:userprofile\\Dropbox 路径下的一个文件夹，而你需要把希望同步到云端的所有文件，放在这个文件夹中，并保持处于科学上网的状态下，即可自动同步到Dropbox云端。同时，在另一台终端登录相同的Dropbox账号，即可自动将云端的文件同步到本地。</p>
+<h3 id="1-同步Sublime的配置"><a href="#1-同步Sublime的配置" class="headerlink" title="1. 同步Sublime的配置"></a>1. <a href="https://packagecontrol.io/docs/syncing#dropbox-windows" target="_blank" rel="noopener">同步Sublime的配置</a></h3><p>首先碰到的一个问题是，要在多终端使用Sublime，但是又希望我们在一个电脑上更改的配置能自动同步到另一台电脑。这时便可以采用Dropbox的方案，具体实现如下。在 Sublime 菜单栏打开 Preferences &gt; Browse Packages… 打开Sublime的文件夹，将Users的文件夹剪切到Dropbox目录（如Windows平台的$env:userprofile\\Dropbox）下，再在刚才的Sublime文件夹下创建一个User的文件夹，符号链接到Dropbox下的User文件夹，其中Windows下创建符号链接的命令如下：</p>
 <pre><code>cmd /c mklink /D 带链接符号的文件夹 目标文件夹
 </code></pre><p>比如，先命令行进入刚才打开的Sublime文件夹下，然后创建符号链接的命令如下：</p>
 <pre><code>cmd /c mklink /D User $env:userprofile\Dropbox\User
@@ -729,7 +729,7 @@ Command Palette &gt; Evernote: Update Evernote Note
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -740,7 +740,7 @@ Command Palette &gt; Evernote: Update Evernote Note
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -751,7 +751,7 @@ Command Palette &gt; Evernote: Update Evernote Note
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -889,7 +889,7 @@ Command Palette &gt; Evernote: Update Evernote Note
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1515,6 +1515,28 @@ Command Palette &gt; Evernote: Update Evernote Note
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! –&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1  2  3 Expression 4  5  6 7      8">
+<meta name="description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! —&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1   2   3 Expression  4  5   6  7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【转】JSP中浅析注释的区别">
 <meta property="og:url" content="http://blog.aclear.top/post/567eceac.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! –&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1  2  3 Expression 4  5  6 7      8">
+<meta property="og:description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! —&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1   2   3 Expression  4  5   6  7">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转】JSP中浅析注释的区别">
-<meta name="twitter:description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! –&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1  2  3 Expression 4  5  6 7      8">
+<meta name="twitter:description" content="浅谈JSP注释 HTML注释  JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式： &amp;lt;!-- 欢迎提示信息! —&amp;gt; 欢迎访问!    使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:  1   2   3 Expression  4  5   6  7">
 
 
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  322
+                  321
                 </span>
               
 
@@ -445,17 +445,32 @@
 <li>HTML注释</li>
 </ol>
 <p>JSP文件是由HTML尿急和嵌入的Java程序片段组成的，所以在HTML中的注释同样可以在JSP文件中使用。注释格式：<!--注释内容--></p>
-<p>&lt;!-- 欢迎提示信息! –&gt;</p>
+<p>&lt;!-- 欢迎提示信息! —&gt;</p>
 <table><tr><td>欢迎访问!</td></tr></table>
 
 <p>  使用该方法注释的内容在客户端浏览器中是看不到的，但是可以通过查看页面源代码看到注释内容。查看源代码如下:</p>
-<p> 1 <head><meta name="generator" content="Hexo 3.8.0"><br> 2 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><br> 3 <title>Expression</title><br> 4 </head><br> 5 <body><br> 6<br> 7     <!-- 欢迎提示信息! --><br> 8     <table><tbody><tr><td>欢迎访问!</td></tr></tbody></table><br> 9<br>10 </body></p>
+<p> 1 <head><meta name="generator" content="Hexo 3.8.0">
+ 2 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 3 <title>Expression</title>
+ 4 </head><br> 5 <body>
+ 6
+ 7     <!-- 欢迎提示信息! -->
+ 8     <table><tbody><tr><td>欢迎访问!</td></tr></tbody></table>
+ 9
+10 </body></p>
 <p>2.带有JSP表达式的注释 注释格式:<!--comment<%=expression%>--> 包含该注释语句的JSP页面被请求后，服务器能识别注释中的JSP表达式，从而来执行该表达式，而对注释中的其他内容不做任何操作。</p>
-<p>1     <!-- 当前用户:<%=name%> --><br>2     <table><tr><td>欢迎访问!&lt;%=name %&gt;</td></tr></table></p>
-<p>被注释的内容依旧不会显示在浏览器中 3.JSP特有的注释（隐性注释） 使用该方法注释的内容，不仅在客户端浏览时看不到，即使查看HTML源代码，也不会看到，安全性较高。注释格式：&lt;%–注释内容–%&gt;</p>
-<p>1 　　 &lt;%– 当前用户:&lt;%=name%&gt; –%&gt;<br>2     <table><tr><td>欢迎访问!&lt;%=name %&gt;</td></tr></table></p>
+<p>1     <!-- 当前用户:<%=name%> --><br>2     <table><tr><td>欢迎访问!<%=name %=""></%=name></td></tr></table></p>
+<p>被注释的内容依旧不会显示在浏览器中 3.JSP特有的注释（隐性注释） 使用该方法注释的内容，不仅在客户端浏览时看不到，即使查看HTML源代码，也不会看到，安全性较高。注释格式：&lt;%—注释内容—%&gt;</p>
+<p>1 　　 &lt;%— 当前用户:&lt;%=name%&gt; —%&gt;<br>2     <table><tr><td>欢迎访问!<%=name %=""></%=name></td></tr></table></p>
 <p>查看页面源代码，也看不到JSP的注释：</p>
-<p>1 <head><meta name="generator" content="Hexo 3.8.0"><br>2 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><br>3 <title>Expression</title><br>4 </head><br>5 <body><br>6<br>7     <table><tbody><tr><td>欢迎访问!Tom</td></tr></tbody></table><br>8<br>9 </body></p>
+<p>1 <head><meta name="generator" content="Hexo 3.8.0">
+2 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+3 <title>Expression</title>
+4 </head><br>5 <body>
+6
+7     <table><tbody><tr><td>欢迎访问!Tom</td></tr></tbody></table>
+8
+9 </body></p>
 
       
     </div>
@@ -644,7 +659,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -655,7 +670,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -666,7 +681,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -804,7 +819,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1430,6 +1445,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

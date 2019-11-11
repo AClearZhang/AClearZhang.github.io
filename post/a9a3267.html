@@ -463,9 +463,9 @@
 <ul>
 <li>到与当前单词相同的下一个单词上<br>如果你要重复键入一个短语或一个句子, 也有一种快捷的方法。Vim有一种记录宏的机制。你键入”qa”开始把一段宏记录入寄存器变量’a’中。<br>按下来你可以象平常一样键入你要的操作, 只是这些操作都会被Vim记录进它命名为’a’的宏中, 再次再下”q”键, 就结束了宏’a’的录制。当你要重复执行你刚才记录的那些操作时只要使用”@a”命令。共有26个可用的寄存器供你记录宏。 使用宏你可以重复多个不同的操作。而不仅仅是插入文本了。如果你要进行某种重复的操作, 记着要用这一招呀。<br>:abbr hte the<br>:abbr hw Hello World<br>输入先面的单词时，自动用后面的替换。  </li>
 </ul>
-<h1 id="3、移动："><a href="#3、移动：" class="headerlink" title="3、移动："></a>3、移动：</h1><p>b、3b、w、3w:向前\后移动几个单词，标点也算一个单词。相应的大写状态为不含标点，即只把空格和换行符作为单词间隔符。<br>$：移动到行尾  3$：移动到3行后的行尾<br>^:移动到行首，0也是<br>+：移到下一行的行首<br>-： 移到上一行的行首<br>f:搜索命令，小写时向后搜索（用来定位）如 fx：定位到下一个x上。   Fx：定位到上一个x上，重复时，可用;或,  不过 , 表示反方向<br>%：跳到相对应的括号上，编程时常用<br>33G：跳转到33行   此时按<code></code>可以返回到原来行<br>gg:文件头   G： 文件尾<br>30%：跳转到文件的30%处<br>“H”意为Home, “M”为Middle, “L”为Last.  当前屏幕的上中下位置，大小写皆可<br>Ctrl+G:显示当前位置<br>set number:设置显示行号，set nonumber:关闭显示<br>:set ruler 设置在窗口右下角显示行号，与上面的好处是，节省空间<br>ctrl+u\d  向上\下滚动半屏<br>ctrl+e\y  向上\下滚动一行<br>ctrl+b\f  向上\下滚动一屏　　这个比较实用，记住。<br>zz:将当前行滚动于屏幕中间，方便查看上下文  zt置顶，zb置尾<br>/string  查找string，回车后，按n键可以跳到下一个，N上一个，另外按/键后，按上下键可以找到以前查找的记录，同样的 ：也有记录<br>?/string 同上，默认向上查找<br>:set ignorecase 大小写无关<br>:set noignorecase 大小写敏感   </p>
+<h1 id="3、移动："><a href="#3、移动：" class="headerlink" title="3、移动："></a>3、移动：</h1><p>b、3b、w、3w:向前\后移动几个单词，标点也算一个单词。相应的大写状态为不含标点，即只把空格和换行符作为单词间隔符。<br>$：移动到行尾  3$：移动到3行后的行尾<br>^:移动到行首，0也是<br>+：移到下一行的行首<br>-： 移到上一行的行首<br>f:搜索命令，小写时向后搜索（用来定位）如 fx：定位到下一个x上。   Fx：定位到上一个x上，重复时，可用;或,  不过 , 表示反方向<br>%：跳到相对应的括号上，编程时常用<br>33G：跳转到33行   此时按``可以返回到原来行<br>gg:文件头   G： 文件尾<br>30%：跳转到文件的30%处<br>“H”意为Home, “M”为Middle, “L”为Last.  当前屏幕的上中下位置，大小写皆可<br>Ctrl+G:显示当前位置<br>set number:设置显示行号，set nonumber:关闭显示<br>:set ruler 设置在窗口右下角显示行号，与上面的好处是，节省空间<br>ctrl+u\d  向上\下滚动半屏<br>ctrl+e\y  向上\下滚动一行<br>ctrl+b\f  向上\下滚动一屏　　这个比较实用，记住。<br>zz:将当前行滚动于屏幕中间，方便查看上下文  zt置顶，zb置尾<br>/string  查找string，回车后，按n键可以跳到下一个，N上一个，另外按/键后，按上下键可以找到以前查找的记录，同样的 ：也有记录<br>?/string 同上，默认向上查找<br>:set ignorecase 大小写无关<br>:set noignorecase 大小写敏感   </p>
 <ul>
-<li>：查找下一个光标所在单词  #是查找上一个<br>:set hlsearch  高亮显示查找结果<br>:set nohlsearch  取消高亮<br>:nohlsearch  去掉当前显示的高完（一次性）<br><code></code> 上次光标停靠的行<br>% 匹配到相应括号处  <blockquote>
+<li>：查找下一个光标所在单词  #是查找上一个<br>:set hlsearch  高亮显示查找结果<br>:set nohlsearch  取消高亮<br>:nohlsearch  去掉当前显示的高完（一次性）<br>`` 上次光标停靠的行<br>% 匹配到相应括号处  <blockquote>
 <blockquote>
 <p>  向右移动本行一段距离     &lt;&lt;   向左移动本行一段距离    3&lt;&lt;    把下面3行（包括本行），向左移动一段距离     :20,30&gt;&gt;  把20行到30行向右移动一段距离  </p>
 </blockquote>
@@ -478,7 +478,7 @@
 <p>滚动整屏：<br>^f：向前（下）一整屏<br>^b：向后（上）一整屏<br>^d：向前（下）一半屏<br>^u：向后（上）一半屏<br>z,Enter：将光标所在行移动到屏幕顶部（同于zz)<br>z.：将光标所在行移动到屏幕中间<br>z-：将光标所在行移动到屏幕尾部<br>nz,Enter：将第n行移动到屏幕顶部，同样的，z. 与 z- 前也可以加数字。  </p>
 <p>在屏幕中移动：<br>H、M、L分别移动到屏幕的顶部、中间和尾部。<br>nH、nL 移动到距离屏幕顶部和顶部n行的位置。  </p>
 <p>Enter：到下一行的第一个字符。<br>+：到下一行的第一个字符。<br>-：到上一行的第一个字符。<br>n|：移动到当前行的第n列<br>e：移到单词的结尾<br>E：移到单词的结尾（忽略标点符号）<br>(   )   {   }  [[  ]] 这几个对编程作用不大，可忽略。<br>d/it：向后删除到it之前的位置（不删it）。    d?it：向前删除到it之前的位置（删除it）。</p>
-<p>fx:本行中向右搜索x，光标置于x上。  Fx:向左搜索。; 重复上一个搜索命令，方向相同。   ,重复上一个搜索命令，方向相反。<br>tx:同fx，只是光标置于x之前。 Tx类似。<br>dfi：向右删除第一个i的位置（包括i)  dti：同dfi，只是不包括i<br>Ctrl+G 查看当前行信息<br>nG跳转后，可使用<code></code>回到上一次的位置，’’功能一样，不过只是回到前次位置所在行的开头，而不是确定的位置上。  </p>
+<p>fx:本行中向右搜索x，光标置于x上。  Fx:向左搜索。; 重复上一个搜索命令，方向相同。   ,重复上一个搜索命令，方向相反。<br>tx:同fx，只是光标置于x之前。 Tx类似。<br>dfi：向右删除第一个i的位置（包括i)  dti：同dfi，只是不包括i<br>Ctrl+G 查看当前行信息<br>nG跳转后，可使用``回到上一次的位置，’’功能一样，不过只是回到前次位置所在行的开头，而不是确定的位置上。  </p>
 <p>删除包含keyword字符串的行： :g/keyword/d<br>删除空行：:%s/^\n$//g  </p>
 <p>i<br>a/A<br>o/O<br>r + ?替换<br>0:文件当前行的开头<br>$:文件当前行的末尾<br>G:文件的最后一行开头<br>1 + G到第一行<br>9 + G到第九行 = :9<br>dd:删除一行<br>3dd：删除3行<br>yy:复制一行<br>3yy:复制3行<br>p:粘贴<br>u:undo<br>ctrl + r:redo<br>“a剪切板a<br>“b剪切板b<br>“ap粘贴剪切板a的内容<br>每次进入vi就有行号<br>vi ~/.vimrc<br>set nu<br>:w a.txt另存为<br>:w &gt;&gt; a.txt内容追加到a.txt<br>:e!恢复到最初状态<br>:1,$s/hadoop/root/g 将第一行到追后一行的hadoop替换为root<br>:1,$s/hadoop/root/c 将第一行到追后一行的hadoop替换为root(有提示)  </p>
 
@@ -667,7 +667,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -678,7 +678,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -689,7 +689,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -827,7 +827,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1453,6 +1453,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

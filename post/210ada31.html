@@ -446,7 +446,15 @@
         <p><img src="http://www.jiahaozhang.net/wp-content/uploads/2017/11/1-1.png" alt=""> 结合此图：做出一下理解 有同学在看 Vue 官方文档时，对 API 文档中的 Vue.nextTick 和 vm.$nextTick 的作用不太理解。 其实如果看一下<a href="http://link.zhihu.com/?target=https%3A//cn.vuejs.org/v2/guide/reactivity.html%23search-query-sidebar" target="_blank" rel="noopener">深入响应式原理 - vue.js</a>中的有关内容，可能会有所理解，不过有些同学可能看到这个标题之后就选择跳过了，因此这里简述如下： Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。 $nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM，API 文档中官方示例如下：</p>
 <p>new Vue({<br>  // …<br>  methods: {<br>    // …<br>    example: function () {<br>      // modify data<br>      this.message = ‘changed’<br>      // DOM is not updated yet<br>      this.$nextTick(function () {<br>        // DOM is now updated<br>        // `this` is bound to the current instance<br>        this.doSomethingElse()<br>      })<br>    }<br>  }<br>})</p>
 <p>有些同学可能不大理解什么叫 DOM is now updated，在<a href="http://link.zhihu.com/?target=https%3A//cn.vuejs.org/v2/guide/reactivity.html%23search-query-sidebar" target="_blank" rel="noopener">深入响应式原理 - vue.js</a>中的示例情况也比较罕见，Vue 模板中直接在根无素中进行插值，然后在实例方法中使用了 this.$el.textContent 来获得更新之后的 DOM。 为了更好地理解这一点，修改示例如下： 模板——</p>
-<div class="app"><br>  <div ref="msgDiv">{ {msg}}</div><br>  <div v-if="msg1">Message got outside $nextTick: { {msg1}}</div><br>  <div v-if="msg2">Message got inside $nextTick: { {msg2}}</div><br>  <div v-if="msg3">Message got outside $nextTick: { {msg3}}</div><br>  <button @click="changeMsg"><br>    Change the Message<br>  </button><br></div>
+<div class="app">
+  <div ref="msgDiv">{ {msg}}</div>
+  <div v-if="msg1">Message got outside $nextTick: { {msg1}}</div>
+  <div v-if="msg2">Message got inside $nextTick: { {msg2}}</div>
+  <div v-if="msg3">Message got outside $nextTick: { {msg3}}</div>
+  <button @click="changeMsg">
+    Change the Message
+  </button>
+</div>
 
 <p>Vue实例—</p>
 <p>new Vue({<br>  el: ‘.app’,<br>  data: {<br>    msg: ‘Hello Vue.’,<br>    msg1: ‘’,<br>    msg2: ‘’,<br>    msg3: ‘’<br>  },<br>  methods: {<br>    changeMsg() {<br>      this.msg = “Hello world.”<br>      this.msg1 = this.$refs.msgDiv.innerHTML<br>      this.$nextTick(() =&gt; {<br>        this.msg2 = this.$refs.msgDiv.innerHTML<br>      })<br>      this.msg3 = this.$refs.msgDiv.innerHTML<br>    }<br>  }<br>})</p>
@@ -628,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,7 +647,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -650,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -772,7 +780,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1398,6 +1406,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

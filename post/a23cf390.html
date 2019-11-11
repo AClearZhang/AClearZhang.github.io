@@ -442,7 +442,7 @@
         <p><strong>·</strong>org.apache.hadoop.security.AccessControlException: Permission denied: user=acanprince, access=WRITE, inode=”/“:hadoop:supergroup:drwxr-xr-x at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkFsPermission(FSPermissionChecker.java:271) at 解决： 方法一： -DHADOOP_USER_NAME=hadoop //因为开始运行VM虚拟机当中会寻找 VM当中的hadoop_user)name这一个参数！ 方法二-直接通过代码：</p>
 <p>FileSystem fs = null;<br>Configuration conf = null;<br>@Before<br>public void init() throws Exception{<br>conf = new Configuration();<br>conf.set(“fs.defaultFS”,”hdfs://aclear1:9000”);<br>//这个是本地的对象<br>fs = FileSystem.get(conf);<br>// fs = FileSystem.get(new URI(“hdfs://aclear1:9000”), conf,”hadoop”);<br>//拿到一个文件系统操作的客户端实例对象<br>/*fs = FileSystem.get(conf);*/<br>//可以直接传入 uri和用户身份<br>}</p>
 <p>现象：</p>
-<p>注意：<br>如果是从eclipse1上传上去的就是去的eclipse当中hdfs-core.xml配置的副本个数的数量！（所以第一个有三个副本）<br>-&gt;否则若是从 shell里面上传的，首先参考的参数是从，hadoop-2.6.4当中配置的参数起作用还是有两个副本！<br>————–为angelababy打印的分割线————–<br>angelababy.love<br>134217728<br>rw-r–r–<br>76<br>块的起始偏移量：0<br>块的长度：76<br>当前主机：aclear3<br>当前主机：aclear2<br>当前主机：aclear4<br>————–为angelababy打印的分割线————–<br>cenos-6.5-hadoop-2.6.4.tar.gz<br>134217728<br>rw-r–r–<br>180813065<br>块的起始偏移量：0<br>块的长度：134217728<br>当前主机：aclear4<br>当前主机：aclear3<br>块的起始偏移量：134217728<br>块的长度：46595337<br>当前主机：aclear4<br>当前主机：aclear3</p>
+<p>注意：<br>如果是从eclipse1上传上去的就是去的eclipse当中hdfs-core.xml配置的副本个数的数量！（所以第一个有三个副本）<br>-&gt;否则若是从 shell里面上传的，首先参考的参数是从，hadoop-2.6.4当中配置的参数起作用还是有两个副本！<br>———————为angelababy打印的分割线———————<br>angelababy.love<br>134217728<br>rw-r—r—<br>76<br>块的起始偏移量：0<br>块的长度：76<br>当前主机：aclear3<br>当前主机：aclear2<br>当前主机：aclear4<br>———————为angelababy打印的分割线———————<br>cenos-6.5-hadoop-2.6.4.tar.gz<br>134217728<br>rw-r—r—<br>180813065<br>块的起始偏移量：0<br>块的长度：134217728<br>当前主机：aclear4<br>当前主机：aclear3<br>块的起始偏移量：134217728<br>块的长度：46595337<br>当前主机：aclear4<br>当前主机：aclear3</p>
 
       
     </div>
@@ -620,7 +620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +631,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -764,7 +764,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1390,6 +1390,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

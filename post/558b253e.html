@@ -86,12 +86,12 @@
 
 
 
-<meta name="description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code `class=“language-java hljs “&amp;gt;for(inti =0; i &amp;lt;10; i++) {` //获取当前i的值 int`se">
+<meta name="description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code ``class``=``&amp;quot;language-java hljs &amp;quot;``&amp;gt;``for``(``int``i = ``0``; i &amp;l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【转】Android Studio---断点调试和高级调试">
 <meta property="og:url" content="http://blog.aclear.top/post/558b253e.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code `class=“language-java hljs “&amp;gt;for(inti =0; i &amp;lt;10; i++) {` //获取当前i的值 int`se">
+<meta property="og:description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code ``class``=``&amp;quot;language-java hljs &amp;quot;``&amp;gt;``for``(``int``i = ``0``; i &amp;l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083835147.png">
 <meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083835148.png">
@@ -118,7 +118,7 @@
 <meta property="og:updated_time" content="2019-10-02T03:40:40.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【转】Android Studio---断点调试和高级调试">
-<meta name="twitter:description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code `class=“language-java hljs “&amp;gt;for(inti =0; i &amp;lt;10; i++) {` //获取当前i的值 int`se">
+<meta name="twitter:description" content="有人说Android 的调试是最坑的，那我只能说是你不会用而已，我可以说Android Studio的调试是我见过最棒的。    好了开始写一个简单的调试程序，我们先来一个for循环  ? 1 2 3 4 5 6 7 8 &amp;lt;code ``class``=``&amp;quot;language-java hljs &amp;quot;``&amp;gt;``for``(``int``i = ``0``; i &amp;l">
 <meta name="twitter:image" content="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083835147.png">
 
 
@@ -478,11 +478,11 @@
 <p>6</p>
 <p>7</p>
 <p>8</p>
-<p><code>&lt;code `</code>class<code>=</code>“language-java hljs “<code>&gt;</code>for<code>(</code>int<code>i =</code>0<code>; i &lt;</code>10<code></code>; i++) {`</p>
+<p><code>&lt;code ``class``=``&quot;language-java hljs &quot;``&gt;``for``(``int``i = ``0``; i &lt;``10``; i++) {</code></p>
 <p><code>//获取当前i的值</code></p>
-<p><code>int`</code>selector = i;`</p>
+<p><code>int``selector = i;</code></p>
 <p><code>//打log查看当前i的值（此步多余，实际开发请忽略）</code></p>
-<p><code>Logger.e(`</code>“for当前的i的值：”<code></code>+ i);`</p>
+<p><code>Logger.e(``&quot;for当前的i的值：&quot;``+ i);</code></p>
 <p><code>//调用方法</code></p>
 <p><code>stepNext(i);</code></p>
 <p><code>}&lt;/code&gt;</code></p>
@@ -535,7 +535,7 @@
 <h3 id="4-step-out-：有断点下一个，走完断点继续走"><a href="#4-step-out-：有断点下一个，走完断点继续走" class="headerlink" title="4. step out ：有断点下一个，走完断点继续走"></a>4. step out ：有断点下一个，走完断点继续走</h3><blockquote>
 <p>这里如果我们的一个流程当中，包括调用的方法，如果有断点走到下一个断点，如果没有断点，而是在一个调用的方法当中，会跳出这个方法，继续走。</p>
 </blockquote>
-<p><img src="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836159.png" alt="这里写图片描述">vc/E0aOsvtm49sD919OjujxiciAvPg0KPGltZyBhbHQ9”这里写图片描述” src=”<a href="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836160.png&quot;" target="_blank" rel="noopener">http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836160.png&quot;</a> title=”\“ /&gt;</p>
+<p><img src="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836159.png" alt="这里写图片描述">vc/E0aOsvtm49sD919OjujxiciAvPg0KPGltZyBhbHQ9”这里写图片描述” src=”<a href="http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836160.png" target="_blank" rel="noopener">http://www.2cto.com/uploadfile/Collfiles/20150616/20150616083836160.png</a>“ title=”\\” /&gt;</p>
 <blockquote>
 <p>(上图)我现在程序位置在第一个断点位置（24行），我调用的stepNext方法中也有一个断点，此时我按下step out按钮会走到stepNext中的断点处（39行）我此时如果再按一下step out 会走到stepNext方法的调用出的下一个可执行代码（30行）</p>
 </blockquote>
@@ -757,7 +757,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -768,7 +768,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -779,7 +779,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -917,7 +917,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1543,6 +1543,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

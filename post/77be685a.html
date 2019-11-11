@@ -454,10 +454,10 @@
 <p>In [ ]:</p>
 <p>file1 = open(“test.txt”)<br>file2 = open(“output.txt”,”w”)<br>while True:<br>    line = file1.readline()</p>
 <pre><code>#这里可以进行逻辑处理 
-file2.write(&apos;&quot;&apos;+line\[:s\]+&apos;&quot;&apos;+&quot;,&quot;)
+file2.write(&#39;&quot;&#39;+line\[:s\]+&#39;&quot;&#39;+&quot;,&quot;)
 if not line:
     break
-</code></pre><p>#记住文件处理完，关闭是个好习惯<br>file1.close()<br>file2.close()</p>
+</code></pre><h1 id="记住文件处理完，关闭是个好习惯"><a href="#记住文件处理完，关闭是个好习惯" class="headerlink" title="记住文件处理完，关闭是个好习惯"></a>记住文件处理完，关闭是个好习惯</h1><p>file1.close()<br>file2.close()</p>
 <p>读文件有3种方法：</p>
 <ul>
 <li>read()将文本文件所有行读到一个字符串中。</li>
@@ -468,14 +468,13 @@ if not line:
 <p>In [ ]:</p>
 <p>file2 = open(“output.txt”,”w”)<br>for line in open(“test.txt”):</p>
 <pre><code>  #这里可以进行逻辑处理 
-file2.write(&apos;&quot;&apos;+line\[:s\]+&apos;&quot;&apos;+&quot;,&quot;)
+file2.write(&#39;&quot;&#39;+line\[:s\]+&#39;&quot;&#39;+&quot;,&quot;)
 </code></pre><h3 id="第三种方法："><a href="#第三种方法：" class="headerlink" title="第三种方法："></a>第三种方法：</h3><p>文件上下文管理器</p>
 <p>In [ ]:</p>
-<p>#打开文件</p>
-<p>#用with..open自带关闭文本的功能<br>with open(‘somefile.txt’, ‘r’) as f:<br>    data = f.read()<br># loop整个文档<br>with open(‘somefile.txt’, ‘r’) as f:<br>    for line in f:<br>        # 处理每一行<br># 写入文本<br>with open(‘somefile.txt’, ‘w’) as f:<br>    f.write(text1)<br>    f.write(text2)<br>    …<br># 把要打印的line写入文件中<br>with open(‘somefile.txt’, ‘w’) as f:<br>    print(line1, file=f)<br>    print(line2, file=f)</p>
+<h1 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h1><h1 id="用with-open自带关闭文本的功能"><a href="#用with-open自带关闭文本的功能" class="headerlink" title="用with..open自带关闭文本的功能"></a>用with..open自带关闭文本的功能</h1><p>with open(‘somefile.txt’, ‘r’) as f:<br>    data = f.read()<br># loop整个文档<br>with open(‘somefile.txt’, ‘r’) as f:<br>    for line in f:<br>        # 处理每一行<br># 写入文本<br>with open(‘somefile.txt’, ‘w’) as f:<br>    f.write(text1)<br>    f.write(text2)<br>    …<br># 把要打印的line写入文件中<br>with open(‘somefile.txt’, ‘w’) as f:<br>    print(line1, file=f)<br>    print(line2, file=f)</p>
 <h2 id="二进制文件读写"><a href="#二进制文件读写" class="headerlink" title="二进制文件读写"></a>二进制文件读写</h2><p>Python默认读取的都是文本文件。要是想要读取二进制文件，需要把刚刚的’r’改成’rb’.</p>
 <p>In [ ]:</p>
-<p>f = open(‘EDC.jpg’, ‘rb’)<br>print(f.read())<br># 输出 ‘\xff\xd8\xff\xe1\x00\x18Exif\x00\x00…’ # 十六进制表示的字节</p>
+<p>f = open(‘EDC.jpg’, ‘rb’)<br>print(f.read())<br># 输出 ‘\\xff\\xd8\\xff\\xe1\\x00\\x18Exif\\x00\\x00…’ # 十六进制表示的字节</p>
 <p>简单说就是，任何非标准的文本文件（对于Py2来说，标准是ASCII，对于Py3来说，标准是unicode），你就需要用二进制读入这个文件，然后再用 .decode(‘…’)的方法来解码这个二进制文件：</p>
 <p>In [ ]:</p>
 <p>f = open(‘DegangGuo.txt’, ‘rb’)<br># 读入郭德纲老师的作文, 但是郭老师用的是参合着错别字的繁体编码，假设叫个”DeyunCode”<br># 那么你读入以后，就需要解码它<br>u = f.read().decode(‘DeyunCode’)</p>
@@ -632,16 +631,16 @@ def func():
 <p>在上面这个例子中，我们可以看到：makeHtmlTag有两个参数。所以，为了让 hello = makeHtmlTag(arg1, arg2)(hello) 成功，makeHtmlTag 必需返回一个decorator（这就是为什么我们在makeHtmlTag中加入了real_decorator()的原因），这样一来，我们就可以进入到 decorator 的逻辑中去了—— decorator得返回一个wrapper，wrapper里回调hello。</p>
 <pre><code>这里插一个知识，我们看到parameters里面有个`(*args, **kwargds)`，指的是：
 一个星星，指的是这里可以随便放多少个参数，内部提及的时候，当做一个list看。
-两个星星指的也是随便多少个参数，但是这里可以带上参数的名字，比如（x=&apos;1&apos;, y=&apos;2&apos;），内部提及的时候，当做一个dict看。
+两个星星指的也是随便多少个参数，但是这里可以带上参数的名字，比如（x=&#39;1&#39;, y=&#39;2&#39;），内部提及的时候，当做一个dict看。
 </code></pre><p>Decorator这个东西，也可以写成class样式：</p>
 <p>In [13]:</p>
 <p>class myDecorator(object):<br>    def __init__(self, fn):<br>        print(“inside myDecorator.__init__()”)<br>        self.fn = fn<br>    def __call__(self):<br>        self.fn()<br>        print(“inside myDecorator.__call__()”)<br>@myDecorator<br>def aFunction():<br>    print(“inside aFunction()”)<br>print(“Finished decorating aFunction()”)<br>aFunction()</p>
 <p>inside myDecorator.__init__()<br>Finished decorating aFunction()<br>inside aFunction()<br>inside myDecorator.__call__()</p>
 <p>这个class样式的看起来比函数样式看着清楚点儿，这样我们再把刚刚的网页编程那段改一下，就得到：</p>
 <p>In [14]:</p>
-<p>class makeHtmlTagClass(object):<br>    def __init__(self, tag, css_class=””):<br>        self._tag = tag<br>        self._css_class = “ class=’{0}’”.format(css_class) \<br>                                       if css_class !=”” else “”<br>    def __call__(self, fn):<br>        def wrapped(*args, **kwargs):<br>            return “&lt;” + self._tag + self._css_class+”&gt;”  \</p>
-<pre><code>               + fn(*args, **kwargs) + &quot;&lt;/&quot; + self._tag + &quot;&gt;&quot;
-return wrapped
+<p>class makeHtmlTagClass(object):<br>    def __init__(self, tag, css_class=””):<br>        self._tag = tag<br>        self._css_class = “ class=’{0}’”.format(css_class) \<br>                                       if css_class !=”” else “”<br>    def __call__(self, fn):<br>        def wrapped(<em>args, *</em>kwargs):<br>            return “&lt;” + self._tag + self._css_class+”&gt;”  \</p>
+<pre><code>                   + fn(*args, **kwargs) + &quot;&lt;/&quot; + self._tag + &quot;&gt;&quot;
+    return wrapped
 </code></pre><p>@makeHtmlTagClass(tag=”b”, css_class=”bold_css”)<br>@makeHtmlTagClass(tag=”i”, css_class=”italic_css”)<br>def hello(name):<br>    return “Hello, {}”.format(name)<br>print(hello(“Baby”))</p>
 <p><b class="bold\_css"><i class="italic\_css">Hello, Baby</i></b></p>
 <p>装饰器的副作用： 因为decorator的因素，我们原本的函数其实已经变成了一个叫wrapper函数。 比如，你再调用<code>__name__</code>的时候，他会告诉你，这是 wrapper, 而不是 foo 或者 hello。 当然，虽然功能效果不变，但是有些处女座的童鞋会觉得很不爽。 所以，Python的functool包中提供了一个叫wrap的decorator来消除这样的副作用：</p>
@@ -913,7 +912,7 @@ y = [1,0,1,0,1,1,1,0,...]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -924,7 +923,7 @@ y = [1,0,1,0,1,1,1,0,...]
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -935,7 +934,7 @@ y = [1,0,1,0,1,1,1,0,...]
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1032,7 +1031,7 @@ y = [1,0,1,0,1,1,1,0,...]
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第5课-文件访问与函数式编程入门"><span class="nav-number">1.</span> <span class="nav-text">第5课 文件访问与函数式编程入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件读写3种方法："><span class="nav-number">1.1.</span> <span class="nav-text">文本文件读写3种方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种方法："><span class="nav-number">1.1.2.</span> <span class="nav-text">第二种方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三种方法："><span class="nav-number">1.1.3.</span> <span class="nav-text">第三种方法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制文件读写"><span class="nav-number">1.2.</span> <span class="nav-text">二进制文件读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录操作"><span class="nav-number">1.3.</span> <span class="nav-text">文件和目录操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">1.3.2.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作文件与目录"><span class="nav-number">1.3.3.</span> <span class="nav-text">操作文件与目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化和反序列化"><span class="nav-number">1.4.</span> <span class="nav-text">序列化和反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化："><span class="nav-number">1.4.1.</span> <span class="nav-text">序列化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反序列化："><span class="nav-number">1.4.2.</span> <span class="nav-text">反序列化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用JSON实现序列和反序列化"><span class="nav-number">1.4.3.</span> <span class="nav-text">用JSON实现序列和反序列化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">1.5.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数"><span class="nav-number">1.6.</span> <span class="nav-text">匿名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.6.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">filter</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">1.7.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏函数"><span class="nav-number">1.8.</span> <span class="nav-text">偏函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">1.9.</span> <span class="nav-text">实战：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第5课-文件访问与函数式编程入门"><span class="nav-number">1.</span> <span class="nav-text">第5课 文件访问与函数式编程入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件读写3种方法："><span class="nav-number">1.1.</span> <span class="nav-text">文本文件读写3种方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一种方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#记住文件处理完，关闭是个好习惯"><span class="nav-number">2.</span> <span class="nav-text">记住文件处理完，关闭是个好习惯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种方法："><span class="nav-number">2.0.1.</span> <span class="nav-text">第二种方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三种方法："><span class="nav-number">2.0.2.</span> <span class="nav-text">第三种方法：</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#打开文件"><span class="nav-number">3.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用with-open自带关闭文本的功能"><span class="nav-number">4.</span> <span class="nav-text">用with..open自带关闭文本的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制文件读写"><span class="nav-number">4.1.</span> <span class="nav-text">二进制文件读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件和目录操作"><span class="nav-number">4.2.</span> <span class="nav-text">文件和目录操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">4.2.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">4.2.2.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作文件与目录"><span class="nav-number">4.2.3.</span> <span class="nav-text">操作文件与目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化和反序列化"><span class="nav-number">4.3.</span> <span class="nav-text">序列化和反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化："><span class="nav-number">4.3.1.</span> <span class="nav-text">序列化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反序列化："><span class="nav-number">4.3.2.</span> <span class="nav-text">反序列化：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用JSON实现序列和反序列化"><span class="nav-number">4.3.3.</span> <span class="nav-text">用JSON实现序列和反序列化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">4.4.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数"><span class="nav-number">4.5.</span> <span class="nav-text">匿名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">4.5.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">4.5.1.1.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">4.5.1.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">4.5.1.3.</span> <span class="nav-text">filter</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">4.6.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏函数"><span class="nav-number">4.7.</span> <span class="nav-text">偏函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战："><span class="nav-number">4.8.</span> <span class="nav-text">实战：</span></a></li></ol></li></div>
             
 
           </div>
@@ -1073,7 +1072,7 @@ y = [1,0,1,0,1,1,1,0,...]
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1699,6 +1698,28 @@ y = [1,0,1,0,1,1,1,0,...]
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

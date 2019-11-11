@@ -518,7 +518,7 @@
 <p>我们强烈建议所有的git仓库都有一个<code>README</code>, <code>LICENSE</code>, <code>.gitignore</code>文件</p>
 <p>Git入门？查看 <a href="https://gitee.com/oschina/git-osc/wikis/%E5%B8%AE%E5%8A%A9" target="_blank" rel="noopener">帮助</a> , <a href="http://my.oschina.net/gal/blog/141442" target="_blank" rel="noopener">Visual Studio</a> / <a href="http://my.oschina.net/longxuu/blog/141699" target="_blank" rel="noopener">TortoiseGit</a> / <a href="http://my.oschina.net/songxinqiang/blog/192567" target="_blank" rel="noopener">Eclipse</a> / <a href="http://my.oschina.net/zxs/blog/142544" target="_blank" rel="noopener">Xcode</a> 下如何连接本站, <a href="http://www.oschina.net/question/82993_133520" target="_blank" rel="noopener">如何导入项目</a></p>
 <h4 id="简易的命令行入门教程"><a href="#简易的命令行入门教程" class="headerlink" title="简易的命令行入门教程:"></a>简易的命令行入门教程:</h4><p>Git 全局设置:</p>
-<p>git config –global user.name “***”<br>git config –global user.email “<a href="mailto:aclearzhang@qq.com" target="_blank" rel="noopener">aclearzhang@qq.com</a>“</p>
+<p>git config —global user.name “<em>*</em>“<br>git config —global user.email “aclearzhang@qq.com”</p>
 <p>创建 git 仓库:</p>
 <p>mkdir OS_Unix_or_Linux<br>cd OS_Unix_or_Linux<br>git init<br>touch README.md<br>git add README.md<br>git commit -m “first commit”<br>git remote add origin 你的链接<br>git push -u origin master</p>
 <p>已有项目?</p>
@@ -554,7 +554,7 @@
 <p><strong>3.1 将DEMO项目添加到Git源码管理</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131539840-79119431.png" alt="image011" title="image011"> <strong>3.2 选择源码管理为Git</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131541668-737464102.png" alt="image013" title="image013"> <strong>3.3 填写提交注释，提交到本地Git存储库中</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131543434-100898609.png" alt="image015" title="image015"> <strong>3.4 同步Git本地库到远端Git存储库</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131545465-776498546.png" alt="image017" title="image017"> <strong>3.5 发布到远端Git存储库</strong></p>
 <blockquote>
 <p>下图将需要的【Git的HTTP链接①】填写好，点击发布（第一次需要Git用户名、密码）或者提前安装Git用命令行设置Git用户名密码</p>
-<p>git config –global user.name “Your Name”<br>git config –global user.email <a href="mailto:you@email.com" target="_blank" rel="noopener">you@email.com</a></p>
+<p>git config —global user.name “Your Name”<br>git config —global user.email you@email.com</p>
 </blockquote>
 <p><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131547372-618956570.png" alt="image019" title="image019"></p>
 <blockquote>
@@ -569,11 +569,7 @@
 <p><strong>4.1 文件提交操作</strong></p>
 <blockquote>
 <p>【<strong>常见文件状态</strong>】 未操作状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124422887-9036473.jpg" alt="clip_image026" title="clip_image026"> 修改状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124424215-1292562800.jpg" alt="clip_image028" title="clip_image028"> 添加状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124425122-989750728.jpg" alt="clip_image030" title="clip_image030"> 删除状态：<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803124426793-361200821.jpg" alt="clip_image032" title="clip_image032">（只有在提交代码时候可见）</p>
-</blockquote>
-<blockquote>
 <p><strong>【提交代码:**</strong>方法一】** 1) 找到需要提交的文件或者找到解决方案，右键，找到源代码管理-&gt;提交 2) 同时在这里也可以做源码的查看历史记录、撤销、批注等 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131551778-526873369.png" alt="image033" title="image033"></p>
-</blockquote>
-<blockquote>
 <p><strong>【提交代码:**</strong>方法二】<strong> 1）找到“团队资源管理器” <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131553215-885134623.png" alt="image035" title="image035"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131554747-1725336746.png" alt="image037" title="image037"> 2）见到如下图，没有的话点击<img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131555825-1656071181.jpg" alt="image040" title="image040">即可到主页 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131556887-64115289.png" alt="image041" title="image041"> 3）会出现整个项目的文件状态 <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131558184-478125510.png" alt="image043" title="image043"> </strong>排除的更改<strong>：一般是被排除的文件，如果不包含提交时候不会提交到源码中 </strong>未跟踪的文件**：未跟踪的文件有时候也会出现，一些没有通过VS2015直接添加的文件（找到目录人工添加文件就会出这个问题），不添加也不会提交到源码中</p>
 </blockquote>
 <p><strong>4.2 文件推送操作</strong> <img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131559278-1201749660.png" alt="image045" title="image045"><img src="https://images2015.cnblogs.com/blog/248387/201608/248387-20160803131603825-1633761032.png" alt="image047" title="image047">  </p>
@@ -612,9 +608,9 @@
 <p>2</p>
 <p>3</p>
 <p><code>cd existing_git_repo    --进入GIT项目根目录 执行下述2个指令</code></p>
-<p><code>git remote add origin https:`</code>//git.oschina.net/weiki.shaw/yufukaweb.git`</p>
+<p><code>git remote add origin https:``//git.oschina.net/weiki.shaw/yufukaweb.git</code></p>
 <p><code>git push -u origin master</code></p>
-<p>  <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110844341-1652919074.png" alt=""> 再次点击同步 就可以了 <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110356294-1416514241.png" alt=""> C:\Users\acanprince\Source\Repos\TestMFC1</p>
+<p>  <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110844341-1652919074.png" alt=""> 再次点击同步 就可以了 <img src="https://images2015.cnblogs.com/blog/45449/201607/45449-20160723110356294-1416514241.png" alt=""> C:\\Users\\acanprince\\Source\\Repos\\TestMFC1</p>
 
       
     </div>
@@ -801,7 +797,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -812,7 +808,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -823,7 +819,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -961,7 +957,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1587,6 +1583,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="一、Jar包 Java  –IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
+<meta name="description" content="一、Jar包 Java  —IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDEA关于导出JAR包与添加JAR包">
 <meta property="og:url" content="http://blog.aclear.top/post/685c5390.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="一、Jar包 Java  –IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
+<meta property="og:description" content="一、Jar包 Java  —IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA关于导出JAR包与添加JAR包">
-<meta name="twitter:description" content="一、Jar包 Java  –IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
+<meta name="twitter:description" content="一、Jar包 Java  —IDEA    导出java可执行jar包保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：打开File -&amp;gt; Project Structure -&amp;gt; Artifacts，点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项">
 
 
 
@@ -440,7 +440,7 @@
 
       
         <p>一、Jar包</p>
-<p>Java  –IDEA    导出java可执行jar包<br>保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：<br>打开File -&gt; Project Structure -&gt; Artifacts，<br>点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项目的一部分<br>，打包到最后的Jar包中。但是这样会有一个问题，即，如果项目中引用的Jar包有签名过，最后打包成的Jar包运行时会抛出错误：<br>“java.lang.SecurityException: Invalid signature file digest for Manifest main attributes”<br>因此，笔者选择的是Empty，然后在“Output Layout”中，把自己要打包的文件、文件夹添加进去。对于外部引用的包，笔者全部放在lib目录下，<br>因此，在Class Path中，把依赖的jar包添加进去，例如：<br>lib/javax.servlet-3.0.0.v201112011016.jar lib/jetty-all-9.1.5.v20140505.jar lib/json-simple-1.1.1.jar<br>设置好Main Class，这就不用多说了。<br>点击OK。<br>回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory。<br>使用命令java -jar xxxxx.jar来执行jar包。<br>P.S.<br>1.菜单：File-&gt;project stucture<br>2.在弹窗最左侧选中Artifacts-&gt;”+”,选jar，选择from modules with dependencies，然后会有配置窗口出现，<br>配置完成后，勾选Build on make &gt;ok保存<br>3.然后菜单：Build-&gt;make project<br>4.最后在项目目录下去找输出的jar包（路径在你添加Artifacts的时候设置的路径）<br>D:\JAVA\myJavaPro\JavaLib\out\artifacts\JavaLib_jar</p>
+<p>Java  —IDEA    导出java可执行jar包<br>保证自己的Java代码是没有问题的，在IDEA里面是可以正常运行的，然后，按下面步骤：<br>打开File -&gt; Project Structure -&gt; Artifacts，<br>点击“+”，选择“Jar”，选择Empty或From modules with dependencies，后者会把在项目中用到的Jar包解压开，当成项目的一部分<br>，打包到最后的Jar包中。但是这样会有一个问题，即，如果项目中引用的Jar包有签名过，最后打包成的Jar包运行时会抛出错误：<br>“java.lang.SecurityException: Invalid signature file digest for Manifest main attributes”<br>因此，笔者选择的是Empty，然后在“Output Layout”中，把自己要打包的文件、文件夹添加进去。对于外部引用的包，笔者全部放在lib目录下，<br>因此，在Class Path中，把依赖的jar包添加进去，例如：<br>lib/javax.servlet-3.0.0.v201112011016.jar lib/jetty-all-9.1.5.v20140505.jar lib/json-simple-1.1.1.jar<br>设置好Main Class，这就不用多说了。<br>点击OK。<br>回到IDEA，选择Build -&gt; Build Artifacts，成功生成Jar包。生成的Jar包位于上图设置的Output directory。<br>使用命令java -jar xxxxx.jar来执行jar包。<br>P.S.<br>1.菜单：File-&gt;project stucture<br>2.在弹窗最左侧选中Artifacts-&gt;”+”,选jar，选择from modules with dependencies，然后会有配置窗口出现，<br>配置完成后，勾选Build on make &gt;ok保存<br>3.然后菜单：Build-&gt;make project<br>4.最后在项目目录下去找输出的jar包（路径在你添加Artifacts的时候设置的路径）<br>D:\\JAVA\\myJavaPro\\JavaLib\\out\\artifacts\\JavaLib_jar</p>
 <p>二、IDEA  项目下   添加Jar包</p>
 <p>点击 File -&gt;  Project Structure（快捷键 Ctrl + Alt + Shift + s），<br>点击Project Structure界面左侧的“Modules”。</p>
 <p>在 “Dependencies” 标签界面下，点击右边绿色的 “+”号，选择第一个选项“JARs or directories…”，<br>选择相应的jar包，点“OK”，jar包添加成功。</p>
@@ -622,7 +622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,7 +633,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -644,7 +644,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -766,7 +766,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1392,6 +1392,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

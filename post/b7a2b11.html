@@ -467,7 +467,7 @@
 <li>配置网络的NAT模式见day01或印象笔记的安装目录。</li>
 <li><p>已经配置完成NAT，接下来进行基础的mini软件、网络的配置：</p>
 <ol>
-<li><p>修改网卡\网络掩码\网关\dns<br>—vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>DEVICE=eth0<br>HWADDR=00:0C:29:22:EC:2D<br>TYPE=Ethernet<br>UUID=4012149b-6643-45cb-8612-a3e287135f52<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=none<br>IPADDR=192.168.78.202<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.78.2<br>DNS1=192.168.78.2<br>—service network restart</p>
+<li><p>修改网卡\\网络掩码\\网关\\dns<br>—-vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>DEVICE=eth0<br>HWADDR=00:0C:29:22:EC:2D<br>TYPE=Ethernet<br>UUID=4012149b-6643-45cb-8612-a3e287135f52<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=none<br>IPADDR=192.168.78.202<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.78.2<br>DNS1=192.168.78.2<br>—-service network restart</p>
 </li>
 <li><p>修改DNS，修改主机名：<br>CentOS修改主机名(hostname)<br>需要修改两处：一处是/etc/sysconfig/network，另一处是/etc/hosts，只修改任一处会导致系统启<br>动异常。首先切换到root用户。<br>/etc/sysconfig/network<br>用任一款你喜爱的编辑器打开该文件，里面有一行 HOSTNAME=localhost.localdomain<br>(如果是默认的话），修改 localhost.localdomain 为你的主机名。<br>/etc/hosts（选择修改，不修改好像也没问题）<br>打开该文件，会有一行 127.0.0.1 localhost.localdomain localhost 。其中 127.0.0.1 是本地环路地址， localhost.localdomain 是主机名(hostname)，也就是你待修改的。localhost 是主机名的别名（alias），它会出现在Konsole的提示符下。将第二项修改为你的主机名，第三项可选。<br>将上面两个文件修改完后，并不能立刻生效。如果要立刻生效的话，可以用 hostname your-hostname 作临时修改，它只是临时地修改主机名，系统重启后会恢复原样的。但修改上面两个文件是永久的，重启系统会得到新的主机名。<br>最后，重启后查看主机名 uname -n 。</p>
 </li>
@@ -655,7 +655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -666,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -677,7 +677,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -799,7 +799,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1425,6 +1425,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

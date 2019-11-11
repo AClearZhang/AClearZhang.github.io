@@ -480,7 +480,7 @@
 <p>-p ：使用原文件的原来属性（属性不会依据使用者而变）</p>
 <p>-P ：可以使用绝对路径来压缩！</p>
 <p>-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中！</p>
-<p>–exclude FILE：在压缩的过程中，不要将 FILE 打包！</p>
+<p>—exclude FILE：在压缩的过程中，不要将 FILE 打包！</p>
 <p>例如：</p>
 <p>1.将当前目录下所有.txt文件打包并压缩归档到文件this.tar.gz，我们可以使用</p>
 <p>tar czvf this.tar.gz ./*.txt</p>
@@ -490,11 +490,7 @@
 <p>在linux下修改文件的名字有很多种方法，常用的有mv和rename。 一，mv（掌握！）</p>
 <blockquote>
 <p>mv fromfile tofile</p>
-</blockquote>
-<blockquote>
 <p>如把文件a.txt得命名为b.txt，可以是mv a.txt b.txt。</p>
-</blockquote>
-<blockquote>
 <p>mv一次只能重命名一个文件，而且，它是移动命令。如果tofile已经存在的话，会直接装原文件覆盖，从而造成文件的丢失。当然有选项可以对已存在的文件进行提示，还是决定看看rename吧。 例子：将目录A重命名为B mv A B 例子：将/a目录移动到/b下，并重命名为c mv /a /b/c</p>
 </blockquote>
 <p>二，rename(暂时先了解)<br>   Linux的 rename 命令有两个版本(C语言和Perl语言)，早期的Linux发行版基本上使用的是C语言版本，现在系统几乎都是Perl语言版本了(支持正则处理，功能更强大)[1]。可以通过命令man rename打开rename帮助文档查看版本，如果第一行内容如下，则是Perl语言版本。</p>
@@ -551,7 +547,7 @@
 <h2 id="files-参数介绍：支持通配符——三种"><a href="#files-参数介绍：支持通配符——三种" class="headerlink" title="[ files ]参数介绍：支持通配符——三种"></a><strong>[ files ]参数介绍：支持通配符——三种</strong></h2><p>?    可替代单个字符 *    可替代多个字符 [charset]    可替代charset集中的任意单个字符</p>
 <p>使用通配符即可对所有符合条件的文件名进行批量修改。</p>
 <p><strong>实例</strong></p>
-<p><strong>1 **</strong>将所有*.nc文件中Sam3替换成Stm32**</p>
+<p><strong>1 **</strong>将所有<em>.nc文件中Sam3替换成Stm32*</em></p>
 <ol>
 <li>rename -v ‘s/Sam3/Stm32/‘ <em>.nc　　/</em>执行修改，并列出已重命名的文件*/</li>
 </ol>
@@ -584,7 +580,7 @@
 <p><strong>Ubuntu 更改文件夹权限</strong> Ubuntu的许多操作是在终端中进行的，通过sudo命令管理的文件是由root持有权限的，一般用户是无法改变的。在图形界面上，我们可以通过属性中的权限选项夹进行操作。但是一旦文件的属性显示当前用户没有读写权力时，无法在图形界面上修改权限。 常用方法如下： sudo chmod 600 ××× （只有所有者有读和写的权限） sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限） sudo chmod 700 ××× （只有所有者有读和写以及执行的权限） sudo chmod 666 ××× （每个人都有读和写的权限） sudo chmod 777 ××× （每个人都有读和写以及执行的权限） 其中×××指文件名（也可以是文件夹名，不过要在chmod后加-ld）。 解释一下，其实整个命令的形式是 sudo chmod -（代表类型）×××（所有者）×××（组用户）×××（其他用户） 三位数的每一位都表示一个用户类型的权限设置。取值是0～7，即二进制的[000]~[111]。 这个三位的二进制数的每一位分别表示读、写、执行权限。 如000表示三项权限均无，而100表示只读。这样，我们就有了下面的对应： 0 [000] 无任何权限 4 [100] 只读权限 6 [110] 读写权限 7 [111] 读写执行权限 现在看上面的几个常用用法就非常清楚了。试着自己来修改权限吧 ！最后同时附上查询文件（或文件夹）权限的命令 ls -l 文件名称 （文件夹将-l改为-ld）。</p>
 <p>原文地址:<a href="http://liufeng2008.blogspot.com/2008/08/ubuntu.html" target="_blank" rel="noopener">http://liufeng2008.blogspot.com/2008/08/ubuntu.html</a></p>
 <p><strong>chmod命令详细用法</strong></p>
-<p>指令名称 : chmod 使用权限 : 所有使用者 使用方式 : chmod [-cfvR] [–help] [–version] mode file… 说明 : Linux/Unix 的档案调用权限分为三级 : 档案拥有者、群组、其他。利用 chmod 可以藉以控制档案如何被他人所调用。 参数 : mode : 权限设定字串，格式如下 : [ugoa…][[+-=][rwxX]…][,…]，其中 u 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。 + 表示增加权限、- 表示取消权限、= 表示唯一设定权限。 r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该档案是个子目录或者该档案已经被设定过为可执行。 -c : 若该档案权限确实已经更改，才显示其更改动作 -f : 若该档案权限无法被更改也不要显示错误讯息 -v : 显示权限变更的详细资料 -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) –help : 显示辅助说明 –version : 显示版本 范例 :将档案 file1.txt 设为所有人皆可读取 : chmod ugo+r file1.txt 将档案 file1.txt 设为所有人皆可读取 : chmod a+r file1.txt 将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 : chmod ug+w,o-w file1.txt file2.txt 将 ex1.py 设定为只有该档案拥有者可以执行 : chmod u+x ex1.py 将目前目录下的所有档案与子目录皆设为任何人可读取 : chmod -R a+r * 此外chmod也可以用数字来表示权限如 chmod 777 file 语法为：chmod abc file 其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。 r=4，w=2，x=1 若要rwx属性则4+2+1=7； 若要rw-属性则4+2=6； 若要r-x属性则4+1=7。 范例： chmod a=rwx file 和 chmod 777 file 效果相同 chmod ug=rwx,o=x file 和 chmod 771 file 效果相同 若用chmod 4755 filename可使此程序具有root的权限</p>
+<p>指令名称 : chmod 使用权限 : 所有使用者 使用方式 : chmod [-cfvR] [—help] [—version] mode file… 说明 : Linux/Unix 的档案调用权限分为三级 : 档案拥有者、群组、其他。利用 chmod 可以藉以控制档案如何被他人所调用。 参数 : mode : 权限设定字串，格式如下 : [ugoa…][[+-=][rwxX]…][,…]，其中 u 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。 + 表示增加权限、- 表示取消权限、= 表示唯一设定权限。 r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该档案是个子目录或者该档案已经被设定过为可执行。 -c : 若该档案权限确实已经更改，才显示其更改动作 -f : 若该档案权限无法被更改也不要显示错误讯息 -v : 显示权限变更的详细资料 -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更) —help : 显示辅助说明 —version : 显示版本 范例 :将档案 file1.txt 设为所有人皆可读取 : chmod ugo+r file1.txt 将档案 file1.txt 设为所有人皆可读取 : chmod a+r file1.txt 将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 : chmod ug+w,o-w file1.txt file2.txt 将 ex1.py 设定为只有该档案拥有者可以执行 : chmod u+x ex1.py 将目前目录下的所有档案与子目录皆设为任何人可读取 : chmod -R a+r * 此外chmod也可以用数字来表示权限如 chmod 777 file 语法为：chmod abc file 其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。 r=4，w=2，x=1 若要rwx属性则4+2+1=7； 若要rw-属性则4+2=6； 若要r-x属性则4+1=7。 范例： chmod a=rwx file 和 chmod 777 file 效果相同 chmod ug=rwx,o=x file 和 chmod 771 file 效果相同 若用chmod 4755 filename可使此程序具有root的权限</p>
 <p>原文地址:<a href="http://bbs.chinaunix.net/viewthread.php?tid=240097" target="_blank" rel="noopener">http://bbs.chinaunix.net/viewthread.php?tid=240097</a></p>
 
       
@@ -772,7 +768,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -783,7 +779,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -794,7 +790,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -932,7 +928,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1558,6 +1554,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

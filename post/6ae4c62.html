@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  1.7k
                 </span>
               
 
@@ -452,8 +452,8 @@
         <h1 id="Struts2日期类型转换"><a href="#Struts2日期类型转换" class="headerlink" title="Struts2日期类型转换"></a><a href="http://www.cnblogs.com/jingpeipei/p/5945724.html" target="_blank" rel="noopener">Struts2日期类型转换</a></h1><blockquote>
 <p><strong>xs.setCssj(new java.sql.Date(xs.getCssj().getTime()));//</strong>在传入时可选择更改为sql.Date - 但是用 util.Date 也是可以的 由于我们在Struts2 jsp页面传给action之前的日期类型被——struts2的内置类型转换器给转换成了String类型&lt;或者是 转换器会根据目前所在的浏览器的语言类型，进行相应的日期类型的转换，只不过不是struts2对应的 内置相应语言的 日期罢了&gt;，所以为了统一所有的兼容性，我们就是需要进行-手动的 全局也好、局部属性的类型格式的<strong>string-date</strong>的转换.</p>
 </blockquote>
-<p>—MORE—<br>在Java Web开发中，进行上述转换一般有以下几种：<br>1、在Servlet中，这一切的转换我们得自己写代码完成；<br>2、在Struts1.x中，我们通过apachecommons-beanutils中的converters来帮助完成这些事情；<br>3、在Struts2中，使用的则是基于ongl的类型转换；<br>……由于类型转换的通用性，因而Web框架都会实现大多数类型的转换功能，而不需要程序员编码实现。然而，对于java.util.Date这种类型的转换，<br>各大框架似乎做得都不尽如人意。如：在Struts1.x中，该类型的转换就会有问题，很多人建议使用java.sql.Date这种类型来解决日期转换的问题<br>（实际上可以自定义一个类型转换器来解决该问题）。在Struts2中，这个问题似乎依然存在，也许你从来没有遇到过。<br>在开发的过程中，也许就像你一样，我没有对日期类型的转换做任何特殊的处理，而且Struts2也很好的帮我完成了转换。然而同事测试的时候却出现<br>了一个“莫名其妙”的问题：输入一个常用格式的日期类型yyyy-MM-dd，到后台却报错：找不到对应的set方法——setEffDate(Ljava.lang.String)。<br>的确，程序中只有setEffDate(java.util.Date)这个方法，没有setEffDate(Ljava.lang.String)这个方法。从Ljava.lang.String可以看出，<br>传到后台的String类型并没有转换成Date类型，因而报错。<br>查看struts2的源码：<br>在XWorkBasicConverter类中<br>private Object doConvertToDate(Map context, Object value, Class toType) ｛<br>   。。。。。<br>｝<br>发现使用 locale 来进行日期的格式化。而日期格式YYYY-MM-DD 只有在中文的语言环境才会有。<br>查看DateFormat中关于SHORT、MEDIUM、LONG的说明，可以知道，对于yyyy-MM-dd这种日期类型，在英语语言中是没法匹配的，由于Struts2匹配日期时，<br>使用了Locale，可见，IE浏览器默认的语言环境是英语。一经查看，果然如此，把中文设置为默认语言环境，再测试，没问题了。<br>针对这个问题，我们没法要求客户一定设置中文为默认浏览器的语言环境。因而对于Date类型的转换，可以自己定义一个转换器。<br>因而对于Date类型的转换，可以自己定义一个转换器。<br>参考<a href="http://www.javaeye.com/wiki/struts2/1365-passing-parameters-in-struts2" target="_blank" rel="noopener">http://www.javaeye.com/wiki/struts2/1365-passing-parameters-in-struts2</a><br>中的一个类型转换器定义（不适合国际化的环境），如需要，你可以定义自己的转换器<br>可以将该转换器注册为全局的：在classpath下建立xwork-conversion.properties文件，内容为：java.util.Date=你的类型转换器的完整限定类名</p>
-<pre><code>针对日期类java.util.Date进行类型转换，要求客户端使用“yyyy-MM-dd”，“yyyy/MM/dd”中的任意一种输入，并以“yyyy-MM-dd”的格式输出，该类型转换应用于全局范围
+<p>—-MORE—-<br>在Java Web开发中，进行上述转换一般有以下几种：<br>1、在Servlet中，这一切的转换我们得自己写代码完成；<br>2、在Struts1.x中，我们通过apachecommons-beanutils中的converters来帮助完成这些事情；<br>3、在Struts2中，使用的则是基于ongl的类型转换；<br>……由于类型转换的通用性，因而Web框架都会实现大多数类型的转换功能，而不需要程序员编码实现。然而，对于java.util.Date这种类型的转换，<br>各大框架似乎做得都不尽如人意。如：在Struts1.x中，该类型的转换就会有问题，很多人建议使用java.sql.Date这种类型来解决日期转换的问题<br>（实际上可以自定义一个类型转换器来解决该问题）。在Struts2中，这个问题似乎依然存在，也许你从来没有遇到过。<br>在开发的过程中，也许就像你一样，我没有对日期类型的转换做任何特殊的处理，而且Struts2也很好的帮我完成了转换。然而同事测试的时候却出现<br>了一个“莫名其妙”的问题：输入一个常用格式的日期类型yyyy-MM-dd，到后台却报错：找不到对应的set方法——setEffDate(Ljava.lang.String)。<br>的确，程序中只有setEffDate(java.util.Date)这个方法，没有setEffDate(Ljava.lang.String)这个方法。从Ljava.lang.String可以看出，<br>传到后台的String类型并没有转换成Date类型，因而报错。<br>查看struts2的源码：<br>在XWorkBasicConverter类中<br>private Object doConvertToDate(Map context, Object value, Class toType) ｛<br>   。。。。。<br>｝<br>发现使用 locale 来进行日期的格式化。而日期格式YYYY-MM-DD 只有在中文的语言环境才会有。<br>查看DateFormat中关于SHORT、MEDIUM、LONG的说明，可以知道，对于yyyy-MM-dd这种日期类型，在英语语言中是没法匹配的，由于Struts2匹配日期时，<br>使用了Locale，可见，IE浏览器默认的语言环境是英语。一经查看，果然如此，把中文设置为默认语言环境，再测试，没问题了。<br>针对这个问题，我们没法要求客户一定设置中文为默认浏览器的语言环境。因而对于Date类型的转换，可以自己定义一个转换器。<br>因而对于Date类型的转换，可以自己定义一个转换器。<br>参考<a href="http://www.javaeye.com/wiki/struts2/1365-passing-parameters-in-struts2" target="_blank" rel="noopener">http://www.javaeye.com/wiki/struts2/1365-passing-parameters-in-struts2</a><br>中的一个类型转换器定义（不适合国际化的环境），如需要，你可以定义自己的转换器<br>可以将该转换器注册为全局的：在classpath下建立xwork-conversion.properties文件，内容为：java.util.Date=你的类型转换器的完整限定类名</p>
+<pre><code>    针对日期类java.util.Date进行类型转换，要求客户端使用“yyyy-MM-dd”，“yyyy/MM/dd”中的任意一种输入，并以“yyyy-MM-dd”的格式输出，该类型转换应用于全局范围
 </code></pre><p>先定义一个实体类：</p>
 <p>package cn.entity;<br>import java.util.Date;<br>public class User {<br>    private String username;//名字<br>    private Integer age;//年龄<br>    private Date birthday;//生日<br>    public String getUsername() {<br>        return username;<br>    }<br>    public void setUsername(String username) {<br>        this.username = username;<br>    }<br>    public Integer getAge() {<br>        return age;<br>    }<br>    public void setAge(Integer age) {<br>        this.age = age;<br>    }<br>    public Date getBirthday() {<br>        return birthday;<br>    }<br>    public void setBirthday(Date birthday) {<br>        this.birthday = birthday;<br>    }<br>}</p>
 <p>创建Action：</p>
@@ -466,15 +466,60 @@
 <p>user.birthday=cn.strutstypeconverter.DateConverter</p>
 <p>配置struts.xml：</p>
 <p>&lt;?xml version=”1.0” encoding=”UTF-8” ?&gt;<br>&lt;!DOCTYPE struts PUBLIC<br>    “-//Apache Software Foundation//DTD Struts Configuration 2.0//EN”<br>    “<a href="http://struts.apache.org/dtds/struts-2.0.dtd&quot;&gt;" target="_blank" rel="noopener">http://struts.apache.org/dtds/struts-2.0.dtd&quot;&gt;</a></p>
-<struts><br>    <package name="default" namespace="/" extends="struts-default"><br>        &lt;!-- login指定的Action –&gt;<br>        <action name="login" class="cn.action.LoginAction"><br>            <result name="success"><br>                success.jsp<br>            </result><br>            <result name="input"><br>                index.jsp<br>            </result><br>        </action><br>    </package><br></struts>
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <!\-\- login指定的Action -->
+        <action name="login" class="cn.action.LoginAction">
+            <result name="success">
+                success.jsp
+            </result>
+            <result name="input">
+                index.jsp
+            </result>
+        </action>
+    </package>
+</struts>
 
 <p>  开发输入与展示页面 index.jsp：</p>
 <p>&lt;%@ page language=”java” import=”java.util.*” pageEncoding=”utf-8”%&gt;<br>&lt;%<br>String path = request.getContextPath();<br>String basePath = request.getScheme()+”://“+request.getServerName()+”:”+request.getServerPort()+path+”/“;<br>%&gt;<br>&lt;%@taglib uri=”/struts-tags” prefix=”s”%&gt;<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;</p>
-<html><br>  <head><meta name="generator" content="Hexo 3.8.0"><br>    <base href="<%=basePath%>"><br>    <title>My JSP ‘index.jsp’ starting page</title><br>  </head><br>  <body><br>  &lt;!-- 错误信息 –&gt;<br>  &lt;s:fielderror&gt;&lt;/s:fielderror&gt;<br>   &lt;!-- 表单的提交 –&gt;<br>        &lt;s:form action=”login” method=”post” namespace=”/“&gt;<br>        <div class="infos"><br>                    <table class="field"><br>                    <tr><td>用户名:&lt;s:textfield name=”user.username” /&gt;</td><br>                    </tr><br>                    <tr><td>年龄:&lt;s:password  name=”user.age”/&gt;</td><br>                    </tr><br>                    <tr><td>生日:&lt;s:textfield name=”user.birthday”/&gt; </td><br>                    </tr><br>                    <tr><td>&lt;s:submit type=”submit” value=”提交”/&gt;</td></tr><br>                    </table><br>            </div><br>        &lt;/s:form&gt;<br>  </body><br></html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <base href="<%=basePath%>">
+    <title>My JSP 'index.jsp' starting page</title>
+  </head>
+  <body>
+  <!\-\- 错误信息 -->
+  <s:fielderror></s:fielderror>
+   <!\-\- 表单的提交 -->
+        <s:form action="login" method="post" namespace="/">
+        <div class="infos">
+                    <table class="field">
+                    <tr><td>用户名:<s:textfield name="user.username"></s:textfield></td>
+                    </tr>
+                    <tr><td>年龄:<s:password name="user.age"></s:password></td>
+                    </tr>
+                    <tr><td>生日:<s:textfield name="user.birthday"> </s:textfield></td>
+                    </tr>
+                    <tr><td><s:submit type="submit" value="提交"></s:submit></td></tr>
+                    </table>
+            </div>
+        </s:form>
+  </body>
+</html>
 
 <p>success.jsp：</p>
-<p>&lt;%@ page language=”java” import=”java.util.*” pageEncoding=”utf-8”%&gt;<br>&lt;%<br>String path = request.getContextPath();<br>String basePath = request.getScheme()+”://“+request.getServerName()+”:”+request.getServerPort()+path+”/“;<br>%&gt;<br>&lt;%@taglib uri=”/struts-tags” prefix=”s”%&gt;<br>&lt;%@taglib uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;</a> prefix=”c”%&gt;<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;</p>
-<html><br>  <head><meta name="generator" content="Hexo 3.8.0"><br>    <base href="<%=basePath%>"><br>    <title>My JSP ‘index.jsp’ starting page</title><br>  </head><br>  <body><br>        <h1>成功</h1><br>        &lt;s:property value=”user.birthday”/&gt;<br>   &lt;s:date name=”user.birthday” format=”yyyy年MM月dd日”/&gt;<br>  </body><br></html>
+<p>&lt;%@ page language=”java” import=”java.util.*” pageEncoding=”utf-8”%&gt;<br>&lt;%<br>String path = request.getContextPath();<br>String basePath = request.getScheme()+”://“+request.getServerName()+”:”+request.getServerPort()+path+”/“;<br>%&gt;<br>&lt;%@taglib uri=”/struts-tags” prefix=”s”%&gt;<br>&lt;%@taglib uri=”<a href="http://java.sun.com/jsp/jstl/core" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core</a>“ prefix=”c”%&gt;<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;</p>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <base href="<%=basePath%>">
+    <title>My JSP 'index.jsp' starting page</title>
+  </head>
+  <body>
+        <h1>成功</h1>
+        <s:property value="user.birthday">
+   <s:date name="user.birthday" format="yyyy年MM月dd日">
+  </s:date></s:property></body>
+</html>
 
 <p>效果展示： <img src="https://images2015.cnblogs.com/blog/905498/201610/905498-20161010143139196-1211612489.png" alt=""><img src="https://images2015.cnblogs.com/blog/905498/201610/905498-20161010143205899-1020986677.png" alt=""><img src="https://images2015.cnblogs.com/blog/905498/201610/905498-20161010143217836-1719801020.png" alt=""> 或 <img src="https://images2015.cnblogs.com/blog/905498/201610/905498-20161010143317164-395129821.png" alt=""><img src="https://images2015.cnblogs.com/blog/905498/201610/905498-20161010143326805-1513793513.png" alt="">  </p>
 <p>作者：<a href="http://www.cnblogs.com/jingpeipei/" target="_blank" rel="noopener">Monodrama</a></p>
@@ -668,7 +713,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -679,7 +724,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -690,7 +735,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -828,7 +873,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1454,6 +1499,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

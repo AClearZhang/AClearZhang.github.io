@@ -463,7 +463,7 @@
 <li><a href="http://blog.aclear.top/2017/06/27/t-sqlcomment_function/">常用语言及入门函数</a></li>
 <li><a href="http://blog.aclear.top/2017/06/27/domenttory_sqlserver-t-sql_all/">sqlserver语言大全</a></li>
 </ul>
-<p>SQL Server为了完善数据库的管理机制，设计了严格的命名规则。用户在创建数据库及数据库对象时必须严格遵守SQL Server的命名规则。 在定义标识符时必须遵守以下规定： （1）标识符的首字符必须是下列字符之一。 þ        统一码（Unicode）2.0标准中所定义的字母，包括拉丁字母a-z和A-Z，以及来自其他语言的字符。下划线“<em>”、符号“@”或者数字符号“#”。 （2）标识符的后续字符可以是以下3种。 þ     统一码（Unicode）2.0标准中所定义的字母。 来自拉丁字母或其他国家/地区脚本的十进制数字。  “@”符号、美元符号“$”、数字符号“#”或下划线“</em>”。 （3）标识符不允许是Transact-SQL的保留字。 （4）不允许嵌入空格或其他特殊字符。 SQL Server 2008的数据库对象的名字由1～128个字符组成，<strong>不区分大小写</strong>。使用标识符也可以作为对象的名称。 SQL Server 2008提供了两种类型的实例：默认实例和命名实例。</p>
+<p>SQL Server为了完善数据库的管理机制，设计了严格的命名规则。用户在创建数据库及数据库对象时必须严格遵守SQL Server的命名规则。 在定义标识符时必须遵守以下规定： （1）标识符的首字符必须是下列字符之一。 þ        统一码（Unicode）2.0标准中所定义的字母，包括拉丁字母a-z和A-Z，以及来自其他语言的字符。下划线“_”、符号“@”或者数字符号“#”。 （2）标识符的后续字符可以是以下3种。 þ     统一码（Unicode）2.0标准中所定义的字母。 来自拉丁字母或其他国家/地区脚本的十进制数字。  “@”符号、美元符号“$”、数字符号“#”或下划线“_”。 （3）标识符不允许是Transact-SQL的保留字。 （4）不允许嵌入空格或其他特殊字符。 SQL Server 2008的数据库对象的名字由1～128个字符组成，<strong>不区分大小写</strong>。使用标识符也可以作为对象的名称。 SQL Server 2008提供了两种类型的实例：默认实例和命名实例。</p>
 <h2 id="通配符："><a href="#通配符：" class="headerlink" title="通配符："></a>通配符：</h2><p>匹配指定范围内或者属于方括号所指定的集合中的任意单个字符。可以在涉及模式匹配的字符串比较（例如，LIKE 和 PATINDEX）中使用这些通配符。 在SQL中通常用LIKE关键字与通配符结合起来实现模糊查询。其中SQL支持的通配符如表所示。 <img src="http://pic.aclear.top/图片1.png" alt="dream">   剩下的详见 word！！！<a href="http://yun.aclear.top" target="_blank" rel="noopener">我的云盘-数据库T-SQL</a> 8 章 数据语言操作 数据库、数据表、数据、视图 9 查询 10 存储过程和触发器 11索引和数据完整性 12游标 13SQL函数 14SQL事务   项目开发！</p>
 <hr>
 <h2 id="SQL-Server中-Numric-Decimal-Money三种字段类型的区别"><a href="#SQL-Server中-Numric-Decimal-Money三种字段类型的区别" class="headerlink" title="SQL Server中,Numric,Decimal,Money三种字段类型的区别"></a><a href="http://www.cnblogs.com/EasonJim/p/4837079.html" target="_blank" rel="noopener">SQL Server中,Numric,Decimal,Money三种字段类型的区别</a></h2><p> 都是精确数据类型， 前两个可以自己定义长度和小数位数， Money的定义相当于Numric(19,4)</p>
@@ -700,7 +700,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -711,7 +711,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -860,7 +860,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1486,6 +1486,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

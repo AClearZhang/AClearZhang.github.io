@@ -450,7 +450,7 @@
       
 
       
-        <h2 id="【转】当做工具使用"><a href="#【转】当做工具使用" class="headerlink" title="【转】当做工具使用"></a><a href="http://www.jianshu.com/p/ec79c4e47370" target="_blank" rel="noopener">【转】</a>当做工具使用</h2><h2 id="会改变自身的方法："><a href="#会改变自身的方法：" class="headerlink" title="会改变自身的方法："></a>会改变自身的方法：</h2><p><code>array.copyWithin（target, start [, end = this.length]）</code>【有兼容性问题】 用于在数组内的替换操作，即替换元素和被替换元素都是数组内的元素 参数皆为整数，允许start，end为负数（倒数第n个） <code>array.fill(value [,statrt = 0[, end = this.length]])</code> 将数组中指定区间的所有元素的值，都替换成value start，end允许为负值，同上 <code>array.pop()</code> 删除一个数组中的最后一个元素，并且返回这个元素 <code>array.push(element1, ...elementN)</code> 添加一个或多个元素到数组的末尾，并返回数组新的长度 <code>array.reverse()</code> 前后颠倒数组中元素的位置，第一个元素会成为最后一个 <code>array.shift()</code> 删除数组的第一个元素，并返回这个元素 <code>array.unshift(element1, ...elementN)</code> 在数组的开头插入一个或多个元素，并返回数组的新长度 <code>array.sort([function(a, b)])</code> 对数组的元素做原地的排序，并返回这个数组。sort可能<em>不稳定</em>，默认按照字符串的unicode码位点排序 记a和b是两个将要被比较的元素：</p>
+        <h2 id="【转】当做工具使用"><a href="#【转】当做工具使用" class="headerlink" title="【转】当做工具使用"></a><a href="http://www.jianshu.com/p/ec79c4e47370" target="_blank" rel="noopener">【转】</a>当做工具使用</h2><h2 id="会改变自身的方法："><a href="#会改变自身的方法：" class="headerlink" title="会改变自身的方法："></a>会改变自身的方法：</h2><p><code>array.copyWithin（target, start [, end = this.length]）</code>【有兼容性问题】 用于在数组内的替换操作，即替换元素和被替换元素都是数组内的元素 参数皆为整数，允许start，end为负数（倒数第n个） <code>array.fill(value [,statrt = 0[, end = this.length]])</code> 将数组中指定区间的所有元素的值，都替换成value start，end允许为负值，同上 <code>array.pop()</code> 删除一个数组中的最后一个元素，并且返回这个元素 <code>array.push(element1, ...elementN)</code> 添加一个或多个元素到数组的末尾，并返回数组新的长度 <code>array.reverse()</code> 前后颠倒数组中元素的位置，第一个元素会成为最后一个 <code>array.shift()</code> 删除数组的第一个元素，并返回这个元素 <code>array.unshift(element1, ...elementN)</code> 在数组的开头插入一个或多个元素，并返回数组的新长度 <code>array.sort([function(a, b)])</code> 对数组的元素做原地的排序，并返回这个数组。sort可能_不稳定_，默认按照字符串的unicode码位点排序 记a和b是两个将要被比较的元素：</p>
 <ul>
 <li>如果函数function（a， b）返回值小于0， 则a会排在b之前</li>
 <li>如何函数返回值等于0， 则a和b的相对位置不变（并不被保证）</li>
@@ -467,17 +467,17 @@ itemN:要添加进数组的元素，如果不指定，则splice只删除数组�
 <li>字符串和数字（是原始值，而不是包装原始值的string和number对象）：concat方法会复制字符串和数字的值放到新数组里</li>
 </ul>
 <p>一个栗子：</p>
-<pre><code>var arr1 = [1, 2, {a: &apos;test&apos;}]
-var arr2 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]
+<pre><code>var arr1 = [1, 2, {a: &#39;test&#39;}]
+var arr2 = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 var output = arr1.concat(arr2)
-console.log(output) // output[2].a == &apos;test&apos;
+console.log(output) // output[2].a == &#39;test&#39;
 setTimeout(function(){
-       arr1[2].a = &apos;has changed&apos;
-       console.warn(output)  //output[2].a == &apos;has changed&apos;
+       arr1[2].a = &#39;has changed&#39;
+       console.warn(output)  //output[2].a == &#39;has changed&#39;
 }, 5000)
 </code></pre><p>另一个栗子：</p>
 <pre><code>var arr1 = [1, 2, 3]
-var arr2 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]
+var arr2 = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 var output = arr1.concat(arr2)
 console.log(output)
 setTimeout(function(){
@@ -485,25 +485,25 @@ setTimeout(function(){
      console.warn(output)      //output值并不会改变
  }, 5000)
 </code></pre><p>将非数组值合并到数组里：</p>
-<pre><code>var alpha = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]
-var output = alpha.concat(1, [2, 3]) //[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, 1, 2, 3]
+<pre><code>var alpha = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+var output = alpha.concat(1, [2, 3]) //[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3]
 </code></pre><p><code>array.includes(searchElement, [, fromIndex])</code>[实验性质，es7，可能会改变或删除] 用来判断当前数组是否包含某指定的值，如果是，则返回true，否则false <code>array.join([separator = &#39;,&#39;])</code> 将数组中的所有元素连接成一个字符串(默认用逗号作为分隔符，如果separator是一个空字符串，那么数组中的所有元素将被直接连接) 如果元素是undefined或者null，则会转化成空字符串 <code>array.slice([begin = 0 [, end = this.length - 1]])</code> 把数组中一部分的浅复制（shallow copy）存入一个新的数组对象中，并返回这个新的数组 不修改原数组，只会返回一个包含了原数组中提取的部分元素的一个新数组 <strong>具体拷贝规则同concat函数</strong> <code>array.toString()</code> 返回一个字符串，该字符串由数组中的每个元素的toString（）返回值经调用join（）方法连接（由逗号隔开）组成。 一个例子：</p>
-<pre><code>var arr = [&apos;abc&apos;, 2, {a: &apos;test&apos;}]
-console.log(arr.toString())        //&apos;abc,2,[object Object]&apos;
+<pre><code> var arr = [&#39;abc&#39;, 2, {a: &#39;test&#39;}]
+ console.log(arr.toString())        //&#39;abc,2,[object Object]&#39;
 </code></pre><p><code>array.toLocaleString()</code> 返回一个字符串表示数组中的元素。数组中的元素将使用各自的toLocaleString方法转化成字符串，这些字符串将使用一个特定语言环境的字符串（例如逗号）隔开 <code>array.indexOf(searchElement[, fromIndex = 0])</code> 返回指定元素能在数组中找到的第一个索引值，否则返回-1 fromIndex可以为负，表示从倒数第n个开始（<strong>此时仍然从前向后查询数组</strong>） 使用“严格相等”（===）进行匹配 一个例子：</p>
-<pre><code>var obj = {a: &apos;test&apos;}
-var arr = [&apos;a&apos;, &apos;b&apos;, {a: &apos;test&apos;}]
-console.log(arr.indexOf(obj))     //-1
-var arr2 = [1, &apos;b&apos;, {a: &apos;test&apos;}]
-console.log(arr2.indexOf(&apos;1&apos;))      //-1
+<pre><code>          var obj = {a: &#39;test&#39;}
+          var arr = [&#39;a&#39;, &#39;b&#39;, {a: &#39;test&#39;}]
+          console.log(arr.indexOf(obj))     //-1
+          var arr2 = [1, &#39;b&#39;, {a: &#39;test&#39;}]
+          console.log(arr2.indexOf(&#39;1&#39;))      //-1
 </code></pre><p><code>array.lastIndexOf(searchElement[, fromIndex = arr.length - 1])</code> 返回指定元素在数组中的最后一个的索引，如果不存在则返回-1， <strong>从数组的后面向前查找</strong> 同上</p>
-<h2 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h2><p><code>array.forEach((v, i, a) =&gt; {})</code> 让数组的每一项都执行一次给定的函数 v表示当前项的值，i表示当前索引，a表示数组本身 <em>forEach遍历的范围在第一次调用 callback前就会确定。调用forEach后添加到数组中的项不会被 callback访问到。如果已经存在的值被改变，则传递给 callback的值是 forEach遍历到他们那一刻的值。已删除的项不会被遍历到。</em> <code>array.entries()</code> 返回一个Array Iterator对象，该对象包含数组中每一个索引的键值对 一个例子：</p>
+<h2 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h2><p><code>array.forEach((v, i, a) =&gt; {})</code> 让数组的每一项都执行一次给定的函数 v表示当前项的值，i表示当前索引，a表示数组本身 _forEach遍历的范围在第一次调用 callback前就会确定。调用forEach后添加到数组中的项不会被 callback访问到。如果已经存在的值被改变，则传递给 callback的值是 forEach遍历到他们那一刻的值。已删除的项不会被遍历到。_ <code>array.entries()</code> 返回一个Array Iterator对象，该对象包含数组中每一个索引的键值对 一个例子：</p>
 <pre><code>var arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
 var eArr = arr.entries();
 console.log(eArr.next().value); // [0, &quot;a&quot;]
 console.log(eArr.next().value); // [1, &quot;b&quot;]
 console.log(eArr.next().value); // [2, &quot;c&quot;]
-</code></pre><p><code>array.every(callback(v, i, a){})</code> callback只会为那些已经被赋值的索引调用，不会为那些被删除或从来没有被赋值的索引调用 <em>和forEach函数类似</em> <strong>注意</strong>：array.every()返回一个布尔值，即对每个元素的callback函数结果作逻辑“&amp;”操作 <code>array.some()</code> 使用方法同上， <strong>注意</strong>：对每个元素的callback函数结果作逻辑“||”操作 <code>array.filter((v, i, a) =&gt; {})</code> 使用指定的函数测试所有元素，并创建一个包含所有测试通过的元素的新数组 callback函数返回一个布尔值，true即通过测试 callback只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用 <em>不会改变原数组</em> <code>array.find((v, i, a) =&gt;{})</code>【有兼容性问题目前】 返回数组中满足测试条件的<strong>第一个元素</strong>，如果没有满足条件的元素，则返回undefined <code>array.keys()</code> 返回一个数组索引的迭代器（类似于array.entries()方法） <code>array.map((v, i, a) =&gt; {})</code> 返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组 map 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组） <code>array.reduce(callback[, initialValue])</code> 该方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始合并，最终为一个值 callback参数： previousValue:上一次调用回调返回的值，或者是提供的初始值（initialValue） currentValue: 数组中当前被处理的元素 index： index array： 调用的数组 如果 initialValue 在调用 reduce 时被提供，那么第一个 previousValue 等于 initialValue ，并且currentValue 等于数组中的第一个值；如果initialValue 未被提供，那么previousValue 等于数组中的第一个值，currentValue等于数组中的第二个值。 一个例子</p>
+</code></pre><p><code>array.every(callback(v, i, a){})</code> callback只会为那些已经被赋值的索引调用，不会为那些被删除或从来没有被赋值的索引调用 _和forEach函数类似_ <strong>注意</strong>：array.every()返回一个布尔值，即对每个元素的callback函数结果作逻辑“&amp;”操作 <code>array.some()</code> 使用方法同上， <strong>注意</strong>：对每个元素的callback函数结果作逻辑“||”操作 <code>array.filter((v, i, a) =&gt; {})</code> 使用指定的函数测试所有元素，并创建一个包含所有测试通过的元素的新数组 callback函数返回一个布尔值，true即通过测试 callback只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用 _不会改变原数组_ <code>array.find((v, i, a) =&gt;{})</code>【有兼容性问题目前】 返回数组中满足测试条件的<strong>第一个元素</strong>，如果没有满足条件的元素，则返回undefined <code>array.keys()</code> 返回一个数组索引的迭代器（类似于array.entries()方法） <code>array.map((v, i, a) =&gt; {})</code> 返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组 map 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组） <code>array.reduce(callback[, initialValue])</code> 该方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始合并，最终为一个值 callback参数： previousValue:上一次调用回调返回的值，或者是提供的初始值（initialValue） currentValue: 数组中当前被处理的元素 index： index array： 调用的数组 如果 initialValue 在调用 reduce 时被提供，那么第一个 previousValue 等于 initialValue ，并且currentValue 等于数组中的第一个值；如果initialValue 未被提供，那么previousValue 等于数组中的第一个值，currentValue等于数组中的第二个值。 一个例子</p>
 <pre><code>[0, 1, 2, 3, 4, 5].reduce((p, v, i , a) =&gt; {
   return p + v
 })
@@ -701,7 +701,7 @@ console.log(eArr.next().value); // [2, &quot;c&quot;]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -712,7 +712,7 @@ console.log(eArr.next().value); // [2, &quot;c&quot;]
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -723,7 +723,7 @@ console.log(eArr.next().value); // [2, &quot;c&quot;]
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -861,7 +861,7 @@ console.log(eArr.next().value); // [2, &quot;c&quot;]
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1487,6 +1487,28 @@ console.log(eArr.next().value); // [2, &quot;c&quot;]
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

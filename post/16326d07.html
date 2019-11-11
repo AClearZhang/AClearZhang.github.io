@@ -618,7 +618,7 @@
 <p>function conclude(strings, …values){<br>    console.log(strings);<br>      console.log(values);<br>}<br>conclude`it’s time ${new Date().getHours()} I’m sleeping`;</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>  结果： it’s time , I’m sleeping 20   以上<code>之内的字符串自动拼接以逗号分隔，</code>之内变量赋值给 values。  </p>
-<h2 id="快速创建对象"><a href="#快速创建对象" class="headerlink" title="快速创建对象"></a>快速创建对象</h2><p>  <em>let firstName = “Darren”;</em> <em>let lastName = “Ji”; let person = {firstName, lastName}; console.log(person);</em>   结果： {firstName: ‘Darren’, lastName: ‘Ji’}   甚至可以创建嵌套对象。 let firstName = “Darren”; let lastName = “Ji”; let person = {firstName, lastName}; let teamName = “恒大”; let team = {person, teamName}; console.log(team);   结果： {person:{firstName: ‘Darren’, lastName: ‘Ji’}, teamName: ‘恒大’}  </p>
+<h2 id="快速创建对象"><a href="#快速创建对象" class="headerlink" title="快速创建对象"></a>快速创建对象</h2><p>  _let firstName = “Darren”;_ _let lastName = “Ji”; let person = {firstName, lastName}; console.log(person);_   结果： {firstName: ‘Darren’, lastName: ‘Ji’}   甚至可以创建嵌套对象。 let firstName = “Darren”; let lastName = “Ji”; let person = {firstName, lastName}; let teamName = “恒大”; let team = {person, teamName}; console.log(team);   结果： {person:{firstName: ‘Darren’, lastName: ‘Ji’}, teamName: ‘恒大’}  </p>
 <h2 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h2><p>  变量值通常可以改变：   let a = 100; a = 200; console.log(a);   ES6中多了一个修饰符const，把变量设置成只读。   const val = ‘hi’; val = ‘yes’; console.log(val);  </p>
 <h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><p>  ES6使用Set类构造集合。   let s = new Set([10, 20, 30]); s.add(40); console.log(s); s.delete(30); console.log(s);   结果： [10, 20, 30, 40] [10, 20, 40]  </p>
 <h2 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h2><p>  ES6使用Map类处理键值对集合。  </p>
@@ -858,7 +858,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -869,7 +869,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -880,7 +880,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1018,7 +1018,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1644,6 +1644,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

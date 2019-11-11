@@ -99,8 +99,6 @@
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355636182_3780.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355636317_6589.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355636837_7061.jpg">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355636933_2478.jpg">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355636990_9472.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355637155_9922.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355637086_8298.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/16/1355640154_5632.jpg">
@@ -442,7 +440,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.8k
+                  3.5k
                 </span>
               
 
@@ -458,7 +456,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  19
+                  12
                 </span>
               
             </div>
@@ -488,9 +486,9 @@
 <p>01背包问题状态空间树</p>
 <p>（二）</p>
 <ol>
-<li><strong><em>问题描述</em></strong></li>
+<li><strong>_问题描述_</strong></li>
 </ol>
-<p>给定n种物品和一背包。物品i的重量是wi，其价值为vi，背包的容量为C。问:应如何选择装入背包的物品，使得装入背包中物品的总价值最大? 形式化描述：给定c &gt;0, wi &gt;0, vi &gt;0 , 1≤i≤n.要求找一n元向量(x1,x2,…,xn,), xi∈{0,1}, ∋ ∑ wi xi≤c,且∑ vi xi达最大.即一个特殊的整数规划问题。 <strong><em><a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="noopener">       2. 算法</a>设计</em></strong> 首先，要对输入数据进行预处理，将各物品依其<em><strong>单位重量价值从大到小进行排列</strong></em>。在优先队列分支限界法中，节点的优先级由已装袋的物品价值加上剩下的最大单位重量价值的物品装满剩余容量的价值和。 算法首先检查当前扩展结点的左儿子结点的可行性。如果该左儿子结点是可行结点，则将它直接加入到子集树和活结点优先队列中。当前扩展结点的右儿子结点一定是可行结点，仅当右儿子结点 满足上界约束时才将它加入子集树和活结点优先队列。当扩展到叶节点时为问题的最优值。 例如：0-1背包问题，当n=3时，w={16,15,15}, p={45,25,25}, c=30。优先队列式分支限界法：处理法则:价值大者优先。{}—&gt;{A}—&gt;{B,C}—&gt;{C，D，E}—&gt;{C，E}—&gt;{C，J，K}—&gt;{C}—&gt;{F，G}—&gt;{G，L，M}—&gt;{G，M}—&gt;{G}—&gt;{N，O}—&gt;{O}—&gt;{} <img src="http://img.blog.csdn.net/20130511202139266" alt=""></p>
+<p>给定n种物品和一背包。物品i的重量是wi，其价值为vi，背包的容量为C。问:应如何选择装入背包的物品，使得装入背包中物品的总价值最大? 形式化描述：给定c &gt;0, wi &gt;0, vi &gt;0 , 1≤i≤n.要求找一n元向量(x1,x2,…,xn,), xi∈{0,1}, ∋ ∑ wi xi≤c,且∑ vi xi达最大.即一个特殊的整数规划问题。 <strong>_<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="noopener">       2. 算法</a>设计_</strong> 首先，要对输入数据进行预处理，将各物品依其_<strong>单位重量价值从大到小进行排列</strong>_。在优先队列分支限界法中，节点的优先级由已装袋的物品价值加上剩下的最大单位重量价值的物品装满剩余容量的价值和。 算法首先检查当前扩展结点的左儿子结点的可行性。如果该左儿子结点是可行结点，则将它直接加入到子集树和活结点优先队列中。当前扩展结点的右儿子结点一定是可行结点，仅当右儿子结点 满足上界约束时才将它加入子集树和活结点优先队列。当扩展到叶节点时为问题的最优值。 例如：0-1背包问题，当n=3时，w={16,15,15}, p={45,25,25}, c=30。优先队列式分支限界法：处理法则:价值大者优先。{}—&gt;{A}—&gt;{B,C}—&gt;{C，D，E}—&gt;{C，E}—&gt;{C，J，K}—&gt;{C}—&gt;{F，G}—&gt;{G，L，M}—&gt;{G，M}—&gt;{G}—&gt;{N，O}—&gt;{O}—&gt;{} <img src="http://img.blog.csdn.net/20130511202139266" alt=""></p>
 <hr>
 <h1 id="最大树的概念"><a href="#最大树的概念" class="headerlink" title=" 最大树的概念"></a> 最大树的概念</h1><p>最大树是每个节点的值都要大于或等于其子节点的值的树。 而最大堆就是最大的完全二叉树。 因为最大堆是完全二叉树，所以拥有n个元素的堆的高度为[log2(n+1)]。 因此如果可以在O(height)的时间内完成插入和删除操作，则其复杂度为O(log2n)。</p>
 <blockquote>
@@ -498,7 +496,7 @@
 <ol>
 <li><strong>若**</strong>_i_<strong> </strong>_=_<strong> </strong>1,<strong> </strong>则<strong> </strong>_i_<strong> </strong>无双亲**</li>
 <li><strong>若**</strong>_i_<strong> </strong>> 1,<strong> </strong>则<strong> </strong>_i_<strong> </strong>的双亲为<strong><strong>ë</strong></strong>_i_<strong><strong>／</strong></strong>2<strong>**û</strong></li>
-<li><strong>若**</strong>2<strong>*</strong>_i_<strong> </strong>&lt;=<strong> </strong>_n_<strong>**,</strong> <strong>则</strong> <strong>_i_</strong> <strong>的左子女为</strong> <strong>2***</strong>_i_<strong>**，</strong></li>
+<li><strong>若**</strong>2<strong>*</strong>_i_<strong> </strong>&lt;=<strong> </strong>_n_<strong>**,</strong> <strong>则</strong> <strong>_i_</strong> <strong>的左子女为</strong> <strong>2<em>*</em></strong>_i_<strong>**，</strong></li>
 <li><strong>  若**</strong>2<strong>*</strong>_i_<strong>**+1 &lt;=</strong> <strong>_n_**</strong>,<strong> </strong>则<strong> </strong>_i_<strong> </strong>的右子女为<strong><strong>2*</strong></strong>_i_<strong>**+1</strong></li>
 <li><strong>若</strong> <strong>_i_</strong> <strong>为奇数**</strong>,<strong> </strong>且<strong>**_i_</strong> <strong>!= 1,</strong></li>
 <li><strong>则其左兄弟为**</strong>_i_<strong><strong>-</strong></strong>1<strong>**,</strong> <strong>若</strong></li>
@@ -506,13 +504,10 @@
 </ol>
 </blockquote>
 <p>下面是一个最大堆的图例。这里的第一层和第二层是标记第几层子节点，并不是树的第几层。 <img src="http://img.my.csdn.net/uploads/201212/16/1355635709_8607.jpg" alt=""></p>
-<h2 id="1-最大堆的插入："><a href="#1-最大堆的插入：" class="headerlink" title="1.最大堆的插入："></a>1.最大堆的插入：</h2><p>先来举个栗子说明最大堆的插入问题。 <img src="http://img.my.csdn.net/uploads/201212/16/1355636182_3780.jpg" alt=""> 这是一个有五个元素的最大堆。 如果要插入一个元素，那么插入完成后的结构应该是这样才能保证依旧是完全二叉树： <img src="http://img.my.csdn.net/uploads/201212/16/1355636317_6589.jpg" alt=""> 如果插入的元素是1，那很简单，直接作为第二层的元素2的左孩子节点插入即可。 但是如果插入的元素是5，也就是比该插入位置的父节点大的话，就需要做一定的调整了。 应该把元素2下移为左孩子，同时在判断5能否占据元素2的位置。 <img src="http://img.my.csdn.net/uploads/201212/16/1355636837_7061.jpg" alt=""> 因为5&lt;20，所以5可以插入在当前位置。插入完成： <img src="http://img.my.csdn.net/uploads/201212/16/1355636933_2478.jpg" alt=""> 但是如果想要插入的元素是25呢？ 那么在这一步便会有所不同： <img src="http://img.my.csdn.net/uploads/201212/16/1355636990_9472.jpg" alt=""> 因为25&gt;20，不满足我们最大堆的要求，所以我们要做的事情和上次一样， 先将20移下一层： <img src="http://img.my.csdn.net/uploads/201212/16/1355637155_9922.jpg" alt=""> 再将25插入即可。插入完成： <img src="http://img.my.csdn.net/uploads/201212/16/1355637086_8298.jpg" alt=""> 下面来总结一下插入的操作。 插入<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="noopener">算法</a>首先要知道插入完成后的二叉树结构，然后再把要插入的元素一次调整到正确的位置。 插入策略从根到叶只有单一路径，每一层的工作耗时O(1)， 因此实现插入操作的时间复杂性为O(height)=O(log2n)。</p>
+<h2 id="1-最大堆的插入："><a href="#1-最大堆的插入：" class="headerlink" title="1.最大堆的插入："></a>1.最大堆的插入：</h2><p>先来举个栗子说明最大堆的插入问题。 <img src="http://img.my.csdn.net/uploads/201212/16/1355636182_3780.jpg" alt=""> 这是一个有五个元素的最大堆。 如果要插入一个元素，那么插入完成后的结构应该是这样才能保证依旧是完全二叉树： <img src="http://img.my.csdn.net/uploads/201212/16/1355636317_6589.jpg" alt=""> 如果插入的元素是1，那很简单，直接作为第二层的元素2的左孩子节点插入即可。 但是如果插入的元素是5，也就是比该插入位置的父节点大的话，就需要做一定的调整了。 应该把元素2下移为左孩子，同时在判断5能否占据元素2的位置。 <img src="http://img.my.csdn.net/uploads/201212/16/1355636837_7061.jpg" alt=""> 因为5<20，所以5可以插入在当前位置。插入完成： 16="" 201212="" ![](http:="" img.my.csdn.net="" uploads="" 1355636933_2478.jpg)="" 但是如果想要插入的元素是25呢？="" 那么在这一步便会有所不同：="" 1355636990_9472.jpg)="" 因为25="">20，不满足我们最大堆的要求，所以我们要做的事情和上次一样， 先将20移下一层： <img src="http://img.my.csdn.net/uploads/201212/16/1355637155_9922.jpg" alt=""> 再将25插入即可。插入完成： <img src="http://img.my.csdn.net/uploads/201212/16/1355637086_8298.jpg" alt=""> 下面来总结一下插入的操作。 插入<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="noopener">算法</a>首先要知道插入完成后的二叉树结构，然后再把要插入的元素一次调整到正确的位置。 插入策略从根到叶只有单一路径，每一层的工作耗时O(1)， 因此实现插入操作的时间复杂性为O(height)=O(log2n)。</20，所以5可以插入在当前位置。插入完成：></p>
 <h2 id="2-最大堆的删除"><a href="#2-最大堆的删除" class="headerlink" title="2.最大堆的删除"></a>2.最大堆的删除</h2><p>从最大堆中删除一个元素的时候，该元素从堆的根部移出。 以下图为例： <img src="http://img.my.csdn.net/uploads/201212/16/1355640154_5632.jpg" alt=""> 如果要从中删除元素21也就是移除堆顶元素。 必须移动最后的一个元素，也就是元素2，才能保证它依旧是一个完全二叉树。 <img src="http://img.my.csdn.net/uploads/201212/16/1355640309_6482.jpg" alt=""> 这样确保它依旧是完全二叉树，但是元素2还没有放入堆中。 而根据堆的结构特性，2是不能直接插入根节点的， 可以先假设把元素二放在根节点： <img src="http://img.my.csdn.net/uploads/201212/16/1355640517_9884.jpg" alt=""> 则需要作一定的调整以便让它保持最大堆的特性。 因为根应当是堆的所有数据中最大的那个数， 也就是说，根元素应该是元素2，根的左孩子，根的右孩子三者中的最大者。 为什么呢？ 因为本来根的左孩子或右孩子应该是是堆中的第二大元素。 移除根之后必有一个是最大的元素，也就是根元素的合适人选。 现在再来看看栗子。 三者中的最大值是20，所以把它移到了根节点。 <img src="http://img.my.csdn.net/uploads/201212/16/1355640936_4914.jpg" alt=""> 此时在20的原位置，也就是按次序编号的3位置形成一个空位， 由于该位置没有孩子节点，所以元素2可以插入。最后形成了删除完毕的最大堆： <img src="http://img.my.csdn.net/uploads/201212/16/1355641097_4942.jpg" alt=""> 下面再来举个栗子，在上面的最大堆里删除元素20。 删除之后的结构应该是这样的： <img src="http://img.my.csdn.net/uploads/201212/16/1355641490_9439.jpg" alt=""> 所以先把元素10移除。 如果直接把10放在根节点并不能形成最大堆。 所以把根节点的两个孩子15和2中较大的一个移到根节点。 <img src="http://img.my.csdn.net/uploads/201212/16/1355641669_3538.jpg" alt=""> 移动完之后发现10还是不能插入，所以再把14往上移一层： <img src="http://img.my.csdn.net/uploads/201212/16/1355641736_2030.jpg" alt=""> 这样便会发现元素10可以插入了， 于是最终的最大堆如下图所示： <img src="http://img.my.csdn.net/uploads/201212/16/1355641812_7959.jpg" alt=""> 下面来总结一下删除的操作。 删除算法需要了解删除完成后的完全二叉树结构， 先移除最后一个节点，把要删除位置的两个孩子挑选最大的移动到根节点。 如果最后一个节点元素能插入则插入，否则重复上述操作直到能插入为止。 插入策略从根到叶只有单一路径，每一层的工作耗时O(1)， 因此实现插入操作的时间复杂性为O(height)=O(log2n)。</p>
 <h2 id="3-最大堆的初始化"><a href="#3-最大堆的初始化" class="headerlink" title="3.最大堆的初始化"></a>3.最大堆的初始化</h2><p>很多情况下我们是已经获取了一个有n个元素的无序数组，需要进行最大堆的初始化操作。 如果用一次插入的方法，构建非空最大堆，插入操作的总时间为O(log2n)。 下面介绍一下利用不同的策略在O(n)的时间里完成堆的初始化。 假设开始数组a[1:10]的关键值分别为[20，12，35，15，10，80，30，17，2，1]。&lt;详情见最上面的TIPS性质！&gt; 这些数值可以通过逐层输入的方法构成一棵完全二叉树： <img src="http://img.my.csdn.net/uploads/201212/16/1355643219_3274.jpg" alt=""> 接下来做的便是从下往上依次调整。 先来说一下大体思路。 为了将完全二叉树转化成最大堆，先从第一个具有孩子的节点下手（从下往上从后往前看  i为数组编号也是二叉树的顺序排序编号，根据这个性质即 是从数组找数组中的元素！）。   从图中来看就是节点10。这个元素在数组中的位置为i=[n/2]。 如果以此元素为根的子树已经是最大堆，则不需调整，否则必须调整使其成堆。 随后依次检查以i-1，i-2等节点为根的子树，直到检测到整个二叉树的根节点。 下面来看这个栗子。 第一次调整检验，i=5的时候： <img src="http://img.my.csdn.net/uploads/201212/16/1355648608_9644.jpg" alt=""> 此时这棵子树是满足最大堆的要求的，所以我们不用调整它。 接下来检查下一个节点，也就是i=4的情况： <img src="http://img.my.csdn.net/uploads/201212/16/1355649050_7212.jpg" alt=""> 因为15&lt;17，所以这棵子树不满足最大堆的条件。 为了把它变身成为最大堆，可以把子节点中最大的数与根节点元素交换， 也就是可用15与17交换，得到的树效果如下： <img src="http://img.my.csdn.net/uploads/201212/16/1355649210_4895.jpg" alt=""> 此时i=4的位置已经是最大堆了。接下来便是i=3的情况， 和前面几次一样，将35与其孩子节点中最大的元素交换即可： <img src="http://img.my.csdn.net/uploads/201212/16/1355649390_8969.jpg" alt=""> 如此这般，i=3便也解决了。那么当i=2的时候， 首先执行一次交换，确保了i=3为根的子树的前两层是最大堆： <img src="http://img.my.csdn.net/uploads/201212/16/1355649534_7333.jpg" alt=""> 下一步，将元素12与位置为4的节点的两个孩子中较大的一个元素进行比较。 由于12&lt;15，所以15被移到了位置4，12暂时移入了位置8。 因为8位置没有子节点，所以将12插入，完成这一步调整。 最后还剩i=1的情况： <img src="http://img.my.csdn.net/uploads/201212/16/1355649852_5480.jpg" alt=""> 当i=1时，此刻以i=2和i=3为根节点的子树们均已经是最大堆。 然后20&lt;(max[35,30]),所以把80作为最大根，把80移入1位置： <img src="http://img.my.csdn.net/uploads/201212/16/1355650176_4671.jpg" alt=""> 位置3空出，因为20&lt;(max[35,30])，所以元素35插入位置3，元素20插入元素6。 最终形成的最大堆如图所示： <img src="http://img.my.csdn.net/uploads/201212/16/1355650318_9100.jpg" alt=""> 总结一下初始化最大堆的过程， 大致就是从下往上依次检测所有子树是否为最大堆， 如果不是把他们调整成最大堆，并将子树的根节点放置到合适的位置不影响下面的子树的最大堆结构。 下面附上源码以供加深理解：</p>
-<p>#ifndef MAXHEAP_H</p>
-<p>#define MAXHEAP_H</p>
-<p>#include <iostream></iostream></p>
-<p>#include <cassert><br>using namespace std;<br>const int DefaultSize=50;<br>template &lt;typename E/<em>,class K</em>/&gt;class MaxHeap{    // K为关键码的数据类型，E为记录的结构类型<br>public:<br>    MaxHeap(int sz = DefaultSize);//构造函数：建立空堆<br>    MaxHeap(E arr[], int n);    //构造函数：通过一个数组建堆<br>    ~MaxHeap()    {<br>        delete []heap;<br>    }<br>    bool Insert(const E &amp;x);<br>    bool RemoveMax(E &amp;x);<br>    bool IsEmpty()const{<br>        return currentSize == 0;<br>    }<br>    bool IsFull()const{<br>        return currentSize == maxHeapSize;<br>    }<br>    void MakeEmpty(){<br>        currentSize = 0;<br>    }<br>    void Swap(int i, int j){<br>        E tmp = heap[i];<br>        heap[i] = heap[j];<br>        heap[j] = tmp;<br>    }<br>    void output(){//自定义函数，顺序输出最大堆元素<br>        for(int i = 0; i&lt;currentSize; i++)<br>            cout&lt;&lt;heap[i]&lt;&lt;” “;<br>        cout&lt;&lt;endl;<br>    }<br>private:<br>    E <em>heap;                        //存放最大堆中元素的数组<br>    int currentSize;                //最大堆中当前元素个数<br>    int maxHeapSize;                //最大堆最多允许元素个数<br>    void siftDown(int start, int m);//从start到m下滑调整成为最大堆<br>    void siftUp(int start);            //从start到0上滑调整成为最大堆<br>};<br>//template  <typename e=""><br>//MaxHeap<e> ::Maxheap(int sz) {<br>//    maxHeapSize = (DefaultSize &lt; sz) ? sz : DefaultSize;<br>//    heap = new E[maxHeapSize];<br>//    assert(heap);<br>//    currentSize = 0;<br>//}<br>//<br>// 构造函数：建立空堆<br>template &lt;typename E/</e></typename></em>,class K<em>/&gt;MaxHeap&lt;E/</em>, K<em>/&gt;::MaxHeap(int sz){<br>    maxHeapSize = (DefaultSize &lt; sz) ? sz : DefaultSize;<br>    heap = new E[maxHeapSize];<br>    assert(heap);<br>    currentSize = 0;<br>}<br>// 构造函数：通过一个数组建堆<br>template &lt;typename E/</em>,class K<em>/&gt;MaxHeap&lt;E/</em>, K<em>/&gt;::MaxHeap(E arr[], int n){<br>    maxHeapSize = (DefaultSize &lt; n) ? n : DefaultSize;<br>    heap = new E[maxHeapSize];<br>    assert(heap);<br>    for (int i = 0; i &lt; n; i++ ){<br>        heap[i] = arr[i];<br>    }<br>    currentSize = n;<br>    int currentPos = (currentSize-2)/2;        //找最初调整位置:最后分支结点<br>    while (currentPos &gt;= 0){                    //自底向上逐步扩大形成堆<br>        siftDown(currentPos, currentSize -1);    //局部自上向下下滑调整<br>        currentPos–;                            //再向前换一个分支结点<br>    }<br>}<br>//私有函数：最大堆的下滑调整算法<br>template &lt;typename E/</em>,class K<em>/&gt;void MaxHeap&lt;E/</em>, K<em>/&gt;::siftDown(int start, int m){<br>    int i = start, j = 2</em>i+1;//j是i的左子女位置<br>    E temp = heap[i];<br>    while (j &lt;= m){//检查是否到最后位置<br>        //让j指向两子女中的小者<br>        if (j &lt; m &amp;&amp; heap[j] &lt; heap[j+1]){<br>            j++;<br>        }<br>        if (temp &gt;= heap[j]){<br>            break;<br>        }<br>        else{<br>            heap[i] = heap[j];<br>            i = j;<br>            j = 2<em>j+1;<br>        }<br>    }<br>    heap[i] = temp;    //回放temp中暂存的元素<br>}<br>// 私有函数：最大堆的上滑调整算法<br>template &lt;typename E/</em>,class K<em>/&gt;void MaxHeap&lt;E/</em>, K<em>/&gt;::siftUp(int start){<br>    int j = start, i = (j-1)/2;<br>    E temp = heap[j];<br>    while (j &gt; 0){ //沿父结点路径向上直达根<br>        if (heap[i] &gt;= temp)        {<br>            break;<br>        }<br>        else{<br>            heap[j] = heap[i];<br>            j = i;<br>            i = (i-1)/2;<br>        }<br>    }<br>    heap[j] = temp;    //回放temp中暂存的元素<br>}<br>// 公共函数: 将x插入到最大堆中<br>template &lt;typename E/</em>,class K<em>/&gt;bool MaxHeap&lt;E/</em>, K<em>/&gt;::Insert(const E &amp;x){<br>    if (currentSize == maxHeapSize){    //堆满<br>        cerr &lt;&lt; “Heap Full” &lt;&lt; endl;<br>        return false;<br>    }<br>    heap[currentSize] = x;    //插入<br>    siftUp(currentSize);    //向上调整<br>    currentSize++;            //堆计数加1<br>    return true;<br>}<br>// 公共函数：最大堆的删除算法<br>template &lt;typename E/</em>,class K<em>/&gt;bool MaxHeap&lt;E/</em>, K*/&gt;::RemoveMax(E &amp;x){<br>    if (!currentSize){    //堆空, 返回false</cassert></p>
+<h1 id="ifndef-MAXHEAP-H"><a href="#ifndef-MAXHEAP-H" class="headerlink" title="ifndef MAXHEAP_H"></a>ifndef MAXHEAP_H</h1><h1 id="define-MAXHEAP-H"><a href="#define-MAXHEAP-H" class="headerlink" title="define MAXHEAP_H"></a>define MAXHEAP_H</h1><h1 id="include"><a href="#include" class="headerlink" title="include "></a>include <iostream></iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include "></a>include <cassert></cassert></h1><p>using namespace std;<br>const int DefaultSize=50;<br>template <typename e="" *,class="" k*="">class MaxHeap{    // K为关键码的数据类型，E为记录的结构类型<br>public:<br>    MaxHeap(int sz = DefaultSize);//构造函数：建立空堆<br>    MaxHeap(E arr[], int n);    //构造函数：通过一个数组建堆<br>    ~MaxHeap()    {<br>        delete []heap;<br>    }<br>    bool Insert(const E &amp;x);<br>    bool RemoveMax(E &amp;x);<br>    bool IsEmpty()const{<br>        return currentSize == 0;<br>    }<br>    bool IsFull()const{<br>        return currentSize == maxHeapSize;<br>    }<br>    void MakeEmpty(){<br>        currentSize = 0;<br>    }<br>    void Swap(int i, int j){<br>        E tmp = heap[i];<br>        heap[i] = heap[j];<br>        heap[j] = tmp;<br>    }<br>    void output(){//自定义函数，顺序输出最大堆元素<br>        for(int i = 0; i<currentsize; i++)="" cout<<heap\[i\]<<"="" ";="" cout<<endl;="" }="" private:="" e="" *heap;="" 存放最大堆中元素的数组="" int="" currentsize;="" 最大堆中当前元素个数="" maxheapsize;="" 最大堆最多允许元素个数="" void="" siftdown(int="" start,="" m);="" 从start到m下滑调整成为最大堆="" siftup(int="" start);="" 从start到0上滑调整成为最大堆="" };="" template="" <typename=""><br>//MaxHeap<e> ::Maxheap(int sz) {<br>//    maxHeapSize = (DefaultSize &lt; sz) ? sz : DefaultSize;<br>//    heap = new E[maxHeapSize];<br>//    assert(heap);<br>//    currentSize = 0;<br>//}<br>//<br>// 构造函数：建立空堆<br>template <typename e="" *,class="" k*="">MaxHeap<e *,="" k*="">::MaxHeap(int sz){<br>    maxHeapSize = (DefaultSize &lt; sz) ? sz : DefaultSize;<br>    heap = new E[maxHeapSize];<br>    assert(heap);<br>    currentSize = 0;<br>}<br>// 构造函数：通过一个数组建堆<br>template <typename e="" *,class="" k*="">MaxHeap<e *,="" k*="">::MaxHeap(E arr[], int n){<br>    maxHeapSize = (DefaultSize &lt; n) ? n : DefaultSize;<br>    heap = new E[maxHeapSize];<br>    assert(heap);<br>    for (int i = 0; i &lt; n; i++ ){<br>        heap[i] = arr[i];<br>    }<br>    currentSize = n;<br>    int currentPos = (currentSize-2)/2;        //找最初调整位置:最后分支结点<br>    while (currentPos &gt;= 0){                    //自底向上逐步扩大形成堆<br>        siftDown(currentPos, currentSize -1);    //局部自上向下下滑调整<br>        currentPos—;                            //再向前换一个分支结点<br>    }<br>}<br>//私有函数：最大堆的下滑调整算法<br>template <typename e="" *,class="" k*="">void MaxHeap<e *,="" k*="">::siftDown(int start, int m){<br>    int i = start, j = 2<em>i+1;//j是i的左子女位置<br>    E temp = heap[i];<br>    while (j &lt;= m){//检查是否到最后位置<br>        //让j指向两子女中的小者<br>        if (j &lt; m &amp;&amp; heap[j] &lt; heap[j+1]){<br>            j++;<br>        }<br>        if (temp &gt;= heap[j]){<br>            break;<br>        }<br>        else{<br>            heap[i] = heap[j];<br>            i = j;<br>            j = 2</em>j+1;<br>        }<br>    }<br>    heap[i] = temp;    //回放temp中暂存的元素<br>}<br>// 私有函数：最大堆的上滑调整算法<br>template <typename e="" *,class="" k*="">void MaxHeap<e *,="" k*="">::siftUp(int start){<br>    int j = start, i = (j-1)/2;<br>    E temp = heap[j];<br>    while (j &gt; 0){ //沿父结点路径向上直达根<br>        if (heap[i] &gt;= temp)        {<br>            break;<br>        }<br>        else{<br>            heap[j] = heap[i];<br>            j = i;<br>            i = (i-1)/2;<br>        }<br>    }<br>    heap[j] = temp;    //回放temp中暂存的元素<br>}<br>// 公共函数: 将x插入到最大堆中<br>template <typename e="" *,class="" k*="">bool MaxHeap<e *,="" k*="">::Insert(const E &amp;x){<br>    if (currentSize == maxHeapSize){    //堆满<br>        cerr &lt;&lt; “Heap Full” &lt;&lt; endl;<br>        return false;<br>    }<br>    heap[currentSize] = x;    //插入<br>    siftUp(currentSize);    //向上调整<br>    currentSize++;            //堆计数加1<br>    return true;<br>}<br>// 公共函数：最大堆的删除算法<br>template <typename e="" *,class="" k*="">bool MaxHeap<e *,="" k*="">::RemoveMax(E &amp;x){<br>    if (!currentSize){    //堆空, 返回false</e></typename></e></typename></e></typename></e></typename></e></typename></e></typename></e></currentsize;></typename></p>
 <pre><code>    cout &lt;&lt; &quot;Heap empty&quot; &lt;&lt; endl;
     return false;
 }
@@ -522,8 +517,7 @@ currentSize--;
 siftDown(0, currentSize-1);        //自上向下调整为堆
 return true;
 </code></pre><p>}</p>
-<p>#endif</p>
-<p>另一个的实现：</p>
+<h1 id="endif"><a href="#endif" class="headerlink" title="endif"></a>endif</h1><p>另一个的实现：</p>
 <pre><code>//优先队列：堆MaxHeap的定义与使用
 #include
 using namespace std;
@@ -849,7 +843,7 @@ int main(){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -860,7 +854,7 @@ int main(){
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -871,7 +865,7 @@ int main(){
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -968,7 +962,7 @@ int main(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最大树的概念"><span class="nav-number">1.</span> <span class="nav-text"> 最大树的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最大堆的插入："><span class="nav-number">1.1.</span> <span class="nav-text">1.最大堆的插入：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最大堆的删除"><span class="nav-number">1.2.</span> <span class="nav-text">2.最大堆的删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最大堆的初始化"><span class="nav-number">1.3.</span> <span class="nav-text">3.最大堆的初始化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最大树的概念"><span class="nav-number">1.</span> <span class="nav-text"> 最大树的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最大堆的插入："><span class="nav-number">1.1.</span> <span class="nav-text">1.最大堆的插入：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最大堆的删除"><span class="nav-number">1.2.</span> <span class="nav-text">2.最大堆的删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最大堆的初始化"><span class="nav-number">1.3.</span> <span class="nav-text">3.最大堆的初始化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ifndef-MAXHEAP-H"><span class="nav-number">2.</span> <span class="nav-text">ifndef MAXHEAP_H</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-MAXHEAP-H"><span class="nav-number">3.</span> <span class="nav-text">define MAXHEAP_H</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">4.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-1"><span class="nav-number">5.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#endif"><span class="nav-number">6.</span> <span class="nav-text">endif</span></a></li></ol></div>
             
 
           </div>
@@ -1009,7 +1003,7 @@ int main(){
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1635,6 +1629,28 @@ int main(){
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

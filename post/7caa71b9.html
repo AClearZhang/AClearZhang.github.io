@@ -443,7 +443,7 @@
         <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>本文重点讲解如何进行hexo多台电脑之间同步访问问题；带过一下利用<a href="www.coding.net">coding.net</a>网站进行百度SEO优化问题；其他一些操作错误的小细节请自行百度或者与我联系。感恩。</p>
 <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>进入研究生生活之后，需要在A实验室（或者工作单位）之中进行博客的日常码字和管理；然而有时候回到B宿舍（或者家里）之后又想更新blog。然而囿于<code>hexo静态博客</code>，无法像<code>wp</code>那样进行后台的管理和编写，只能在本地进行同步和上传，无奈想起使用协同代码管理服务————git.</p>
 <h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>前一阵和小伙伴们做比赛的时候，由于暂时需要进行代码的保密工作，所以选择了码云进行代码托管和协同工作。github被微软收购之后，在今年1月份突然宣布了要将私有代码托管服务转变为免费的项目！（本来在收购之前 博主还特意备份了一下github的代码…… ：）于是乎今天使用<code>github</code>来进行hexo原始文件的同步处理操作。<br><a id="more"></a>  </p>
-<h2 id="关于百度无法索引hexo博客"><a href="#关于百度无法索引hexo博客" class="headerlink" title="关于百度无法索引hexo博客"></a>关于百度无法索引hexo博客</h2><p>需要ssh连接coding网站，并且在 <code>hexo</code>–<code>_config.xml</code>当中的 <code>deploy</code>一项中添加相关<code>hexo d</code>之后的代码。因为coding也是支持进行hexo静态博客的建立的，同样和<code>github</code>一样，只能建立一个相关的博客。（不愿意用码云 也是考虑到，这样一下子就要运用到 <strong>三个</strong> 代码托管平台啦！）</p>
+<h2 id="关于百度无法索引hexo博客"><a href="#关于百度无法索引hexo博客" class="headerlink" title="关于百度无法索引hexo博客"></a>关于百度无法索引hexo博客</h2><p>需要ssh连接coding网站，并且在 <code>hexo</code>—<code>_config.xml</code>当中的 <code>deploy</code>一项中添加相关<code>hexo d</code>之后的代码。因为coding也是支持进行hexo静态博客的建立的，同样和<code>github</code>一样，只能建立一个相关的博客。（不愿意用码云 也是考虑到，这样一下子就要运用到 <strong>三个</strong> 代码托管平台啦！）</p>
 <h2 id="上传blog到git"><a href="#上传blog到git" class="headerlink" title="上传blog到git"></a>上传blog到git</h2><p>这个操作建议在blog进度最新的PC上进行的，否则后面解决冲突会比较麻烦<br>在github上添加公钥，repository建立新等过程略过不讲。</p>
 <ol>
 <li><p>删除文件夹内原有的.git缓存文件夹并编辑.gitignore文件</p>
@@ -467,12 +467,12 @@
 <blockquote>
 <p>注意： <strong>server</strong> 指的是 <strong>git</strong>版本的不是 <strong>https</strong>版本的。（此处没有单引号） <strong>origin</strong>是指本地分支， <strong>remote add</strong>操作会将本地仓库映射到云端。 </p>
 </blockquote>
-<ol start="3">
+<ol>
 <li>添加本地文件到仓库并同步到git上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .  #添加blog目录下所有文件，注意有个`.`（`.gitignore`声明过的文件不包含在内)</span><br><span class="line">git commit -m &quot;first commit&quot; #添加更新说明</span><br><span class="line">git push -u origin master #推送更新到云端服务器</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <blockquote>
-<p>在执行这步之前一定要注意检查下.gitignore文件的内容，看看是否正确的把一些文件夹忽略掉了。如果加错了的话可以用<br>   <strong>git rm -r –cached .</strong><br> 撤销添加操作。  </p>
+<p>在执行这步之前一定要注意检查下.gitignore文件的内容，看看是否正确的把一些文件夹忽略掉了。如果加错了的话可以用<br>   <strong>git rm -r —cached .</strong><br> 撤销添加操作。  </p>
 </blockquote>
 <p><strong><em>以上 云端备份工作已经完成。</em></strong></p>
 <h2 id="将git的内容同步到本地"><a href="#将git的内容同步到本地" class="headerlink" title="将git的内容同步到本地"></a>将git的内容同步到本地</h2><blockquote>
@@ -593,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/b7bad590.html" rel="next" title="WE_ACAN">
-                <i class="fa fa-chevron-left"></i> WE_ACAN
+              <a href="/post/57058f23.html" rel="next" title="Flask的核心机制-关于请求处理流程和请求|应用上下文">
+                <i class="fa fa-chevron-left"></i> Flask的核心机制-关于请求处理流程和请求|应用上下文
               </a>
             
           </div>
@@ -689,7 +689,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +700,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -711,7 +711,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -849,7 +849,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1475,6 +1475,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

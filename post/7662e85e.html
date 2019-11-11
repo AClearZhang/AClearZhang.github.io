@@ -441,14 +441,14 @@
       
 
       
-        <h1 id="1-mini-centos的配置"><a href="#1-mini-centos的配置" class="headerlink" title="1.mini_centos的配置"></a><a href="#peizhi">1.mini_centos的配置</a></h1><h1 id="2-软件安装"><a href="#2-软件安装" class="headerlink" title="2.软件安装"></a><a href="#install">2.软件安装</a></h1><h1 id="3-本地YUM源制作"><a href="#3-本地YUM源制作" class="headerlink" title="3.本地YUM源制作"></a><a href="#yum">3.本地YUM源制作</a></h1><h2 id="1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况"><a href="#1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况" class="headerlink" title="1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况"></a>1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况</h2><p>网络配置文件<br>/etc/sysconfig/network                                 主机名<br>/etc/sysconfig/network-scripts/ifcfg-eth0         网卡配置文件<br>/etc/udev/rules.d/70-persistent-net.rules<br>/etc/resolv.conf                                                DNS服务<br>/etc/hosts                                        修改hosts文件.<br>***批量自动删除rpm包：<br>rpm -qa | grep mysql | while read c; do rpm -e $c –nodeps; done<br><strong><em>minimal最小化安装<br>eth0默认没有自启用<br>修改配置文件<br>onboot=true<br>修改静态地址后发现无法ping外网<br>需要设置网关<br>route add default gw 192.168.33.1<br>添加nameserver<br>vi /etc/resolv.conf<br>nameserver 192.168.33.1
+        <h1 id="1-mini-centos的配置"><a href="#1-mini-centos的配置" class="headerlink" title="1.mini_centos的配置"></a><a href="#peizhi">1.mini_centos的配置</a></h1><h1 id="2-软件安装"><a href="#2-软件安装" class="headerlink" title="2.软件安装"></a><a href="#install">2.软件安装</a></h1><h1 id="3-本地YUM源制作"><a href="#3-本地YUM源制作" class="headerlink" title="3.本地YUM源制作"></a><a href="#yum">3.本地YUM源制作</a></h1><h2 id="1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况"><a href="#1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况" class="headerlink" title="1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况"></a>1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况</h2><p>网络配置文件<br>/etc/sysconfig/network                                 主机名<br>/etc/sysconfig/network-scripts/ifcfg-eth0         网卡配置文件<br>/etc/udev/rules.d/70-persistent-net.rules<br>/etc/resolv.conf                                                DNS服务<br>/etc/hosts                                        修改hosts文件.<br>***批量自动删除rpm包：<br>rpm -qa | grep mysql | while read c; do rpm -e $c —nodeps; done<br><strong><em>minimal最小化安装<br>eth0默认没有自启用<br>修改配置文件<br>onboot=true<br>修改静态地址后发现无法ping外网<br>需要设置网关<br>route add default gw 192.168.33.1<br>添加nameserver<br>vi /etc/resolv.conf<br>nameserver 192.168.33.1
 </em></strong>挂载光盘<br>mkdir /mnt/cdrom<br>mount -t iso9660 -o ro /dev/cdrom/ /mnt/cdrom</p>
-<p>***解决克隆后eth0不见的问题(day02 1)<br>直接修改 /etc/sysconfig/network-script/ifcfg-eth0<br> 删掉UUID HWADDR<br> 配置静态地址<br> 然后：<br> rm -rf 　/etc/udev/rules.d/70-persistent-net.rules<br>或者修改这个文件：<br>   将其中的eth1的物理地址赋值给eth0，然后删掉eth1的配置<br> 然后 reboot</p>
-<h2 id="———–2-软件安装——–"><a href="#———–2-软件安装——–" class="headerlink" title="———–2.软件安装——–"></a>———–2.软件安装——–</h2><p>sftp 192.168.78.200<br>JDK ：<br>wget http://      进行对应网址下载到linux服务器上！<br><strong><br>软件安装<br>1、如何上传安装包到服务器
-</strong>可以使用图形化工具，如： filezilla,xftp<br><strong>可以使用sftp工具：  alt+p 调出后，用put命令上传<br>上传（如果不cd指定目录，则上传到当前用户的主目录）：<br>sftp&gt; cd /home/<br>sftp&gt; put C:\Users\Administrator\Desktop\day02\soft\jdk-7u45-linux-x64.tar.gz<br>下载（lcd指定下载到本地的目标路径）<br>sftp&gt; lcd d:/<br>sftp&gt; get /home/jdk-7u45-linux-x64.tar.gz
-</strong>lrzsz<br>//软件安装用  上传接受<br>2、安装jdk<br><strong>压缩解压缩的相关命令**</strong><br>%%压缩解压缩%%<br>root@mini1 ~]# gzip access.log<br>[root@mini1 ~]# ll<br>总用量 134892<br>-rw-r–r–. 1 root root        68 4月   3 17:37 access.log.gz<br>解压gz文件：  gzip -d access.log.gz<br>%%打包解包%%   将后方的 文件夹全部压缩成前方名字的压缩包。<br>[root@mini1 ~]# tar -cvf myfirsttarball.tar aaa/<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>解包：<br>[root@mini1 ~]# tar -xvf myfirsttarball.tar<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>%%一次性完成打包&amp;&amp;压缩的操作%%<br>产生压缩包：<br>[root@mini1 ~]# tar -zcvf my.tar.gz aaa/<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>解压缩包：<br>[root@mini1 ~]# tar -zxvf my.tar.gz<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>linux 凡是可执行命令，如果 $PATH 环境变量没有  必须 带有路径进行命令执行./ </p>
-<p>##########安装jdk的过程：<br><strong>解压安装包<br> tar -zxvf jdk-7u45-linux-x64.tar.gz -C apps/
-</strong>然后修改环境变量<br>vi /etc/profile<br>在文件最后添加<br>export JAVA_HOME=/root/apps/jdk1.7.0_45<br>export PATH=$PATH:$JAVA_HOME/bin<br>保存退出<br>*<em>然后重新加载环境变量<br>source /etc/profile<br>// put -r      直接脱windows文件到linux当中<br>3、安装rpm包软件，如mysql<br>%%查看系统中安装的rpm包<br>rpm -qa | grep mysql<br>%%上传rpm安装包<br>MySQL-client-5.5.48-1.linux2.6.x86_64.rpm<br>MySQL-server-5.5.48-1.linux2.6.x86_64.rpm<br>per </em> .rpm<br>%%安装perl依赖<br>rpm -ivh perl*<br>《可能会提示有包冲突，解决： rpm -e 冲突包名 –nodeps 》<br>%%安装server<br>rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm<br>卸载冲突的rpm包<br>rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 –nodeps<br>如果成功，会看到进度条，最后，有关于root密码设置的提示，一定要记下来<br>这个版本的提示是，先启动server<br>service mysql start<br>然后/usr/bin/mysql_secure_installation 命令去交互式修改root密码<br>%%修改密码时，提示需要先安装client<br>rpm -ivh MySQL-client-5.5.48-1.linux2.6.x86_64.rpm<br>客户端安装成功后，记得还要用/usr/bin/mysql_secure_installation 命令去交互式修改root密码<br>%%登录验证<br>mysql -uroot -proot</p>
+<p><em>*</em>解决克隆后eth0不见的问题(day02 1)<br>直接修改 /etc/sysconfig/network-script/ifcfg-eth0<br> 删掉UUID HWADDR<br> 配置静态地址<br> 然后：<br> rm -rf 　/etc/udev/rules.d/70-persistent-net.rules<br>或者修改这个文件：<br>   将其中的eth1的物理地址赋值给eth0，然后删掉eth1的配置<br> 然后 reboot</p>
+<h2 id="—————-2-软件安装————"><a href="#—————-2-软件安装————" class="headerlink" title="—————-2.软件安装————"></a>—————-2.软件安装————</h2><p>sftp 192.168.78.200<br>JDK ：<br>wget http://      进行对应网址下载到linux服务器上！<br><strong><br>软件安装<br>1、如何上传安装包到服务器
+</strong>可以使用图形化工具，如： filezilla,xftp<br><strong>可以使用sftp工具：  alt+p 调出后，用put命令上传<br>上传（如果不cd指定目录，则上传到当前用户的主目录）：<br>sftp&gt; cd /home/<br>sftp&gt; put C:\\Users\\Administrator\\Desktop\\day02\\soft\\jdk-7u45-linux-x64.tar.gz<br>下载（lcd指定下载到本地的目标路径）<br>sftp&gt; lcd d:/<br>sftp&gt; get /home/jdk-7u45-linux-x64.tar.gz
+</strong>lrzsz<br>//软件安装用  上传接受<br>2、安装jdk<br><strong>压缩解压缩的相关命令**</strong><br>%%压缩解压缩%%<br>root@mini1 ~]# gzip access.log<br>[root@mini1 ~]# ll<br>总用量 134892<br>-rw-r—r—. 1 root root        68 4月   3 17:37 access.log.gz<br>解压gz文件：  gzip -d access.log.gz<br>%%打包解包%%   将后方的 文件夹全部压缩成前方名字的压缩包。<br>[root@mini1 ~]# tar -cvf myfirsttarball.tar aaa/<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>解包：<br>[root@mini1 ~]# tar -xvf myfirsttarball.tar<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>%%一次性完成打包&amp;&amp;压缩的操作%%<br>产生压缩包：<br>[root@mini1 ~]# tar -zcvf my.tar.gz aaa/<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>解压缩包：<br>[root@mini1 ~]# tar -zxvf my.tar.gz<br>aaa/<br>aaa/2.txt<br>aaa/3.txt<br>aaa/1.txt<br>linux 凡是可执行命令，如果 $PATH 环境变量没有  必须 带有路径进行命令执行./ </p>
+<h6 id="安装jdk的过程："><a href="#安装jdk的过程：" class="headerlink" title="####安装jdk的过程："></a>####安装jdk的过程：</h6><p><strong>解压安装包<br> tar -zxvf jdk-7u45-linux-x64.tar.gz -C apps/
+</strong>然后修改环境变量<br>vi /etc/profile<br>在文件最后添加<br>export JAVA_HOME=/root/apps/jdk1.7.0_45<br>export PATH=$PATH:$JAVA_HOME/bin<br>保存退出<br><em>*然后重新加载环境变量<br>source /etc/profile<br>// put -r      直接脱windows文件到linux当中<br>3、安装rpm包软件，如mysql<br>%%查看系统中安装的rpm包<br>rpm -qa | grep mysql<br>%%上传rpm安装包<br>MySQL-client-5.5.48-1.linux2.6.x86_64.rpm<br>MySQL-server-5.5.48-1.linux2.6.x86_64.rpm<br>per </em> .rpm<br>%%安装perl依赖<br>rpm -ivh perl*<br>《可能会提示有包冲突，解决： rpm -e 冲突包名 —nodeps 》<br>%%安装server<br>rpm -ivh MySQL-server-5.5.48-1.linux2.6.x86_64.rpm<br>卸载冲突的rpm包<br>rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 —nodeps<br>如果成功，会看到进度条，最后，有关于root密码设置的提示，一定要记下来<br>这个版本的提示是，先启动server<br>service mysql start<br>然后/usr/bin/mysql_secure_installation 命令去交互式修改root密码<br>%%修改密码时，提示需要先安装client<br>rpm -ivh MySQL-client-5.5.48-1.linux2.6.x86_64.rpm<br>客户端安装成功后，记得还要用/usr/bin/mysql_secure_installation 命令去交互式修改root密码<br>%%登录验证<br>mysql -uroot -proot</p>
 <h2 id="正式版本安装mysql："><a href="#正式版本安装mysql：" class="headerlink" title="正式版本安装mysql："></a>正式版本安装mysql：</h2><ul>
 <li>上传MySQL-server-5.5.48-1.linux2.6.x86_64.rpm、MySQL-client-5.5.48-1.linux2.6.x86_64.rpm到Linux上</li>
 <li>使用rpm命令安装MySQL-server-5.5.48-1.linux2.6.x86_64.rpm，缺少perl依赖</li>
@@ -465,7 +465,7 @@
 <ul>
 <li>卸载冲突的rpm包</li>
 </ul>
-<p>rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 –nodeps</p>
+<p>rpm -e mysql-libs-5.1.73-5.el6_6.x86_64 —nodeps</p>
 <ul>
 <li>再安装MySQL-client和MySQL-server</li>
 </ul>
@@ -504,7 +504,7 @@
 <ol>
 <li>YUM相关概念<br>1.1.    什么是YUM<br>YUM（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。<br>1.2.    YUM的作用<br>在Linux上使用源码的方式安装软件非常满分，使用yum可以简化安装的过程</li>
 <li>YUM的常用命令<br>安装httpd并确认安装<br>yum instll -y httpd<br>列出所有可用的package和package组<br>yum list<br>清除所有缓冲数据<br>yum clean all<br>列出一个包所有依赖的包<br>yum deplist httpd<br>删除httpd<br>yum remove httpd</li>
-<li>制作本地YUM源<br>3.1.    为什么要制作本地YUM源<br>YUM源虽然可以简化我们在Linux上安装软件的过程，但是生成环境通常无法上网，不能连接外网的YUM源，说以接就无法使用yum命令安装软件了。为了在内网中也可以使用yum安装相关的软件，就要配置yum源。<br>3.2.    YUM源的原理<br>YUM源其实就是一个保存了多个RPM包的服务器，可以通过http的方式来检索、下载并安装相关的RPM包<br>3.3.    制作本地YUM源<br>1.准备一台Linux服务器，用最简单的版本CentOS-6.7-x86_64-minimal.iso<br>2.配置好这台服务器的IP地址<br>3.上传CentOS-6.7-x86_64-bin-DVD1.iso到服务器<br>4.将CentOS-6.7-x86_64-bin-DVD1.iso镜像挂载到某个目录<br>mkdir /var/iso<br>#mount -o loop CentOS-6.7-x86_64-bin-DVD1.iso /var/iso<br>CentOS自动记载光盘镜像文件到：<br>mount -o loop /dev/cdrom /var/iso<br>#注意：因为 /dev/cdrom -&gt; sr0 只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹<br>#这样才能看到对应文件夹<br>5.修改本机上的YUM源配置文件，将源指向自己<br>备份原有的YUM源的配置文件<br>cd /etc/yum.repos.d/<br>rename .repo .repo.bak <em><br>vi CentOS-Local.repo<br>[base]<br>name=CentOS-Local<br>baseurl=file:///var/iso<br>gpgcheck=1<br>enabled=1   #很重要，1才启用<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6<br>添加上面内容保存退出<br>6.清除YUM缓冲<br>yum clean all<br>7.列出可用的YUM源<br>yum repolist<br>8.安装相应的软件<br>yum install -y httpd<br>9.开启httpd使用浏览器访问<a href="http://192.168.0.100:80（如果访问不通，检查防火墙是否开启了80端口或关闭防火墙）" target="_blank" rel="noopener">http://192.168.0.100:80（如果访问不通，检查防火墙是否开启了80端口或关闭防火墙）</a><br>service httpd start<br>10.将YUM源配置到httpd（Apache Server）中，其他的服务器即可通过网络访问这个内网中的YUM源了<br>cp -r /var/iso/ /var/www/html/CentOS-6.7<br>11.取消先前挂载的镜像<br>umount /var/iso<br>12.在浏览器中访问<a href="http://192.168.0.100/CentOS-6.7/" target="_blank" rel="noopener">http://192.168.0.100/CentOS-6.7/</a><br>13.让其他需要安装RPM包的服务器指向这个YUM源，准备一台新的服务器，备份或删除原有的YUM源配置文件<br>cd /etc/yum.repos.d/<br>rename .repo .repo.bak </em><br>vi CentOS-Local.repo<br>[base]<br>name=CentOS-Local<br>baseurl=<a href="http://192.168.0.100/CentOS-6.7" target="_blank" rel="noopener">http://192.168.0.100/CentOS-6.7</a><br>gpgcheck=1<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6<br>添加上面内容保存退出<br>14.在这台新的服务器上执行YUM的命令<br>yum clean all<br>yum repolist<br>15.安装相应的软件<br>yum install -y gcc<br>16、加入依赖包到私有yum的repository<br>进入到repo目录<br>执行命令：  createrepo  .  </li>
+<li>制作本地YUM源<br>3.1.    为什么要制作本地YUM源<br>YUM源虽然可以简化我们在Linux上安装软件的过程，但是生成环境通常无法上网，不能连接外网的YUM源，说以接就无法使用yum命令安装软件了。为了在内网中也可以使用yum安装相关的软件，就要配置yum源。<br>3.2.    YUM源的原理<br>YUM源其实就是一个保存了多个RPM包的服务器，可以通过http的方式来检索、下载并安装相关的RPM包<br>3.3.    制作本地YUM源<br>1.准备一台Linux服务器，用最简单的版本CentOS-6.7-x86_64-minimal.iso<br>2.配置好这台服务器的IP地址<br>3.上传CentOS-6.7-x86_64-bin-DVD1.iso到服务器<br>4.将CentOS-6.7-x86_64-bin-DVD1.iso镜像挂载到某个目录<br>mkdir /var/iso<h1 id="mount-o-loop-CentOS-6-7-x86-64-bin-DVD1-iso-var-iso"><a href="#mount-o-loop-CentOS-6-7-x86-64-bin-DVD1-iso-var-iso" class="headerlink" title="mount -o loop CentOS-6.7-x86_64-bin-DVD1.iso /var/iso"></a>mount -o loop CentOS-6.7-x86_64-bin-DVD1.iso /var/iso</h1>CentOS自动记载光盘镜像文件到：<br>mount -o loop /dev/cdrom /var/iso<h1 id="注意：因为-dev-cdrom-gt-sr0-只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹"><a href="#注意：因为-dev-cdrom-gt-sr0-只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹" class="headerlink" title="注意：因为 /dev/cdrom -&gt; sr0 只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹"></a>注意：因为 /dev/cdrom -&gt; sr0 只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹</h1><h1 id="这样才能看到对应文件夹"><a href="#这样才能看到对应文件夹" class="headerlink" title="这样才能看到对应文件夹"></a>这样才能看到对应文件夹</h1>5.修改本机上的YUM源配置文件，将源指向自己<br>备份原有的YUM源的配置文件<br>cd /etc/yum.repos.d/<br>rename .repo .repo.bak <em><br>vi CentOS-Local.repo<br>[base]<br>name=CentOS-Local<br>baseurl=file:///var/iso<br>gpgcheck=1<br>enabled=1   #很重要，1才启用<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6<br>添加上面内容保存退出<br>6.清除YUM缓冲<br>yum clean all<br>7.列出可用的YUM源<br>yum repolist<br>8.安装相应的软件<br>yum install -y httpd<br>9.开启httpd使用浏览器访问<a href="http://192.168.0.100:80（如果访问不通，检查防火墙是否开启了80端口或关闭防火墙）" target="_blank" rel="noopener">http://192.168.0.100:80（如果访问不通，检查防火墙是否开启了80端口或关闭防火墙）</a><br>service httpd start<br>10.将YUM源配置到httpd（Apache Server）中，其他的服务器即可通过网络访问这个内网中的YUM源了<br>cp -r /var/iso/ /var/www/html/CentOS-6.7<br>11.取消先前挂载的镜像<br>umount /var/iso<br>12.在浏览器中访问<a href="http://192.168.0.100/CentOS-6.7/" target="_blank" rel="noopener">http://192.168.0.100/CentOS-6.7/</a><br>13.让其他需要安装RPM包的服务器指向这个YUM源，准备一台新的服务器，备份或删除原有的YUM源配置文件<br>cd /etc/yum.repos.d/<br>rename .repo .repo.bak </em><br>vi CentOS-Local.repo<br>[base]<br>name=CentOS-Local<br>baseurl=<a href="http://192.168.0.100/CentOS-6.7" target="_blank" rel="noopener">http://192.168.0.100/CentOS-6.7</a><br>gpgcheck=1<br>gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6<br>添加上面内容保存退出<br>14.在这台新的服务器上执行YUM的命令<br>yum clean all<br>yum repolist<br>15.安装相应的软件<br>yum install -y gcc<br>16、加入依赖包到私有yum的repository<br>进入到repo目录<br>执行命令：  createrepo  .  </li>
 </ol>
 <p>高并发网站技术架构演变:<br><img src="http://pic.aclear.top/高并发网站技术架构演变-1024x1002.png" alt="高并发网站技术架构演变"></p>
 
@@ -693,7 +693,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -704,7 +704,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -715,7 +715,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -812,7 +812,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-mini-centos的配置"><span class="nav-number">1.</span> <span class="nav-text">1.mini_centos的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-软件安装"><span class="nav-number">2.</span> <span class="nav-text">2.软件安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-本地YUM源制作"><span class="nav-number">3.</span> <span class="nav-text">3.本地YUM源制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况"><span class="nav-number">3.1.</span> <span class="nav-text">1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#———–2-软件安装——–"><span class="nav-number">3.2.</span> <span class="nav-text">———–2.软件安装——–</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正式版本安装mysql："><span class="nav-number">3.3.</span> <span class="nav-text">正式版本安装mysql：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">3.4.</span> <span class="nav-text">安装Tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地yum源制作"><span class="nav-number">3.5.</span> <span class="nav-text">3.本地yum源制作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-mini-centos的配置"><span class="nav-number">1.</span> <span class="nav-text">1.mini_centos的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-软件安装"><span class="nav-number">2.</span> <span class="nav-text">2.软件安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-本地YUM源制作"><span class="nav-number">3.</span> <span class="nav-text">3.本地YUM源制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-网络配置文件一起day01杂记-解决克隆虚拟机失败情况"><span class="nav-number">3.1.</span> <span class="nav-text">1.网络配置文件一起day01杂记_解决克隆虚拟机失败情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—————-2-软件安装————"><span class="nav-number">3.2.</span> <span class="nav-text">—————-2.软件安装————</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装jdk的过程："><span class="nav-number">3.2.0.0.0.1.</span> <span class="nav-text">####安装jdk的过程：</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#正式版本安装mysql："><span class="nav-number">3.3.</span> <span class="nav-text">正式版本安装mysql：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">3.4.</span> <span class="nav-text">安装Tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-本地yum源制作"><span class="nav-number">3.5.</span> <span class="nav-text">3.本地yum源制作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mount-o-loop-CentOS-6-7-x86-64-bin-DVD1-iso-var-iso"><span class="nav-number">4.</span> <span class="nav-text">mount -o loop CentOS-6.7-x86_64-bin-DVD1.iso /var/iso</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意：因为-dev-cdrom-gt-sr0-只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹"><span class="nav-number">5.</span> <span class="nav-text">注意：因为 /dev/cdrom -&gt; sr0 只是指针的指向。并不是一个文件夹，所以我们应该自己手动挂载到一个文件夹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这样才能看到对应文件夹"><span class="nav-number">6.</span> <span class="nav-text">这样才能看到对应文件夹</span></a></li></div>
             
 
           </div>
@@ -853,7 +853,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1479,6 +1479,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

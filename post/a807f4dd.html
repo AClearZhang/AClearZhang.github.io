@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型–是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
+<meta name="description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型—是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python第三节容器">
 <meta property="og:url" content="http://blog.aclear.top/post/a807f4dd.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型–是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
+<meta property="og:description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型—是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python第三节容器">
-<meta name="twitter:description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型–是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
+<meta name="twitter:description" content="Python中所有的东西 都是类！Python 更强调的是应用是否一致，鸭子类型—是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符： def reverse(str_list, start, end):    while( start &amp;lt; end ):        str_list[start],str_l">
 
 
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k
+                  1.2k
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  5
                 </span>
               
             </div>
@@ -440,12 +440,11 @@
 
       
         <blockquote>
-<h2 id="Python中所有的东西-都是类！"><a href="#Python中所有的东西-都是类！" class="headerlink" title="Python中所有的东西 都是类！"></a>Python中所有的东西 都是类！</h2><p>Python 更强调的是应用是否一致，鸭子类型–是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符：</p>
+<h2 id="Python中所有的东西-都是类！"><a href="#Python中所有的东西-都是类！" class="headerlink" title="Python中所有的东西 都是类！"></a>Python中所有的东西 都是类！</h2><p>Python 更强调的是应用是否一致，鸭子类型—是基于接口的，而不是有明确的继承关系的。区别于 Java的继承关系————在迭代器 一部分展现的特别好. 关于作业 ：翻转一个字符：</p>
 <p>def reverse(str_list, start, end):<br>    while( start &lt; end ):<br>        str_list[start],str_list[end] = str_list[end],str_list[start]<br>        start += 1<br>        end -= 1<br>setence = ‘Hello, how are you? Fine. ‘<br>str_list = list(setence)<br>i = 0<br>while i &lt; len(str_list):<br>    if str_list[i] != ‘ ‘:       #即不是空格<br>        start = i<br>        end = start + 1<br>        while ( end &lt; len(str_list) ) and str_list[end] != ‘ ‘:<br>            end +=  1<br>        reverse(str_list, start, end-1)<br>        i = end<br>    else:<br>        i+=1<br>str_list.reverse()<br>print(“”.join(str_list))</p>
-<p>#字符串反转——先进行正向的每个word的翻转–再进行整个str_list的反转–最后把list</p>
-<pre><code># list join 为string
+<h1 id="字符串反转——先进行正向的每个word的翻转—再进行整个str-list的反转—最后把list"><a href="#字符串反转——先进行正向的每个word的翻转—再进行整个str-list的反转—最后把list" class="headerlink" title="字符串反转——先进行正向的每个word的翻转—再进行整个str_list的反转—最后把list"></a>字符串反转——先进行正向的每个word的翻转—再进行整个str_list的反转—最后把list</h1><pre><code>                                            # list join 为string
 </code></pre></blockquote>
-<h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><p>—本节要点：</p>
+<h2 id="第三节"><a href="#第三节" class="headerlink" title="第三节"></a>第三节</h2><p>—-本节要点：</p>
 <ul>
 <li>容器</li>
 <li>list/tuple</li>
@@ -456,7 +455,7 @@
 <li>生成器</li>
 <li>迭代器</li>
 </ul>
-<p><strong>—list 列表</strong> <code>序列是Python中最基本的数据结构。序列中的每个元素都分配一个数字 - 它的位置，或索引，第一个索引是0，第二个索引是1，依此类推。</code>列表的数据项不需要具有相同的类型</p>
+<p><strong>—-list 列表</strong> <code>序列是Python中最基本的数据结构。序列中的每个元素都分配一个数字 - 它的位置，或索引，第一个索引是0，第二个索引是1，依此类推。</code>列表的数据项不需要具有相同的类型</p>
 <ul>
 <li>tuple 元组（只读列表,不能写）</li>
 </ul>
@@ -493,7 +492,7 @@
 <li>参考代码：lesson_03_dict.py</li>
 </ul>
 <p>d = {‘a’: 1, ‘b’: 2, 1: ‘one’, 2: ‘two’, 3: [1, 2, 3]}<br>print(type(dict))<br>print(type(d))<br>print(d)<br># 访问元素<br>print(d[‘a’])<br>print(d[1])<br>print(d[3])<br># 判断key是否存在<br>print(‘two’ in d)<br>print(3 in d)<br>del(d[3])   # del(dict[key])<br>print(len(d))<br>d[3] = [1, 2, 3, 4]   #相当于添加了一项，所以dict里面是无序的<br>d[3] = ‘1234’<br># 遍历<br>for key in d:<br>    print(d[key])<br>print(‘…’)<br>for k, v in d.items():<br>    print(k, v)<br>print(‘…’)<br>keys = d.keys()<br>print(type(keys))<br>print(keys)</p>
-<p><strong>—set 集合基本操作：</strong></p>
+<p><strong>—-set 集合基本操作：</strong></p>
 <ul>
 <li>并/交/差集：|/union, &amp;/intersection, -/difference</li>
 <li>对称差集：^/symmetric_difference（不同时出现在2个集合中的项）</li>
@@ -506,10 +505,10 @@
 <li>遍历</li>
 <li>参考代码：lesson_04_set.py</li>
 </ul>
-<p>s_a = set([1, 2, 2, 3, 4, 5, 6])<br>s_b = set([4, 5, 6, 7, 8, 9])<br>print(s_a)<br>print(s_b)<br># 判断元素是否存在<br>print(5 in s_a)<br>print(10 in s_b)<br># 并集<br>print(s_a | s_b)<br>print(s_a.union(s_b))<br># 交集<br>print(s_a &amp; s_b)<br>print(s_a.intersection(s_b))<br># 差集 A - (A &amp; B)<br>print(s_a - s_b)<br>print(s_a.difference(s_b))<br># 对称差 (A | B) - (A &amp; B)<br>print(s_a ^ s_b)<br>print(s_a.symmetric_difference(s_b))<br># 修改元素<br>s_a.add(‘x’)<br>s_a.update([4, 5, 60, 70])<br>print(s_a)<br>s_a.remove(70)<br>print(s_a)<br># s_a.remove(100)<br>print(len(s_a))<br>for i in s_a:<br>    print(i)<br>testSet = {-1 , 1}<br>print(testSet)<br>print(type(testSet))<br>—结果—<br>{1, 2, 3, 4, 5, 6, 7, 8, 9}<br>{1, 2, 3, 4, 5, 6, 7, 8, 9}<br>{4, 5, 6}<br>{4, 5, 6}<br>{1, 2, 3}<br>{1, 2, 3}<br>{1, 2, 3, 7, 8, 9}<br>{1, 2, 3, 7, 8, 9}<br>{1, 2, 3, 4, 5, 6, 70, ‘x’, 60}<br>{1, 2, 3, 4, 5, 6, ‘x’, 60}<br>8<br>1<br>2<br>3<br>4<br>5<br>6<br>x<br>60<br>{1, -1}</p>
+<p>s_a = set([1, 2, 2, 3, 4, 5, 6])<br>s_b = set([4, 5, 6, 7, 8, 9])<br>print(s_a)<br>print(s_b)<br># 判断元素是否存在<br>print(5 in s_a)<br>print(10 in s_b)<br># 并集<br>print(s_a | s_b)<br>print(s_a.union(s_b))<br># 交集<br>print(s_a &amp; s_b)<br>print(s_a.intersection(s_b))<br># 差集 A - (A &amp; B)<br>print(s_a - s_b)<br>print(s_a.difference(s_b))<br># 对称差 (A | B) - (A &amp; B)<br>print(s_a ^ s_b)<br>print(s_a.symmetric_difference(s_b))<br># 修改元素<br>s_a.add(‘x’)<br>s_a.update([4, 5, 60, 70])<br>print(s_a)<br>s_a.remove(70)<br>print(s_a)<br># s_a.remove(100)<br>print(len(s_a))<br>for i in s_a:<br>    print(i)<br>testSet = {-1 , 1}<br>print(testSet)<br>print(type(testSet))<br>—-结果—-<br>{1, 2, 3, 4, 5, 6, 7, 8, 9}<br>{1, 2, 3, 4, 5, 6, 7, 8, 9}<br>{4, 5, 6}<br>{4, 5, 6}<br>{1, 2, 3}<br>{1, 2, 3}<br>{1, 2, 3, 7, 8, 9}<br>{1, 2, 3, 7, 8, 9}<br>{1, 2, 3, 4, 5, 6, 70, ‘x’, 60}<br>{1, 2, 3, 4, 5, 6, ‘x’, 60}<br>8<br>1<br>2<br>3<br>4<br>5<br>6<br>x<br>60<br>{1, -1}</p>
 <class 'set'="">
 
-<p><strong>—切片</strong></p>
+<p><strong>—-切片</strong></p>
 <ul>
 <li>存取序列（列表，元组，字符串）的任意一部分</li>
 <li>格式：seq[开始索引:结束索引:步长]</li>
@@ -518,8 +517,8 @@
 <li>负数步长</li>
 <li>参考代码：lesson_03_slice.py</li>
 </ul>
-<p>#大杀器 —— 关于 容器的切片<br>print(“””—容器的 切片开始—“””)<br>li = list(range(10))<br>print(li)<br># 切片 [start:end:steps]  &gt;= start &amp; &lt; end<br>print(li[2:5])  # [2, 3, 4]<br>print(li[:4])   # [0, 1, 2, 3]<br>print(li[5:])   # [5, 6, 7, 8, 9]<br>print(li[0:20:3])   # [0, 3, 6, 9]  即超出索引大小，仍然按照自己的索引大小进行操作.<br># 负值怎么处理？<br>print(li[5: -2])    # [5, 6, 7]  &lt;8 注意是不等号<br>print(li[9:0:-1])   # [9, 8, 7, 6, 5, 4, 3, 2,1]   -1即 &lt;=9 and &gt; 0<br>print(li[9::-1])   # [9 … 0]<br>print(li[::-2]) # [9, 7, 5, 3, 1]<br># 切片生成一个新的对象<br>print(li)       # 还是保持原样 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br>re_li = li[::-1]<br>print(re_li)    # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</p>
-<p><strong>—列表推导</strong></p>
+<h1 id="大杀器-——-关于-容器的切片"><a href="#大杀器-——-关于-容器的切片" class="headerlink" title="大杀器 —— 关于 容器的切片"></a>大杀器 —— 关于 容器的切片</h1><p>print(“””—-容器的 切片开始—-“””)<br>li = list(range(10))<br>print(li)<br># 切片 [start:end:steps]  &gt;= start &amp; &lt; end<br>print(li[2:5])  # [2, 3, 4]<br>print(li[:4])   # [0, 1, 2, 3]<br>print(li[5:])   # [5, 6, 7, 8, 9]<br>print(li[0:20:3])   # [0, 3, 6, 9]  即超出索引大小，仍然按照自己的索引大小进行操作.<br># 负值怎么处理？<br>print(li[5: -2])    # [5, 6, 7]  <8 注意是不等号="" print(li\[9:0:-1\])="" #="" \[9,="" 8,="" 7,="" 6,="" 5,="" 4,="" 3,="" 2,1\]="" -1即="" <="9" and=""> 0<br>print(li[9::-1])   # [9 … 0]<br>print(li[::-2]) # [9, 7, 5, 3, 1]<br># 切片生成一个新的对象<br>print(li)       # 还是保持原样 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br>re_li = li[::-1]<br>print(re_li)    # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</8></p>
+<p><strong>—-列表推导</strong></p>
 <ul>
 <li>问题的提出</li>
 <li>快速简单的生成一个列表</li>
@@ -528,9 +527,9 @@
 <li>二维列表推导以及注意事项</li>
 <li>参考代码：lesson_03_comprehensions.py</li>
 </ul>
-<p>#列表推导<br>print(“\n—列表推导—“)<br>li = []<br>for i in range(20):<br>    if (i % 2) == 0:<br>        li.append(i)<br>print(li)<br>li = [1] <em> 10           #区别于一维，一维这样是深拷贝<br>li[3] = 3<br>print(li)               #[1, 1, 1, 3, 1, 1, 1, 1, 1, 1]<br>li = [i </em> 2 for i in range(10)]<br>print(li)<br>‘’’<br>li_2d = [[0] <em> 3] </em> 3   #因为这里 把第一行改变了三次，所以只是浅拷贝了，第一个改其他两个也都跟着要改！<br>print(li_2d)<br>li_2d[0][0] = 100       #所以下面未注释的 为深拷贝<br>print(li_2d)<br>‘’’<br>li_2d = [[0] * 3 for i in range(3)]<br>li_2d[0][0] = 100<br>print(li_2d)            #[[100, 0, 0], [0, 0, 0], [0, 0, 0]]<br>s = {x for x in range(10) if x % 2 == 0}<br>print(s)                                #{0, 2, 4, 6, 8}<br>d = {x: x % 2 == 0 for x in range(10)}<br>print(d)   #{0: True, 1: False, 2: True, 3: False, 4: True,</p>
-<pre><code>#5: False, 6: True, 7: False, 8: True, 9: False}
-</code></pre><p><strong>—生成器</strong></p>
+<h1 id="列表推导"><a href="#列表推导" class="headerlink" title="列表推导"></a>列表推导</h1><p>print(“\\n—-列表推导—-“)<br>li = []<br>for i in range(20):<br>    if (i % 2) == 0:<br>        li.append(i)<br>print(li)<br>li = [1] <em> 10           #区别于一维，一维这样是深拷贝<br>li[3] = 3<br>print(li)               #[1, 1, 1, 3, 1, 1, 1, 1, 1, 1]<br>li = [i </em> 2 for i in range(10)]<br>print(li)<br>‘’’<br>li_2d = [[0] <em> 3] </em> 3   #因为这里 把第一行改变了三次，所以只是浅拷贝了，第一个改其他两个也都跟着要改！<br>print(li_2d)<br>li_2d[0][0] = 100       #所以下面未注释的 为深拷贝<br>print(li_2d)<br>‘’’<br>li_2d = [[0] * 3 for i in range(3)]<br>li_2d[0][0] = 100<br>print(li_2d)            #[[100, 0, 0], [0, 0, 0], [0, 0, 0]]<br>s = {x for x in range(10) if x % 2 == 0}<br>print(s)                                #{0, 2, 4, 6, 8}<br>d = {x: x % 2 == 0 for x in range(10)}<br>print(d)   #{0: True, 1: False, 2: True, 3: False, 4: True,</p>
+<pre><code>       #5: False, 6: True, 7: False, 8: True, 9: False}
+</code></pre><p><strong>—-生成器</strong></p>
 <ul>
 <li>问题的提出</li>
 <li>创建一个巨大的列表而仅仅需要访问其中少量几个元素</li>
@@ -539,8 +538,8 @@
 <li>遍历：next或者for循环</li>
 <li>参考代码：lesson_03_generator.py</li>
 </ul>
-<p># 平方表<br>print(“””—平方表开始—“””)<br>square_table = []<br>for i in range(5000):           #计算太慢<br>    square_table.append(i <em> i)<br>for i in range(5):<br>    print(square_table[i])<br>square_generator = (x </em> x for x in range(50000))<br>print(type(square_generator))<br>for i in range(5):                 #当你真正的使用的时候生成器才进行计算.<br>    print(next(square_generator))<br>def fib(limit):<br>    n, a, b = 0, 0, 1<br>    while n &lt; limit:<br>        yield b                    #python yield有关于线程.<br>        a, b = b, a + b<br>        n += 1<br>    return ‘done’<br>import traceback<br>f = fib(5)<br>print(type(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>try:<br>    print(next(f))<br>except StopIteration:<br>    traceback.print_exc()<br>for i in fib(5):<br>    print(i)</p>
-<p><strong>—迭代器</strong></p>
+<p># 平方表<br>print(“””—-平方表开始—-“””)<br>square_table = []<br>for i in range(5000):           #计算太慢<br>    square_table.append(i <em> i)<br>for i in range(5):<br>    print(square_table[i])<br>square_generator = (x </em> x for x in range(50000))<br>print(type(square_generator))<br>for i in range(5):                 #当你真正的使用的时候生成器才进行计算.<br>    print(next(square_generator))<br>def fib(limit):<br>    n, a, b = 0, 0, 1<br>    while n &lt; limit:<br>        yield b                    #python yield有关于线程.<br>        a, b = b, a + b<br>        n += 1<br>    return ‘done’<br>import traceback<br>f = fib(5)<br>print(type(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>print(next(f))<br>try:<br>    print(next(f))<br>except StopIteration:<br>    traceback.print_exc()<br>for i in fib(5):<br>    print(i)</p>
+<p><strong>—-迭代器</strong></p>
 <ul>
 <li>问题的提出</li>
 <li>可以直接作用于for循环的对象统称为可迭代对象：Iterable</li>
@@ -735,7 +734,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -746,7 +745,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -757,7 +756,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -854,7 +853,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中所有的东西-都是类！"><span class="nav-number">1.</span> <span class="nav-text">Python中所有的东西 都是类！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节"><span class="nav-number">2.</span> <span class="nav-text">第三节</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中所有的东西-都是类！"><span class="nav-number">1.</span> <span class="nav-text">Python中所有的东西 都是类！</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串反转——先进行正向的每个word的翻转—再进行整个str-list的反转—最后把list"><span class="nav-number"></span> <span class="nav-text">字符串反转——先进行正向的每个word的翻转—再进行整个str_list的反转—最后把list</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节"><span class="nav-number">1.</span> <span class="nav-text">第三节</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大杀器-——-关于-容器的切片"><span class="nav-number"></span> <span class="nav-text">大杀器 —— 关于 容器的切片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表推导"><span class="nav-number"></span> <span class="nav-text">列表推导</span></a></li></div>
             
 
           </div>
@@ -895,7 +894,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1521,6 +1520,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

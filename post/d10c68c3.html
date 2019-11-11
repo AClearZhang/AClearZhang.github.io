@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。  当为TableRow对象时，可在TableRow下添加">
+<meta name="description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介   Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。       当为TableRow对象时，可在Tab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TableLayout表格布局详解">
 <meta property="og:url" content="http://blog.aclear.top/post/d10c68c3.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。  当为TableRow对象时，可在TableRow下添加">
+<meta property="og:description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介   Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。       当为TableRow对象时，可在Tab">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pic.aclear.top/tablelayout布局.jpg">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TableLayout表格布局详解">
-<meta name="twitter:description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。  当为TableRow对象时，可在TableRow下添加">
+<meta name="twitter:description" content="这篇博文包括的内容： 1、TableLayout简介 2、**TableLayout行列数的确定 3、**TableLayout可设置的属性详解 4、一个包含4个TableLayout布局的实例及效果图 一、Tablelayout简介   Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。       当为TableRow对象时，可在Tab">
 <meta name="twitter:image" content="http://pic.aclear.top/tablelayout布局.jpg">
 
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  797
+                  702
                 </span>
               
 
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -442,68 +442,81 @@
 
       
         <p><strong>这篇博文包括的内容：</strong> <strong>1、TableLayout简介</strong> <strong>2、**</strong>TableLayout行列数的确定<strong> </strong>3、<strong>**TableLayout可设置的属性详解</strong> <strong>4、一个包含4个TableLayout布局的实例及效果图</strong></p>
-<h2 id="一、Tablelayout简介"><a href="#一、Tablelayout简介" class="headerlink" title="一、Tablelayout简介"></a>一、Tablelayout简介</h2><pre><code>Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。
+<h2 id="一、Tablelayout简介"><a href="#一、Tablelayout简介" class="headerlink" title="一、Tablelayout简介"></a>一、Tablelayout简介</h2><pre><code>   Tablelayout类以行和列的形式对控件进行管理，每一行为一个TableRow对象，或一个View控件。
 </code></pre><hr>
-<pre><code>当为TableRow对象时，可在TableRow下添加子控件，默认情况下，每个子控件占据一列。
+<pre><code>     当为TableRow对象时，可在TableRow下添加子控件，默认情况下，每个子控件占据一列。
 </code></pre><hr>
-<pre><code>当为View时，该View将独占一行。
+<pre><code>     当为View时，该View将独占一行。
 </code></pre><hr>
 <h2 id="二、TableLayout行列数的确定"><a href="#二、TableLayout行列数的确定" class="headerlink" title="二、TableLayout行列数的确定"></a>二、TableLayout行列数的确定</h2><p>TableLayout的行数由开发人员直接指定，即有多少个TableRow对象（或View控件），就有多少行。 TableLayout的列数等于含有最多子控件的TableRow的列数。如第一TableRow含2个子控件，第二个TableRow含3个，第三个TableRow含4个，那么该TableLayout的列数为4.</p>
 <h2 id="三、TableLayout可设置的属性详解"><a href="#三、TableLayout可设置的属性详解" class="headerlink" title="三、TableLayout可设置的属性详解"></a>三、TableLayout可设置的属性详解</h2><blockquote>
 <p>TableLayout可设置的属性包括全局属性及单元格属性。 1、全局属性也即列属性，有以下3个参数：</p>
-</blockquote>
-<blockquote>
 <blockquote>
 <p>android:stretchColumns    设置可伸展的列。该列可以向行方向伸展，最多可占据一整行。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>android:shrinkColumns     设置可收缩的列。当该列子控件的内容太多，已经挤满所在行，那么该子控件的内容将往列方向显示。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>android:collapseColumns 设置要隐藏的列。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>示例：</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>android:stretchColumns=”0”           第0列可伸展</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>android:shrinkColumns=”1,2”         第1,2列皆可收缩</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>android:collapseColumns=”*”         隐藏所有行 说明：列可以同时具备stretchColumns及shrinkColumns属性，若此，那么当该列的内容N多时，将“多行”显示其内容。（这里不是真正的多行，而是系统根据需要自动调节该行的layout_height）</p>
 </blockquote>
-</blockquote>
-<blockquote>
 <p>2、单元格属性，有以下2个参数：</p>
-</blockquote>
-<blockquote>
 <blockquote>
 <p>android:layout_column    指定该单元格在第几列显示 android:layout_span        指定该单元格占据的列数（未指定时，为1）</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>示例： android:layout_column=”1”    该控件显示在第1列 android:layout_span=”2”        该控件占据2列 说明：一个控件也可以同时具备这两个特性。</p>
 </blockquote>
 </blockquote>
 <p><strong>四、一个包含4个TableLayout布局的实例及效果图</strong></p>
 <blockquote>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent" android:padding="3dip"><br>    &lt;!-- 第1个TableLayout，用于描述表中的列属性。第0列可伸展，第1列可收缩 ，第2列被隐藏–&gt;<br>    <textview android:text="表1：全局设置：列属性设置" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff"><br>    <tablelayout android:id="@+id/table1" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="0" android:shrinkcolumns="1" android:collapsecolumns="2" android:padding="3dip"><br>        <tablerow><br>            <button android:text="该列可伸展"><br>            </button><button android:text="该列可收缩"><br>            </button><button android:text="我被隐藏了"><br>        </button></tablerow><br>        <tablerow><br>            <textview android:text="我向行方向伸展，我可以很长    "><br>            <textview android:text="我向列方向收缩，我可以很深"><br>        </textview></textview></tablerow><br>    </tablelayout><br>    &lt;!-- 第2个TableLayout，用于描述表中单元格的属性，包括：android:layout_column 及android:layout_span–&gt;<br>    <textview android:text="表2:单元格设置：指定单元格属性设置" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff"><br>    <tablelayout android:id="@+id/table2" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:padding="3dip"><br>        <tablerow><br>            <button android:text="第0列"><br>            </button><button android:text="第1列"><br>            </button><button android:text="第2列"><br>        </button></tablerow><br>        <tablerow><br>            <textview android:text="我被指定在第1列" android:layout_column="1"><br>        </textview></tablerow><br>        <tablerow><br>            <textview android:text="我跨1到2列，不信你看！" android:layout_column="1" android:layout_span="2"><br>        </textview></tablerow><br>    </tablelayout><br>    &lt;!-- 第3个TableLayout，使用可伸展特性布局–&gt;<br>    <textview android:text="表3：应用一，非均匀布局" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff"><br>    <tablelayout android:id="@+id/table3" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="*" android:padding="3dip"><br>        <tablerow><br>            <button android:text="一"></button><br>            <button android:text="两字"></button><br>            <button android:text="三个字"></button><br>        </tablerow><br>    </tablelayout><br>    &lt;!-- 第4个TableLayout，使用可伸展特性，并指定每个控件宽度一致，如1dip–&gt;<br>    <textview android:text="表4：应用二，均匀布局" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff"><br>    <tablelayout android:id="@+id/table4" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="*" android:padding="3dip"><br>        <tablerow><br>            <button android:text="一" android:layout_width="1dip"></button><br>            <button android:text="两字" android:layout_width="1dip"></button><br>            <button android:text="三个字" android:layout_width="1dip"></button><br>        </tablerow><br>    </tablelayout><br></textview></textview></textview></textview></linearlayout>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent" android:padding="3dip">
+    <!\-\- 第1个TableLayout，用于描述表中的列属性。第0列可伸展，第1列可收缩 ，第2列被隐藏-->
+    <textview android:text="表1：全局设置：列属性设置" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff">
+    <tablelayout android:id="@+id/table1" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="0" android:shrinkcolumns="1" android:collapsecolumns="2" android:padding="3dip">
+        <tablerow>
+            <button android:text="该列可伸展">
+            </button><button android:text="该列可收缩">
+            </button><button android:text="我被隐藏了">
+        </button></tablerow>
+        <tablerow>
+            <textview android:text="我向行方向伸展，我可以很长    ">
+            <textview android:text="我向列方向收缩，我可以很深">
+        </textview></textview></tablerow>
+    </tablelayout>
+    <!\-\- 第2个TableLayout，用于描述表中单元格的属性，包括：android:layout\_column 及android:layout\_span-->
+    <textview android:text="表2:单元格设置：指定单元格属性设置" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff">
+    <tablelayout android:id="@+id/table2" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:padding="3dip">
+        <tablerow>
+            <button android:text="第0列">
+            </button><button android:text="第1列">
+            </button><button android:text="第2列">
+        </button></tablerow>
+        <tablerow>
+            <textview android:text="我被指定在第1列" android:layout_column="1">
+        </textview></tablerow>
+        <tablerow>
+            <textview android:text="我跨1到2列，不信你看！" android:layout_column="1" android:layout_span="2">
+        </textview></tablerow>
+    </tablelayout>
+    <!\-\- 第3个TableLayout，使用可伸展特性布局-->
+    <textview android:text="表3：应用一，非均匀布局" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff">
+    <tablelayout android:id="@+id/table3" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="*" android:padding="3dip">
+        <tablerow>
+            <button android:text="一"></button>
+            <button android:text="两字"></button>
+            <button android:text="三个字"></button>
+        </tablerow>
+    </tablelayout>
+    <!\-\- 第4个TableLayout，使用可伸展特性，并指定每个控件宽度一致，如1dip-->
+    <textview android:text="表4：应用二，均匀布局" android:layout\_height="wrap\_content" android:layout\_width="wrap\_content" android:textsize="15sp" android:background="#7f00ffff">
+    <tablelayout android:id="@+id/table4" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:stretchcolumns="*" android:padding="3dip">
+        <tablerow>
+            <button android:text="一" android:layout_width="1dip"></button>
+            <button android:text="两字" android:layout_width="1dip"></button>
+            <button android:text="三个字" android:layout_width="1dip"></button>
+        </tablerow>
+    </tablelayout>
+</textview></textview></textview></textview></linearlayout>
 
 <p>说明：第4个TableLayout里的均匀布局的均匀效果是有限的。其有限性体现在，当该行有N列，则每列的控件内容不能多于1/N。<strong>运行效果图：（如图1）</strong></p>
 </blockquote>
@@ -698,7 +711,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -709,7 +722,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +733,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -858,7 +871,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1484,6 +1497,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

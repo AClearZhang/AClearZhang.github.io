@@ -539,8 +539,8 @@
 <p>{<br>    “server”: “0.0.0.0”,<br>    “server_ipv6”: “::”,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”: 1081,<br>    “port_password”:{<br>        “端口1”:”密码1”,<br>        “端口2”:”密码2”,<br>        “端口3”:”密码3”,<br>        “端口4”:”密码4”<br>    },<br>    “timeout”: 120,<br>    “udp_timeout”: 60,<br>    “method”: “chacha20”,<br>    “protocol”: “auth_sha1_compatible”,<br>    “protocol_param”: “”,<br>    “obfs”: “http_simple_compatible”,<br>    “obfs_param”: “”,<br>    “dns_ipv6”: false,<br>    “connect_verbose_info”: 0,<br>    “redirect”: “”,<br>    “fast_open”: false,<br>    “workers”: 1<br>}</p>
 <blockquote>
 <p>3、按esc返回，输入:wq回车保存 4、输入/etc/init.d/shadowsocks restart重启ssr 5、如不能联网，则关闭防火墙（逐条输入）</p>
-<pre><code>service iptables stop
-chkconfig iptables off
+<pre><code>  service iptables stop
+  chkconfig iptables off
 </code></pre></blockquote>
 <hr>
 <p><strong>⑤SSR手机端配置（安卓，IOS作者不熟悉，请自行学习）</strong> #SSR软件配置教程</p>
@@ -548,24 +548,22 @@ chkconfig iptables off
 <p>0.进入SSR 1.配置名称随意 2.服务器你的IP 3.远程端口你设置的端口 4.本地端口默认 5.密码你设置的密码 6.加密方法chacha20 7.协议auth-sha1 8.混淆方式http-simple 9.混淆参数填对应运营商免流网址，网上很多 10.点右上角飞机图标 11、让SSR软件保留在后台 12、百度输入“ip”回车 13、如果显示的是你的服务器IP即证明配置成功 14、接下来就是测试免不免流量了，方法是先关闭网络，开关几次飞行模式，5分钟后打开网络按上面的教程连接SSR后进移动app查询流量，然后下载5M左右的文件，再重复开头的方法关网开飞行等5分钟后再查流量，如果流量没少，即证明99%免流成功 15、注意，SSR软件一定要保留在后台运行，不然会扣流量</p>
 </blockquote>
 <hr>
-<p><strong>⑥SSR提速之锐速（仅支持KVM,Xen,vmare架构）</strong> <em>由于锐速对内核要求严格，所以要先更换内核</em></p>
+<p><strong>⑥SSR提速之锐速（仅支持KVM,Xen,vmare架构）</strong> _由于锐速对内核要求严格，所以要先更换内核_</p>
 <blockquote>
 <p>在<a href="https://www.wn789.com/4678.html" title="锐速ServerSpeeder无限带宽破解版Linux一键自动安装包-蜗牛789" target="_blank" rel="noopener">锐速ServerSpeeder无限带宽破解版Linux一键自动安装包</a>文章中介绍了如何使用一键包安装锐速，优化服务器网络速度。其实要想在自己的VPS安装锐速，首先内核必须要匹配锐速版本。如果内核不支持安装锐速，我们需要手动修改内核为支持安装锐速版本，不过OpenVZ虚拟技术架设的VPS是无法是无法更换内核，另外并不是所有的XEN和KVM虚拟技术架设的VPS都支持更换内核，像Linode VPS就不支持以下方法修改，需在VPS管理页面修改（<a href="https://www.wn789.com/4666.html" title="Linode VPS如何在管理页面更换内核-蜗牛789" target="_blank" rel="noopener">Linode VPS如何在管理页面更换内核</a>）。</p>
 <h2 id="一、CentOS-6内核更换教程："><a href="#一、CentOS-6内核更换教程：" class="headerlink" title="一、CentOS 6内核更换教程："></a>一、CentOS 6内核更换教程：</h2><p>CentOS 6支持安装锐速的内核：2.6.32-504.3.3.el6.x86_64 1、首先运行下面命令为自己的VPS下载安装内核。</p>
-<p>uname -r #查看当前内核版本 rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</a> rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm</a> –force</p>
+<p>uname -r #查看当前内核版本 rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</a> rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-2.6.32-504.3.3.el6.x86_64.rpm</a> —force</p>
 <p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223251-1.png" alt=""> 2、执行命令“rpm -qa | grep kernel”，查看内核是否安装成功。如果显示你安装的内核版本，表示安装成功。</p>
 <p>rpm -qa | grep kernel</p>
 <p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223313-1.png" alt=""> 3、重启VPS，查看内核是否修改成功。</p>
 <p>reboot #重启VPS uname -r #当前使用内核版本</p>
 <p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223223441-1.png" alt=""> <strong>二、CentOS 7内核更换教程</strong> CentOS 7支持安装锐速的内核：3.10.0-327.el7.x86_64 1、首先使用下面命令下载及更换内核，</p>
-<p>rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm</a> –force rpm -qa | grep kernel #查看内核是否安装成功</p>
+<p>rpm -ivh <a href="http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm" target="_blank" rel="noopener">http://xz.wn789.com/CentOSkernel/kernel-3.10.0-229.1.2.el7.x86_64.rpm</a> —force rpm -qa | grep kernel #查看内核是否安装成功</p>
 <p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223220631-1.png" alt=""> 2、重启VPS，查看内核是否修改成功。</p>
 <p>reboot #重启VPS uname -r #当前使用内核版本</p>
 <p><img src="https://www.wn789.com/wp-content/uploads/2017/02/20170223220726.png" alt=""> 3、目前Centos 7小问题比较多，锐速针对centos 7的版版本较少。推荐在CentOS 6.中安装。</p>
-</blockquote>
-<blockquote>
 <p><strong>再安装锐速</strong></p>
-<p>wget -N –no-check-certificate <a href="https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh</a><br>bash serverspeeder.sh</p>
+<p>wget -N —no-check-certificate <a href="https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/wn789/serverspeeder/master/serverspeeder.sh</a><br>bash serverspeeder.sh</p>
 </blockquote>
 <p><strong>（centos6 64位）</strong></p>
 <blockquote>
@@ -607,7 +605,7 @@ chkconfig iptables off
 <h1 id="openvpn工具箱开热点教程"><a href="#openvpn工具箱开热点教程" class="headerlink" title="openvpn工具箱开热点教程"></a>openvpn工具箱开热点教程</h1><blockquote>
 <p>一、先打开热点，让其他设备连上你的热点 二、打开openvpn工具箱 三、点VPN共享向导 四、点通用模式 五、点起点 六、搞定，接着在连接你热点的设备上百度输入“IP”,如果显示的是你的服务器IP，那就没错了 七、如果不能正常上网，就需要设置静态IP，方法就是打开对方设备的WiFi高级设置，IP设为192.168.43.2-255，子网掩码255.255.255.0，网关192.168.43.1，DNS8.8.8.8，然后就可以正常连接了（PS，也可以用路由器中继热点，在路由器里同样按以上静态IP方法设置，路由器中继的好处就是设备可以随连随上、发射信号更远更强） 2、IOS添加雷锋源下载TETHERME插件，由于作者没用过，所以请自行学习，听说很简单，安装后点开启即可</p>
 </blockquote>
-<h2 id="第三部分：抓包（端口和混淆参数）"><a href="#第三部分：抓包（端口和混淆参数）" class="headerlink" title="第三部分：抓包（端口和混淆参数）"></a>第三部分：抓包（端口和混淆参数）</h2><p><em>作者一直用移动，不熟悉联通和电信，不过三网原理都一样，熟悉了后自然可以举一反三</em> <strong>SSR免流靠混淆参数和端口(没有的话就只能光fan qiang用了)</strong> 混淆参数，就是免流网址，就是host，其实能免的host几乎都能在网上找到，不过还是自己学会怎么抓比较好，万一哪天就抓到了新的host了呢。作者常用的抓包软件有两个，一个是wi.cap，一个是packet capture，但是wi.cap需要root和xp框架，要求比较高，所以本教程只介绍不用root也不用框架的packet capture <strong>#packet capture抓包教程</strong></p>
+<h2 id="第三部分：抓包（端口和混淆参数）"><a href="#第三部分：抓包（端口和混淆参数）" class="headerlink" title="第三部分：抓包（端口和混淆参数）"></a>第三部分：抓包（端口和混淆参数）</h2><p>_作者一直用移动，不熟悉联通和电信，不过三网原理都一样，熟悉了后自然可以举一反三_ <strong>SSR免流靠混淆参数和端口(没有的话就只能光fan qiang用了)</strong> 混淆参数，就是免流网址，就是host，其实能免的host几乎都能在网上找到，不过还是自己学会怎么抓比较好，万一哪天就抓到了新的host了呢。作者常用的抓包软件有两个，一个是wi.cap，一个是packet capture，但是wi.cap需要root和xp框架，要求比较高，所以本教程只介绍不用root也不用框架的packet capture <strong>#packet capture抓包教程</strong></p>
 <blockquote>
 <p>1、首先安装packet capture，可以百度，也可以去我分享的百度链接里下载 2、关闭所有联网软件，打开手机网络（net和wap都可以试下） 3、打开packet capture 4、点击上方绿色三角形按钮 5、打开要抓包的软件（免流量软件，比如掌厅、咪咕、沃TV等），随便操作软件，尽可能多操作几次 6、返回packet capture 7、点进去上方日期、时间命名的标题栏 8、找到Host字样的信息，那就是混淆参数，如下图 <img src="http://img.blog.csdn.net/20170901153220491?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjUzODY1ODM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 </blockquote>
@@ -812,7 +810,7 @@ chkconfig iptables off
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -823,7 +821,7 @@ chkconfig iptables off
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -834,7 +832,7 @@ chkconfig iptables off
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -972,7 +970,7 @@ chkconfig iptables off
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1598,6 +1596,28 @@ chkconfig iptables off
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -444,10 +444,10 @@
 <p>def tupleArgs(arg1, arg2= ‘B’, *arg3):<br>    print(‘arg 1:%s ‘ % arg1)<br>    print(‘arg 2:%s ‘ % arg2)<br>    for eachArgNum in range(len(arg3)):<br>        print(‘the %d in arg 3 :%s ‘ % (eachArgNum,arg3[eachArgNum]))<br>if __name__ == ‘__main__‘:<br>    tupleArgs(‘A’)      </p>
 <pre><code>#   arg 1:A 
 #   arg 2:B 
-tupleArgs(&apos;23&apos;,&apos;C&apos;)
+tupleArgs(&#39;23&#39;,&#39;C&#39;)
 #   arg 1:23 
 #   arg 2:C
-tupleArgs(&apos;12&apos;,&apos;A&apos;,&apos;GF&apos;,&apos;L&apos;)
+tupleArgs(&#39;12&#39;,&#39;A&#39;,&#39;GF&#39;,&#39;L&#39;)
 #   arg 1:12 
 #   arg 2:A 
 #   the 0 in arg 3 :GF 
@@ -455,23 +455,23 @@ tupleArgs(&apos;12&apos;,&apos;A&apos;,&apos;GF&apos;,&apos;L&apos;)
 
 **kw
 
-def dictArgs(kw1, kw2= &apos;B&apos;, **kw3):
-print(&apos;kw 1:%s &apos; % kw1)
-print(&apos;kw 2:%s &apos; % kw2)
+def dictArgs(kw1, kw2= &#39;B&#39;, **kw3):
+print(&#39;kw 1:%s &#39; % kw1)
+print(&#39;kw 2:%s &#39; % kw2)
 for eachKw in kw3:
-    print(&apos;the %s ----&gt;:%s &apos; % (eachKw,kw3\[eachKw\]))
+    print(&#39;the %s ----&gt;:%s &#39; % (eachKw,kw3\[eachKw\]))
 </code></pre><p>if __name__ == ‘__main__‘:<br>    dictArgs(‘A’)</p>
 <pre><code>#   kw 1:A 
 #   kw 2:B 
-dictArgs(&apos;23&apos;,&apos;C&apos;)
+dictArgs(&#39;23&#39;,&#39;C&#39;)
 #   kw 1:23 
 #   kw 2:C 
-dictArgs(&apos;12&apos;,&apos;A&apos;, c = &apos;C&apos;,d = &apos;12121212&apos;)
+dictArgs(&#39;12&#39;,&#39;A&#39;, c = &#39;C&#39;,d = &#39;12121212&#39;)
 #   kw 1:12 
 #   kw 2:A 
 #   the d ----&gt;:12121212 
 #   the c ----&gt;:C 
-dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW&apos;)
+dictArgs(&#39;kw&#39;,c = &#39;C&#39;,d = &#39;12121212&#39;,kw = &#39;KW&#39;)
 #   kw 1:kw 
 #   kw 2:B 
 #   the kw ----&gt;:KW 
@@ -666,7 +666,7 @@ dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -677,7 +677,7 @@ dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -688,7 +688,7 @@ dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -826,7 +826,7 @@ dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1452,6 +1452,28 @@ dictArgs(&apos;kw&apos;,c = &apos;C&apos;,d = &apos;12121212&apos;,kw = &apos;KW
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

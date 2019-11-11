@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta name="description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即—放置在\[之间的这个地方\]）。 然而生命周期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Struts2：OGNL表达式，遍历List、Map集合；投影的使用">
 <meta property="og:url" content="http://blog.aclear.top/post/78312d06.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta property="og:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即—放置在\[之间的这个地方\]）。 然而生命周期">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png">
 <meta property="og:image" content="https://images0.cnblogs.com/blog/490648/201312/12110039-1bb9961daaa041bcbda938c6669749a1.png">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struts2：OGNL表达式，遍历List、Map集合；投影的使用">
-<meta name="twitter:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&amp;lt;&amp;gt;[之间的这个地方]&amp;lt">
+<meta name="twitter:description" content="这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即—放置在\[之间的这个地方\]）。 然而生命周期">
 <meta name="twitter:image" content="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png">
 
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.2k
+                  2.8k
                 </span>
               
 
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  13
                 </span>
               
             </div>
@@ -443,7 +443,7 @@
 
       
         <blockquote>
-<p>这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即–放置在&lt;&gt;[之间的这个地方]&lt;/&gt;）。 然而生命周期结束就会被放置在，JavaEE的OGNL自己的“银行”（sc）当中去！（有利于值栈资源的利用.） 阅读文章时理解难点是：值栈和sc 标签的使用 和 Servlet Request、ActionContext对于Servlet访问的理解，前者是jsp、Http提供的方法类，而后者是Struts2提供的访问Servlet的方法。</p>
+<p>这里修改通过Servlet action传播到jsp。理解Servlet #。 理解Stack Context ，value stack 。username 传输不过来的原因—private了！ 对于标签中valuestack（值栈） 和 stack context（sc）：一些标签中的var=”0”只是当父类标签生命周期存的时候才放在值栈当中（即—放置在<>\[之间的这个地方\]</>）。 然而生命周期结束就会被放置在，JavaEE的OGNL自己的“银行”（sc）当中去！（有利于值栈资源的利用.） 阅读文章时理解难点是：值栈和sc 标签的使用 和 Servlet Request、ActionContext对于Servlet访问的理解，前者是jsp、Http提供的方法类，而后者是Struts2提供的访问Servlet的方法。</p>
 </blockquote>
 <h2 id="OGNL中-、-、-、-、-、-标签的使用简介"><a href="#OGNL中-、-、-、-、-、-标签的使用简介" class="headerlink" title="OGNL中$、%、#、{}、^、$ 标签的使用简介"></a><a href="http://www.xuebuyuan.com/1337243.html?mobile=0" target="_blank" rel="noopener">OGNL中$、%、#、{}、^、$ 标签的使用简介</a></h2><p>Struts2的ActionContext是来自于Ognl的上下文，是OGNL的一个增强，在Struts2的Context的根对象就是Action。因为只有根对象时可以直接访问的，不需要加任何标记，比如request,session,application这些对象在访问时都不需要加#号。<img src="http://img.my.csdn.net/uploads/201212/27/1356602796_1417.png" alt=""></p>
 <p><strong>OGNL中$号的使用</strong> <strong>1..</strong>在国际化资源文件中，引用OGNL表达式 <strong>2..</strong>在struts.xml文件中，引用OGNL表达式</p>
@@ -457,24 +457,19 @@
 <p>例子</p>
 <p>attr</p>
 <p>用于按request&gt;&gt;session&gt;&gt;application顺序访问其属性</p>
-<p>#attr.userName相当于按顺序从三个范围读取userName属性直到找到为止</p>
-<p>request</p>
+<h1 id="attr-userName相当于按顺序从三个范围读取userName属性直到找到为止"><a href="#attr-userName相当于按顺序从三个范围读取userName属性直到找到为止" class="headerlink" title="attr.userName相当于按顺序从三个范围读取userName属性直到找到为止"></a>attr.userName相当于按顺序从三个范围读取userName属性直到找到为止</h1><p>request</p>
 <p>包含当前HttpServletRequest的属性的Map</p>
-<p>#request.userName相当于request.getAttribute(“userName”)</p>
-<p>session</p>
+<h1 id="request-userName相当于request-getAttribute-“userName”"><a href="#request-userName相当于request-getAttribute-“userName”" class="headerlink" title="request.userName相当于request.getAttribute(“userName”)"></a>request.userName相当于request.getAttribute(“userName”)</h1><p>session</p>
 <p>包含当前HttpSession的属性的Map</p>
-<p>#session.userName相当于session.getAttribute(“userName”)</p>
-<p>application</p>
+<h1 id="session-userName相当于session-getAttribute-“userName”"><a href="#session-userName相当于session-getAttribute-“userName”" class="headerlink" title="session.userName相当于session.getAttribute(“userName”)"></a>session.userName相当于session.getAttribute(“userName”)</h1><p>application</p>
 <p>包含当前应用的ServletContext的属性的Map</p>
-<p>#application.userName相当于application.getAttribute(“userName”)</p>
-<p>parameters</p>
+<h1 id="application-userName相当于application-getAttribute-“userName”"><a href="#application-userName相当于application-getAttribute-“userName”" class="headerlink" title="application.userName相当于application.getAttribute(“userName”)"></a>application.userName相当于application.getAttribute(“userName”)</h1><p>parameters</p>
 <p>包含当前HTTP请求参数的Map</p>
-<p>#parameters.id[0]相当于request.getParameter(“id”)</p>
-<p>  <strong>#符号的用途一般有三种：</strong> <strong>— 、</strong>访问非根对象属性，例如#session.msg表达式，由于Struts 2中值栈被视为根对象，所以访问其他非根对象时，需要加#前缀。实际上，#相当于ActionContext. getContext()；#session.msg表达式相当于ActionContext.getContext().getSession(). getAttribute(“msg”) 。 <strong>二、</strong>用于过滤和投影（projecting）集合，如persons.{?#this.age&gt;25}，persons.{?#this.name==’pla1’}.{age}[0]。 <strong>三、</strong>用来构造Map，例如示例中的#{‘foo1’:’bar1’, ‘foo2’:’bar2’}。</p>
+<h1 id="parameters-id-0-相当于request-getParameter-“id”"><a href="#parameters-id-0-相当于request-getParameter-“id”" class="headerlink" title="parameters.id[0]相当于request.getParameter(“id”)"></a>parameters.id[0]相当于request.getParameter(“id”)</h1><p>  <strong>#符号的用途一般有三种：</strong> <strong>— 、</strong>访问非根对象属性，例如#session.msg表达式，由于Struts 2中值栈被视为根对象，所以访问其他非根对象时，需要加#前缀。实际上，#相当于ActionContext. getContext()；#session.msg表达式相当于ActionContext.getContext().getSession(). getAttribute(“msg”) 。 <strong>二、</strong>用于过滤和投影（projecting）集合，如persons.{?#this.age&gt;25}，persons.{?#this.name==’pla1’}.{age}[0]。 <strong>三、</strong>用来构造Map，例如示例中的#{‘foo1’:’bar1’, ‘foo2’:’bar2’}。</p>
 <p><strong>利用投影获取属性</strong> 利用投影获取List中对象的username属性时，其中<strong>{}</strong>表示的是一个集合 <strong>stus.{username}</strong>就表示将suts中所有的username属性取出组成一个新的列表</p>
 <p><strong>利用选择获取属性</strong></p>
 <p><strong>OGNL表达式是很灵活的，可以同时使用选择技术与投影技术获取属性 使用选择技术时，#this代表当前元素，问号?是把所有满足条件的元素都取出来。 上箭头^是开始的意思，即取符合条件的数据索引中第一条数据，所以stus.{^#this.grade&gt;=60}.{username}输出的是[张三] 注意，此时输出文本中包含中括号，这表示它是一个列表。 而stus.{?#this.grade&gt;=60}.{username}[0]输出的是张三，是字符串，二者是不同的。 美元符号$是结束的意思，即取符合条件的数据索引中最后一条数据，所以stus.{$#this.grade&gt;=60}.{username}输出的是[王五] 这三个符号：问号、上箭头、美元符所返回的都是List</strong></p>
-<p>  <strong>另符两语法：</strong> <strong>使用Top语法</strong>获取值栈中的第二个对象的属性：<strong>&lt;s:property value=”[1].top.username”/&gt;</strong> <strong>使用 N 语法</strong>获取值栈中的第二个对象的属性：<strong>&lt;s:propertyvalue=”[1].username”/&gt;</strong></p>
+<p>  <strong>另符两语法：</strong> <strong>使用Top语法</strong>获取值栈中的第二个对象的属性：<strong><s:property value="\[1\].top.username"></s:property></strong> <strong>使用 N 语法</strong>获取值栈中的第二个对象的属性：<strong><s:propertyvalue="\[1\].username"></s:propertyvalue="\[1\].username"></strong></p>
 <p><a href="https://www.cnblogs.com/nayitian/archive/2013/12/10/3467557.html" target="_blank" rel="noopener">OGNL</a>是Object-Graph Navigation Language的缩写，它是一种功能强大的表达式语言（Expression Language，简称为EL），通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。</p>
 <h1 id="片头（ognl-jsp）"><a href="#片头（ognl-jsp）" class="headerlink" title="片头（ognl.jsp）"></a>片头（ognl.jsp）</h1><p>&lt;%<br>    request.setAttribute(“para”, “request scope attribute”);<br>    request.getSession().setAttribute(“para”, “session scope attribute”);<br>    request.getSession().getServletContext().setAttribute(“para”, “aplication scope attribute”);<br>    List<student> listStudent = new ArrayList<student>();<br>    listStudent.add(new Student(1, “张三”, new Date()));<br>    listStudent.add(new Student(2, “李四”, new Date()));<br>    listStudent.add(new Student(3, “赵五”, new Date()));<br>    listStudent.add(new Student(4, “孙六”, new Date()));<br>    listStudent.add(new Student(5, “钱七”, new Date()));<br>    pageContext.setAttribute(“listStudent”, listStudent);<br>%&gt;</student></student></p>
 <h1 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h1><p><a href="http://127.0.0.1:8080/st/ssh/demo6/ognl.jsp?para=hello" target="_blank" rel="noopener">http://127.0.0.1:8080/st/ssh/demo6/ognl.jsp?para=hello</a></p>
@@ -492,7 +487,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 &lt;hr&gt;
 </code></pre><h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p>HTTP parameters para = hello request attribute para = request scope attribute session attribute para = session scope attribute application attribute para = aplication scope attribute attr attribute para = request scope attribute</p>
 <h2 id="2-通过OGNL表达式创建list集合，并且遍历出集合中的值"><a href="#2-通过OGNL表达式创建list集合，并且遍历出集合中的值" class="headerlink" title="2. 通过OGNL表达式创建list集合，并且遍历出集合中的值"></a>2. 通过OGNL表达式创建list集合，并且遍历出集合中的值</h2><pre><code>&lt;br&gt;
-&lt;s:set name=&quot;list&quot; value=&quot;{&apos;eeeee&apos;,&apos;ddddd&apos;,&apos;ccccc&apos;,&apos;bbbbb&apos;,&apos;aaaaa&apos;}&quot;&gt;&lt;/s:set&gt;
+&lt;s:set name=&quot;list&quot; value=&quot;{&#39;eeeee&#39;,&#39;ddddd&#39;,&#39;ccccc&#39;,&#39;bbbbb&#39;,&#39;aaaaa&#39;}&quot;&gt;&lt;/s:set&gt;
 &lt;s:iterator value=&quot;#list&quot; var=&quot;o&quot;&gt;
     ${o}&lt;br/&gt;
     &lt;!--&lt;s:property /&gt;--&gt;
@@ -502,7 +497,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 </code></pre><p><strong>输出：</strong> eeeee ddddd ccccc bbbbb aaaaa</p>
 <h2 id="3-通过OGNL表达式创建Map集合，并且遍历出集合中的值"><a href="#3-通过OGNL表达式创建Map集合，并且遍历出集合中的值" class="headerlink" title="3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值"></a>3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值</h2><pre><code>&lt;br&gt;
 &lt;s:set name=&quot;map&quot;
-    value=&quot;#{&apos;1&apos;:&apos;eeeee&apos;,&apos;2&apos;:&apos;ddddd&apos;,&apos;3&apos;:&apos;ccccc&apos;,&apos;4&apos;:&apos;bbbbb&apos;,&apos;5&apos;:&apos;aaaaa&apos;}&quot;&gt;&lt;/s:set&gt;
+    value=&quot;#{&#39;1&#39;:&#39;eeeee&#39;,&#39;2&#39;:&#39;ddddd&#39;,&#39;3&#39;:&#39;ccccc&#39;,&#39;4&#39;:&#39;bbbbb&#39;,&#39;5&#39;:&#39;aaaaa&#39;}&quot;&gt;&lt;/s:set&gt;
 &lt;s:iterator value=&quot;#map&quot; var=&quot;o&quot;&gt;
     ${o.key}-&gt;${o.value}&lt;br/&gt;
     &lt;!\-\-    &lt;s:property value=&quot;#o.key&quot;/&gt;-&gt;&lt;s:property value=&quot;#o.value&quot;/&gt;&lt;br/&gt;   --&gt;
@@ -512,11 +507,11 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 &lt;hr&gt;
 </code></pre><p><strong>输出：</strong> 1-&gt;eeeee 2-&gt;ddddd 3-&gt;ccccc 4-&gt;bbbbb 5-&gt;aaaaa</p>
 <h2 id="4-通过OGNL表达式，进行逻辑判断"><a href="#4-通过OGNL表达式，进行逻辑判断" class="headerlink" title="4. 通过OGNL表达式，进行逻辑判断"></a>4. 通过OGNL表达式，进行逻辑判断</h2><pre><code>&lt;br&gt;
-&lt;s:if test=&quot;&apos;aaa&apos; in {&apos;aaa&apos;,&apos;bbb&apos;}&quot;&gt;
-    aaa 在 集合{&apos;aaa&apos;,&apos;bbb&apos;}中；
+&lt;s:if test=&quot;&#39;aaa&#39; in {&#39;aaa&#39;,&#39;bbb&#39;}&quot;&gt;
+    aaa 在 集合{&#39;aaa&#39;,&#39;bbb&#39;}中；
 &lt;/s:if&gt;
 &lt;s:else&gt;
-    aaa 不在 集合{&apos;aaa&apos;,&apos;bbb&apos;}中；
+    aaa 不在 集合{&#39;aaa&#39;,&#39;bbb&#39;}中；
 &lt;/s:else&gt;
 &lt;br/&gt;
 &lt;s:if test=&quot;#request.req not in #list&quot;&gt;
@@ -552,7 +547,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 </code></pre><p><strong>输出：</strong> 32.0</p>
 <h2 id="7-OGNL表达式-迭代标签-详细"><a href="#7-OGNL表达式-迭代标签-详细" class="headerlink" title="7. OGNL表达式 迭代标签 详细"></a>7. OGNL表达式 迭代标签 详细</h2><pre><code>&lt;br&gt;
 &lt;s:set name=&quot;list2&quot;
-    value=&quot;{&apos;aa&apos;,&apos;bb&apos;,&apos;cc&apos;,&apos;dd&apos;,&apos;ee&apos;,&apos;ff&apos;,&apos;gg&apos;,&apos;hh&apos;,&apos;ii&apos;,&apos;jj&apos;}&quot;&gt;&lt;/s:set&gt;
+    value=&quot;{&#39;aa&#39;,&#39;bb&#39;,&#39;cc&#39;,&#39;dd&#39;,&#39;ee&#39;,&#39;ff&#39;,&#39;gg&#39;,&#39;hh&#39;,&#39;ii&#39;,&#39;jj&#39;}&quot;&gt;&lt;/s:set&gt;
 &lt;table border=&quot;1&quot;&gt;
     &lt;tr&gt;
         &lt;td&gt;
@@ -609,7 +604,140 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 &lt;/table&gt;
 </code></pre><p><strong>输出：</strong> <img src="https://images0.cnblogs.com/blog/490648/201312/12110039-1bb9961daaa041bcbda938c6669749a1.png" alt=""></p>
 <h2 id="8-完整代码（ognl-jsp）"><a href="#8-完整代码（ognl-jsp）" class="headerlink" title="8. 完整代码（ognl.jsp）"></a>8. 完整代码（ognl.jsp）</h2><p>&lt;%@ page language=”java” import=”java.util.*,com.clzhang.ssh.demo6.Student” pageEncoding=”utf-8”%&gt;<br>&lt;%@ taglib uri=”/struts-tags” prefix=”s”%&gt;<br>&lt;%<br>    request.setAttribute(“para”, “request scope attribute”);<br>    request.getSession().setAttribute(“para”, “session scope attribute”);<br>    request.getSession().getServletContext().setAttribute(“para”, “aplication scope attribute”);<br>    List<student> listStudent = new ArrayList<student>();<br>    listStudent.add(new Student(1, “张三”, new Date()));<br>    listStudent.add(new Student(2, “李四”, new Date()));<br>    listStudent.add(new Student(3, “赵五”, new Date()));<br>    listStudent.add(new Student(4, “孙六”, new Date()));<br>    listStudent.add(new Student(5, “钱七”, new Date()));<br>    pageContext.setAttribute(“listStudent”, listStudent);<br>%&gt;<br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;</student></student></p>
-<html><br><body><br>1. 通过OGNL表达式获取属性范围中的值<br>    <br><br>    HTTP parameters para = &lt;s:property value=”#parameters.para” /&gt;<br>    <br><br>    request attribute para = &lt;s:property value=”#request.para” /&gt;<br>    <br><br>    session attribute para = &lt;s:property value=”#session.para” /&gt;<br>    <br><br>    application attribute para = &lt;s:property value=”#application.para” /&gt;<br>    <br><br>    attr attribute para = &lt;s:property value=”#attr.para” /&gt;<br>    <br><br>    <hr><br>2. 通过OGNL表达式创建list集合，并且遍历出集合中的值<br>    <br><br>    &lt;s:set name=”list” value=”{‘eeeee’,’ddddd’,’ccccc’,’bbbbb’,’aaaaa’}”&gt;&lt;/s:set&gt;<br>    &lt;s:iterator value=”#list” var=”o”&gt;<br>        ${o}<br><br>        <!--<s:property />--><br>    &lt;/s:iterator&gt;<br>    <br><br>    <hr><br>3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值<br>    <br><br>    &lt;s:set name=”map”<br>        value=”#{‘1’:’eeeee’,’2’:’ddddd’,’3’:’ccccc’,’4’:’bbbbb’,’5’:’aaaaa’}”&gt;&lt;/s:set&gt;<br>    &lt;s:iterator value=”#map” var=”o”&gt;<br>        ${o.key}-&gt;${o.value}<br><br>        &lt;!--    &lt;s:property value=”#o.key”/&gt;-&gt;&lt;s:property value=”#o.value”/&gt;<br>   –&gt;<br>        &lt;!--    &lt;s:property value=”key” /&gt;-&gt;&lt;s:property value=”value” /&gt; –&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    <hr><br>4. 通过OGNL表达式，进行逻辑判断<br>    <br><br>    &lt;s:if test=”‘aaa’ in {‘aaa’,’bbb’}”&gt;<br>        aaa 在 集合{‘aaa’,’bbb’}中；<br>    &lt;/s:if&gt;<br>    &lt;s:else&gt;<br>        aaa 不在 集合{‘aaa’,’bbb’}中；<br>    &lt;/s:else&gt;<br>    <br><br>    &lt;s:if test=”#request.req not in #list”&gt;<br>        不 在 集合list中；<br>    &lt;/s:if&gt;<br>    &lt;s:else&gt;<br>        在 集合list中；<br>    &lt;/s:else&gt;<br>    <br><br>    <hr><br>5. 通过OGNL表达式的投影功能进行数据筛选<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{?#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{^#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:iterator value=”#attr.listStudent.{$#this.id % 2 != 0}” var=”cur”&gt;<br>        &lt;s:property value=”#cur.username”/&gt;<br>    &lt;/s:iterator&gt;<br>    <br><br>    &lt;s:property value=”#attr.listStudent.{username}[0]“/&gt;<br>    <br><br>    &lt;s:property value=”#attr.listStudent.{$#this.id == 3}.{username}[0]“/&gt;<br>    <br><br>    <hr><br>6. 通过OGNL表达式访问某个类的静态方法和值<br>    <br><br>    &lt;s:property value=”@java.lang.Math@floor(32.56)” /&gt;<br>    <br><br>    <hr><br>7. OGNL表达式 迭代标签 详细<br>    <br><br>    &lt;s:set name=”list2”<br>        value=”{‘aa’,’bb’,’cc’,’dd’,’ee’,’ff’,’gg’,’hh’,’ii’,’jj’}”&gt;&lt;/s:set&gt;<br>    <table border="1"><br>        <tr><br>            <td><br>                索引<br>            </td><br>            <td><br>                值<br>            </td><br>            <td><br>                奇？<br>            </td><br>            <td><br>                偶？<br>            </td><br>            <td><br>                首？<br>            </td><br>            <td><br>                尾？<br>            </td><br>            <td><br>                当前迭代数量<br>            </td><br>        </tr><br>        &lt;s:iterator value=”#list2” var=”o” status=”s”&gt;<br>            &lt;tr bgcolor=”&lt;s:if test=”#s.even”&gt;pink&lt;/s:if&gt;”&gt;<br>                <td><br>                    &lt;s:property value=”#s.getIndex()” /&gt;<br>                </td><br>                <td><br>                    &lt;s:property /&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.odd”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.even”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.first”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                    &lt;s:if test=”#s.isLast()”&gt;Y&lt;/s:if&gt;<br>                    &lt;s:else&gt;N&lt;/s:else&gt;<br>                </td><br>                <td><br>                &lt;s:property value=”#s.getCount()”/&gt;<br>            </td><br>            <br>        &lt;/s:iterator&gt;<br>    </table><br></body><br></html>
+<html>
+<body>
+1\. 通过OGNL表达式获取属性范围中的值
+    <br>
+    HTTP parameters para = <s:property value="#parameters.para">
+    <br>
+    request attribute para = <s:property value="#request.para">
+    <br>
+    session attribute para = <s:property value="#session.para">
+    <br>
+    application attribute para = <s:property value="#application.para">
+    <br>
+    attr attribute para = <s:property value="#attr.para">
+    <br>
+    <hr>
+2\. 通过OGNL表达式创建list集合，并且遍历出集合中的值
+    <br>
+    <s:set name="list" value="{'eeeee','ddddd','ccccc','bbbbb','aaaaa'}"></s:set>
+    <s:iterator value="#list" var="o">
+        ${o}<br>
+        <!--<s:property />-->
+    </s:iterator>
+    <br>
+    <hr>
+3\. 通过OGNL表达式创建Map集合，并且遍历出集合中的值
+    <br>
+    <s:set name="map" value="#{'1':'eeeee','2':'ddddd','3':'ccccc','4':'bbbbb','5':'aaaaa'}"></s:set>
+    <s:iterator value="#map" var="o">
+        ${o.key}->${o.value}<br>
+        <!\-\-    <s:property value="#o.key"/>-><s:property value="#o.value"><br>   -->
+        <!\-\-    <s:property value="key" />-><s:property value="value"> -->
+    </s:property></s:property></s:iterator>
+    <br>
+    <hr>
+4\. 通过OGNL表达式，进行逻辑判断
+    <br>
+    <s:if test="'aaa' in {'aaa','bbb'}">
+        aaa 在 集合{'aaa','bbb'}中；
+    </s:if>
+    <s:else>
+        aaa 不在 集合{'aaa','bbb'}中；
+    </s:else>
+    <br>
+    <s:if test="#request.req not in #list">
+        不 在 集合list中；
+    </s:if>
+    <s:else>
+        在 集合list中；
+    </s:else>
+    <br>
+    <hr>
+5\. 通过OGNL表达式的投影功能进行数据筛选
+    <br>
+    <s:iterator value="#attr.listStudent.{?#this.id % 2 != 0}" var="cur">
+        <s:property value="#cur.username">
+    </s:property></s:iterator>
+    <br>
+    <s:iterator value="#attr.listStudent.{^#this.id % 2 != 0}" var="cur">
+        <s:property value="#cur.username">
+    </s:property></s:iterator>
+    <br>
+    <s:iterator value="#attr.listStudent.{$#this.id % 2 != 0}" var="cur">
+        <s:property value="#cur.username">
+    </s:property></s:iterator>
+    <br>
+    <s:property value="#attr.listStudent.{username}\[0\]">
+    <br>
+    <s:property value="#attr.listStudent.{$#this.id == 3}.{username}\[0\]">
+    <br>
+    <hr>
+6\. 通过OGNL表达式访问某个类的静态方法和值
+    <br>
+    <s:property value="@java.lang.Math@floor(32.56)">
+    <br>
+    <hr>
+7\. OGNL表达式 迭代标签 详细
+    <br>
+    <s:set name="list2" value="{'aa','bb','cc','dd','ee','ff','gg','hh','ii','jj'}"></s:set>
+    <table border="1">
+        <tr>
+            <td>
+                索引
+            </td>
+            <td>
+                值
+            </td>
+            <td>
+                奇？
+            </td>
+            <td>
+                偶？
+            </td>
+            <td>
+                首？
+            </td>
+            <td>
+                尾？
+            </td>
+            <td>
+                当前迭代数量
+            </td>
+        </tr>
+        <s:iterator value="#list2" var="o" status="s">
+            <tr bgcolor="<s:if test=" #s.even"="">pink">
+                <td>
+                    <s:property value="#s.getIndex()">
+                </s:property></td>
+                <td>
+                    <s:property>
+                </s:property></td>
+                <td>
+                    <s:if test="#s.odd">Y</s:if>
+                    <s:else>N</s:else>
+                </td>
+                <td>
+                    <s:if test="#s.even">Y</s:if>
+                    <s:else>N</s:else>
+                </td>
+                <td>
+                    <s:if test="#s.first">Y</s:if>
+                    <s:else>N</s:else>
+                </td>
+                <td>
+                    <s:if test="#s.isLast()">Y</s:if>
+                    <s:else>N</s:else>
+                </td>
+                <td>
+                <s:property value="#s.getCount()">
+            </s:property></td>
+            </tr>
+        </s:iterator>
+    </table>
+</s:property></s:property></s:property></s:property></s:property></s:property></s:property></s:property></body>
+</html>
 
 
 
@@ -802,7 +930,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -813,7 +941,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -824,7 +952,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -921,7 +1049,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OGNL中-、-、-、-、-、-标签的使用简介"><span class="nav-number">1.</span> <span class="nav-text">OGNL中$、%、#、{}、^、$ 标签的使用简介</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#片头（ognl-jsp）"><span class="nav-number"></span> <span class="nav-text">片头（ognl.jsp）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用"><span class="nav-number"></span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-通过OGNL表达式获取属性范围中的值"><span class="nav-number">1.</span> <span class="nav-text">1. 通过OGNL表达式获取属性范围中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出："><span class="nav-number">2.</span> <span class="nav-text">输出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过OGNL表达式创建list集合，并且遍历出集合中的值"><span class="nav-number">3.</span> <span class="nav-text">2. 通过OGNL表达式创建list集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过OGNL表达式创建Map集合，并且遍历出集合中的值"><span class="nav-number">4.</span> <span class="nav-text">3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过OGNL表达式，进行逻辑判断"><span class="nav-number">5.</span> <span class="nav-text">4. 通过OGNL表达式，进行逻辑判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-通过OGNL表达式的投影功能进行数据筛选"><span class="nav-number">6.</span> <span class="nav-text">5. 通过OGNL表达式的投影功能进行数据筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-通过OGNL表达式访问某个类的静态方法和值"><span class="nav-number">7.</span> <span class="nav-text">6. 通过OGNL表达式访问某个类的静态方法和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-OGNL表达式-迭代标签-详细"><span class="nav-number">8.</span> <span class="nav-text">7. OGNL表达式 迭代标签 详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-完整代码（ognl-jsp）"><span class="nav-number">9.</span> <span class="nav-text">8. 完整代码（ognl.jsp）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多阅读参考："><span class="nav-number">10.</span> <span class="nav-text">更多阅读参考：</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OGNL中-、-、-、-、-、-标签的使用简介"><span class="nav-number">1.</span> <span class="nav-text">OGNL中$、%、#、{}、^、$ 标签的使用简介</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#attr-userName相当于按顺序从三个范围读取userName属性直到找到为止"><span class="nav-number"></span> <span class="nav-text">attr.userName相当于按顺序从三个范围读取userName属性直到找到为止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request-userName相当于request-getAttribute-“userName”"><span class="nav-number"></span> <span class="nav-text">request.userName相当于request.getAttribute(“userName”)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session-userName相当于session-getAttribute-“userName”"><span class="nav-number"></span> <span class="nav-text">session.userName相当于session.getAttribute(“userName”)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#application-userName相当于application-getAttribute-“userName”"><span class="nav-number"></span> <span class="nav-text">application.userName相当于application.getAttribute(“userName”)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#parameters-id-0-相当于request-getParameter-“id”"><span class="nav-number"></span> <span class="nav-text">parameters.id[0]相当于request.getParameter(“id”)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#片头（ognl-jsp）"><span class="nav-number"></span> <span class="nav-text">片头（ognl.jsp）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用"><span class="nav-number"></span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-通过OGNL表达式获取属性范围中的值"><span class="nav-number">1.</span> <span class="nav-text">1. 通过OGNL表达式获取属性范围中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出："><span class="nav-number">2.</span> <span class="nav-text">输出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-通过OGNL表达式创建list集合，并且遍历出集合中的值"><span class="nav-number">3.</span> <span class="nav-text">2. 通过OGNL表达式创建list集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过OGNL表达式创建Map集合，并且遍历出集合中的值"><span class="nav-number">4.</span> <span class="nav-text">3. 通过OGNL表达式创建Map集合，并且遍历出集合中的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过OGNL表达式，进行逻辑判断"><span class="nav-number">5.</span> <span class="nav-text">4. 通过OGNL表达式，进行逻辑判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-通过OGNL表达式的投影功能进行数据筛选"><span class="nav-number">6.</span> <span class="nav-text">5. 通过OGNL表达式的投影功能进行数据筛选</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-通过OGNL表达式访问某个类的静态方法和值"><span class="nav-number">7.</span> <span class="nav-text">6. 通过OGNL表达式访问某个类的静态方法和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-OGNL表达式-迭代标签-详细"><span class="nav-number">8.</span> <span class="nav-text">7. OGNL表达式 迭代标签 详细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-完整代码（ognl-jsp）"><span class="nav-number">9.</span> <span class="nav-text">8. 完整代码（ognl.jsp）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多阅读参考："><span class="nav-number">10.</span> <span class="nav-text">更多阅读参考：</span></a></li></ol></li></div>
             
 
           </div>
@@ -962,7 +1090,7 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1588,6 +1716,28 @@ attr attribute para = &lt;s:property value=&quot;#attr.para&quot; /&gt;
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

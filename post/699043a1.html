@@ -450,28 +450,26 @@
 <li>SDK：Software Develop Kit 提供不同版本的api</li>
 <li><strong>在eclipse上做android开发时用到SDK+ADT来配置基本开发环境，AVD来运行调试App</strong></li>
 </ul>
-</blockquote>
-<blockquote>
 <p>不喜欢探究原理、机制的程序员不是好程序员！</p>
 </blockquote>
-<h2 id="第一章-Android应用和环境开发"><a href="#第一章-Android应用和环境开发" class="headerlink" title="第一章 Android应用和环境开发"></a>第一章 Android应用和环境开发</h2><p>P9-P10 AVD（android虚拟设备|SDK P18 Monitor调试| ADB（Adroid Debug Bridge）完成模拟器文件与电脑文件的相互复制，也可安装APK应用。甚至可以直接切换到Android系统中执行Linux命令！ [caption id=”attachment_537” align=”aligncenter” width=”561”]<img src="http://123.206.69.206/wp-content/uploads/2017/01/R类_2816-46.jpg" alt=""> 自动生成的R.java相关说明！[/caption] R.java  可以理解为Android应用的资源字典。。res中可以方便的让AAPT工具来扫描对应的资源文件，并为他们生成对应的资源清单类：R.java。   P31  权限添加！ SDK-Develop-API Guides(开发指南)。H:\Android\SDK\docs 然而一旦被R 定义之后，就可以允许在java、XML 中使用了。</p>
+<h2 id="第一章-Android应用和环境开发"><a href="#第一章-Android应用和环境开发" class="headerlink" title="第一章 Android应用和环境开发"></a>第一章 Android应用和环境开发</h2><p>P9-P10 AVD（android虚拟设备|SDK P18 Monitor调试| ADB（Adroid Debug Bridge）完成模拟器文件与电脑文件的相互复制，也可安装APK应用。甚至可以直接切换到Android系统中执行Linux命令！ [caption id=”attachment_537” align=”aligncenter” width=”561”]<img src="http://123.206.69.206/wp-content/uploads/2017/01/R类_2816-46.jpg" alt=""> 自动生成的R.java相关说明！[/caption] R.java  可以理解为Android应用的资源字典。。res中可以方便的让AAPT工具来扫描对应的资源文件，并为他们生成对应的资源清单类：R.java。   P31  权限添加！ SDK-Develop-API Guides(开发指南)。H:\\Android\\SDK\\docs 然而一旦被R 定义之后，就可以允许在java、XML 中使用了。</p>
 <hr>
-<p>&lt;&gt;测试删除线<strong><em>测试斜体</em></strong><em>123</em></p>
+<p>&lt;&gt;测试删除线<strong>_测试斜体_</strong>_123_</p>
 <hr>
 <p>有的时候 意志不坚定（差不多先生），真的会迷失了自己的理想、方向！牢记自己的方向! 小计划：每天来看一看自己的博客！        更好的自己！GO！</p>
 <blockquote>
 <h3 id="2017-1-20-人不会因为自己的梦想而受伤"><a href="#2017-1-20-人不会因为自己的梦想而受伤" class="headerlink" title="2017.1.20 人不会因为自己的梦想而受伤"></a>2017.1.20 人不会因为自己的梦想而受伤</h3></blockquote>
 <h2 id="第二章-Android应用的界面编程"><a href="#第二章-Android应用的界面编程" class="headerlink" title="第二章 Android应用的界面编程"></a>第二章 Android应用的界面编程</h2><p>P41  View类的XML属性、相关方法及说明！</p>
 <h4 id="3-7-aboutAndroid"><a href="#3-7-aboutAndroid" class="headerlink" title="3.7 aboutAndroid"></a><strong>3.7 aboutAndroid</strong></h4><hr>
-<p>在Android工程中，每添加一个资源，就会在gen目录下的R.<a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a>中自动生成一个新的静态整型变量来指向这个资源。程序文件中调用资源的时候，先在R.java中找到变量名，然后根据变量值查找资源。 可以直接在工程的\res\drawable文件夹里拷贝一个图片文件过去。然后在eclipse里右键点工程-&gt;刷新。在 res – drawable 标签下就会多出来你添加的图片。R.java中也会自动添加一个以图片文件名为变量名的整型变量。 注意：<strong>文件名必须全为小写</strong>。如果有大写的话，R.java中不会生成新的变量，这样程序里也就没办法调用。   我这里就是因为文件名中有大写字母导致生成R.java中变量不成功！</p>
-<p>PS：C:\Users\acanprince\.gradle\wrapper\dists\gradle-2.2.1-all\c64ydeuardnfqctvr1gm30w53<br><a href="http://www.tuicool.com/articles/eqAbQ3e" target="_blank" rel="noopener">http://www.tuicool.com/articles/eqAbQ3e</a><br><a href="http://www.bubuko.com/infodetail-1008155.html" target="_blank" rel="noopener">http://www.bubuko.com/infodetail-1008155.html</a><br>API21<br>1.修改-H:\TableLayoutTest\gradle\wrapper<br>distributionUrl=https\://services.gradle.org/distributions/gradle-2.14.1-all.zip<br>2.直接放置在工程根目录下”build.gradle”-&gt; dependencies{} 下面直接粘贴-》<br>classpath ‘com.android.tools.build:gradle:2.2.2’<br>3.apply plugin: ‘com.android.application’<br>android {<br>    compileSdkVersion 25<br>    buildToolsVersion “25.0.2”<br>    defaultConfig {<br>        applicationId “org.crazyit.ui”<br>        minSdkVersion 21<br>        targetSdkVersion 25<br>        versionCode 1<br>        versionName “1.0”<br>    }<br>    buildTypes {<br>        release {<br>            minifyEnabled false<br>            proguardFiles getDefaultProguardFile(‘proguard-android.txt’), ‘proguard-rules.pro’<br>        }<br>    }<br>}<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>}<br>//in   H:\TableLayoutTest\app\build.gradle<br><a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="noopener">http://download.csdn.net/album/detail/2265<br>代码关于解决AndroidStudio导入项目在 Building gradle project info 一直卡住</a> </p>
+<p>在Android工程中，每添加一个资源，就会在gen目录下的R.<a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a>中自动生成一个新的静态整型变量来指向这个资源。程序文件中调用资源的时候，先在R.java中找到变量名，然后根据变量值查找资源。 可以直接在工程的\\res\\drawable文件夹里拷贝一个图片文件过去。然后在eclipse里右键点工程-&gt;刷新。在 res – drawable 标签下就会多出来你添加的图片。R.java中也会自动添加一个以图片文件名为变量名的整型变量。 注意：<strong>文件名必须全为小写</strong>。如果有大写的话，R.java中不会生成新的变量，这样程序里也就没办法调用。   我这里就是因为文件名中有大写字母导致生成R.java中变量不成功！</p>
+<p>PS：C:\\Users\\acanprince\.gradle\\wrapper\\dists\\gradle-2.2.1-all\\c64ydeuardnfqctvr1gm30w53<br><a href="http://www.tuicool.com/articles/eqAbQ3e" target="_blank" rel="noopener">http://www.tuicool.com/articles/eqAbQ3e</a><br><a href="http://www.bubuko.com/infodetail-1008155.html" target="_blank" rel="noopener">http://www.bubuko.com/infodetail-1008155.html</a><br>API21<br>1.修改-H:\\TableLayoutTest\\gradle\\wrapper<br>distributionUrl=https\\://services.gradle.org/distributions/gradle-2.14.1-all.zip<br>2.直接放置在工程根目录下”build.gradle”-&gt; dependencies{} 下面直接粘贴-》<br>classpath ‘com.android.tools.build:gradle:2.2.2’<br>3.apply plugin: ‘com.android.application’<br>android {<br>    compileSdkVersion 25<br>    buildToolsVersion “25.0.2”<br>    defaultConfig {<br>        applicationId “org.crazyit.ui”<br>        minSdkVersion 21<br>        targetSdkVersion 25<br>        versionCode 1<br>        versionName “1.0”<br>    }<br>    buildTypes {<br>        release {<br>            minifyEnabled false<br>            proguardFiles getDefaultProguardFile(‘proguard-android.txt’), ‘proguard-rules.pro’<br>        }<br>    }<br>}<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>}<br>//in   H:\\TableLayoutTest\\app\\build.gradle<br><a href="http://download.csdn.net/album/detail/2265" target="_blank" rel="noopener">http://download.csdn.net/album/detail/2265<br>代码关于解决AndroidStudio导入项目在 Building gradle project info 一直卡住</a> </p>
 <p>最近在加了 Android-M，更新API配置，使计划类APP 能够运用Google更加强大的services</p>
-<p>API26<br>1.修改-H:\TableLayoutTest\gradle\wrapper<br>distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip<br>2.直接放置在工程根目录下”build.gradle”-&gt; dependencies{} 下面直接粘贴-》<br>classpath ‘com.android.tools.build:gradle:2.3.3’<br>3.apply plugin: ‘com.android.application’<br>android {<br> compileSdkVersion 26<br> buildToolsVersion “26.0.1”<br> dexOptions {<br> preDexLibraries true<br> dexInProcess true<br> maxProcessCount 8<br> threadCount 8<br> }<br> defaultConfig {<br> applicationId “io.ipoli.android”<br> multiDexEnabled true<br> minSdkVersion 21<br> targetSdkVersion 26<br> versionCode 228<br> versionName “1.16.9”<br> }<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>}<br>//in   H:\TableLayoutTest\app\build.gradle</p>
-<p>—-3.8</p>
+<p>API26<br>1.修改-H:\\TableLayoutTest\\gradle\\wrapper<br>distributionUrl=https\\://services.gradle.org/distributions/gradle-3.3-all.zip<br>2.直接放置在工程根目录下”build.gradle”-&gt; dependencies{} 下面直接粘贴-》<br>classpath ‘com.android.tools.build:gradle:2.3.3’<br>3.apply plugin: ‘com.android.application’<br>android {<br> compileSdkVersion 26<br> buildToolsVersion “26.0.1”<br> dexOptions {<br> preDexLibraries true<br> dexInProcess true<br> maxProcessCount 8<br> threadCount 8<br> }<br> defaultConfig {<br> applicationId “io.ipoli.android”<br> multiDexEnabled true<br> minSdkVersion 21<br> targetSdkVersion 26<br> versionCode 228<br> versionName “1.16.9”<br> }<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>}<br>//in   H:\\TableLayoutTest\\app\\build.gradle</p>
+<p>——3.8</p>
 <p>instant run applied code changes and restarted the app</p>
 <p>即时运行应用代码更改并重新启动应用程序</p>
-<p>—-3.9</p>
-<p>—-5.13</p>
+<p>——3.9</p>
+<p>——5.13</p>
 <p>注意：quartus安装路径：不可以有中文、也不可以有空格！</p>
 
       
@@ -659,7 +657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,7 +668,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -681,7 +679,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -819,7 +817,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1445,6 +1443,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

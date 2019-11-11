@@ -486,7 +486,7 @@
 <p>这样在字符界面命令交互中就会出现中文了，但是有些翻译的不全。 使用locale命令查看系统语言设置：</p>
 <p>复制代码</p>
 <p>代码如下:</p>
-<p>locale</p> <p>LANG=zh_CN.GB18030 LC_CTYPE=”zh_CN.GB18030″ LC_NUMERIC=”zh_CN.GB18030″ LC_TIME=”zh_CN.GB18030″ LC_COLLATE=”zh_CN.GB18030″ LC_MONETARY=”zh_CN.GB18030″ LC_MESSAGES=”zh_CN.GB18030″ LC_PAPER=”zh_CN.GB18030″ LC_NAME=”zh_CN.GB18030″ LC_ADDRESS=”zh_CN.GB18030″ LC_TELEPHONE=”zh_CN.GB18030″ LC_MEASUREMENT=”zh_CN.GB18030″ LC_IDENTIFICATION=”zh_CN.GB18030″ LC_ALL=</p>
+<p>locale&lt;/p&gt; </p><p>LANG=zh_CN.GB18030 LC_CTYPE=”zh_CN.GB18030″ LC_NUMERIC=”zh_CN.GB18030″ LC_TIME=”zh_CN.GB18030″ LC_COLLATE=”zh_CN.GB18030″ LC_MONETARY=”zh_CN.GB18030″ LC_MESSAGES=”zh_CN.GB18030″ LC_PAPER=”zh_CN.GB18030″ LC_NAME=”zh_CN.GB18030″ LC_ADDRESS=”zh_CN.GB18030″ LC_TELEPHONE=”zh_CN.GB18030″ LC_MEASUREMENT=”zh_CN.GB18030″ LC_IDENTIFICATION=”zh_CN.GB18030″ LC_ALL=</p>
 <p>默认语言为en_US.UTF-8或POSIX，设置后为zh_CN.GB18030。 二、vim显示中文 安装中文包后还要编辑vim的配置文件vimrc： vim /etc/vimrc 在最后加入以下内容：</p>
 <p>复制代码</p>
 <p>代码如下:</p>
@@ -638,7 +638,7 @@
 <p>这些变量在启动 Hadoop 进程时需要用到，不设置的话可能会报错（这些变量也可以通过修改 ./etc/hadoop/hadoop-env.sh 实现）。 Hadoop 的配置文件位于 <code>/usr/local/hadoop/etc/hadoop/</code> 中，伪分布式需要修改2个配置文件 <strong>core-site.xml</strong> 和 <strong>hdfs-site.xml</strong> 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。 修改配置文件 <strong>core-site.xml</strong> (通过 gedit 编辑会比较方便: <code>gedit ./etc/hadoop/core-site.xml</code>)，将当中的</p>
 <ol>
 <li><configuration></configuration></li>
-<li></li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>修改为下面配置：</p>
@@ -648,12 +648,12 @@
 <li><name>hadoop.tmp.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp</value></li>
 <li><description>Abase for other temporary directories.</description></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>fs.defaultFS</name></li>
 <li><value>hdfs://localhost:9000</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>同样的，修改配置文件 <strong>hdfs-site.xml</strong>：</p>
@@ -662,16 +662,16 @@
 <li><property></property></li>
 <li><name>dfs.replication</name></li>
 <li><value>1</value></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>dfs.namenode.name.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp/dfs/name</value></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>dfs.datanode.data.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp/dfs/data</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>配置完成后，执行 NameNode 的格式化:</p>
@@ -685,7 +685,7 @@
 </ol>
 <p>Shell 命令</p>
 <p>若出现如下 SSH 的提示 “Are you sure you want to continue connecting”，输入 yes 即可。 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2015/10/install-hadoop-centos-17-ssh-continue.png" alt="首次启动Hadoop时的SSH提示">首次启动Hadoop时的SSH提示 启动时可能会有 WARN 提示 “WARN util.NativeCodeLoader…” 如前面提到的，这个提示不会影响正常使用。 启动完成后，可以通过命令 <code>jps</code> 来判断是否成功启动，若成功启动则会列出如下进程: “NameNode”、”DataNode”和<code>SecondaryNameNode</code>（如果 SecondaryNameNode 没有启动，请运行 sbin/stop-dfs.sh 关闭进程，然后再次尝试启动尝试）。如果没有 NameNode 或 DataNode ，那就是配置不成功，请仔细检查之前步骤，或通过查看启动日志排查原因。 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2015/10/install-hadoop-centos-18-jps.png" alt="通过jps查看启动的Hadoop进程">通过jps查看启动的Hadoop进程</p>
-<p><em>通过查看启动日志分析启动失败原因</em>有时 Hadoop 无法正确启动，如 NameNode 进程没有顺利启动，这时可以查看启动日志来排查原因，注意几点：</p>
+<p>_通过查看启动日志分析启动失败原因_有时 Hadoop 无法正确启动，如 NameNode 进程没有顺利启动，这时可以查看启动日志来排查原因，注意几点：</p>
 <ul>
 <li>启动时会提示形如 “dblab: starting namenode, logging to /usr/local/hadoop/logs/hadoop-hadoop-namenode-dblab.out”，其中 dblab 对应你的主机名，但启动的日志信息是记录在 /usr/local/hadoop/logs/hadoop-hadoop-namenode-dblab.log 中，所以应该查看这个后缀为 <strong>.log</strong> 的文件；</li>
 <li>每一次的启动日志都是追加在日志文件之后，所以得拉到最后面看，看下记录的时间就知道了。</li>
@@ -731,7 +731,7 @@
 <li>./bin/hdfs dfs -rm -r output # 删除 output 文件夹</li>
 </ol>
 <p>Shell 命令</p>
-<p><em>运行程序时，输出目录不能存在</em>运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：</p>
+<p>_运行程序时，输出目录不能存在_运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：</p>
 <ol>
 <li>Configuration conf = new Configuration();</li>
 <li><p>Job job = new Job(conf);</p>
@@ -759,8 +759,8 @@
 <li><property></property></li>
 <li><name>mapreduce.framework.name</name></li>
 <li><value>yarn</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>接着修改配置文件 <strong>yarn-site.xml</strong>：</p>
@@ -769,8 +769,8 @@
 <li><property></property></li>
 <li><name>yarn.nodemanager.aux-services</name></li>
 <li><value>mapreduce_shuffle</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>然后就可以启动 YARN 了（需要先执行过 <code>./sbin/start-dfs.sh</code>）：</p>
@@ -985,7 +985,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -996,7 +996,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1007,7 +1007,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1145,7 +1145,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1771,6 +1771,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="即用,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题 由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装. AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者. NVIDIA显卡驱动安装 禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouv">
+<meta name="keywords" content="即用,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用">
+<meta property="og:url" content="http://blog.aclear.top/post/ef6f3008.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题 由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装. AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者. NVIDIA显卡驱动安装 禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouv">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20180826135534780?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhZWFzcmluZ25hcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2019-11-10T10:22:18.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用">
+<meta name="twitter:description" content="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题 由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装. AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者. NVIDIA显卡驱动安装 禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouv">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180826135534780?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhZWFzcmluZ25hcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/ef6f3008.html">
+
+
+
+
+
+  <title>NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/ef6f3008.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T10:03:27+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-11-10T18:22:18+08:00" content="2019-11-10">
+                2019-11-10
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">ubuntu</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ubuntu/环境/" itemprop="url" rel="index">
+                    <span itemprop="name">环境</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于Ubuntu显卡驱动的安装-解决循环登录-挂载-卸载问题"><a href="#关于Ubuntu显卡驱动的安装-解决循环登录-挂载-卸载问题" class="headerlink" title="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题"></a>关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题</h1><blockquote>
+<p>由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装.</p>
+<p>AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者.</p>
+<h2 id="NVIDIA显卡驱动安装"><a href="#NVIDIA显卡驱动安装" class="headerlink" title="NVIDIA显卡驱动安装"></a><a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">NVIDIA显卡驱动安装</a></h2></blockquote>
+<h3 id="禁用-nouveau-驱动（nouveau是-ubuntu16-04-默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）"><a href="#禁用-nouveau-驱动（nouveau是-ubuntu16-04-默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）" class="headerlink" title="禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）"></a>禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）</h3><ul>
+<li>先查看 nouveau 是否被禁用，输入以下命令，若有输出，则说明 nouveau 在运行中</li>
+</ul>
+<p><code>lsmod | grep nouveau</code></p>
+<ul>
+<li>修改 /etc/modprobe.d/blacklist.conf 文件</li>
+</ul>
+<p><code>sudo vim /etc/modprobe.d/blacklist.conf</code></p>
+<p>在末尾加入</p>
+<p><code>blacklist nouveau
+options nouveau modeset=0</code></p>
+<ul>
+<li>执行以下命令，并重启</li>
+</ul>
+<p><code>sudo update-initramfs –u</code></p>
+<ul>
+<li>再执行以下命令，查看 nouveau 是否已被禁用，若无任何输出，说明禁用成功</li>
+</ul>
+<p><code>lsmod | grep nouveau</code><br><a id="more"></a></p>
+<h3 id="官网下载驱动"><a href="#官网下载驱动" class="headerlink" title="官网下载驱动"></a>官网下载驱动</h3><p>在英伟达的官网上查找你自己电脑的显卡型号然后下载相应的驱动。网址：<a href="http://www.nvidia.cn/page/home.html" target="_blank" rel="noopener">http://www.nvidia.cn/page/home.html</a></p>
+<p>我下载的版本：NVIDIA-Linux-x86_64-418.56.run（注意不同的版本最后安装执行的具体选项不同）</p>
+<p>下载后的run文件拷贝至home目录下。</p>
+<h3 id="进入命令行界面"><a href="#进入命令行界面" class="headerlink" title="进入命令行界面"></a>进入命令行界面</h3><p>在ubuntu下按ctrl+alt+f1进入命令行界面，</p>
+<p>然后在命令行界面下输入：</p>
+<p><code>sudo service lightdm stop</code>     </p>
+<blockquote>
+<p>//这个是关闭图形界面，不执行会出错。</p>
+</blockquote>
+<p>然后卸载掉原有驱动：</p>
+<p><code>sudo apt-get remove nvidia-*</code>  </p>
+<blockquote>
+<p>（若安装过其他版本或其他方式安装过驱动执行此项）</p>
+<h3 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h3><ul>
+<li>给驱动run文件赋予执行权限：</li>
+</ul>
+</blockquote>
+<p><code>sudo chmod  a+x NVIDIA-Linux-x86_64-396.18.run</code></p>
+<ul>
+<li>安装：</li>
+</ul>
+<p><code>sudo ./NVIDIA-Linux-x86_64-396.18.run -no-x-check -no-nouveau-check -no-opengl-files</code> </p>
+<blockquote>
+<p>//只有禁用opengl这样安装才不会出现循环登陆的问题</p>
+</blockquote>
+<p>-no-x-check：安装驱动时关闭X服务</p>
+<p>-no-nouveau-check：安装驱动时禁用nouveau</p>
+<p>-no-opengl-files：只安装驱动文件，不安装OpenGL文件</p>
+<ul>
+<li>安装过程中的选项：（这是copy别人的，自己的没记住，我也是尝试选择了好多遍才安装好）</li>
+</ul>
+<p>The distribution-provided pre-install script failed! Are you sure you want to continue? 选择 yes 继续。<br>Would you like to register the kernel module souces with DKMS? This will allow DKMS to automatically build a new module, if you install a different kernel later?  选择 No 继续。<br>问题没记住，选项是：install without signing<br>问题大概是：Nvidia’s 32-bit compatibility libraries? 选择 No 继续。<br>Would you like to run the nvidia-xconfigutility to automatically update your x configuration so that the NVIDIA x driver will be used when you restart x? Any pre-existing x confile will be backed up.  选择 Yes  继续</p>
+<p>这些选项如果选择错误可能会导致安装失败，没关系，只要前面不出错，多尝试几次就好。</p>
+<h3 id="挂在驱动-测试显示驱动"><a href="#挂在驱动-测试显示驱动" class="headerlink" title="挂在驱动\测试显示驱动"></a>挂在驱动\测试显示驱动</h3><ul>
+<li>挂载Nvidia驱动：</li>
+</ul>
+<p><code>modprobe nvidia</code></p>
+<ul>
+<li>检查驱动是否安装成功：</li>
+</ul>
+<p><code>nvidia-smi</code></p>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><p><a href="https://www.cnblogs.com/dinghongkai/p/11268976.html" target="_blank" rel="noopener">Ubuntu 16.04 安装 CUDA10.1(解决循环登陆的问题)</a><br><a href="https://blog.csdn.net/xunan003/article/details/81665835" target="_blank" rel="noopener">Ubuntu16.04系统run方式安装nvidia显卡驱动</a></p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h3><ul>
+<li><p>我是在 Intel 集显驱动下面进行的安装，即当前图形化界面是用 Intel 集显，准备只用NVIDIA 独显做计算，所以用 —no-opengl-libs 选项设为不安装 OpenGL 的库；之前 cuda 版本的安装好像是以命令行交互的方式让你选择是否选择安装 OpenGL，但在 cuda10.1 这个版本，只能通过添加命令行参数的方法来选择不安装 OpenGL；</p>
+</li>
+<li><p>若不小心安装了 OpenGL，则后面会遇到循环登陆的问题，原因就是 NVIDIA显卡 的 OpenGL 库覆盖了当前 Intel 显卡的库，解决办法是再登入到文本命令行模式，用以下命令先卸载 cuda 和 NVIDIA驱动，再按正确的步骤重新安装</p>
+</li>
+</ul>
+<p><code>sudo /usr/local/cuda-10.1/bin/cuda-uninstaller</code></p>
+<p><code>sudo /usr/bin/nvidia-uninstall</code></p>
+<h3 id="挂载驱动"><a href="#挂载驱动" class="headerlink" title="挂载驱动"></a>挂载驱动</h3><ul>
+<li>挂载Nvidia驱动：</li>
+</ul>
+<p><code>modprobe nvidia</code></p>
+<ul>
+<li>检查驱动是否安装成功：</li>
+</ul>
+<p><code>nvidia-smi</code></p>
+<h3 id="关闭图形化界面-进入文本命令行模式"><a href="#关闭图形化界面-进入文本命令行模式" class="headerlink" title="关闭图形化界面-进入文本命令行模式"></a>关闭图形化界面-进入文本命令行模式</h3><ul>
+<li><p>文本命令行模式运行 runfile 文件安装CUDA</p>
+</li>
+<li><p>按 Ctrl + Alt + F1 键进入文本命令行模式，输入用户名和密码</p>
+</li>
+</ul>
+<p>先关闭图形化界面:<br><code>sudo service lightdm stop</code></p>
+<h1 id="其它环境安装"><a href="#其它环境安装" class="headerlink" title="其它环境安装"></a>其它环境安装</h1><h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a><a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1604&amp;target_type=runfilelocal" target="_blank" rel="noopener">CUDA</a></h2><h2 id="cuDNN-库文件下载拷贝"><a href="#cuDNN-库文件下载拷贝" class="headerlink" title="cuDNN 库文件下载拷贝"></a><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cuDNN 库文件下载拷贝</a></h2><h1 id="Anaconda下载"><a href="#Anaconda下载" class="headerlink" title="Anaconda下载"></a><a href="https://www.anaconda.com/distribution/#download-section" target="_blank" rel="noopener">Anaconda下载</a></h1><h2 id="Anaconda安装"><a href="#Anaconda安装" class="headerlink" title="Anaconda安装"></a><a href="https://blog.csdn.net/m0_37864814/article/details/82112029" target="_blank" rel="noopener">Anaconda安装</a></h2><p>网上有许多安装tensorflow的方法，什么源码安装、pip安装等等，折腾了半天，把自己搞晕了也没安装成功，笔者最后采用conda安装，简单方便之极！！！</p>
+<p>1、创建虚拟环境：（至于为什么要用虚拟环境，以后大家就明白了，它可以让我们在虚拟环境里为所欲为而不影响外部配置，现在照做就是了）</p>
+<p>conda create -n tf</p>
+<p>2、激活虚拟环境：（就是进入到这个虚拟环境里面）</p>
+<p>source activate tf</p>
+<p>  PS:如果要退出：输入</p>
+<p>source deactivate tf</p>
+<p>3、下面我们在虚拟环境里安装tensorflow:</p>
+<p>  激活虚拟环境后，我们开始用conda安装吧！</p>
+<p> 1） 先确定自己要安装的tensorflow的版本是CPU的还是GPU的，如何确定呢？</p>
+<p> 如果你还不知道GPU是啥，那你计算机里肯定没有安装cuda、cudnn 、显卡那些东西，那就安装CPU版本；</p>
+<p> 如果你之前折腾过cuda安装，那你肯定明白自己要用GPU版本的，不过前提当然是你确定你已经将cuda装好了哈哈哈，不禁笑 了，因为笔者也被cuda折磨过；</p>
+<p>2）安装CPU版本：</p>
+<p>conda install tensorflow</p>
+<p>3)安装GPU版本：</p>
+<p>conda install tensorflow-gpu</p>
+<p>4)漫长的等待后，看看自己是否安装成功：</p>
+<p>在python下导入tensorflow试试：(不报错就成功啦)</p>
+<p>import tensorflow as tf</p>
+<p>至此，安装配置完成！如果你计算机有块不错的显卡，还是用GPU吧。</p>
+<p>欢迎交流，谢谢指正！</p>
+<h2 id="Anaconda操作"><a href="#Anaconda操作" class="headerlink" title="Anaconda操作"></a><a href="https://blog.csdn.net/haeasringnar/article/details/82079943" target="_blank" rel="noopener">Anaconda操作</a></h2><h3 id="环境添加"><a href="#环境添加" class="headerlink" title="环境添加"></a>环境添加</h3><p>强烈建议默认即可，<br>按enter继续下一步，注意这里按ctrl + c 直接会终止安装。<br>接下来先等待安装即可。<br>看到Thank you for installing Anaconda3! 表示安装成功。<br>anaconda会自动将环境变量添加到PATH里面，如果后面你发现输出conda<br>提示没有该命令，那么你需要source ~/.bashrc 这样就是更新环境变量，就可以正常使用了。<br>如果发现这样还是没用，那么需要收到添加环境变量<br>编辑~/.basrc 文件，在最后面加上</p>
+<p><code>export PATH=/home/aeasringnar/anaconda3/bin:$PATH</code></p>
+<p>保存退出后：<code>source ~/.bashrc</code><br>再次输入conda list测试看看，应该就是没有问题啦！</p>
+<p>然后安装会提示Do you wish to proceed with the installation of Microsoft VSCode? (是否需要安装vscode)<br>这里根据自己的选择yes or no<br>然后就可以享用anaconda了！</p>
+<h3 id="conda命令的使用"><a href="#conda命令的使用" class="headerlink" title="conda命令的使用"></a>conda命令的使用</h3><p>写在前面，conda默认的虚拟环境目录为：~/anaconda3/envs</p>
+<p>1、查看conda 版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<p>2、更新conda<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure></p>
+<p>3、查看conda帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda --help</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或</span></span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
+<p>4、新建虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;env_name&gt; &lt;package_names&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><br>即创建的环境名。建议以英文命名，且不加空格，名称两边不加尖括号“&lt;&gt;”。<br>即安装在环境中的包名。名称两边不加尖括号“&lt;&gt;”。<br>如果要安装指定的版本号，则只需要在包名后面以=和版本号的形式执行。如：conda create –name python2 python=2.7，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。<br>如果要在新创建的环境中创建多个包，则直接在后以空格隔开，添加多个包名即可。如：conda create -n conda-test python=3.6 numpy pandas，即创建一个名为“conda-test ”的环境，环境中安装版本为3.6的python，同时也安装了numpy和pandas。<br>–name同样可以替换为-n。</p>
+<p>5、切换conda环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate env_name</span><br></pre></td></tr></table></figure>
+<p>6、退出虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source deactivate</span><br></pre></td></tr></table></figure>
+<p>7、显示安装过的所有虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda info --envs</span><br><span class="line"><span class="meta">#</span><span class="bash">或</span></span><br><span class="line">conda info -e</span><br><span class="line"><span class="meta">#</span><span class="bash">或</span></span><br><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20180826135534780?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhZWFzcmluZ25hcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="查看环境"></p>
+<p>8、复制环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name new_env_name --clone copied_env_name</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><br><code>copied_env_name</code>即为被复制/克隆环境名。</p>
+<p><code>new_env_name</code>即为复制之后新环境的名称。<br>9、删除环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name env_name --all</span><br></pre></td></tr></table></figure>
+<p>10、包管理</p>
+<p>精确查找包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search --full-name 查找的包名</span><br></pre></td></tr></table></figure>
+<p>模糊查找包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search 查找的内容</span><br></pre></td></tr></table></figure>
+<p>获取当前环境中已安装的包信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>指定环境安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name 环境名 要安装的包名</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><br>要指定版本时</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name conda-test django=2.0.6</span><br></pre></td></tr></table></figure>
+<p>表示在conda-test环境中安装 django并制定版本为2.0.6</p>
+<p>在当前环境中安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install &lt;要安装的包名&gt;</span><br></pre></td></tr></table></figure>
+<p>最后，如果conda安装不上的包，或者没有的包，可以使用pip安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &lt;安装的包名&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="http://blog.aclear.top/post/ef6f3008.html" title="NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用">http://blog.aclear.top/post/ef6f3008.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/即用/" rel="tag"><i class="fa fa-tag"></i> 即用</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/7b07799b.html" rel="next" title="Python机器学习中常用类库的使用">
+                <i class="fa fa-chevron-left"></i> Python机器学习中常用类库的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/b7bad590.html" rel="prev" title="WE_ACAN">
+                WE_ACAN <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Ubuntu显卡驱动的安装-解决循环登录-挂载-卸载问题"><span class="nav-number">1.</span> <span class="nav-text">关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NVIDIA显卡驱动安装"><span class="nav-number">1.1.</span> <span class="nav-text">NVIDIA显卡驱动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用-nouveau-驱动（nouveau是-ubuntu16-04-默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）"><span class="nav-number">1.1.1.</span> <span class="nav-text">禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouveau冲突，需要先禁用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#官网下载驱动"><span class="nav-number">1.1.2.</span> <span class="nav-text">官网下载驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入命令行界面"><span class="nav-number">1.1.3.</span> <span class="nav-text">进入命令行界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装驱动"><span class="nav-number">1.1.4.</span> <span class="nav-text">安装驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂在驱动-测试显示驱动"><span class="nav-number">1.1.5.</span> <span class="nav-text">挂在驱动\测试显示驱动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他操作"><span class="nav-number">1.2.</span> <span class="nav-text">其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">1.2.1.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载驱动"><span class="nav-number">1.2.2.</span> <span class="nav-text">挂载驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭图形化界面-进入文本命令行模式"><span class="nav-number">1.2.3.</span> <span class="nav-text">关闭图形化界面-进入文本命令行模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它环境安装"><span class="nav-number">2.</span> <span class="nav-text">其它环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-number">2.1.</span> <span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cuDNN-库文件下载拷贝"><span class="nav-number">2.2.</span> <span class="nav-text">cuDNN 库文件下载拷贝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda下载"><span class="nav-number">3.</span> <span class="nav-text">Anaconda下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda安装"><span class="nav-number">3.1.</span> <span class="nav-text">Anaconda安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda操作"><span class="nav-number">3.2.</span> <span class="nav-text">Anaconda操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境添加"><span class="nav-number">3.2.1.</span> <span class="nav-text">环境添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conda命令的使用"><span class="nav-number">3.2.2.</span> <span class="nav-text">conda命令的使用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">443.3k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

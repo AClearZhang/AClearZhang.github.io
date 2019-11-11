@@ -446,11 +446,11 @@
       
         <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. <a href="http://stormzhang.com/android/2016/07/02/gradle-for-android-beginners/" target="_blank" rel="noopener">前言</a></h2><p>前一段时间有人在我的邪教群里问「刚学 Android 不久，对 Gradle 不懂，看了很多资料依然一知半解，希望张哥给讲讲 Gradle 」，没想到群里很多人都响应，表示同感，有人在群里推荐了一本书，说看这本书就行了。说实在的，我不反对看书，但是我反对的是为了弄懂一个知识点就需要看一本书那效率也太低了，于是我良心张就随口说了句「要不我在群里开个讲座给你们普及下 Gradle 基本概念吧？」没想到平时潜水的人全都出来了，然后纷纷回复「666…」，讲真，刚说过我就后悔了，主要没有那么多时间，但是毕竟已经放开话了，当晚加班回到家，没有一点准备就在群里给他们开始了长达一个多小时的普及工作，事后，出乎意料的大家一致反映效果很好，而且听课的全都很认真，有很多有心的人把我在群里一字一句打的聊天记录整理成了笔记分享在群里，我觉得这个主题可能对我的很多读者也都很有帮助，所以我在群里整理的笔记的基础上做了点补充与改进，希望这篇文章对你们有帮助！</p>
 <h2 id="2-什么是构建工具？"><a href="#2-什么是构建工具？" class="headerlink" title="2. 什么是构建工具？"></a>2. 什么是构建工具？</h2><p>我们大家都知道 Gradle 是一种构建工具，那么什么是构建工具呢？ 网上一大堆的文字解释我觉得很难理解，这里我以咱们 Android 开发来举个例子吧。 我们以前开发都是用 Eclipse ，而 Eclipse 大家都知道是一种 IDE （集成开发环境），最初是用来做 Java 开发的，而 Android 是基于 Java 语言的，所以最初 Google 还是希望 Android 能在 Eclipse 上进行开发，为了满足这个需求，Google 开发了一个叫 ADT （Android Developer Tools）的东西，相信以前从 Eclipse 时代过来的对 ADT 应该都不陌生，正是因为有了 ADT ，从此我们只需要码好代码，然后直接在 Eclipse 上进行编译、运行、签名、打包等一系列流程，而这背后的工作都是 ADT 的功劳。某种意义上 ADT 就是我们的构建工具。 而自 Google 推出 Android Studio 以来，就宣布默认使用 Gradle 来作为构建工具，并且之后放弃更新 ADT ，从此 Gradle 走入 Android 开发者的视野，而我也是在 AS 的 Beta 版开始接触并学习 Gradle。 一般来说，构建工具除了以上提到的编译、运行、签名、打包等，还具备依赖管理的功能，什么是依赖管理呢？还是拿 Eclipse 来说，我们以前在 Eclipse 上开发 Android ，如果需要用到第三方库的时候一般都是先下载 jar 文件，然后把 jar 文件添加到 libs 目录，然后项目中就可以引用了。但是你不觉得这种管理方式很麻烦么？假设第三方库有更新，需要下载最新的 Jar 文件，然后替换掉原来的，引用的库少还好，一旦引用的第三方库多，那简直麻烦死，可以说这种方式只有依赖，而没有管理。 现在大家不陌生的 Gradle 引用第三方库方式是这样的：</p>
-<pre><code>compile &apos;com.android.support:support-v4:24.0.1&apos;
+<pre><code>compile &#39;com.android.support:support-v4:24.0.1&#39;
 </code></pre><p>类似这样的依赖方式，是不是很方便？而且很直观，直接可以看到源地址，升级的话直接改下版本号就可以了，这就是所谓的依赖管理。 所以构建工具就是对你的项目进行编译、运行、签名、打包、依赖管理等一系列功能的合集，传统的构建工具有 Make、Ant、Maven、Ivy等，而 Gradle 是新一代的自动化构建工具。</p>
 <h2 id="3-什么是-Gradle-？"><a href="#3-什么是-Gradle-？" class="headerlink" title="3. 什么是 Gradle ？"></a>3. 什么是 Gradle ？</h2><p>上面说了，Gradle 是新一代的自动化构建工具，它是一个独立的项目，跟 AS、Android 无关，官方网站：<a href="https://gradle.org/" target="_blank" rel="noopener">https://gradle.org/</a> , 类似 Ant、Maven这类构建工具都是基于 xml 来进行描述的，很臃肿，而 Gradle 采用的是一种叫做 Groovy 的语言，语法跟 Java 语法很像，但是是一种动态语言，而且在 Java 基础上做了不少改进，用起来更加简洁、灵活，而且 Gradle 完全兼容 Maven、Ivy，这点基本上宣布了 Maven、Ivy 可以被抛弃了，Gradle 的推出主要以 Java 应用为主，当然目前还支持 Android、C、C++。</p>
 <h2 id="4-Gradle-与-Android-Studio-的关系"><a href="#4-Gradle-与-Android-Studio-的关系" class="headerlink" title="4. Gradle 与 Android Studio 的关系"></a>4. Gradle 与 Android Studio 的关系</h2><p>上面也提到，Gradle 跟 Android Studio 其实没有关系，但是 Gradle 官方还是很看重 Android 开发的，Google 在推出 AS 的时候选中了 Gradle 作为构建工具，为了支持 Gradle 能在 AS 上使用，Google 做了个 AS 的插件叫 Android Gradle Plugin ，所以我们能在 AS 上使用 Gradle 完全是因为这个插件的原因。在项目的根目录有个 build.gradle 文件，里面有这么一句代码：</p>
-<pre><code>classpath &apos;com.android.tools.build:gradle:2.1.2&apos;
+<pre><code>classpath &#39;com.android.tools.build:gradle:2.1.2&#39;
 </code></pre><p>这个就是依赖 gradle 插件的代码，后面的版本号代表的是 android gradle plugin 的版本，而不是 Gradle 的版本，这个是 Google 定的，跟 Gradle 官方没关系。关于 android gradle plugin 的更多信息可以到这里查看，这里列举了 android gradle plugin 每个版本的具体变化与具体功能： <a href="http://tools.android.com/tech-docs/new-build-system" target="_blank" rel="noopener">http://tools.android.com/tech-docs/new-build-system</a> 友情提示，需要科学上网！</p>
 <h2 id="5-Gradle-Wrapper"><a href="#5-Gradle-Wrapper" class="headerlink" title="5. Gradle Wrapper"></a>5. Gradle Wrapper</h2><p>现在默认新建一个项目，然后点击 AS 上的运行，默认就会直接帮你安装 Gradle ，我们不需要额外的安装 Gradle 了，但是其实这个 Gradle 不是真正的 Gradle ，他叫 Gradle Wrapper ，意为 Gradle 的包装，什么意思呢？假设我们本地有多个项目，一个是比较老的项目，还用着 Gradle 1.0 的版本，一个是比较新的项目用了 Gradle 2.0 的版本，但是你两个项目肯定都想要同时运行的，如果你只装了 Gradle 1.0 的话那肯定不行，所以为了解决这个问题，Google 推出了 Gradle Wrapper 的概念，就是他在你每个项目都配置了一个指定版本的 Gradle ，你可以理解为每个 Android 项目本地都有一个小型的 Gradle ，通过这个每个项目你可以支持用不同的 Gradle 版本来构建项目。 理解了 Gradle Wrapper 的概念就好办了，以下的所有操作都是基于 Gradle Wrapper 的。 默认我们在 AS 上第一次创建项目会自动下载 Gradle 的，这个过程很漫长，出奇的慢，但是第一次之后就ok了，接下来就是教大家用命令行测试下，请大家在终端或者 AS 带的终端上切换到所在项目的目录，然后输入 ./gradlew -v (win用户直接输入 gradlew -v) ，即可以查看当前项目所用的 gradle 的版本，gradlew 即为 gradle wrapper 的缩写，如果你是第一次执行命令行，那么会出现一个下载的提示，紧接着会打印一个个的点，这个过程很漫长，依赖你的网速，时间几分钟到几十分钟不等。 有人有疑问，我 AS 上明明已经可以正常运行该项目的，说明 Gradle 已经下载过了，为什么命令行还要再下载一次？我也一直有这个疑问，理论上是不该再下载的，但是事实他就是要重新下载一次，我猜测可能是bug吧。 如果下载完成输入 ./gradlew -v 出现如下结果，证明你的项目是ok的，否则就是你的项目配置有问题了。 <img src="http://stormzhang.com/image/gradlewv.png" alt="图片描述"></p>
 <h2 id="6-Android-项目包含的-Gradle-配置文件"><a href="#6-Android-项目包含的-Gradle-配置文件" class="headerlink" title="6. Android 项目包含的 Gradle 配置文件"></a>6. Android 项目包含的 Gradle 配置文件</h2><p>这里姑且以我很早在 GitHub 开源的 9GAG 项目为例，来稍微介绍下一个完整的 Android 项目包含的基本 Gradle 相关的配置文件： <img src="http://stormzhang.com/image/gradle1.png" alt="图片描述"> 红色标记部分从上到下咱们来一步步分析：</p>
@@ -678,7 +678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +689,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -700,7 +700,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -838,7 +838,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1464,6 +1464,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

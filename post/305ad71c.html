@@ -454,13 +454,13 @@
 <li>ret：返回。相当于跳转回调用函数的地方。（对应的call指令来调用函数，返回到call之后的下一条指令。）</li>
 <li>call：调用函数。</li>
 </ul>
-<p><strong>说道这里，有必要详述一些指令对堆栈的影响。某些指令会“自动”地操作堆栈，这就是call和jmp的不同之处。Call指令会把它的下一条指令的地址压入堆栈中，然后跳转到它调用的函数的开头处；而单纯的jmp是不会这样做的。同时，ret会自动地弹出返回地址。</strong> <strong>（小提示：call的本质相当于push+jmp。ret的本质相当于pop+jmp）</strong> 不但push、pop、call和ret会操作堆栈，sub和add也可以用于操作堆栈。如果我们要一次在堆栈中分配4个4字节长整型空间，那么没有必要4次调用push，很简单地把esp减去4*4=16即可。当然，也可以同样地用add指令来恢复它。这常常用于分配函数局部变量空间，因为C语言函数的局部变量保存在堆栈里。   ··<strong>数据传送指令</strong></p>
+<p><strong>说道这里，有必要详述一些指令对堆栈的影响。某些指令会“自动”地操作堆栈，这就是call和jmp的不同之处。Call指令会把它的下一条指令的地址压入堆栈中，然后跳转到它调用的函数的开头处；而单纯的jmp是不会这样做的。同时，ret会自动地弹出返回地址。</strong> <strong>（小提示：call的本质相当于push+jmp。ret的本质相当于pop+jmp）</strong> 不但push、pop、call和ret会操作堆栈，sub和add也可以用于操作堆栈。如果我们要一次在堆栈中分配4个4字节长整型空间，那么没有必要4次调用push，很简单地把esp减去4<em>4=16即可。当然，也可以同样地用add指令来恢复它。这常常用于分配函数局部变量空间，因为C语言函数的局部变量保存在堆栈里。   ··<em>*数据传送指令</em></em></p>
 <ul>
 <li>mov：数据移动。第一个参数是目的，第二个参数是来源。在C语言中相当于赋值号。这是最广为人知的指令。</li>
 <li>xor：异或。这虽是逻辑运算指令，但是有趣的是，xor eax，eax这样的操作常常用来代替mov eax，0。好处是速度更快，占用字节数更少。</li>
 <li>lea：取地址（第二个参数）后放入到前面的寄存器（第一个参数）中。</li>
 </ul>
-<p>（小提示：见到xor eax，eax，应该马上明白这是清零操作。） 但是实际上，有时候用lea用来做和mov同样的事情，比如赋值。看下面一条指令： lea dei,[ebp-0cch] 方括弧表示存储器，也就是ebp-0cch这个地址所指向的存储内容。但是lea要求取[ebp-0cch]的地址，那么地址就是ebp-0cch，这个地址将被放入到edi中。换句话说，这等同于： mov dei,ebp-0cch 但是以上mov指令是错误的，因为mov不支持后一个操作数写成寄存器减去数字。但是lea支持，所以可以用lea来代替它。 指令的操作数能采用的运算符号有非常复杂的限制。如果需要使用，应该查询指令手册。 为了讲解stos，下面解说前面提到的代码： mov  ecx,30h mov   eax,0cccccccch rep    stos dword ptr es:[edi] Stos是串存储指令，它的功能是将eax中的数据放入edi所指的地址中，同时，edi会增加4（字节数）。Rep使指令重复执行ecx中填写的次数。方括弧表示存储器，这个地址实际上就是edi的内容所指向的地址。这里的stos其实是对应的stosd，其他还有stosb、stosw，分别对应于处理4、1、2个字节，这里对堆栈中30h*4（0c0h）个字节初始化为0cch（也就是int3指令的机器码），这样发生意外时执行堆栈里面的内容会引发调试中断。   <strong>···跳转与比较指令</strong> 部分跳转指令如下：</p>
+<p>（小提示：见到xor eax，eax，应该马上明白这是清零操作。） 但是实际上，有时候用lea用来做和mov同样的事情，比如赋值。看下面一条指令： lea dei,[ebp-0cch] 方括弧表示存储器，也就是ebp-0cch这个地址所指向的存储内容。但是lea要求取[ebp-0cch]的地址，那么地址就是ebp-0cch，这个地址将被放入到edi中。换句话说，这等同于： mov dei,ebp-0cch 但是以上mov指令是错误的，因为mov不支持后一个操作数写成寄存器减去数字。但是lea支持，所以可以用lea来代替它。 指令的操作数能采用的运算符号有非常复杂的限制。如果需要使用，应该查询指令手册。 为了讲解stos，下面解说前面提到的代码： mov  ecx,30h mov   eax,0cccccccch rep    stos dword ptr es:[edi] Stos是串存储指令，它的功能是将eax中的数据放入edi所指的地址中，同时，edi会增加4（字节数）。Rep使指令重复执行ecx中填写的次数。方括弧表示存储器，这个地址实际上就是edi的内容所指向的地址。这里的stos其实是对应的stosd，其他还有stosb、stosw，分别对应于处理4、1、2个字节，这里对堆栈中30h<em>4（0c0h）个字节初始化为0cch（也就是int3指令的机器码），这样发生意外时执行堆栈里面的内容会引发调试中断。   <em>*···跳转与比较指令</em></em> 部分跳转指令如下：</p>
 <ul>
 <li>jmp：无条件跳转。这也是多年后我依然未忘记的少量指令之一。</li>
 <li>jg：顾名思义，大于的时候跳转。通常前面有一条比较指令。</li>
@@ -476,12 +476,35 @@
 <h4 id="3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）"><a href="#3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）" class="headerlink" title="3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）"></a>3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）</h4><p>一般说来,加方括号 [ ] 表示一种间接的取操作数方式,有点类似于C语言中的指针概念. 第一条指令 ADD AL ,[SI] 中,[SI] 表示寄存器间接寻址. 也就是说,与AL中内容相加的加数,不是SI寄存器的内容,而是以SI的内容作为地址指针的内存操作数. 假设SI的内容是1234H,这条加法指令,不是将1234H加到AL里（也加不了,数据类型不对）,而是以1234H作为地址,从内存的数据段（DS所指）中,段内偏移地址为1234H的那个内存单元中取出一个字节的数据来,加到AL中. 同样的,第二条指令 MOV [20H],AL,是将AL中的内容传送到内存里的一个单元中去.这个单元的有效地址就是[20H]. 这里,加了方括号的20H,不是运算所用的数据,而是数据的地址. ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 对问题补充的回复： AL是不可能加方括号的. 8086汇编中,能加方括号的只有4个寄存器：SI,DI,BX,BP 常数也可以加方括号,比如 [020H] 另外,变量名可以加方括号,但与上面两种情况不同,加了方括号的变量名,意义不变. 至于方括号内,可以出现BX+DI,SI+2这样的表达式,这是一些不同的寻址方式. SI 是寄存器寻址 [SI]是寄存器间接寻址 [SI+2]是相对的寄存器间接寻址,又称直接变址寻址,它也可以写成2[SI]这样的形式 [BX+SI]是基址变址寻址,也可写成[BX][SI] [BX+SI+20H]是相对的基址变址寻址,可以写成20H[BX][SI]之类的形式,将20H换成变量名也可以.  </p>
 <p>mov ax, [bx]；该指令中，bx中存储的值为一个偏移地址，该指令是将bx中存储的数据段偏移地址所对应的存储器中的值传送给ax。<br>mov ax，bx是把bx中存储的值传送给ax<br>不能互换</p>
 <hr>
-<p>--- c:\users\acanprince\desktop\文档_ssd\2017_春\zuchengyuanli\zuchengyuanli\main.c</p>
-<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>00851680 push ebp<br>00851681 mov ebp,esp<br>00851683 sub esp,108h<br>00851689 push ebx<br>0085168A push esi<br>0085168B push edi<br>0085168C lea edi,[ebp-108h]<br>00851692 mov ecx,42h<br>00851697 mov eax,0CCCCCCCCh<br>0085169C rep stos dword ptr es:[edi]<br> int a[10] = {25,-12,16,38,-22,56,46,109,127,-1};<br>0085169E mov dword ptr [a],19h<br>008516A5 mov dword ptr [ebp-28h],0FFFFFFF4h<br>008516AC mov dword ptr [ebp-24h],10h<br>008516B3 mov dword ptr [ebp-20h],26h<br>008516BA mov dword ptr [ebp-1Ch],0FFFFFFEAh<br>008516C1 mov dword ptr [ebp-18h],38h<br>008516C8 mov dword ptr [ebp-14h],2Eh<br>008516CF mov dword ptr [ebp-10h],6Dh<br>008516D6 mov dword ptr [ebp-0Ch],7Fh<br>008516DD mov dword ptr [ebp-8],0FFFFFFFFh<br> int i = 0,sum = 0;<br>008516E4 mov dword ptr [i],0<br>008516EB mov dword ptr [sum],0<br> for (; i &lt; 10; i++)<br>008516F2 jmp main+7Dh (08516FDh)<br>008516F4 mov eax,dword ptr [i]<br>008516F7 add eax,1<br>008516FA mov dword ptr [i],eax<br>008516FD cmp dword ptr [i],0Ah<br>00851701 jge main+92h (0851712h)<br> {<br> sum += a[i];<br>00851703 mov eax,dword ptr [i]<br>00851706 mov ecx,dword ptr [sum]<br>00851709 add ecx,dword ptr a[eax*4]<br>0085170D mov dword ptr [sum],ecx<br> }<br>00851710 jmp main+74h (08516F4h)<br> return 0;<br>00851712 xor eax,eax<br>}<br>00851714 push edx<br>00851715 mov ecx,ebp<br>00851717 push eax<br>00851718 lea edx,ds:[85172Ch]<br>0085171E call @_RTC_CheckStackVars@8 (0851244h)<br>00851723 pop eax<br>00851724 pop edx<br>00851725 pop edi<br>00851726 pop esi<br>00851727 pop ebx<br>00851728 mov esp,ebp<br>0085172A pop ebp<br>0085172B ret<br>0085172C add dword ptr [eax],eax<br>0085172E add byte ptr [eax],al<br>00851730 xor al,17h<br>00851732 test dword ptr [eax],eax<br>00851734 aamb 0FFh<br>00851736 ?? ??<br>00851737 jmp fword ptr [eax]<br>00851739 add byte ptr [eax],al<br>0085173B add byte ptr [eax+17h],al<br>0085173E test dword ptr [eax],eax<br>00851740 popad<br>00851741 add ah,cl<br>--- 无源文件 ———————————————————————–</p>
+<p>--- c:\\users\\acanprince\\desktop\\文档_ssd\\2017_春\\zuchengyuanli\\zuchengyuanli\\main.c</p>
+<h1 id="include"><a href="#include" class="headerlink" title="include "></a>include <stdio.h></stdio.h></h1><p>int main()<br>{<br>00851680 push ebp<br>00851681 mov ebp,esp<br>00851683 sub esp,108h<br>00851689 push ebx<br>0085168A push esi<br>0085168B push edi<br>0085168C lea edi,[ebp-108h]<br>00851692 mov ecx,42h<br>00851697 mov eax,0CCCCCCCCh<br>0085169C rep stos dword ptr es:[edi]<br> int a[10] = {25,-12,16,38,-22,56,46,109,127,-1};<br>0085169E mov dword ptr [a],19h<br>008516A5 mov dword ptr [ebp-28h],0FFFFFFF4h<br>008516AC mov dword ptr [ebp-24h],10h<br>008516B3 mov dword ptr [ebp-20h],26h<br>008516BA mov dword ptr [ebp-1Ch],0FFFFFFEAh<br>008516C1 mov dword ptr [ebp-18h],38h<br>008516C8 mov dword ptr [ebp-14h],2Eh<br>008516CF mov dword ptr [ebp-10h],6Dh<br>008516D6 mov dword ptr [ebp-0Ch],7Fh<br>008516DD mov dword ptr [ebp-8],0FFFFFFFFh<br> int i = 0,sum = 0;<br>008516E4 mov dword ptr [i],0<br>008516EB mov dword ptr [sum],0<br> for (; i &lt; 10; i++)<br>008516F2 jmp main+7Dh (08516FDh)<br>008516F4 mov eax,dword ptr [i]<br>008516F7 add eax,1<br>008516FA mov dword ptr [i],eax<br>008516FD cmp dword ptr [i],0Ah<br>00851701 jge main+92h (0851712h)<br> {<br> sum += a[i];<br>00851703 mov eax,dword ptr [i]<br>00851706 mov ecx,dword ptr [sum]<br>00851709 add ecx,dword ptr a[eax*4]<br>0085170D mov dword ptr [sum],ecx<br> }<br>00851710 jmp main+74h (08516F4h)<br> return 0;<br>00851712 xor eax,eax<br>}<br>00851714 push edx<br>00851715 mov ecx,ebp<br>00851717 push eax<br>00851718 lea edx,ds:[85172Ch]<br>0085171E call @_RTC_CheckStackVars@8 (0851244h)<br>00851723 pop eax<br>00851724 pop edx<br>00851725 pop edi<br>00851726 pop esi<br>00851727 pop ebx<br>00851728 mov esp,ebp<br>0085172A pop ebp<br>0085172B ret<br>0085172C add dword ptr [eax],eax<br>0085172E add byte ptr [eax],al<br>00851730 xor al,17h<br>00851732 test dword ptr [eax],eax<br>00851734 aamb 0FFh<br>00851736 ?? ??<br>00851737 jmp fword ptr [eax]<br>00851739 add byte ptr [eax],al<br>0085173B add byte ptr [eax+17h],al<br>0085173E test dword ptr [eax],eax<br>00851740 popad<br>00851741 add ah,cl<br>--- 无源文件 ———————————————————————————————————-</p>
 <h1 id="有关于课程设计："><a href="#有关于课程设计：" class="headerlink" title="有关于课程设计："></a>有关于课程设计：</h1><p>1. MOV R2,#0A<br>2. loop:<br>    - MOV a,R2<br>    - ADD a,#7F     //数据段起始地址<br>    - MOV R3,a<br>    - MOV a,@R3<br>    - ADDC a,#80<br>    JC ##;          //判断正负<br>    MOV a,@R3<br>    ADD a,R1<br>    MOV R1,a<br>    MOV a,#00<br>    ADDC a,R0<br>    MOV R0,a<br>    MOV a,R2<br>    SUB a,#01<br>    JZ out;        //跳出的<br>    MOV R2,a<br>    JMP loop;</p>
-<p>##:<br>    MOV a,@R3<br>    SUB a,#80<br>    CPL a<br>    ADD a,#1<br>    ADD a,R1<br>    MOV R1,a<br>    MOV a,#FF<br>    ADDC a,R0<br>    MOV R0,a<br>    MOV a,R2<br>    SUB a,#01<br>    JZ out;        //跳出的<br>    MOV R2,a<br>    JMP loop;<br>3. out:<br>        MOV a,R0<br>        ADD a,#80<br>        JC ###;<br>                //THE END</p>
-<p>###:<br>    MOV a,R0<br>    CPL a<br>    MOV R0,a<br>    MOV a,R1<br>    CPL a<br>    ADD a,#01      //低位<br>    MOV R1,a<br>    MOV a,R0<br>    ADDC a,#80      //+C  +符号位<br>    MOV R0,a;       //负数取原码 结束</p>
-<p># 题目<br>   10个单字节有符号数的加法，要求数组里面有负数且和的绝对值要大于255D，数据用源码表示，计算过程要求使用补码。<br># ———代码段——–<br>00 8E   //MOV R2, #0A<br>01 0A<br>02 72   //MOV A, R2<br>03 1C   //ADD A, #7F<br>04 7F<br>05 83   //MOV R3, A<br>06 77   //MOV A, @R3<br>07 1C   //ADD A, #80<br>08 80<br>09 A0   //JC -&gt; 26<br>10 26<br>11 77   //MOV A, @R3<br>12 11   //ADD A, R1<br>13 81   //MOV R1, A<br>14 7C   //MOV A, #00<br>15 00<br>16 20   //ADDC A, R0<br>17 80   //MOV R0, A<br>18 72   //MOV A, R2<br>19 3C   //SUB A, #01<br>20 01<br>21 A4   //JZ -&gt; 45<br>22 45<br>23 82   //MOV R2, A<br>24 AC   //JMP -&gt; 02<br>25 02<br>26 77   //MOV A, @R3<br>27 3C   //SUB A, #80<br>28 80<br>29 E4   //CPL A<br>30 1C   //ADD A, #01<br>31 01<br>32 11   //ADD A, R1<br>33 81   //MOV R1, A<br>34 7C   //MOV A, #FF<br>35 FF<br>36 20   //ADDC A, R0<br>37 80   //MOV R0, A<br>38 72   //MOV A, R2<br>39 3C   //SUB A, #01<br>40 A4   //JZ -&gt; 45<br>41 45<br>42 82   //MOV R2, A<br>43 AC   //JMP -&gt; 02<br>44 02<br>45 70   //MOV A, R0<br>46 1C   //ADD A, #80<br>47 80<br>48 A0   //JC -&gt; 52<br>49 52<br>50<br>51<br>52 70   //MOV A, R0<br>53 E4   //CPL A<br>54 80   //MOV R0, A<br>55 71   //MOV A, R1<br>56 E4   //CPL A<br>57 1C   //ADD A, #01<br>58 01<br>59 81   //MOV R1, A<br>60 70   //MOV A, R0<br>61 2C   //ADDC A, #80<br>62 80<br>63 80   //MOV R0, A<br>64<br>65<br># ———数据段——–<br>80 19   //25   0001 1001<br>81 8C   //-12  1000 1100<br>82 10   //16   0001 0000<br>83 26   //38   0010 0110<br>84 96   //-22  1001 0110<br>85 38   // 56  0011 1000<br>86 2E   //46   0010 1110<br>87 A1   //-33  1010 0001<br>88 6D   //109  0110 1101<br>89 21   //33   0010 0001</p>
+<h2 id=""><a href="#" class="headerlink" title=":"></a>:</h2><pre><code>MOV a,@R3
+SUB a,#80
+CPL a
+ADD a,#1
+ADD a,R1
+MOV R1,a
+MOV a,#FF
+ADDC a,R0
+MOV R0,a
+MOV a,R2
+SUB a,#01
+JZ out;        //跳出的
+MOV R2,a
+JMP loop;
+</code></pre><p>3. out:<br>        MOV a,R0<br>        ADD a,#80<br>        JC ###;<br>                //THE END</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=":"></a>:</h3><pre><code>MOV a,R0
+CPL a
+MOV R0,a
+MOV a,R1
+CPL a
+ADD a,#01      //低位
+MOV R1,a
+MOV a,R0
+ADDC a,#80      //+C  +符号位
+MOV R0,a;       //负数取原码 结束
+</code></pre><p># 题目<br>   10个单字节有符号数的加法，要求数组里面有负数且和的绝对值要大于255D，数据用源码表示，计算过程要求使用补码。<br># ————-代码段————<br>00 8E   //MOV R2, #0A<br>01 0A<br>02 72   //MOV A, R2<br>03 1C   //ADD A, #7F<br>04 7F<br>05 83   //MOV R3, A<br>06 77   //MOV A, @R3<br>07 1C   //ADD A, #80<br>08 80<br>09 A0   //JC -&gt; 26<br>10 26<br>11 77   //MOV A, @R3<br>12 11   //ADD A, R1<br>13 81   //MOV R1, A<br>14 7C   //MOV A, #00<br>15 00<br>16 20   //ADDC A, R0<br>17 80   //MOV R0, A<br>18 72   //MOV A, R2<br>19 3C   //SUB A, #01<br>20 01<br>21 A4   //JZ -&gt; 45<br>22 45<br>23 82   //MOV R2, A<br>24 AC   //JMP -&gt; 02<br>25 02<br>26 77   //MOV A, @R3<br>27 3C   //SUB A, #80<br>28 80<br>29 E4   //CPL A<br>30 1C   //ADD A, #01<br>31 01<br>32 11   //ADD A, R1<br>33 81   //MOV R1, A<br>34 7C   //MOV A, #FF<br>35 FF<br>36 20   //ADDC A, R0<br>37 80   //MOV R0, A<br>38 72   //MOV A, R2<br>39 3C   //SUB A, #01<br>40 A4   //JZ -&gt; 45<br>41 45<br>42 82   //MOV R2, A<br>43 AC   //JMP -&gt; 02<br>44 02<br>45 70   //MOV A, R0<br>46 1C   //ADD A, #80<br>47 80<br>48 A0   //JC -&gt; 52<br>49 52<br>50<br>51<br>52 70   //MOV A, R0<br>53 E4   //CPL A<br>54 80   //MOV R0, A<br>55 71   //MOV A, R1<br>56 E4   //CPL A<br>57 1C   //ADD A, #01<br>58 01<br>59 81   //MOV R1, A<br>60 70   //MOV A, R0<br>61 2C   //ADDC A, #80<br>62 80<br>63 80   //MOV R0, A<br>64<br>65<br># ————-数据段————<br>80 19   //25   0001 1001<br>81 8C   //-12  1000 1100<br>82 10   //16   0001 0000<br>83 26   //38   0010 0110<br>84 96   //-22  1001 0110<br>85 38   // 56  0011 1000<br>86 2E   //46   0010 1110<br>87 A1   //-33  1010 0001<br>88 6D   //109  0110 1101<br>89 21   //33   0010 0001</p>
 
       
     </div>
@@ -668,7 +691,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -679,7 +702,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -690,7 +713,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -787,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于汇编语言的CPTH机的一点学习记录"><span class="nav-number">1.</span> <span class="nav-text">关于汇编语言的CPTH机的一点学习记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要复习常用的汇编指令："><span class="nav-number">1.0.1.</span> <span class="nav-text">简要复习常用的汇编指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#有关于课程设计："><span class="nav-number">2.</span> <span class="nav-text">有关于课程设计：</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于汇编语言的CPTH机的一点学习记录"><span class="nav-number">1.</span> <span class="nav-text">关于汇编语言的CPTH机的一点学习记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要复习常用的汇编指令："><span class="nav-number">1.0.1.</span> <span class="nav-text">简要复习常用的汇编指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-补充对于-汇编语言加中括号表示什么-例如ADD-AL-［SI］-MOV［20H］-AL还有小括号呢-例如DS＝（SI＋2）"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">3.   补充对于 汇编语言加中括号表示什么 例如ADD AL,［SI］ MOV［20H］,AL还有小括号呢 例如DS＝（SI＋2）</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">2.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有关于课程设计："><span class="nav-number">3.</span> <span class="nav-text">有关于课程设计：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.1.</span> <span class="nav-text">:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">:</span></a></li></ol></li></ol></li></div>
             
 
           </div>
@@ -828,7 +851,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1454,6 +1477,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

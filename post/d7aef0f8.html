@@ -457,12 +457,12 @@
         <p><a href="https://www.cnblogs.com/kex1n/p/6017963.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">ssh 无密码登录要使用公钥与私钥</a>。linux下可以用用ssh-keygen生成公钥/私钥对，下面我以CentOS为例。 有机器A(192.168.1.155)，B(192.168.1.181)。现想A通过ssh免密码登录到B。 1.在A机下生成公钥/私钥对。</p>
 <p>[chenlb@A ~]$ ssh-keygen -t rsa -P ‘’</p>
 <p>直接ssh-keygen然后三次回车就可以了。 -P表示密码，-P ‘’ 就表示空密码，也可以不用-P参数，这样就要三车回车，用-P就一次回车。 它在/home/chenlb下生成.ssh目录，.ssh下有id_rsa和id_rsa.pub。 2.把A机下的id_rsa.pub复制到B机下，在B机的.ssh/authorized_keys文件里，我用scp复制。（如果B机器没有.ssh和authorized_keys文件则创建这个文件夹和文件先）</p>
-<p>[chenlb@A ~]$ scp .ssh/id_rsa.pub <a href="mailto:chenlb@192.168.1.181" target="_blank" rel="noopener">chenlb@192.168.1.181</a>:/home/chenlb/id_rsa.pub <a href="mailto:chenlb@192.168.1.181" target="_blank" rel="noopener">chenlb@192.168.1.181</a>‘s password: id_rsa.pub                                    100%  223     0.2KB/s   00:00</p>
+<p>[chenlb@A ~]$ scp .ssh/id_rsa.pub chenlb@192.168.1.181:/home/chenlb/id_rsa.pub chenlb@192.168.1.181’s password: id_rsa.pub                                    100%  223     0.2KB/s   00:00</p>
 <p>由于还没有免密码登录的，所以要输入密码。 3.B机把从A机复制的id_rsa.pub添加到.ssh/authorzied_keys文件里。</p>
 <p>[chenlb@B ~]$ cat id_rsa.pub &gt;&gt; .ssh/authorized_keys [chenlb@B ~]$ chmod 600 .ssh/authorized_keys</p>
 <p><strong>authorized_keys的权限要是600</strong>。 4.A机登录B机。</p>
 <p>[chenlb@A ~]$ ssh 192.168.1.181 The authenticity of host ‘192.168.1.181 (192.168.1.181)’ can’t be established. RSA key fingerprint is 00:a6:a8:87:eb:c7:40:10:39:cc:a0:eb:50:d9:6a:5b. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘192.168.1.181’ (RSA) to the list of known hosts. Last login: Thu Jul  3 09:53:18 2008 from chenlb [chenlb@B ~]$</p>
-<p>第一次登录是时要你输入yes。 现在A机可以无密码登录B机了。 小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub) 想让A，B机无密码互登录，那B机以上面同样的方式配置即可。 —————————————————————————————————————————————————————————————————————- SSH 为建立在应用层和传输层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用SSH 协议可以有效防止远程管理过程中的信息泄露问题。 从客户端来看，SSH提供两种级别的安全验证：   <strong>1、基于口令的验证</strong>   只要知道帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但缺点是：不能保证你正在连接的服务器就是你想连接的服务器。以下是我画了的登录验证流程：   <img src="http://images.cnitblog.com/blog/44804/201311/30203632-05af7f8077664bb6b3969a3f487a3743.png" alt="">       当第一次链接远程主机时，会提示您当前主机的”公钥指纹”，询问您是否继续，如果选择继续后就可以输入密码进行登录了，当远程的主机接受以后，该台服务器的公钥就会保存到~/.ssh/known_hosts文件中。   2、<strong>基于密钥的验证</strong>   这种验证的前提是客户端需要生成一对密钥，将公钥放到需访问的远程服务器。这种验证比上一种的好处是，不能仿冒真正的服务器，因为要仿冒必须拿到客户端生成的公钥。缺点就是验证等待过程稍长些。   <img src="http://images.cnitblog.com/blog/44804/201311/30204001-0f1deb20772042c3823b8527c147b074.png" alt="">       如何生成密钥：   1、在客户端打开终端，执行ssh-keygen，该命令会默认在~/.ssh/目录下创建id_rsa、id_rsa.pub两个文件，分别为您的公钥和私钥。   2、将公钥id_rsa.pub文件拷贝到服务器端的~/.ssh/authorized_keys文件中，有三种方法：  </p>
+<p>第一次登录是时要你输入yes。 现在A机可以无密码登录B机了。 小结：登录的机子可有私钥，被登录的机子要有登录机子的公钥。这个公钥/私钥对一般在私钥宿主机产生。上面是用rsa算法的公钥/私钥对，当然也可以用dsa(对应的文件是id_dsa，id_dsa.pub) 想让A，B机无密码互登录，那B机以上面同样的方式配置即可。 ———————————————————————————————————————————————————————————————————————————————————————————————————————— SSH 为建立在应用层和传输层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用SSH 协议可以有效防止远程管理过程中的信息泄露问题。 从客户端来看，SSH提供两种级别的安全验证：   <strong>1、基于口令的验证</strong>   只要知道帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但缺点是：不能保证你正在连接的服务器就是你想连接的服务器。以下是我画了的登录验证流程：   <img src="http://images.cnitblog.com/blog/44804/201311/30203632-05af7f8077664bb6b3969a3f487a3743.png" alt="">       当第一次链接远程主机时，会提示您当前主机的”公钥指纹”，询问您是否继续，如果选择继续后就可以输入密码进行登录了，当远程的主机接受以后，该台服务器的公钥就会保存到~/.ssh/known_hosts文件中。   2、<strong>基于密钥的验证</strong>   这种验证的前提是客户端需要生成一对密钥，将公钥放到需访问的远程服务器。这种验证比上一种的好处是，不能仿冒真正的服务器，因为要仿冒必须拿到客户端生成的公钥。缺点就是验证等待过程稍长些。   <img src="http://images.cnitblog.com/blog/44804/201311/30204001-0f1deb20772042c3823b8527c147b074.png" alt="">       如何生成密钥：   1、在客户端打开终端，执行ssh-keygen，该命令会默认在~/.ssh/目录下创建id_rsa、id_rsa.pub两个文件，分别为您的公钥和私钥。   2、将公钥id_rsa.pub文件拷贝到服务器端的~/.ssh/authorized_keys文件中，有三种方法：  </p>
 <ul>
 <li>通过scp拷贝：<ul>
 <li>　例：scp -P 22 ~/.ssh/id_rsa.pub user@host:~/authorized_keys     #可选参数-P代表指定用端口号22</li>
@@ -667,7 +667,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -678,7 +678,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -689,7 +689,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -827,7 +827,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1453,6 +1453,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="iptables防火墙简介  Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。  Iptables服务相关命令(重点记忆)   查看iptables状态  service iptables status">
+<meta name="description" content="1.   iptables防火墙简介Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。 2.   Iptables服务相关命令(重点记忆) 查看iptables状态  service iptables sta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Iptables教程">
 <meta property="og:url" content="http://blog.aclear.top/post/b1d268a8.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="iptables防火墙简介  Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。  Iptables服务相关命令(重点记忆)   查看iptables状态  service iptables status">
+<meta property="og:description" content="1.   iptables防火墙简介Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。 2.   Iptables服务相关命令(重点记忆) 查看iptables状态  service iptables sta">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iptables教程">
-<meta name="twitter:description" content="iptables防火墙简介  Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。  Iptables服务相关命令(重点记忆)   查看iptables状态  service iptables status">
+<meta name="twitter:description" content="1.   iptables防火墙简介Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。 2.   Iptables服务相关命令(重点记忆) 查看iptables状态  service iptables sta">
 
 
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  886
+                  888
                 </span>
               
 
@@ -450,14 +450,8 @@
       
 
       
-        <ol>
-<li><h1 id="iptables防火墙简介"><a href="#iptables防火墙简介" class="headerlink" title="iptables防火墙简介"></a>iptables防火墙简介</h1></li>
-</ol>
-<p>Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。</p>
-<ol start="2">
-<li><h1 id="Iptables服务相关命令-重点记忆"><a href="#Iptables服务相关命令-重点记忆" class="headerlink" title="Iptables服务相关命令(重点记忆)"></a>Iptables服务相关命令(重点记忆)</h1></li>
-</ol>
-<ul>
+        <h1 id="1-iptables防火墙简介"><a href="#1-iptables防火墙简介" class="headerlink" title="1.   iptables防火墙简介"></a>1.   iptables防火墙简介</h1><p>Iptables也叫netfilter是Linux下自带的一款免费且优秀的基于包过滤的防火墙工具，它的功能十分强大，使用非常灵活，可以对流入、流出、流经服务器的数据包进行精细的控制。iptables是Linux2.4及2.6内核中集成的模块。</p>
+<h1 id="2-Iptables服务相关命令-重点记忆"><a href="#2-Iptables服务相关命令-重点记忆" class="headerlink" title="2.   Iptables服务相关命令(重点记忆)"></a>2.   Iptables服务相关命令(重点记忆)</h1><ul>
 <li>查看iptables状态</li>
 </ul>
 <p>service iptables status</p>
@@ -468,30 +462,26 @@
 <ul>
 <li>查看iptables是否开机启动</li>
 </ul>
-<p>chkconfig iptables –list</p>
+<p>chkconfig iptables —list</p>
 <ul>
 <li>设置iptables开机启动/不启动</li>
 </ul>
 <p>chkconfig iptables on chkconfig iptables off</p>
-<ol start="3">
-<li><h1 id="iptables原理简介-拓展记忆"><a href="#iptables原理简介-拓展记忆" class="headerlink" title="iptables原理简介(拓展记忆)"></a>iptables原理简介(拓展记忆)</h1></li>
-</ol>
-<h2 id="3-1-iptables的结构"><a href="#3-1-iptables的结构" class="headerlink" title="3.1.  iptables的结构"></a>3.1.  iptables的结构</h2><p>在iptables中有四张表，分别是filter、nat、mangle和raw每一个表中都包含了各自不同的链，最常用的是filter表。  </p>
+<h1 id="3-iptables原理简介-拓展记忆"><a href="#3-iptables原理简介-拓展记忆" class="headerlink" title="3.   iptables原理简介(拓展记忆)"></a>3.   iptables原理简介(拓展记忆)</h1><h2 id="3-1-iptables的结构"><a href="#3-1-iptables的结构" class="headerlink" title="3.1.  iptables的结构"></a>3.1.  iptables的结构</h2><p>在iptables中有四张表，分别是filter、nat、mangle和raw每一个表中都包含了各自不同的链，最常用的是filter表。  </p>
 <ul>
 <li><strong>filter**</strong>表：**</li>
 </ul>
 <p>filter是iptables默认使用的表，负责对流入、流出本机的数据包进行过滤，该表中定义了3个链： <strong>INPOUT</strong> 负责过滤所有目标地址是本机地址的数据包，就是过滤进入主机的数据包。 <strong>FORWARD</strong>        负责转发流经本机但不进入本机的数据包，起到转发的作用。 <strong>OUTPUT</strong>   负责处理所有源地址是本机地址的数据包，就是处理从主机发出去的数据包。  </p>
-<p>#<a href="http://blog.csdn.net/kenhins/article/details/48806565" target="_blank" rel="noopener">查看帮助</a><br>iptables -h<br>man iptables<br>列出iptables规则<br>iptables -L -n<br>列出iptables规则并显示规则编号<br>iptables -L -n –line-numbers<br>列出iptables nat表规则（默认是filter表）<br>iptables -L -n -t nat<br>清除默认规则（注意默认是filter表，如果对nat表操作要加-t nat）</p>
-<p>#清楚所有规则<br>iptables -F</p>
-<p>#重启iptables发现规则依然存在，因为没有保存<br>service iptables restart</p>
-<p>#保存配置<br>service iptables save</p>
-<p>#禁止ssh登陆（若果服务器在机房，一定要小心）<br>iptables -A INPUT -p tcp –dport 22 -j DROP</p>
-<p>#删除规则<br>iptables -D INPUT -p tcp –dport 22 -j DROP<br>-A, –append chain    追加到规则的最后一条<br>-D, –delete chain [rulenum]    Delete rule rulenum (1 = first) from chain<br>-I, –insert chain [rulenum]    Insert in chain as rulenum (default 1=first) 添加到规则的第一条<br>-p, –proto  proto    protocol: by number or name, eg. ‘tcp’,常用协议有tcp、udp、icmp、all<br>-j, –jump target 常见的行为有ACCEPT、DROP和REJECT三种，但一般不用REJECT，会带来安全隐患<br>//ping 不同是因为   icmp给DROP掉了，一点消息也不会返回。   然而在REJECT时，还是有信息返回，告知被拒绝了！<br>注意：INPUT和DROP这样的关键字需要大写<br>     同时注意相当于：/etc/sysconfig/iptables      直接修改这个目录下的文件里面的配置了。</p>
-<p>#禁止192.168.33.0网段从eth0网卡接入<br>iptables -A INPUT -p tcp -i eth0 -s 192.168.33.0 -j DROP<br>iptables -A INPUT -p tcp –dport 22 -i eth0 -s 192.168.33.61  -j ACCEPT</p>
-<p>#禁止ip地址非192.168.10.10的所有类型数据接入<br>iptables -A INPUT ! -s 192.168.10.10 -j DROP</p>
-<p>#禁止ip地址非192.168.10.10的ping请求<br>iptables -I INPUT -p icmp –icmp-type 8 -s 192.168.50.100 -j DROP</p>
-<p>#扩展匹配：1.隐式扩展 2.显示扩展</p>
-<pre><code>#隐式扩展
+<h1 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a><a href="http://blog.csdn.net/kenhins/article/details/48806565" target="_blank" rel="noopener">查看帮助</a></h1><p>iptables -h<br>man iptables<br>列出iptables规则<br>iptables -L -n<br>列出iptables规则并显示规则编号<br>iptables -L -n —line-numbers<br>列出iptables nat表规则（默认是filter表）<br>iptables -L -n -t nat<br>清除默认规则（注意默认是filter表，如果对nat表操作要加-t nat）</p>
+<h1 id="清楚所有规则"><a href="#清楚所有规则" class="headerlink" title="清楚所有规则"></a>清楚所有规则</h1><p>iptables -F</p>
+<h1 id="重启iptables发现规则依然存在，因为没有保存"><a href="#重启iptables发现规则依然存在，因为没有保存" class="headerlink" title="重启iptables发现规则依然存在，因为没有保存"></a>重启iptables发现规则依然存在，因为没有保存</h1><p>service iptables restart</p>
+<h1 id="保存配置"><a href="#保存配置" class="headerlink" title="保存配置"></a>保存配置</h1><p>service iptables save</p>
+<h1 id="禁止ssh登陆（若果服务器在机房，一定要小心）"><a href="#禁止ssh登陆（若果服务器在机房，一定要小心）" class="headerlink" title="禁止ssh登陆（若果服务器在机房，一定要小心）"></a>禁止ssh登陆（若果服务器在机房，一定要小心）</h1><p>iptables -A INPUT -p tcp —dport 22 -j DROP</p>
+<h1 id="删除规则"><a href="#删除规则" class="headerlink" title="删除规则"></a>删除规则</h1><p>iptables -D INPUT -p tcp —dport 22 -j DROP<br>-A, —append chain    追加到规则的最后一条<br>-D, —delete chain [rulenum]    Delete rule rulenum (1 = first) from chain<br>-I, —insert chain [rulenum]    Insert in chain as rulenum (default 1=first) 添加到规则的第一条<br>-p, —proto  proto    protocol: by number or name, eg. ‘tcp’,常用协议有tcp、udp、icmp、all<br>-j, —jump target 常见的行为有ACCEPT、DROP和REJECT三种，但一般不用REJECT，会带来安全隐患<br>//ping 不同是因为   icmp给DROP掉了，一点消息也不会返回。   然而在REJECT时，还是有信息返回，告知被拒绝了！<br>注意：INPUT和DROP这样的关键字需要大写<br>     同时注意相当于：/etc/sysconfig/iptables      直接修改这个目录下的文件里面的配置了。</p>
+<h1 id="禁止192-168-33-0网段从eth0网卡接入"><a href="#禁止192-168-33-0网段从eth0网卡接入" class="headerlink" title="禁止192.168.33.0网段从eth0网卡接入"></a>禁止192.168.33.0网段从eth0网卡接入</h1><p>iptables -A INPUT -p tcp -i eth0 -s 192.168.33.0 -j DROP<br>iptables -A INPUT -p tcp —dport 22 -i eth0 -s 192.168.33.61  -j ACCEPT</p>
+<h1 id="禁止ip地址非192-168-10-10的所有类型数据接入"><a href="#禁止ip地址非192-168-10-10的所有类型数据接入" class="headerlink" title="禁止ip地址非192.168.10.10的所有类型数据接入"></a>禁止ip地址非192.168.10.10的所有类型数据接入</h1><p>iptables -A INPUT ! -s 192.168.10.10 -j DROP</p>
+<h1 id="禁止ip地址非192-168-10-10的ping请求"><a href="#禁止ip地址非192-168-10-10的ping请求" class="headerlink" title="禁止ip地址非192.168.10.10的ping请求"></a>禁止ip地址非192.168.10.10的ping请求</h1><p>iptables -I INPUT -p icmp —icmp-type 8 -s 192.168.50.100 -j DROP</p>
+<h1 id="扩展匹配：1-隐式扩展-2-显示扩展"><a href="#扩展匹配：1-隐式扩展-2-显示扩展" class="headerlink" title="扩展匹配：1.隐式扩展 2.显示扩展"></a>扩展匹配：1.隐式扩展 2.显示扩展</h1><pre><code>#隐式扩展
 -p tcp
     --sport PORT 源端口
     --dport PORT 目标端口
@@ -503,9 +493,9 @@ state：状态扩展，接口ip_contrack追踪会话状态
     ESTABLISHED：已建立的连接请求
     INVALID：非法连接
     RELATED：相关联的连接
-</code></pre><p>#匹配端口范围<br>iptables -I INPUT -p tcp –dport 22:80 -j DROP</p>
-<p>#匹配多个端口<br>iptables -I INPUT -p tcp -m multiport –dport 22,80,3306 -j ACCEPT</p>
-<p>#不允许源端口为80的数据流出<br>iptables -I OUTPUT -p tcp –sport 80 -j DROP<br>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+</code></pre><h1 id="匹配端口范围"><a href="#匹配端口范围" class="headerlink" title="匹配端口范围"></a>匹配端口范围</h1><p>iptables -I INPUT -p tcp —dport 22:80 -j DROP</p>
+<h1 id="匹配多个端口"><a href="#匹配多个端口" class="headerlink" title="匹配多个端口"></a>匹配多个端口</h1><p>iptables -I INPUT -p tcp -m multiport —dport 22,80,3306 -j ACCEPT</p>
+<h1 id="不允许源端口为80的数据流出"><a href="#不允许源端口为80的数据流出" class="headerlink" title="不允许源端口为80的数据流出"></a>不允许源端口为80的数据流出</h1><p>iptables -I OUTPUT -p tcp —sport 80 -j DROP<br>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
 
       
     </div>
@@ -692,7 +682,7 @@ state：状态扩展，接口ip_contrack追踪会话状态
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +693,7 @@ state：状态扩展，接口ip_contrack追踪会话状态
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -714,7 +704,7 @@ state：状态扩展，接口ip_contrack追踪会话状态
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -811,7 +801,7 @@ state：状态扩展，接口ip_contrack追踪会话状态
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables防火墙简介"><span class="nav-number">1.</span> <span class="nav-text">iptables防火墙简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iptables服务相关命令-重点记忆"><span class="nav-number">2.</span> <span class="nav-text">Iptables服务相关命令(重点记忆)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables原理简介-拓展记忆"><span class="nav-number">3.</span> <span class="nav-text">iptables原理简介(拓展记忆)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-iptables的结构"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.  iptables的结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-iptables防火墙简介"><span class="nav-number">1.</span> <span class="nav-text">1.   iptables防火墙简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Iptables服务相关命令-重点记忆"><span class="nav-number">2.</span> <span class="nav-text">2.   Iptables服务相关命令(重点记忆)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-iptables原理简介-拓展记忆"><span class="nav-number">3.</span> <span class="nav-text">3.   iptables原理简介(拓展记忆)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-iptables的结构"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.  iptables的结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看帮助"><span class="nav-number">4.</span> <span class="nav-text">查看帮助</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清楚所有规则"><span class="nav-number">5.</span> <span class="nav-text">清楚所有规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启iptables发现规则依然存在，因为没有保存"><span class="nav-number">6.</span> <span class="nav-text">重启iptables发现规则依然存在，因为没有保存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保存配置"><span class="nav-number">7.</span> <span class="nav-text">保存配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止ssh登陆（若果服务器在机房，一定要小心）"><span class="nav-number">8.</span> <span class="nav-text">禁止ssh登陆（若果服务器在机房，一定要小心）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除规则"><span class="nav-number">9.</span> <span class="nav-text">删除规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止192-168-33-0网段从eth0网卡接入"><span class="nav-number">10.</span> <span class="nav-text">禁止192.168.33.0网段从eth0网卡接入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止ip地址非192-168-10-10的所有类型数据接入"><span class="nav-number">11.</span> <span class="nav-text">禁止ip地址非192.168.10.10的所有类型数据接入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁止ip地址非192-168-10-10的ping请求"><span class="nav-number">12.</span> <span class="nav-text">禁止ip地址非192.168.10.10的ping请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展匹配：1-隐式扩展-2-显示扩展"><span class="nav-number">13.</span> <span class="nav-text">扩展匹配：1.隐式扩展 2.显示扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匹配端口范围"><span class="nav-number">14.</span> <span class="nav-text">匹配端口范围</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匹配多个端口"><span class="nav-number">15.</span> <span class="nav-text">匹配多个端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不允许源端口为80的数据流出"><span class="nav-number">16.</span> <span class="nav-text">不允许源端口为80的数据流出</span></a></li></ol></div>
             
 
           </div>
@@ -852,7 +842,7 @@ state：状态扩展，接口ip_contrack追踪会话状态
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1478,6 +1468,28 @@ state：状态扩展，接口ip_contrack追踪会话状态
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

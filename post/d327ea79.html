@@ -449,7 +449,7 @@
 
       
         <h4 id="Ubuntukylin-15-10-enhanced-release-amd64在生存9个月后，今年已经对其停止维护与安全更新。"><a href="#Ubuntukylin-15-10-enhanced-release-amd64在生存9个月后，今年已经对其停止维护与安全更新。" class="headerlink" title="Ubuntukylin-15.10-enhanced-release-amd64在生存9个月后，今年已经对其停止维护与安全更新。"></a>Ubuntukylin-15.10-enhanced-release-amd64在生存9个月后，今年已经对其停止维护与安全更新。</h4><p>然而，Ubuntu 16.04 LTS早已正式发布下载，长达5年技术支持。Ubuntu 每年发布两个版本，目前最新正式版版本也升到了 16.04。Ubuntu 16.04 开发代号为“Xenial Xerus”，为第六个长期支持（LTS）版本，其主要特色是引入了新的 snap 包格式和 LXD 纯容器 hypervisor。</p>
-<h4 id="Ubuntu-16-04-的其他特点包括："><a href="#Ubuntu-16-04-的其他特点包括：" class="headerlink" title="Ubuntu 16.04 的其他特点包括："></a>Ubuntu 16.04 的其他特点包括：</h4><p>支持 IBM LinuxONE 及 z Systems 的 s390x 架构 引入新的 Ubuntu MATE 社区版本 Linux 内核更新到 4.4.6，包含 ZFS on Linux 桌面版本的 GTK、Qt 均已升级至最新版本，包含 Firefox 45、Chromium 48、LibreOffice 5.1、Python 3.5 等 服务器版本包含 OpenStack Mitaka、Juju 2.0、LXD 2.0、NGINX 1.9.15、Docker 1.10、PHP 7.0、MySQL 5.7 等 ubuntu-16.04-desktop-amd64.iso  /32 位  下载资源详见MORE—-&gt;   具体安装教程： p本人，U盘、硬盘在上年安装过15.10，终于在设置win10引导时 15.10殒命。现在要利用ubuntu-16.04-desktop-amd64.iso &amp; EasyBCD   在win10硬盘下安装16.04. 1.由于事先已分盘73G空闲在15.10.首先  在win10下利用我的电脑–管理–硬盘管理中 删除卷—-15.10东西（数据是无价的，里面数据已经为空）。 P.S.如果是没有压缩过盘符，分过区的朋友可以在F分区上点右键，选择“压缩卷”，在”输入压缩空间量”里写上你想压缩出的空间（按照  M 为单位计算）,然后点压缩按钮，这样就会出现一个空白区域。 2.下载EasyBCD和Ubuntu 16.04 的ubuntu-16.04-desktop-amd64.iso镜像文件。 下面把准备好的ubuntu-16.04-desktop-amd64.iso镜像文件用压缩软件或者虚拟光驱打开， 找到casper文件夹，把里面的  “.disk”文件夹、initrd.lz和vmlinuz.efi解压到F分区(别的分区也可以)。 <img src="http://123.206.69.206/wp-content/uploads/2016/10/ubuntu安装00-300x55.png" alt="ubuntu%e5%ae%89%e8%a3%8500">     3.下面打开EasyBCD软件，来给要安装的ubuntu镜像文件加一个启动安装的“入口” 依次按图提示点击： <img src="http://img.blog.csdn.net/20131117185437140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> <img src="http://img.blog.csdn.net/20131117185437140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> 然后就会出现一个menu.lst文件，把以下内容写进menu.lst</p>
+<h4 id="Ubuntu-16-04-的其他特点包括："><a href="#Ubuntu-16-04-的其他特点包括：" class="headerlink" title="Ubuntu 16.04 的其他特点包括："></a>Ubuntu 16.04 的其他特点包括：</h4><p>支持 IBM LinuxONE 及 z Systems 的 s390x 架构 引入新的 Ubuntu MATE 社区版本 Linux 内核更新到 4.4.6，包含 ZFS on Linux 桌面版本的 GTK、Qt 均已升级至最新版本，包含 Firefox 45、Chromium 48、LibreOffice 5.1、Python 3.5 等 服务器版本包含 OpenStack Mitaka、Juju 2.0、LXD 2.0、NGINX 1.9.15、Docker 1.10、PHP 7.0、MySQL 5.7 等 ubuntu-16.04-desktop-amd64.iso  /32 位  下载资源详见MORE——&gt;   具体安装教程： p本人，U盘、硬盘在上年安装过15.10，终于在设置win10引导时 15.10殒命。现在要利用ubuntu-16.04-desktop-amd64.iso &amp; EasyBCD   在win10硬盘下安装16.04. 1.由于事先已分盘73G空闲在15.10.首先  在win10下利用我的电脑—管理—硬盘管理中 删除卷——15.10东西（数据是无价的，里面数据已经为空）。 P.S.如果是没有压缩过盘符，分过区的朋友可以在F分区上点右键，选择“压缩卷”，在”输入压缩空间量”里写上你想压缩出的空间（按照  M 为单位计算）,然后点压缩按钮，这样就会出现一个空白区域。 2.下载EasyBCD和Ubuntu 16.04 的ubuntu-16.04-desktop-amd64.iso镜像文件。 下面把准备好的ubuntu-16.04-desktop-amd64.iso镜像文件用压缩软件或者虚拟光驱打开， 找到casper文件夹，把里面的  “.disk”文件夹、initrd.lz和vmlinuz.efi解压到F分区(别的分区也可以)。 <img src="http://123.206.69.206/wp-content/uploads/2016/10/ubuntu安装00-300x55.png" alt="ubuntu%e5%ae%89%e8%a3%8500">     3.下面打开EasyBCD软件，来给要安装的ubuntu镜像文件加一个启动安装的“入口” 依次按图提示点击： <img src="http://img.blog.csdn.net/20131117185437140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> <img src="http://img.blog.csdn.net/20131117185437140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> 然后就会出现一个menu.lst文件，把以下内容写进menu.lst</p>
 <p>title Install Ubuntu<br> root (hd0,6)<br> kernel (hd0,6)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-16.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8<br> initrd (hd0,6)/initrd.lz</p>
 <p><strong>menu.lst有几个问题需要注意</strong> (1)    (hd0,6)的6表示ubuntu-16.04-desktop-amd64.iso，initrd.lz和vmlinuz.efi 三个文件存放的位置，因为我放在F分区，应该这样写： 如果是放在C盘就写0，D盘就写4,在E盘就写5,因为我放在F盘，所以我写的是6 (2)   vmlinuz.efi 一定要写上扩展名efi,网上好多教程都没写扩展名，不写扩展名重启后会提示找不到文件 (3)   ubuntu-16.04-desktop-amd64.iso是你的iso的名字，别写成我的了，这个要改成你的。 4.<strong>重启电脑</strong> 你就会看到有2个 启动菜单，选择 <strong>NeoGrub 引导加载</strong>器 这个选项。 然后稍等一会， 就会进入想要安装的 Ubuntu桌面了。 5.进入ubuntu桌面后， 记得按Ctrl+Alt+T 打开终端，输入命令:sudo umount -l /isodevice这一命令取消掉对光盘所在 驱动器的挂载： <img src="http://img.blog.csdn.net/20131203004847375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> （<strong>注意，这里的-l是L的小写，</strong>-l 与 /isodevice 有一个空格！！！！！！），否则分区界面找不到分区。 6.下面就点击桌面 安装Ubuntu 16.04开始安装: <img src="http://img.blog.csdn.net/20131222034056140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">                       <img src="http://img.blog.csdn.net/20131222034132812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> <strong>不选  因为否则会安装、等待的时间比较长！</strong> <img src="http://www.linuxidc.com/upload/2014_10/14102421311231.png" alt="Windows 7下硬盘安装Ubuntu 14.10图文教程"> 选安装类型，我们用<strong>其他选项</strong>。 这样我们可以自定义。</p>
 <h3 id="P-S-当弹出来，是否-卸载加载的sda时-选择否即可。"><a href="#P-S-当弹出来，是否-卸载加载的sda时-选择否即可。" class="headerlink" title="P.S.当弹出来，是否 卸载加载的sda时  选择否即可。"></a>P.S.当弹出来，是否 卸载加载的sda时  选择否即可。</h3><p><img src="http://img.blog.csdn.net/20131222034259968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvend5amc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""> 接下来就是分区： 这样您可以自己创建、调整分区、或者为 Ubuntu 选择多个分区。 网上有推进分区的方案如下(以30G为例)： / 20G ext4（根分区可以大点） SWAP 2G /home 8G ext4（剩下的给/home） <strong>如果跟我学，就（73G）</strong>分配4个区间：</p>
@@ -457,7 +457,7 @@
 <p><strong>然后你会发现，重启之后仍然是Windows，这时候你多半会骂这是哪个傻逼写的，不懂还在这里瞎逼逼。耐心点，看下一步~</strong></p>
 <p>7.安装 EasyBCD，这个软件是用于系统配置创建多重启动系统的引导文件，也就是新创建一个启动文件，可以让你的电脑在启动的时候，有进入何种系统的选择。</p>
 <p>“添加新条目” -“Linux/BSD”-类型“Grub 2”驱动器“自动定位和加载”-“添加条目”，保存后重启计算机，计算机会提示你选择Windows还是“NeoSmart Linux”，选择后者，大功告成。</p>
-<p>之后你就可以删除之前的安装配置文件了：1）EasyBCD–添加新条目–NeoGrub；</p>
+<p>之后你就可以删除之前的安装配置文件了：1）EasyBCD—添加新条目—NeoGrub；</p>
 <p>2）删除win10 F盘中的 “.disk”文件夹、initrd.lz和vmlinuz.efi 以及Ubuntu16.04 ISO包。</p>
 <h4 id="至此-可以完成Windows10下硬盘安装-linux-Ubuntu16-04LTS（长期支持版本）。并且由win10引导！"><a href="#至此-可以完成Windows10下硬盘安装-linux-Ubuntu16-04LTS（长期支持版本）。并且由win10引导！" class="headerlink" title="至此 可以完成Windows10下硬盘安装 linux`Ubuntu16.04LTS（长期支持版本）。并且由win10引导！"></a>至此 可以完成Windows10下硬盘安装 linux`Ubuntu16.04LTS（长期支持版本）。并且由win10引导！</h4><h4 id="一定可以成功！请仔细查看、揣摩本文档的细节，也可多查看帮助文档。谢谢。"><a href="#一定可以成功！请仔细查看、揣摩本文档的细节，也可多查看帮助文档。谢谢。" class="headerlink" title="一定可以成功！请仔细查看、揣摩本文档的细节，也可多查看帮助文档。谢谢。"></a>一定可以成功！请仔细查看、揣摩本文档的细节，也可多查看帮助文档。谢谢。</h4><blockquote>
 <p>参考下载： Ubuntu 16.04 LTS官方镜像下载： 32位：<a href="http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-i386.iso" target="_blank" rel="noopener">http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-i386.iso</a> 64位：<a href="http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-amd64.iso" target="_blank" rel="noopener">http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-amd64.iso</a> Ubuntu 16.04 LTS 今日发布 Canonical公布系统新特性 <a href="http://www.linuxidc.com/Linux/2016-04/130466.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-04/130466.htm</a> Ubuntu 16.04 LTS值得关注的新特性和改进盘点 <a href="http://www.linuxidc.com/Linux/2016-04/130136.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-04/130136.htm</a> 将Ubuntu 15.10升级到Ubuntu 16.04  <a href="http://www.linuxidc.com/Linux/2016-03/129158.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-03/129158.htm</a> Ubuntu 16.04安装Lua游戏引擎Love <a href="http://www.linuxidc.com/Linux/2016-03/129108.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-03/129108.htm</a> Ubuntu 16.04 需要你的帮助，让 GNOME Software 更美观 <a href="http://www.linuxidc.com/Linux/2016-03/129237.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-03/129237.htm</a> 更多Ubuntu相关信息见<a href="http://www.linuxidc.com/topicnews.aspx?tid=2" title="Ubuntu" target="_blank" rel="noopener">Ubuntu</a> 专题页面 <a href="http://www.linuxidc.com/topicnews.aspx?tid=2" title="Ubuntu" target="_blank" rel="noopener">http://www.linuxidc.com/topicnews.aspx?tid=2</a> <strong>本文永久更新链接地址</strong>：<a href="http://www.linuxidc.com/Linux/2016-04/130508.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2016-04/130508.htm</a> 参考： Linux公社 <a href="http://blog.csdn.net/zwyjg/article/details/16371349" target="_blank" rel="noopener">http://blog.csdn.net/zwyjg/article/details/16371349</a>  </p>
@@ -653,7 +653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -664,7 +664,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -675,7 +675,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -813,7 +813,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1439,6 +1439,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

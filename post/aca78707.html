@@ -485,7 +485,7 @@
       
         <p>注意：新MapReduces——yarm！！！ `YARN总体上仍然是Master/Slave结构，在整个资源管理框架中，ResourceManager为Master，NodeManager为Slave,ResourceManager负责对各个NodeManager上的资源进行统一管理和调度。当用户提交一个应用程序时，需要提供一个用以跟踪和管理这个程序的ApplicationMaster，它负责向ResourceManager申请资源，并要求NodeManager启动可以占用一定资源的任务。</p>
 <hr>
-<h3 id="三天以来配置hadoop-lt-centos-Ubuntu的小总结-gt"><a href="#三天以来配置hadoop-lt-centos-Ubuntu的小总结-gt" class="headerlink" title="三天以来配置hadoop&lt;centos+Ubuntu的小总结&gt;"></a>三天以来配置hadoop&lt;centos+Ubuntu的小总结&gt;</h3><ol>
+<h3 id="三天以来配置hadoop"><a href="#三天以来配置hadoop" class="headerlink" title="三天以来配置hadoop"></a>三天以来配置hadoop<centos+ubuntu的小总结></centos+ubuntu的小总结></h3><ol>
 <li>start-dfs.sh 不可以多次format.具体参考<a href="http://123.206.69.206/index.php/2017/03/12/hadoop_about_linziyu.html#no1_format" target="_blank" rel="noopener">`本链接</a></li>
 <li>./bin/hdfs dfs -rm -r output <a href="http://123.206.69.206/index.php/2017/03/12/hadoop_about_linziyu.html#no2_rm" target="_blank" rel="noopener"># 删除 output 文件夹</a></li>
 <li><a href="http://dblab.xmu.edu.cn/blog/893-2/" target="_blank" rel="noopener">学会查看日志文件，自己排查错误.查看HDFS文件系统数据的三种方法</a></li>
@@ -574,7 +574,7 @@
 <li>System.exit(job.waitForCompletion(true)?0:1);</li>
 <li><p>}</p>
 </li>
-<li><p>public static class IntSumReducer extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt; {</p>
+<li><p>public static class IntSumReducer extends Reducer<text, intwritable,="" text,="" intwritable=""> {</text,></p>
 </li>
 <li><p>private IntWritable result = new IntWritable();</p>
 </li>
@@ -582,7 +582,7 @@
 </li>
 <li><p>}</p>
 </li>
-<li><p>public void reduce(Text key, Iterable<intwritable> values, Reducer&lt;Text, IntWritable, Text, IntWritable&gt;.Context context) throws IOException, InterruptedException {</intwritable></p>
+<li><p>public void reduce(Text key, Iterable<intwritable> values, Reducer<text, intwritable,="" text,="" intwritable="">.Context context) throws IOException, InterruptedException {</text,></intwritable></p>
 </li>
 <li><p>int sum = 0;</p>
 </li>
@@ -598,7 +598,7 @@
 <li>}</li>
 <li><p>}</p>
 </li>
-<li><p>public static class TokenizerMapper extends Mapper&lt;Object, Text, Text, IntWritable&gt; {</p>
+<li><p>public static class TokenizerMapper extends Mapper<object, text,="" intwritable=""> {</object,></p>
 </li>
 <li>private static final IntWritable one = new IntWritable(1);</li>
 <li><p>private Text word = new Text();</p>
@@ -607,7 +607,7 @@
 </li>
 <li><p>}</p>
 </li>
-<li><p>public void map(Object key, Text value, Mapper&lt;Object, Text, Text, IntWritable&gt;.Context context) throws IOException, InterruptedException {</p>
+<li><p>public void map(Object key, Text value, Mapper<object, text,="" intwritable="">.Context context) throws IOException, InterruptedException {</object,></p>
 </li>
 <li><p>StringTokenizer itr = new StringTokenizer(value.toString());</p>
 </li>
@@ -791,7 +791,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 <h2 id="Hadoop伪分布式配置"><a href="#Hadoop伪分布式配置" class="headerlink" title="Hadoop伪分布式配置"></a>Hadoop伪分布式配置</h2><p>Hadoop 可以在单节点上以伪分布式的方式运行，Hadoop 进程以分离的 Java 进程来运行，节点既作为 NameNode 也作为 DataNode，同时，读取的是 HDFS 中的文件。 Hadoop 的配置文件位于 /usr/local/hadoop/etc/hadoop/ 中，伪分布式需要修改2个配置文件 <strong>core-site.xml</strong> 和 <strong>hdfs-site.xml</strong> 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。 修改配置文件 <strong>core-site.xml</strong> (通过 gedit 编辑会比较方便: <code>gedit ./etc/hadoop/core-site.xml</code>)，将当中的</p>
 <ol>
 <li><configuration></configuration></li>
-<li></li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>修改为下面配置：</p>
@@ -801,12 +801,12 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 <li><name>hadoop.tmp.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp</value></li>
 <li><description>Abase for other temporary directories.</description></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>fs.defaultFS</name></li>
 <li><value>hdfs://localhost:9000</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>同样的，修改配置文件 <strong>hdfs-site.xml</strong>：</p>
@@ -815,16 +815,16 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 <li><property></property></li>
 <li><name>dfs.replication</name></li>
 <li><value>1</value></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>dfs.namenode.name.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp/dfs/name</value></li>
-<li></li>
+<li>&lt;/property&gt;</li>
 <li><property></property></li>
 <li><name>dfs.datanode.data.dir</name></li>
 <li><value>file:/usr/local/hadoop/tmp/dfs/data</value></li>
-<li></li>
-<li></li>
+<li>&lt;/property&gt;</li>
+<li>&lt;/configuration&gt;</li>
 </ol>
 <p>XML</p>
 <p>_Hadoop配置文件说明_Hadoop 的运行方式是由配置文件决定的（运行 Hadoop 时会读取配置文件），因此如果需要从伪分布式模式切换回非分布式模式，需要删除 core-site.xml 中的配置项。 此外，伪分布式虽然只需要配置 fs.defaultFS 和 dfs.replication 就可以运行（官方教程如此），不过若没有配置 hadoop.tmp.dir 参数，则默认使用的临时目录为 /tmp/hadoo-hadoop，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 format 才行。所以我们进行了设置，同时也指定 dfs.namenode.name.dir 和 dfs.datanode.data.dir，否则在接下来的步骤中可能会出错。</p>
@@ -839,7 +839,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 </ol>
 <p>Shell 命令</p>
 <p>若出现如下SSH提示，输入yes即可。 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2014/08/install-hadoop-15-ssh-continue.png" alt="启动Hadoop时的SSH提示">启动Hadoop时的SSH提示 启动时可能会出现如下 WARN 提示：WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable WARN 提示可以忽略，并不会影响正常使用。</p>
-<p><em>启动 Hadoop 时提示 Could not resolve hostname</em>如果启动 Hadoop 时遇到输出非常多“ssh: Could not resolve hostname xxx”的异常情况，如下图所示： <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2014/08/install-hadoop-15-resolve-hostname.png" alt="启动Hadoop时的异常提示">启动Hadoop时的异常提示 这个并不是 ssh 的问题，可通过设置 Hadoop 环境变量来解决。首先按键盘的 <strong>ctrl + c</strong> 中断启动，然后在 ~/.bashrc 中，增加如下两行内容（设置过程与 JAVA_HOME 变量一样，其中 HADOOP_HOME 为 Hadoop 的安装目录）：</p>
+<p>_启动 Hadoop 时提示 Could not resolve hostname_如果启动 Hadoop 时遇到输出非常多“ssh: Could not resolve hostname xxx”的异常情况，如下图所示： <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2014/08/install-hadoop-15-resolve-hostname.png" alt="启动Hadoop时的异常提示">启动Hadoop时的异常提示 这个并不是 ssh 的问题，可通过设置 Hadoop 环境变量来解决。首先按键盘的 <strong>ctrl + c</strong> 中断启动，然后在 ~/.bashrc 中，增加如下两行内容（设置过程与 JAVA_HOME 变量一样，其中 HADOOP_HOME 为 Hadoop 的安装目录）：</p>
 <ol>
 <li>export HADOOP_HOME=/usr/local/hadoop</li>
 <li>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native</li>
@@ -904,7 +904,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 <li>./bin/hdfs dfs -rm -r output # 删除 output 文件夹</li>
 </ol>
 <p>Shell 命令</p>
-<p><em>运行程序时，输出目录不能存在</em>运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：</p>
+<p>_运行程序时，输出目录不能存在_运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：</p>
 <ol>
 <li>Configuration conf = new Configuration();</li>
 <li><p>Job job = new Job(conf);</p>
@@ -1123,7 +1123,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1134,7 +1134,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1145,7 +1145,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1242,7 +1242,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#三天以来配置hadoop-lt-centos-Ubuntu的小总结-gt"><span class="nav-number">1.</span> <span class="nav-text">三天以来配置hadoop&lt;centos+Ubuntu的小总结&gt;</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce-Eclipse"><span class="nav-number"></span> <span class="nav-text">MapReduce+Eclipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number"></span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Eclipse"><span class="nav-number"></span> <span class="nav-text">安装 Eclipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Hadoop-Eclipse-Plugin"><span class="nav-number"></span> <span class="nav-text">安装 Hadoop-Eclipse-Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Hadoop-Eclipse-Plugin"><span class="nav-number"></span> <span class="nav-text">配置 Hadoop-Eclipse-Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中操作-HDFS-中的文件"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中操作 HDFS 中的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中创建-MapReduce-项目"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中创建 MapReduce 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-Eclipse-运行-MapReduce"><span class="nav-number"></span> <span class="nav-text">通过 Eclipse 运行 MapReduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中运行-MapReduce-程序会遇到的问题"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中运行 MapReduce 程序会遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关文章"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">相关文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">--------------------</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop安装教程-单机-伪分布式配置-Hadoop2-6-0-Ubuntu16-04LTS"><span class="nav-number"></span> <span class="nav-text">Hadoop安装教程_单机/伪分布式配置_Hadoop2.6.0/Ubuntu16.04LTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境-1"><span class="nav-number"></span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建hadoop用户"><span class="nav-number"></span> <span class="nav-text">创建hadoop用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新apt"><span class="nav-number"></span> <span class="nav-text">更新apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH、配置SSH无密码登陆"><span class="nav-number"></span> <span class="nav-text">安装SSH、配置SSH无密码登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Java环境"><span class="nav-number"></span> <span class="nav-text">安装Java环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Hadoop-2"><span class="nav-number"></span> <span class="nav-text">安装 Hadoop 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop单机配置-非分布式"><span class="nav-number"></span> <span class="nav-text">Hadoop单机配置(非分布式)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop伪分布式配置"><span class="nav-number"></span> <span class="nav-text">Hadoop伪分布式配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Hadoop伪分布式实例"><span class="nav-number"></span> <span class="nav-text">运行Hadoop伪分布式实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number"></span> <span class="nav-text">YARN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加教程-配置PATH环境变量"><span class="nav-number"></span> <span class="nav-text">附加教程: 配置PATH环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hadoop集群"><span class="nav-number"></span> <span class="nav-text">安装Hadoop集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关教程"><span class="nav-number"></span> <span class="nav-text">相关教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料-1"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#三天以来配置hadoop"><span class="nav-number">1.</span> <span class="nav-text">三天以来配置hadoop</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce-Eclipse"><span class="nav-number"></span> <span class="nav-text">MapReduce+Eclipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number"></span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Eclipse"><span class="nav-number"></span> <span class="nav-text">安装 Eclipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Hadoop-Eclipse-Plugin"><span class="nav-number"></span> <span class="nav-text">安装 Hadoop-Eclipse-Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Hadoop-Eclipse-Plugin"><span class="nav-number"></span> <span class="nav-text">配置 Hadoop-Eclipse-Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中操作-HDFS-中的文件"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中操作 HDFS 中的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中创建-MapReduce-项目"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中创建 MapReduce 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-Eclipse-运行-MapReduce"><span class="nav-number"></span> <span class="nav-text">通过 Eclipse 运行 MapReduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Eclipse-中运行-MapReduce-程序会遇到的问题"><span class="nav-number"></span> <span class="nav-text">在 Eclipse 中运行 MapReduce 程序会遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关文章"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">相关文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">--------------------</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop安装教程-单机-伪分布式配置-Hadoop2-6-0-Ubuntu16-04LTS"><span class="nav-number"></span> <span class="nav-text">Hadoop安装教程_单机/伪分布式配置_Hadoop2.6.0/Ubuntu16.04LTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境-1"><span class="nav-number"></span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建hadoop用户"><span class="nav-number"></span> <span class="nav-text">创建hadoop用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新apt"><span class="nav-number"></span> <span class="nav-text">更新apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装SSH、配置SSH无密码登陆"><span class="nav-number"></span> <span class="nav-text">安装SSH、配置SSH无密码登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Java环境"><span class="nav-number"></span> <span class="nav-text">安装Java环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Hadoop-2"><span class="nav-number"></span> <span class="nav-text">安装 Hadoop 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop单机配置-非分布式"><span class="nav-number"></span> <span class="nav-text">Hadoop单机配置(非分布式)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop伪分布式配置"><span class="nav-number"></span> <span class="nav-text">Hadoop伪分布式配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Hadoop伪分布式实例"><span class="nav-number"></span> <span class="nav-text">运行Hadoop伪分布式实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number"></span> <span class="nav-text">YARN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加教程-配置PATH环境变量"><span class="nav-number"></span> <span class="nav-text">附加教程: 配置PATH环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hadoop集群"><span class="nav-number"></span> <span class="nav-text">安装Hadoop集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关教程"><span class="nav-number"></span> <span class="nav-text">相关教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料-1"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></li></div>
             
 
           </div>
@@ -1283,7 +1283,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1909,6 +1909,28 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

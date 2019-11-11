@@ -441,13 +441,13 @@
       
 
       
-        <p>pageEncoding  jsp 文件本身的代码 contentType   charset    是指服务器发送给客户端时的内容编码   <a href="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/1c950a7b02087bf44a7dbff7f4d3572c11dfcf1f.jpg" title="点击查看大图" target="_blank" rel="noopener"><img src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=50948e6dfdf2b211e47b8d48fab04900/1c950a7b02087bf44a7dbff7f4d3572c11dfcf1f.jpg" alt=""></a> 1.Application对象 Application用于保存所有用户的公共的数据信息,如果使用Application对象,一个需要考虑的问题是任何写操作都要在 Application_OnStart事件(global.asax)中完成.尽管使用Application.Lock和Applicaiton.Unlock方法来避免写操作的同步,但是 它串行化了对Application对象的请求,当网站访问量大的时候会产生严重的性能瓶颈.因此最好不要用此对象保存大的数据集合 2.Session对象 Session用于保存每个用户的专用信息.她的生存期是用户持续请求时间再加上一段时间(一般是20分钟左右).Session中的信息 保存在Web服务器内容中,保存的数据量可大可小.当Session超时或被关闭时将自动释放保存的数据信息.由于用户停止使用应用程 序后它仍然在内存中保持一段时间,因此使用Session对象使保存用户数据的方法效率很低.对于小量的数据,使用Session对象保存 还是一个不错的选择.使用Session对象保存信息的代码如下: //存放信息 Session[“username”]=”zhouhuan”; //读取数据 string UserName=Session[“username”].ToString(); – application全局变量,session是会话变量，比如说：（1）session：声明一个session变量。打开一个网站，session就存在了， 更换页，只要是这个网站的页，session始终存在，当关闭这个网站的时候，session就结束了，这叫会话变量。。。(2) application:声明一个application变量。不关你前台有多少客户打开该网站的页，有多少客户关闭该网站的页，只要服务器端不 关闭该网站，application始终存在。  <a href="http://www.cnblogs.com/an5211/p/6635607.html" target="_blank" rel="noopener">http://www.cnblogs.com/an5211/p/6635607.html</a></p>
+        <p>pageEncoding  jsp 文件本身的代码 contentType   charset    是指服务器发送给客户端时的内容编码   <a href="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/1c950a7b02087bf44a7dbff7f4d3572c11dfcf1f.jpg" title="点击查看大图" target="_blank" rel="noopener"><img src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=50948e6dfdf2b211e47b8d48fab04900/1c950a7b02087bf44a7dbff7f4d3572c11dfcf1f.jpg" alt=""></a> 1.Application对象 Application用于保存所有用户的公共的数据信息,如果使用Application对象,一个需要考虑的问题是任何写操作都要在 Application_OnStart事件(global.asax)中完成.尽管使用Application.Lock和Applicaiton.Unlock方法来避免写操作的同步,但是 它串行化了对Application对象的请求,当网站访问量大的时候会产生严重的性能瓶颈.因此最好不要用此对象保存大的数据集合 2.Session对象 Session用于保存每个用户的专用信息.她的生存期是用户持续请求时间再加上一段时间(一般是20分钟左右).Session中的信息 保存在Web服务器内容中,保存的数据量可大可小.当Session超时或被关闭时将自动释放保存的数据信息.由于用户停止使用应用程 序后它仍然在内存中保持一段时间,因此使用Session对象使保存用户数据的方法效率很低.对于小量的数据,使用Session对象保存 还是一个不错的选择.使用Session对象保存信息的代码如下: //存放信息 Session[“username”]=”zhouhuan”; //读取数据 string UserName=Session[“username”].ToString(); — application全局变量,session是会话变量，比如说：（1）session：声明一个session变量。打开一个网站，session就存在了， 更换页，只要是这个网站的页，session始终存在，当关闭这个网站的时候，session就结束了，这叫会话变量。。。(2) application:声明一个application变量。不关你前台有多少客户打开该网站的页，有多少客户关闭该网站的页，只要服务器端不 关闭该网站，application始终存在。  <a href="http://www.cnblogs.com/an5211/p/6635607.html" target="_blank" rel="noopener">http://www.cnblogs.com/an5211/p/6635607.html</a></p>
 <h1 id="JavaWeb-报错信息The-superclass-“javax-servlet-http-HttpServlet”-was-not-found-on-the-Java-Build-Path"><a href="#JavaWeb-报错信息The-superclass-“javax-servlet-http-HttpServlet”-was-not-found-on-the-Java-Build-Path" class="headerlink" title="JavaWeb: 报错信息The superclass “javax.servlet.http.HttpServlet” was not found on the Java Build Path"></a>JavaWeb: 报错信息The superclass “javax.servlet.http.HttpServlet” was not found on the Java Build Path</h1><p>好久不写Jsp，今天建立了一个Javaweb工程，并在eclipse中配置了Web容器Tomcat。原本开心的新建jsp页面，添加一个简单的Java类。可是，JSP页面顶端出现“红色”的报错信息：The superclass “javax.servlet.http.HttpServlet” was not found on the Java Build Path。原来Javaweb工程类中没有添加Tomcat运行时相关类导致。</p>
 <p>下面是具体的解决方法：</p>
 <p>1、右击web工程-》属性或Build Path-》Java Build Path-&gt;Libraries-&gt; Add Libray…-&gt;Server Runtime -》Tomcat Server</p>
 <p>2、切换到Java Build Path界面中的Orader and Export，选择Tomcat。</p>
 <p>注意：</p>
-<p>按以上方法操作时，若打开Server Runtime后一片空白，需要设置Apache服务器。设置方法为：window-&gt;Preferences-&gt;Server-&gt;Runtime Environment -&gt; add –&gt; 选择Apache的版本后点Next，再填入你apache服务器软件的安装（解压后）地址。</p>
+<p>按以上方法操作时，若打开Server Runtime后一片空白，需要设置Apache服务器。设置方法为：window-&gt;Preferences-&gt;Server-&gt;Runtime Environment -&gt; add —&gt; 选择Apache的版本后点Next，再填入你apache服务器软件的安装（解压后）地址。</p>
 
       
     </div>
@@ -634,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +645,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -656,7 +656,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -794,7 +794,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1420,6 +1420,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

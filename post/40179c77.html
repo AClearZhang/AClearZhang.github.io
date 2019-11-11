@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M–300M–500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
+<meta name="description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M—300M—500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu16.04下&#x2F;boot空间不足解决方法">
 <meta property="og:url" content="http://blog.aclear.top/post/40179c77.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M–300M–500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
+<meta property="og:description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M—300M—500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.linuxidc.com/upload/2015_05/150513072712281.png">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04下&#x2F;boot空间不足解决方法">
-<meta name="twitter:description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M–300M–500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
+<meta name="twitter:description" content="其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M—300M—500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目">
 <meta name="twitter:image" content="http://www.linuxidc.com/upload/2015_05/150513072712281.png">
 
 
@@ -441,7 +441,7 @@
       
 
       
-        <p>其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M–300M–500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目录。顺便提一下，Linux分区是树结构的，/为根目录，在其目录下会分各个执行不同工作的目录，所以在分区的时候完全可以只分一个根分区和一个swap（虚拟内存）分区。如果分的细微一点，为/boot单独分区的话，100M足够，boot文件里面存放的是系统引导文件和内核的一些东西，这些东西100M是足够容纳的。而大家都知道Linux内核一直在更新，更新后，旧的内核就不再使用，但旧的内核文件还在boot里面，占据着空间，更新几次过后boot文件就会被占满，显示boot磁盘空间不足。这时为了更新需要将不用的内核文件删除，释放空间。 1： 在终端下察看已经安装的旧的内核： ctrl+alt+t——&gt;进入终端——&gt;输入命令： dpkg –get-selections|grep linux 如下： <img src="http://www.linuxidc.com/upload/2015_05/150513072712281.png" alt=""> linux-后面带image的是旧的内核。因为我已经将旧的内核删除了，所以后面显示deinstall，不删除的话是install。 我们要做的就是将后面带image的Linux内核删除。 2：查看当前版本号：uname -a 3:删除操作： sudo apt-get remove linux-image-(版本号)（就是 上面带image的版本） 有卸载不完全的（有提示），可以用 sudo apt-get autoremove来删除。 4：sudo update-grub                  //试用 转/参考：<a href="http://www.linuxidc.com/Linux/2015-05/117401.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-05/117401.htm</a></p>
+        <p>其实咱们在Ubuntu安装的开始分区时，或者选择  “/“   ||   “swap”   即可。若选择添加”/home”,”/boot”（考虑到grub2放置在里面，防止双系统在重装系统时跑偏）150M—300M—500M。 在安装 Ubuntu的时候 ， 给/boot文件目录分配空间的时候，是100M，/boot可以单独分成一个区，也可以不单独分，在/（根目录）下也会自动为其创建一个boot目录。顺便提一下，Linux分区是树结构的，/为根目录，在其目录下会分各个执行不同工作的目录，所以在分区的时候完全可以只分一个根分区和一个swap（虚拟内存）分区。如果分的细微一点，为/boot单独分区的话，100M足够，boot文件里面存放的是系统引导文件和内核的一些东西，这些东西100M是足够容纳的。而大家都知道Linux内核一直在更新，更新后，旧的内核就不再使用，但旧的内核文件还在boot里面，占据着空间，更新几次过后boot文件就会被占满，显示boot磁盘空间不足。这时为了更新需要将不用的内核文件删除，释放空间。 1： 在终端下察看已经安装的旧的内核： ctrl+alt+t——&gt;进入终端——&gt;输入命令： dpkg —get-selections|grep linux 如下： <img src="http://www.linuxidc.com/upload/2015_05/150513072712281.png" alt=""> linux-后面带image的是旧的内核。因为我已经将旧的内核删除了，所以后面显示deinstall，不删除的话是install。 我们要做的就是将后面带image的Linux内核删除。 2：查看当前版本号：uname -a 3:删除操作： sudo apt-get remove linux-image-(版本号)（就是 上面带image的版本） 有卸载不完全的（有提示），可以用 sudo apt-get autoremove来删除。 4：sudo update-grub                  //试用 转/参考：<a href="http://www.linuxidc.com/Linux/2015-05/117401.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-05/117401.htm</a></p>
 
       
     </div>
@@ -619,7 +619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -630,7 +630,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -641,7 +641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -763,7 +763,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1389,6 +1389,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

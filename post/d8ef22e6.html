@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="即用,笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="笔者在学习MachineLearning和神经网络模型时,越发感到需要使用的数学公式变多了.于是乎为了方便自己进行ML笔记整理运用到的数学公式以及方便日后进行论文写作中熟悉使用LaTex语法.现将markdown中LaTeX数学公式语法进行整理.方便在需要的使用自取自用.推荐 Excel等表格在线转换器——LaTex 食用更加.  插入公式的方法 行内公式: $...$ 和 \(...\) 块内">
+<meta name="keywords" content="即用,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown中Latex语法梳理">
+<meta property="og:url" content="http://blog.aclear.top/post/d8ef22e6.html">
+<meta property="og:site_name" content="少年初心">
+<meta property="og:description" content="笔者在学习MachineLearning和神经网络模型时,越发感到需要使用的数学公式变多了.于是乎为了方便自己进行ML笔记整理运用到的数学公式以及方便日后进行论文写作中熟悉使用LaTex语法.现将markdown中LaTeX数学公式语法进行整理.方便在需要的使用自取自用.推荐 Excel等表格在线转换器——LaTex 食用更加.  插入公式的方法 行内公式: $...$ 和 \(...\) 块内">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-10T10:22:18.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown中Latex语法梳理">
+<meta name="twitter:description" content="笔者在学习MachineLearning和神经网络模型时,越发感到需要使用的数学公式变多了.于是乎为了方便自己进行ML笔记整理运用到的数学公式以及方便日后进行论文写作中熟悉使用LaTex语法.现将markdown中LaTeX数学公式语法进行整理.方便在需要的使用自取自用.推荐 Excel等表格在线转换器——LaTex 食用更加.  插入公式的方法 行内公式: $...$ 和 \(...\) 块内">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aclear.top/post/d8ef22e6.html">
+
+
+
+
+
+  <title>Markdown中Latex语法梳理 | 少年初心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">少年初心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">上进心的男生是有魅力的。不论是学习还是之后工作，有上进心的男生都是发光哒。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aclear.top/post/d8ef22e6.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AClearZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_acan.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年初心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Markdown中Latex语法梳理</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-26T09:58:51+08:00">
+                2019-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i> 
+              </span>
+              更新于
+              <time itemprop="dateUpdated" datetime="2019-11-10T18:22:18+08:00" content="2019-11-10">
+                2019-11-10
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">markdown</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-superpowers"></i> 阅读次数
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>笔者在学习MachineLearning和神经网络模型时,越发感到需要使用的数学公式变多了.<br>于是乎为了方便自己进行ML笔记整理运用到的数学公式以及方便日后进行论文写作中熟悉使用LaTex语法.现将markdown中LaTeX数学公式语法进行整理.方便在需要的使用自取自用.<br>推荐 <a href="https://tableconvert.com/" target="_blank" rel="noopener">Excel等表格在线转换器——LaTex</a> 食用更加.</p>
+</blockquote>
+<h1 id="插入公式的方法"><a href="#插入公式的方法" class="headerlink" title="插入公式的方法"></a>插入公式的方法</h1><ul>
+<li>行内公式: <code>$...$</code> 和 <code>\(...\)</code></li>
+<li>块内公式: <code>$$...$$</code> 和 <code>\[...\]</code></li>
+</ul>
+<h1 id="测试输出LaTex公式"><a href="#测试输出LaTex公式" class="headerlink" title="测试输出LaTex公式"></a>测试输出LaTex公式</h1><hr>
+<p>  <strong>BP算法</strong><br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">训练集	$\left\&#123;\left(x^&#123;(1)&#125;, y^&#123;(1)&#125;\right), \ldots,\left(x^&#123;(m)&#125;, y^&#123;(m)&#125;\right)\right\&#125;$</span><br><span class="line"></span><br><span class="line">设	$\Delta_&#123;i j&#125;^&#123;(l)&#125;=0(\text &#123; for all &#125; l, i, j)$</span><br><span class="line"></span><br><span class="line">$\begin&#123;array&#125;&#123;l&#125;&#123;\text &#123;For &#125; i=1 \text &#123; to &#125; m&#125;\end&#123;array&#125;$</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\begin&#123;array&#125;&#123;l&#125;&#123;\text &#123; Set &#125; a^&#123;(1)&#125;=x^&#123;(i)&#125;&#125; \\ &#123;\text &#123; Perform forward propagation to compute &#125; a^&#123;(l)&#125; \text &#123; for &#125; l=2,3, \ldots, L&#125; \\ &#123;\text &#123; Using &#125; y^&#123;(i)&#125;, \text &#123; compute &#125; \delta^&#123;(L)&#125;=a^&#123;(L)&#125;-y^&#123;(i)&#125;&#125; \\ &#123;\text &#123; Compute &#125; \delta^&#123;(L-1)&#125;, \delta^&#123;(l+1)&#125;, \ldots, \delta^&#123;(2)&#125;&#125; \\ &#123;\Delta_&#123;i j&#125;^&#123;(l)&#125; :=\Delta_&#123;i j&#125;^&#123;(l)&#125;+a_&#123;j&#125;^&#123;(l)&#125; \delta_&#123;i&#125;^&#123;(l+1)&#125;&#125;\end&#123;array&#125;</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line">$\begin&#123;array&#125;&#123;l&#125;&#123;D_&#123;i j&#125;^&#123;(l)&#125; :=\frac&#123;1&#125;&#123;m&#125; \Delta_&#123;i j&#125;^&#123;(l)&#125;+\lambda \Theta_&#123;i j&#125;^&#123;(l)&#125;&#125; &amp; &#123;\text &#123; if &#125; j \neq 0&#125; \\ &#123;D_&#123;i j&#125;^&#123;(l)&#125; :=\frac&#123;1&#125;&#123;m&#125; \Delta_&#123;i j&#125;^&#123;(l)&#125;&#125; &amp; &#123;\text &#123; if &#125; j=0&#125;\end&#123;array&#125;$</span><br><span class="line"></span><br><span class="line">其中	$\frac&#123;\partial&#125;&#123;\partial \Theta_&#123;i j&#125;^&#123;(l)&#125;&#125; J(\Theta)=D_&#123;i j&#125;^&#123;(l)&#125;$</span><br></pre></td></tr></table></figure></p>
+<p>  训练集    $\left\{\left(x^{(1)}, y^{(1)}\right), \ldots,\left(x^{(m)}, y^{(m)}\right)\right\}$</p>
+<p>  设    $\Delta_{i j}^{(l)}=0(\text { for all } l, i, j)$</p>
+<p>  $\begin{array}{l}{\text {For } i=1 \text { to } m}\end{array}$</p>
+<script type="math/tex; mode=display">
+  \begin{array}{l}{\text { Set } a^{(1)}=x^{(i)}} \\ {\text { Perform forward propagation to compute } a^{(l)} \text { for } l=2,3, \ldots, L} \\ {\text { Using } y^{(i)}, \text { compute } \delta^{(L)}=a^{(L)}-y^{(i)}} \\ {\text { Compute } \delta^{(L-1)}, \delta^{(l+1)}, \ldots, \delta^{(2)}} \\ {\Delta_{i j}^{(l)} :=\Delta_{i j}^{(l)}+a_{j}^{(l)} \delta_{i}^{(l+1)}}\end{array}</script><p>  $\begin{array}{l}{D_{i j}^{(l)} :=\frac{1}{m} \Delta_{i j}^{(l)}+\lambda \Theta_{i j}^{(l)}} &amp; {\text { if } j \neq 0} \\ {D_{i j}^{(l)} :=\frac{1}{m} \Delta_{i j}^{(l)}} &amp; {\text { if } j=0}\end{array}$</p>
+<p>  其中    $\frac{\partial}{\partial \Theta_{i j}^{(l)}} J(\Theta)=D_{i j}^{(l)}$</p>
+<hr>
+<a id="more"></a>
+<h1 id="LaTex运算符"><a href="#LaTex运算符" class="headerlink" title="LaTex运算符"></a>LaTex运算符</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>运算符号</th>
+<th>Latex公式</th>
+<th>运算符号</th>
+<th>Latex公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;=</td>
+<td><code>\(\geq\)</code></td>
+<td>∐</td>
+<td><code>$\coprod$</code></td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td><code>$\leq$</code></td>
+<td>∑</td>
+<td><code>$\sum$</code></td>
+</tr>
+<tr>
+<td>∼</td>
+<td><code>$\sim$</code></td>
+<td>∏</td>
+<td><code>$\prod$</code></td>
+</tr>
+<tr>
+<td>∽</td>
+<td><code>$\backsim$</code></td>
+<td>⊅</td>
+<td><code>$\not\supset$</code></td>
+</tr>
+<tr>
+<td>⊥</td>
+<td><code>$$\bot$$</code></td>
+<td>⊂</td>
+<td><code>$\subset$</code></td>
+</tr>
+<tr>
+<td>±</td>
+<td><code>$\pm$</code></td>
+<td>⊃</td>
+<td><code>$\supset$</code></td>
+</tr>
+<tr>
+<td>⋅</td>
+<td><code>$\cdot$</code></td>
+<td>∈</td>
+<td><code>$\in$</code></td>
+</tr>
+<tr>
+<td>×</td>
+<td><code>$\times$</code></td>
+<td>∉</td>
+<td><code>$\notin$</code></td>
+</tr>
+<tr>
+<td>∗</td>
+<td><code>$\ast$</code></td>
+<td>⊆</td>
+<td><code>$\subseteq$</code></td>
+</tr>
+<tr>
+<td>÷</td>
+<td><code>$\div$</code></td>
+<td>⊇</td>
+<td><code>$\supseteq$</code></td>
+</tr>
+<tr>
+<td>≠</td>
+<td><code>$\not=$</code></td>
+<td>⋂</td>
+<td><code>$\bigcap$</code></td>
+</tr>
+<tr>
+<td>≈</td>
+<td><code>$\approx$</code></td>
+<td>⋃</td>
+<td><code>$\bigcup$</code></td>
+</tr>
+<tr>
+<td>≮</td>
+<td><code>$\not&lt;$</code></td>
+<td>⋁</td>
+<td><code>$\bigvee$</code></td>
+</tr>
+<tr>
+<td>∣</td>
+<td><code>$\mid$</code></td>
+<td>⋁</td>
+<td><code>$\bigvee$</code></td>
+</tr>
+<tr>
+<td>log</td>
+<td><code>$\log$</code></td>
+<td>⋀</td>
+<td><code>$\bigwedge$</code></td>
+</tr>
+<tr>
+<td>log218</td>
+<td><code>$\log_2{18}$</code></td>
+<td>y^</td>
+<td><code>$\hat{y}$</code></td>
+</tr>
+<tr>
+<td>ln</td>
+<td><code>$\ln$</code></td>
+<td>yˇ</td>
+<td><code>$\check{y}$</code></td>
+</tr>
+<tr>
+<td>lg</td>
+<td><code>$\lg$</code></td>
+<td>y˘</td>
+<td><code>$\breve{y}$</code></td>
+</tr>
+<tr>
+<td>∠</td>
+<td><code>$\angle$</code></td>
+<td>≪</td>
+<td><code>$\ll$</code></td>
+</tr>
+<tr>
+<td>30∘</td>
+<td><code>$30^\circ$</code></td>
+<td>≫</td>
+<td><code>$\gg$</code></td>
+</tr>
+<tr>
+<td>sin</td>
+<td><code>$\sin$</code></td>
+<td>lim</td>
+<td><code>$\lim$</code></td>
+</tr>
+<tr>
+<td>cos</td>
+<td><code>$\cos$</code></td>
+<td>∞</td>
+<td><code>$\infty$</code></td>
+</tr>
+<tr>
+<td>tan</td>
+<td><code>$\tan$</code></td>
+<td>∇</td>
+<td><code>$\nabla$</code></td>
+</tr>
+<tr>
+<td>cot</td>
+<td><code>$\cot$</code></td>
+<td>∮</td>
+<td><code>$\oint$</code></td>
+</tr>
+<tr>
+<td>csc</td>
+<td><code>$\csc$</code></td>
+<td>′</td>
+<td><code>$\prime$</code></td>
+</tr>
+<tr>
+<td>sec</td>
+<td><code>$\sec$</code></td>
+<td>⨀</td>
+<td><code>$\bigodot$</code></td>
+</tr>
+<tr>
+<td>⨂</td>
+<td><code>$\bigotimes$</code></td>
+<td>⨁</td>
+<td><code>$\bigoplus$</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="LaTex数学表达式"><a href="#LaTex数学表达式" class="headerlink" title="LaTex数学表达式"></a>LaTex数学表达式</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>符号</th>
+<th>数学表达式</th>
+<th>Latex公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上标</td>
+<td><code>^</code></td>
+<td>ab</td>
+<td><code>$a^b$</code></td>
+</tr>
+<tr>
+<td>下标</td>
+<td><code>_</code></td>
+<td>ab</td>
+<td><code>$a_b$</code></td>
+</tr>
+<tr>
+<td>分数</td>
+<td><code>\frac</code></td>
+<td>1+ab+c</td>
+<td><code>$\frac{1 + a}{b + c}$</code></td>
+</tr>
+<tr>
+<td>求和</td>
+<td><code>\sum</code></td>
+<td>∑2xn</td>
+<td><code>$\sum{2x^n}$</code></td>
+</tr>
+<tr>
+<td>带范围求和</td>
+<td><code>\sum_{ }^{ }</code></td>
+<td>∑Nn=1</td>
+<td><code>$\sum_{n=1}^N$</code></td>
+</tr>
+<tr>
+<td>累乘</td>
+<td><code>\prod_{ }^{ }</code></td>
+<td>∏Nn=12xn</td>
+<td><code>$\prod_{n=1}^{N}{2x^n}$</code></td>
+</tr>
+<tr>
+<td>开方</td>
+<td><code>\sqrt[ ]{ }</code></td>
+<td>100−−−√2</td>
+<td><code>$\sqrt[2]{100}$</code></td>
+</tr>
+<tr>
+<td>积分</td>
+<td><code>\int_{ }^{ }</code></td>
+<td>∫51f(x)dx</td>
+<td><code>$\int^5_1{f(x)}{\rm d}x$</code></td>
+</tr>
+<tr>
+<td>二重积分</td>
+<td><code>\iint_{ }^{ }</code></td>
+<td>∬51f(x)dx</td>
+<td><code>$\iint^5_1{f(x)}{\rm d}x$</code></td>
+</tr>
+<tr>
+<td>三重积分</td>
+<td><code>\iiint_{ }^{ }</code></td>
+<td>∭51f(x)dx</td>
+<td><code>$\iiint^5_1{f(x)}{\rm d}x$</code></td>
+</tr>
+<tr>
+<td>正无穷</td>
+<td><code>$\infty$</code></td>
+<td>+∞</td>
+<td><code>$+\infty$</code></td>
+</tr>
+<tr>
+<td>正无穷</td>
+<td><code>$\infty$</code></td>
+<td>−∞</td>
+<td><code>$-\infty$</code></td>
+</tr>
+<tr>
+<td>极限</td>
+<td></td>
+<td>limn→+∞n</td>
+<td><code>$\lim_{n\rightarrow+\infty} n$</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>箭头符号</th>
+<th>Latex公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>↑</td>
+<td><code>$\uparrow$</code></td>
+</tr>
+<tr>
+<td>↓</td>
+<td><code>$\downarrow$</code></td>
+</tr>
+<tr>
+<td>⇑</td>
+<td><code>$\Uparrow$</code></td>
+</tr>
+<tr>
+<td>⇓</td>
+<td><code>$\Downarrow$</code></td>
+</tr>
+<tr>
+<td>→</td>
+<td><code>$\rightarrow$</code></td>
+</tr>
+<tr>
+<td>←</td>
+<td><code>$\leftarrow$</code></td>
+</tr>
+<tr>
+<td>⇒</td>
+<td><code>$\Rightarrow$</code></td>
+</tr>
+<tr>
+<td>⇐</td>
+<td><code>$\Leftarrow$</code></td>
+</tr>
+<tr>
+<td>⟶</td>
+<td><code>$\longrightarrow$</code></td>
+</tr>
+<tr>
+<td>⟵</td>
+<td><code>$\longleftarrow$</code></td>
+</tr>
+<tr>
+<td>⟹</td>
+<td><code>$\Longrightarrow$</code></td>
+</tr>
+<tr>
+<td>⟸</td>
+<td><code>$\Longleftarrow$</code></td>
+</tr>
+<tr>
+<td>f:xt↦yt</td>
+<td><code>$f: {\mathbf x_t} \mapsto {\mathbf y_t}$</code></td>
+</tr>
+<tr>
+<td>⟺</td>
+<td><code>\Longleftrightarrow</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="括号和分隔符"><a href="#括号和分隔符" class="headerlink" title="括号和分隔符"></a>括号和分隔符</h1><blockquote>
+<p>()、[]和|表示符号本身，使用 <code>\{\}</code> 来表示 {}。当要显示大号的括号或分隔符时，要用 <code>\left</code> 和 <code>\right</code> 命令。  </p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Latex公式</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$$\langle...\rangle$$</code></td>
+<td>⟨…⟩</td>
+</tr>
+<tr>
+<td><code>$$\lceil...\rceil$$</code></td>
+<td>⌈…⌉</td>
+</tr>
+<tr>
+<td><code>$$\lfloor...\rfloor$$</code></td>
+<td>⌊…⌋</td>
+</tr>
+<tr>
+<td><code>$$\lbrace...\rbrace$$</code></td>
+<td>{…}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="字体转换"><a href="#字体转换" class="headerlink" title="字体转换"></a>字体转换</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Latex公式</th>
+<th>说明</th>
+<th>显示实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\rm</code></td>
+<td>罗马体</td>
+<td>AA</td>
+</tr>
+<tr>
+<td><code>\cal</code></td>
+<td>花体</td>
+<td>BB</td>
+</tr>
+<tr>
+<td><code>\it</code></td>
+<td>意大利体</td>
+<td>CC</td>
+</tr>
+<tr>
+<td><code>\Bbb</code></td>
+<td>黑板粗体</td>
+<td>DD</td>
+</tr>
+<tr>
+<td><code>\bf</code></td>
+<td>粗体</td>
+<td>EE</td>
+</tr>
+<tr>
+<td><code>\mit</code></td>
+<td>数学斜体</td>
+<td>FF</td>
+</tr>
+<tr>
+<td><code>\sf</code></td>
+<td>等线体</td>
+<td>GG</td>
+</tr>
+<tr>
+<td><code>\scr</code></td>
+<td>手写体</td>
+<td>HH</td>
+</tr>
+<tr>
+<td><code>\tt</code></td>
+<td>打字机体</td>
+<td>MM</td>
+</tr>
+<tr>
+<td><code>\frak</code></td>
+<td>旧德式字体</td>
+<td>NN</td>
+</tr>
+<tr>
+<td><code>\boldsymbol</code></td>
+<td>黑体</td>
+<td>X,x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>实例1： <code>$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $$</code></p>
+<script type="math/tex; mode=display">f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)</script><p>实例2：大括号和行标的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">f\left(</span><br><span class="line">   \left[ </span><br><span class="line">     \frac&#123;</span><br><span class="line">       1+\left\&#123;x,y\right\&#125;</span><br><span class="line">     &#125;&#123;</span><br><span class="line">       \left(</span><br><span class="line">          \frac&#123;x&#125;&#123;y&#125;+\frac&#123;y&#125;&#123;x&#125;</span><br><span class="line">       \right)</span><br><span class="line">       \left(u+1\right)</span><br><span class="line">     &#125;+a</span><br><span class="line">   \right]^&#123;3/2&#125;</span><br><span class="line">\right)</span><br><span class="line">\tag&#123;行标&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure></p>
+<script type="math/tex; mode=display">
+f\left(
+   \left[ 
+     \frac{
+       1+\left\{x,y\right\}
+     }{
+       \left(
+          \frac{x}{y}+\frac{y}{x}
+       \right)
+       \left(u+1\right)
+     }+a
+   \right]^{3/2}
+\right)
+\tag{行标}</script><h1 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h1><blockquote>
+<p>数学公式中常见的省略号有两种</p>
+<ul>
+<li>\ldots 表示与文本底线对齐的省略号</li>
+<li>\cdots 表示与文本中线对齐的省略号</li>
+</ul>
+</blockquote>
+<p>实例：<code>$f(x_1,x_2,\underbrace{\ldots}_{\rm ldots} ,x_n) = x_1^2 + x_2^2 + \underbrace{\cdots}_{\rm cdots} + x_n^2$$</code></p>
+<script type="math/tex; mode=display">f(x_1,x_2,\underbrace{\ldots}_{\rm ldots} ,x_n) = x_1^2 + x_2^2 + \underbrace{\cdots}_{\rm cdots} + x_n^2</script><h1 id="矢量输入"><a href="#矢量输入" class="headerlink" title="矢量输入"></a>矢量输入</h1><blockquote>
+<p>使用 \vec{矢量}可以产生一个矢量。也可以使用 \overrightarrow命令自定义字母上方的符号。</p>
+</blockquote>
+<p>实例1：<code>$\vec{a} \cdot \vec{b}=0$$</code></p>
+<script type="math/tex; mode=display">\vec{a} \cdot \vec{b}=0</script><p>实例2：<code>$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$</code></p>
+<script type="math/tex; mode=display">\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}</script><h1 id="字体转换-1"><a href="#字体转换-1" class="headerlink" title="字体转换"></a>字体转换</h1><p>使用 <code>{\字体 {需转换的部分字符}}</code> 命令可以转换字符字体。其中 <code>\字体</code> 部分可以参照下表选择合适的字体。<code>公式默认为意大利体.</code></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Latex公式</th>
+<th>说明</th>
+<th>显示实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\rm</code></td>
+<td>罗马体</td>
+<td>A</td>
+</tr>
+<tr>
+<td><code>\cal</code></td>
+<td>花体</td>
+<td>B</td>
+</tr>
+<tr>
+<td><code>\it</code></td>
+<td>意大利体</td>
+<td>C</td>
+</tr>
+<tr>
+<td><code>\Bbb</code></td>
+<td>黑板粗体</td>
+<td>D</td>
+</tr>
+<tr>
+<td><code>\bf</code></td>
+<td>粗体</td>
+<td>E</td>
+</tr>
+<tr>
+<td><code>\mit</code></td>
+<td>数学斜体</td>
+<td>F</td>
+</tr>
+<tr>
+<td><code>\sf</code></td>
+<td>等线体</td>
+<td>G</td>
+</tr>
+<tr>
+<td><code>\scr</code></td>
+<td>手写体</td>
+<td>H</td>
+</tr>
+<tr>
+<td><code>\tt</code></td>
+<td>打字机体</td>
+<td>M</td>
+</tr>
+<tr>
+<td><code>\frak</code></td>
+<td>旧德式字体</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>\boldsymbol</code></td>
+<td>黑体</td>
+<td>X,x</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>(っ•̀ω•́)っ✎⁾⁾ 坚持技术学习、内容输出与分享，您的支持将鼓励我继续创作！(*/ω＼*)<br>( • ̀ω•́ )✧如有疑问或需要技术讨论，请留言或发邮件到 aclearzhang@qq.com.(*･ω< ) </div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pic.aclear.top/pay-wechat1.png" alt="AClearZhang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://pic.aclear.top/pay-ali1.png" alt="AClearZhang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：：</strong>
+    AClearZhang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：：</strong>
+    <a href="http://blog.aclear.top/post/d8ef22e6.html" title="Markdown中Latex语法梳理">http://blog.aclear.top/post/d8ef22e6.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/即用/" rel="tag"><i class="fa fa-tag"></i> 即用</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/b7bad590.html" rel="next" title="WE_ACAN">
+                <i class="fa fa-chevron-left"></i> WE_ACAN
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/4a17b156.html" rel="prev" title="VSCode&Hexo快捷键和操作命令">
+                VSCode&Hexo快捷键和操作命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTc5Ni8yMjMwNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_acan.jpg" alt="AClearZhang">
+            
+              <p class="site-author-name" itemprop="name">AClearZhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AClearZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aclearzhang@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://spencerwoo.com/" title="SpenWoo" target="_blank" rel="nofollow">SpenWoo</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.dajipai.cc/" title="鸡排酱" target="_blank" rel="nofollow">鸡排酱</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#插入公式的方法"><span class="nav-number">1.</span> <span class="nav-text">插入公式的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试输出LaTex公式"><span class="nav-number">2.</span> <span class="nav-text">测试输出LaTex公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LaTex运算符"><span class="nav-number">3.</span> <span class="nav-text">LaTex运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LaTex数学表达式"><span class="nav-number">4.</span> <span class="nav-text">LaTex数学表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头"><span class="nav-number">5.</span> <span class="nav-text">箭头</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#括号和分隔符"><span class="nav-number">6.</span> <span class="nav-text">括号和分隔符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体转换"><span class="nav-number">7.</span> <span class="nav-text">字体转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#省略号"><span class="nav-number">8.</span> <span class="nav-text">省略号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矢量输入"><span class="nav-number">9.</span> <span class="nav-text">矢量输入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体转换-1"><span class="nav-number">10.</span> <span class="nav-text">字体转换</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AClearZhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">本站总字数&#58;</span>
+    
+    <span title="本站总字数">443.3k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io" rel="nofollow">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="nofollow">NexT.Pisces</a> v5.1.4</div>
+
+
+ 
+-->
+
+<!-- 百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 20185,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 看板娘添加 -->
+<script src="/live2d-widget/autoload.js"></script>

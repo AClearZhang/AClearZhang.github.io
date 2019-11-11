@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="—关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的AP">
+<meta name="description" content="—-关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="day06_BigData渐进学习_aclear_fire">
 <meta property="og:url" content="http://blog.aclear.top/post/f4308eec.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="—关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的AP">
+<meta property="og:description" content="—-关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的A">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pic.aclear.top/02.推荐系统架构-1024x704.png">
 <meta property="og:image" content="http://pic.aclear.top/hadoop_编译相关.jpg">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day06_BigData渐进学习_aclear_fire">
-<meta name="twitter:description" content="—关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的AP">
+<meta name="twitter:description" content="—-关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的A">
 <meta name="twitter:image" content="http://pic.aclear.top/02.推荐系统架构-1024x704.png">
 
 
@@ -442,10 +442,10 @@
       
 
       
-        <p>—关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的API即可。所以官网的API <a href="http://hadoop.apache.org/docs/r2.6.5/api/index.html" target="_blank" rel="noopener">http://hadoop.apache.org/docs/r2.6.5/api/index.html</a>  接口是很多doc但建起来的 知道用户接口，把需要的业务逻辑嵌入进去就好。 但是底部的 configuration——表示里面的配置参数，因为数据分析一点API加许多的配置参数进行处理的。但是好在  大部分的值用默认的惨呼就好，用的过程中会说，但是参数配置大全——用的的时候再拿来用即可。 —典型的推荐系统架构，应用的实时计算——看下当时讲的架构图即可 添加一：kafka？   进行实时处理&lt;storm/sparkStreaming&gt;统计当前的最新动态. 添加二：&lt;有些东西只是sql统计不出来，所以要用 深度学习，mahout&lt;根据算法得到的结果，也是得到一些协同过滤算法得到的结果&gt;&gt;sql-&gt;HIVE仓库；  另一个通过mahout-&gt;协同算法得推荐数据。 综上 都要到，推荐原料中，成立为一个表。 [caption id=”attachment_1107” align=”aligncenter” width=”1422”]<img src="http://pic.aclear.top/02.推荐系统架构-1024x704.png" alt="dream"> 推荐系统架构+实时操作[/caption] —Hadoop集群框架搭建 hdfs:name nodename  datanode   datanode datanode … yarn: resourcenode    nodemanager  nodemanage15r  nodemanager ….   —注意hadoop编译，由于hadoop包&lt;原本应该是跨平台的&gt;下载下来之后还需要，利用对应平台的解压缩命令还有maven tar c  java编译库都要和操作系统的存在形式是一样的。 注意：如果只是小小的想要使用  servlet，给hadoop一个内置的netty即可。   PS.:file://      hdfs://   注意哦统一资源定位符，对应的协议。 —关于官网下载的hadoop源码包，因为官网下载下来的都是源码包。 然而hadoop是maven的项目，所以需要在maven上进行下载相应的包、并编译， 利用ant进行打包。<img src="http://pic.aclear.top/hadoop_编译相关.jpg" alt="dream">   </p>
+        <p>—-关于hadoop.apache.org 官方事务的使用分析： common一般是放置一些公共可供使用和下载的框架等。 Ambari  图形化的hadoop安装版本。商业化做一下cdh  一个商业化、方便操作的hadoop版本。 Spark  广义 hadoop.apache.org 2.2.0  是在2015-2016年比较多人用的。 开发的时候，数据分析  只需要我们进行嵌入的一部分用户的API即可。所以官网的API <a href="http://hadoop.apache.org/docs/r2.6.5/api/index.html" target="_blank" rel="noopener">http://hadoop.apache.org/docs/r2.6.5/api/index.html</a>  接口是很多doc但建起来的 知道用户接口，把需要的业务逻辑嵌入进去就好。 但是底部的 configuration——表示里面的配置参数，因为数据分析一点API加许多的配置参数进行处理的。但是好在  大部分的值用默认的惨呼就好，用的过程中会说，但是参数配置大全——用的的时候再拿来用即可。 —-典型的推荐系统架构，应用的实时计算——看下当时讲的架构图即可 添加一：kafka？   进行实时处理<storm sparkstreaming="">统计当前的最新动态. 添加二：&lt;有些东西只是sql统计不出来，所以要用 深度学习，mahout&lt;根据算法得到的结果，也是得到一些协同过滤算法得到的结果&gt;&gt;sql-&gt;HIVE仓库；  另一个通过mahout-&gt;协同算法得推荐数据。 综上 都要到，推荐原料中，成立为一个表。 [caption id=”attachment_1107” align=”aligncenter” width=”1422”]<img src="http://pic.aclear.top/02.推荐系统架构-1024x704.png" alt="dream"> 推荐系统架构+实时操作[/caption] —-Hadoop集群框架搭建 hdfs:name nodename  datanode   datanode datanode … yarn: resourcenode    nodemanager  nodemanage15r  nodemanager ….   —-注意hadoop编译，由于hadoop包&lt;原本应该是跨平台的&gt;下载下来之后还需要，利用对应平台的解压缩命令还有maven tar c  java编译库都要和操作系统的存在形式是一样的。 注意：如果只是小小的想要使用  servlet，给hadoop一个内置的netty即可。   PS.:file://      hdfs://   注意哦统一资源定位符，对应的协议。 —-关于官网下载的hadoop源码包，因为官网下载下来的都是源码包。 然而hadoop是maven的项目，所以需要在maven上进行下载相应的包、并编译， 利用ant进行打包。<img src="http://pic.aclear.top/hadoop_编译相关.jpg" alt="dream">   </storm></p>
 <p>注意：官网上面有：hadoop.src.tar.gz①   hadoop.tar.gz② 其中①是源码包用于进行图片中“hadoop编译.docx”进行tar.gz编译   share/hadoop/hdfs   share下方是jar包   <strong>---</strong>eclipse上面导入jar包需要导入：share/hadoop/hdfs  common、hdfs下面的：jar+lib当中的jar到一个新建的eclipse项目中去。——完成就是hdfs的jar包了。 1.以上hdfs的一些在eclipse上通过hdfs api运行的类似于客户端的操作——称之为HDFS应用开发篇。</p>
 <blockquote>
-<p><em>hdfs__在生产应用中主要是客户端的开发，其核心步骤是从hdfs__提供的api__中构造一个HDFS__的访问客户端对象，然后通过该客户端对象操作（增删改查）HDFS__上的文件</em></p>
+<p>_hdfs<strong>在生产应用中主要是客户端的开发，其核心步骤是从hdfs</strong>提供的api<strong>中构造一个HDFS</strong>的访问客户端对象，然后通过该客户端对象操作（增删改查）HDFS__上的文件_</p>
 </blockquote>
 <p>详情见：7.HDFS的java操作。 <strong>以上</strong>是通过centos当做服务器（所以你会看到，有protobuf当做序列化工具）； windows上eclipse做为客户端调用api学习使用的客户端。（我们当前就是使用的这样一种开发学习方式。）</p>
 <p>2.window下开发的说明<br>建议在linux下进行hadoop应用的开发，不会存在兼容性问题。如在window上做客户端应用开发，需要设置以下环境：<br>·在windows的某个目录下解压一个hadoop的安装包<br>·将安装包下的lib和bin目录用对应windows版本平台编译的本地库替换<br>·在window系统中配置HADOOP_HOME指向你解压的安装包<br>·在windows系统的path变量中加入hadoop的bin目录<br>（注意，也就是最近一张图片中windows7编译出来的zip包中bin/lib替换安装包中的bin/lib即可！）</p>
@@ -457,15 +457,15 @@
 <li><a href="#_Toc439057208">HADOOP 快速入门………………………………………………………………………………………….. 3</a></li>
 </ol>
 <p><a href="#_Toc439057209">什么是HADOOP…………………………………………………………………………………………… 3</a> <a href="#_Toc439057210">HADOOP产生背景……………………………………………………………………………………….. 3</a> <a href="#_Toc439057211">HADOOP在大数据、云计算中的位置和关系……………………………………………………… 3</a> <a href="#_Toc439057212">国内外HADOOP应用案例介绍……………………………………………………………………….. 4</a> <a href="#_Toc439057213">国内HADOOP的就业情况分析……………………………………………………………………….. 5</a> <a href="#_Toc439057214">HADOOP生态圈以及各组成部分的简介……………………………………………………………. 6</a> <a href="#_Toc439057215">分布式系统概述………………………………………………………………………………………….. 6</a></p>
-<ol start="2">
+<ol>
 <li><a href="#_Toc439057216">HIVE快速入门………………………………………………………………………………………………… 7</a></li>
 </ol>
 <p><a href="#_Toc439057217">2.1 Hive基本介绍…………………………………………………………………………………………. 7</a> <a href="#_Toc439057218">2.2 Hive的基本使用……………………………………………………………………………………… 8</a> <a href="#_Toc439057219">2.3 数据仓库基本知识………………………………………………………………………………….. 9</a></p>
-<ol start="3">
+<ol>
 <li><a href="#_Toc439057220">数据分析案列演示………………………………………………………………………………………… 10</a></li>
 </ol>
 <p><a href="#_Toc439057221">3.1 需求分析…………………………………………………………………………………………….. 10</a> <a href="#_Toc439057222">3.1.1案例名称…………………………………………………………………………………….. 10</a> <a href="#_Toc439057223">3.1.2 案例需求描述……………………………………………………………………………… 10</a> <a href="#_Toc439057224">3.1.3 web点击流日志的数据格式……………………………………………………………. 10</a> <a href="#_Toc439057225">3.1.4 分析指标……………………………………………………………………………………. 11</a> <a href="#_Toc439057226">3.1.5 统计结果数据可视化…………………………………………………………………….. 11</a> <a href="#_Toc439057227">3.2 数据来源分析………………………………………………………………………………………. 12</a> <a href="#_Toc439057228">3.2.1 企业中获取数据的几种方式…………………………………………………………… 12</a> <a href="#_Toc439057229">3.2.2 数据采集……………………………………………………………………………………. 12</a> <a href="#_Toc439057230">3.3 数据处理流程………………………………………………………………………………………. 13</a> <a href="#_Toc439057231">数据预处理/加载入库…………………………………………………………………………… 13</a> <a href="#_Toc439057232">使用Hive做数据ETL…………………………………………………………………………….. 14</a> <a href="#_Toc439057233">使用Hive运算业务指标………………………………………………………………………… 16</a> <a href="#_Toc439057234">将结果数据导出到mysql（sqoop）…………………………………………………………. 17</a> <a href="#_Toc439057235">结果展现——数据可视化………………………………………………………………………. 17</a></p>
-<ol start="4">
+<ol>
 <li><a href="#_Toc439057236">集群搭建…………………………………………………………………………………………………….. 18</a></li>
 </ol>
 <p><a href="#_Toc439057237">4.1 HADOOP集群搭建…………………………………………………………………………………. 18</a> <a href="#_Toc439057238">4.1.1集群简介：………………………………………………………………………………….. 18</a> <a href="#_Toc439057239">4.1.2服务器准备………………………………………………………………………………….. 18</a> <a href="#_Toc439057240">4.1.3网络环境准备………………………………………………………………………………. 18</a> <a href="#_Toc439057241">4.1.4服务器系统设置……………………………………………………………………………. 18</a> <a href="#_Toc439057242">4.1.5 Jdk环境安装………………………………………………………………………………… 19</a> <a href="#_Toc439057243">4.1.6 HADOOP安装部署…………………………………………………………………………. 19</a> <a href="#_Toc439057244">4.1.7 启动集群……………………………………………………………………………………. 21</a> <a href="#_Toc439057245">4.1.8 测试………………………………………………………………………………………….. 21</a> <a href="#_Toc439057246">4.2 Hive搭建……………………………………………………………………………………………… 22</a> <a href="#_Toc439057247">Hive的配置安装………………………………………………………………………………….. 22</a> <a href="#_Toc439057248">Hive的使用………………………………………………………………………………………… 23</a> <a href="#_Toc439057249">Hive运行测试……………………………………………………………………………………… 23</a>    </p>
@@ -495,7 +495,7 @@
 <p>使用Hive对数据进行计算</p>
 <p>数据展现</p>
 <p>将结果数据导出到mysql（sqoop）</p>
-<pre><code>学习目标： 第一天接触具体的大数据框架，总目标是让学习者建立起大数据和分布式的宏观概念 1、理解hadoop是什么，用于做什么，大体上怎么用 2、理解hive是什么，用于做什么，大体上怎么用 3、通过一个案例的演示说明，理解数据挖掘系统的基本流程和结构    
+<pre><code>    学习目标： 第一天接触具体的大数据框架，总目标是让学习者建立起大数据和分布式的宏观概念 1、理解hadoop是什么，用于做什么，大体上怎么用 2、理解hive是什么，用于做什么，大体上怎么用 3、通过一个案例的演示说明，理解数据挖掘系统的基本流程和结构    
 </code></pre><h1 id="1-HADOOP背景介绍"><a href="#1-HADOOP背景介绍" class="headerlink" title="1. HADOOP背景介绍"></a>1. HADOOP背景介绍</h1><h2 id="1-1-什么是HADOOP"><a href="#1-1-什么是HADOOP" class="headerlink" title="1.1 什么是HADOOP"></a>1.1 什么是HADOOP</h2><ol>
 <li>HADOOP是apache旗下的一套开源<strong>软件平台</strong></li>
 <li>HADOOP提供的功能：利用服务器集群，根据用户的自定义业务逻辑，<strong>对海量数据进行分布式处理</strong></li>
@@ -512,16 +512,16 @@
 <li>2003年、2004年<strong>谷歌发表的两篇论文为该问题提供了可行的解决方案</strong>。</li>
 </ol>
 <p>——分布式文件系统（GFS），可用于处理海量网页的<strong>存储</strong> ——分布式计算框架MAPREDUCE，可用于处理海量网页的<strong>索引计算</strong>问题。</p>
-<ol start="3">
+<ol>
 <li>Nutch的开发人员完成了相应的<strong>开源实现**</strong>HDFS<strong>**和MAPREDUCE</strong>，并从Nutch中剥离成为独立项目HADOOP，到2008年1月，HADOOP成为Apache顶级项目，迎来了它的快速发展期。</li>
 </ol>
 <h2 id="1-3-HADOOP在大数据、云计算中的位置和关系"><a href="#1-3-HADOOP在大数据、云计算中的位置和关系" class="headerlink" title="1.3 HADOOP在大数据、云计算中的位置和关系"></a>1.3 HADOOP在大数据、云计算中的位置和关系</h2><ol>
 <li>云计算是分布式计算、并行计算、网格计算、多核计算、网络存储、虚拟化、负载均衡等传统计算机技术和互联网技术融合发展的产物。借助IaaS(基础设施即服务)、PaaS(平台即服务)、SaaS（软件即服务）等业务模式，把强大的计算能力提供给终端用户。</li>
 </ol>
-<ol start="2">
+<ol>
 <li>现阶段，云计算的<strong>两大底层支撑技术</strong>为“<strong>虚拟化</strong>”和“<strong>大数据技术</strong>”</li>
 </ol>
-<ol start="3">
+<ol>
 <li>而HADOOP则是云计算的PaaS层的解决方案之一，并不等同于PaaS，更不等同于云计算本身。</li>
 </ol>
 <h2 id="1-4-国内外HADOOP应用案例介绍"><a href="#1-4-国内外HADOOP应用案例介绍" class="headerlink" title="1.4 国内外HADOOP应用案例介绍"></a>1.4 国内外HADOOP应用案例介绍</h2><p><strong>1**</strong>、HADOOP<strong>**应用于数据服务基础平台建设</strong>   <strong>2/HADOOP**</strong>用于用户画像<strong>   </strong>3<strong><strong>、HADOOP</strong></strong>用于网站点击流日志数据挖掘**</p>
@@ -552,7 +552,7 @@
 </ul>
 <p>大数据技术或具体到HADOOP的就业需求目前主要集中在北上广深一线城市，<strong>薪资待遇普遍高于传统**</strong>JAVAEE<strong>**开发人员</strong>，以北京为例：      </p>
 <h2 id="1-6-HADOOP生态圈以及各组成部分的简介"><a href="#1-6-HADOOP生态圈以及各组成部分的简介" class="headerlink" title="1.6 HADOOP生态圈以及各组成部分的简介"></a>1.6 HADOOP生态圈以及各组成部分的简介</h2><p>各组件简介   重点组件： HDFS：分布式文件系统 MAPREDUCE：分布式运算程序开发框架 HIVE：基于大数据技术（文件系统+运算框架）的SQL数据仓库工具 HBASE：基于HADOOP的分布式海量数据库 <strong>ZOOKEEPER**</strong>：分布式协调服务基础组件** Mahout：基于mapreduce/spark/flink等分布式运算框架的机器学习算法库 Oozie：工作流调度框架 Sqoop：数据导入导出工具 Flume：日志数据采集框架      </p>
-<h1 id="2-分布式系统概述"><a href="#2-分布式系统概述" class="headerlink" title="2 分布式系统概述"></a>2 分布式系统概述</h1><p><em>注：由于大数据技术领域的各类技术框架基本上都是分布式系统，因此，理解hadoop__、storm__、spark__等技术框架，都需要具备基本的分布式系统概念</em>  </p>
+<h1 id="2-分布式系统概述"><a href="#2-分布式系统概述" class="headerlink" title="2 分布式系统概述"></a>2 分布式系统概述</h1><p>_注：由于大数据技术领域的各类技术框架基本上都是分布式系统，因此，理解hadoop<strong>、storm</strong>、spark__等技术框架，都需要具备基本的分布式系统概念_  </p>
 <h2 id="2-1-分布式软件系统-Distributed-Software-Systems"><a href="#2-1-分布式软件系统-Distributed-Software-Systems" class="headerlink" title="2.1 分布式软件系统(Distributed Software Systems)"></a>2.1 分布式软件系统(Distributed Software Systems)</h2><ul>
 <li>该软件系统会划分成多个子系统或模块，各自运行在不同的机器上，子系统或模块之间通过网络通信进行协作，实现最终的整体功能</li>
 <li>比如分布式操作系统、分布式程序设计语言及其编译(解释)系统、分布式文件系统和分布式数据库系统等。</li>
@@ -566,11 +566,11 @@
 </ol>
 <p><strong>总结：利用多个节点共同协作完成一项或多项具体业务功能的系统就是分布式系统。</strong>  </p>
 <h2 id="2-3-分布式应用系统模拟开发"><a href="#2-3-分布式应用系统模拟开发" class="headerlink" title="2.3 分布式应用系统模拟开发"></a>2.3 分布式应用系统模拟开发</h2><p><strong>需求：</strong>可以实现由主节点将运算任务发往从节点，并将各从节点上的任务启动； <strong>程序清单：</strong> AppMaster AppSlave/APPSlaveThread Task <strong>程序运行逻辑流程：</strong>  </p>
-<h1 id="3-离线数据分析流程介绍"><a href="#3-离线数据分析流程介绍" class="headerlink" title="3. 离线数据分析流程介绍"></a>3. 离线数据分析流程介绍</h1><p><em>注：本环节主要感受数据分析系统的宏观概念及处理流程，初步理解hadoop__等框架在其中的应用环节，不用过于关注代码细节</em>  一个应用广泛的数据分析系统：“web日志数据挖掘”</p>
+<h1 id="3-离线数据分析流程介绍"><a href="#3-离线数据分析流程介绍" class="headerlink" title="3. 离线数据分析流程介绍"></a>3. 离线数据分析流程介绍</h1><p>_注：本环节主要感受数据分析系统的宏观概念及处理流程，初步理解hadoop__等框架在其中的应用环节，不用过于关注代码细节_  一个应用广泛的数据分析系统：“web日志数据挖掘”</p>
 <h2 id="3-1-需求分析"><a href="#3-1-需求分析" class="headerlink" title="3.1 需求分析"></a>3.1 需求分析</h2><h3 id="3-1-1-案例名称"><a href="#3-1-1-案例名称" class="headerlink" title="3.1.1 案例名称"></a>3.1.1 案例名称</h3><p>“网站或。  </p>
 <h3 id="3-1-2-案例需求描述"><a href="#3-1-2-案例需求描述" class="headerlink" title="3.1.2 案例需求描述"></a>3.1.2 案例需求描述</h3><p>“Web点击流日志”包含着网站运营很重要的信息，通过日志分析，我们可以知道网站的访问量，哪个网页访问人数最多，哪个网页最有价值，广告转化率、访客的来源信息，访客的终端信息等。  </p>
 <h3 id="3-1-3-数据来源"><a href="#3-1-3-数据来源" class="headerlink" title="3.1.3 数据来源"></a>3.1.3 数据来源</h3><p>本案例的数据主要由<strong>用户的点击行为记录</strong> 获取方式：在页面预埋一段js程序，为页面上想要监听的标签绑定事件，只要用户点击或移动到标签，即可触发ajax请求到后台servlet程序，用log4j记录下事件信息，从而在web服务器（nginx、tomcat等）上形成不断增长的日志文件。 形如：</p>
-<p>58.215.204.118 - - [18/Sep/2013:06:51:35 +0000] “GET /wp-includes/js/jquery/jquery.js?ver=1.10.2 HTTP/1.1” 304 0 “<a href="http://blog.fens.me/nodejs-socketio-chat/&quot;" target="_blank" rel="noopener">http://blog.fens.me/nodejs-socketio-chat/&quot;</a> “Mozilla/5.0 (Windows NT 5.1; rv:23.0) Gecko/20100101 Firefox/23.0”</p>
+<p>58.215.204.118 - - [18/Sep/2013:06:51:35 +0000] “GET /wp-includes/js/jquery/jquery.js?ver=1.10.2 HTTP/1.1” 304 0 “<a href="http://blog.fens.me/nodejs-socketio-chat/" target="_blank" rel="noopener">http://blog.fens.me/nodejs-socketio-chat/</a>“ “Mozilla/5.0 (Windows NT 5.1; rv:23.0) Gecko/20100101 Firefox/23.0”</p>
 <h2 id="3-2-数据处理流程"><a href="#3-2-数据处理流程" class="headerlink" title="3.2 数据处理流程"></a>3.2 数据处理流程</h2><h3 id="3-2-1-流程图解析"><a href="#3-2-1-流程图解析" class="headerlink" title="3.2.1 流程图解析"></a>3.2.1 流程图解析</h3><p>本案例跟典型的BI系统极其类似，整体流程如下： 但是，由于本案例的前提是处理海量数据，因而，流程中各环节所使用的技术则跟传统BI完全不同，后续课程都会一一讲解：</p>
 <ul>
 <li>数据采集：定制开发采集程序，或使用开源框架FLUME</li>
@@ -589,9 +589,9 @@
 <ol>
 <li>将统计结果导入mysql</li>
 </ol>
-<p>./sqoop export –connect jdbc:mysql://localhost:3306/weblogdb –username root –password root  –table t_display_xx  –export-dir /user/hive/warehouse/uv/dt=2014-08-03</p>
+<p>./sqoop export —connect jdbc:mysql://localhost:3306/weblogdb —username root —password root  —table t_display_xx  —export-dir /user/hive/warehouse/uv/dt=2014-08-03</p>
 <h2 id="3-3-项目最终效果"><a href="#3-3-项目最终效果" class="headerlink" title="3.3 项目最终效果"></a>3.3 项目最终效果</h2><p>经过完整的数据处理流程后，会周期性输出各类统计指标的报表，在生产实践中，最终需要将这些报表数据以可视化的形式展现出来，本案例采用web程序来实现数据可视化 效果如下所示：          </p>
-<h1 id="4-集群搭建"><a href="#4-集群搭建" class="headerlink" title="4. 集群搭建"></a>4. 集群搭建</h1><h2 id="4-1-HADOOP集群搭建"><a href="#4-1-HADOOP集群搭建" class="headerlink" title="4.1 HADOOP集群搭建"></a>4.1 HADOOP集群搭建</h2><h3 id="4-1-1集群简介"><a href="#4-1-1集群简介" class="headerlink" title="4.1.1集群简介"></a>4.1.1集群简介</h3><p>HADOOP集群具体来说包含两个集群：HDFS集群和YARN集群，两者逻辑上分离，但物理上常在一起 HDFS集群： 负责海量数据的存储，集群中的角色主要有 NameNode / DataNode YARN集群： 负责海量数据运算时的资源调度，集群中的角色主要有 ResourceManager /NodeManager <em>(<strong>那mapreduce</strong>是什么呢？它其实是一个应用程序开发包)</em>  本集群搭建案例，以5节点为例进行搭建，角色分配如下：</p>
+<h1 id="4-集群搭建"><a href="#4-集群搭建" class="headerlink" title="4. 集群搭建"></a>4. 集群搭建</h1><h2 id="4-1-HADOOP集群搭建"><a href="#4-1-HADOOP集群搭建" class="headerlink" title="4.1 HADOOP集群搭建"></a>4.1 HADOOP集群搭建</h2><h3 id="4-1-1集群简介"><a href="#4-1-1集群简介" class="headerlink" title="4.1.1集群简介"></a>4.1.1集群简介</h3><p>HADOOP集群具体来说包含两个集群：HDFS集群和YARN集群，两者逻辑上分离，但物理上常在一起 HDFS集群： 负责海量数据的存储，集群中的角色主要有 NameNode / DataNode YARN集群： 负责海量数据运算时的资源调度，集群中的角色主要有 ResourceManager /NodeManager _(<strong>那mapreduce</strong>是什么呢？它其实是一个应用程序开发包)_  本集群搭建案例，以5节点为例进行搭建，角色分配如下：</p>
 <p>hdp-node-01    NameNode  SecondaryNameNode hdp-node-02    ResourceManager hdp-node-03              DataNode    NodeManager hdp-node-04              DataNode    NodeManager hdp-node-05              DataNode    NodeManager</p>
 <p>部署图如下：</p>
 <h3 id="4-1-2服务器准备"><a href="#4-1-2服务器准备" class="headerlink" title="4.1.2服务器准备"></a>4.1.2服务器准备</h3><p>本案例使用虚拟机服务器来搭建HADOOP集群，所用软件及版本：</p>
@@ -642,17 +642,17 @@
 <configuration> <!--nameNode服务器上的节点 --> <property> <name>fs.defaultFS</name> <value>hdfs://aclear1:9000</value> </property> <!--集群中的每一台的工作目录 --> <property> <name>hadoop.tmp.dir</name> <value>/home/Hadoop/hdpdata</value> </property> </configuration>
 
 <p>vi  hdfs-site.xml</p>
-<p><!--这里面可以不用配置，因为有些事默认已经配置了--\>   <configuration> <property> <name>dfs.namenode.name.dir</name> <value>/home/hadoop/data/name</value> </property> <property> <name>dfs.datanode.data.dir</name> <value>/home/hadoop/data/data</value> </property>     <!--注意只配置了一个这个：每个文件有两个副本 --> <property> <name>dfs.replication</name> <value>2</value> </property>   <property> <name>dfs.secondary.http.address</name> <value>hdp-node-01:50090</value> </property> </p>
-<pre><code>vi  mapred-site.xml
+<p><!--这里面可以不用配置，因为有些事默认已经配置了--\>   <configuration> <property> <name>dfs.namenode.name.dir</name> <value>/home/hadoop/data/name</value> </property> <property> <name>dfs.datanode.data.dir</name> <value>/home/hadoop/data/data</value> </property>     <!--注意只配置了一个这个：每个文件有两个副本 --> <property> <name>dfs.replication</name> <value>2</value> </property>   <property> <name>dfs.secondary.http.address</name> <value>hdp-node-01:50090</value> </property> &lt;/configuration&gt;</p>
+<pre><code>  vi  mapred-site.xml
 </code></pre><configuration> <property> <!--mapreduce 对应的运行框架以及对应 框架的yarn运行环境，local（默认这样就是单机版本了）--> <name>mapreduce.framework.name</name> <value>yarn</value> </property> </configuration>
 
 <p>  vi  yarn-site.xml</p>
 <p><configuration> <!--寻找yarn的老大resourcemanager，对应在那一台集群上。 --> <property> <name>yarn.resourcemanager.hostname</name> <value>aclear1</value> </property>   <!--注意 对应yarn需要的服务，数值是什么--> <property> <name>yarn.nodemanager.aux-services</name> <value>mapreduce_shuffle</value> </property> </configuration> 对应放置在 2 3 4上</p>
 <p>所以我们 由以上的配置得出一个问题&lt;在此之前先配置下面的东西&gt;： Namenode 以及 resourcemanager 都已经出现了。对应的集群子服务器并没有出现：所以 其实aclear1 我们已经写死。其它的子服务器会按照目前启动的服务器自行装载：   Aclear1通过： Hadoop-daemon.sh start namenode  //启动namenode服务器 //注意 jetty是在 50070&lt;端口有个网页可以看到对应服务器配合的 情况有多少可用东西。&gt;   JPS Aclear2通过： Hadoop-daemon.sh start datanode //启动当做datanode   //原理： 因为hadoop的配置文件已经配置的完全一致了，所以可以相互握手</p>
-<p>—2HDFS进行格式化— &lt;因为这个是建立在 Linux物理目录之上的，也就是说 HDFS是格式化建立一个逻辑文件层，分块 进行大型数据、文件集的处理&gt; Source /etc/profile   人机交互&lt;脚本执行进行实现&gt;   必须注意：学会使用.log日志 查找、发现错误：</p>
+<p>—-2HDFS进行格式化—- &lt;因为这个是建立在 Linux物理目录之上的，也就是说 HDFS是格式化建立一个逻辑文件层，分块 进行大型数据、文件集的处理&gt; Source /etc/profile   人机交互&lt;脚本执行进行实现&gt;   必须注意：学会使用.log日志 查找、发现错误：</p>
 <p>问题：下面   vi  /etc/Hadoop/salves  //纯粹是给自动化启动脚本用的！——apps/Hadoop/../start-all.sh 注意这个是 aclear2 都必须是主机名称！</p>
 <p>Aclear2 Aclear3 Aclear4</p>
-<p>  Start-dfs.sh   //只在一个namenode  服务器去做即可   //别忘了配置hadoop用户的免密登录—— ssh-keygen -t rsa Ssh-copy-id aclear2 …   P.S.：start-all.sh  ==   start-dfs.sh  &amp;&amp;  start-yarn.sh //配置 secondary namenode //在hdfs–</p>
+<p>  Start-dfs.sh   //只在一个namenode  服务器去做即可   //别忘了配置hadoop用户的免密登录—— ssh-keygen -t rsa Ssh-copy-id aclear2 …   P.S.：start-all.sh  ==   start-dfs.sh  &amp;&amp;  start-yarn.sh //配置 secondary namenode //在hdfs—</p>
 <p>注意： 深入理解，查看对应的  启动方式得知： Ssh aclear1 Hadoop-daemon.sh start namenode   对比：yarn-daemon.sh  start resourcemanager  这样启动  </p>
 <pre><code>//动态上线  动态下限：一台机器 三个副本：上方副本是：2  所以每个数据都是有2个副本！ //我们安装集群最常见问题：  权限不统一问题！——所以最好用sudo来进行权限的获取！！！   //配置文件少 或 写错文字  //日志文件会看到！ 对了 //ssh 免密登录没配好，然后连接超时 —— 没启动起来！ Unknown host——统统用主机名！不用IP！  
 </code></pre><h3 id="4-1-7-启动集群"><a href="#4-1-7-启动集群" class="headerlink" title="4.1.7 启动集群"></a>4.1.7 启动集群</h3><p>初始化HDFS 生成namenode初始目录，对应的账本、自己需要的框架结构</p>
@@ -698,9 +698,9 @@
 <li>具体编码实现</li>
 </ul>
 <p>(1)定义一个mapper类</p>
-<p>//首先要定义四个泛型的类型 //keyin:  LongWritable    valuein: Text //keyout: Text            valueout:IntWritable   public class WordCountMapper extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt;{ //map方法的生命周期：  框架每传一行数据就被调用一次 //key :  这一行的起始点在文件中的偏移量 //value: 这一行的内容 @Override protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { //拿到一行数据转换为string String line = value.toString(); //将这一行切分出各个单词 String[] words = line.split(“ “); //遍历数组，输出&lt;单词，1&gt; for(String word:words){ context.write(new Text(word), new IntWritable(1)); } } }</p>
+<p>//首先要定义四个泛型的类型 //keyin:  LongWritable    valuein: Text //keyout: Text            valueout:IntWritable   public class WordCountMapper extends Mapper<longwritable, text,="" intwritable="">{ //map方法的生命周期：  框架每传一行数据就被调用一次 //key :  这一行的起始点在文件中的偏移量 //value: 这一行的内容 @Override protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException { //拿到一行数据转换为string String line = value.toString(); //将这一行切分出各个单词 String[] words = line.split(“ “); //遍历数组，输出&lt;单词，1&gt; for(String word:words){ context.write(new Text(word), new IntWritable(1)); } } }</longwritable,></p>
 <p>  (2)定义一个reducer类</p>
-<pre><code>//生命周期：框架每传递进来一个kv 组，reduce方法被调用一次 @Override protected void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { //定义一个计数器 int count = 0; //遍历这一组kv的所有v，累加到count中 for(IntWritable value:values){ count += value.get(); } context.write(key, new IntWritable(count)); } }
+<pre><code>     //生命周期：框架每传递进来一个kv 组，reduce方法被调用一次 @Override protected void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException { //定义一个计数器 int count = 0; //遍历这一组kv的所有v，累加到count中 for(IntWritable value:values){ count += value.get(); } context.write(key, new IntWritable(count)); } }
 </code></pre><p>  (3)定义一个主类，用来描述job并提交job</p>
 <p>public class WordCountRunner { //把业务逻辑相关的信息（哪个是mapper，哪个是reducer，要处理的数据在哪里，输出的结果放哪里。。。。。。）描述成一个job对象 //把这个描述好的job提交给集群去运行 public static void main(String[] args) throws Exception { Configuration conf = new Configuration(); Job wcjob = Job.getInstance(conf); //指定我这个job所在的jar包 //               wcjob.setJar(“/home/hadoop/wordcount.jar”); wcjob.setJarByClass(WordCountRunner.class);   wcjob.setMapperClass(WordCountMapper.class); wcjob.setReducerClass(WordCountReducer.class); //设置我们的业务逻辑Mapper类的输出key和value的数据类型 wcjob.setMapOutputKeyClass(Text.class); wcjob.setMapOutputValueClass(IntWritable.class); //设置我们的业务逻辑Reducer类的输出key和value的数据类型 wcjob.setOutputKeyClass(Text.class); wcjob.setOutputValueClass(IntWritable.class);   //指定要处理的数据所在的位置 FileInputFormat.setInputPaths(wcjob, “hdfs://hdp-server01:9000/wordcount/data/big.txt”); //指定处理完成之后的结果所保存的位置 FileOutputFormat.setOutputPath(wcjob, new Path(“hdfs://hdp-server01:9000/wordcount/output/“));   //向yarn集群提交这个job boolean res = wcjob.waitForCompletion(true); System.exit(res?0:1); }</p>
 <h3 id="5-2-2-程序打包运行"><a href="#5-2-2-程序打包运行" class="headerlink" title="5.2.2 程序打包运行"></a>5.2.2 程序打包运行</h3><ol>
@@ -710,14 +710,14 @@
 <p>vi  /home/hadoop/test.txt</p>
 <p>Hello tom Hello jim Hello ketty Hello world Ketty tom</p>
 <p>在hdfs上创建输入数据文件夹： hadoop   fs  mkdir  -p  /wordcount/input 将words.txt上传到hdfs上 hadoop  fs  –put  /home/hadoop/words.txt  /wordcount/input  </p>
-<ol start="3">
+<ol>
 <li>将程序jar包上传到集群的任意一台服务器上</li>
 </ol>
-<ol start="4">
+<ol>
 <li>使用命令启动执行wordcount程序jar包</li>
 </ol>
 <p>$ hadoop jar wordcount.jar cn.itcast.bigdata.mrsimple.WordCountDriver /wordcount/input /wordcount/out</p>
-<ol start="5">
+<ol>
 <li>查看执行结果</li>
 </ol>
 <p>$ hadoop fs –cat /wordcount/out/part-r-00000 HADOOP（hdfs、MAPREDUCE、yarn）  元老级大数据处理技术框架，擅长离线数据分析 Zookeeper   分布式协调服务基础组件 Hbase  分布式海量数据库，离线分析和在线业务通吃 Hive sql 数据仓库工具，使用方便，功能丰富，基于MR延迟大 Sqoop数据导入导出工具 Flume数据采集框架 一般中型的网站(10W的PV以上)，每天会产生1G以上Web日志文件。大型或超大型的网站，可能每小时就会产生10G的数据量。 具体来说，比如某电子商务网站，在线团购业务。每日PV数100w，独立IP数5w。用户通常在工作日上午10:00-12:00和下午15:00-18:00访问量最大。日间主要是通过PC端浏览器访问，休息日及夜间通过移动设备访问较多。网站搜索浏量占整个网站的80%，PC用户不足1%的用户会消费，移动用户有5%会消费。   对于日志的这种规模的数据，用HADOOP进行日志分析，是最适合不过的了。</p>
@@ -907,7 +907,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -918,7 +918,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -929,7 +929,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1067,7 +1067,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1693,6 +1693,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="我的版本 pylint –version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
+<meta name="description" content="我的版本 pylint —version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决win10安装Pyint失败">
 <meta property="og:url" content="http://blog.aclear.top/post/e44d3bb6.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="我的版本 pylint –version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
+<meta property="og:description" content="我的版本 pylint —version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决win10安装Pyint失败">
-<meta name="twitter:description" content="我的版本 pylint –version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
+<meta name="twitter:description" content="我的版本 pylint —version  pylint 2.2.2  astroid 2.1.0  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]  错误分析执行安装指令pip install pylint，出现错误，错误信息如下： Installing collected p">
 
 
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  392
+                  393
                 </span>
               
 
@@ -451,18 +451,18 @@
 
       
         <h2 id="我的版本"><a href="#我的版本" class="headerlink" title="我的版本"></a>我的版本</h2><blockquote>
-<p>pylint –version<br>  pylint 2.2.2<br>  astroid 2.1.0<br>  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]</p>
+<p>pylint —version<br>  pylint 2.2.2<br>  astroid 2.1.0<br>  Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)]</p>
 </blockquote>
 <h2 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h2><p>执行安装指令pip install pylint，出现错误，错误信息如下：</p>
-<p>Installing collected packages: wrapt, astroid, pylint<br>Running setup.py install for wrapt … error<br>Exception:<br>Traceback (most recent call last):<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\compat\__init__.py”, line 73, in console_to_str<br>return s.decode(sys.__stdout__.encoding)<br>UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xa1 in position 43: invalid start byte</p>
+<p>Installing collected packages: wrapt, astroid, pylint<br>Running setup.py install for wrapt … error<br>Exception:<br>Traceback (most recent call last):<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\compat\\__init__.py”, line 73, in console_to_str<br>return s.decode(sys.__stdout__.encoding)<br>UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xa1 in position 43: invalid start byte</p>
 <p>During handling of the above exception, another exception occurred:</p>
-<p>Traceback (most recent call last):<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\basecommand.py”, line 215, in main<br>status = self.run(options, args)<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\commands\install.py”, line 342, in run<br>prefix=options.prefix_path,<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\req\req_set.py”, line 784, in install<br>**kwargs<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\req\req_install.py”, line 878, in install<br>spinner=spinner,<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\utils\__init__.py”, line 676, in call_subprocess<br>line = console_to_str(proc.stdout.readline())<br>File “C:\Users\sigmarising\AppData\Local\Programs\Python\Python36\lib\site-packages\pip\compat\__init__.py”, line 75, in console_to_str<br>return s.decode(‘utf_8’)<br>UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xa1 in position 43: invalid start byte</p>
+<p>Traceback (most recent call last):<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\basecommand.py”, line 215, in main<br>status = self.run(options, args)<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\commands\\install.py”, line 342, in run<br>prefix=options.prefix_path,<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\req\\req_set.py”, line 784, in install<br>**kwargs<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\req\\req_install.py”, line 878, in install<br>spinner=spinner,<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\utils\\__init__.py”, line 676, in call_subprocess<br>line = console_to_str(proc.stdout.readline())<br>File “C:\\Users\\sigmarising\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages\\pip\\compat\\__init__.py”, line 75, in console_to_str<br>return s.decode(‘utf_8’)<br>UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xa1 in position 43: invalid start byte</p>
 <p>Windows上很多问题都是由于编码引起的，pylint安装失败也与编码有很大关系。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>1.定位到以下文件： C:\Users\acanprince\AppData\Local\Programs\Python\Python36\Lib\site-packages\pip\compat\__init__.py 定位时需将路径中的<strong><em>\UsersNames\</em></strong>与<strong><em>\Python36\</em></strong>，更改为计算机具体情况 2.定位到文件的第75行，将源代码：</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>1.定位到以下文件： C:\\Users\\acanprince\\AppData\\Local\\Programs\\Python\\Python36\\Lib\\site-packages\\pip\\compat\\__init__.py 定位时需将路径中的<strong>_\\UsersNames_</strong>与<strong>_\\Python36_</strong>，更改为计算机具体情况 2.定位到文件的第75行，将源代码：</p>
 <p>return s.decode(‘utf_8’)</p>
 <p>更改为：</p>
 <p>return s.decode(‘gbk’)</p>
-<p>3.重新执行<em><strong>pip install pylint</strong></em> 4.安装成功</p>
+<p>3.重新执行_<strong>pip install pylint</strong>_ 4.安装成功</p>
 
       
     </div>
@@ -649,7 +649,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -660,7 +660,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -671,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -809,7 +809,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1435,6 +1435,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

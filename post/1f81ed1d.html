@@ -454,12 +454,120 @@
       
         <h3 id="我希望在这个插件的同要看到轮子背后的本质"><a href="#我希望在这个插件的同要看到轮子背后的本质" class="headerlink" title="我希望在这个插件的同要看到轮子背后的本质"></a>我希望在这个插件的同要看到轮子背后的本质</h3><p>不仅仅是通过一篇文章学到、掌握封装一个 scroll 组件，还要有把第三方插件（原生 JS 实现）Vue 化的思考过程。有时候学习 Vue.js 的过程中思想还停留在 “XX 效果如何用 Vue.js 实现” 的程度，其实把插件 Vue 化有两点很关键，一个是对插件本身的实现原理很了解，另一个是对 Vue.js 的特性很了解。对插件本身的实现原理了解需要的是一个思考和钻研的过程，这个过程可能困难，但是收获也是巨大的；而对 Vue.js 的特性的了解，是需要对 Vue.js 多多使用，学会从平时的项目中积累和总结，也要善于查阅 Vue.js 的官方文档，关注一些 Vue.js 的升级等。 所以，我们常说的拒绝伸手党，但也不是鼓励大家什么时候都要去造轮子，当我们在使用一些现成插件的同时，也希望大家能多多思考，去探索一下现象背后的本质，把 “XX 效果如何用 Vue.js 实现” 这句话从问号变成句号。   参考API文档：<a href="https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/api.html" target="_blank" rel="noopener">https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/api.html</a></p>
 <h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>本周在实现页面滚动过程中用到了这一控件，顺带了解下背后的一点点实质。 better-scroll 是一个移动端滚动的解决方案，它是基于 iscroll 的重写，它和 iscroll 的主要区别在<a href="https://github.com/ustbhuangyi/better-scroll/issues/36" target="_blank" rel="noopener">这里</a>。better-scroll 也很强大，不仅可以做普通的滚动列表，还可以做轮播图、picker 等等。   <strong>better-scroll</strong> <strong>的滚动原理</strong> better-scroll 初始化了， 但是没法滚动。 不能滚动是现象，我们得搞清楚这其中的根本原因。在这之前，我们先来看一下浏览器的滚动原理： 浏览器的滚动条大家都会遇到，当页面内容的高度超过视口高度的时候，会出现纵向滚动条；当页面内容的宽度超过视口宽度的时候，会出现横向滚动条。也就是当我们的视口展示不下内容的时候，会通过滚动条的方式让用户滚动屏幕看到剩余的内容。 那么对于 better-scroll 也是一样的道理，我们先来看一下 better-scroll 常见的 html 结构：</p>
-<div class="wrapper"><br>  <ul class="content"><br>    <li>…</li><br>    <li>…</li><br>    …<br>  </ul><br></div>
+<div class="wrapper">
+  <ul class="content">
+    <li>...</li>
+    <li>...</li>
+    ...
+  </ul>
+</div>
 
 <p>  为了更加直观，我们再来看一张图： <img src="http://static.galileo.xiaojukeji.com/static/tms/shield/scroll-4.png" alt="布局"> 绿色部分为 wrapper，也就是父容器，它会有固定的高度。黄色部分为 content，它是父容器的第一个子元素，它的高度会随着内容的大小而撑高。那么，当 content 的高度不超过父容器的高度，是不能滚动的，而它一旦超过了父容器的高度，我们就可以滚动内容区了，这就是 better-scroll 的滚动原理。 那么，我们怎么初始化 better-scroll 呢，如果是上述 html 结构，那么初始化代码如下：</p>
 <p>import BScroll from ‘better-scroll’<br>let wrapper = document.querySelector(‘.wrapper’)<br>let scroll = new BScroll(wrapper, {})</p>
 <p>  better-scroll 对外暴露了一个 BScroll 的类，我们初始化只需要 new 一个类的实例即可。第一个参数就是我们 wrapper 的 DOM 对象，第二个是一些配置参数，具体参考 <a href="https://github.com/ustbhuangyi/better-scroll" target="_blank" rel="noopener">better-scroll 的文档</a>。 better-scroll 的初始化时机很重要，因为它在初始化的时候，会计算父元素和子元素的高度和宽度，来决定是否可以纵向和横向滚动。因此，我们在初始化它的时候，必须确保父元素和子元素的内容已经正确渲染了。如果子元素或者父元素 DOM 结构发生改变的时候，必须重新调用 scroll.refresh() 方法重新计算来确保滚动效果的正常。所以同学们反馈的 better-scroll 不能滚动的原因多半是初始化 better-scroll 的时机不对，或者是当 DOM 结构发送变化的时候并没有重新计算 better-scroll。   better-scroll 遇见 Vue 把 better-scroll 和 Vue 做了结合，实现了很多列表滚动的效果。在 Vue 中的使用方法如下：</p>
-<template><br>  <div class="wrapper" ref="wrapper"><br>    <ul class="content"><br>      <li>…</li><br>      <li>…</li><br>      …<br>    </ul><br>  </div><br></template><br><script><br>  import BScroll from ‘better-scroll’<br>  export default {<br>    mounted() {<br>      this.$nextTick(() =&gt; {<br>        this.scroll = new Bscroll(this.$refs.wrapper, {})<br>      })<br>    }<br>  }<br></script><br><br>    Vue.js 提供了我们一个获取 DOM 对象的接口—— vm.$refs。在这里，我们通过了 this.$refs.wrapper 访问到了这个 DOM 对象，并且我们在 mounted 这个钩子函数里，this.$nextTick 的回调函数中初始化 better-scroll 。因为这个时候，wrapper 的 DOM 已经渲染了，我们可以正确计算它以及它内层 content 的高度，以确保滚动正常。 这里的 this.$nextTick 是一个异步函数，为了确保 DOM 已经渲染，感兴趣的同学可以了解一下它的<a href="https://github.com/vuejs/vue/blob/dev/src/core/util/env.js#L66-L122" target="_blank" rel="noopener">内部实现细节</a>，底层用到了 MutationObserver 或者是 setTimeout(fn, 0)。其实我们在这里把 this.$nextTick 替换成 setTimeout(fn, 20) 也是可以的（20 ms 是一个经验值，每一个 Tick 约为 17 ms），对用户体验而言都是无感知的。 异步数据的处理 在我们的实际工作中，列表的数据往往都是异步获取的，因此我们初始化 better-scroll 的时机需要在数据获取后，代码如下：<br><br><template><br>  <div class="wrapper" ref="wrapper"><br>    <ul class="content"><br>      <li v-for="item in data">{ {item}}</li><br>    </ul><br>  </div><br></template><br><script><br>  import BScroll from ‘better-scroll’<br>  export default {<br>    data() {<br>      return {<br>        data: []<br>      }<br>    },<br>    created() {<br>      requestData().then((res) =&gt; {<br>        this.data = res.data<br>        this.$nextTick(() =&gt; {<br>          this.scroll = new Bscroll(this.$refs.wrapper, {})<br>        })<br>      })<br>    }<br>  }<br></script><br><br>  这里的 requestData 是伪代码，作用就是发起一个 http 请求从服务端获取数据，并且这个函数返回的是一个 promise（实际项目中我们可能会用 <a href="https://github.com/mzabriskie/axios" target="_blank" rel="noopener">axios</a> 或者 <a href="https://github.com/pagekit/vue-resource" target="_blank" rel="noopener">vue-resource</a>）。我们获取到数据的后，需要通过异步的方式再去初始化 better-scroll，因为 Vue 是数据驱动的， Vue 数据发生变化（this.data = res.data）到页面重新渲染是一个异步的过程，我们的初始化时机是要在 DOM 重新渲染后，所以这里用到了 this.$nextTick，当然替换成 setTimeout(fn, 20) 也是可以的。 为什么这里在 created 这个钩子函数里请求数据而不是放到 mounted 的钩子函数里？因为 requestData 是发送一个网络请求，这是一个异步过程，当拿到响应数据的时候，Vue 的 DOM 早就已经渲染好了，但是数据改变 —&gt; DOM 重新渲染仍然是一个异步过程，所以即使在我们拿到数据后，也要异步初始化 better-scroll。   <strong>数据的动态更新</strong> 我们在实际开发中，除了数据异步获取，还有一些场景可以动态更新列表中的数据，比如常见的下拉加载，上拉刷新等。比如我们用 better-scroll 配合 Vue 实现下拉加载功能，代码如下：<br><br><template><br>  <div class="wrapper" ref="wrapper"><br>    <ul class="content"><br>      <li v-for="item in data">{ {item}}</li><br>    </ul><br>    <div class="loading-wrapper"></div><br>  </div><br></template><br><script><br>  import BScroll from ‘better-scroll’<br>  export default {<br>    data() {<br>      return {<br>        data: []<br>      }<br>    },<br>    created() {<br>      this.loadData()<br>    },<br>    methods: {<br>      loadData() {<br>        requestData().then((res) =&gt; {<br>          this.data = res.data.concat(this.data)<br>          this.$nextTick(() =&gt; {<br>            if (!this.scroll) {<br>              this.scroll = new Bscroll(this.$refs.wrapper, {})<br>              this.scroll.on(‘touchend’, (pos) =&gt; {<br>                // 下拉动作<br>                if (pos.y &gt; 50) {<br>                  this.loadData()<br>                }<br>              })<br>            } else {<br>              this.scroll.refresh()<br>            }<br>          })<br>        })<br>      }<br>    }<br>  }<br></script><br><br>  这段代码比之前稍微复杂一些, 当我们在滑动列表松开手指时候， better-scroll 会对外派发一个 touchend 事件，我们监听了这个事件，并且判断了 pos.y &gt; 50（我们把这个行为定义成一次下拉的动作）。如果是下拉的话我们会重新请求数据，并且把新的数据和之前的 data 做一次 concat，也就更新了列表的数据，那么数据的改变就会映射到 DOM 的变化。需要注意的一点，这里我们对 this.scroll 做了判断，如果没有初始化过我们会通过 new BScroll 初始化，并且绑定一些事件，否则我们会调用 this.scroll.refresh 方法重新计算，来确保滚动效果的正常。 这里，我们就通过 better-scroll 配合 Vue，实现了列表的下拉刷新功能，上拉加载也是类似的套路，一切看上去都是 ok 的。但是，我们发现这里写了大量命令式的代码（这一点不是 Vue.js 推荐的），如果有很多类似滚动的组件，我们就需要写很多类似的命令式且重复性的代码，而且我们把数据请求和 better-scroll 也做了强耦合，这些对于一个追求编程逼格的人来说，就不 ok 了。<br><br>### scroll 组件的抽象和封装<br><br>因此，我们有强烈的需求抽象出来一个 scroll 组件，类似小程序的 scroll-view 组件，方便开发者的使用。 首先，我们要考虑的是 scroll 组件本质上就是一个可以滚动的列表组件，至于列表的 DOM 结构，只需要满足 better-scroll 的 DOM 结构规范即可，具体用什么标签，有哪些辅助节点（比如下拉刷新上拉加载的 loading 层），这些都不是 scroll 组件需要关心的。因此， scroll 组件的 DOM 结构十分简单，如下所示：<br><br><template><br>  <div ref="wrapper"><br>    <slot></slot><br>  </div><br></template>
+<template>
+  <div class="wrapper" ref="wrapper">
+    <ul class="content">
+      <li>...</li>
+      <li>...</li>
+      ...
+    </ul>
+  </div>
+</template>
+<script>
+  import BScroll from 'better-scroll'
+  export default {
+    mounted() {
+      this.$nextTick(() => {
+        this.scroll = new Bscroll(this.$refs.wrapper, {})
+      })
+    }
+  }
+</script>
+
+    Vue.js 提供了我们一个获取 DOM 对象的接口—— vm.$refs。在这里，我们通过了 this.$refs.wrapper 访问到了这个 DOM 对象，并且我们在 mounted 这个钩子函数里，this.$nextTick 的回调函数中初始化 better-scroll 。因为这个时候，wrapper 的 DOM 已经渲染了，我们可以正确计算它以及它内层 content 的高度，以确保滚动正常。 这里的 this.$nextTick 是一个异步函数，为了确保 DOM 已经渲染，感兴趣的同学可以了解一下它的[内部实现细节](https://github.com/vuejs/vue/blob/dev/src/core/util/env.js#L66-L122)，底层用到了 MutationObserver 或者是 setTimeout(fn, 0)。其实我们在这里把 this.$nextTick 替换成 setTimeout(fn, 20) 也是可以的（20 ms 是一个经验值，每一个 Tick 约为 17 ms），对用户体验而言都是无感知的。 异步数据的处理 在我们的实际工作中，列表的数据往往都是异步获取的，因此我们初始化 better-scroll 的时机需要在数据获取后，代码如下：
+
+<template>
+  <div class="wrapper" ref="wrapper">
+    <ul class="content">
+      <li v-for="item in data">{ {item}}</li>
+    </ul>
+  </div>
+</template>
+<script>
+  import BScroll from 'better-scroll'
+  export default {
+    data() {
+      return {
+        data: \[\]
+      }
+    },
+    created() {
+      requestData().then((res) => {
+        this.data = res.data
+        this.$nextTick(() => {
+          this.scroll = new Bscroll(this.$refs.wrapper, {})
+        })
+      })
+    }
+  }
+</script>
+
+  这里的 requestData 是伪代码，作用就是发起一个 http 请求从服务端获取数据，并且这个函数返回的是一个 promise（实际项目中我们可能会用 [axios](https://github.com/mzabriskie/axios) 或者 [vue-resource](https://github.com/pagekit/vue-resource)）。我们获取到数据的后，需要通过异步的方式再去初始化 better-scroll，因为 Vue 是数据驱动的， Vue 数据发生变化（this.data = res.data）到页面重新渲染是一个异步的过程，我们的初始化时机是要在 DOM 重新渲染后，所以这里用到了 this.$nextTick，当然替换成 setTimeout(fn, 20) 也是可以的。 为什么这里在 created 这个钩子函数里请求数据而不是放到 mounted 的钩子函数里？因为 requestData 是发送一个网络请求，这是一个异步过程，当拿到响应数据的时候，Vue 的 DOM 早就已经渲染好了，但是数据改变 —> DOM 重新渲染仍然是一个异步过程，所以即使在我们拿到数据后，也要异步初始化 better-scroll。   **数据的动态更新** 我们在实际开发中，除了数据异步获取，还有一些场景可以动态更新列表中的数据，比如常见的下拉加载，上拉刷新等。比如我们用 better-scroll 配合 Vue 实现下拉加载功能，代码如下：
+
+<template>
+  <div class="wrapper" ref="wrapper">
+    <ul class="content">
+      <li v-for="item in data">{ {item}}</li>
+    </ul>
+    <div class="loading-wrapper"></div>
+  </div>
+</template>
+<script>
+  import BScroll from 'better-scroll'
+  export default {
+    data() {
+      return {
+        data: \[\]
+      }
+    },
+    created() {
+      this.loadData()
+    },
+    methods: {
+      loadData() {
+        requestData().then((res) => {
+          this.data = res.data.concat(this.data)
+          this.$nextTick(() => {
+            if (!this.scroll) {
+              this.scroll = new Bscroll(this.$refs.wrapper, {})
+              this.scroll.on('touchend', (pos) => {
+                // 下拉动作
+                if (pos.y > 50) {
+                  this.loadData()
+                }
+              })
+            } else {
+              this.scroll.refresh()
+            }
+          })
+        })
+      }
+    }
+  }
+</script>
+
+  这段代码比之前稍微复杂一些, 当我们在滑动列表松开手指时候， better-scroll 会对外派发一个 touchend 事件，我们监听了这个事件，并且判断了 pos.y > 50（我们把这个行为定义成一次下拉的动作）。如果是下拉的话我们会重新请求数据，并且把新的数据和之前的 data 做一次 concat，也就更新了列表的数据，那么数据的改变就会映射到 DOM 的变化。需要注意的一点，这里我们对 this.scroll 做了判断，如果没有初始化过我们会通过 new BScroll 初始化，并且绑定一些事件，否则我们会调用 this.scroll.refresh 方法重新计算，来确保滚动效果的正常。 这里，我们就通过 better-scroll 配合 Vue，实现了列表的下拉刷新功能，上拉加载也是类似的套路，一切看上去都是 ok 的。但是，我们发现这里写了大量命令式的代码（这一点不是 Vue.js 推荐的），如果有很多类似滚动的组件，我们就需要写很多类似的命令式且重复性的代码，而且我们把数据请求和 better-scroll 也做了强耦合，这些对于一个追求编程逼格的人来说，就不 ok 了。  
+
+### scroll 组件的抽象和封装
+
+因此，我们有强烈的需求抽象出来一个 scroll 组件，类似小程序的 scroll-view 组件，方便开发者的使用。 首先，我们要考虑的是 scroll 组件本质上就是一个可以滚动的列表组件，至于列表的 DOM 结构，只需要满足 better-scroll 的 DOM 结构规范即可，具体用什么标签，有哪些辅助节点（比如下拉刷新上拉加载的 loading 层），这些都不是 scroll 组件需要关心的。因此， scroll 组件的 DOM 结构十分简单，如下所示：
+
+<template>
+  <div ref="wrapper">
+    <slot></slot>
+  </div>
+</template>
 
 <pre><code>这里我们用到了 Vue 的特殊元素—— slot 插槽，它可以满足我们灵活定制列表 DOM 结构的需求。接下来我们来看看 JS 部分：
 </code></pre><script type="text/ecmascript-6">
@@ -614,7 +722,11 @@
 </script>
 
 <p>  JS 部分实际上就是对 better-scroll 做一层 Vue 的封装，通过 props 的形式，把一些对 better-scroll 定制化的控制权交给父组件；通过 methods 暴露的一些方法对 better-scroll 的方法做一层代理；通过 watch 传入的 data，当 data 发生改变的时候，在适当的时机调用 refresh 方法重新计算 better-scroll 确保滚动效果正常，这里之所以要有一个 refreshDelay 的设置是考虑到如果我们对列表操作用到了 transition-group 做动画效果，那么 DOM 的渲染完毕时间就是在动画完成之后。 有了这一层 scroll 组件的封装，我们来修改刚刚最复杂的代码（假设我们已经全局注册了 scroll 组件）。</p>
-<p><template><br>  <scroll class="wrapper" :data="data" :pulldown="pulldown" @pulldown="loadData"><br>    <ul class="content"><br>      <li v-for="item in data">{ {item}}</li><br>    </ul><br>    <div class="loading-wrapper"></div><br>  </scroll><br></template></p>
+<p><template><br>  <scroll class="wrapper" :data="data" :pulldown="pulldown" @pulldown="loadData"><br>    <ul class="content">
+      <li v-for="item in data">{ {item}}</li>
+    </ul><br>    <div class="loading-wrapper"></div>
+  </scroll>
+</template></p>
 <script>
   import BScroll from 'better-scroll'
   export default {
@@ -825,7 +937,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -836,7 +948,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -847,7 +959,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -985,7 +1097,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1611,6 +1723,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

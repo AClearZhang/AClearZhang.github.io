@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机–JVM高级特性与最佳实践（第2版）.pdf wo">
+<meta name="description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机—JVM高级特性与最佳实践（第2版）.pdf wo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="day04_BigData渐进学习_aclear_fire">
 <meta property="og:url" content="http://blog.aclear.top/post/99d5af0a.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机–JVM高级特性与最佳实践（第2版）.pdf wo">
+<meta property="og:description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机—JVM高级特性与最佳实践（第2版）.pdf wo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day04_BigData渐进学习_aclear_fire">
-<meta name="twitter:description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机–JVM高级特性与最佳实践（第2版）.pdf wo">
+<meta name="twitter:description" content="JAVA多线程 JAVA并发包(java.util.concurrent) 并发编程总结 JAVA JMS技术&amp;lt;这是一种规范.消息队列&amp;gt; &amp;lt;实现：ActiceMQ&amp;gt; JAVA动态代理和反射 JVM技术——堆栈、垃圾回收 J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机—JVM高级特性与最佳实践（第2版）.pdf wo">
 
 
 
@@ -446,7 +446,7 @@
 <li>JAVA JMS技术&lt;这是一种规范.消息队列&gt; &lt;实现：ActiceMQ&gt;</li>
 <li>JAVA动态代理和反射</li>
 <li><p>JVM技术——堆栈、垃圾回收</p>
-<p>J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机–JVM高级特性与最佳实践（第2版）.pdf word详情笔记请见——印象笔记-BigData-Day’s NoteBook <strong>第**</strong>4<strong>**天</strong> <strong>java**</strong>高级特性增强** 今天内容安排： 1、掌握多线程 2、掌握并发包下的队列 3、了解JMS 4、掌握JVM技术 5、掌握反射和动态代理  </p>
+<p>J2EE是种规范，Tomcat是种实现。   JAVA并发编程实践-cn.pdf 深入理解Java虚拟机—JVM高级特性与最佳实践（第2版）.pdf word详情笔记请见——印象笔记-BigData-Day’s NoteBook <strong>第**</strong>4<strong>**天</strong> <strong>java**</strong>高级特性增强** 今天内容安排： 1、掌握多线程 2、掌握并发包下的队列 3、了解JMS 4、掌握JVM技术 5、掌握反射和动态代理  </p>
 </li>
 </ol>
 <ul>
@@ -551,7 +551,7 @@
 <p>提交 Runnable ，任务完成后 Future 对象返回 null 调用excute,提交任务, 匿名Runable重写run方法, run方法里是业务逻辑 见代码：ThreadPoolWithRunable   提交 Callable，该方法返回一个 Future 实例表示任务的状态 调用submit提交任务, 匿名Callable,重写call方法, 有返回值, 获取返回值会阻塞,一直要等到线程任务返回结果 见代码：ThreadPoolWithcallable</p>
 </li>
 </ul>
-<p>/** * callable 跟runnable的区别： <em> runnable的run方法不会有任何返回结果，所以主线程无法获得任务线程的返回值 </em> <em> callable的call方法可以返回结果，但是主线程在获取时是被阻塞，需要等待任务线程返回才能拿到结果 </em> @author acanprince <em> </em>/ public class ThreadPoolWithcallable {   public static void main(String[] args) throws InterruptedException, ExecutionException { ExecutorService pool = Executors.newFixedThreadPool(4);   for(int i = 0; i &lt; 10; i++){ Future<string> submit = pool.submit(new Callable<string>(){ @Override public String call() throws Exception { //System.out.println(“a”); Thread.sleep(5000); return “b–”+Thread.currentThread().getName(); } }); //从Future中get结果，这个方法是会被阻塞的，一直要等到线程任务返回结果          注意所以也会有一定的危险！反回不回来就 卡死！ System.out.println(submit.get()); } pool.shutdown();   } } 学习电商的 服务器并发性  就是需要进行以上的学习 理解！！！综合所学的这些部分！</string></string></p>
+<p>/** * callable 跟runnable的区别： <em> runnable的run方法不会有任何返回结果，所以主线程无法获得任务线程的返回值 </em> <em> callable的call方法可以返回结果，但是主线程在获取时是被阻塞，需要等待任务线程返回才能拿到结果 </em> @author acanprince <em> </em>/ public class ThreadPoolWithcallable {   public static void main(String[] args) throws InterruptedException, ExecutionException { ExecutorService pool = Executors.newFixedThreadPool(4);   for(int i = 0; i &lt; 10; i++){ Future<string> submit = pool.submit(new Callable<string>(){ @Override public String call() throws Exception { //System.out.println(“a”); Thread.sleep(5000); return “b—“+Thread.currentThread().getName(); } }); //从Future中get结果，这个方法是会被阻塞的，一直要等到线程任务返回结果          注意所以也会有一定的危险！反回不回来就 卡死！ System.out.println(submit.get()); } pool.shutdown();   } } 学习电商的 服务器并发性  就是需要进行以上的学习 理解！！！综合所学的这些部分！</string></string></p>
 <ul>
 <li><strong>java**</strong>并发包消息队列及在开源软件中的应用**</li>
 </ul>
@@ -609,7 +609,7 @@
 </ul>
 </li>
 </ul>
-<p>JMS即Java消息服务（Java Message Service）应用程序接口是一个Java平台中关于面向消息中间件（MOM）的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java消息服务是一个与具体平台无关的API，绝大多数MOM提供商都对JMS提供支持。&lt;JDBC类似的一种消息服务的一种规范&gt; JMS是一种与厂商无关的 API，用来访问消息收发系统消息。它类似于JDBC(Java Database Connectivity)：这里，JDBC 是可以用来访问许多不同关系数据库的 API，而 JMS 则提供同样与厂商无关的访问方法，以访问消息收发服务。许多厂商都支持 JMS，包括 IBM 的 MQSeries、BEA的 Weblogic JMS service和 Progress 的 SonicMQ，这只是几个例子。 JMS 使您能够通过消息收发服务（有时称为消息中介程序或路由器）从一个 JMS 客户机向另一个 JMS客户机发送消息。消息是 JMS 中的一种类型对象，由两部分组成：报头和消息主体。报头由路由信息以及有关该消息的元数据组成。消息主体则携带着应用程序的数据或有效负载。根据有效负载的类型来划分，可以将消息分为几种类型，它们分别携带：简单文本(TextMessage)、可序列化的对象 (ObjectMessage)、属性集合 (MapMessage)、字节流 (BytesMessage)、原始值流 (StreamMessage)，还有无有效负载的消息 (Message)。</p>
+<p>JMS即Java消息服务（Java Message Service）应用程序接口是一个Java平台中关于面向消息中间件（MOM）的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java消息服务是一个与具体平台无关的API，绝大多数MOM提供商都对JMS提供支持。<jdbc类似的一种消息服务的一种规范> JMS是一种与厂商无关的 API，用来访问消息收发系统消息。它类似于JDBC(Java Database Connectivity)：这里，JDBC 是可以用来访问许多不同关系数据库的 API，而 JMS 则提供同样与厂商无关的访问方法，以访问消息收发服务。许多厂商都支持 JMS，包括 IBM 的 MQSeries、BEA的 Weblogic JMS service和 Progress 的 SonicMQ，这只是几个例子。 JMS 使您能够通过消息收发服务（有时称为消息中介程序或路由器）从一个 JMS 客户机向另一个 JMS客户机发送消息。消息是 JMS 中的一种类型对象，由两部分组成：报头和消息主体。报头由路由信息以及有关该消息的元数据组成。消息主体则携带着应用程序的数据或有效负载。根据有效负载的类型来划分，可以将消息分为几种类型，它们分别携带：简单文本(TextMessage)、可序列化的对象 (ObjectMessage)、属性集合 (MapMessage)、字节流 (BytesMessage)、原始值流 (StreamMessage)，还有无有效负载的消息 (Message)。</jdbc类似的一种消息服务的一种规范></p>
 <ul>
 <li><strong>JMS**</strong>规范**<ul>
 <li><strong>专业技术规范</strong></li>
@@ -633,12 +633,12 @@
 </ul>
 <p>1.下载ActiveMQ 去官方网站下载：<a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a>   2.运行ActiveMQ 解压缩apache-activemq-5.5.1-bin.zip， 修改配置文件activeMQ.xml，将0.0.0.0修改为localhost</p>
 <p><transportconnectors> <transportconnector name="openwire" uri="tcp://localhost:61616"> <transportconnector name="ssl" uri="ssl://localhost:61617"> <transportconnector name="stomp" uri="stomp://localhost:61613"> <transportconnector uri="http://localhost:8081"> <transportconnector uri="udp://localhost:61618"> //注释  当前配置是，当前支持的通用协议的配置<java c="" php…的实现.=""></java></transportconnector></transportconnector></transportconnector></transportconnector></transportconnector></transportconnectors></p>
-<p>然后双击apache-activemq-5.5.1\bin\activemq.bat运行ActiveMQ程序。 启动ActiveMQ以后，登陆：<a href="http://localhost:8161/admin/，创建一个Queue，命名为FirstQueue。" target="_blank" rel="noopener">http://localhost:8161/admin/，创建一个Queue，命名为FirstQueue。</a>   3.运行代码</p>
+<p>然后双击apache-activemq-5.5.1\\bin\\activemq.bat运行ActiveMQ程序。 启动ActiveMQ以后，登陆：<a href="http://localhost:8161/admin/，创建一个Queue，命名为FirstQueue。" target="_blank" rel="noopener">http://localhost:8161/admin/，创建一个Queue，命名为FirstQueue。</a>   3.运行代码</p>
 <ul>
 <li><strong>常用的**</strong>JMS<strong>**实现</strong></li>
 </ul>
 <p>要使用Java消息服务，你必须要有一个JMS提供者，管理会话和队列。既有开源的提供者也有专有的提供者。 <strong>开源的提供者包括：</strong> Apache ActiveMQ JBoss 社区所研发的 HornetQ Joram Coridan的MantaRay The OpenJMS Group的OpenJMS <strong>专有的提供者包括：</strong> BEA的BEA WebLogic Server JMS TIBCO Software的EMS GigaSpaces Technologies的GigaSpaces Softwired 2006的iBus IONA Technologies的IONA JMS SeeBeyond的IQManager（2005年8月被Sun Microsystems并购） webMethods的JMS+ - my-channels的Nirvana Sonic Software的SonicMQ SwiftMQ的SwiftMQ IBM的WebSphere MQ   生产者生产者把消息放到 消息池盒子当中&lt;一堆大数据出来的需要分析的数据&gt;，然后经由kafak消息中间件 进行消息存储： 消费者通过 提取kafak中的信息进行 处理&lt;1. 方便提取</p>
-<ol start="2">
+<ol>
 <li>方便 后者转赶上前者， 进行速度的缓冲，</li>
 <li>也方便进行统一管理与 处理。 其它池子好进行提取。&gt;</li>
 </ol>
@@ -649,7 +649,7 @@
 </li>
 </ul>
 <p>通过反射的方式可以获取class对象中的属性、方法、构造函数等，一下是实例： 类似于 通过对应包或类的字符串进行 响应对象中的class对象的提取。</p>
-<p><strong>package</strong> cn.itcast_04_reflect;   <strong>import</strong> java.lang.reflect.Constructor; <strong>import</strong> java.lang.reflect.Field; <strong>import</strong> java.lang.reflect.Method; <strong>import</strong> java.util.ArrayList; <strong>import</strong> java.util.List;   <strong>import</strong> org.junit.Before; <strong>import</strong> org.junit.Test;   <strong>public</strong> <strong>class</strong> MyReflect { <strong>public</strong> String className = <strong>null</strong>; @SuppressWarnings(“rawtypes”) <strong>public</strong> Class personClass = <strong>null</strong>; /** * 反射Person类 <em> <strong>@throws</strong> Exception </em>/ @Before <strong>public</strong> <strong>void</strong> init() <strong>throws</strong> Exception { className = “cn.itcast_04_reflect.Person”; personClass = Class.<em>forName</em>(className); } /<strong> <em>获取某个class文件对象 </em>通过 class类名获取对应的 class文件对象. */ @Test </strong>public<strong> </strong>void<strong> getClassName() </strong>throws<strong> Exception { System.</strong><em>out</em><strong>.println(personClass); } /</strong> <em>获取某个class文件对象的另一种方式 </em> <em>直接获取 package 当中已经有的，文件对象. </em>/ @Test <strong>public</strong> <strong>void</strong> getClassName2() <strong>throws</strong> Exception { System.<strong><em>out</em></strong>.println(Person.<strong>class</strong>); } /** <em>创建一个class文件表示的实例对象，底层会调用空参数的构造方法 </em>/ @Test <strong>public</strong> <strong>void</strong> getNewInstance() <strong>throws</strong> Exception { System.<strong><em>out</em></strong>.println(personClass.newInstance()); } /<strong> <em>获取非私有的构造函数 </em>获取唯一的 构造函数,进行唯一的方法调用.也可以获得实例. */ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test </strong>public<strong> </strong>void<strong> getPublicConstructor() </strong>throws<strong> Exception { Constructor  constructor  = personClass.getConstructor(Long.</strong>class<strong>,String.</strong>class<strong>); Person person = (Person)constructor.newInstance(100L,”zhangsan”); System.</strong><em>out</em><strong>.println(person.getId()); System.</strong><em>out</em><strong>.println(person.getName()); } /</strong> <em>获得私有的构造函数 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getPrivateConstructor() <strong>throws</strong> Exception { Constructor con = personClass.getDeclaredConstructor(String.<strong>class</strong>); //暴力获取 私有权限的 链接。 con.setAccessible(<strong>true</strong>);//强制取消Java的权限检测 Person person2 = (Person)con.newInstance(“zhangsan”); System.<strong><em>out</em></strong>.println(“<strong>“+person2.getName()); } /</strong> <em>访问非私有的成员变量 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getNotPrivateField() <strong>throws</strong> Exception { Constructor  constructor  = personClass.getConstructor(Long.<strong>class</strong>,String.<strong>class</strong>); Object obj = constructor.newInstance(100L,”zhangsan”);   Field field = personClass.getField(“name”); field.set(obj, “lisi”); System.<strong><em>out</em></strong>.println(field.get(obj)); } /<strong> <em>访问私有的成员变量 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test </strong>public<strong> </strong>void<strong> getPrivateField() </strong>throws<strong> Exception { //      Constructor constructor2 = personClass.getConstructor(Long,class); //      Object newInstance = constructor2.newInstance(100L); // // //      personClass.getDeclaredFields(“name”);   Constructor  constructor  = personClass.getConstructor(Long.</strong>class<strong>); Object obj = constructor.newInstance(100L);   Field field2 = personClass.getDeclaredField(“id”); field2.setAccessible(</strong>true<strong>);//强制取消Java的权限检测 field2.set(obj,10000L); System.</strong><em>out</em><strong>.println(field2.get(obj)); } /</strong> <em>获取非私有的成员函数 </em>/ @SuppressWarnings({ “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getNotPrivateMethod() <strong>throws</strong> Exception { System.<strong><em>out</em></strong>.println(personClass.getMethod(“toString”));   Object obj = personClass.newInstance();//获取空参的构造函数 Method toStringMethod = personClass.getMethod(“toString”); //指定代理对象  执行对应的方法.  当我们发过来的都是字符串 并不知道我们应该执行的方法是什么，只能通过·发送给我们的字符串货值用的什么具体方法. Object object = toStringMethod.invoke(obj); System.<strong><em>out</em></strong>.println(object); } /<strong> <em>获取私有的成员函数 </em>/ @SuppressWarnings(“unchecked”) @Test </strong>public<strong> </strong>void<strong> getPrivateMethod() </strong>throws<strong> Exception { Object obj = personClass.newInstance();//获取空参的构造函数 Method method = personClass.getDeclaredMethod(“getSomeThing”); method.setAccessible(</strong>true<strong>); Object value = method.invoke(obj); System.</strong><em>out</em><strong>.println(value);   } /</strong> <em> </em>/ @Test <strong>public</strong> <strong>void</strong> otherMethod() <strong>throws</strong> Exception { //当前加载这个class文件的那个类加载器对象 System.<strong><em>out</em></strong>.println(personClass.getClassLoader()); //获取某个类实现的所有接口 Class[] interfaces = personClass.getInterfaces(); <strong>for</strong> (Class class1 : interfaces) { System.<strong><em>out</em></strong>.println(class1); } //反射当前这个类的直接父类 extends没有.就是Object的孩子 System.<strong><em>out</em></strong>.println(personClass.getGenericSuperclass()); /<strong> <em> getResourceAsStream这个方法可以获取到一个输入流，这个输入流会关联到name所表示的那个文件上。 </em>/ //path 不以’/‘开头时默认是从此类所在的包下取资源&lt;更小&gt;，以’/‘开头则是从ClassPath根下获取<src>。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。 System.</src></strong><em>out</em><strong>.println(personClass.getResourceAsStream(“/log4j.properties”)); System.</strong><em>out</em><strong>.println(personClass.getResourceAsStream(“log4j.properties”));   //判断当前的Class对象表示是否是数组 System.</strong><em>out</em><strong>.println(personClass.isArray()); System.</strong><em>out</em><strong>.println(</strong>new<strong> String[3].getClass().isArray());   //判断当前的Class对象表示是否是枚举类 System.</strong><em>out</em><strong>.println(personClass.isEnum()); System.</strong><em>out</em><strong>.println(Class.<em>forName</em>(“cn.itcast_04_reflect.City”).isEnum());   //判断当前的Class对象表示是否是接口 System.</strong><em>out</em><strong>.println(personClass.isInterface()); System.</strong><em>out</em>**.println(Class.<em>forName</em>(“cn.itcast_04_reflect.TestInterface”).isInterface());     } }  </p>
+<p><strong>package</strong> cn.itcast_04_reflect;   <strong>import</strong> java.lang.reflect.Constructor; <strong>import</strong> java.lang.reflect.Field; <strong>import</strong> java.lang.reflect.Method; <strong>import</strong> java.util.ArrayList; <strong>import</strong> java.util.List;   <strong>import</strong> org.junit.Before; <strong>import</strong> org.junit.Test;   <strong>public</strong> <strong>class</strong> MyReflect { <strong>public</strong> String className = <strong>null</strong>; @SuppressWarnings(“rawtypes”) <strong>public</strong> Class personClass = <strong>null</strong>; /** * 反射Person类 <em> <strong>@throws</strong> Exception </em>/ @Before <strong>public</strong> <strong>void</strong> init() <strong>throws</strong> Exception { className = “cn.itcast_04_reflect.Person”; personClass = Class._forName_(className); } /<strong> <em>获取某个class文件对象 </em>通过 class类名获取对应的 class文件对象. */ @Test </strong>public<strong> </strong>void<strong> getClassName() </strong>throws<strong> Exception { System.</strong>_out_<strong>.println(personClass); } /</strong> <em>获取某个class文件对象的另一种方式 </em> <em>直接获取 package 当中已经有的，文件对象. </em>/ @Test <strong>public</strong> <strong>void</strong> getClassName2() <strong>throws</strong> Exception { System.<strong>_out_</strong>.println(Person.<strong>class</strong>); } /** <em>创建一个class文件表示的实例对象，底层会调用空参数的构造方法 </em>/ @Test <strong>public</strong> <strong>void</strong> getNewInstance() <strong>throws</strong> Exception { System.<strong>_out_</strong>.println(personClass.newInstance()); } /<strong> <em>获取非私有的构造函数 </em>获取唯一的 构造函数,进行唯一的方法调用.也可以获得实例. */ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test </strong>public<strong> </strong>void<strong> getPublicConstructor() </strong>throws<strong> Exception { Constructor  constructor  = personClass.getConstructor(Long.</strong>class<strong>,String.</strong>class<strong>); Person person = (Person)constructor.newInstance(100L,”zhangsan”); System.</strong>_out_<strong>.println(person.getId()); System.</strong>_out_<strong>.println(person.getName()); } /</strong> <em>获得私有的构造函数 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getPrivateConstructor() <strong>throws</strong> Exception { Constructor con = personClass.getDeclaredConstructor(String.<strong>class</strong>); //暴力获取 私有权限的 链接。 con.setAccessible(<strong>true</strong>);//强制取消Java的权限检测 Person person2 = (Person)con.newInstance(“zhangsan”); System.<strong>_out_</strong>.println(“<strong>“+person2.getName()); } /</strong> <em>访问非私有的成员变量 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getNotPrivateField() <strong>throws</strong> Exception { Constructor  constructor  = personClass.getConstructor(Long.<strong>class</strong>,String.<strong>class</strong>); Object obj = constructor.newInstance(100L,”zhangsan”);   Field field = personClass.getField(“name”); field.set(obj, “lisi”); System.<strong>_out_</strong>.println(field.get(obj)); } /<strong> <em>访问私有的成员变量 </em>/ @SuppressWarnings({ “rawtypes”, “unchecked” }) @Test </strong>public<strong> </strong>void<strong> getPrivateField() </strong>throws<strong> Exception { //      Constructor constructor2 = personClass.getConstructor(Long,class); //      Object newInstance = constructor2.newInstance(100L); // // //      personClass.getDeclaredFields(“name”);   Constructor  constructor  = personClass.getConstructor(Long.</strong>class<strong>); Object obj = constructor.newInstance(100L);   Field field2 = personClass.getDeclaredField(“id”); field2.setAccessible(</strong>true<strong>);//强制取消Java的权限检测 field2.set(obj,10000L); System.</strong>_out_<strong>.println(field2.get(obj)); } /</strong> <em>获取非私有的成员函数 </em>/ @SuppressWarnings({ “unchecked” }) @Test <strong>public</strong> <strong>void</strong> getNotPrivateMethod() <strong>throws</strong> Exception { System.<strong>_out_</strong>.println(personClass.getMethod(“toString”));   Object obj = personClass.newInstance();//获取空参的构造函数 Method toStringMethod = personClass.getMethod(“toString”); //指定代理对象  执行对应的方法.  当我们发过来的都是字符串 并不知道我们应该执行的方法是什么，只能通过·发送给我们的字符串货值用的什么具体方法. Object object = toStringMethod.invoke(obj); System.<strong>_out_</strong>.println(object); } /<strong> <em>获取私有的成员函数 </em>/ @SuppressWarnings(“unchecked”) @Test </strong>public<strong> </strong>void<strong> getPrivateMethod() </strong>throws<strong> Exception { Object obj = personClass.newInstance();//获取空参的构造函数 Method method = personClass.getDeclaredMethod(“getSomeThing”); method.setAccessible(</strong>true<strong>); Object value = method.invoke(obj); System.</strong>_out_<strong>.println(value);   } /</strong> <em> </em>/ @Test <strong>public</strong> <strong>void</strong> otherMethod() <strong>throws</strong> Exception { //当前加载这个class文件的那个类加载器对象 System.<strong>_out_</strong>.println(personClass.getClassLoader()); //获取某个类实现的所有接口 Class[] interfaces = personClass.getInterfaces(); <strong>for</strong> (Class class1 : interfaces) { System.<strong>_out_</strong>.println(class1); } //反射当前这个类的直接父类 extends没有.就是Object的孩子 System.<strong>_out_</strong>.println(personClass.getGenericSuperclass()); /<strong> <em> getResourceAsStream这个方法可以获取到一个输入流，这个输入流会关联到name所表示的那个文件上。 </em>/ //path 不以’/‘开头时默认是从此类所在的包下取资源&lt;更小&gt;，以’/‘开头则是从ClassPath根下获取<src>。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。 System.</src></strong>_out_<strong>.println(personClass.getResourceAsStream(“/log4j.properties”)); System.</strong>_out_<strong>.println(personClass.getResourceAsStream(“log4j.properties”));   //判断当前的Class对象表示是否是数组 System.</strong>_out_<strong>.println(personClass.isArray()); System.</strong>_out_<strong>.println(</strong>new<strong> String[3].getClass().isArray());   //判断当前的Class对象表示是否是枚举类 System.</strong>_out_<strong>.println(personClass.isEnum()); System.</strong>_out_<strong>.println(Class._forName_(“cn.itcast_04_reflect.City”).isEnum());   //判断当前的Class对象表示是否是接口 System.</strong>_out_<strong>.println(personClass.isInterface()); System.</strong>_out_**.println(Class._forName_(“cn.itcast_04_reflect.TestInterface”).isInterface());     } }  </p>
 <ul>
 <li><strong>动态代理</strong></li>
 </ul>
@@ -672,7 +672,7 @@
 <p>原业务接口IBoss</p>
 <p>public interface IBoss {//接口 int yifu(String size); }</p>
 <p>原业务实现类</p>
-<p>public class Boss implements IBoss{ public int yifu(String size){ System.err.println(“天猫小强旗舰店，老板给客户发快递—-衣服型号：”+size); //这件衣服的价钱，从数据库读取 return 50; } public void kuzi(){ System.err.println(“天猫小强旗舰店，老板给客户发快递—-裤子”); } }</p>
+<p>public class Boss implements IBoss{ public int yifu(String size){ System.err.println(“天猫小强旗舰店，老板给客户发快递——衣服型号：”+size); //这件衣服的价钱，从数据库读取 return 50; } public void kuzi(){ System.err.println(“天猫小强旗舰店，老板给客户发快递——裤子”); } }</p>
 <p>原业务调用</p>
 <p>public class SaleAction { @Test public void saleByBossSelf() throws Exception { IBoss boss = new Boss(); System.out.println(“老板自营！”); int money = boss.yifu(“xxl”); System.out.println(“衣服成交价：” + money); } }</p>
 <p>代理类</p>
@@ -685,7 +685,7 @@
 </ul>
 <p>——利用socket来进行远程远程过程调用 服务器&lt;类方法 最好用反射方法，这样灵活——根据发过来的类来进行 灵活的调用请求。&gt; WebService 封装http协议等等. 服务器利用代码 托管封装到—Tomcat容器当中。然后 Tomcat封装的http协议action<get post="">然后 client就可以通过http直接调用服务器了。 &lt;以上方法 太冗余。所以我们进行了 简化的socket通信&gt;  </get></p>
 <h2 id="ServiceServer-lt-服务器端-gt"><a href="#ServiceServer-lt-服务器端-gt" class="headerlink" title="ServiceServer   &lt;服务器端&gt;"></a>ServiceServer   &lt;服务器端&gt;</h2><p>package cn.itcast.bigdata.socket;   import java.io.IOException; import java.net.InetSocketAddress; import java.net.ServerSocket; import java.net.Socket;   public class ServiceServer {   public static void main(String[] args) { ServerSocket server; try { //创建 一个serversocket   绑定到本机的 8899 端口上. server = new ServerSocket(); server.bind(new InetSocketAddress(“localhost”, 8899));   //监听并接受客户端的李连杰请求，accept是祖册方法 会一直等待。客户端有请求连接才返回   // 创建一个serversocket，绑定到本机的8899端口上   // 接受客户端的连接请求;accept是一个阻塞方法，会一直等待，到有客户端请求连接才返回 while (true) { Socket socket = server.accept(); //业务逻辑   抛出业务类进行处理. new Thread(new ServiceServerTask(socket)).start(); }     } catch (IOException e1) { // TODO 自动生成的 catch 块 e1.printStackTrace(); }   } }</p>
-<h2 id="ServiceServerTask-lt-服务器端-线程-socket实现类-gt"><a href="#ServiceServerTask-lt-服务器端-线程-socket实现类-gt" class="headerlink" title="ServiceServerTask&lt;服务器端 线程 socket实现类&gt;"></a>ServiceServerTask&lt;服务器端 线程 socket实现类&gt;</h2><p>package cn.itcast.bigdata.socket;   import java.io.BufferedReader; import java.io.IOException; import java.io.InputStream; import java.io.InputStreamReader; import java.io.OutputStream; import java.io.PrintWriter; import java.lang.reflect.Parameter; import java.net.Socket;   public class ServiceServerTask implements Runnable{   Socket socket; InputStream in; OutputStream out; public ServiceServerTask(Socket socket) { // TODO 自动生成的构造函数存根 this.socket = socket; }   @Override public void run() { // TODO 自动生成的方法存根 //从socket 连接中获取到与client之间的网络罗通信输入流 try { in = socket.getInputStream(); out = socket.getOutputStream();   BufferedReader br = new BufferedReader(new InputStreamReader(in)); //用 此方法读取一行 客户端传输过来的数据 //                         String line = “”; //                         String param = “”; //                         while( (line = br.readLine())!=null ) { //                                  param += line; //                         } //                           多行就用上方的方法。   //从网络通信输入流中读取客户端发送过来的数据 //注意：socketinputstream的读数据的方法都是阻塞的 String param = br.readLine(); System.out.println(Thread.currentThread().getName()+”线程在服务器中，获取到参数为:” + param);   /*<em> </em> 作业： <em> 将以下业务调用逻辑写成更加通用的：可以根据客户端发过来的调用类名、调用方法名、调用该参数来灵活调用 </em> <em> 《反射》 </em> 即进行动态代理！！！！！！  未完成！！！ */   GetDataServiceImpl getDataServiceImpl = new GetDataServiceImpl(); String result = getDataServiceImpl.getData(param);     //将调用结果写到sokect的输出流中，以发送给客户端    注意服务器。先收到 客户端发来的，然后自己再发出带回车符的 PW！！！   //注意28行—输出也是输出到  socket通信到中去！！ PrintWriter pw = new PrintWriter(out); pw.println(result); pw.flush();       } catch (IOException e) {   e.printStackTrace(); }finally{ try { in.close(); out.close(); socket.close(); } catch (IOException e) { e.printStackTrace(); }   }   }   }</p>
+<h2 id="ServiceServerTask-lt-服务器端-线程-socket实现类-gt"><a href="#ServiceServerTask-lt-服务器端-线程-socket实现类-gt" class="headerlink" title="ServiceServerTask&lt;服务器端 线程 socket实现类&gt;"></a>ServiceServerTask&lt;服务器端 线程 socket实现类&gt;</h2><p>package cn.itcast.bigdata.socket;   import java.io.BufferedReader; import java.io.IOException; import java.io.InputStream; import java.io.InputStreamReader; import java.io.OutputStream; import java.io.PrintWriter; import java.lang.reflect.Parameter; import java.net.Socket;   public class ServiceServerTask implements Runnable{   Socket socket; InputStream in; OutputStream out; public ServiceServerTask(Socket socket) { // TODO 自动生成的构造函数存根 this.socket = socket; }   @Override public void run() { // TODO 自动生成的方法存根 //从socket 连接中获取到与client之间的网络罗通信输入流 try { in = socket.getInputStream(); out = socket.getOutputStream();   BufferedReader br = new BufferedReader(new InputStreamReader(in)); //用 此方法读取一行 客户端传输过来的数据 //                         String line = “”; //                         String param = “”; //                         while( (line = br.readLine())!=null ) { //                                  param += line; //                         } //                           多行就用上方的方法。   //从网络通信输入流中读取客户端发送过来的数据 //注意：socketinputstream的读数据的方法都是阻塞的 String param = br.readLine(); System.out.println(Thread.currentThread().getName()+”线程在服务器中，获取到参数为:” + param);   /<em>* </em> 作业： <em> 将以下业务调用逻辑写成更加通用的：可以根据客户端发过来的调用类名、调用方法名、调用该参数来灵活调用 </em> <em> 《反射》 </em> 即进行动态代理！！！！！！  未完成！！！ */   GetDataServiceImpl getDataServiceImpl = new GetDataServiceImpl(); String result = getDataServiceImpl.getData(param);     //将调用结果写到sokect的输出流中，以发送给客户端    注意服务器。先收到 客户端发来的，然后自己再发出带回车符的 PW！！！   //注意28行—输出也是输出到  socket通信到中去！！ PrintWriter pw = new PrintWriter(out); pw.println(result); pw.flush();       } catch (IOException e) {   e.printStackTrace(); }finally{ try { in.close(); out.close(); socket.close(); } catch (IOException e) { e.printStackTrace(); }   }   }   }</p>
 <h2 id="ServiceClient-lt-客户端-gt"><a href="#ServiceClient-lt-客户端-gt" class="headerlink" title="ServiceClient&lt;客户端&gt;"></a>ServiceClient&lt;客户端&gt;</h2><p>package cn.itcast.bigdata.socket;   import java.io.BufferedReader; import java.io.InputStream; import java.io.InputStreamReader; import java.io.OutputStream; import java.io.PrintWriter; import java.net.Socket;   public class ServiceClient {   public static void main(String[] args) throws Exception {   /*ServiceIterface service = ProxyUtils.getProxy(ServiceIterface.class,”methodA”,hostname,port); Result = service.methodA(parameters);*/   // 向服务器发出请求建立连接 Socket socket = new Socket(“localhost”, 8899); // 从socket中获取输入输出流 InputStream inputStream = socket.getInputStream(); OutputStream outputStream = socket.getOutputStream();   PrintWriter pw = new PrintWriter(outputStream); pw.println(“hello”); pw.flush();   BufferedReader br = new BufferedReader(new InputStreamReader(inputStream)); String result = br.readLine(); System.out.println(result);   inputStream.close(); outputStream.close(); socket.close();     } }</p>
 <h2 id="GetDataServiceImpl"><a href="#GetDataServiceImpl" class="headerlink" title="GetDataServiceImpl"></a>GetDataServiceImpl</h2><p><strong>/**</strong> <strong>*</strong> &lt;实现方法,最好在 ServiceServerTask当中进行 反射的通用书写方法.&gt; <strong>*</strong> <strong>*/</strong> <strong>package</strong> cn.itcast.bigdata.socket;   <strong>public</strong> <strong>class</strong> GetDataServiceImpl {   <strong>public</strong> String getData(String param){   <strong>return</strong> “ok-“+param; } }  </p>
 <ul>
@@ -936,7 +936,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -947,7 +947,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -958,7 +958,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1096,7 +1096,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1722,6 +1722,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

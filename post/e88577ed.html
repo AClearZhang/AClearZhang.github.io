@@ -478,7 +478,7 @@
 <p>你可以用上面的命令来新建一个info.php文件，nano是简单的文本编辑工具，还有vim。 输入简单的测试PHP命令：</p>
 <p>&lt;?php<br>phpinfo();<br>?&gt;</p>
 <p>然后输入Ctrl o进行保存，点击回车确认。再输入Ctrl x进行退出。 然后在浏览器中，输入IP地址/info.php，就可以看到PHP的信息了！ 第三步：设置mysql数据库root帐号密码</p>
-<p>mysqladmin -u root password ‘<em>mysql的管理员密码</em>‘</p>
+<p>mysqladmin -u root password ‘_mysql的管理员密码_’</p>
 <p>其次 为wordpress创建数据库 1.</p>
 <p>mysql -u root -p</p>
 <p>2.</p>
@@ -497,7 +497,7 @@
 <p>wget <a href="http://cn.wordpress.org/wordpress-3.9-zh_CN.zip" target="_blank" rel="noopener">http://cn.wordpress.org/wordpress-3.9-zh_CN.zip</a><br>unzip wordpress-3.8-zh_CN.zip</p>
 <p>用unzip 来解压zip文件。 然后编辑wp-config-sample.php文件，主要修改数据库信息。</p>
 <p>nano wp-config-sample.php</p>
-<p>/** MySQL数据库名 <em>/<br>define(‘DB_NAME’, ‘wordpress’);<br>/\</em>* MySQL数据库用户名 <em>/<br>define(‘DB_USER’, ‘root’);<br>/\</em>* MySQL数据库密码 <em>/<br>define(‘DB_PASSWORD’, ‘<em>password</em>‘);<br>/\</em>* MySQL主机（不用修改） */<br>define(‘DB_HOST’, ‘localhost’);</p>
+<p>/** MySQL数据库名 <em>/<br>define(‘DB_NAME’, ‘wordpress’);<br>/\</em>* MySQL数据库用户名 <em>/<br>define(‘DB_USER’, ‘root’);<br>/\</em>* MySQL数据库密码 <em>/<br>define(‘DB_PASSWORD’, ‘_password_’);<br>/\</em>* MySQL主机（不用修改） */<br>define(‘DB_HOST’, ‘localhost’);</p>
 <p>  数据库名字、数据库的用户名和密码都是之前一步填的，这里要填入。 记得ctrl + o 保存文件的时候，选择文件名为wp-config.php。 然后把所有的文件复制到/var/www/html 目录下。用</p>
 <p>cp -rf wordpress/* /var/www/html/</p>
 <p>  另可以：这样就把wordpress搞妥了，不过有些同学可能对命令操作有点恐惧，在Windows下可以用FileZilla软件，来把本地的文件上传到VPS中。FileZilla在文件的站点管理器中，选择新建站点，配置界面的协议选择SFTP。 上传速度大概只有50-60KB/S 2.</p>
@@ -682,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +693,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -704,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -826,7 +826,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1452,6 +1452,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

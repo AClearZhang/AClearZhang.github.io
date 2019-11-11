@@ -86,12 +86,12 @@
 
 
 
-<meta name="description" content="（一）adb  shell命令基础运用—【速递】adb操作下载不同虚拟机的文件到本地电脑— adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令了 1">
+<meta name="description" content="（一）adb  shell命令基础运用—-【速递】adb操作下载不同虚拟机的文件到本地电脑—- adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —-在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ADB Shell操作指令">
 <meta property="og:url" content="http://blog.aclear.top/post/6fd4de0b.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="（一）adb  shell命令基础运用—【速递】adb操作下载不同虚拟机的文件到本地电脑— adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令了 1">
+<meta property="og:description" content="（一）adb  shell命令基础运用—-【速递】adb操作下载不同虚拟机的文件到本地电脑—- adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —-在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://f.hiphotos.baidu.com/exp/w=500/sign=7f220cde738da9774e2f862b8050f872/63d0f703918fa0ec3d48abe0269759ee3c6ddb54.jpg">
 <meta property="og:image" content="http://a.hiphotos.baidu.com/exp/w=500/sign=12012a7f0cf431adbcd243397b34ac0f/2cf5e0fe9925bc31fcd6ce755edf8db1ca137050.jpg">
@@ -110,7 +110,7 @@
 <meta property="og:updated_time" content="2019-10-02T03:40:40.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ADB Shell操作指令">
-<meta name="twitter:description" content="（一）adb  shell命令基础运用—【速递】adb操作下载不同虚拟机的文件到本地电脑— adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令了 1">
+<meta name="twitter:description" content="（一）adb  shell命令基础运用—-【速递】adb操作下载不同虚拟机的文件到本地电脑—- adb devices adb -s 192.168.186.102:5555 shell adb -s 192.168.186.102:5555 pull sdcard/info2.xml ls -l —-在开始运行命令前，需要将adb配置到系统环境变量中。然后打开cmd窗口，就可以直接运行adb命令">
 <meta name="twitter:image" content="http://f.hiphotos.baidu.com/exp/w=500/sign=7f220cde738da9774e2f862b8050f872/63d0f703918fa0ec3d48abe0269759ee3c6ddb54.jpg">
 
 
@@ -454,12 +454,12 @@
       
 
       
-        <h2 id="（一）adb-shell命令基础运用"><a href="#（一）adb-shell命令基础运用" class="headerlink" title="（一）adb  shell命令基础运用"></a>（一）<a href="http://blog.sina.com.cn/s/blog_7794b8f70101e0bt.html" target="_blank" rel="noopener">adb  shell命令基础运用</a></h2><p>—【速递】adb操作下载不同虚拟机的文件到本地电脑—</p>
+        <h2 id="（一）adb-shell命令基础运用"><a href="#（一）adb-shell命令基础运用" class="headerlink" title="（一）adb  shell命令基础运用"></a>（一）<a href="http://blog.sina.com.cn/s/blog_7794b8f70101e0bt.html" target="_blank" rel="noopener">adb  shell命令基础运用</a></h2><p>—-【速递】adb操作下载不同虚拟机的文件到本地电脑—-</p>
 <p><strong>adb devices</strong></p>
 <p><strong>adb -s 192.168.186.102:5555 shell</strong></p>
 <p><strong>adb -s 192.168.186.102:5555 pull sdcard/info2.xml</strong></p>
 <p><strong>ls -l</strong></p>
-<p>—在开始运行命令前，需要将<a href="#enviroment">adb配置到系统环境变量中</a>。然后打开cmd窗口，就可以直接运行adb命令了 1. 显示系统中全部Android平台：    android list targets 2. 显示系统中全部AVD（模拟器）：    android list avd 3. 创建AVD（模拟器）：    android create avd -n 模拟器名称 -t target的id（android-8） 4. 启动模拟器：    emulator -avd 模拟器名称 5. 删除AVD（模拟器）：    android delete avd -n 模拟器名称 6. 创建SDCard：（未验证）    mksdcard 1024M ~/名称.img 7. AVD(模拟器)所在位置：（未验证）    Linux(~/.android/avd)      Windows(C:Documents and SettingsAdministrator.androidavd) 8. 启动DDMS：    ddms 9. 显示当前运行的全部模拟器：    adb devices 10. 对某一模拟器执行命令：      abd -s 模拟器编号 命令 11. 安装应用程序：      adb install -r 应用程序.apk 12. 获取模拟器中的文件：      adb pull 13. 向模拟器中写文件：      adb push 14. 进入模拟器的shell模式：      adb shell 15. 启动SDK，文档，实例下载管理器：      android 16. 缷载apk包：      adb shell      cd data/app      rm apk包      exit      adb uninstall apk包的主包名      adb install -r apk包 17. 查看adb命令帮助信息：      adb help 18. 在命令行中查看LOG信息：      adb logcat -s 标签名 19. adb shell后面跟的命令主要来自：      源码systemcoretoolbox目录和源码frameworksbasecmds目录。 20. 删除系统应用：      adb remount （重新挂载系统分区，使系统分区重新可写）。      adb shell      cd system/app      rm *.apk 21. 获取管理员权限：      adb root 22. 启动Activity：（很实用的命令）      adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）。 23、发布端口：    你可以设置任意的端口号，做为主机向模拟器或设备的请求端口。如： adb forward tcp:5555 tcp:8000 24、复制文件：    你可向一个设备或从一个设备中复制文件，复制一个文件或目录到设备或模拟器上：   adb push        如：adb push test.txt /tmp/test.txt      从设备或模拟器上复制一个文件或目录：      adb pull      如：adb pull /addroid/lib/libwebcore.so . 25、搜索模拟器/设备的实例：     取得当前运行的模拟器/设备的实例的列表及每个实例的状态：     adb devices 26、查看bug报告：adb bugreport 27、记录无线通讯日志：    一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录：adb shell     logcat -b radio 28、获取设备的ID和序列号：     adb get-product      adb get-serialno 29、访问数据库SQLite3     adb shell      sqlite3 #cd system/sd/data //进入系统内指定文件夹#ls //列表显示当前文件夹内容  #rm -r xxx //删除名字为xxx的文件夹及其里面的所有文件  #rm xxx //删除文件xxx #rmdir xxx //删除xxx的文件夹 </p>
+<p>—-在开始运行命令前，需要将<a href="#enviroment">adb配置到系统环境变量中</a>。然后打开cmd窗口，就可以直接运行adb命令了 1. 显示系统中全部Android平台：    android list targets 2. 显示系统中全部AVD（模拟器）：    android list avd 3. 创建AVD（模拟器）：    android create avd -n 模拟器名称 -t target的id（android-8） 4. 启动模拟器：    emulator -avd 模拟器名称 5. 删除AVD（模拟器）：    android delete avd -n 模拟器名称 6. 创建SDCard：（未验证）    mksdcard 1024M ~/名称.img 7. AVD(模拟器)所在位置：（未验证）    Linux(~/.android/avd)      Windows(C:Documents and SettingsAdministrator.androidavd) 8. 启动DDMS：    ddms 9. 显示当前运行的全部模拟器：    adb devices 10. 对某一模拟器执行命令：      abd -s 模拟器编号 命令 11. 安装应用程序：      adb install -r 应用程序.apk 12. 获取模拟器中的文件：      adb pull 13. 向模拟器中写文件：      adb push 14. 进入模拟器的shell模式：      adb shell 15. 启动SDK，文档，实例下载管理器：      android 16. 缷载apk包：      adb shell      cd data/app      rm apk包      exit      adb uninstall apk包的主包名      adb install -r apk包 17. 查看adb命令帮助信息：      adb help 18. 在命令行中查看LOG信息：      adb logcat -s 标签名 19. adb shell后面跟的命令主要来自：      源码systemcoretoolbox目录和源码frameworksbasecmds目录。 20. 删除系统应用：      adb remount （重新挂载系统分区，使系统分区重新可写）。      adb shell      cd system/app      rm *.apk 21. 获取管理员权限：      adb root 22. 启动Activity：（很实用的命令）      adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）。 23、发布端口：    你可以设置任意的端口号，做为主机向模拟器或设备的请求端口。如： adb forward tcp:5555 tcp:8000 24、复制文件：    你可向一个设备或从一个设备中复制文件，复制一个文件或目录到设备或模拟器上：   adb push        如：adb push test.txt /tmp/test.txt      从设备或模拟器上复制一个文件或目录：      adb pull      如：adb pull /addroid/lib/libwebcore.so . 25、搜索模拟器/设备的实例：     取得当前运行的模拟器/设备的实例的列表及每个实例的状态：     adb devices 26、查看bug报告：adb bugreport 27、记录无线通讯日志：    一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录：adb shell     logcat -b radio 28、获取设备的ID和序列号：     adb get-product      adb get-serialno 29、访问数据库SQLite3     adb shell      sqlite3 #cd system/sd/data //进入系统内指定文件夹#ls //列表显示当前文件夹内容  #rm -r xxx //删除名字为xxx的文件夹及其里面的所有文件  #rm xxx //删除文件xxx #rmdir xxx //删除xxx的文件夹 </p>
 <h2 id="（二）adb环境的搭建"><a href="#（二）adb环境的搭建" class="headerlink" title="（二）adb环境的搭建"></a>（二）adb环境的搭建</h2><ol>
 <li><p><a href="http://jingyan.baidu.com/album/17bd8e52f514d985ab2bb800.html?picindex=15" target="_blank" rel="noopener"><strong>第一步，打开环境变量配置窗口。</strong>右击计算机，属性-高级系统设置-环境变量。</a></p>
 <p><a href="http://jingyan.baidu.com/album/17bd8e52f514d985ab2bb800.html?picindex=2" target="_blank" rel="noopener"><img src="http://f.hiphotos.baidu.com/exp/w=500/sign=7f220cde738da9774e2f862b8050f872/63d0f703918fa0ec3d48abe0269759ee3c6ddb54.jpg" alt="如何配置android的adb环境变量"></a></p>
@@ -672,7 +672,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -694,7 +694,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -832,7 +832,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1458,6 +1458,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r– 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
+<meta name="description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r— 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TP5的php think 命令激发的--centos 修改文件及文件夹权限的操作详解。">
 <meta property="og:url" content="http://blog.aclear.top/post/27ef7655.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r– 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
+<meta property="og:description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r— 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TP5的php think 命令激发的--centos 修改文件及文件夹权限的操作详解。">
-<meta name="twitter:description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r– 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
+<meta name="twitter:description" content="注意：对于用系统的命令创建的文件我们只能是 Others。而自己亲手创建的我们就是 user  查看文件权限的语句： 　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名） 　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r— 　　一共有10位数 　　其中： 最前面那个 - 代表的是类型 　　中间那三个 rw- 代表的是所有者（user） 　　然后那三个 rw- 代">
 
 
 
@@ -455,12 +455,12 @@
 </blockquote>
 <p>查看文件权限的语句：</p>
 <p>　　在终端输入: ls -l xxx.xxx （xxx.xxx是文件名）</p>
-<p>　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r–</p>
+<p>　　那么就会出现相类似的信息，主要都是这些： -rw-rw-r—</p>
 <p>　　一共有10位数</p>
 <p>　　其中： 最前面那个 - 代表的是类型</p>
 <p>　　中间那三个 rw- 代表的是所有者（user）</p>
 <p>　　然后那三个 rw- 代表的是组群（group）</p>
-<p>　　最后那三个 r– 代表的是其他人（other）</p>
+<p>　　最后那三个 r— 代表的是其他人（other）</p>
 <p>　　然后我再解释一下后面那9位数：</p>
 <p>　　r 表示文件可以被读（read）</p>
 <p>　　w 表示文件可以被写（write）</p>
@@ -481,25 +481,25 @@
 <p>　　w 表示文件可以被写（write）</p>
 <p>　　x 表示文件可以被执行（如果它是程序的话）</p>
 <p>　　其中：rwx也可以用数字来代替</p>
-<p>　　r ————4</p>
-<p>　　w ———–2</p>
-<p>　　x ————1</p>
-<p>　　- ————0</p>
+<p>　　r ——————4</p>
+<p>　　w —————-2</p>
+<p>　　x ——————1</p>
+<p>　　- ——————0</p>
 <p>　　行动：</p>
 <p>　　 表示添加权限</p>
 <p>　　- 表示删除权限</p>
 <p>　　= 表示使之成为唯一的权限</p>
 <p>　　当大家都明白了上面的东西之后，那么我们常见的以下的一些权限就很容易都明白了：</p>
-<p>　　-rw——- (600) 只有所有者才有读和写的权限</p>
-<p>　　-rw-r–r– (644) 只有所有者才有读和写的权限，组群和其他人只有读的权限</p>
-<p>　　-rwx—— (700) 只有所有者才有读，写，执行的权限</p>
+<p>　　-rw———- (600) 只有所有者才有读和写的权限</p>
+<p>　　-rw-r—r— (644) 只有所有者才有读和写的权限，组群和其他人只有读的权限</p>
+<p>　　-rwx——— (700) 只有所有者才有读，写，执行的权限</p>
 <p>　　-rwxr-xr-x (755) 只有所有者才有读，写，执行的权限，组群和其他人只有读和执行的权限</p>
-<p>　　-rwx–x–x (711) 只有所有者才有读，写，执行的权限，组群和其他人只有执行的权限</p>
+<p>　　-rwx—x—x (711) 只有所有者才有读，写，执行的权限，组群和其他人只有执行的权限</p>
 <p>　　-rw-rw-rw- (666) 每个人都有读写的权限</p>
 <p>　　-rwxrwxrwx (777) 每个人都有读写和执行的权限</p>
-<p>Linux文件和目录访问权限设置（二） 2009年02月16日 星期一 下午 12:54 五、使用chmod和数字改变文件或目录的访问权限 文件和目录的权限表示，是用rwx这三个字符来代表所有者、用户组和其他用户的权限。有时候，字符似乎过于麻烦，因此还有另外一种方法是以数字来表示权限，而且仅需三个数字。 r: 对应数值4 w: 对应数值2 x：对应数值1 －：对应数值0 数字设定的关键是mode的取值，一开始许多初学者会被搞糊涂，其实很简单，我们将rwx看成二进制数，如果有则有1表示，没有则有0表示，那么rwx r-x r- -则可以表示成为： 111 101 100 再将其每三位转换成为一个十进制数，就是754。 例如，我们想让a.txt这个文件的权限为： 自己 同组用户 其他用户 可读 是 是 是 可写 是 是 可执行 那么，我们先根据上表得到权限串为：rw-rw-r–，那么转换成二进制数就是110 110 100，再每三位转换成为一个十进制数，就得到664，因此我 们执行命令： [root@localhost ~]# chmod 664 a.txt 按照上面的规则，rwx合起来就是4 2 1＝7，一个rwxrwxrwx权限全开放的文件，数值表示为777；而完全不开放权限的文件“－－－－－－－－－”其数字表示为000。下面举几个例子： -rwx——:等于数字表示700。 -rwxr—r–:等于数字表示744。 -rw-rw-r-x:等于数字表示665。 drwx—x—x:等于数字表示711。 drwx——:等于数字表示700。 在文本模式下，可执行chmod命令去改变文件和目录的权限。我们先执行ls -l 看看目录内的情况： [root@localhost ~]# ls -l 总用量 368 -rw-r–r– 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到当然文件conkyrc.sample文件的权限是644,然后把这个文件的权限改成777。执行下面命令 [root@localhost ~]# chmod 777 conkyrc.sample 然后ls -l看一下执行后的结果： [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到conkyrc.sample文件的权限已经修改为rwxrwxrwx 如果要加上特殊权限，就必须使用4位数字才能表示。特殊权限的对应数值为： s或 S （SUID）：对应数值4。 s或 S （SGID）：对应数值2。 t或 T ：对应数值1。</p>
+<p>Linux文件和目录访问权限设置（二） 2009年02月16日 星期一 下午 12:54 五、使用chmod和数字改变文件或目录的访问权限 文件和目录的权限表示，是用rwx这三个字符来代表所有者、用户组和其他用户的权限。有时候，字符似乎过于麻烦，因此还有另外一种方法是以数字来表示权限，而且仅需三个数字。 r: 对应数值4 w: 对应数值2 x：对应数值1 －：对应数值0 数字设定的关键是mode的取值，一开始许多初学者会被搞糊涂，其实很简单，我们将rwx看成二进制数，如果有则有1表示，没有则有0表示，那么rwx r-x r- -则可以表示成为： 111 101 100 再将其每三位转换成为一个十进制数，就是754。 例如，我们想让a.txt这个文件的权限为： 自己 同组用户 其他用户 可读 是 是 是 可写 是 是 可执行 那么，我们先根据上表得到权限串为：rw-rw-r—，那么转换成二进制数就是110 110 100，再每三位转换成为一个十进制数，就得到664，因此我 们执行命令： [root@localhost ~]# chmod 664 a.txt 按照上面的规则，rwx合起来就是4 2 1＝7，一个rwxrwxrwx权限全开放的文件，数值表示为777；而完全不开放权限的文件“－－－－－－－－－”其数字表示为000。下面举几个例子： -rwx———:等于数字表示700。 -rwxr—r—:等于数字表示744。 -rw-rw-r-x:等于数字表示665。 drwx—x—x:等于数字表示711。 drwx———:等于数字表示700。 在文本模式下，可执行chmod命令去改变文件和目录的权限。我们先执行ls -l 看看目录内的情况： [root@localhost ~]# ls -l 总用量 368 -rw-r—r— 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到当然文件conkyrc.sample文件的权限是644,然后把这个文件的权限改成777。执行下面命令 [root@localhost ~]# chmod 777 conkyrc.sample 然后ls -l看一下执行后的结果： [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到conkyrc.sample文件的权限已经修改为rwxrwxrwx 如果要加上特殊权限，就必须使用4位数字才能表示。特殊权限的对应数值为： s或 S （SUID）：对应数值4。 s或 S （SGID）：对应数值2。 t或 T ：对应数值1。</p>
 <p>用同样的方法修改文件权限就可以了 例如：</p>
-<p>[root@localhost ~]# chmod 7600 conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwS–S–T 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 加入想一次修改某个目录下所有文件的权限，包括子目录中的文件权限也要修改，要使用参数－R表示启动递归处理。 例如： [root@localhost ~]# chmod 777 /home/user 注：仅把/home/user目录的权限设置为rwxrwxrwx [root@localhost ~]# chmod -R 777 /home/user 注：表示将整个/home/user目录与其中的文件和子目录的权限都设置为rwxrwxrwx 六、使用命令chown改变目录或文件的所有权 文件与目录不仅可以改变权限，其所有权及所属用户组也能修改，和设置权限类似，用户可以通过图形界面来设置，或执行chown命令来修改。 我们先执行ls -l看看目录情况： [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到conkyrc.sample文件的所属用户组为root，所有者为root。 执行下面命令，把conkyrc.sample文件的所有权转移到用户user: [root@localhost ~]# chown user conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 user root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 要改变所属组，可使用下面命令： [root@localhost ~]# chown :users conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 user users 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r–r–r– 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 要修改目录的权限，使用－R参数就可以了，方法和前面一样</p>
+<p>[root@localhost ~]# chmod 7600 conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwS—S—T 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 加入想一次修改某个目录下所有文件的权限，包括子目录中的文件权限也要修改，要使用参数－R表示启动递归处理。 例如： [root@localhost ~]# chmod 777 /home/user 注：仅把/home/user目录的权限设置为rwxrwxrwx [root@localhost ~]# chmod -R 777 /home/user 注：表示将整个/home/user目录与其中的文件和子目录的权限都设置为rwxrwxrwx 六、使用命令chown改变目录或文件的所有权 文件与目录不仅可以改变权限，其所有权及所属用户组也能修改，和设置权限类似，用户可以通过图形界面来设置，或执行chown命令来修改。 我们先执行ls -l看看目录情况： [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 root root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 可以看到conkyrc.sample文件的所属用户组为root，所有者为root。 执行下面命令，把conkyrc.sample文件的所有权转移到用户user: [root@localhost ~]# chown user conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 user root 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 要改变所属组，可使用下面命令： [root@localhost ~]# chown :users conkyrc.sample [root@localhost ~]# ls -l 总用量 368 -rwxrwxrwx 1 user users 12172 8月 15 23:18 conkyrc.sample drwxr-xr-x 2 root root 48 9月 4 16:32 Desktop -r—r—r— 1 root root 331844 10月 22 21:08 libfreetype.so.6 drwxr-xr-x 2 root root 48 8月 12 22:25 MyMusic -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth0 -rwxr-xr-x 1 root root 9776 11月 5 08:08 net.eth1 -rwxr-xr-x 1 root root 512 11月 5 08:08 net.lo drwxr-xr-x 2 root root 48 9月 6 13:06 vmware 要修改目录的权限，使用－R参数就可以了，方法和前面一样</p>
 <blockquote>
 <p>【转自】<a href="http://www.cnblogs.com/liaojie970/p/5939677.html" target="_blank" rel="noopener">Centos修改文件及文件夹权限</a></p>
 </blockquote>
@@ -680,7 +680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -691,7 +691,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -702,7 +702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -824,7 +824,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1450,6 +1450,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

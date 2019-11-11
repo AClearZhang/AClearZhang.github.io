@@ -94,13 +94,10 @@
 <meta property="og:site_name" content="少年初心">
 <meta property="og:description" content="学习一样东西不能只停留在表面，我们要探索其中的细节，学习作者的编程思想，这样才能更进一步。  关于WSGIWSGI(全称Web Server Gateway Interface)，是为 Python 语言定义的Web服务器和Web应用程序之间的一种简单而通用的接口，它封装了接受HTTP请求、解析HTTP请求、发送HTTP，响应等等的这些底层的代码和操作，使开发者可以高效的编写Web应用。一个简单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pic.aclear.top/WSGIServer-APP-dealprocess.png">
-<meta property="og:image" content="http://pic.aclear.top/flask-dealprocess.jpg">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask的核心机制-关于请求处理流程和请求|应用上下文">
 <meta name="twitter:description" content="学习一样东西不能只停留在表面，我们要探索其中的细节，学习作者的编程思想，这样才能更进一步。  关于WSGIWSGI(全称Web Server Gateway Interface)，是为 Python 语言定义的Web服务器和Web应用程序之间的一种简单而通用的接口，它封装了接受HTTP请求、解析HTTP请求、发送HTTP，响应等等的这些底层的代码和操作，使开发者可以高效的编写Web应用。一个简单">
-<meta name="twitter:image" content="http://pic.aclear.top/WSGIServer-APP-dealprocess.png">
 
 
 
@@ -455,7 +452,9 @@
 <li>Python内置了一个WSGIREF的WSGI Server，不过性能不是很好，一般只用在开发环境。可以选择其他的如Gunicorn。  <a id="more"></a>  
 </li>
 </ul>
-<center><br><img src="http://pic.aclear.top/WSGIServer-APP-dealprocess.png" alt="dream"> WSGI Server 和 App交互图<br></center>
+<center>  
+![dream](http://pic.aclear.top/WSGIServer-APP-dealprocess.png) WSGI Server 和 App交互图
+</center>
 
 <h2 id="Flask的上下文对象"><a href="#Flask的上下文对象" class="headerlink" title="Flask的上下文对象"></a>Flask的上下文对象</h2><p>Flask有两种<code>Context</code>(上下文)，分别是</p>
 <ul>
@@ -472,7 +471,11 @@
 <li><code>Request</code>和<code>g</code>的生命周期为一次请求期间，当请求处理完成后，生命周期也就完结了</li>
 <li><code>Session</code>就是传统意义上的session了。只要它还未失效（用户未关闭浏览器、没有超过设定的失效时间），那么不同的请求会共用同样的session。</li>
 </ul>
-<h2 id="Flask处理流程"><a href="#Flask处理流程" class="headerlink" title="Flask处理流程"></a>Flask处理流程</h2><div align="center"><br><img src="http://pic.aclear.top/flask-dealprocess.jpg" alt="dream"><br>Flask处理流程<br><br></div>
+<h2 id="Flask处理流程"><a href="#Flask处理流程" class="headerlink" title="Flask处理流程"></a>Flask处理流程</h2><div align="center">
+![dream](http://pic.aclear.top/flask-dealprocess.jpg)  
+Flask处理流程  
+
+</div>
 
 <ul>
 <li>第一步：创建上下文<br>Flask根据WSGI Server封装的请求等的信息(environ)新建RequestContext对象 和AppContext对象</li>
@@ -610,8 +613,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/b7bad590.html" rel="prev" title="WE_ACAN">
-                WE_ACAN <i class="fa fa-chevron-right"></i>
+              <a href="/post/7caa71b9.html" rel="prev" title="解决hexo多台电脑之间同步访问和百度无法索引hexo博客的问题">
+                解决hexo多台电脑之间同步访问和百度无法索引hexo博客的问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,7 +699,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +710,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -718,7 +721,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -856,7 +859,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1482,6 +1485,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

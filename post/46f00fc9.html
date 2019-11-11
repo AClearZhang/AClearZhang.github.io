@@ -452,11 +452,11 @@
       
         <p>课本到了第八章：过渡（动画）第九章：Methods  第十章：Vue实例方法  第十一章：组件 第十二章：表单校验  第十三章：与服务端通信  第十四章：陆游与视图  第十五章： vue-cli    </p>
 <hr>
-<p>所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&gt;  (前端)包管理器 npm  install node.js安装：  基于centeos <em><strong>下载：</strong></em> <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a> <a href="http://ftp.gnu.org/gnu/gcc/" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/</a> <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">http://www.runoob.com/nodejs/nodejs-install-setup.html</a> <em><strong>vuejs  中文官方文档：</strong></em> <a href="https://cn.vuejs.org/v2/guide/transitions.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/transitions.html</a> === make[1]: <strong><em> [/usr/local/src/node-v6.11.4/out/Release/obj.target/v8_base/deps/v8/src/accessors.o] Error 1 make[1]: Leaving directory `/usr/local/src/node-v6.11.4/out’ make: </em></strong> [node] Error 2 其中出现两个错误！ –centos 6.5安装更新 G++/GCC —恢复内容开始— CentOS 6.6 升级GCC G++ (当前最新GCC/G++版本为v6.1.0) 没有便捷方式, yum update….   yum install 或者 添加yum 的 repo 文件 也不行, 只能更新到 4.4.7! then,  只能手动编译安装了,那么开始第一步下载源代码吧,GO! <strong>1、</strong> <strong>获取安装包并解压</strong> wget <a href="http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2</a> tar -jxvf gcc-6.1.0.tar.bz2 当然，<a href="http://ftp.gnu.org/gnu/gcc" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc </a> 里面有所有的gcc版本供下载，最新版本已经有6.1.0啦. 建议下载.bz2的压缩包,文件更小,下载时间更少. <strong>2、</strong> <strong>下载供编译需求的依赖项</strong> 参考文献[1]中说：这个神奇的脚本文件会帮我们下载、配置、安装依赖库，可以节约我们大量的时间和精力。 cd gcc-6.1.0 ./contrib/download_prerequisites <strong>3、</strong> <strong>建立一个目录供编译出的文件存放</strong> mkdir gcc-build-6.1.0 cd gcc-build-6.1.0 <strong>4、</strong> <strong>生成**</strong>Makefile<strong>**文件</strong> ../configure -enable-checking=release -enable-languages=c,c++ -disable-multilib <strong>5、</strong> <strong>编译</strong> make -j4 -j4选项是make对多核处理器的优化，如果不成功请使用 <strong><em>make</em></strong>，(进行单核处理)相关优化选项可以移步至参考文献[2]。 <strong>（注意：此步骤非常耗时,我虚拟机耗时近3小时; 实体机近80分钟,CPU基本是满的,内存也使用不少）</strong> 注意<code>make</code>的<code>-j</code>选项可以指定同时运行的作业数量，即CPU核数，如果有4核则可以加上<code>-j4</code></p>
+<p>所以在进行到 第九章的时候：看了第三讲！！！完成第三讲！第二讲！ 目前视频中直接用的 vuejs 1.0 bower -&gt;  (前端)包管理器 npm  install node.js安装：  基于centeos _<strong>下载：</strong>_ <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a> <a href="http://ftp.gnu.org/gnu/gcc/" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/</a> <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">http://www.runoob.com/nodejs/nodejs-install-setup.html</a> _<strong>vuejs  中文官方文档：</strong>_ <a href="https://cn.vuejs.org/v2/guide/transitions.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/transitions.html</a> === make[1]: <strong><em> [/usr/local/src/node-v6.11.4/out/Release/obj.target/v8_base/deps/v8/src/accessors.o] Error 1 make[1]: Leaving directory `/usr/local/src/node-v6.11.4/out’ make: </em></strong> [node] Error 2 其中出现两个错误！ —centos 6.5安装更新 G++/GCC —-恢复内容开始—- CentOS 6.6 升级GCC G++ (当前最新GCC/G++版本为v6.1.0) 没有便捷方式, yum update….   yum install 或者 添加yum 的 repo 文件 也不行, 只能更新到 4.4.7! then,  只能手动编译安装了,那么开始第一步下载源代码吧,GO! <strong>1、</strong> <strong>获取安装包并解压</strong> wget <a href="http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc/gcc-6.1.0/gcc-6.1.0.tar.bz2</a> tar -jxvf gcc-6.1.0.tar.bz2 当然，<a href="http://ftp.gnu.org/gnu/gcc" target="_blank" rel="noopener">http://ftp.gnu.org/gnu/gcc </a> 里面有所有的gcc版本供下载，最新版本已经有6.1.0啦. 建议下载.bz2的压缩包,文件更小,下载时间更少. <strong>2、</strong> <strong>下载供编译需求的依赖项</strong> 参考文献[1]中说：这个神奇的脚本文件会帮我们下载、配置、安装依赖库，可以节约我们大量的时间和精力。 cd gcc-6.1.0 ./contrib/download_prerequisites <strong>3、</strong> <strong>建立一个目录供编译出的文件存放</strong> mkdir gcc-build-6.1.0 cd gcc-build-6.1.0 <strong>4、</strong> <strong>生成**</strong>Makefile<strong>**文件</strong> ../configure -enable-checking=release -enable-languages=c,c++ -disable-multilib <strong>5、</strong> <strong>编译</strong> make -j4 -j4选项是make对多核处理器的优化，如果不成功请使用 <strong>_make_</strong>，(进行单核处理)相关优化选项可以移步至参考文献[2]。 <strong>（注意：此步骤非常耗时,我虚拟机耗时近3小时; 实体机近80分钟,CPU基本是满的,内存也使用不少）</strong> 注意<code>make</code>的<code>-j</code>选项可以指定同时运行的作业数量，即CPU核数，如果有4核则可以加上<code>-j4</code></p>
 <h1 id="出错解决"><a href="#出错解决" class="headerlink" title="出错解决"></a>出错解决</h1><p>1.make过程中可能会出现以下错误信息：</p>
 <p> build/genattrtab ../.././gcc/config/i386/i386.md insn-conditions.md \<br>  -Atmp-attrtab.c -Dtmp-dfatab.c -Ltmp-latencytab.c<br>make[3]: <strong><em> [s-attrtab] Killed<br>make[3]: Leaving directory `/usr/src/gcc-4.9.2/host-x86_64-unknown-linux-gnu/gcc’<br>make[2]: </em></strong> [all-stage1-gcc] Error 2<br>make[2]: Leaving directory <code>/usr/src/gcc-4.9.2&#39;
 make\[1\]: *** \[stage1-bubble\] Error 2
-make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Error 2</p>
+make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: <em>*</em> [all] Error 2</p>
 <p>可以通过添加swap分区的方法解决： <a href="http://blog.csdn.net/qq_20480611/article/details/52144399" target="_blank" rel="noopener">http://blog.csdn.net/qq_20480611/article/details/52144399</a> 2.动态库<strong>libstdc++.so.6</strong>版本不匹配 可以正常编译程序，但是运行时出现以下问题： <a href="http://stackoverflow.com/questions/5216399/usr-lib-libstdc-so-6-version-glibcxx-3-4-15-not-found" target="_blank" rel="noopener"><strong>/usr/lib/libstdc++.so.6: version `GLIBCXX_3.4.15’ not found</strong></a> 添加<strong>LD_LIBRARY_PATH</strong>环境变量即可解决：</p>
 <p># vim ~/.bash_profile<br>export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/local/lib64:/usr/lib64<br># source ~/.bash_profile</p>
 <h1 id="GCC新特征"><a href="#GCC新特征" class="headerlink" title="GCC新特征"></a>GCC新特征</h1><p>GCC 6.1 发布了，该版本较之前GCC5 新怎了大量的功能特性，默认采用C++14为新的标准，替代了之前的C++98。OpenMP 4.5规范将在本版本中被支持。此外，GCC 6.1 增强了对 C++17 的试验性支持；大大改进了诊断特性，包括位置，位置范围，拼写错误标识符建议，选项名字等等改进；新增了修复提示和一些警告提示。改进记录如下：</p>
@@ -471,16 +471,16 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
 <h4 id="6、-安装"><a href="#6、-安装" class="headerlink" title="6、 安装"></a>6、 安装</h4><p>make install</p>
 <p><strong>(安装需要root权限!)</strong> 查看安装 ls /usr/local/bin | grep gcc</p>
 <h4 id="7、-重启，然后查看gcc版本"><a href="#7、-重启，然后查看gcc版本" class="headerlink" title="7、 重启，然后查看gcc版本"></a>7、 重启，然后查看gcc版本</h4><p>gcc -v</p>
-<h4 id="8、-写个C-11-特性的程序段-测试"><a href="#8、-写个C-11-特性的程序段-测试" class="headerlink" title="8、 写个C++11 特性的程序段 测试"></a>8、 写个C++11 特性的程序段 测试</h4><p>tryCpp11.cc 代码省略…. g++ -std=c++11 -o tryCpp11 tryCpp11.cc   <strong>9、升级<code>gcc</code>，生成的动态库没有替换老版本<code>gcc</code>的动态库</strong> 源码编译升级安装了<code>gcc</code>后，编译程序或运行其它程序时，有时会出现类似<code>/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#39; not found</code>的问题。这是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库导致的，将<code>gcc</code>最新版本的动态库替换系统中老版本的动态库即可解决。 9.1 运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 从输出可以看出，<code>gcc</code>的动态库还是旧版本的。说明出现这些问题，是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库。 9.2 执行以下命令，查找编译<code>gcc</code>时生成的最新动态库： find / -name “libstdc++.so*” 将上面的最新动态库<code>libstdc++.so.6.0.22</code>复制到<code>/usr/lib64</code>目录下 cd /usr/lib64 cp /root/Downloads/gcc-6.1.0/gcc-build-6.1.0/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.22 ./ 9.3 删除原来软连接： rm -rf libstdc++.so.6 9.4 将默认库的软连接指向最新动态库： ln -s libstdc++.so.6.0.22 libstdc++.so.6 9.5 默认动态库升级完成。重新运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 可以看到 输出有”GLIBCXX_3.4.21” 了     [注:摘抄自<a href="http://www.linuxidc.com/Linux/2015-01/112595.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-01/112595.htm</a>,  <a href="http://itbilu.com/linux/management/NymXRUieg.html" target="_blank" rel="noopener">http://itbilu.com/linux/management/NymXRUieg.html</a>, <em>原作者编译有出错过,但是我编译没有出错过</em>] [参考1:<a href="http://www.tuicool.com/articles/FVN7jez\]" target="_blank" rel="noopener">http://www.tuicool.com/articles/FVN7jez\]</a> [参考2:<a href="http://blog.chinaunix.net/uid-14735472-id-5546560.html\]" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-14735472-id-5546560.html\]</a></p>
+<h4 id="8、-写个C-11-特性的程序段-测试"><a href="#8、-写个C-11-特性的程序段-测试" class="headerlink" title="8、 写个C++11 特性的程序段 测试"></a>8、 写个C++11 特性的程序段 测试</h4><p>tryCpp11.cc 代码省略…. g++ -std=c++11 -o tryCpp11 tryCpp11.cc   <strong>9、升级<code>gcc</code>，生成的动态库没有替换老版本<code>gcc</code>的动态库</strong> 源码编译升级安装了<code>gcc</code>后，编译程序或运行其它程序时，有时会出现类似<code>/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#39; not found</code>的问题。这是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库导致的，将<code>gcc</code>最新版本的动态库替换系统中老版本的动态库即可解决。 9.1 运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 从输出可以看出，<code>gcc</code>的动态库还是旧版本的。说明出现这些问题，是因为升级<code>gcc</code>时，生成的动态库没有替换老版本<code>gcc</code>的动态库。 9.2 执行以下命令，查找编译<code>gcc</code>时生成的最新动态库： find / -name “libstdc++.so*” 将上面的最新动态库<code>libstdc++.so.6.0.22</code>复制到<code>/usr/lib64</code>目录下 cd /usr/lib64 cp /root/Downloads/gcc-6.1.0/gcc-build-6.1.0/stage1-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6.0.22 ./ 9.3 删除原来软连接： rm -rf libstdc++.so.6 9.4 将默认库的软连接指向最新动态库： ln -s libstdc++.so.6.0.22 libstdc++.so.6 9.5 默认动态库升级完成。重新运行以下命令检查动态库： strings /usr/lib64/libstdc++.so.6 | grep GLIBC 可以看到 输出有”GLIBCXX_3.4.21” 了     [注:摘抄自<a href="http://www.linuxidc.com/Linux/2015-01/112595.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2015-01/112595.htm</a>,  <a href="http://itbilu.com/linux/management/NymXRUieg.html" target="_blank" rel="noopener">http://itbilu.com/linux/management/NymXRUieg.html</a>, _原作者编译有出错过,但是我编译没有出错过_] [参考1:<a href="http://www.tuicool.com/articles/FVN7jez\" target="_blank" rel="noopener">http://www.tuicool.com/articles/FVN7jez\</a>] [参考2:<a href="http://blog.chinaunix.net/uid-14735472-id-5546560.html\" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-14735472-id-5546560.html\</a>]</p>
 <h2 id="10-新的主题（npm下安装node-js）"><a href="#10-新的主题（npm下安装node-js）" class="headerlink" title="10.新的主题（npm下安装node.js）"></a>10.新的主题（npm下安装node.js）</h2><p>参考：【1】<a href="http://blog.csdn.net/haoaiqian/article/details/72453286" target="_blank" rel="noopener">http://blog.csdn.net/haoaiqian/article/details/72453286</a> 【2】<a href="http://blog.csdn.net/sinat_29412671/article/details/53690658" target="_blank" rel="noopener">http://blog.csdn.net/sinat_29412671/article/details/53690658</a> 【3】<a href="http://www.runoob.com/vue2/vue-install.html" target="_blank" rel="noopener">http://www.runoob.com/vue2/vue-install.html</a> <strong>一、开发环境</strong> vue推荐开发环境: Node.js: javascript运行环境(runtime),不同系统直接运行各种编程语言 npm: Nodejs下的包管理器。 webpack: 它主要的用途是通过 CommonJS 的语法把所有浏览器端需要发布的静态资源做相应的准备，比如资源的合并和打包。 vue-cli: 用户生成Vue工程模板 <strong>二、环境搭建</strong> 安装node.js： 1. 从node.js官网下载并安装node，安装过程很简单。 2. npm 版本需要大于 3.0，如果低于此版本需要升级它：</p>
 <p># 查看版本<br>$ npm -v<br>2.3.0</p>
-<p>#升级 npm<br>cnpm install npm -g</p>
+<h1 id="升级-npm"><a href="#升级-npm" class="headerlink" title="升级 npm"></a>升级 npm</h1><p>cnpm install npm -g</p>
 <p>3.基于node.js,利用淘宝npm镜像安装相关依赖。由于国内使用npm会很慢,这里推荐使用淘宝NPM镜像（<a href="http://npm.taobao.org/" target="_blank" rel="noopener">http://npm.taobao.org/</a>）</p>
-<p>$ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>$ npm install -g cnpm —registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
 <p>完成之后，我们就可以用cnpm代替npm来安装依赖包了。 <strong>三、安装vue-cli脚手架构建工具</strong> 安装全局vue-cli脚手架,用于帮助搭建所需的模板框架</p>
 <p>$ cnpm install -g vue-cli<br># 回车，等待安装…<br>$ vue<br># 回车，若出现vue信息说明表示成功</p>
 <p><strong>四、用vue-cli构建项目</strong></p>
-<p># 创建一个基于 webpack 模板的新项目<br>$ vue init webpack my-project<br># 这里需要进行一些配置，默认回车即可<br>This will install Vue 2.x version of the template.<br>For Vue 1.x use: vue init webpack#1.0 my-project<br>? Project name my-project<br>? Project description A Vue.js project<br>? Author runoob <a href="mailto:&#116;&#x65;&#115;&#x74;&#x40;&#x72;&#x75;&#x6e;&#x6f;&#111;&#98;&#x2e;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#116;&#x65;&#115;&#x74;&#x40;&#x72;&#x75;&#x6e;&#x6f;&#111;&#98;&#x2e;&#x63;&#111;&#x6d;</a><br>? Vue build standalone<br>? Use ESLint to lint your code? Yes<br>? Pick an ESLint preset Standard<br>? Setup unit tests with Karma + Mocha? Yes<br>? Setup e2e tests with Nightwatch? Yes<br>   vue-cli · Generated “my-project”.<br>   To get started:<br>     cd my-project<br>     npm install<br>     npm run dev<br>Documentation can be found at <a href="https://vuejs-templates.github.io/webpack" target="_blank" rel="noopener">https://vuejs-templates.github.io/webpack</a></p>
+<p># 创建一个基于 webpack 模板的新项目<br>$ vue init webpack my-project<br># 这里需要进行一些配置，默认回车即可<br>This will install Vue 2.x version of the template.<br>For Vue 1.x use: vue init webpack#1.0 my-project<br>? Project name my-project<br>? Project description A Vue.js project<br>? Author runoob <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#116;&#x65;&#115;&#116;&#64;&#x72;&#117;&#x6e;&#x6f;&#111;&#x62;&#46;&#x63;&#111;&#x6d;">&#116;&#x65;&#115;&#116;&#64;&#x72;&#117;&#x6e;&#x6f;&#111;&#x62;&#46;&#x63;&#111;&#x6d;</a><br>? Vue build standalone<br>? Use ESLint to lint your code? Yes<br>? Pick an ESLint preset Standard<br>? Setup unit tests with Karma + Mocha? Yes<br>? Setup e2e tests with Nightwatch? Yes<br>   vue-cli · Generated “my-project”.<br>   To get started:<br>     cd my-project<br>     npm install<br>     npm run dev<br>Documentation can be found at <a href="https://vuejs-templates.github.io/webpack" target="_blank" rel="noopener">https://vuejs-templates.github.io/webpack</a></p>
 <p><strong>五、安装依赖</strong> 在cmd里</p>
 <p>1).输入：cd my-project（项目名），回车，进入到具体项目文件夹<br>2).输入：cnpm install，回车，等待一小会儿</p>
 <p>回到项目文件夹，会发现项目结构里，多了一个node_modules文件夹（该文件里的内容就是之前安装的依赖） <strong>六、测试环境是否搭建成功</strong> 方法1：在cmd里输入：npm run dev 方法2：在浏览里输入：localhost:8080(默认端口为8080)  </p>
@@ -685,7 +685,7 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +696,7 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -707,7 +707,7 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -804,7 +804,7 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#出错解决"><span class="nav-number">1.</span> <span class="nav-text">出错解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC新特征"><span class="nav-number">2.</span> <span class="nav-text">GCC新特征</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6、-安装"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">6、 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、-重启，然后查看gcc版本"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">7、 重启，然后查看gcc版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、-写个C-11-特性的程序段-测试"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">8、 写个C++11 特性的程序段 测试</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#10-新的主题（npm下安装node-js）"><span class="nav-number">3.1.</span> <span class="nav-text">10.新的主题（npm下安装node.js）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决在-make当中出错的问题：由于temp-分区过小："><span class="nav-number">3.2.</span> <span class="nav-text">解决在  make当中出错的问题：由于temp 分区过小：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产生swap文件"><span class="nav-number">4.</span> <span class="nav-text">产生swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#格式化swap文件"><span class="nav-number">5.</span> <span class="nav-text">格式化swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使能swap文件"><span class="nav-number">6.</span> <span class="nav-text">使能swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动挂载"><span class="nav-number">7.</span> <span class="nav-text">自动挂载</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#出错解决"><span class="nav-number">1.</span> <span class="nav-text">出错解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC新特征"><span class="nav-number">2.</span> <span class="nav-text">GCC新特征</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">3.</span> <span class="nav-text">参考文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6、-安装"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">6、 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、-重启，然后查看gcc版本"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">7、 重启，然后查看gcc版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、-写个C-11-特性的程序段-测试"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">8、 写个C++11 特性的程序段 测试</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#10-新的主题（npm下安装node-js）"><span class="nav-number">3.1.</span> <span class="nav-text">10.新的主题（npm下安装node.js）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#升级-npm"><span class="nav-number">4.</span> <span class="nav-text">升级 npm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决在-make当中出错的问题：由于temp-分区过小："><span class="nav-number">4.1.</span> <span class="nav-text">解决在  make当中出错的问题：由于temp 分区过小：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产生swap文件"><span class="nav-number">5.</span> <span class="nav-text">产生swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#格式化swap文件"><span class="nav-number">6.</span> <span class="nav-text">格式化swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使能swap文件"><span class="nav-number">7.</span> <span class="nav-text">使能swap文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动挂载"><span class="nav-number">8.</span> <span class="nav-text">自动挂载</span></a></li></div>
             
 
           </div>
@@ -845,7 +845,7 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1471,6 +1471,28 @@ make\[1\]: Leaving directory</code>/usr/src/gcc-4.9.2’<br>make: *** [all] Erro
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

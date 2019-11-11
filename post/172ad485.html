@@ -446,7 +446,9 @@
 <p>}</p>
 <p>  类User有３个属性，id,name,photo，相应的getter和setter方法以及一个无参构造函数．应该注意的是photo的类型java.sql.Blob 相应的<strong>user.hbm.xml</strong>应该如下：  </p>
 <p>&lt;?xml version=”1.0”?&gt;<br>&lt;!DOCTYPE hibernate-mapping PUBLIC<br> “-//Hibernate/Hibernate Mapping DTD 3.0//EN”<br> “<a href="http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;" target="_blank" rel="noopener">http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;</a></p>
-<p><hibernate-mapping package="com.denny_blue.hibernate"><br> <class name="com.denny_blue.hibernate.User" table="t_user" dynamic-update="true" dynamic-insert="true" batch-size="3"><br>  <id name="id" column="id" type="java.lang.Integer"><br>   <generator class="native"><br>  </generator></id><br>  <property name="name" column="name" type="java.lang.String" lazy="true"><br>  <property name="photo" column="photo" type="java.sql.Blob"><br> </property></property></class><br></hibernate-mapping></p>
+<p><hibernate-mapping package="com.denny_blue.hibernate"><br> <class name="com.denny_blue.hibernate.User" table="t_user" dynamic-update="true" dynamic-insert="true" batch-size="3"><br>  <id name="id" column="id" type="java.lang.Integer"><br>   <generator class="native">
+  </generator></id><br>  <property name="name" column="name" type="java.lang.String" lazy="true"><br>  <property name="photo" column="photo" type="java.sql.Blob">
+ </property></property></class><br>&lt;/hibernate-mapping&gt;</hibernate-mapping></p>
 <p>  对应的<strong>hibernate.cfg.xml</strong>配置文件，不再列出，请参照hibernate文档自行设定． ＯＫ，做了这一步，我们写个测试类来进行单元测试：</p>
 <p>package com.denny_blue.test;<br>import java.io.FileInputStream;<br>import java.io.FileNotFoundException;<br>import java.io.FileOutputStream;<br>import java.io.IOException;<br>import java.io.InputStream;<br>import java.sql.Blob;<br>import org.hibernate.Hibernate;<br>import org.hibernate.HibernateException;<br>import org.hibernate.Session;<br>import org.hibernate.SessionFactory;<br>import org.hibernate.Transaction;<br>import org.hibernate.cfg.Configuration;<br>import com.denny_blue.hibernate.User;<br>import junit.framework.TestCase;<br>public class HibernateTest extends TestCase {<br>        private Session session;<br> protected void setUp() throws Exception {<br>  try{<br>   Configuration config=new Configuration().configure();<br>   SessionFactory sf=config.buildSessionFactory();<br>   session=sf.openSession();<br>  }catch(HibernateException e){<br>   e.printStackTrace();<br>  }<br> }<br> protected void tearDown() throws Exception {<br>  try{<br>   session.close();<br>  }catch(HibernateException e){<br>   e.printStackTrace();<br>  }<br> }</p>
 <p> public void testSave()throws FileNotFoundException,IOException{<br>  User user=new User();<br>  user.setName(“jordan”);<br>  FileInputStream in=new FileInputStream(“C://test.gif”);<br>  Blob photo=Hibernate.createBlob(in);<br>  user.setPhoto(photo);<br>  Transaction tx=null;<br>  try{<br>  tx=session.beginTransaction();<br>  session.saveOrUpdate(user);<br>  tx.commit();<br>  }catch(HibernateException e){<br>   if(tx!=null)<br>    tx.rollback();<br>   e.printStackTrace();<br>  }finally{<br>   in.close();<br>  }<br> }<br> public void testLoad()throws Exception{<br>  try{<br>   User user=(User)session.load(User.class, new Integer(1));<br>   Blob photo=user.getPhoto();<br>   InputStream in=photo.getBinaryStream();<br>   FileOutputStream out=new FileOutputStream(“C://out//test2.gif”);<br>   byte [] buf=new byte[1024];<br>   int len;<br>   while((len=in.read(buf))!=-1){<br>    out.write(buf, 0, len);<br>   }<br>   in.close();<br>   out.close();<br>  }catch(HibernateException e){<br>   e.printStackTrace();<br>  }<br> }<br>}</p>
@@ -633,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -655,7 +657,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -777,7 +779,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1403,6 +1405,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

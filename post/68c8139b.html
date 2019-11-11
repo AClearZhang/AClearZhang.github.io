@@ -445,15 +445,9 @@
 <p>今天由于老师代码中free（）函数过后又进行 =NULL操作特来反馈、回忆<a href="http://blog.csdn.net/henulwj/article/details/8234365" target="_blank" rel="noopener">深入理解</a>。 其实早在我的<a href="http://blog.aclear.top/wp-admin/post.php?post=387&amp;action=edit">这篇文章</a>当中就对于C++的一些指针的机制进行反思过。 自己对于已经学过去的知识并没有即使的反思回顾。导致遗忘。</p>
 </blockquote>
 <h1 id="对于C语言free-函数的一些反思"><a href="#对于C语言free-函数的一些反思" class="headerlink" title="对于C语言free()函数的一些反思"></a><a href="http://blog.csdn.net/kelvinmao/article/details/51259343" target="_blank" rel="noopener">对于C语言free()函数的一些反思</a></h1><p>上周在解决一道课后习题的时候，偶然间发现了一个自己从未注意过的问题，问题描述如下: 在遍历一个循环链表时，我发现在我调用free()函数删除了一个节点之后，仍然能用printf打印出原先的数据，起初我以为是巧合，并未加以注意。今天我又尝试free其他节点，之后仍然能够通过printf打印出原先的值，这个问题立刻引起了我的注意。下面将出现问题的代码附在下方，供各位查看:</p>
-<p>#include <iostream></iostream></p>
-<p>#include <cstdio></cstdio></p>
-<p>#include <cstdlib></cstdlib></p>
-<p>#include <cstring></cstring></p>
-<p>#include <cmath></cmath></p>
-<p>#include &lt;conio.h&gt;</p>
-<p>#include <vector><br>using namespace std;<br>int main()<br>{<br>    struct stu<br>    {<br>        int num;<br>        char <em>name;<br>        char sex;<br>        float score;<br>    }  </em>ps;<br>    ps = (struct stu<em>)malloc(sizeof(struct stu));<br>    ps-&gt;num = 102;<br>    ps-&gt;name = “Zhang ping”;<br>    ps-&gt;sex = ‘M’;<br>    ps-&gt;score = 62.5;<br>    printf(“Number=%d Name=%s “, ps-&gt;num, ps-&gt;name);<br>    printf(“sex=%c Score=%f “, ps-&gt;sex, ps-&gt;score);<br>    free(ps);<br>    cout &lt;&lt; endl &lt;&lt; “新的 free() 测试开始： “;<br>    cout &lt;&lt; endl;<br>    int \</em>a = (int *)malloc(sizeof(int));<br>    <em>a = 5;<br>    printf(“前 本身地址 a = %d 和值：%d 存放地址：%d\n”, &amp;a, </em>a,a);<br>    //free(a);<br>    printf(“后 本身地址 a = %d 和值：%d 存放地址：%d\n”, &amp;a, <em>a, a);
-    </em>a = 4;<br>    printf(“本身地址a = %d  和值：%d 存放地址：%d\n”, &amp;a, <em>a, a);<br>    int </em>b;<br>    b = (int <em>)malloc(sizeof(int));
-    </em>b = 5;<br>    printf(“b赋值后 b本身地址：%d 和值：%d 存放地址：%d\n”, &amp;b, <em>b, b);<br>    printf(“a赋值后 a本身地址：%d 和值：%d 存放地址：%d\n”, &amp;a, </em>a, a);<br>    cout &lt;&lt; “int 的长度： “ &lt;&lt; sizeof(int) &lt;&lt; endl;<br>    cout &lt;&lt; “a指针 的长度： “ &lt;&lt; sizeof(a) &lt;&lt; endl;<br>    cout &lt;&lt; “&amp;a指针 的长度： “ &lt;&lt; sizeof(&amp;a) &lt;&lt; endl;<br>    system(“pause”);<br>    return  0;<br>}</vector></p>
+<h1 id="include"><a href="#include" class="headerlink" title="include "></a>include <iostream></iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include "></a>include <cstdio></cstdio></h1><h1 id="include-2"><a href="#include-2" class="headerlink" title="include "></a>include <cstdlib></cstdlib></h1><h1 id="include-3"><a href="#include-3" class="headerlink" title="include "></a>include <cstring></cstring></h1><h1 id="include-4"><a href="#include-4" class="headerlink" title="include "></a>include <cmath></cmath></h1><h1 id="include-5"><a href="#include-5" class="headerlink" title="include "></a>include <conio.h></conio.h></h1><h1 id="include-6"><a href="#include-6" class="headerlink" title="include "></a>include <vector></vector></h1><p>using namespace std;<br>int main()<br>{<br>    struct stu<br>    {<br>        int num;<br>        char <em>name;<br>        char sex;<br>        float score;<br>    }  </em>ps;<br>    ps = (struct stu<em>)malloc(sizeof(struct stu));<br>    ps-&gt;num = 102;<br>    ps-&gt;name = “Zhang ping”;<br>    ps-&gt;sex = ‘M’;<br>    ps-&gt;score = 62.5;<br>    printf(“Number=%d Name=%s “, ps-&gt;num, ps-&gt;name);<br>    printf(“sex=%c Score=%f “, ps-&gt;sex, ps-&gt;score);<br>    free(ps);<br>    cout &lt;&lt; endl &lt;&lt; “新的 free() 测试开始： “;<br>    cout &lt;&lt; endl;<br>    int \</em>a = (int *)malloc(sizeof(int));<br>    <em>a = 5;<br>    printf(“前 本身地址 a = %d 和值：%d 存放地址：%d\\n”, &amp;a, </em>a,a);<br>    //free(a);<br>    printf(“后 本身地址 a = %d 和值：%d 存放地址：%d\\n”, &amp;a, <em>a, a);
+    </em>a = 4;<br>    printf(“本身地址a = %d  和值：%d 存放地址：%d\\n”, &amp;a, <em>a, a);<br>    int </em>b;<br>    b = (int <em>)malloc(sizeof(int));
+    </em>b = 5;<br>    printf(“b赋值后 b本身地址：%d 和值：%d 存放地址：%d\\n”, &amp;b, <em>b, b);<br>    printf(“a赋值后 a本身地址：%d 和值：%d 存放地址：%d\\n”, &amp;a, </em>a, a);<br>    cout &lt;&lt; “int 的长度： “ &lt;&lt; sizeof(int) &lt;&lt; endl;<br>    cout &lt;&lt; “a指针 的长度： “ &lt;&lt; sizeof(a) &lt;&lt; endl;<br>    cout &lt;&lt; “&amp;a指针 的长度： “ &lt;&lt; sizeof(&amp;a) &lt;&lt; endl;<br>    system(“pause”);<br>    return  0;<br>}</p>
 <pre><code>从理论上看，free之后不应该打印出原数值，但事实是，我加粗的那行代码成功地打印出了原数值，在我google之后，得到了这样的解答: “你在free(p)之后，最好加上p = NULL; 要不然容易导致野指针。你在free(p)之后，你只是使用 if(p != NULL) 你想的是用来进行防止误用操作对吧。。 你进入了一个误区，误认为free(p)之后，p就指向了NULL，而其实不然。 free(p)的言外之意就是告诉编译器：大家注意啦哈，这块内存我现在不用了，你们谁想用就拿去用哈。而p在这里你可以完全理解成就是这块内存的地址，也就是告诉编译器，这块内存现在不被占用了，而里面的内容此时就是我们所说的“垃圾”，因为作为主人的我已经丢弃它了，里面的内容就是不可控的。 注意p是个地址，你没有强行置为空，那还是原来的那个值。只是里面的内容不受控啦，有可能不会变，有可能会被改写，而结果是未知的。” 之前在知乎上总是看到大牛们大书特书C语言内存管理机制的缺陷，野指针的种种危害。却从未想过究竟什么是“野指针”，今天遇到的这个问题就是野指针带来的，自己对于已经学过去的知识并没有即使的反思回顾。导致遗忘。  
 </code></pre><h1 id="关于占位——字节对齐回顾"><a href="#关于占位——字节对齐回顾" class="headerlink" title="关于占位——字节对齐回顾"></a><a href="http://bbs.csdn.net/topics/390824089" target="_blank" rel="noopener">关于占位——字节对齐回顾</a></h1><p>一般都是用sizeof来看占位的字节数。 %d  &amp;a   取地址因为是d所以地址为十进制每字节。~~~</p>
 <p>引用 6 楼 u012461368 的回复:</p>
@@ -715,7 +709,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,7 +720,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -737,7 +731,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -834,7 +828,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对于C语言free-函数的一些反思"><span class="nav-number">1.</span> <span class="nav-text">对于C语言free()函数的一些反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于占位——字节对齐回顾"><span class="nav-number">2.</span> <span class="nav-text">关于占位——字节对齐回顾</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对于C语言free-函数的一些反思"><span class="nav-number">1.</span> <span class="nav-text">对于C语言free()函数的一些反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">2.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-1"><span class="nav-number">3.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-2"><span class="nav-number">4.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-3"><span class="nav-number">5.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-4"><span class="nav-number">6.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-5"><span class="nav-number">7.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-6"><span class="nav-number">8.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于占位——字节对齐回顾"><span class="nav-number">9.</span> <span class="nav-text">关于占位——字节对齐回顾</span></a></li></ol></div>
             
 
           </div>
@@ -875,7 +869,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1501,6 +1495,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

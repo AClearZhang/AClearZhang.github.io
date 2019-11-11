@@ -439,11 +439,11 @@
       
 
       
-        <p>1.什么是索引节点? 索引节点是一个结构，它包含了一个文件的长度、创建及修改时间、权限、所属关系、磁盘中的位置等信息。一个文件系统维护了一个索引节点的数组，每个文件或目录都与索引节点数组中的唯一一个元素对应。系统给每个索引节点分配了一个号码，也就是该节点在数组中的索引号，称为索引节点号。 2. 索引节点与文件的关系 Linux 为每个文件分配一个称为索引节点的号码inode，可以将inode简单理解成一个<strong>指针</strong>，它永远指向本文件的具体存储位置。<em>系统是通过索引节点(而不是文件名)来定位每一个文件</em>。文件系统处理文件所需要的所有信息都放在称为索引节点的数据结构中。文件名可以随时更改，但是索引节点对文件是唯一的，<strong>并且随文件的存在而存在</strong>。 一个文件系统允许的inode节点数是有限的，如果文件数量太多，即使每个文件都是0字节的空文件，系统最终也会因为<em>节点空间耗尽</em>而不能再创建文件。所以当发现不能建立文件时首先要考虑硬盘数据区是否还有空间(可通过du命令)，其次还得检查节点空间。 Linux之所以能支持多种文件系统，其实是由于Linux提供了一个虚拟文件系统VFS，VFS作为实际文件系统的上层软件，掩盖了实际文件系统底层的具体结构差异，为系统访问位于不同文件系统的文件提供了一个统一的接口。实际上许多文件系统并不具备inode结构，其目录结构也和以上的讨论不同，但通过VFS，系统均为其提供了虚拟一致的inode和目录项结构。所以，’ls　-il’命令实际显示的inode应该是VFS inode，也就是说，inode是存在于内存中的数据结构，而不一定是实际的硬盘结构。但为Linux量身定做的ext2文件系统具备实际的inode 和连接型目录项结构.有一个inode, 就可以有一个文件, fs中有多少inode,就可以有多少file. inode又有单字节和多字节之分(由文件系统的类型和单个文件的大小决定). inode在建fs时同时开出, 开多少? 这由nbpi(平均每节点管理多大文件)和fs的大小决定. fs建好后,想增加inode,只能扩fs, 而且nbpi无法改变. 反之, 每当扩fs, inode也相应增加.因此, 由于jfs能管理的inode数为16M(2的24次方), 当nbpi确定时, fs的最大值也定了.  </p>
+        <p>1.什么是索引节点? 索引节点是一个结构，它包含了一个文件的长度、创建及修改时间、权限、所属关系、磁盘中的位置等信息。一个文件系统维护了一个索引节点的数组，每个文件或目录都与索引节点数组中的唯一一个元素对应。系统给每个索引节点分配了一个号码，也就是该节点在数组中的索引号，称为索引节点号。 2. 索引节点与文件的关系 Linux 为每个文件分配一个称为索引节点的号码inode，可以将inode简单理解成一个<strong>指针</strong>，它永远指向本文件的具体存储位置。_系统是通过索引节点(而不是文件名)来定位每一个文件_。文件系统处理文件所需要的所有信息都放在称为索引节点的数据结构中。文件名可以随时更改，但是索引节点对文件是唯一的，<strong>并且随文件的存在而存在</strong>。 一个文件系统允许的inode节点数是有限的，如果文件数量太多，即使每个文件都是0字节的空文件，系统最终也会因为_节点空间耗尽_而不能再创建文件。所以当发现不能建立文件时首先要考虑硬盘数据区是否还有空间(可通过du命令)，其次还得检查节点空间。 Linux之所以能支持多种文件系统，其实是由于Linux提供了一个虚拟文件系统VFS，VFS作为实际文件系统的上层软件，掩盖了实际文件系统底层的具体结构差异，为系统访问位于不同文件系统的文件提供了一个统一的接口。实际上许多文件系统并不具备inode结构，其目录结构也和以上的讨论不同，但通过VFS，系统均为其提供了虚拟一致的inode和目录项结构。所以，’ls　-il’命令实际显示的inode应该是VFS inode，也就是说，inode是存在于内存中的数据结构，而不一定是实际的硬盘结构。但为Linux量身定做的ext2文件系统具备实际的inode 和连接型目录项结构.有一个inode, 就可以有一个文件, fs中有多少inode,就可以有多少file. inode又有单字节和多字节之分(由文件系统的类型和单个文件的大小决定). inode在建fs时同时开出, 开多少? 这由nbpi(平均每节点管理多大文件)和fs的大小决定. fs建好后,想增加inode,只能扩fs, 而且nbpi无法改变. 反之, 每当扩fs, inode也相应增加.因此, 由于jfs能管理的inode数为16M(2的24次方), 当nbpi确定时, fs的最大值也定了.  </p>
 <hr>
 <h1 id="关于C语言的文件操作"><a href="#关于C语言的文件操作" class="headerlink" title="关于C语言的文件操作"></a>关于C语言的文件操作</h1><ul>
 <li>realRead = fread(buf,item,count,fp)    （每次读item大小的数据块，分count次来读。）</li>
-<li><strong>fread（从文件流读取数据） 表头文件  #include&lt;stdio.h&gt; 定义函数  size_t fread(void <em> ptr,size_t size,size_t count,FILE </em> stream); 函数说明  fread()用来从文件流中读取数据。参数stream为已打开的文件指针，参数ptr 指向欲存放读取进来的数据空间，读取的字节数以参数size*count来决定。 Fread()会返回实际读取到的count数目，如果此值比参数count来得小，则代表可能读到了文件尾了或者有错误发生(前者几率大)，这时必须用feof()或ferror()来决定发生什么情况。 返回值  返回实际读取到的count数目。</strong> fread返回的不是字节数， 当且仅当下面这么用的时候，返回值才是字节数（当然因为恰好一个数据块大小为1个字节，相当于realRead*1）   char buff[size]; FILE *fp; … realRead = fread(buff, 1, size, fp); … 如果是: fread(buff, size, 1, fp) 返回1表示读取了size字节，返回0表示读取数量不够size字节</li>
+<li><strong>fread（从文件流读取数据） 表头文件  #include<stdio.h> 定义函数  size_t fread(void <em> ptr,size_t size,size_t count,FILE </em> stream); 函数说明  fread()用来从文件流中读取数据。参数stream为已打开的文件指针，参数ptr 指向欲存放读取进来的数据空间，读取的字节数以参数size*count来决定。 Fread()会返回实际读取到的count数目，如果此值比参数count来得小，则代表可能读到了文件尾了或者有错误发生(前者几率大)，这时必须用feof()或ferror()来决定发生什么情况。 返回值  返回实际读取到的count数目。</stdio.h></strong> fread返回的不是字节数， 当且仅当下面这么用的时候，返回值才是字节数（当然因为恰好一个数据块大小为1个字节，相当于realRead*1）   char buff[size]; FILE *fp; … realRead = fread(buff, 1, size, fp); … 如果是: fread(buff, size, 1, fp) 返回1表示读取了size字节，返回0表示读取数量不够size字节</li>
 </ul>
 
       
@@ -631,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -653,7 +653,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -791,7 +791,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1417,6 +1417,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

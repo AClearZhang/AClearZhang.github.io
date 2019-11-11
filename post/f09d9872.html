@@ -470,7 +470,7 @@
 <p>● shadowsocks.service - Shadowsocks<br>   Loaded: loaded (/etc/systemd/system/shadowsocks.service; enabled; vendor preset: disabled)<br>   Active: active (running) since Wed 2017-03-29 01:54:44 UTC; 4s ago<br> Main PID: 9365 (ssserver)<br>   CGroup: /system.slice/shadowsocks.service<br>           └─9365 /usr/bin/python /usr/bin/ssserver -c /etc/shadowsocks.json<br>Mar 29 01:54:44 yezipi systemd[1]: Started Shadowsocks.<br>Mar 29 01:54:44 yezipi systemd[1]: Starting Shadowsocks…<br>Mar 29 01:54:44 yezipi ssserver[9365]: INFO: loading config from /etc/shadowsocks.json<br>Mar 29 01:54:44 yezipi ssserver[9365]: 2017-03-29 01:54:44 INFO     loading libcrypto from libcrypto.so.10<br>Mar 29 01:54:44 yezipi ssserver[9365]: 2017-03-29 01:54:44 INFO     starting server at 0.0.0.0:8080</p>
 <p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>最后的最后，开启CentOS端口： 我当时只注意到vulrt的防火墙，忘记打开CentOS的防火墙端口了。让我又折腾了两个小时。。。</p>
-<p>firewall-cmd –zone=public –add-port=8080/tcp –permanent<br>firewall-cmd –zone=public –add-port=8081/tcp –permanent<br>firewall-cmd –reload</p>
+<p>firewall-cmd —zone=public —add-port=8080/tcp —permanent<br>firewall-cmd —zone=public —add-port=8081/tcp —permanent<br>firewall-cmd —reload</p>
 <p>  客户端连接</p>
 <hr>
 <p>  客户端连接我目前只用到 windows 和 Android的: windows: <a href="http://www.iyingsuo.com/windows-shadowsocks-tutorials.html" target="_blank" rel="noopener">http://www.iyingsuo.com/windows-shadowsocks-tutorials.html</a>   上面有各个release版本，支持不同的.NET FrameWork <a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-windows/releases</a>  目前github上面的最近版本，支持.NET Framework 4.6.2 。由于本地装的是4.5，不想麻烦，就没有在上面下载。 Android： <a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-android/releases</a>   安卓直接下载最新的安装就行了。   安装软件后，配置客户端都比较简单。Android 没有找到运行日志，查找原因比较麻烦。 我在测试的时候，用的是windows版本的，通过日志调通了。然后就愉快的上网玩耍了。   补充： 建议使用谷歌黑科技 BBR 算法，提升ss服务器上传速率的。BBR 目的是要尽量跑满带宽, 并且尽量不要有排队的情况。需要升级到Linux kernel 4.9+的内核。</p>
@@ -662,7 +662,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -673,7 +673,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -684,7 +684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -822,7 +822,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1448,6 +1448,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -456,11 +456,11 @@
 <p><code>**[toString](../../java/util/Arrays.html#toString(int[]))**(int[] a)</code> 返回指定数组内容的字符串表示形式。</p>
 </li>
 <li><p>java中String字符串转化为数字：转换为浮点型： 使用Double或者Float的parseDouble或者parseFloat方法进行转换</p>
-<p><code>String   s   =   `</code>“123.456 “<code>;</code>//要确保字符串为一个数值，否则会出异常`</p>
+<p><code>String   s   =   ``&quot;123.456 &quot;``;  ``//要确保字符串为一个数值，否则会出异常</code></p>
 <p><code>double</code>   <code>d   =   Double.parseDouble(s);</code></p>
 <p><code>float</code>   <code>f   =   Float.parseFloat(s);</code></p>
 <p>转换为整型： 使用Integer的parseInt方法进行转换。</p>
-<p><code>int</code> <code>i = Integer.parseInt([String]);`</code>//[String]待转换的字符串`</p>
+<p><code>int</code> <code>i = Integer.parseInt([String]);``//[String]待转换的字符串</code></p>
 </li>
 <li><p><strong>java.lang.String</strong></p>
 <p>！字符串的比较<br>public boolean equals(Object obj)<br>== 与 equals<br>String s1 = “abc”; String s2 = “abc”; boolean v1 = s1 == s2; boolean v2 = s1.equals(s2);<br>！“” 与 null<br>“”是一个值为空的字符串（值存在）<br>null是一个空引用（值不存在）<br>！关于“”、“　”和null之间关系的描述中正确的是：<br>A、“”和“　”等价 B、“”和null等价 C、“　”和null等价 D、互不相同<br>内容不可变！<br> boolean equals(String str) str：要作比较的字符串对象。<br> 返回：如果和 String 相等则为 true；否则为 false。 例如字符串“abc” 和一个新的字符串“abc”<br> 比较的结果为“true” 因为它们内容相同。 ， 注意： equals()方法比较的是对象的内容（区分字母的大小写格式）<br>，但是如果使用“==”双等 号操作符比较两个对象时， 比较的是两个对象的内存地址， 所以它们不相等 （即使内容相同，<br> 不同对象的内存地址也是不相同的）<br> **%s<br>字符串类型<br>“mingrisoft”<br>%c<br>字符类型<br>‘m’<br>%b<br>布尔类型<br>true<br>%d<br>整数类型（十进制）<br>99<br>%x<br>整数类型（十六进制）<br>FF<br>%o<br>整数类型（八进制）<br>77<br>%f<br>浮点类型<br>99.99<br>%a<br>十六进制浮点类型<br>FF.35AE<br>%e<br>指数类型<br>9.38e+5<br>%g<br>通用浮点类型（f和e类型中较短的）</p>
@@ -483,11 +483,11 @@
 </li>
 <li><p><strong><strong>  M 月<br>  d 日<br>  h 时 在上午或下午 (1~12)<br>  H 时 在一天中 (0~23)<br>  m 分<br>  s 秒<br>  S 毫秒<br>  E 星期<br>  D 一年中的第几天<br>  F 一月中第几个星期几<br>  w 一年中第几个星期</strong></strong></p>
 </li>
-<li><p><strong>*<em>W 一月中第几个星期<br>  a 上午 / 下午 标记符<br>  k 时 在一天中 (1~24)<br>  K 时 在上午或下午 (0~11)<br>  z 时区
+<li><p><strong><em>*W 一月中第几个星期<br>  a 上午 / 下午 标记符<br>  k 时 在一天中 (1~24)<br>  K 时 在上午或下午 (0~11)<br>  z 时区
  </em>/</strong> System.out.println(myFmt4.format(now));</p>
-<pre><code>System.out.println(now.toGMTString());
-System.out.println(now.toLocaleString());
-System.out.println(now.toString());
+<pre><code>    System.out.println(now.toGMTString());
+    System.out.println(now.toLocaleString());
+    System.out.println(now.toString());
 </code></pre><p>一年中的第 351 天 一年中第51个星期 一月中第3个星期 在一天中17时 CST时区**</p>
 </li>
 <li><p><strong>16 Dec 2004 09:24:27 GMT<br>2004-12-16 17:24:27<br>Thu Dec 16 17:24:27 CST 2004</strong></p>
@@ -496,33 +496,33 @@ System.out.println(now.toString());
 <p>Java中存在着两种Random函数：<br>一、java.lang.Math.Random;<br>调用这个Math.Random()函数能够返回带正号的double值，该值大于等于0.0且小于1.0，即取值范围是[0.0,1.0)的左闭右开区间，返回值是一个伪随机选择的数，在该范围内（近似）均匀分布。<br>例如下面的实验代码<br>Java中的Random（）函数<br>编译通过后运行结果如下图<br>Java中的Random（）函数<br>观察会发现代码的用一个循环10次循环输出num的取值，均随机分布在[0,3)之间！在使用Math.Random()的时候需要注意的地方时该函数是返回double类型的值，所以在要赋值给其他类型的变量的时候注意需要进行塑形转换。<br>二、java.util.Random;<br>在Java的API帮助文档中，总结了一下对这个Random()函数功能的描述：<br>1、java.util.Random类中实现的随机算法是伪随机，也就是有规则的随机，所谓有规则的就是在给定种(seed)的区间内随机生成数字；<br>2、相同种子数的Random对象，相同次数生成的随机数字是完全相同的；<br>3、Random类中各方法生成的随机数字都是均匀分布的，也就是说区间内部的数字生成的几率均等；<br>下面Random()的两种构造方法<br>1.Random()：创建一个新的随机数生成器。<br>2.Random(long seed)：使用单个 long 种子创建一个新的随机数生成器。<br>我们可以在构造Random对象的时候指定种子（这里指定种子有何作用，请接着往下看），如：<br>Random r1 = new Random(20);<br>或者默认当前系统时间对应的相对时间有关的数字作为种子数:<br>Random r1 = new Random();<br>需要说明的是：你在创建一个Random对象的时候可以给定任意一个合法的种子数，种子数只是随机算法的起源数字，和生成的随机数的区间没有任何关系。如下面的Java代码：<br>Random rand =new Random(25);<br>int i;<br>i=rand.nextInt(100);<br>初始化时25并没有起直接作用（注意：不是没有起作用）,rand.nextInt(100);中的100是随机数的上限,产生的随机数为0-100的整数,不包括100。<br>下面是Java.util.Random()方法摘要<br>1.protected int next(int bits)：生成下一个伪随机数。<br>2.boolean nextBoolean()：返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的boolean值。<br>3.void nextBytes(byte[] bytes)：生成随机字节并将其置于用户提供的 byte 数组中。<br>4.double nextDouble()：返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布的 double值。<br>5.float nextFloat()：返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布float值。<br>6.double nextGaussian()：返回下一个伪随机数，它是取自此随机数生成器序列的、呈高斯（“正态”）分布的double值，其平均值是0.0标准差是1.0。<br>7.int nextInt()：返回下一个伪随机数，它是此随机数生成器的序列中均匀分布的 int 值。<br>8.int nextInt(int n)：返回一个伪随机数，它是取自此随机数生成器序列的、在（包括和指定值（不包括）之间均匀分布的int值。<br>9.long nextLong()：返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的 long 值。<br>10.void setSeed(long seed)：使用单个 long 种子设置此随机数生成器的种子。<br>方法摘要也就这些，下面给几个例子：<br>1.生成[0,1.0)区间的小数：double d1 = r.nextDouble();<br>2.生成[0,5.0)区间的小数：double d2 = r.nextDouble() <em> 5;<br>3.生成[1,2.5)区间的小数：double d3 = r.nextDouble() </em> 1.5 + 1;<br>4.生成-231到231-1之间的整数：int n = r.nextInt();<br>5.生成[0,10)区间的整数：<br>int n2 = r.nextInt(10);//方法一<br>n2 = Math.abs(r.nextInt() % 10);//方法二<br>前面曾讲到过构造Random对象的时候指定种子的问题，到底指定种子有什么作用呢，这里直接用代码例子来做说明：<br>Java中的Random（）函数<br>在定义的时候分别指定了相同的种子之后，在分别用r1和r2去[0,30)的随机数，结果编译执行后悔发现结果都是呈现AABB型的，说明r1和r2取的随机数是一模一样的（下图为实验截图）。<br>Java中的Random（）函数<br>如果我改动代码，改成下面这样：<br>Java中的Random（）函数<br>再编译输出后，就再也不会得到AABB型的结果，根据代码的区别，就可以知道指定种子数，和不指定种子数的区别在于哪里了。<br>Java中的Random（）函数<br>最后再来简单对比一下这两个随机函数到底的特点：<br>1.java.Math.Random()实际是在内部调用java.util.Random()的,它有一个致命的弱点，它和系统时间有关，也就是说相隔时间很短的两个random比如:<br>double a = Math.random()；<br>double b = Math.random();<br>即有可能会得到两个一模一样的double。<br>2.java.util.Random()在调用的时候可以实现和java.Math.Random()一样的功能，而且他具有很多的调用方法，相对来说比较灵活。所以从总体来看，使用java.util.Random()会相对来说比较灵活一些</p>
 </li>
 <li><p>import java.text.SimpleDateFormat;<br>import java.util.Date;<br>import java.util.Random;<br>/**<br>* Created by z2829 on 2016/9/25.<br>*/<br>public class JavaLib {<br>   public static String formatTime(int second)<br>   {</p>
-<pre><code>int h,m,s;
-h = second / 3600;
-m = (second % 3600) / 60;
-s =  second % 3600 % 60;
-String str = String.format(&quot;hh:mm:ss&quot;,h,m,s);
-return  str;
+<pre><code>   int h,m,s;
+   h = second / 3600;
+   m = (second % 3600) / 60;
+   s =  second % 3600 % 60;
+   String str = String.format(&quot;hh:mm:ss&quot;,h,m,s);
+   return  str;
 </code></pre><p>   }<br>   public static String formatDate(Date date, String pattern)<br>   {</p>
-<pre><code>SimpleDateFormat fom = new SimpleDateFormat(pattern);
-return fom.format(date);
+<pre><code>   SimpleDateFormat fom = new SimpleDateFormat(pattern);
+   return fom.format(date);
 </code></pre><p>   }<br>   public static int[] randomNumbers(int num, int max)<br>   {</p>
-<pre><code>int arr\[\] = new int\[num\];
-boolean  flag = true;
-Random r = new Random();
-arr\[0\] = -1;
-for ( int  i = 0; i &lt; num;i++ )
-{
-    int t =  r.nextInt(max);
-    for (int j = 0; j &lt; arr.length;j++)
-    {
-        if (t == arr\[j\]){  flag = false;break; }
-    }
-    if (flag)
-    {
-        arr\[i\] = t;
-    }
-}
-return arr;
+<pre><code>   int arr\[\] = new int\[num\];
+   boolean  flag = true;
+   Random r = new Random();
+   arr\[0\] = -1;
+   for ( int  i = 0; i &lt; num;i++ )
+   {
+       int t =  r.nextInt(max);
+       for (int j = 0; j &lt; arr.length;j++)
+       {
+           if (t == arr\[j\]){  flag = false;break; }
+       }
+       if (flag)
+       {
+           arr\[i\] = t;
+       }
+   }
+   return arr;
 </code></pre><p>   }</p>
 </li>
 </ol>
@@ -719,7 +719,7 @@ return arr;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -730,7 +730,7 @@ return arr;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -741,7 +741,7 @@ return arr;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -863,7 +863,7 @@ return arr;
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1489,6 +1489,28 @@ return arr;
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages –&amp;gt;                                                                &amp;lt;!-- Broadcast">
+<meta name="description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages —&amp;gt;                                                &amp;lt;/intent-filter&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 6.0以上进行垃圾短信屏蔽-需要设置广播软件为默认系统软件">
 <meta property="og:url" content="http://blog.aclear.top/post/fe2a948b.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages –&amp;gt;                                                                &amp;lt;!-- Broadcast">
+<meta property="og:description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages —&amp;gt;                                                &amp;lt;/intent-filter&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 6.0以上进行垃圾短信屏蔽-需要设置广播软件为默认系统软件">
-<meta name="twitter:description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages –&amp;gt;                                                                &amp;lt;!-- Broadcast">
+<meta name="twitter:description" content="要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：   &amp;lt;!-- BroadcastReceiver that listens for incoming SMS messages —&amp;gt;                                                &amp;lt;/intent-filter&amp;gt;">
 
 
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  243
+                  259
                 </span>
               
 
@@ -440,9 +440,25 @@
 
       
         <p>要设为系统默认的短信应用首先要配置一下AndroidManifest.xml文件，添加下列：  </p>
-<p>&lt;!-- BroadcastReceiver that listens for incoming SMS messages –&gt;<br>        <receiver android:name=".demo.SmsReceiver" android:permission="android.permission.BROADCAST_SMS"><br>            <intent-filter><br>                <action android:name="android.provider.Telephony.SMS_DELIVER"><br>            </action></intent-filter><br>        </receiver><br>        &lt;!-- BroadcastReceiver that listens for incoming MMS messages –&gt;<br>        <receiver android:name=".demo.MmsReceiver" android:permission="android.permission.BROADCAST\_WAP\_PUSH"><br>            <intent-filter><br>                <action android:name="android.provider.Telephony.WAP\_PUSH\_DELIVER"><br>                <data android:mimetype="application/vnd.wap.mms-message"><br>            </data></action></intent-filter><br>        </receiver><br>        &lt;!-- Activity that allows the user to send new SMS/MMS messages –&gt;<br>        <activity android:name=".demo.ComposeSmsActivity"><br>            <intent-filter><br>                <action android:name="android.intent.action.SEND"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>                <data android:scheme="mms"><br>                <data android:scheme="mmsto"><br>            </data></data></data></data></category></category></action></action></intent-filter><br>        </activity><br>        &lt;!-- Service that delivers messages from the phone “quick response” –&gt;<br>        <service android:name=".demo.HeadlessSmsSendService" android:permission="android.permission.SEND\_RESPOND\_VIA_MESSAGE" android:exported="true"><br>            <intent-filter><br>                <action android:name="android.intent.action.RESPOND\_VIA\_MESSAGE"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>                <data android:scheme="mms"><br>                <data android:scheme="mmsto"><br>            </data></data></data></data></category></action></intent-filter><br>        </service></p>
+<p>&lt;!-- BroadcastReceiver that listens for incoming SMS messages —&gt;<br>        <receiver android:name=".demo.SmsReceiver" android:permission="android.permission.BROADCAST_SMS"><br>            <intent-filter><br>                <action android:name="android.provider.Telephony.SMS_DELIVER"><br>            &lt;/intent-filter&gt;
+        </action></intent-filter></receiver><br>        &lt;!-- BroadcastReceiver that listens for incoming MMS messages —&gt;<br>        <receiver android:name=".demo.MmsReceiver" android:permission="android.permission.BROADCAST\_WAP\_PUSH"><br>            <intent-filter><br>                <action android:name="android.provider.Telephony.WAP\_PUSH\_DELIVER"><br>                <data android:mimetype="application/vnd.wap.mms-message"><br>            &lt;/intent-filter&gt;
+        </data></action></intent-filter></receiver><br>        &lt;!-- Activity that allows the user to send new SMS/MMS messages —&gt;<br>        <activity android:name=".demo.ComposeSmsActivity"><br>            <intent-filter><br>                <action android:name="android.intent.action.SEND"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>                <data android:scheme="mms"><br>                <data android:scheme="mmsto"><br>            &lt;/intent-filter&gt;
+        </data></data></data></data></category></category></action></action></intent-filter></activity><br>        &lt;!-- Service that delivers messages from the phone “quick response” —&gt;<br>        <service android:name=".demo.HeadlessSmsSendService" android:permission="android.permission.SEND\_RESPOND\_VIA_MESSAGE" android:exported="true"><br>            <intent-filter><br>                <action android:name="android.intent.action.RESPOND\_VIA\_MESSAGE"><br>                <category android:name="android.intent.category.DEFAULT"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>                <data android:scheme="mms"><br>                <data android:scheme="mmsto"><br>            &lt;/intent-filter&gt;
+        </data></data></data></data></category></action></intent-filter></service></p>
 <p>  其中ComposeSmsActivity.activity可以作为启动的Activity，我的是将Main.activity作为启动Activity的，那就要用Main.activity代替ComposeSmsActivity.activity了，如下：  </p>
-<activity android:name=".demo.MainActivity"><br>            <intent-filter><br>                <action android:name="android.intent.action.MAIN"><br>                <category android:name="android.intent.category.LAUNCHER"><br>                <action android:name="android.intent.action.SEND"><br>                <action android:name="android.intent.action.SENDTO"><br>                <category android:name="android.intent.category.BROWSABLE"><br>                <data android:scheme="sms"><br>                <data android:scheme="smsto"><br>                <data android:scheme="mms"><br>                <data android:scheme="mmsto"><br>            </data></data></data></data></category></action></action></category></action></intent-filter><br></activity>
+<activity android:name=".demo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN">
+                <category android:name="android.intent.category.LAUNCHER">
+                <action android:name="android.intent.action.SEND">
+                <action android:name="android.intent.action.SENDTO">
+                <category android:name="android.intent.category.BROWSABLE">
+                <data android:scheme="sms">
+                <data android:scheme="smsto">
+                <data android:scheme="mms">
+                <data android:scheme="mmsto">
+            </data></data></data></data></category></action></action></category></action></intent-filter>
+</activity>
 
 <p>  至于SmsReceiver,MmsReceiver还继承BroadcastReceiver的广播，HeadlessSmsSendService是继承Service的服务，把这几个文件创建出来就可以了，暂时不用做什么操作 设为系统默认短信的关键在ComposeSmsActivity.activity中，如下：  </p>
 <p> @Override<br>    protected void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main2);<br>        String defaultSmsApp = null;<br>     　　String currentPn = getPackageName();//获取当前程序包名<br>if (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.KITKAT)<br>{<br>    defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(this);//获取手机当前设置的默认短信应用的包名<br>}<br>if (!defaultSmsApp.equals(currentPn)) {<br>    Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);<br>    intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, currentPn);<br>    startActivity(intent);<br>}<br> }</p>
@@ -623,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -634,7 +650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -645,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -767,7 +783,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1393,6 +1409,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

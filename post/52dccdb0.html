@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  696
+                  699
                 </span>
               
 
@@ -477,7 +477,7 @@
 </ul>
 <h3 id="第-1-步：确定数据库"><a href="#第-1-步：确定数据库" class="headerlink" title="第 1 步：确定数据库"></a><strong>第 1 步：确定数据库</strong></h3><p>■<strong>JDBC URL</strong> ■<strong>public static final String JDBCURL_QUESTIONLIB = “jdbc:derby:” + FOLDER_DATA + “/QuestionLib”;</strong></p>
 <h3 id="第-2-步：连接数据库"><a href="#第-2-步：连接数据库" class="headerlink" title="第 2 步：连接数据库"></a><strong>第 2 步：连接数据库</strong></h3><p>■<strong>Connection  conn = DriverManager.getConnection(jdbcurl);</strong> <strong>  //**</strong>可提供url、用户名、密码3个参数<strong> ■</strong>Connection  conn = DriverManager.getConnection(JDBCURL_QUESTIONLIB);<strong> ■</strong>Connection  conn = DriverManager.getConnection(JDBCURL_QUESTIONLIB, “”, “”);**</p>
-<h3 id="第-3-步：执行SQL"><a href="#第-3-步：执行SQL" class="headerlink" title="第 3 步：执行SQL"></a><strong>第 3 步：执行SQL</strong></h3><p><strong>（1）使用Statement</strong> ■<strong>Statement  stmt = conn.createStatement();</strong> <strong>  //**</strong>可提供2个参数<strong> </strong>~<strong>**参数1：结果集游标的滚动类型及对数据库变化的反映</strong> <code>**ResultSet.TYPE\_FORWARD\_ONLY**</code><strong>ResultSet.TYPE_SCROLL_INSENSITIVE</strong> <code>**ResultSet.TYPE\_SCROLL\_SENSITIVE** ~**参数2：是否能用结果集对数据库进行更新**</code><strong>ResultSet.CONCUR_READ_ONLY</strong> `<strong>ResultSet.CONCUR_UPDATABLE</strong> ■<strong>执行查询（select）</strong> ■<strong>ResultSet  rset = stmt.executeQuery(sql**</strong>语句);<strong> ■</strong>执行更新（insert；delete；update）<strong> ■</strong>int  rows = stmt.executeUpdate(sql<strong>**语句);</strong> ■<strong>执行其它</strong> ■<strong>boolean  v = stmt.execute(sql**</strong>语句);<strong> X</strong>v == true<strong>**：有结果集，可获得结果集进行处理</strong> X<strong>v == false**</strong>：无结果集<strong> ——–imely: </strong>（2）使用PreparedStatement  //继承自Statement&lt;不浪费时间进行的快速&gt;<strong> ■</strong>PreparedStatement  stmt = conn.prepareStatement(sql); //<strong>**可提供2个参数</strong> ■<strong>PreparedStatement</strong> <strong>stmt = conn.prepareStatement(“select * from choice where knowledge=? and difficulty=?”, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);</strong> ■<strong>stmt.setXxx(1, x); stmt.setXxx(2, x);</strong> ■<strong>执行查询（select）</strong> ■<strong>ResultSet  rset = stmt.executeQuery();</strong> ■<strong>执行更新（insert；delete；update）</strong> ■<strong>int  rows = stmt.executeUpdate();</strong> ■<strong>执行其它</strong> ■<strong>boolean  v = stmt.execute();</strong> <strong>（3）使用CallableStatement  //继承自PreparedStatement</strong> ■<strong>CallableStatement  stmt = conn.prepareCall(sql);</strong></p>
+<h3 id="第-3-步：执行SQL"><a href="#第-3-步：执行SQL" class="headerlink" title="第 3 步：执行SQL"></a><strong>第 3 步：执行SQL</strong></h3><p><strong>（1）使用Statement</strong> ■<strong>Statement  stmt = conn.createStatement();</strong> <strong>  //**</strong>可提供2个参数<strong> </strong>~<strong>**参数1：结果集游标的滚动类型及对数据库变化的反映</strong> <code>**ResultSet.TYPE\_FORWARD\_ONLY**</code><strong>ResultSet.TYPE_SCROLL_INSENSITIVE</strong> <code>**ResultSet.TYPE\_SCROLL\_SENSITIVE** ~**参数2：是否能用结果集对数据库进行更新**</code><strong>ResultSet.CONCUR_READ_ONLY</strong> `<strong>ResultSet.CONCUR_UPDATABLE</strong> ■<strong>执行查询（select）</strong> ■<strong>ResultSet  rset = stmt.executeQuery(sql**</strong>语句);<strong> ■</strong>执行更新（insert；delete；update）<strong> ■</strong>int  rows = stmt.executeUpdate(sql<strong>**语句);</strong> ■<strong>执行其它</strong> ■<strong>boolean  v = stmt.execute(sql**</strong>语句);<strong> X</strong>v == true<strong>**：有结果集，可获得结果集进行处理</strong> X<strong>v == false**</strong>：无结果集<strong> ————imely: </strong>（2）使用PreparedStatement  //继承自Statement&lt;不浪费时间进行的快速&gt;<strong> ■</strong>PreparedStatement  stmt = conn.prepareStatement(sql); //<strong>**可提供2个参数</strong> ■<strong>PreparedStatement</strong> <strong>stmt = conn.prepareStatement(“select * from choice where knowledge=? and difficulty=?”, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);</strong> ■<strong>stmt.setXxx(1, x); stmt.setXxx(2, x);</strong> ■<strong>执行查询（select）</strong> ■<strong>ResultSet  rset = stmt.executeQuery();</strong> ■<strong>执行更新（insert；delete；update）</strong> ■<strong>int  rows = stmt.executeUpdate();</strong> ■<strong>执行其它</strong> ■<strong>boolean  v = stmt.execute();</strong> <strong>（3）使用CallableStatement  //继承自PreparedStatement</strong> ■<strong>CallableStatement  stmt = conn.prepareCall(sql);</strong></p>
 <h3 id="第-4-步：处理结果"><a href="#第-4-步：处理结果" class="headerlink" title="第 4 步：处理结果"></a><strong>第 4 步：处理结果</strong></h3><p>■<strong>使用 ResultSet</strong> <strong>接口提供的方法对结果集数据进行处理</strong> ■<strong>说明</strong> ■<strong>主要操作：① 记录指针；② 获取数据</strong> 1.<strong>记录指针：开始指向表头行，可进行移动（只能向前；前后皆可）</strong> 2.<strong>获取数据：对于记录指针指向的行，可以使用列号或列名获取数据</strong> ■<strong>使用列号时列号从 1 开始计</strong> ■<strong>只能读取一次，不能重复读取，可存储在一个变量中重复使用</strong></p>
 <p><strong>列名1</strong></p>
 <p><strong>列名2</strong></p>
@@ -502,8 +502,8 @@
 <p><strong>ResultSet</strong>     学会掌握并且分清楚  JDK中的方法，指针开始的地方！返回值等用途！！！ ■<strong>记录指针</strong> ■<strong>boolean  next();</strong> ■<strong>boolean  previous();</strong> ■<strong>boolean  first();</strong> ■<strong>boolean  last();</strong> ■<strong>void  beforeFirst();</strong> ■<strong>void  afterLast();</strong> ■<strong>boolean  absolute(int);</strong> ■<strong>boolean  relative(int);</strong> ■<strong>boolean  isBeforeFirst();</strong> ■<strong>boolean  isAfterLast();</strong> ■<strong>boolean  isFirst();</strong> ■<strong>boolean  isLast();</strong> <strong>……</strong> ■<strong>记录指针</strong> ■<strong>boolean  next();</strong> ■<strong>boolean  previous();</strong> ■<strong>boolean  first();</strong> ■<strong>boolean  last();</strong> ■<strong>void  beforeFirst();</strong> ■<strong>void  afterLast();</strong> ■<strong>boolean  absolute(int);</strong> ■<strong>boolean  relative(int);</strong> ■<strong>boolean  isBeforeFirst();</strong> ■<strong>boolean  isAfterLast();</strong> ■<strong>boolean  isFirst();</strong> ■<strong>boolean  isLast();</strong> ■<strong>…… </strong></p>
 <h3 id="第-5-步：关闭连接"><a href="#第-5-步：关闭连接" class="headerlink" title="第 5 步：关闭连接"></a><strong>第 5 步：关闭连接</strong></h3><p>■<strong>conn.close();</strong> ■</p>
 <ul>
-<li><strong><em>对于一个Statement对象stmt，执行查询后得到一个ResultSet结果集rset1，若再次使用stmt执行查询后得到另一个结果集rset2，则rset1会自动关闭。</em></strong></li>
-<li><strong><em>要想保持两个结果集都不关闭，就需要使用两个Statement对象分别执行各自的查询。</em></strong></li>
+<li><strong>_对于一个Statement对象stmt，执行查询后得到一个ResultSet结果集rset1，若再次使用stmt执行查询后得到另一个结果集rset2，则rset1会自动关闭。_</strong></li>
+<li><strong>_要想保持两个结果集都不关闭，就需要使用两个Statement对象分别执行各自的查询。_</strong></li>
 </ul>
 
       
@@ -691,7 +691,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -702,7 +702,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -713,7 +713,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -851,7 +851,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1477,6 +1477,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

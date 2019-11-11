@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="少年初心">
 <meta property="og:description" content="简单线性回归的实现zip()12345678910111213&amp;gt;&amp;gt;&amp;gt;a = [1,2,3]&amp;gt;&amp;gt;&amp;gt; b = [4,5,6]&amp;gt;&amp;gt;&amp;gt; c = [4,5,6,7,8]&amp;gt;&amp;gt;&amp;gt; zipped = zip(a,b)     # 打包为元组的列表[(1, 4), (2, 5), (3, 6)]&amp;gt;&amp;gt;&amp;gt; zip(a,c)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-02T03:40:41.014Z">
+<meta property="og:updated_time" content="2019-11-10T10:22:18.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scikit-learn在机器学习算法中的代码使用">
 <meta name="twitter:description" content="简单线性回归的实现zip()12345678910111213&amp;gt;&amp;gt;&amp;gt;a = [1,2,3]&amp;gt;&amp;gt;&amp;gt; b = [4,5,6]&amp;gt;&amp;gt;&amp;gt; c = [4,5,6,7,8]&amp;gt;&amp;gt;&amp;gt; zipped = zip(a,b)     # 打包为元组的列表[(1, 4), (2, 5), (3, 6)]&amp;gt;&amp;gt;&amp;gt; zip(a,c)">
@@ -348,8 +348,8 @@
                 <i class="fa fa-calendar-check-o"></i> 
               </span>
               更新于
-              <time itemprop="dateUpdated" datetime="2019-10-02T11:40:41+08:00" content="2019-10-02">
-                2019-10-02
+              <time itemprop="dateUpdated" datetime="2019-11-10T18:22:18+08:00" content="2019-11-10">
+                2019-11-10
               </time>
             </span>
           
@@ -380,6 +380,17 @@
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/Python/scikit-learn/" itemprop="url" rel="index">
                     <span itemprop="name">scikit-learn</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/scikit-learn/MachineLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">MachineLearning</span>
                   </a>
                 </span>
 
@@ -455,8 +466,8 @@
 <h2 id="划分数据样本"><a href="#划分数据样本" class="headerlink" title="划分数据样本"></a>划分数据样本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_test_split</span><span class="params">(X, y, test_ratio=<span class="number">0.2</span>, seed=None)</span>:</span></span><br><span class="line">    <span class="string">"""将数据 X 和 y 按照test_ratio分割成X_train, X_test, y_train, y_test"""</span></span><br><span class="line">    <span class="keyword">assert</span> X.shape[<span class="number">0</span>] == y.shape[<span class="number">0</span>], \</span><br><span class="line">        <span class="string">"the size of X must be equal to the size of y"</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="number">0.0</span> &lt;= test_ratio &lt;= <span class="number">1.0</span>, \</span><br><span class="line">        <span class="string">"test_ration must be valid"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> seed:</span><br><span class="line">        np.random.seed(seed)</span><br><span class="line"></span><br><span class="line">    shuffled_indexes = np.random.permutation(len(X))</span><br><span class="line"></span><br><span class="line">    test_size = int(len(X) * test_ratio)</span><br><span class="line">    test_indexes = shuffled_indexes[:test_size]</span><br><span class="line">    train_indexes = shuffled_indexes[test_size:]</span><br><span class="line"></span><br><span class="line">    X_train = X[train_indexes]</span><br><span class="line">    y_train = y[train_indexes]</span><br><span class="line"></span><br><span class="line">    X_test = X[test_indexes]</span><br><span class="line">    y_test = y[test_indexes]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X_train, X_test, y_train, y_test</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>根据 test_ratio划分样本为80% 20%……<br><a id="more"></a></p>
-</blockquote>
-<h2 id="scikit-learn中的MSE和MAE"><a href="#scikit-learn中的MSE和MAE" class="headerlink" title="scikit-learn中的MSE和MAE"></a>scikit-learn中的MSE和MAE</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"> </span><br><span class="line">mean_squared_error(y_test, y_predict)</span><br><span class="line">mean_absolute_error(y_test, y_predict)</span><br></pre></td></tr></table></figure>
+<h2 id="scikit-learn中的MSE和MAE"><a href="#scikit-learn中的MSE和MAE" class="headerlink" title="scikit-learn中的MSE和MAE"></a>scikit-learn中的MSE和MAE</h2></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"> </span><br><span class="line">mean_squared_error(y_test, y_predict)</span><br><span class="line">mean_absolute_error(y_test, y_predict)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>metrics 衡量指标</p>
 </blockquote>
@@ -504,6 +515,7 @@
 </blockquote>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -566,6 +578,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h1 id="数据归一化"><a href="#数据归一化" class="headerlink" title="数据归一化"></a>数据归一化</h1><blockquote>
 <p>如果不进行相应变量的参数归一化，很容易被 对应变量的大小进行主导<br>x: 1   5<br>y: 200 100   这样就被y主导，不能反应每一个变量的特征</p>
 </blockquote>
@@ -585,11 +598,7 @@
 </ul>
 <blockquote>
 <p>通过绘制 折线图，查看前多少维度  贡献多少。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.plot([i <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])], </span><br><span class="line">         [np.sum(pca.explained_variance_ratio_[:i+<span class="number">1</span>]) <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
 <p>scikit-learn 已经给我们封装<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pca = PCA(<span class="number">0.95</span>)  <span class="comment"># n_components  不用传，直接传输贡献率</span></span><br><span class="line">pca.fit(X_train)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">X_train_reduction = pca.transform(X_train)</span><br><span class="line">X_test_reduction = pca.transform(X_test)</span><br><span class="line"></span><br><span class="line">%%time </span><br><span class="line">knn_clf = KNeighborsClassifier()</span><br><span class="line">knn_clf.fit(X_train_reduction, y_train)</span><br><span class="line"></span><br><span class="line">knn_clf.score(X_test_reduction, y_test)</span><br><span class="line"><span class="comment"># 降低到28维 看可； 权衡 是否想要 为了加快时间，而牺牲精度的方法</span></span><br><span class="line"><span class="comment"># 降低到2维， 方便进行图形的查看</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
 <h1 id="降低到28维-看可；-权衡-是否想要-为了加快时间，而牺牲精度的方法"><a href="#降低到28维-看可；-权衡-是否想要-为了加快时间，而牺牲精度的方法" class="headerlink" title="降低到28维 看可； 权衡 是否想要 为了加快时间，而牺牲精度的方法"></a>降低到28维 看可； 权衡 是否想要 为了加快时间，而牺牲精度的方法</h1><h1 id="降低到2维，-方便进行图形的查看"><a href="#降低到2维，-方便进行图形的查看" class="headerlink" title="降低到2维， 方便进行图形的查看"></a>降低到2维， 方便进行图形的查看</h1></blockquote>
 <h2 id="MNIST数据集-进行更大量、更正规的-机器学习的方法应用"><a href="#MNIST数据集-进行更大量、更正规的-机器学习的方法应用" class="headerlink" title="MNIST数据集 进行更大量、更正规的 机器学习的方法应用"></a>MNIST数据集 进行更大量、更正规的 机器学习的方法应用</h2><blockquote>
 <p>使用PCA进行降维 训练时间和预测时间都减少了</p>
@@ -597,8 +606,6 @@
 </blockquote>
 <h2 id="PCA降噪"><a href="#PCA降噪" class="headerlink" title="PCA降噪"></a>PCA降噪</h2><blockquote>
 <p>平常有可能数据有噪音抖动，还有可能 测量过程中有了噪音。</p>
-</blockquote>
-<blockquote>
 <p>作用：降低纬度 丢失信息 去除了噪音</p>
 </blockquote>
 <h1 id="sklearn中的数据-预处理方法"><a href="#sklearn中的数据-预处理方法" class="headerlink" title="sklearn中的数据 预处理方法"></a>sklearn中的数据 预处理方法</h1><blockquote>
@@ -619,11 +626,7 @@
 <h2 id="多项式回归（8-2"><a href="#多项式回归（8-2" class="headerlink" title="多项式回归（8-2"></a>多项式回归（8-2</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"></span><br><span class="line">poly = PolynomialFeatures(degree=<span class="number">2</span>) <span class="comment">#最多添加二次方</span></span><br><span class="line">poly.fit(X)</span><br><span class="line">X2 = poly.transform(X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多项式回归 化为 线性回归进行测试</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lin_reg2 = LinearRegression()</span><br><span class="line">lin_reg2.fit(X2, y)</span><br><span class="line">y_predict2 = lin_reg2.predict(X2)</span><br><span class="line"></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line">plt.plot(np.sort(x), y_predict2[np.argsort(x)], color=<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>进行数据的升维，多项式回归的预处理方法</p>
-</blockquote>
-<h3 id="多项式特征-数据归一化-线性回归"><a href="#多项式特征-数据归一化-线性回归" class="headerlink" title="多项式特征 数据归一化 线性回归"></a>多项式特征 数据归一化 线性回归</h3><blockquote>
-<p>使用 Pipeline<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.uniform(<span class="number">-3</span>, <span class="number">3</span>, size=<span class="number">100</span>)</span><br><span class="line">X = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">y = <span class="number">0.5</span> * x**<span class="number">2</span> + x + <span class="number">2</span> + np.random.normal(<span class="number">0</span>, <span class="number">1</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">poly_reg = Pipeline([</span><br><span class="line">    (<span class="string">"poly"</span>, PolynomialFeatures(degree=<span class="number">2</span>)),</span><br><span class="line">    (<span class="string">"std_scaler"</span>, StandardScaler()),</span><br><span class="line">    (<span class="string">"lin_reg"</span>, LinearRegression())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">poly_reg.fit(X, y)</span><br><span class="line">y_predict = poly_reg.predict(X)</span><br><span class="line"></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line">plt.plot(np.sort(x), y_predict[np.argsort(x)], color=<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
+<h3 id="多项式特征-数据归一化-线性回归"><a href="#多项式特征-数据归一化-线性回归" class="headerlink" title="多项式特征 数据归一化 线性回归"></a>多项式特征 数据归一化 线性回归</h3><p>使用 Pipeline<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.uniform(<span class="number">-3</span>, <span class="number">3</span>, size=<span class="number">100</span>)</span><br><span class="line">X = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">y = <span class="number">0.5</span> * x**<span class="number">2</span> + x + <span class="number">2</span> + np.random.normal(<span class="number">0</span>, <span class="number">1</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">poly_reg = Pipeline([</span><br><span class="line">    (<span class="string">"poly"</span>, PolynomialFeatures(degree=<span class="number">2</span>)),</span><br><span class="line">    (<span class="string">"std_scaler"</span>, StandardScaler()),</span><br><span class="line">    (<span class="string">"lin_reg"</span>, LinearRegression())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">poly_reg.fit(X, y)</span><br><span class="line">y_predict = poly_reg.predict(X)</span><br><span class="line"></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line">plt.plot(np.sort(x), y_predict[np.argsort(x)], color=<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <p>new一个管道，传入相应的数据集； 数据集就能沿着管道依次进行 执行。得到最后的结果！<br>虽然 sklearn没有给我们封装 多项式回归方法，但是我们可以用Pipeline进行 多种方法封装，并进行操作。</p>
 </blockquote>
 <h3 id="评价标准"><a href="#评价标准" class="headerlink" title="评价标准"></a>评价标准</h3><blockquote>
@@ -665,14 +668,10 @@
 <h2 id="多分类问题-在scikit-learn中的应用"><a href="#多分类问题-在scikit-learn中的应用" class="headerlink" title="多分类问题 在scikit-learn中的应用"></a>多分类问题 在scikit-learn中的应用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score</span><br><span class="line">precision_score(y_test, y_predict, average=<span class="string">"micro"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_test, y_predict)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制错误矩阵图像（灰度值进行显示）</span></span><br><span class="line">cfm = confusion_matrix(y_test, y_predict)</span><br><span class="line"></span><br><span class="line">row_sums = np.sum(cfm, axis=<span class="number">1</span>)</span><br><span class="line">err_matrix = cfm / row_sums</span><br><span class="line">np.fill_diagonal(err_matrix, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">plt.matshow(err_matrix, cmap=plt.cm.gray)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 相应进行 1-8  1-9犯错误更多，改进1-8 1-9进行阈值更改的改进！</span></span><br><span class="line"><span class="comment"># 真实环境中，有可能 是样本错误 或 算法细节问题：上一行问题。</span></span><br></pre></td></tr></table></figure>
 <h1 id="MORE：TensorFlow初接触"><a href="#MORE：TensorFlow初接触" class="headerlink" title="MORE：TensorFlow初接触"></a>MORE：TensorFlow初接触</h1><h2 id="TensorFlow数据流图和概念解析"><a href="#TensorFlow数据流图和概念解析" class="headerlink" title="TensorFlow数据流图和概念解析"></a>TensorFlow数据流图和概念解析</h2><blockquote>
 <p>怎样与开发者建立联系。</p>
-</blockquote>
-<blockquote>
 <p>未来重复类型的工作都会交给人工智能进行操作。人类主要从事偏创造类和情感类的 工作。</p>
 </blockquote>
 <h1 id="支撑向量机"><a href="#支撑向量机" class="headerlink" title="支撑向量机"></a>支撑向量机</h1><h2 id="硬间隔SVM"><a href="#硬间隔SVM" class="headerlink" title="硬间隔SVM"></a>硬间隔SVM</h2><blockquote>
 <p>与kNN类似都现需要进行 数据归一化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">standardScaler = StandardScaler()</span><br><span class="line">standardScaler.fit(X)</span><br><span class="line">X_standard = standardScaler.transform(X)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> LinearSVC</span><br><span class="line"></span><br><span class="line">svc = LinearSVC(C=<span class="number">1e9</span>)</span><br><span class="line">svc.fit(X_standard, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># support vector classifier</span></span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> LinearSVC</span><br><span class="line"></span><br><span class="line">svc = LinearSVC(C=<span class="number">1e9</span>)</span><br><span class="line">svc.fit(X_standard, y)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
 <p>注意：上方引入的只是线性SVM进行分类的svm算法<br><strong>注意</strong> ：<code>svc.coef_</code> 和 <code>svc.intercept_</code> 对应 <code>w0 * x0 + w1 * x1 + b = 0</code></p>
 </blockquote>
 <h2 id="软间隔SVM并-绘制超平面"><a href="#软间隔SVM并-绘制超平面" class="headerlink" title="软间隔SVM并 绘制超平面"></a>软间隔SVM并 绘制超平面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">w = model.coef_[<span class="number">0</span>]</span><br><span class="line">b = model.intercept_[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># w0*x0 + w1*x1 + b = 0</span></span><br><span class="line"><span class="comment"># =&gt; x1 = -w0/w1 * x0 - b/w1</span></span><br><span class="line">plot_x = np.linspace(axis[<span class="number">0</span>], axis[<span class="number">1</span>], <span class="number">200</span>)</span><br><span class="line">up_y = -w[<span class="number">0</span>]/w[<span class="number">1</span>] * plot_x - b/w[<span class="number">1</span>] + <span class="number">1</span>/w[<span class="number">1</span>]</span><br><span class="line">down_y = -w[<span class="number">0</span>]/w[<span class="number">1</span>] * plot_x - b/w[<span class="number">1</span>] - <span class="number">1</span>/w[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用这个布尔数组 进行上面数组的筛选.</span></span><br><span class="line">up_index = (up_y &gt;= axis[<span class="number">2</span>]) &amp; (up_y &lt;= axis[<span class="number">3</span>])</span><br><span class="line">down_index = (down_y &gt;= axis[<span class="number">2</span>]) &amp; (down_y &lt;= axis[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">plt.plot(plot_x[up_index], up_y[up_index], color=<span class="string">'black'</span>)</span><br><span class="line">plt.plot(plot_x[down_index], down_y[down_index], color=<span class="string">'black'</span>)</span><br></pre></td></tr></table></figure>
@@ -681,8 +680,7 @@
 <p>注意： SVM算法本身也是 带有多项式化方法的——核函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PolynomialKernelSVC</span><span class="params">(degree, C=<span class="number">1.0</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Pipeline([</span><br><span class="line">        (<span class="string">"std_scaler"</span>, StandardScaler()),</span><br><span class="line">        (<span class="string">"kernelSVC"</span>, SVC(kernel=<span class="string">"poly"</span>, degree=degree, C=C))</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">poly_kernel_svc = PolynomialKernelSVC(degree=<span class="number">3</span>)</span><br><span class="line">poly_kernel_svc.fit(X, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后进行图像化展示，并不是为了进行预测！</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="高斯核函数讲解"><a href="#高斯核函数讲解" class="headerlink" title="高斯核函数讲解"></a>高斯核函数讲解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">l1, l2 = <span class="number">-1</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">X_new = np.empty((len(x), <span class="number">2</span>))</span><br><span class="line"><span class="comment"># 将一维数据 映射到二维上面了，利用 高斯核函数.</span></span><br><span class="line"><span class="keyword">for</span> i, data <span class="keyword">in</span> enumerate(x):</span><br><span class="line">    X_new[i, <span class="number">0</span>] = gaussian(data, l1)</span><br><span class="line">    X_new[i, <span class="number">1</span>] = gaussian(data, l2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># enumerate( x ) 讲x的数值放入到data中，索引放入到i中.</span></span><br></pre></td></tr></table></figure>
-<h3 id="使用高斯核函数（RBF）的sklearn方法"><a href="#使用高斯核函数（RBF）的sklearn方法" class="headerlink" title="使用高斯核函数（RBF）的sklearn方法"></a>使用高斯核函数（RBF）的sklearn方法</h3><blockquote>
-</blockquote>
+<h3 id="使用高斯核函数（RBF）的sklearn方法"><a href="#使用高斯核函数（RBF）的sklearn方法" class="headerlink" title="使用高斯核函数（RBF）的sklearn方法"></a>使用高斯核函数（RBF）的sklearn方法</h3><p>&gt;</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">RBFKernelSVC</span><span class="params">(gamma)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Pipeline([</span><br><span class="line">        (<span class="string">"std_scaler"</span>, StandardScaler()),</span><br><span class="line">        (<span class="string">"svc"</span>, SVC(ke rnel=<span class="string">"rbf"</span>, gamma=gamma))</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">svc = RBFKernelSVC(gamma=<span class="number">1</span>)</span><br><span class="line">svc.fit(X, y)</span><br></pre></td></tr></table></figure>
 <h2 id="SVM思想解决回归问题"><a href="#SVM思想解决回归问题" class="headerlink" title="SVM思想解决回归问题"></a>SVM思想解决回归问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> LinearSVR</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">StandardLinearSVR</span><span class="params">(epsilon=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Pipeline([</span><br><span class="line">        (<span class="string">'std_scaler'</span>, StandardScaler()),</span><br><span class="line">        (<span class="string">'linearSVR'</span>, LinearSVR(epsilon=epsilon))</span><br><span class="line">    ])</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -712,8 +710,6 @@
 </blockquote>
 <h2 id="入门完成"><a href="#入门完成" class="headerlink" title="入门完成"></a>入门完成</h2><blockquote>
 <p>如何集成更多分类器，给我们更好地表现呢？<br>虽然有很多机器学习方法，但是从投票角度看，仍然不够多<br>我们需要创建更多的子模型！集成更多的子模型<br>子模型之间不能一致！子模型之间要有差异性！</p>
-</blockquote>
-<blockquote>
 <p>创建差异性——没格子模型只看样本数据的一部分。<br>可以每个子模型只看100个样本数据！<br>每个子模型不需要太高的准确率（但是也不能太低！）</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> BaggingClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># n_estimators 几个样本模型</span></span><br><span class="line"><span class="comment"># max_samples 每个模型要看几个样本</span></span><br><span class="line"><span class="comment"># bootstrap=True 放回取样</span></span><br><span class="line">bagging_clf2 = BaggingClassifier(DecisionTreeClassifier(),</span><br><span class="line">                           n_estimators=<span class="number">5000</span>, max_samples=<span class="number">100</span>,</span><br><span class="line">                           bootstrap=<span class="keyword">True</span>)</span><br><span class="line">bagging_clf2.fit(X_train, y_train)</span><br><span class="line">bagging_clf2.score(X_test, y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练使用对应参数进行  不放回取样和模型管理</span></span><br></pre></td></tr></table></figure>
@@ -730,21 +726,15 @@
 </ul>
 <h1 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h1><blockquote>
 <p>由多个树组成的森林叫做随机森林</p>
-</blockquote>
 <h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也是使用Bagging进行随机取样的，所以可以有 决策树类似分类器</span></span><br><span class="line">rf_clf = RandomForestClassifier(n_estimators=<span class="number">500</span>, oob_score=<span class="keyword">True</span>, random_state=<span class="number">666</span>, n_jobs=<span class="number">-1</span>)</span><br><span class="line">rf_clf.fit(X, y)</span><br><span class="line"></span><br><span class="line">rf_clf.oob_score_</span><br><span class="line"><span class="comment">## 0.89200000000000002</span></span><br><span class="line"></span><br><span class="line">rf_clf2 = RandomForestClassifier(n_estimators=<span class="number">500</span>, max_leaf_nodes=<span class="number">16</span>, oob_score=<span class="keyword">True</span>, random_state=<span class="number">666</span>, n_jobs=<span class="number">-1</span>)</span><br><span class="line">rf_clf2.fit(X, y)</span><br><span class="line">rf_clf2.oob_score_</span><br><span class="line"><span class="comment">## 0.90600000000000003</span></span><br></pre></td></tr></table></figure>
-<blockquote>
 <p>注意在sklearn中的使用，RF相当于是 结合了BaggingClassifier和 DecisionTreeClassifier 参数使用！都有用到！</p>
-</blockquote>
-<blockquote>
 <p>MORE 使用ExtraTree进行 分类<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"></span><br><span class="line">et_clf = ExtraTreesClassifier(n_estimators=<span class="number">500</span>, bootstrap=<span class="keyword">True</span>, oob_score=<span class="keyword">True</span>, random_state=<span class="number">666</span>, n_jobs=<span class="number">-1</span>)</span><br><span class="line">et_clf.fit(X, y)</span><br><span class="line"></span><br><span class="line">et_clf.oob_score_</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h2 id="分类相应的对应有-回归方法——Regressor"><a href="#分类相应的对应有-回归方法——Regressor" class="headerlink" title="分类相应的对应有 回归方法——Regressor"></a>分类相应的对应有 回归方法——Regressor</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> BaggingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesRegressor</span><br></pre></td></tr></table></figure>
 <h1 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h1><h2 id="Ada-Boosting"><a href="#Ada-Boosting" class="headerlink" title="Ada Boosting"></a>Ada Boosting</h2><blockquote>
 <p>每次一步步赋予权重进行修正<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键是学习算法（基学习器） 和 一步步赋予权重</span></span><br><span class="line">ada_clf = AdaBoostClassifier(</span><br><span class="line">    DecisionTreeClassifier(max_depth=<span class="number">2</span>), n_estimators=<span class="number">500</span>)</span><br><span class="line">ada_clf.fit(X_train, y_train)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h2 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h2><blockquote>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line">gb_clf = GradientBoostingClassifier(max_depth=<span class="number">2</span>, n_estimators=<span class="number">30</span>)</span><br><span class="line">gb_clf.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">gb_clf.score(X_test, y_test)</span><br></pre></td></tr></table></figure>
+<h2 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h2><p>&gt;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line">gb_clf = GradientBoostingClassifier(max_depth=<span class="number">2</span>, n_estimators=<span class="number">30</span>)</span><br><span class="line">gb_clf.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">gb_clf.score(X_test, y_test)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Boosting解决回归问题<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingRegressor</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -942,7 +932,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -953,7 +943,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -964,7 +954,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1102,7 +1092,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1728,6 +1718,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

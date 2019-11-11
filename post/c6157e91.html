@@ -452,7 +452,7 @@
       
         <h2 id="无法从静态上下文中引用非静态方法”这个问题怎么解决？"><a href="#无法从静态上下文中引用非静态方法”这个问题怎么解决？" class="headerlink" title="无法从静态上下文中引用非静态方法”这个问题怎么解决？"></a>无法从静态上下文中引用非静态方法”这个问题怎么解决？</h2><p>No1:项目启动时候先加载静态的东西，你静态的方法中要调用静态的，同一个类中没有实例化当然不行，你在不同类中是实例化以后调用当然就不报错 。 No2：楼主，你好。因为静态方法的调用不是通过实例对象进行的，所以在静态方法中没有this指针，不能访问所属类的非静态变量和方法，只能访问方法体内的局部变量、自己的参数和静态变量。所以你在在static的主函数里调用非static的方法时肯定报错。所以你把方法放到另一个类，创建对象再调用，不会出错，因为你这个方法不是静态的，即不是属于类的，而是属于具体的一个实例对象的，用对象调用那当然不会错咯！ 只要记住这一点： 用statci修饰的成员是属于类的，在static的方法里可以用类名直接调用； 不用statci修饰的成员是属于具体实例对象的，需要用对象名调用，且在static的方法里不可以调用。 No3:</p>
 <p>用static修饰的方法称为静态方法，修饰变量则为静态变量，又分别叫做类方法或者类变量。<br>静态方法中不能直接调用非静态方法。因为非静态方法不是独立存在的，它是依附于对象存在——即只有申明了对象，才能通过对象调用。而静态方法则可以直接通过类名调用，而不需要申明对象。因此直接引用非静态方法就会出错。<br>比如常见的main方法都是静态的，必须由static修饰，因此在main方法里调用类的其他非静态方法，都是需要先申明对象，才能用。否则就会出现引用非静态方法的错误。<br>要解决这个问题，可以去除一般方法的static关键字（如果是main方法，则不能去掉static）。另外一种方法就是把需要引用的方法也设置成静态方法。</p>
-<p>  方法一：重写  JTextField中的Document /<em> </em> To change this license header, choose License Headers in Project Properties. <em> To change this template file, choose Tools | Templates </em> and open the template in the editor. <em>/ /** </em> <em> @author z2829 </em>/ import javax.swing.<em>; import java.awt.</em>; import java.awt.event.<em>; import javax.swing.text.</em>; import javax.swing.event.<em>; class MyDocument extends PlainDocument{ int maxLength =10; public MyDocument(int newMaxLength){ super(); maxLength = newMaxLength; } public MyDocument(){ this(10); } //重载父类的insertString函数 public void insertString(int offset,String str,AttributeSet a)throws BadLocationException{ if(getLength()+str.length()&gt;maxLength){//这里假定你的限制长度为10 return; } else{ super.insertString(offset,str,a); } } } public class DocumentTest extends JFrame { final static int docLength = 3;//表示可输入文本的最大长度 //    public void insertString(int offs, String str, AttributeSet a) throws BadLocationException { //                    if (a == null) { //                     int allowCount = docLength - getLength(); //                     if (allowCount &gt; 0) { //                      if (allowCount &lt; str.length()) //                       str = str.substring(0, allowCount); //                     } else //                      return; //                    } //                    super.insertString(offs, str, a); //    } public DocumentTest() { super(“DocumentTest”); setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); Dimension d = Toolkit.getDefaultToolkit().getScreenSize(); setBounds((d.width-570)/2,(d.height-215)/2,570,215); Document doc = new DefaultStyledDocument(); doc.addDocumentListener(new DocumentListener(){ public void insertUpdate(DocumentEvent e) { final Document document = e.getDocument(); if (document.getLength()&gt;docLength) { try { new Thread(new Thread(){ public void run() { try { document.remove(1,document.getLength()-1); } catch (Exception exp) { System.out.println(“Error: “+ exp.toString()); } } }).start(); } catch (Exception ex) { System.out.println(“Error: “+ ex.toString()); } } } public void removeUpdate(DocumentEvent e) {} public void changedUpdate(DocumentEvent e) {} }); //JTextArea area1 = new JTextArea(doc,””,30,40); JTextField jTextField1 = new JTextField(20); jTextField1.setDocument(new MyDocument(10)); JPanel pane = new JPanel(); pane.add(jTextField1); setContentPane(pane); setVisible(true); } public static void main(String [] args) { new DocumentTest(); } } 方法二：添加一个监视器 /</em> <em> To change this license header, choose License Headers in Project Properties. </em> To change this template file, choose Tools | Templates <em> and open the template in the editor. </em>/ /*<em> </em> <em> @author z2829 </em>/ import java.awt.Dimension; import java.awt.event.KeyAdapter; import java.awt.event.KeyEvent; import javax.swing.JFrame; import javax.swing.JTextField; public class Test1 extends JFrame { public Test1() { this.setLayout(null); this.setSize(new Dimension(400, 200)); final JTextField txt = new JTextField(); txt.addKeyListener(new KeyAdapter() { public void keyTyped(KeyEvent e) { char c = e.getKeyChar(); if (Character.isDigit(c) &amp;&amp; txt.getText().trim().length() &lt; 10)//只允许数字，且长度不大于10 return; e.consume(); } }); txt.setBounds(50, 50, 120, 20); this.add(txt); this.setVisible(true); } public static void main(String args[]) { new Test1(); } } js 正则表达式 <a href="http://leagion.iteye.com/blog/616815" target="_blank" rel="noopener">http://leagion.iteye.com/blog/616815</a> <a href="https://zhidao.baidu.com/question/1112876975114106779.html?qbl=relate\_question\_0&amp;word=swing%CF%DE%D6%C6%B5%C7%C2%BD%CE%BB%CA%FD" target="_blank" rel="noopener">https://zhidao.baidu.com/question/1112876975114106779.html?qbl=relate\_question\_0&amp;word=swing%CF%DE%D6%C6%B5%C7%C2%BD%CE%BB%CA%FD</a> <a href="http://www.cnblogs.com/trytocatch/archive/2012/11/30/2795940.html" target="_blank" rel="noopener">http://www.cnblogs.com/trytocatch/archive/2012/11/30/2795940.html</a> <a href="http://bbs.csdn.net/topics/300018193" target="_blank" rel="noopener">http://bbs.csdn.net/topics/300018193</a></p>
+<p>  方法一：重写  JTextField中的Document /<em> </em> To change this license header, choose License Headers in Project Properties. <em> To change this template file, choose Tools | Templates </em> and open the template in the editor. <em>/ /** </em> <em> @author z2829 </em>/ import javax.swing.<em>; import java.awt.</em>; import java.awt.event.<em>; import javax.swing.text.</em>; import javax.swing.event.<em>; class MyDocument extends PlainDocument{ int maxLength =10; public MyDocument(int newMaxLength){ super(); maxLength = newMaxLength; } public MyDocument(){ this(10); } //重载父类的insertString函数 public void insertString(int offset,String str,AttributeSet a)throws BadLocationException{ if(getLength()+str.length()&gt;maxLength){//这里假定你的限制长度为10 return; } else{ super.insertString(offset,str,a); } } } public class DocumentTest extends JFrame { final static int docLength = 3;//表示可输入文本的最大长度 //    public void insertString(int offs, String str, AttributeSet a) throws BadLocationException { //                    if (a == null) { //                     int allowCount = docLength - getLength(); //                     if (allowCount &gt; 0) { //                      if (allowCount &lt; str.length()) //                       str = str.substring(0, allowCount); //                     } else //                      return; //                    } //                    super.insertString(offs, str, a); //    } public DocumentTest() { super(“DocumentTest”); setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); Dimension d = Toolkit.getDefaultToolkit().getScreenSize(); setBounds((d.width-570)/2,(d.height-215)/2,570,215); Document doc = new DefaultStyledDocument(); doc.addDocumentListener(new DocumentListener(){ public void insertUpdate(DocumentEvent e) { final Document document = e.getDocument(); if (document.getLength()&gt;docLength) { try { new Thread(new Thread(){ public void run() { try { document.remove(1,document.getLength()-1); } catch (Exception exp) { System.out.println(“Error: “+ exp.toString()); } } }).start(); } catch (Exception ex) { System.out.println(“Error: “+ ex.toString()); } } } public void removeUpdate(DocumentEvent e) {} public void changedUpdate(DocumentEvent e) {} }); //JTextArea area1 = new JTextArea(doc,””,30,40); JTextField jTextField1 = new JTextField(20); jTextField1.setDocument(new MyDocument(10)); JPanel pane = new JPanel(); pane.add(jTextField1); setContentPane(pane); setVisible(true); } public static void main(String [] args) { new DocumentTest(); } } 方法二：添加一个监视器 /</em> <em> To change this license header, choose License Headers in Project Properties. </em> To change this template file, choose Tools | Templates <em> and open the template in the editor. </em>/ /<em>* </em> <em> @author z2829 </em>/ import java.awt.Dimension; import java.awt.event.KeyAdapter; import java.awt.event.KeyEvent; import javax.swing.JFrame; import javax.swing.JTextField; public class Test1 extends JFrame { public Test1() { this.setLayout(null); this.setSize(new Dimension(400, 200)); final JTextField txt = new JTextField(); txt.addKeyListener(new KeyAdapter() { public void keyTyped(KeyEvent e) { char c = e.getKeyChar(); if (Character.isDigit(c) &amp;&amp; txt.getText().trim().length() &lt; 10)//只允许数字，且长度不大于10 return; e.consume(); } }); txt.setBounds(50, 50, 120, 20); this.add(txt); this.setVisible(true); } public static void main(String args[]) { new Test1(); } } js 正则表达式 <a href="http://leagion.iteye.com/blog/616815" target="_blank" rel="noopener">http://leagion.iteye.com/blog/616815</a> <a href="https://zhidao.baidu.com/question/1112876975114106779.html?qbl=relate\_question\_0&amp;word=swing%CF%DE%D6%C6%B5%C7%C2%BD%CE%BB%CA%FD" target="_blank" rel="noopener">https://zhidao.baidu.com/question/1112876975114106779.html?qbl=relate\_question\_0&amp;word=swing%CF%DE%D6%C6%B5%C7%C2%BD%CE%BB%CA%FD</a> <a href="http://www.cnblogs.com/trytocatch/archive/2012/11/30/2795940.html" target="_blank" rel="noopener">http://www.cnblogs.com/trytocatch/archive/2012/11/30/2795940.html</a> <a href="http://bbs.csdn.net/topics/300018193" target="_blank" rel="noopener">http://bbs.csdn.net/topics/300018193</a></p>
 
       
     </div>
@@ -639,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -799,7 +799,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1425,6 +1425,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

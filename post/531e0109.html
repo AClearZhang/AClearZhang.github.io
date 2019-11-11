@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.1k
                 </span>
               
 
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -452,8 +452,8 @@
 <p>添加完成后需要同步一下gradle 2.添加Toolbar 由于Toolbar是继承自View，所以可以像其他标准控件一样直接主布局文件添加Toolbar，但是为了提高Toolbar的重用效率，可以在layout创建一个custom_toolbar.xml代码如下：</p>
 <ol>
 <li>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</li>
-<li>&lt;android.support.v7.widget.Toolbarxmlns:android=”<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a></li>
-<li>xmlns:app=”<a href="http://schemas.android.com/apk/res-auto&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res-auto&quot;</a></li>
+<li>&lt;android.support.v7.widget.Toolbarxmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android</a>“</li>
+<li>xmlns:app=”<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="noopener">http://schemas.android.com/apk/res-auto</a>“</li>
 <li>android:id=”@+id/tl_custom”</li>
 <li>android:layout_width=”match_parent”</li>
 <li>android:layout_height=”wrap_content”</li>
@@ -472,7 +472,7 @@
 <p>2.添加DrawerLayout 和Toolbar类似，为了提高代码重用效率，可以在layout中创建一个custom_drawerlayout.xml代码如下:</p>
 <ol>
 <li>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</li>
-<li>&lt;android.support.v4.widget.DrawerLayoutxmlns:android=”<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a></li>
+<li>&lt;android.support.v4.widget.DrawerLayoutxmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android</a>“</li>
 <li>android:id=”@+id/dl_left”</li>
 <li>android:layout_width=”match_parent”</li>
 <li>android:layout_height=”match_parent”&gt;</li>
@@ -484,7 +484,7 @@
 <li>android:id=”@+id/iv_main”</li>
 <li>android:layout_width=”100dp”</li>
 <li>android:layout_height=”100dp”/&gt;</li>
-<li></li>
+<li>&lt;/LinearLayout&gt;</li>
 <li><!--侧滑菜单--></li>
 <li>&lt;LinearLayout</li>
 <li>android:layout_width=”match_parent”</li>
@@ -497,22 +497,22 @@
 <li>android:layout_height=”match_parent”</li>
 <li>android:divider=”@null”</li>
 <li>android:text=”DrawerLayout”/&gt;</li>
-<li></li>
+<li>&lt;/LinearLayout&gt;</li>
 <li>&lt;/android.support.v4.widget.DrawerLayout&gt;</li>
 </ol>
 <p>Drawerlayout标签中有两个子节点，一个是左边菜单，一个是主布局，另外需要在左边菜单起始位置设置为android:layout_gravity=”start” 3.实现activity_main.xml</p>
 <ol>
-<li>&lt;LinearLayoutxmlns:android=”<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a></li>
-<li>xmlns:tools=”<a href="http://schemas.android.com/tools&quot;" target="_blank" rel="noopener">http://schemas.android.com/tools&quot;</a></li>
+<li>&lt;LinearLayoutxmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android</a>“</li>
+<li>xmlns:tools=”<a href="http://schemas.android.com/tools" target="_blank" rel="noopener">http://schemas.android.com/tools</a>“</li>
 <li>android:layout_width=”match_parent”</li>
 <li>android:layout_height=”match_parent”</li>
 <li>android:orientation=”vertical”</li>
 <li>tools:context=”.MainActivity”&gt;</li>
 <li><!--Toolbar--></li>
-<li>&lt;includelayout=”@layout/custom_toolbar”/&gt;</li>
+<li><a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#105;&#x6e;&#99;&#108;&#x75;&#100;&#x65;&#x6c;&#97;&#x79;&#x6f;&#117;&#x74;&#x3d;&#x22;&#x40;&#x6c;&#97;&#121;&#x6f;&#117;&#116;&#47;&#99;&#x75;&#x73;&#x74;&#x6f;&#109;&#95;&#x74;&#x6f;&#111;&#x6c;&#x62;&#97;&#x72;&#x22;&#x2f;">&#105;&#x6e;&#99;&#108;&#x75;&#100;&#x65;&#x6c;&#97;&#x79;&#x6f;&#117;&#x74;&#x3d;&#x22;&#x40;&#x6c;&#97;&#121;&#x6f;&#117;&#116;&#47;&#99;&#x75;&#x73;&#x74;&#x6f;&#109;&#95;&#x74;&#x6f;&#111;&#x6c;&#x62;&#97;&#x72;&#x22;&#x2f;</a></li>
 <li><!--DrawerLayout--></li>
-<li>&lt;includelayout=”@layout/custom_drawerlayout”/&gt;</li>
-<li></li>
+<li><a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x69;&#110;&#x63;&#x6c;&#x75;&#100;&#x65;&#x6c;&#97;&#x79;&#x6f;&#117;&#x74;&#x3d;&#x22;&#x40;&#108;&#97;&#x79;&#x6f;&#x75;&#x74;&#x2f;&#99;&#117;&#x73;&#116;&#111;&#x6d;&#x5f;&#100;&#114;&#x61;&#x77;&#x65;&#x72;&#108;&#97;&#121;&#x6f;&#117;&#116;&#x22;&#47;">&#x69;&#110;&#x63;&#x6c;&#x75;&#100;&#x65;&#x6c;&#97;&#x79;&#x6f;&#117;&#x74;&#x3d;&#x22;&#x40;&#108;&#97;&#x79;&#x6f;&#x75;&#x74;&#x2f;&#99;&#117;&#x73;&#116;&#111;&#x6d;&#x5f;&#100;&#114;&#x61;&#x77;&#x65;&#x72;&#108;&#97;&#121;&#x6f;&#117;&#116;&#x22;&#47;</a></li>
+<li>&lt;/LinearLayout&gt;</li>
 </ol>
 <p>直接使用include标签，简洁明了 4.完善Java代码</p>
 <ol>
@@ -567,26 +567,26 @@
 <li>}</li>
 </ol>
 <p>5.当然比较重要还有styles.xml和colors.xml，具体如下</p>
-<ol start="2">
+<ol>
 <li><resources></resources></li>
-<li>&lt;stylename=”AppTheme”parent=”Theme.AppCompat.Light.NoActionBar”&gt;</li>
+<li><stylename="apptheme"parent="theme.appcompat.light.noactionbar"></stylename="apptheme"parent="theme.appcompat.light.noactionbar"></li>
 <li><!--状态栏颜色--></li>
-<li>&lt;itemname=”colorPrimaryDark”&gt;@color/Indigo_colorPrimaryDark</li>
+<li><itemname="colorprimarydark">@color/Indigo_colorPrimaryDark&lt;/item&gt;</itemname="colorprimarydark"></li>
 <li><!--Toolbar颜色--></li>
-<li>&lt;itemname=”colorPrimary”&gt;@color/Indigo_colorPrimary</li>
+<li><itemname="colorprimary">@color/Indigo_colorPrimary&lt;/item&gt;</itemname="colorprimary"></li>
 <li><!--返回键样式--></li>
-<li>&lt;itemname=”drawerArrowStyle”&gt;@style/AppTheme.DrawerArrowToggle</li>
-<li></li>
-<li>&lt;stylename=”AppTheme.DrawerArrowToggle”parent=”Base.Widget.AppCompat.DrawerArrowToggle”&gt;</li>
-<li>&lt;itemname=”color”&gt;@android:color/white</li>
-<li></li>
-<li></li>
+<li><itemname="drawerarrowstyle">@style/AppTheme.DrawerArrowToggle&lt;/item&gt;</itemname="drawerarrowstyle"></li>
+<li>&lt;/style&gt;</li>
+<li><stylename="apptheme.drawerarrowtoggle"parent="base.widget.appcompat.drawerarrowtoggle"></stylename="apptheme.drawerarrowtoggle"parent="base.widget.appcompat.drawerarrowtoggle"></li>
+<li><itemname="color">@android:color/white&lt;/item&gt;</itemname="color"></li>
+<li>&lt;/style&gt;</li>
+<li>&lt;/resources&gt;</li>
 <li>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</li>
 <li><resources></resources></li>
-<li>&lt;colorname=”Indigo_colorPrimaryDark”&gt;#303f9f</li>
-<li>&lt;colorname=”Indigo_colorPrimary”&gt;#3f51b5</li>
-<li>&lt;colorname=”Indigo_nav_color”&gt;#4675FF</li>
-<li></li>
+<li><colorname="indigo_colorprimarydark">#303f9f&lt;/color&gt;</colorname="indigo_colorprimarydark"></li>
+<li><colorname="indigo_colorprimary">#3f51b5&lt;/color&gt;</colorname="indigo_colorprimary"></li>
+<li><colorname="indigo\_nav\_color">#4675FF&lt;/color&gt;</colorname="indigo\_nav\_color"></li>
+<li>&lt;/resources&gt;</li>
 </ol>
 <p>到此就实现了高大上菜单侧滑，最终效果如下（注：在Yosemite上貌似直接Record手机屏幕貌似不起作用，而且动画由于帧率原因无法实时，就先这样看吧~） <a href="http://tutorchen.qiniudn.com/toolbar1.gif" target="_blank" rel="noopener"><img src="http://www.jcodecraeer.com/uploads/20150303/1425353302511647.gif" alt=""></a></p>
 
@@ -766,7 +766,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -777,7 +777,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -788,7 +788,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -910,7 +910,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1536,6 +1536,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

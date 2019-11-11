@@ -461,15 +461,14 @@
       
 
       
-        <h2 id="一、关于-git文件的理解"><a href="#一、关于-git文件的理解" class="headerlink" title="一、关于.git文件的理解"></a>一、关于.git文件的理解</h2><p>修改用户信息，global层级中的修改可以在~/.gitconfig中查询 git config —global user.name “NAME” git config —global user.email “EMAIL”   git status 可以让我们时刻掌握仓库当前的状态。 git diff <filename> 可以查看文件历史变更。 git add <filename> 把文件添加到仓库 git commit -m &lt;msg_string&gt; 把文件提交到仓库 git log 可以让我们查看历史记录(打印出的一串随机码是COMMIT ID)   在GIT中HEAD表示当前版本，上个版本是HEAD^，上上个版本是HEAD^^，如果是上100个版本那就是HEAD~100。 git reset —hard HEAD^ 可以回退到上一个版本 git reflog 在你反悔的时候可以用这个命令查找回退之前版本的COMMIT ID   工作区(Working Directory)是指在电脑里能看到的目录。 版本库(Repository)是指在工作区有一个隐藏目录.git，这个不算是工作区而是GIT的版本库。GIT的版本库里存了很多东西，其中最重要的就是称为stage或者叫做index的暂存区，其中还有GIT为我们自动创建第一个分支master，以及指向master的一个指针叫HEAD。</filename></filename></p>
+        <h2 id="一、关于-git文件的理解"><a href="#一、关于-git文件的理解" class="headerlink" title="一、关于.git文件的理解"></a>一、关于.git文件的理解</h2><p>修改用户信息，global层级中的修改可以在~/.gitconfig中查询 git config —global user.name “NAME” git config —global user.email “EMAIL”   git status 可以让我们时刻掌握仓库当前的状态。 git diff <filename> 可以查看文件历史变更。 git add <filename> 把文件添加到仓库 git commit -m <msg_string> 把文件提交到仓库 git log 可以让我们查看历史记录(打印出的一串随机码是COMMIT ID)   在GIT中HEAD表示当前版本，上个版本是HEAD^，上上个版本是HEAD^^，如果是上100个版本那就是HEAD~100。 git reset —hard HEAD^ 可以回退到上一个版本 git reflog 在你反悔的时候可以用这个命令查找回退之前版本的COMMIT ID   工作区(Working Directory)是指在电脑里能看到的目录。 版本库(Repository)是指在工作区有一个隐藏目录.git，这个不算是工作区而是GIT的版本库。GIT的版本库里存了很多东西，其中最重要的就是称为stage或者叫做index的暂存区，其中还有GIT为我们自动创建第一个分支master，以及指向master的一个指针叫HEAD。</msg_string></filename></filename></p>
 <p><img src="http://pic.aclear.top/理解.git文件以及GIT图形插件.png" alt="dream"> 可以简单的理解为需要提交的文件修改通通放到暂存区，然后一次性提交暂存区的所有修改。每次commit提交仅会提交暂存区的文件，所以如果没有使用git add的话直接commit就无影响了。  </p>
 <p>注意 无论是在AS等Jetbrain家族平台的任何Git控制插件——我们都可以这样做：</p>
 <p>暂存区：防止 误操作；暂时未开发完成-随时保存0-放在放在暂存区里面！</p>
-<pre><code>保护工作区和版本区 ； 分支处理
-</code></pre><p>#注意  红的是工作区！   绿色的是  经过add  到暂存区的！</p>
-<p>工作区/修改/删除</p>
+<pre><code>          保护工作区和版本区 ； 分支处理
+</code></pre><h1 id="注意-红的是工作区！-绿色的是-经过add-到暂存区的！"><a href="#注意-红的是工作区！-绿色的是-经过add-到暂存区的！" class="headerlink" title="注意  红的是工作区！   绿色的是  经过add  到暂存区的！"></a>注意  红的是工作区！   绿色的是  经过add  到暂存区的！</h1><p>工作区/修改/删除</p>
 <h2 id="二、git-commit-m-与-git-commit-am-的区别"><a href="#二、git-commit-m-与-git-commit-am-的区别" class="headerlink" title="二、git commit -m 与 git commit -am 的区别"></a>二、git commit -m 与 git commit -am 的区别</h2><p>字面解释的话，git commit -m用于提交暂存区的文件；git commit -am用于提交跟踪过的文件 要理解它们的区别，首先要明白git的文件状态变化周期，如下图所示<br><img src="https://segmentfault.com/img/bVLFkG?w=500&amp;h=317" alt="">  </p>
-<p><img src="https://segmentfault.com/img/bVLFkG?w=500&amp;h=317/view" alt=""><img src="http://www.jiahaozhang.net/wp-content/uploads/2017/11/git-file-lifecicle-1.png" alt=""> 工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区 下面以一个实例说明 在项目文件夹中新增一个文件如’a.txt’时，该文件处于untracked未跟踪状态。未跟踪状态的文件是无法提交的 <img src="https://segmentfault.com/img/bVLFlT?w=542&amp;h=131" alt=""> 接下来，使用git add a.txt，使其变成已跟踪状态 <img src="https://segmentfault.com/img/bVLFlY?w=455&amp;h=206" alt=""> 这时，如果使用git commit -m ‘add a.txt’就可以顺利提交了 <img src="https://segmentfault.com/img/bVLFl4?w=546&amp;h=196" alt=""> 但是，git commit -m 和 git commit -am的区别在哪里？在于a.txt文件修改之后的处理 下面，向a.txt添加内容’a’ <img src="https://segmentfault.com/img/bVLFml?w=537&amp;h=197" alt=""> 文件a.txt处于已跟踪，但未暂存状态。这时，如果使用git commit -m是无法提交最新版本的a.txt的，提交的只是最开始空内容的旧版本a.txt <img src="https://segmentfault.com/img/bVLFnA?w=534&amp;h=330" alt=""> 要提交新版本a.txt，即内容为’a’的a.txt，则需要使用git add a.txt，将新版本的a.txt放到staged暂存区，然后才能使用git commit -m进行提交 而如果使用git commit -am，则可以省略git add a.txt这一步，因为git commit -am可以提交跟踪过的文件，而a.txt一开始已经被跟踪过了 <img src="https://segmentfault.com/img/bVLFnF?w=548&amp;h=180" alt=""> 总结，使用这两个命令区别的关键就是git add命令 git add命令是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等 我们需要用git add命令来跟踪新文件，但如果使用git commit -am可以省略使用git add命令将已跟踪文件放到暂存区的功能  详情见文档 我的项目开发–项目开发笔记</p>
+<p><img src="https://segmentfault.com/img/bVLFkG?w=500&amp;h=317/view" alt=""><img src="http://www.jiahaozhang.net/wp-content/uploads/2017/11/git-file-lifecicle-1.png" alt=""> 工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区 下面以一个实例说明 在项目文件夹中新增一个文件如’a.txt’时，该文件处于untracked未跟踪状态。未跟踪状态的文件是无法提交的 <img src="https://segmentfault.com/img/bVLFlT?w=542&amp;h=131" alt=""> 接下来，使用git add a.txt，使其变成已跟踪状态 <img src="https://segmentfault.com/img/bVLFlY?w=455&amp;h=206" alt=""> 这时，如果使用git commit -m ‘add a.txt’就可以顺利提交了 <img src="https://segmentfault.com/img/bVLFl4?w=546&amp;h=196" alt=""> 但是，git commit -m 和 git commit -am的区别在哪里？在于a.txt文件修改之后的处理 下面，向a.txt添加内容’a’ <img src="https://segmentfault.com/img/bVLFml?w=537&amp;h=197" alt=""> 文件a.txt处于已跟踪，但未暂存状态。这时，如果使用git commit -m是无法提交最新版本的a.txt的，提交的只是最开始空内容的旧版本a.txt <img src="https://segmentfault.com/img/bVLFnA?w=534&amp;h=330" alt=""> 要提交新版本a.txt，即内容为’a’的a.txt，则需要使用git add a.txt，将新版本的a.txt放到staged暂存区，然后才能使用git commit -m进行提交 而如果使用git commit -am，则可以省略git add a.txt这一步，因为git commit -am可以提交跟踪过的文件，而a.txt一开始已经被跟踪过了 <img src="https://segmentfault.com/img/bVLFnF?w=548&amp;h=180" alt=""> 总结，使用这两个命令区别的关键就是git add命令 git add命令是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等 我们需要用git add命令来跟踪新文件，但如果使用git commit -am可以省略使用git add命令将已跟踪文件放到暂存区的功能  详情见文档 我的项目开发—项目开发笔记</p>
 
       
     </div>
@@ -656,7 +655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -667,7 +666,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -678,7 +677,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -775,7 +774,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、关于-git文件的理解"><span class="nav-number">1.</span> <span class="nav-text">一、关于.git文件的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、git-commit-m-与-git-commit-am-的区别"><span class="nav-number">2.</span> <span class="nav-text">二、git commit -m 与 git commit -am 的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、关于-git文件的理解"><span class="nav-number">1.</span> <span class="nav-text">一、关于.git文件的理解</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#注意-红的是工作区！-绿色的是-经过add-到暂存区的！"><span class="nav-number"></span> <span class="nav-text">注意  红的是工作区！   绿色的是  经过add  到暂存区的！</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、git-commit-m-与-git-commit-am-的区别"><span class="nav-number">1.</span> <span class="nav-text">二、git commit -m 与 git commit -am 的区别</span></a></li></ol></li></div>
             
 
           </div>
@@ -816,7 +815,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1442,6 +1441,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

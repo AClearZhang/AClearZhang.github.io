@@ -450,13 +450,14 @@
       
 
       
-        <p># # ThinkPHP 3.1.2 模板中的基本语法 # 讲师：赵桐正 微博：<a href="http://weibo.com/zhaotongzheng" target="_blank" rel="noopener">http://weibo.com/zhaotongzheng</a> 本节课大纲： 一、导入CSS和JS文件 1、css link js  scr <link rel="stylesheet" type="text/css" href="\_\_PUBLIC\_\_/Css/test.css"> <script src="\_\_PUBLIC\_\_/Js/test.js"></script> 2.import <import type="js" file="Js.test"> //导入Public文件夹下面的Js目录中的test.js文件，import标签可以省略type属性，默认就是js的 <import type="css" file="Css.test"> //可以更改默认文件夹 设置basepath属性 <import type="js" file="Js.my" basepath="./Other"> 3.load //方法可以自动检测导入的文件类型 <load href="\_\_PUBLIC\_\_/Js/test.js"> 二、分支结构 1、if <if condition="$sex eq " 男""=""> 男人是泥巴做的 <else> 女人是水做的 </else></if> <if condition="$age lt 18"> 未成年 <elseif condition="$age eq 18"> 青春年少 <else> 成年 </else></elseif></if> &gt;  gt &lt;  lt == eq &lt;= elt &gt;= egt != neqr === heq    //恒等于 !== nheq //恒不等于   注意这里没有  $  符号！！！case 是双标签的运算符！ 注意 不可以在里面写 html的注释！因为在解析到 php中的时候会出错的Runtime–Cache <switch name="number"> <case value="1">一个和尚挑水吃</case> <case value="2">两个和尚台水吃</case> <case value="3">三个和尚没水吃</case> <default> 这里是默认值 </default></switch> 三、循环结构 1.for <table border="1" width="500"> <for start="10" end="00" name="j" step="-2" comparison="gt"> <tr><td>{$j}</td><td>abc</td></tr> </for> </table> 2.volist <volist name="list" id="v"> {$v.username}<br> </volist> 3.foreach <foreach name="list" item="v" key="k"> {$k}——-{$v}<br> </foreach>   四、特殊标签(其中的变量不用加变量符 1、比较标签 eq或者 equal 等于 neq 或者notequal 不等于 gt 大于 egt 大于等于 lt 小于 elt 小于等于 heq 恒等于 nheq 不恒等于   <lt name="n" value="10">又一次输出了10<else>又一次没有输出10</else></lt> 相当于for的简单用法 2.范围标签 in <in name="n" value="9,10,11,12">在这些数字里面<else>不在这些数字的范围内</else></in> <notin name="n" value="9,10,11,12">在这些数字里面<else>不在这些数字的范围内 between <notbetween name="n" value="1,10">{$n}在1-10之间<else>{$n}不在1到10之间</else></notbetween></else></notin></load></import></import></import></p>
+        <p># # ThinkPHP 3.1.2 模板中的基本语法 # 讲师：赵桐正 微博：<a href="http://weibo.com/zhaotongzheng" target="_blank" rel="noopener">http://weibo.com/zhaotongzheng</a> 本节课大纲： 一、导入CSS和JS文件 1、css link js  scr <link rel="stylesheet" type="text/css" href="\_\_PUBLIC\_\_/Css/test.css"> <script src="\_\_PUBLIC\_\_/Js/test.js"></script> 2.import <import type="js" file="Js.test"> //导入Public文件夹下面的Js目录中的test.js文件，import标签可以省略type属性，默认就是js的 <import type="css" file="Css.test"> //可以更改默认文件夹 设置basepath属性 <import type="js" file="Js.my" basepath="./Other"> 3.load //方法可以自动检测导入的文件类型 <load href="\_\_PUBLIC\_\_/Js/test.js"> 二、分支结构 1、if <if condition="$sex eq " 男""=""> 男人是泥巴做的 <else> 女人是水做的 </else></if> <if condition="$age lt 18"> 未成年 <elseif condition="$age eq 18"> 青春年少 <else> 成年 </else></elseif></if> &gt;  gt &lt;  lt == eq &lt;= elt &gt;= egt != neqr === heq    //恒等于 !== nheq //恒不等于   注意这里没有  $  符号！！！case 是双标签的运算符！ 注意 不可以在里面写 html的注释！因为在解析到 php中的时候会出错的Runtime—Cache <switch name="number"> <case value="1">一个和尚挑水吃</case> <case value="2">两个和尚台水吃</case> <case value="3">三个和尚没水吃</case> <default> 这里是默认值 </default></switch> 三、循环结构 1.for <table border="1" width="500"> <for start="10" end="00" name="j" step="-2" comparison="gt"> <tr><td>{$j}</td><td>abc</td></tr> </for> </table> 2.volist <volist name="list" id="v"> {$v.username}<br> </volist> 3.foreach <foreach name="list" item="v" key="k"> {$k}———-{$v}<br> </foreach>   四、特殊标签(其中的变量不用加变量符 1、比较标签 eq或者 equal 等于 neq 或者notequal 不等于 gt 大于 egt 大于等于 lt 小于 elt 小于等于 heq 恒等于 nheq 不恒等于   <lt name="n" value="10">又一次输出了10<else>又一次没有输出10</else></lt> 相当于for的简单用法 2.范围标签 in <in name="n" value="9,10,11,12">在这些数字里面<else>不在这些数字的范围内</else></in> <notin name="n" value="9,10,11,12">在这些数字里面<else>不在这些数字的范围内&lt;/in&gt; between <notbetween name="n" value="1,10">{$n}在1-10之间<else>{$n}不在1到10之间&lt;/between&gt;</else></notbetween></else></notin></load></import></import></import></p>
 <p>egt elt  范围!<br>下面的这些了解即可！<br> 3.present<br> 标签来判断模板变量是否已经赋值，<br> <present name="m">m有赋值<else>m没有赋值</else></present><br> 4.Empty<br> empty标签判断模板变量是否为空，<br> <empty name="n">n为空赋值<else>n有值</else></empty><br> 5.Defined<br> 判断常量是否已经定义<br> 6.Define<br> 在模板中定义常量<br> 7.Assing<br> 模板中变量赋值<br>Assign标签// &lt;![CDATA[<br>$(function(){ $(window).resize(function(){ $(‘.book-content’).css(‘min-height’, $(window).height() - 130); }).resize(); //表格隔行变色 $(‘table’).TableColor(); //代码高亮 prettyPrint(); }); //表格隔行变色插件 $.fn.TableColor = function(){ return $(this).each(function(){ if(this.nodeName.toLowerCase() != ‘table’) return; var self = $(this); self.find(‘tr’).each(function(index) { var _this = $(this); if(index % 2 == 0){ _this.addClass(‘add’); } else { _this.addClass(‘even’); } _this.hover( function(){_this.addClass(‘hover’)}, function(){_this.removeClass(‘hover’)} ); }); }); }<br>// ]]&gt;</p>
-<p>&lt;assignname=”var”value=”123”/&gt;</p>
+<assignname="var"value="123">
+
 <p>五、其他标签使用 最好不要直接在模板中  使用php标签！！！因为这里是框架开发！一定要注意！ 使用PHP代码// &lt;![CDATA[ $(function(){ $(window).resize(function(){ $(‘.book-content’).css(‘min-height’, $(window).height() - 130); }).resize(); //表格隔行变色 $(‘table’).TableColor(); //代码高亮 prettyPrint(); }); //表格隔行变色插件 $.fn.TableColor = function(){ return $(this).each(function(){ if(this.nodeName.toLowerCase() != ‘table’) return; var self = $(this); self.find(‘tr’).each(function(index) { var _this = $(this); if(index % 2 == 0){ _this.addClass(‘add’); } else { _this.addClass(‘even’); } _this.hover( function(){_this.addClass(‘hover’)}, function(){_this.removeClass(‘hover’)} ); }); }); } // ]]&gt;</p>
 <p>简而言之，在PHP标签里面不能再使用PHP本身不支持的代码！！！ 如果设置了TMPL_DENY_PHP参数为true，就不能在模板中使用原生的PHP代码，但是仍然支持PHP标签输出！（了解）</p>
 <p>1、在模板中直接使用PHP代码 <php> echo “我是赵桐正” </php> 2、建议更改左右定界符 在配置文件中改变 ‘TMPL_L_DELIM’=&gt;’&lt;{‘, //修改左定界符 ‘TMPL_R_DELIM’=&gt;’}&gt;’, //修改右定界符</p>
-
+</assignname="var"value="123">
       
     </div>
     
@@ -633,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +645,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -655,7 +656,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -777,7 +778,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1403,6 +1404,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

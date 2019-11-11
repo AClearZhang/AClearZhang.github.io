@@ -452,14 +452,12 @@
       
         <p><a href="http://qing0991.blog.51cto.com/1640542/1770756" target="_blank" rel="noopener">他人原创</a>自学非转载</p>
 <p><strong>1、下载libsvm 3.22，更新日期为2016年12月</strong> <a href="https://www.csie.ntu.edu.tw/%7Ecjlin/libsvm/" target="_blank" rel="noopener">https://www.csie.ntu.edu.tw/~cjlin/libsvm/</a></p>
-<h3 id="Download-LIBSVM"><a href="#Download-LIBSVM" class="headerlink" title="Download LIBSVM"></a>Download LIBSVM</h3><p>The current release (Version 3.22, December 2016) of <strong>LIBSVM</strong> can be obtained by downloading the <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm+zip" target="_blank" rel="noopener">zip file</a> or <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm+tar.gz" target="_blank" rel="noopener">tar.gz</a> file. You can also check this <a href="https://github.com/cjlin1/libsvm" target="_blank" rel="noopener">github</a> directory. Please e-mail us if you have problems to download the file.The package includes the source code of the library in C++ and Java, and a simple program for scaling training data. A README file with detailed explanation is provided. For <strong>MS Windows</strong> users, there is a sub-directory in the zip file containing binary executable files. Precompiled Java class archive is also included. Please read the <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm/COPYRIGHT" target="_blank" rel="noopener">COPYRIGHT</a> notice before using <strong>LIBSVM</strong>. <strong>2、添加路径</strong> 将工具包放到任何地方均可（建议放在D:\Program Files\MATLAB\R2015b\toolbox\matlab下），将工具包添加到Matlab的搜索路径，Set Path-&gt;add with subfolders-&gt;save。 备注：保证D:\Program Files\MATLAB\R2016b\toolbox\matlab\libsvm-3.22和D:\Program Files\MATLAB\R2015b\toolbox\matlab\libsvm-3.22\matlab都在路径下。 <strong>3、编译</strong> 确保安装有Visual Studio 2015版，matlab当前工作目录切换到<strong>D:\Program Files\MATLAB\R2015b\toolbox\matlab\libsvm-3.22</strong>下，在matlab命令行窗口下输入： &gt;&gt;mex -setup</p>
+<h3 id="Download-LIBSVM"><a href="#Download-LIBSVM" class="headerlink" title="Download LIBSVM"></a>Download LIBSVM</h3><p>The current release (Version 3.22, December 2016) of <strong>LIBSVM</strong> can be obtained by downloading the <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm+zip" target="_blank" rel="noopener">zip file</a> or <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm+tar.gz" target="_blank" rel="noopener">tar.gz</a> file. You can also check this <a href="https://github.com/cjlin1/libsvm" target="_blank" rel="noopener">github</a> directory. Please e-mail us if you have problems to download the file.The package includes the source code of the library in C++ and Java, and a simple program for scaling training data. A README file with detailed explanation is provided. For <strong>MS Windows</strong> users, there is a sub-directory in the zip file containing binary executable files. Precompiled Java class archive is also included. Please read the <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm/COPYRIGHT" target="_blank" rel="noopener">COPYRIGHT</a> notice before using <strong>LIBSVM</strong>. <strong>2、添加路径</strong> 将工具包放到任何地方均可（建议放在D:\\Program Files\\MATLAB\\R2015b\\toolbox\\matlab下），将工具包添加到Matlab的搜索路径，Set Path-&gt;add with subfolders-&gt;save。 备注：保证D:\\Program Files\\MATLAB\\R2016b\\toolbox\\matlab\\libsvm-3.22和D:\\Program Files\\MATLAB\\R2015b\\toolbox\\matlab\\libsvm-3.22\\matlab都在路径下。 <strong>3、编译</strong> 确保安装有Visual Studio 2015版，matlab当前工作目录切换到<strong>D:\\Program Files\\MATLAB\\R2015b\\toolbox\\matlab\\libsvm-3.22</strong>下，在matlab命令行窗口下输入： &gt;&gt;mex -setup</p>
 <blockquote>
-<p>> mex -setup<br>MEX 配置为使用 ‘Microsoft Visual C++ 2015 Professional (C)’ 以进行 C 语言编译。<br>警告: MATLAB C 和 Fortran API 已更改，现可支持<br>    包含 2^32-1 个以上元素的 MATLAB 变量。不久以后，<br>     您需要更新代码以利用<br>     新的 API。您可以在以下网址找到相关详细信息:<br>     <a href="http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。" target="_blank" rel="noopener">http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。</a><br>要选择不同的语言，请从以下选项中选择一种命令:<br> mex -setup C++<br> mex -setup FORTRAN<br>> mex -setup C++<br>MEX 配置为使用 ‘Microsoft Visual C++ 2015 Professional’ 以进行 C++ 语言编译。<br>警告: MATLAB C 和 Fortran API 已更改，现可支持<br>    包含 2^32-1 个以上元素的 MATLAB 变量。不久以后，<br>     您需要更新代码以利用<br>     新的 API。您可以在以下网址找到相关详细信息:<br>     <a href="http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。" target="_blank" rel="noopener">http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。</a></p>
-<blockquote>
+<p>> mex -setup<br>MEX 配置为使用 ‘Microsoft Visual C++ 2015 Professional (C)’ 以进行 C 语言编译。<br>警告: MATLAB C 和 Fortran API 已更改，现可支持<br>    包含 2^32-1 个以上元素的 MATLAB 变量。不久以后，<br>     您需要更新代码以利用<br>     新的 API。您可以在以下网址找到相关详细信息:<br>     <a href="http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。" target="_blank" rel="noopener">http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。</a><br>要选择不同的语言，请从以下选项中选择一种命令:<br> mex -setup C++<br> mex -setup FORTRAN<br>> mex -setup C++<br>MEX 配置为使用 ‘Microsoft Visual C++ 2015 Professional’ 以进行 C++ 语言编译。<br>警告: MATLAB C 和 Fortran API 已更改，现可支持<br>    包含 2^32-1 个以上元素的 MATLAB 变量。不久以后，<br>     您需要更新代码以利用<br>     新的 API。您可以在以下网址找到相关详细信息:<br>     <a href="http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。" target="_blank" rel="noopener">http://www.mathworks.com/help/matlab/matlab_external/upgrading-mex-files-to-use-64-bit-api.html。</a><br>&gt;</p>
 </blockquote>
-</blockquote>
-<p><strong>4、编译文件</strong> matlab当前工作目录切换到<strong>D:\Program Files\MATLAB\R2015b\toolbox\matlab\libsvm-3.22\matlab</strong>目录下，在matlab命令行窗口下输入命令，若显示MEX completed successfully.表示安装成功： &gt;&gt;make <strong>5、测试</strong> 在libsvm-3.21可以看到hear_scale 文件，在命令行输入下面几行代码 clear; [label_vector, instance_matrix] =libsvmread(‘heart_scale’); model = svmtrain(label_vector, instance_matrix); [predicted_label, accuracy, prob_estimates] = svmpredict(label_vector, instance_matrix, model, ‘b’); 备注参考：  </p>
-<p>options:<br>-s svm_type : set type of SVM (default 0)<br>    0 – C-SVC<br>    1 – nu-SVC<br>    2 – one-class SVM<br>    3 – epsilon-SVR<br>    4 – nu-SVR<br>-t kernel_type : set type of kernel function (default 2)<br>    0 – linear: u’<em>v<br>    1 – polynomial: (gamma\</em>u’*v + coef0)^degree<br>    2 – radial basis function: exp(-gamma<em>|u-v|^2)<br>    3 – sigmoid: tanh(gamma\</em>u’*v + coef0)<br>-d degree : set degree in kernel function (default 3)<br>-g gamma : set gamma in kernel function (default 1/num_features)<br>-r coef0 : set coef0 in kernel function (default 0)<br>-c cost : set the parameter C of C-SVC, epsilon-SVR, and nu-SVR (default 1)<br>-n nu : set the parameter nu of nu-SVC, one-class SVM, and nu-SVR (default 0.5)<br>-p epsilon : set the epsilon in loss function of epsilon-SVR (default 0.1)<br>-m cachesize : set cache memory size in MB (default 100)<br>-e epsilon : set tolerance of termination criterion (default 0.001)<br>-h shrinking: whether to use the shrinking heuristics, 0 or 1 (default 1)<br>-b probability_estimates: whether to train a SVC or SVR model for probability estimates, 0 or 1 (default 0)<br>-wi weight: set the parameter C of class i to weight*C, for C-SVC (default 1)<br>The k in the -g option means the number of attributes in the input data.</p>
+<p><strong>4、编译文件</strong> matlab当前工作目录切换到<strong>D:\\Program Files\\MATLAB\\R2015b\\toolbox\\matlab\\libsvm-3.22\\matlab</strong>目录下，在matlab命令行窗口下输入命令，若显示MEX completed successfully.表示安装成功： &gt;&gt;make <strong>5、测试</strong> 在libsvm-3.21可以看到hear_scale 文件，在命令行输入下面几行代码 clear; [label_vector, instance_matrix] =libsvmread(‘heart_scale’); model = svmtrain(label_vector, instance_matrix); [predicted_label, accuracy, prob_estimates] = svmpredict(label_vector, instance_matrix, model, ‘b’); 备注参考：  </p>
+<p>options:<br>-s svm_type : set type of SVM (default 0)<br>    0 — C-SVC<br>    1 — nu-SVC<br>    2 — one-class SVM<br>    3 — epsilon-SVR<br>    4 — nu-SVR<br>-t kernel_type : set type of kernel function (default 2)<br>    0 — linear: u’<em>v<br>    1 — polynomial: (gamma\</em>u’*v + coef0)^degree<br>    2 — radial basis function: exp(-gamma<em>|u-v|^2)<br>    3 — sigmoid: tanh(gamma\</em>u’*v + coef0)<br>-d degree : set degree in kernel function (default 3)<br>-g gamma : set gamma in kernel function (default 1/num_features)<br>-r coef0 : set coef0 in kernel function (default 0)<br>-c cost : set the parameter C of C-SVC, epsilon-SVR, and nu-SVR (default 1)<br>-n nu : set the parameter nu of nu-SVC, one-class SVM, and nu-SVR (default 0.5)<br>-p epsilon : set the epsilon in loss function of epsilon-SVR (default 0.1)<br>-m cachesize : set cache memory size in MB (default 100)<br>-e epsilon : set tolerance of termination criterion (default 0.001)<br>-h shrinking: whether to use the shrinking heuristics, 0 or 1 (default 1)<br>-b probability_estimates: whether to train a SVC or SVR model for probability estimates, 0 or 1 (default 0)<br>-wi weight: set the parameter C of class i to weight*C, for C-SVC (default 1)<br>The k in the -g option means the number of attributes in the input data.</p>
 <h2 id="四-使用"><a href="#四-使用" class="headerlink" title="四 使用"></a>四 使用</h2><p>关于LIBSVM在Matlab中的使用，可以参看软件包中matlab目录下的README文件，这里对里面内容做一个翻译和一些细节的讲解。</p>
 <h3 id="1-训练"><a href="#1-训练" class="headerlink" title="1. 训练"></a>1. 训练</h3><p>libsvm函数用于对训练集的数据进行训练，得到训练好的模型。 <strong>model = libsvmtrain(training_label_vector, training_instance_matrix [, ‘libsvm_options’]);</strong> 这个函数有三个参数，其中</p>
 <ul>
@@ -698,7 +696,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -709,7 +707,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +718,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -858,7 +856,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1484,6 +1482,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

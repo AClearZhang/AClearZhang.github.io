@@ -487,34 +487,62 @@
 <h2 id="5-2代码"><a href="#5-2代码" class="headerlink" title="5.2代码"></a>5.2代码</h2><p>AndroidManifest.xml</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bundletest" android:versioncode="1" android:versionname="1.0"><br>    <application android:icon="@drawable/icon" android:label="@string/app_name"><br>        <activity android:name=".Bundle01" android:label="@string/app_name"><br>            <intent-filter><br>                <action android:name="android.intent.action.MAIN"><br>                <category android:name="android.intent.category.LAUNCHER"><br>            </category></action></intent-filter><br>        </activity><br>        <activity android:name=".Bundle02"> </activity><br>    </application><br>    <uses-sdk android:minsdkversion="11"><br></uses-sdk></manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bundletest" android:versioncode="1" android:versionname="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".Bundle01" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN">
+                <category android:name="android.intent.category.LAUNCHER">
+            </category></action></intent-filter>
+        </activity>
+        <activity android:name=".Bundle02"> </activity>
+    </application>
+    <uses-sdk android:minsdkversion="11">
+</uses-sdk></manifest>
 
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>main.xml</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent"><br>    <textview android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/app_01"><br>    <button android:id="@+id/btnBasic" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_basic"><br>    </button><button android:id="@+id/btnPar" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_par"><br>    </button><button android:id="@+id/btnSer" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_ser"><br></button></textview></linearlayout>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent">
+    <textview android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/app_01">
+    <button android:id="@+id/btnBasic" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_basic">
+    </button><button android:id="@+id/btnPar" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_par">
+    </button><button android:id="@+id/btnSer" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text_ser">
+</button></textview></linearlayout>
 
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>main2.xml</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent"><br>    <textview android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/app_02"><br>    <button android:id="@+id/btnBack" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text\_jump\_back"><br></button></textview></linearlayout>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout\_width="fill\_parent" android:layout\_height="fill\_parent">
+    <textview android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/app_02">
+    <button android:id="@+id/btnBack" android:layout\_width="fill\_parent" android:layout\_height="wrap\_content" android:text="@string/text\_jump\_back">
+</button></textview></linearlayout>
 
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>strings.xml</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
-<resources><br>    <string name="hello">Hello MyBundleTest!</string><br>    <string name="app_name">MyBundleTest</string><br>    <string name="app\_01">Bundle_01</string><br>    <string name="app\_02">Bundle_02</string><br>    <string name="text_basic">Bundle Basic Data</string><br>    <string name="text_par">Bundle Parcelable Data</string><br>    <string name="text_ser">Bundle Seriable Data</string><br>    <string name="text\_jump\_back">Jump Back to Bundler01</string><br></resources>
+<resources>
+    <string name="hello">Hello MyBundleTest!</string>
+    <string name="app_name">MyBundleTest</string>
+    <string name="app\_01">Bundle\_01</string>
+    <string name="app\_02">Bundle\_02</string>
+    <string name="text_basic">Bundle Basic Data</string>
+    <string name="text_par">Bundle Parcelable Data</string>
+    <string name="text_ser">Bundle Seriable Data</string>
+    <string name="text\_jump\_back">Jump Back to Bundler01</string>
+</resources>
 
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>Bundle01.java</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>package com.bundletest;<br>import android.app.Activity;<br>import android.os.Bundle;<br>import android.view.View;<br>import android.view.View.OnClickListener;<br>import android.widget.Button;<br>import android.content.Intent;<br>import android.util.Log;<br>public class Bundle01 extends Activity implements View.OnClickListener{<br>    private static final String TAG = “skywang–&gt;Bundle01”;<br>    private Button mBtnBasic = null;<br>    private Button mBtnPar = null;<br>    private Button mBtnSer = null;<br>    @Override<br>    public void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.main);<br>        mBtnBasic = (Button) findViewById(R.id.btnBasic);<br>        mBtnBasic.setOnClickListener(this);<br>        mBtnPar = (Button) findViewById(R.id.btnPar);<br>        mBtnPar.setOnClickListener(this);<br>        mBtnSer = (Button) findViewById(R.id.btnSer);<br>        mBtnSer.setOnClickListener(this);<br>    }<br>    @Override<br>    public void onClick(View view) {<br>        switch (view.getId()) {<br>            case R.id.btnBasic:<br>                sendBasicDataThroughBundle();<br>                break;<br>            case R.id.btnPar:<br>                sendParcelableDataThroughBundle();<br>                break;<br>            case R.id.btnSer:<br>                sendSeriableDataThroughBundle();<br>                break;<br>            default:<br>                break;<br>        }<br>    }<br>    // sent basic data, such as int, strin, etc…  through bundle<br>    private void sendBasicDataThroughBundle(){<br>        // “com.test” is the package name of the destination class<br>        // “com.test.Activity02” is the full class path of the destination class<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Bundle bundle = new Bundle();<br>        bundle.putString(“name”, “skywang”);<br>        bundle.putInt(“height”, 175);<br>        intent.putExtras(bundle);<br>        startActivity(intent);<br>        // end current class<br>        finish();<br>    }<br>    // sent object through Pacelable<br>    private void sendParcelableDataThroughBundle(){<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Book mBook = new Book();<br>        mBook.setBookName(“Android”);<br>        mBook.setAuthor(“skywang”);<br>        mBook.setPublishTime(2013);<br>        Bundle mBundle = new Bundle();<br>        mBundle.putParcelable(“ParcelableValue”, mBook);<br>        intent.putExtras(mBundle);<br>        startActivity(intent);<br>        finish();<br>    }<br>    // sent object through seriable<br>    private void sendSeriableDataThroughBundle(){<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Person mPerson = new Person();<br>        mPerson.setName(“skywang”);<br>        mPerson.setAge(24);<br>        Bundle mBundle = new Bundle();<br>        mBundle.putSerializable(“SeriableValue”,mPerson);<br>        intent.putExtras(mBundle);<br>        startActivity(intent);<br>        finish();<br>    }<br>}</p>
+<p>package com.bundletest;<br>import android.app.Activity;<br>import android.os.Bundle;<br>import android.view.View;<br>import android.view.View.OnClickListener;<br>import android.widget.Button;<br>import android.content.Intent;<br>import android.util.Log;<br>public class Bundle01 extends Activity implements View.OnClickListener{<br>    private static final String TAG = “skywang—&gt;Bundle01”;<br>    private Button mBtnBasic = null;<br>    private Button mBtnPar = null;<br>    private Button mBtnSer = null;<br>    @Override<br>    public void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.main);<br>        mBtnBasic = (Button) findViewById(R.id.btnBasic);<br>        mBtnBasic.setOnClickListener(this);<br>        mBtnPar = (Button) findViewById(R.id.btnPar);<br>        mBtnPar.setOnClickListener(this);<br>        mBtnSer = (Button) findViewById(R.id.btnSer);<br>        mBtnSer.setOnClickListener(this);<br>    }<br>    @Override<br>    public void onClick(View view) {<br>        switch (view.getId()) {<br>            case R.id.btnBasic:<br>                sendBasicDataThroughBundle();<br>                break;<br>            case R.id.btnPar:<br>                sendParcelableDataThroughBundle();<br>                break;<br>            case R.id.btnSer:<br>                sendSeriableDataThroughBundle();<br>                break;<br>            default:<br>                break;<br>        }<br>    }<br>    // sent basic data, such as int, strin, etc…  through bundle<br>    private void sendBasicDataThroughBundle(){<br>        // “com.test” is the package name of the destination class<br>        // “com.test.Activity02” is the full class path of the destination class<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Bundle bundle = new Bundle();<br>        bundle.putString(“name”, “skywang”);<br>        bundle.putInt(“height”, 175);<br>        intent.putExtras(bundle);<br>        startActivity(intent);<br>        // end current class<br>        finish();<br>    }<br>    // sent object through Pacelable<br>    private void sendParcelableDataThroughBundle(){<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Book mBook = new Book();<br>        mBook.setBookName(“Android”);<br>        mBook.setAuthor(“skywang”);<br>        mBook.setPublishTime(2013);<br>        Bundle mBundle = new Bundle();<br>        mBundle.putParcelable(“ParcelableValue”, mBook);<br>        intent.putExtras(mBundle);<br>        startActivity(intent);<br>        finish();<br>    }<br>    // sent object through seriable<br>    private void sendSeriableDataThroughBundle(){<br>        Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle02”);<br>        Person mPerson = new Person();<br>        mPerson.setName(“skywang”);<br>        mPerson.setAge(24);<br>        Bundle mBundle = new Bundle();<br>        mBundle.putSerializable(“SeriableValue”,mPerson);<br>        intent.putExtras(mBundle);<br>        startActivity(intent);<br>        finish();<br>    }<br>}</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>Bundle02.java</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>package com.bundletest;<br>import android.app.Activity;<br>import android.os.Bundle;<br>import android.view.View;<br>import android.view.View.OnClickListener;<br>import android.widget.Button;<br>import android.content.Intent;<br>import android.util.Log;<br>public class Bundle02 extends Activity implements View.OnClickListener {<br>    private static final String TAG = “skywang–&gt;Bundle02”;<br>    private Button mBtnBack = null;<br>    @Override<br>    public void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.main2);<br>        mBtnBack = (Button) findViewById(R.id.btnBack);<br>        mBtnBack.setOnClickListener(this);<br>        receiveBasicData();<br>        receiveParcelableData();<br>        receiveSeriableData();<br>    }<br>    private void receiveBasicData() {<br>        Bundle bundle = this.getIntent().getExtras();<br>        String name = bundle.getString(“name”);<br>        int height = bundle.getInt(“height”);<br>        if (name != null &amp;&amp; height != 0)<br>        Log.d(TAG, “receice basic data – “ +<br>                   “name=”+name+”, height=”+height);<br>    }<br>    private void receiveParcelableData() {<br>        Book mBook = (Book)getIntent().getParcelableExtra(“ParcelableValue”);<br>        if (mBook != null)<br>            Log.d(TAG, “receice parcel data – “ +<br>                       “Book name is: “ + mBook.getBookName()+”, “+<br>                       “Author is: “ + mBook.getAuthor() + “, “+<br>                       “PublishTime is: “ + mBook.getPublishTime());<br>    }<br>    private void receiveSeriableData() {<br>        Person mPerson = (Person)getIntent().getSerializableExtra(“SeriableValue”);<br>        if (mPerson != null)<br>            Log.d(TAG, “receice serial data – “ +<br>                       “The name is:” + mPerson.getName() + “, “+<br>                       “age is:” + mPerson.getAge());<br>    }<br>    @Override<br>    public void onClick(View view) {<br>        switch (view.getId()) {<br>            case R.id.btnBack:<br>            {<br>                // “com.test” is the package name of the destination class<br>                // “com.test.Activity01” is the full class path of the destination class<br>                Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle01”);<br>                startActivity(intent);<br>                // end current class<br>                finish();<br>            }<br>                break;<br>            default:<br>                break;<br>        }<br>    }<br>}</p>
+<p>package com.bundletest;<br>import android.app.Activity;<br>import android.os.Bundle;<br>import android.view.View;<br>import android.view.View.OnClickListener;<br>import android.widget.Button;<br>import android.content.Intent;<br>import android.util.Log;<br>public class Bundle02 extends Activity implements View.OnClickListener {<br>    private static final String TAG = “skywang—&gt;Bundle02”;<br>    private Button mBtnBack = null;<br>    @Override<br>    public void onCreate(Bundle savedInstanceState) {<br>        super.onCreate(savedInstanceState);<br>        setContentView(R.layout.main2);<br>        mBtnBack = (Button) findViewById(R.id.btnBack);<br>        mBtnBack.setOnClickListener(this);<br>        receiveBasicData();<br>        receiveParcelableData();<br>        receiveSeriableData();<br>    }<br>    private void receiveBasicData() {<br>        Bundle bundle = this.getIntent().getExtras();<br>        String name = bundle.getString(“name”);<br>        int height = bundle.getInt(“height”);<br>        if (name != null &amp;&amp; height != 0)<br>        Log.d(TAG, “receice basic data — “ +<br>                   “name=”+name+”, height=”+height);<br>    }<br>    private void receiveParcelableData() {<br>        Book mBook = (Book)getIntent().getParcelableExtra(“ParcelableValue”);<br>        if (mBook != null)<br>            Log.d(TAG, “receice parcel data — “ +<br>                       “Book name is: “ + mBook.getBookName()+”, “+<br>                       “Author is: “ + mBook.getAuthor() + “, “+<br>                       “PublishTime is: “ + mBook.getPublishTime());<br>    }<br>    private void receiveSeriableData() {<br>        Person mPerson = (Person)getIntent().getSerializableExtra(“SeriableValue”);<br>        if (mPerson != null)<br>            Log.d(TAG, “receice serial data — “ +<br>                       “The name is:” + mPerson.getName() + “, “+<br>                       “age is:” + mPerson.getAge());<br>    }<br>    @Override<br>    public void onClick(View view) {<br>        switch (view.getId()) {<br>            case R.id.btnBack:<br>            {<br>                // “com.test” is the package name of the destination class<br>                // “com.test.Activity01” is the full class path of the destination class<br>                Intent intent = new Intent().setClassName(“com.bundletest”, “com.bundletest.Bundle01”);<br>                startActivity(intent);<br>                // end current class<br>                finish();<br>            }<br>                break;<br>            default:<br>                break;<br>        }<br>    }<br>}</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
 <p>Book.java</p>
 <p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
@@ -711,7 +739,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -722,7 +750,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -733,7 +761,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -871,7 +899,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1497,6 +1525,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

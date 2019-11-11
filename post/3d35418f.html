@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  299
                 </span>
               
 
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -451,7 +451,7 @@
       
 
       
-        <p>一个对象的this指针并不是对象本身的一部分，不会影响sizeof(对象)的结果。this作用域是在类内部，当在类的非静态成员函数中访问类的非静态成员的时候，编译器会自动将对象本身的地址作为一个隐含参数传递给函数。也就是说，即使你没有写上this指针，编译器在编译的时候也是加上this的，它作为非静态成员函数的隐含形参，对各成员的访问均通过this进行。 例如，调用date.SetMonth(9) &lt;===&gt; SetMonth(&amp;date, 9)，this帮助完成了这一转换 . this指针是类的一个自动生成、自动隐藏的私有成员，它存在于类的非静态成员函数中，指向被调用函数所在的对象。全局仅有一个this指针，当一个对象被创建时，this指针就存放指向对象数据的首地址。 根据以下程序来说明this指针 #include<iostream> using namespace std; class Point { private: int x,y; public: Point(int a,int b) { x=a; y=b; } void MovePoint(int a,int b) { x+=a; y+=b; } void print() { cout&lt;&lt;”x=”&lt;&lt;x&lt;&lt;”y=”&lt;&lt;y&lt;&lt;endl; } }; int main() { Point point1(10,10); point1.MovePoint(2,2); point1.print(); return 0; } 当对象point1调用MovePoint(2,2)函数时，即将point1对象的地址传递给了this指针。 MovePoint函数的原型应该是 void MovePoint( Point *this, int a, int b);第一个参数是指向该类对象的一个指针，我们在定义成员函数时没看见是因为这个参数在类中是隐含的。这样point1的地址传递给了this，所以在MovePoint函数中便显式的写成： void MovePoint(int a, int b) { this-&gt;x +=a; this-&gt; y+= b;} 即可以知道，point1调用该函数后，也就是point1的数据成员被调用并更新了值。 4. 关于this指针的一个经典回答: 当你进入一个房子后， 你可以看见桌子、椅子、地板等， 但是房子你是看不到全貌了。 对于一个类的实例来说， 你可以看到它的成员函数、成员变量， 但是实例本身呢？ this是一个指针，它时时刻刻指向你这个实例本身 5.alarm this指针的含义及其用法: 1. this指针是一个隐含于每一个成员函数中的特殊指针。它指向正在被该成员函数操作的那个对象。 2. 当对一个对象调用成员函数时，编译程序先将对象的地址赋给this指针，然后调用成员函数，每次成员函数存取数据成员时，由隐含使用this指针。 3. 当一个成员函数被调用时，自动向它传递一个隐含的参数，该参数是一个指向这个成员函数所在的对象的指针。 4. 在C++中，this指针被隐含地声明为: X *const this,这意味着不能给this 指针赋值； 在X类的const成员函数中，this指针的类型为：const X* const, 这说明this指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）; 5. 由于this并不是一个常规变量，所以，不能取得this的地址。 6. 在以下场景中，经常需要显式引用this指针 （1） 为实现对象的链式引用; （2） 为避免对同一对象进行赋值操作; （3） 在实现一些数据结构时，如list.   7.成员函数后面加const，没有const，以及使用的区别函数后面加const 编译器会自动给每一个函数加一个this指针。在一个类的函数后面加上const后，就表明这个函数是不能改变类的成员变量的（加了mutable修饰的除外,后面有讲）。实际上，也就是对这个this指针加上了const修饰。[Report]</iostream></p>
+        <p>一个对象的this指针并不是对象本身的一部分，不会影响sizeof(对象)的结果。this作用域是在类内部，当在类的非静态成员函数中访问类的非静态成员的时候，编译器会自动将对象本身的地址作为一个隐含参数传递给函数。也就是说，即使你没有写上this指针，编译器在编译的时候也是加上this的，它作为非静态成员函数的隐含形参，对各成员的访问均通过this进行。 例如，调用date.SetMonth(9) &lt;===&gt; SetMonth(&amp;date, 9)，this帮助完成了这一转换 . this指针是类的一个自动生成、自动隐藏的私有成员，它存在于类的非静态成员函数中，指向被调用函数所在的对象。全局仅有一个this指针，当一个对象被创建时，this指针就存放指向对象数据的首地址。 根据以下程序来说明this指针 #include<iostream> using namespace std; class Point { private: int x,y; public: Point(int a,int b) { x=a; y=b; } void MovePoint(int a,int b) { x+=a; y+=b; } void print() { cout&lt;&lt;”x=”&lt;<x<<"y="<<y<<endl; }="" };="" int="" main()="" {="" point="" point1(10,10);="" point1.movepoint(2,2);="" point1.print();="" return="" 0;="" 当对象point1调用movepoint(2,2)函数时，即将point1对象的地址传递给了this指针。="" movepoint函数的原型应该是="" void="" movepoint(="" \*this,="" a,="" b);第一个参数是指向该类对象的一个指针，我们在定义成员函数时没看见是因为这个参数在类中是隐含的。这样point1的地址传递给了this，所以在movepoint函数中便显式的写成：="" movepoint(int="" b)="" this-="">x +=a; this-&gt; y+= b;} 即可以知道，point1调用该函数后，也就是point1的数据成员被调用并更新了值。 4. 关于this指针的一个经典回答: 当你进入一个房子后， 你可以看见桌子、椅子、地板等， 但是房子你是看不到全貌了。 对于一个类的实例来说， 你可以看到它的成员函数、成员变量， 但是实例本身呢？ this是一个指针，它时时刻刻指向你这个实例本身 5.alarm this指针的含义及其用法: 1. this指针是一个隐含于每一个成员函数中的特殊指针。它指向正在被该成员函数操作的那个对象。 2. 当对一个对象调用成员函数时，编译程序先将对象的地址赋给this指针，然后调用成员函数，每次成员函数存取数据成员时，由隐含使用this指针。 3. 当一个成员函数被调用时，自动向它传递一个隐含的参数，该参数是一个指向这个成员函数所在的对象的指针。 4. 在C++中，this指针被隐含地声明为: X *const this,这意味着不能给this 指针赋值； 在X类的const成员函数中，this指针的类型为：const X* const, 这说明this指针所指向的这种对象是不可修改的（即不能对这种对象的数据成员进行赋值操作）; 5. 由于this并不是一个常规变量，所以，不能取得this的地址。 6. 在以下场景中，经常需要显式引用this指针 （1） 为实现对象的链式引用; （2） 为避免对同一对象进行赋值操作; （3） 在实现一些数据结构时，如list.   7.成员函数后面加const，没有const，以及使用的区别函数后面加const 编译器会自动给每一个函数加一个this指针。在一个类的函数后面加上const后，就表明这个函数是不能改变类的成员变量的（加了mutable修饰的除外,后面有讲）。实际上，也就是对这个this指针加上了const修饰。[Report]</x<<"y="<<y<<endl;></iostream></p>
 
       
     </div>
@@ -635,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -657,7 +657,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -779,7 +779,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1405,6 +1405,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

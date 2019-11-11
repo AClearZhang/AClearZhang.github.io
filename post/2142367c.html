@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="文件与异常 大纲   File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**); /">
+<meta name="description" content="文件与异常1.  大纲 File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件与异常+字符流+字节流_Java_1027,34">
 <meta property="og:url" content="http://blog.aclear.top/post/2142367c.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="文件与异常 大纲   File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**); /">
+<meta property="og:description" content="文件与异常1.  大纲 File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**);">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://123.206.69.206/wp-content/uploads/2016/10/异常-300x120.png">
 <meta property="og:updated_time" content="2019-10-02T03:40:40.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件与异常+字符流+字节流_Java_1027,34">
-<meta name="twitter:description" content="文件与异常 大纲   File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**); /">
+<meta name="twitter:description" content="文件与异常1.  大纲 File （文件；表示；使用） 文件选择器 （**JFileChooser**） 文件过滤器 （**FileNameExtensionFilter；FileFilter**） 一个类 （**JOptionPane**） 异常 （概念；体系；结构；自定义  2.文件和文件夹表示■java.io.File ■格式 ■File file = new File(**文件名**);">
 <meta name="twitter:image" content="http://123.206.69.206/wp-content/uploads/2016/10/异常-300x120.png">
 
 
@@ -452,10 +452,7 @@
       
 
       
-        <h1 id="文件与异常"><a href="#文件与异常" class="headerlink" title="文件与异常"></a>文件与异常</h1><ol>
-<li><h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2></li>
-</ol>
-<ul>
+        <h1 id="文件与异常"><a href="#文件与异常" class="headerlink" title="文件与异常"></a>文件与异常</h1><h2 id="1-大纲"><a href="#1-大纲" class="headerlink" title="1.  大纲"></a>1.  大纲</h2><ul>
 <li><strong>File</strong></li>
 <li><strong>（文件；表示；使用）</strong></li>
 <li><strong>文件选择器</strong></li>
@@ -484,7 +481,7 @@
 <p><strong>6**</strong>、处理文件**</p>
 <p><strong>读取；写入；其他</strong></p>
 <h2 id="4-文件过滤器"><a href="#4-文件过滤器" class="headerlink" title="4.文件过滤器"></a>4.文件过滤器</h2><p>■<strong>类：**</strong>javax.swing.filechooser.FileFilter<strong> ■</strong>这是一个抽象类，抽象方法有<strong> ■</strong>public  abstract<strong> </strong>boolean<strong>**accept(File f);</strong> <strong>//**</strong>可接受文件的条件**</p>
-<h3 id="■public-abstract-String-getDescription-对文件的描述性文字"><a href="#■public-abstract-String-getDescription-对文件的描述性文字" class="headerlink" title="■public  abstract  String getDescription**(); //**对文件的描述性文字"></a>■<strong>public  abstract  String</strong> <strong>getDescription**</strong>();<strong> </strong>//<strong>**对文件的描述性文字</strong></h3><h3 id="自定义文件过滤器–"><a href="#自定义文件过滤器–" class="headerlink" title="自定义文件过滤器–"></a>自定义文件过滤器–</h3><p>基本步骤：</p>
+<h3 id="■public-abstract-String-getDescription-对文件的描述性文字"><a href="#■public-abstract-String-getDescription-对文件的描述性文字" class="headerlink" title="■public  abstract  String getDescription**(); //**对文件的描述性文字"></a>■<strong>public  abstract  String</strong> <strong>getDescription**</strong>();<strong> </strong>//<strong>**对文件的描述性文字</strong></h3><h3 id="自定义文件过滤器—"><a href="#自定义文件过滤器—" class="headerlink" title="自定义文件过滤器—"></a>自定义文件过滤器—</h3><p>基本步骤：</p>
 <p><strong>操作</strong></p>
 <p><strong>示意性代码</strong></p>
 <p><strong>1**</strong>、定义类**</p>
@@ -517,7 +514,7 @@
 <p><strong>YES_OPTION</strong> <strong>NO_OPTION</strong> <strong>CANCEL_OPTION</strong> <strong>OK_OPTION</strong> <strong>CLOSED_OPTION</strong></p>
 <h2 id="6-异常处理"><a href="#6-异常处理" class="headerlink" title="6.异常处理"></a>6.<strong>异常处理</strong></h2><p>《<br>₪<strong>在调用某个方法时，有时能**</strong>正常<strong>**执行，有时则出现异常：</strong><br>■<strong>int</strong> <strong>d1 =</strong> <strong>Integer.parseInt**</strong>(“123”);<strong><br>■</strong>int<strong> </strong>d2<strong> </strong>=<strong> </strong>Integer.parseInt<strong><strong>(“123a</strong></strong>”);<strong><br>■</strong>访问值为<strong><strong>null</strong></strong>的对象的成员<strong><br>■</strong>数组越界访问<strong><br>■</strong>字符串越界访问<strong><br>■</strong>……<strong><br>₪</strong>当<strong><strong>出现异常时应该能进行适当的处理，<br> 否则程序</strong></strong>会<strong><strong>异常</strong></strong>终止<strong><strong>而影响健壮</strong></strong>性<strong><br>₪</strong>Java<strong><strong>提供了一种</strong></strong>简便<strong><strong>、</strong></strong>通用的异常处理方式**<br>》</p>
 <p><strong>异常处理程序结构</strong></p>
-<p><strong>try</strong> <strong>{</strong><br><strong>_  //_**</strong>_可能<em><em>**</em></em>会出现异常的<em><em>**</em></em>方法调用语句_<strong>
+<p><strong>try</strong> <strong>{</strong><br><strong>_  //_**</strong>_可能_<strong><strong>_会出现异常的_</strong></strong>_方法调用语句_<strong>
 </strong>}<strong> </strong>catch<strong> </strong>(<strong>**异常类</strong> <strong>e1) {</strong><br> <strong>//**</strong>异常处理代码，如：<strong> </strong>//<strong><strong>获取信息：</strong></strong>e1.getMessage()<strong>**;</strong> <strong>//**</strong>显示调用：<strong><strong>e1.printStackTrace()</strong></strong>;<strong>
 </strong>}<strong> </strong>catch<strong> </strong>(<strong>**异常类</strong> <strong>e2)</strong> <strong>{</strong><br> <strong>//**</strong>异常处理代码<strong>
 </strong>}<strong> </strong>……<strong> </strong>{<strong>
@@ -536,10 +533,9 @@
 </ul>
 <h2 id="3-文本文件"><a href="#3-文本文件" class="headerlink" title="3.文本文件"></a>3.<strong>文本文件</strong></h2><p><strong>读取:</strong><br>₪<strong>基本步骤</strong><br>1.<strong>String**</strong>类型的文件名<strong><strong>name</strong></strong>或<strong><strong>File</strong></strong>类型的文件对象<strong>**file</strong><br>2.<strong>FileReader</strong> <strong>fin = new</strong> <strong>FileReader**</strong>(name);<strong> </strong>//<strong><strong>或</strong></strong>file<strong><br>3.</strong>BufferedReader<strong> </strong>in = new<strong> </strong>BufferedReader<strong>**(fin);</strong><br>4.<strong>while (true) {<br>     String line =</strong> <strong>in.readLine**</strong>();<strong> </strong>//<strong><strong>还有其它</strong></strong>一些读取<strong>**方法</strong>  <strong>if (line == null) {</strong> <strong>//**</strong>已到达文件末尾<strong> </strong>break;<br>     }<strong> </strong>/*<strong> </strong>对<strong><strong>line</strong></strong>进行处理<strong> *</strong>/<strong> </strong>}<strong><br>**</strong>5.in.close<strong>**();</strong> <strong>//**</strong>关闭    zhuyi<br>写入文本文件内容<br>基本步骤<br>String类型的文件名name或File类型的文件对象file<br>FileWriter fout = new FileWriter(fileName); //或file<br>BufferedWriter out = new BufferedWriter(fout);<br>while (条件) { out.write(待写入的字符串) //还有其它一些写入方法 out.newLine(); //写入换行符}<br>out.close(); //关闭<em>**</em> </p>
 <p>public static String readTextFile(File file) throws  IOException {到底在哪里处理异常？<br>1、就地解决<br>       try - catch<br>2、交给上级<br>       声明抛出</p>
-<h2 id="4-属性文件"><a href="#4-属性文件" class="headerlink" title="4.属性文件"></a>4.属性文件</h2><p><em>属性文件是一种带格式的文本文件</em> <em>扩展名</em> <em>properties</em> <em>文件格式</em> <em>属性名=属性值</em> _说明_ <em>以“#”开头的行为注释行</em> <em>可在行尾使用“\”进行续行</em></p>
+<h2 id="4-属性文件"><a href="#4-属性文件" class="headerlink" title="4.属性文件"></a>4.属性文件</h2><p>_属性文件是一种带格式的文本文件_ _扩展名_ _properties_ _文件格式_ _属性名=属性值_ _说明_ _以“#”开头的行为注释行_ _可在行尾使用“\\”进行续行_</p>
 <p>读取基本步骤<br>String类型的文件名name或File类型的文件对象file<br>FileReader fin = new FileReader(fileName); //或file<br>Properties properties = new Properties();properties.load(fin);<br>String value = properties.getProperty(key);……//参数key为属性名，如：”title”，赋值号左边的value为属性值//返回值类型为String，有时需要转换为其它类型<br>in.close();<br>写入基本步骤<br>Properties properties = new Properties();<br>Object xxx = properties.setProperty(key, value);……//参数中的key为属性名，value为属性值，类型都是String//返回值xxx是key原来的属性值<br>String类型的文件名name或File类型的文件对象file<br>FileWriter fout = new FileWriter(fileName); //或file<br>properties.store(fout, comments);</p>
-<ul>
-<li><h1 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h1></li>
+<h1 id="字节流"><a href="#字节流" class="headerlink" title="*   字节流"></a>*   字节流</h1><ul>
 <li><ul>
 <li><strong>创建和表示文件夹</strong></li>
 <li><strong>基本字节流文件的读写</strong></li>
@@ -568,7 +564,7 @@
 <pre><code>l**String.format****(&quot;%s/%****s.paper****&quot;,** **Config.FOLDER_PAPERLIB****,** **myId****);** l**Config.FOLDER_PAPERLIB** **\+ &quot;/&quot; \+** **myId** **\+ &quot;.paper“** p**“data/****paperlib****/****20150010001****.paper”** ----照片实现   得到试卷  
 </code></pre><p><strong>void</strong></p>
 <p><strong>seek**</strong>(<strong>**long</strong> <strong>pos**</strong>)<strong> </strong>定位文件指针**</p>
-<p>往前往前移动  后移动 i-1  * 4 再readInt 查找JDK 建立文件夹 getSavcFile  在manin  方法中实现 inputstream   如何  name   dir props.load(new FileInputStream(“db.properties”)); 是读取当前目录的db.properties文件 getClass.getResourceAsStream(“db.properties”); 是读取当前类所在位置一起的db.properties文件 getClass.getResourceAsStream(“/db.properties”); 是读取ClassPath的根的db.properties文件,注意ClassPath如果是多个路径或者jar文件的,只要在任意一个路径目录下或者jar文件里的根下都可以,如果存在于多个路径下的话,按照ClassPath中的先后顺序,使用先找到的,其余忽略.   ———-   如果你只是输入文件名，那java虚拟机默认是执行java XXXX命令所在的目录 例如: C:\test&gt;java test 那db.properties就是C:\test\db.properties</p>
+<p>往前往前移动  后移动 i-1  * 4 再readInt 查找JDK 建立文件夹 getSavcFile  在manin  方法中实现 inputstream   如何  name   dir props.load(new FileInputStream(“db.properties”)); 是读取当前目录的db.properties文件 getClass.getResourceAsStream(“db.properties”); 是读取当前类所在位置一起的db.properties文件 getClass.getResourceAsStream(“/db.properties”); 是读取ClassPath的根的db.properties文件,注意ClassPath如果是多个路径或者jar文件的,只要在任意一个路径目录下或者jar文件里的根下都可以,如果存在于多个路径下的话,按照ClassPath中的先后顺序,使用先找到的,其余忽略.   —————   如果你只是输入文件名，那java虚拟机默认是执行java XXXX命令所在的目录 例如: C:\\test&gt;java test 那db.properties就是C:\\test\\db.properties</p>
 
       
     </div>
@@ -755,7 +751,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -766,7 +762,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -777,7 +773,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -874,7 +870,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件与异常"><span class="nav-number">1.</span> <span class="nav-text">文件与异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大纲"><span class="nav-number">1.1.</span> <span class="nav-text">大纲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件和文件夹表示"><span class="nav-number">1.2.</span> <span class="nav-text">2.文件和文件夹表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文件选择器"><span class="nav-number">1.3.</span> <span class="nav-text">3.文件选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-文件过滤器"><span class="nav-number">1.4.</span> <span class="nav-text">4.文件过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#■public-abstract-String-getDescription-对文件的描述性文字"><span class="nav-number">1.4.1.</span> <span class="nav-text">■public  abstract  String getDescription**(); //**对文件的描述性文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义文件过滤器–"><span class="nav-number">1.4.2.</span> <span class="nav-text">自定义文件过滤器–</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件扩展名过滤器"><span class="nav-number">1.5.</span> <span class="nav-text">==文件扩展名过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-javax-swing-JOptionPane"><span class="nav-number">1.6.</span> <span class="nav-text">5.javax.swing.JOptionPane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-异常处理"><span class="nav-number">1.7.</span> <span class="nav-text">6.异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-S-自定义-异常-类："><span class="nav-number">1.8.</span> <span class="nav-text">P.S.自定义**异常**类：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符流"><span class="nav-number">2.</span> <span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件读写的基本步骤"><span class="nav-number">2.1.</span> <span class="nav-text">2.文件读写的基本步骤:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文本文件"><span class="nav-number">2.2.</span> <span class="nav-text">3.文本文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-属性文件"><span class="nav-number">2.3.</span> <span class="nav-text">4.属性文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节流"><span class="nav-number">3.</span> <span class="nav-text">字节流</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件与异常"><span class="nav-number">1.</span> <span class="nav-text">文件与异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-大纲"><span class="nav-number">1.1.</span> <span class="nav-text">1.  大纲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件和文件夹表示"><span class="nav-number">1.2.</span> <span class="nav-text">2.文件和文件夹表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文件选择器"><span class="nav-number">1.3.</span> <span class="nav-text">3.文件选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-文件过滤器"><span class="nav-number">1.4.</span> <span class="nav-text">4.文件过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#■public-abstract-String-getDescription-对文件的描述性文字"><span class="nav-number">1.4.1.</span> <span class="nav-text">■public  abstract  String getDescription**(); //**对文件的描述性文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义文件过滤器—"><span class="nav-number">1.4.2.</span> <span class="nav-text">自定义文件过滤器—</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件扩展名过滤器"><span class="nav-number">1.5.</span> <span class="nav-text">==文件扩展名过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-javax-swing-JOptionPane"><span class="nav-number">1.6.</span> <span class="nav-text">5.javax.swing.JOptionPane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-异常处理"><span class="nav-number">1.7.</span> <span class="nav-text">6.异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-S-自定义-异常-类："><span class="nav-number">1.8.</span> <span class="nav-text">P.S.自定义**异常**类：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符流"><span class="nav-number">2.</span> <span class="nav-text">字符流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-文件读写的基本步骤"><span class="nav-number">2.1.</span> <span class="nav-text">2.文件读写的基本步骤:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文本文件"><span class="nav-number">2.2.</span> <span class="nav-text">3.文本文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-属性文件"><span class="nav-number">2.3.</span> <span class="nav-text">4.属性文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节流"><span class="nav-number">3.</span> <span class="nav-text">*   字节流</span></a></li></ol></div>
             
 
           </div>
@@ -915,7 +911,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1541,6 +1537,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

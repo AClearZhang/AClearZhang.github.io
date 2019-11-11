@@ -490,12 +490,12 @@
 <blockquote>
 <p>警告：运行<code>git-merge</code>时含有大量的未commit文件很容易让你陷入困境，这将使你在冲突中难以回退。因此非常不鼓励在使用<code>git-merge</code>时存在未commit的文件，建议使用<code>git-stash</code>命令将这些未commit文件暂存起来，并在解决冲突以后使用<code>git stash pop</code>把这些未commit文件还原出来。</p>
 </blockquote>
-<p>—MORE—<br>原文： <a href="http://www.tech126.com/git-fetch-pull/" target="_blank" rel="noopener">http://www.tech126.com/git-fetch-pull/</a> Git中从远程的分支获取最新的版本到本地有这样2个命令：</p>
+<p>—-MORE—-<br>原文： <a href="http://www.tech126.com/git-fetch-pull/" target="_blank" rel="noopener">http://www.tech126.com/git-fetch-pull/</a> Git中从远程的分支获取最新的版本到本地有这样2个命令：</p>
 <ol>
 <li>git fetch：相当于是从远程获取最新版本到本地，不会自动merge</li>
 </ol>
 <p>git fetch origin master<br>git log -p master..origin/master<br>git merge origin/master<br>    以上命令的含义：<br>    首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br>    然后比较本地的master分支和origin/master分支的差别<br>    最后进行合并<br>    上述过程其实可以用以下更清晰的方式来进行：<br> git fetch origin master:tmp<br>git diff tmp<br>git merge tmp<br>    从远程获取最新的版本到本地的test分支上<br>    之后再进行比较合并</p>
-<ol start="2">
+<ol>
 <li>git pull：相当于是从远程获取最新版本并merge到本地<br>git pull origin master<br>上述命令其实相当于git fetch 和 git merge<br>在实际使用中，git fetch更安全一些<br>因为在merge前，我们可以查看更新情况，然后再决定是否合并<br>结束 </li>
 </ol>
 <h1 id="2-参数"><a href="#2-参数" class="headerlink" title="2.参数"></a>2.参数</h1><p>本部分用于介绍<code>git-merge</code>命令中使用的参数</p>
@@ -578,12 +578,12 @@
 <h2 id="4-3octopus"><a href="#4-3octopus" class="headerlink" title="4.3octopus"></a>4.3octopus</h2><p>这种合并方式用于两个以上的分支，但是在遇到冲突需要手动合并时会拒绝合并。这种合并方式更适合于将多个分支捆绑在一起的情况，也是多分支合并的默认合并策略。</p>
 <h2 id="4-4ours"><a href="#4-4ours" class="headerlink" title="4.4ours"></a>4.4ours</h2><p>这种方式可以合并任意数量的分支，但是节点树的合并结果总是当前分支所冲突的部分。这种方式能够在替代旧版本时具有很高的效率。请注意，这种方式和recursive策略下的ours参数是不同的。</p>
 <h2 id="4-5subtree"><a href="#4-5subtree" class="headerlink" title="4.5subtree"></a>4.5subtree</h2><p>subtree是修改版的recursive策略。当合并树A和树B时，如果B是A的子树，B首先调整至匹配A的树结构，而不是读取相同的节点。</p>
-<h2 id="4-5总结"><a href="#4-5总结" class="headerlink" title="4.5总结"></a>4.5总结</h2><p>在使用三路合并的策略时（指默认的recursive策略），如果一个文件（或一行代码）在当前分支和对方分支都产生变化，但是稍后又在其中一个分支回退，<em>那么这种回退的变化将会在结果中体现</em>。这一点可能会使一些人感到困惑。这是由于在合并的过程中，git仅仅关注共同祖先节点以及两个分支的HEAD节点，而不是两个分支的所有节点。因此，合并算法将会把被回退的部分认为成<em>没有变化</em>，这样，合并后的结果就会变为另一个分支中变化的部分。</p>
+<h2 id="4-5总结"><a href="#4-5总结" class="headerlink" title="4.5总结"></a>4.5总结</h2><p>在使用三路合并的策略时（指默认的recursive策略），如果一个文件（或一行代码）在当前分支和对方分支都产生变化，但是稍后又在其中一个分支回退，_那么这种回退的变化将会在结果中体现_。这一点可能会使一些人感到困惑。这是由于在合并的过程中，git仅仅关注共同祖先节点以及两个分支的HEAD节点，而不是两个分支的所有节点。因此，合并算法将会把被回退的部分认为成_没有变化_，这样，合并后的结果就会变为另一个分支中变化的部分。</p>
 <h1 id="5-关于Git使用的一些个人看法"><a href="#5-关于Git使用的一些个人看法" class="headerlink" title="5.关于Git使用的一些个人看法"></a>5.关于Git使用的一些个人看法</h1><p>本人一直认为Git是一款非常优秀的版本控制工具，但是在公司中很多人觉得Git很难使用。这种情况很大一部分原因是之前使用subversion时带来的使用惯性对接受新技术造成了影响；另一方面，很多人仅仅通过GUI客户端去使用Git。很久以来，大部分人认为使用GUI是一种较为便捷的入门方式，其实这是值得商榷的。依我个人的经验来说，使用GUI会形成惰性，往往点击几个按钮就能完成操作，使得很多人认为学习Git的命令是一种浪费时间和精力的行为。但是事实上，在没有理解清楚Git命令和思想的情况下，使用那些简单的按钮其实会带来很大的困扰：很多人根本不知道点击按钮后会发生什么，GUI的过于智能让同一个按钮的点击事件可能对应着不同参数的命令。最后真正受到伤害的是可怜的使用者们，因为他们根本不知道问题出在哪里。 综合全文的内容，这里总结一些个人使用Git时所遵守的约定。所谓约定，即非强迫性的，自愿的行为。不遵守这些约定并不会带来什么缺陷，但是遵守这些约定可能会减轻在使用Git时带来的困难，提高效率。</p>
 <ol>
 <li>多提交，少推送。多人协作时，推送会频繁地带来合并冲突的问题，影响效率。因此，尽量多使用提交命令，减少合并的使用，这样会节省很多时间。</li>
 <li>使用Git流（Git Flow），详见我的另一篇文章：<a href="http://www.jianshu.com/p/b357df6794e3" target="_blank" rel="noopener">一个成功的Git分支模型</a></li>
-<li>使用分支，<em>保持主分支的整洁</em>。这是我强烈推荐的一点，在分支进行提交，然后切到主分支更新(git pull —rebase)，再合并分支、推送。这样的流程会避免交叉合并的情况出现（不会出现共同祖先节点为多个的情况）。事实上，git合并操作让很多人感到不知所措的原因就是各种原因所产生的交叉合并问题，从而造成在合并的过程中丢失某些代码。保持主分支的整洁能够避免交叉合并的情况出现。</li>
+<li>使用分支，_保持主分支的整洁_。这是我强烈推荐的一点，在分支进行提交，然后切到主分支更新(git pull —rebase)，再合并分支、推送。这样的流程会避免交叉合并的情况出现（不会出现共同祖先节点为多个的情况）。事实上，git合并操作让很多人感到不知所措的原因就是各种原因所产生的交叉合并问题，从而造成在合并的过程中丢失某些代码。保持主分支的整洁能够避免交叉合并的情况出现。</li>
 <li>禁用fast-forward模式。在拉取代码的时候使用rebase参数（前提是保持主分支的整洁）、合并的时候使用—no-ff参数禁用fast-forward模式，这样做既能保证节点的清晰，又避免了交叉合并的情况出现。</li>
 </ol>
 <p>作者：Chuckiefan<br>链接：<a href="http://www.jianshu.com/p/58a166f24c81" target="_blank" rel="noopener">http://www.jianshu.com/p/58a166f24c81</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
@@ -773,7 +773,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -784,7 +784,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -795,7 +795,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -933,7 +933,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1559,6 +1559,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

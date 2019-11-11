@@ -449,8 +449,8 @@
 </blockquote>
 <p><img src="http://pic.aclear.top/理解中文编码问题.png" alt="dream"> </p>
 <p>jsp中的contentType与pageEncoding的区别和作用 &lt;%@ page contentType=”text/html; charset=utf-8” pageEncoding=”utf-8”%&gt; pageEncoding是jsp文件本身的编码 contentType的charset是指服务器发送给客户端时的内容编码 关于JSP页面中的pageEncoding和contentType两种属性的区别： pageEncoding是jsp文件本身的编码 contentType的charset是指服务器发送给客户端时的内容编码 <img src="http://pic.aclear.top/JSP操作原理.jpg" alt="dream">   <img src="http://pic.aclear.top/JSP运行原理一.jpg" alt="dream"><br><img src="http://pic.aclear.top/JSP运行原理二.jpg" alt="dream">   </p>
-<p>JSP要经过两次的“编码”，第一阶 段会用pageEncoding，第二阶段会用utf-8至utf-8，第三阶段就是由Tomcat出来的网页， 用的是contentType。 第一阶段是jsp编译成.java，它会根据pageEncoding的设定读取jsp，结果是由指定的编码方案翻译成统一的<strong>UTF-8</strong> JAVA源码（即.java），如果pageEncoding设定错了，或没有设定，出来的就是中文乱码。 第二阶段是由JAVAC的JAVA源码至java byteCode的编译，不论JSP编写时候用的是什么编码方案，经过这个阶段的结果全部是UTF-8的encoding的java源码。 JAVAC用UTF-8的encoding读取java源码，编译成UTF-8 encoding的二进制码（即.class），这是JVM对常数字串在二进制码（java encoding）内表达的规范。 第三阶段是Tomcat（或其的application container）载入和执行阶段二的来的JAVA二进制码，<strong>输出的结果，也就是在客户端见到的，这时隐藏在阶段一和阶段二的参数contentType就发挥了功效</strong> contentType的設定. pageEncoding 和contentType的预设都是 <strong>ISO-8859-1</strong>. 而随便设定了其中一个, 另一个就跟着一样了(TOMCAT4.1.27是如此). 但这不是绝对的, 这要看各自JSPC的处理方式. 而pageEncoding不等于contentType, 更有利亚洲区的文字 CJKV系JSP网页的开发和展示, (例pageEncoding=GB2312 不等于 contentType=utf-8)。 jsp文件不像.java，.java在被编译器读入的时候默认采用的是操作系统所设定的locale所对应的编码，比如中国大陆就是GBK，台湾就是BIG5或者MS950。而一般我们不管是在记事本还是在ue中写代码，如果没有经过特别转码的话，写出来的都是本地编码格式的内容。所以编译器采用的方法刚好可以让虚拟机得到正确的资料。 但是jsp文件不是这样，它没有这个默认转码过程，但是指定了pageEncoding就可以实现正确转码了。 <em><strong>注意所以说  这个是后转码的！！！根据我们写的头文件！</strong></em> 举个例子: &lt;%@ page contentType=”text/html;charset=utf-8” %&gt; 大都会打印出乱码，因为我输入的“你好吗”是gbk的，但是服务器是否正确抓到“你好吗”不得而知。 但是如果更改为 &lt;%@ page contentType=”text/html;charset=utf-8” pageEncoding=”GBK”%&gt; 这样就服务器一定会是<em><strong>正确抓到</strong></em>“你好吗”了。  举个<a href="http://www.cnblogs.com/TTDJAVA/p/4328830.html" target="_blank" rel="noopener">例子</a>： 最近在学JSP，在学习处理get方式提交数据出现乱码问题的时候，对其中的一个解决方法new String(s.getBytes(“iso-8859-1”),”utf-8”);产生了疑问，就是为什么要使用s.getBytes(“iso-8859-1”)？ 当时只这样想的：客户端向服务器发送一个请求，比如说是一个字符串”请求”；之后服务器接收到这个请求，也就是这个字符串，可是这时由于某种原因出现了乱码！这时为了解决这个问题，使用new String(s.getBytes(“iso-8859-1”),”utf-8”);解决问题。看到这条语句，我感觉想不通啊，字符使用iso-8859-1编码取得字节序列，再由utf-8解码取得字符串，得到的还是乱码啊！怎么会取得正确的字符呢！！！想不通啊！ 之后，通过查找资料，得到了一点想法，代码如下：</p>
-<p>public class ThinkIng {<br>    public static void main(String[] args) throws Exception {<br>        System.out.println(“\t——JSP模拟——“);<br>        System.out.println(“客户端，有一个中文字符的请求(转换成了字节序列发送)，发送至服务器端”);<br>        String request=”请求”;<br>        byte[] client=request.getBytes();//客户端的请求的字节序列<br>        print(client);<br>        System.out.println();//分割用的<br>        System.out.println(“有一中间件，将发送的字符序列一默认的编码格式(iso-8859-1)进行解码”);<br>        String sever=new String(client,”iso-8859-1”);<br>        System.out.println(sever);<br>        System.out.println(“程序猿发现，这边有问题，中文有乱码，前来解决！”);<br>        String debug=new String(sever.getBytes(“iso-8859-1”),”gbk”);//还原字节序列，使用“gbk”重新进行解码！<br>        System.out.println(debug);<br>        System.out.println(“问题解决！”);<br>    }<br>    public static void print(byte[] b){//用于显示字节序列的<br>        for(byte b1:b){<br>            System.out.print(Integer.toHexString(b1 &amp; 0xff)+” “);<br>        }<br>    }<br>}<br>----------<br>——JSP模拟——<br>客户端，有一个中文字符的请求(转换成了字节序列发送)，发送至服务器端<br>c7 eb c7 f3<br>有一中间件，将发送的字符序列一默认的编码格式(iso-8859-1)进行解码<br>???ó<br>程序猿发现，这边有问题，中文有乱码，前来解决！<br>请求<br>问题解决！</p>
+<p>JSP要经过两次的“编码”，第一阶 段会用pageEncoding，第二阶段会用utf-8至utf-8，第三阶段就是由Tomcat出来的网页， 用的是contentType。 第一阶段是jsp编译成.java，它会根据pageEncoding的设定读取jsp，结果是由指定的编码方案翻译成统一的<strong>UTF-8</strong> JAVA源码（即.java），如果pageEncoding设定错了，或没有设定，出来的就是中文乱码。 第二阶段是由JAVAC的JAVA源码至java byteCode的编译，不论JSP编写时候用的是什么编码方案，经过这个阶段的结果全部是UTF-8的encoding的java源码。 JAVAC用UTF-8的encoding读取java源码，编译成UTF-8 encoding的二进制码（即.class），这是JVM对常数字串在二进制码（java encoding）内表达的规范。 第三阶段是Tomcat（或其的application container）载入和执行阶段二的来的JAVA二进制码，<strong>输出的结果，也就是在客户端见到的，这时隐藏在阶段一和阶段二的参数contentType就发挥了功效</strong> contentType的設定. pageEncoding 和contentType的预设都是 <strong>ISO-8859-1</strong>. 而随便设定了其中一个, 另一个就跟着一样了(TOMCAT4.1.27是如此). 但这不是绝对的, 这要看各自JSPC的处理方式. 而pageEncoding不等于contentType, 更有利亚洲区的文字 CJKV系JSP网页的开发和展示, (例pageEncoding=GB2312 不等于 contentType=utf-8)。 jsp文件不像.java，.java在被编译器读入的时候默认采用的是操作系统所设定的locale所对应的编码，比如中国大陆就是GBK，台湾就是BIG5或者MS950。而一般我们不管是在记事本还是在ue中写代码，如果没有经过特别转码的话，写出来的都是本地编码格式的内容。所以编译器采用的方法刚好可以让虚拟机得到正确的资料。 但是jsp文件不是这样，它没有这个默认转码过程，但是指定了pageEncoding就可以实现正确转码了。 _<strong>注意所以说  这个是后转码的！！！根据我们写的头文件！</strong>_ 举个例子: &lt;%@ page contentType=”text/html;charset=utf-8” %&gt; 大都会打印出乱码，因为我输入的“你好吗”是gbk的，但是服务器是否正确抓到“你好吗”不得而知。 但是如果更改为 &lt;%@ page contentType=”text/html;charset=utf-8” pageEncoding=”GBK”%&gt; 这样就服务器一定会是_<strong>正确抓到</strong>_“你好吗”了。  举个<a href="http://www.cnblogs.com/TTDJAVA/p/4328830.html" target="_blank" rel="noopener">例子</a>： 最近在学JSP，在学习处理get方式提交数据出现乱码问题的时候，对其中的一个解决方法new String(s.getBytes(“iso-8859-1”),”utf-8”);产生了疑问，就是为什么要使用s.getBytes(“iso-8859-1”)？ 当时只这样想的：客户端向服务器发送一个请求，比如说是一个字符串”请求”；之后服务器接收到这个请求，也就是这个字符串，可是这时由于某种原因出现了乱码！这时为了解决这个问题，使用new String(s.getBytes(“iso-8859-1”),”utf-8”);解决问题。看到这条语句，我感觉想不通啊，字符使用iso-8859-1编码取得字节序列，再由utf-8解码取得字符串，得到的还是乱码啊！怎么会取得正确的字符呢！！！想不通啊！ 之后，通过查找资料，得到了一点想法，代码如下：</p>
+<p>public class ThinkIng {<br>    public static void main(String[] args) throws Exception {<br>        System.out.println(“\\t———JSP模拟———“);<br>        System.out.println(“客户端，有一个中文字符的请求(转换成了字节序列发送)，发送至服务器端”);<br>        String request=”请求”;<br>        byte[] client=request.getBytes();//客户端的请求的字节序列<br>        print(client);<br>        System.out.println();//分割用的<br>        System.out.println(“有一中间件，将发送的字符序列一默认的编码格式(iso-8859-1)进行解码”);<br>        String sever=new String(client,”iso-8859-1”);<br>        System.out.println(sever);<br>        System.out.println(“程序猿发现，这边有问题，中文有乱码，前来解决！”);<br>        String debug=new String(sever.getBytes(“iso-8859-1”),”gbk”);//还原字节序列，使用“gbk”重新进行解码！<br>        System.out.println(debug);<br>        System.out.println(“问题解决！”);<br>    }<br>    public static void print(byte[] b){//用于显示字节序列的<br>        for(byte b1:b){<br>            System.out.print(Integer.toHexString(b1 &amp; 0xff)+” “);<br>        }<br>    }<br>}<br>----------<br>———JSP模拟———<br>客户端，有一个中文字符的请求(转换成了字节序列发送)，发送至服务器端<br>c7 eb c7 f3<br>有一中间件，将发送的字符序列一默认的编码格式(iso-8859-1)进行解码<br>???ó<br>程序猿发现，这边有问题，中文有乱码，前来解决！<br>请求<br>问题解决！</p>
 <p>先前没有想通主要是自己没注意到：</p>
 <ol>
 <li>没有着重的想为什么会在输出时出现字符乱码？</li>
@@ -634,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +645,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -656,7 +656,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -778,7 +778,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1404,6 +1404,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

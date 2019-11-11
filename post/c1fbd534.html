@@ -665,7 +665,7 @@
 <li>下载<a href="https://drive.google.com/open?id=0ByuNnrUBU_n3ZkRMZGhpeXlFYVU" target="_blank" rel="noopener">securecrt</a></li>
 <li>复制服务器的IP地址,初始用户名,初始密码 <a href="http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg" target="_blank" rel="noopener"><img src="http://cdn1.snapgram.co/imgs/2016/06/24/4ecb6e.jpg" alt=""></a> <a href="http://snapgr.am/image/LOsI" target="_blank" rel="noopener"><img src="http://cdn3.snapgram.co/imgs/2016/06/24/6.jpg" alt="6.jpg"></a></li>
 <li>securecrt连接vps<ul>
-<li>解压下载的secure crt,双击\SecureCRT_EN\SecureCRT\中的SecureCRT.exe</li>
+<li>解压下载的secure crt,双击\\SecureCRT_EN\\SecureCRT\\中的SecureCRT.exe</li>
 <li>输入IP地址,用户名,点击connect <a href="http://cdn3.snapgram.co/imgs/2016/06/24/crt1.png" target="_blank" rel="noopener"><img src="http://cdn3.snapgram.co/imgs/2016/06/24/crt1.png" alt="crt1.png"></a></li>
 <li>弹出框点击Accept&amp;Save <a href="http://cdn4.snapgram.co/images/2016/06/24/crt2.png" target="_blank" rel="noopener"><img src="http://cdn4.snapgram.co/images/2016/06/24/crt2.png" alt="crt2.png"></a></li>
 <li>输入密码,勾选save password,OK <a href="http://cdn2.snapgram.co/imgs/2016/06/24/crt3.png" target="_blank" rel="noopener"><img src="http://cdn2.snapgram.co/imgs/2016/06/24/crt3.png" alt="crt3.png"></a></li>
@@ -733,7 +733,7 @@
 <p>1</p>
 <p>2</p>
 <p>3</p>
-<p>wget –no-check-certificate <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</a></p>
+<p>wget —no-check-certificate <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</a></p>
 <p>chmod +x shadowsocksR.sh</p>
 <p>./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</p>
 </li>
@@ -802,26 +802,19 @@
 <p>“local_address”:”127.0.0.1”,</p>
 <p>“local_port”:1080,</p>
 <p>“port_password”:{</p>
-<p>#纯 SS 不带混淆 端口25 密码为123456.</p>
-<p>“25”:”123456”,</p>
-<p>#端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</p>
-<p>“443”:{“protocol”:”auth_chain_a”, “password”:”123456”, “obfs”:”tls1.2_ticket_auth”, “obfs_param”:””},</p>
-<p>#注意无论怎么变化，最后一个端口设置，不带逗号！</p>
-<p>“3389”:{“protocol”:”auth_aes128_md5”, “password”:”123456”, “obfs”:”tls1.2_ticket_auth”, “obfs_param”:””}#此处没有逗号！</p>
+<h1 id="纯-SS-不带混淆-端口25-密码为123456"><a href="#纯-SS-不带混淆-端口25-密码为123456" class="headerlink" title="纯 SS 不带混淆 端口25 密码为123456."></a>纯 SS 不带混淆 端口25 密码为123456.</h1><p>“25”:”123456”,</p>
+<h1 id="端口443，密码123456-，protocol选择auth-chain-a。obfs选择tls1-2-ticket-auth，具体插件的介绍如下参考资料中"><a href="#端口443，密码123456-，protocol选择auth-chain-a。obfs选择tls1-2-ticket-auth，具体插件的介绍如下参考资料中" class="headerlink" title="端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中"></a>端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</h1><p>“443”:{“protocol”:”auth_chain_a”, “password”:”123456”, “obfs”:”tls1.2_ticket_auth”, “obfs_param”:””},</p>
+<h1 id="注意无论怎么变化，最后一个端口设置，不带逗号！"><a href="#注意无论怎么变化，最后一个端口设置，不带逗号！" class="headerlink" title="注意无论怎么变化，最后一个端口设置，不带逗号！"></a>注意无论怎么变化，最后一个端口设置，不带逗号！</h1><p>“3389”:{“protocol”:”auth_aes128_md5”, “password”:”123456”, “obfs”:”tls1.2_ticket_auth”, “obfs_param”:””}#此处没有逗号！</p>
 <p>},</p>
 <p>“timeout”:400,</p>
-<p>#默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb， 此处，选择为chacha20，移动设备性能较好。</p>
-<p>“method”:”chacha20”,</p>
-<p>#protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</p>
-<p>“protocol”: “origin”,</p>
+<h1 id="默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，-此处，选择为chacha20，移动设备性能较好。"><a href="#默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，-此处，选择为chacha20，移动设备性能较好。" class="headerlink" title="默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb， 此处，选择为chacha20，移动设备性能较好。"></a>默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb， 此处，选择为chacha20，移动设备性能较好。</h1><p>“method”:”chacha20”,</p>
+<h1 id="protocol-协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置-protocol-和-obfs-情况下，使用的默认值。"><a href="#protocol-协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置-protocol-和-obfs-情况下，使用的默认值。" class="headerlink" title="protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。"></a>protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</h1><p>“protocol”: “origin”,</p>
 <p>“protocol_param”: “”,</p>
-<p>#protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</p>
-<p>“obfs”: “plain”,</p>
+<h1 id="protocol-协议定义插件的默认值，plain即使用原协议，不混淆。"><a href="#protocol-协议定义插件的默认值，plain即使用原协议，不混淆。" class="headerlink" title="protocol.协议定义插件的默认值，plain即使用原协议，不混淆。"></a>protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</h1><p>“obfs”: “plain”,</p>
 <p>“obfs_param”: “”,</p>
 <p>“redirect”: “”,</p>
 <p>“dns_ipv6”: true,</p>
-<p>#TCP FAST OPEN ，打开</p>
-<p>“fast_open”: true,</p>
+<h1 id="TCP-FAST-OPEN-，打开"><a href="#TCP-FAST-OPEN-，打开" class="headerlink" title="TCP FAST OPEN ，打开"></a>TCP FAST OPEN ，打开</h1><p>“fast_open”: true,</p>
 <p>“workers”: 1</p>
 <p>}</p>
 </li>
@@ -965,12 +958,12 @@
 <h2 id="CENTOS6-9不换内核安装锐速"><a href="#CENTOS6-9不换内核安装锐速" class="headerlink" title=" CENTOS6.9不换内核安装锐速"></a> CENTOS6.9不换内核安装锐速</h2></li>
 </ul>
 <p>请参照以下示例:1.  使用锐速安装脚本,得知不能匹配到内核.</p>
-<ol start="2">
+<ol>
 <li>通过 <code>uname -r</code> 查看到的版本号为 <code>2.6.32-642.el6.x86_64</code> ,</li>
 <li>去查看<a href="https://github.com/0oVicero0/serverSpeeder_kernel/blob/master/serverSpeeder.txt" target="_blank" rel="noopener"> <strong>锐速版本库</strong> </a>发现有个内核版本很接近 <code>2.6.32-573.1.1.el6.x86_64</code> .</li>
 <li><p>执行安装命令:</p>
 <p>1</p>
-<p>wget –no-check-certificate -O appex.sh <a href="https://raw.githubusercontent.com/0oVicero0/serverSpeeder\_Install/master/appex.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/0oVicero0/serverSpeeder\_Install/master/appex.sh</a> &amp;&amp; chmod +x appex.sh &amp;&amp; bash appex.sh install ‘2.6.32-573.1.1.el6.x86_64’</p>
+<p>wget —no-check-certificate -O appex.sh <a href="https://raw.githubusercontent.com/0oVicero0/serverSpeeder\_Install/master/appex.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/0oVicero0/serverSpeeder\_Install/master/appex.sh</a> &amp;&amp; chmod +x appex.sh &amp;&amp; bash appex.sh install ‘2.6.32-573.1.1.el6.x86_64’</p>
 <p>锐速安装脚本就会强制安装内核版本为 <code>2.6.32-573.1.1.el6.x86_64</code> 的锐速. 安装命令中的 <code>2.6.32-573.1.1.el6.x86_64</code> 可自行更改.</p>
 </li>
 <li>启动锐速<ul>
@@ -1006,7 +999,7 @@
 <p>1</p>
 <p>2</p>
 <p>3</p>
-<p>wget –no-check-certificate <a href="https://github.com/teddysun/across/raw/master/bbr.sh" target="_blank" rel="noopener">https://github.com/teddysun/across/raw/master/bbr.sh</a></p>
+<p>wget —no-check-certificate <a href="https://github.com/teddysun/across/raw/master/bbr.sh" target="_blank" rel="noopener">https://github.com/teddysun/across/raw/master/bbr.sh</a></p>
 <p>chmod +x bbr.sh</p>
 <p>./bbr.sh</p>
 </li>
@@ -1054,10 +1047,8 @@
 <p>21</p>
 <p>22</p>
 <p>23</p>
-<p>#TCP配置优化(不然你自己根本不知道你在干什么)</p>
-<p>fs.file-max = 51200</p>
-<p>#提高整个系统的文件限制</p>
-<p>net.core.rmem_max = 67108864</p>
+<h1 id="TCP配置优化-不然你自己根本不知道你在干什么"><a href="#TCP配置优化-不然你自己根本不知道你在干什么" class="headerlink" title="TCP配置优化(不然你自己根本不知道你在干什么)"></a>TCP配置优化(不然你自己根本不知道你在干什么)</h1><p>fs.file-max = 51200</p>
+<h1 id="提高整个系统的文件限制"><a href="#提高整个系统的文件限制" class="headerlink" title="提高整个系统的文件限制"></a>提高整个系统的文件限制</h1><p>net.core.rmem_max = 67108864</p>
 <p>net.core.wmem_max = 67108864</p>
 <p>net.core.netdev_max_backlog = 250000</p>
 <p>net.core.somaxconn = 4096</p>
@@ -1075,8 +1066,7 @@
 <p>net.ipv4.tcp_wmem = 4096 65536 67108864</p>
 <p>net.ipv4.tcp_mtu_probing = 1</p>
 <p>net.ipv4.tcp_congestion_control = bbr</p>
-<p>#END OF LINE</p>
-<p>保存(Ctrl + X —— y ——回车) 应用</p>
+<h1 id="END-OF-LINE"><a href="#END-OF-LINE" class="headerlink" title="END OF LINE"></a>END OF LINE</h1><p>保存(Ctrl + X —— y ——回车) 应用</p>
 <p>1</p>
 <p>sysctl -p</p>
 </li>
@@ -1325,7 +1315,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1336,7 +1326,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1347,7 +1337,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1444,7 +1434,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#科学上网教程（一）——VPS上搭建SSR"><span class="nav-number">1.</span> <span class="nav-text">科学上网教程（一）——VPS上搭建SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装脚本说明：遇到失效等，请留言或邮件我！"><span class="nav-number">1.1.</span> <span class="nav-text">安装脚本说明：遇到失效等，请留言或邮件我！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本从0开始的教程，当作自己的备份了。"><span class="nav-number">1.2.</span> <span class="nav-text">基本从0开始的教程，当作自己的备份了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁比较需要单独购买VPS科学上网？"><span class="nav-number">1.3.</span> <span class="nav-text">谁比较需要单独购买VPS科学上网？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS选择"><span class="nav-number">1.4.</span> <span class="nav-text">VPS选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自己的具体网络环境"><span class="nav-number">1.4.1.</span> <span class="nav-text">自己的具体网络环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS地点。"><span class="nav-number">1.4.2.</span> <span class="nav-text">VPS地点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS虚拟化架构-具体解释请自行google，只说明对科学上网的影响"><span class="nav-number">1.4.3.</span> <span class="nav-text">VPS虚拟化架构 (具体解释请自行google，只说明对科学上网的影响)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS提供商"><span class="nav-number">1.4.4.</span> <span class="nav-text">VPS提供商</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS测速"><span class="nav-number">1.5.</span> <span class="nav-text">VPS测速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用VPS提供商测速地址"><span class="nav-number">1.5.1.</span> <span class="nav-text">常用VPS提供商测速地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以vultr东京节点为例"><span class="nav-number">1.5.2.</span> <span class="nav-text">以vultr东京节点为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的命令-PING-延迟测试"><span class="nav-number">1.5.3.</span> <span class="nav-text">最简单的命令 PING (延迟测试)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测速相关网站"><span class="nav-number">1.5.4.</span> <span class="nav-text">测速相关网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由追踪-Best-Trace"><span class="nav-number">1.5.5.</span> <span class="nav-text">路由追踪 Best Trace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢包率-WinMTR"><span class="nav-number">1.5.6.</span> <span class="nav-text">丢包率 WinMTR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS自身测试（7-03）"><span class="nav-number">1.5.7.</span> <span class="nav-text">VPS自身测试（7.03）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vps部署"><span class="nav-number">1.6.</span> <span class="nav-text">vps部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vultr"><span class="nav-number">1.6.1.</span> <span class="nav-text">Vultr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器选择"><span class="nav-number">1.6.2.</span> <span class="nav-text">服务器选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统"><span class="nav-number">1.6.3.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择硬件"><span class="nav-number">1.6.4.</span> <span class="nav-text">选择硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS测试-可忽略，但是推荐进行"><span class="nav-number">1.6.5.</span> <span class="nav-text">VPS测试(可忽略，但是推荐进行)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置securecrt-不必在意ip地址"><span class="nav-number">1.6.6.</span> <span class="nav-text">配置securecrt(不必在意ip地址)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署ShadowSocksR"><span class="nav-number">1.7.</span> <span class="nav-text">部署ShadowSocksR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR有关网址"><span class="nav-number">1.7.1.</span> <span class="nav-text">SSR有关网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装SSR"><span class="nav-number">1.7.2.</span> <span class="nav-text">安装SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shadowsocks-json配置文件"><span class="nav-number">1.7.3.</span> <span class="nav-text">shadowsocks.json配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑shadowsocks-json文件"><span class="nav-number">1.7.4.</span> <span class="nav-text">编辑shadowsocks.json文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启SSR"><span class="nav-number">1.7.5.</span> <span class="nav-text">重启SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新SSR"><span class="nav-number">1.7.6.</span> <span class="nav-text">更新SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混淆选择-新手可略过"><span class="nav-number">1.7.7.</span> <span class="nav-text">混淆选择(新手可略过)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#混淆插件简介"><span class="nav-number">1.7.7.1.</span> <span class="nav-text">混淆插件简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混淆插件选择-5-24"><span class="nav-number">1.7.7.2.</span> <span class="nav-text">混淆插件选择(5.24)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单端口多用户"><span class="nav-number">1.7.7.3.</span> <span class="nav-text">单端口多用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪装正常网站-推荐"><span class="nav-number">1.7.7.4.</span> <span class="nav-text">伪装正常网站(推荐)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS优化"><span class="nav-number">1.8.</span> <span class="nav-text">VPS优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP优化"><span class="nav-number">1.8.1.</span> <span class="nav-text">TCP优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CENTOS6-9不换内核安装锐速"><span class="nav-number">1.9.</span> <span class="nav-text"> CENTOS6.9不换内核安装锐速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-BBR-推荐"><span class="nav-number">1.9.1.</span> <span class="nav-text">TCP-BBR(推荐)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS安全加固-安全性是重中之重！"><span class="nav-number">1.10.</span> <span class="nav-text">VPS安全加固( 安全性是重中之重！)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocksR-客户端配置"><span class="nav-number">1.11.</span> <span class="nav-text">shadowsocksR 客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shadowsocksR-C-windows版本"><span class="nav-number">1.11.1.</span> <span class="nav-text">shadowsocksR C# windows版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Chrome-SwitchyOmega-推荐！！"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">使用Chrome+SwitchyOmega 推荐！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR-Android"><span class="nav-number">1.11.2.</span> <span class="nav-text">SSR-Android</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">1.12.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#科学上网教程（一）——VPS上搭建SSR"><span class="nav-number">1.</span> <span class="nav-text">科学上网教程（一）——VPS上搭建SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装脚本说明：遇到失效等，请留言或邮件我！"><span class="nav-number">1.1.</span> <span class="nav-text">安装脚本说明：遇到失效等，请留言或邮件我！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本从0开始的教程，当作自己的备份了。"><span class="nav-number">1.2.</span> <span class="nav-text">基本从0开始的教程，当作自己的备份了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁比较需要单独购买VPS科学上网？"><span class="nav-number">1.3.</span> <span class="nav-text">谁比较需要单独购买VPS科学上网？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS选择"><span class="nav-number">1.4.</span> <span class="nav-text">VPS选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自己的具体网络环境"><span class="nav-number">1.4.1.</span> <span class="nav-text">自己的具体网络环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS地点。"><span class="nav-number">1.4.2.</span> <span class="nav-text">VPS地点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS虚拟化架构-具体解释请自行google，只说明对科学上网的影响"><span class="nav-number">1.4.3.</span> <span class="nav-text">VPS虚拟化架构 (具体解释请自行google，只说明对科学上网的影响)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS提供商"><span class="nav-number">1.4.4.</span> <span class="nav-text">VPS提供商</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS测速"><span class="nav-number">1.5.</span> <span class="nav-text">VPS测速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用VPS提供商测速地址"><span class="nav-number">1.5.1.</span> <span class="nav-text">常用VPS提供商测速地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以vultr东京节点为例"><span class="nav-number">1.5.2.</span> <span class="nav-text">以vultr东京节点为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的命令-PING-延迟测试"><span class="nav-number">1.5.3.</span> <span class="nav-text">最简单的命令 PING (延迟测试)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测速相关网站"><span class="nav-number">1.5.4.</span> <span class="nav-text">测速相关网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由追踪-Best-Trace"><span class="nav-number">1.5.5.</span> <span class="nav-text">路由追踪 Best Trace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢包率-WinMTR"><span class="nav-number">1.5.6.</span> <span class="nav-text">丢包率 WinMTR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS自身测试（7-03）"><span class="nav-number">1.5.7.</span> <span class="nav-text">VPS自身测试（7.03）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vps部署"><span class="nav-number">1.6.</span> <span class="nav-text">vps部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vultr"><span class="nav-number">1.6.1.</span> <span class="nav-text">Vultr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器选择"><span class="nav-number">1.6.2.</span> <span class="nav-text">服务器选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统"><span class="nav-number">1.6.3.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择硬件"><span class="nav-number">1.6.4.</span> <span class="nav-text">选择硬件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPS测试-可忽略，但是推荐进行"><span class="nav-number">1.6.5.</span> <span class="nav-text">VPS测试(可忽略，但是推荐进行)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置securecrt-不必在意ip地址"><span class="nav-number">1.6.6.</span> <span class="nav-text">配置securecrt(不必在意ip地址)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署ShadowSocksR"><span class="nav-number">1.7.</span> <span class="nav-text">部署ShadowSocksR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR有关网址"><span class="nav-number">1.7.1.</span> <span class="nav-text">SSR有关网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装SSR"><span class="nav-number">1.7.2.</span> <span class="nav-text">安装SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shadowsocks-json配置文件"><span class="nav-number">1.7.3.</span> <span class="nav-text">shadowsocks.json配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑shadowsocks-json文件"><span class="nav-number">1.7.4.</span> <span class="nav-text">编辑shadowsocks.json文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#纯-SS-不带混淆-端口25-密码为123456"><span class="nav-number">2.</span> <span class="nav-text">纯 SS 不带混淆 端口25 密码为123456.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#端口443，密码123456-，protocol选择auth-chain-a。obfs选择tls1-2-ticket-auth，具体插件的介绍如下参考资料中"><span class="nav-number">3.</span> <span class="nav-text">端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意无论怎么变化，最后一个端口设置，不带逗号！"><span class="nav-number">4.</span> <span class="nav-text">注意无论怎么变化，最后一个端口设置，不带逗号！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，-此处，选择为chacha20，移动设备性能较好。"><span class="nav-number">5.</span> <span class="nav-text">默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb， 此处，选择为chacha20，移动设备性能较好。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#protocol-协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置-protocol-和-obfs-情况下，使用的默认值。"><span class="nav-number">6.</span> <span class="nav-text">protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#protocol-协议定义插件的默认值，plain即使用原协议，不混淆。"><span class="nav-number">7.</span> <span class="nav-text">protocol.协议定义插件的默认值，plain即使用原协议，不混淆。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-FAST-OPEN-，打开"><span class="nav-number">8.</span> <span class="nav-text">TCP FAST OPEN ，打开</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重启SSR"><span class="nav-number">8.0.1.</span> <span class="nav-text">重启SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新SSR"><span class="nav-number">8.0.2.</span> <span class="nav-text">更新SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混淆选择-新手可略过"><span class="nav-number">8.0.3.</span> <span class="nav-text">混淆选择(新手可略过)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#混淆插件简介"><span class="nav-number">8.0.3.1.</span> <span class="nav-text">混淆插件简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混淆插件选择-5-24"><span class="nav-number">8.0.3.2.</span> <span class="nav-text">混淆插件选择(5.24)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单端口多用户"><span class="nav-number">8.0.3.3.</span> <span class="nav-text">单端口多用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪装正常网站-推荐"><span class="nav-number">8.0.3.4.</span> <span class="nav-text">伪装正常网站(推荐)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS优化"><span class="nav-number">8.1.</span> <span class="nav-text">VPS优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP优化"><span class="nav-number">8.1.1.</span> <span class="nav-text">TCP优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CENTOS6-9不换内核安装锐速"><span class="nav-number">8.2.</span> <span class="nav-text"> CENTOS6.9不换内核安装锐速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-BBR-推荐"><span class="nav-number">8.2.1.</span> <span class="nav-text">TCP-BBR(推荐)</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP配置优化-不然你自己根本不知道你在干什么"><span class="nav-number">9.</span> <span class="nav-text">TCP配置优化(不然你自己根本不知道你在干什么)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提高整个系统的文件限制"><span class="nav-number">10.</span> <span class="nav-text">提高整个系统的文件限制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#END-OF-LINE"><span class="nav-number">11.</span> <span class="nav-text">END OF LINE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS安全加固-安全性是重中之重！"><span class="nav-number">11.1.</span> <span class="nav-text">VPS安全加固( 安全性是重中之重！)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocksR-客户端配置"><span class="nav-number">11.2.</span> <span class="nav-text">shadowsocksR 客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shadowsocksR-C-windows版本"><span class="nav-number">11.2.1.</span> <span class="nav-text">shadowsocksR C# windows版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Chrome-SwitchyOmega-推荐！！"><span class="nav-number">11.2.1.1.</span> <span class="nav-text">使用Chrome+SwitchyOmega 推荐！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR-Android"><span class="nav-number">11.2.2.</span> <span class="nav-text">SSR-Android</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">11.3.</span> <span class="nav-text">结束</span></a></li></ol></li></div>
             
 
           </div>
@@ -1485,7 +1475,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -2111,6 +2101,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

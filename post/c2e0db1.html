@@ -86,12 +86,12 @@
 
 
 
-<meta name="description" content="对比-原web.xml值:       MyServlet      com.servlet.MyServlet       MyServlet      /MyServlet 现象： 用Eclipse新版本新建servlet时候，发现创建Servlet后，Eclipse不会自动在web.xml中生成该Servlet对应的mapping信息，而是在Servlet代码中加入注解@WebServlet">
+<meta name="description" content="对比-原web.xml值:       MyServlet&amp;lt;/servlet-name&amp;gt;      com.servlet.MyServlet&amp;lt;/servlet-class&amp;gt;        MyServlet&amp;lt;/servlet-name&amp;gt;      /MyServlet&amp;lt;/url-pattern&amp;gt;&amp;lt;/servlet-mapping&amp;gt; 现象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eclipse新建Servlet时候，不会自动生成mapping到web.xml，而是在代码中加入注解@WebServlet">
 <meta property="og:url" content="http://blog.aclear.top/post/c2e0db1.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="对比-原web.xml值:       MyServlet      com.servlet.MyServlet       MyServlet      /MyServlet 现象： 用Eclipse新版本新建servlet时候，发现创建Servlet后，Eclipse不会自动在web.xml中生成该Servlet对应的mapping信息，而是在Servlet代码中加入注解@WebServlet">
+<meta property="og:description" content="对比-原web.xml值:       MyServlet&amp;lt;/servlet-name&amp;gt;      com.servlet.MyServlet&amp;lt;/servlet-class&amp;gt;        MyServlet&amp;lt;/servlet-name&amp;gt;      /MyServlet&amp;lt;/url-pattern&amp;gt;&amp;lt;/servlet-mapping&amp;gt; 现象">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20160406230110998?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="http://img.blog.csdn.net/20160406230324530">
@@ -99,7 +99,7 @@
 <meta property="og:updated_time" content="2019-10-02T03:40:40.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eclipse新建Servlet时候，不会自动生成mapping到web.xml，而是在代码中加入注解@WebServlet">
-<meta name="twitter:description" content="对比-原web.xml值:       MyServlet      com.servlet.MyServlet       MyServlet      /MyServlet 现象： 用Eclipse新版本新建servlet时候，发现创建Servlet后，Eclipse不会自动在web.xml中生成该Servlet对应的mapping信息，而是在Servlet代码中加入注解@WebServlet">
+<meta name="twitter:description" content="对比-原web.xml值:       MyServlet&amp;lt;/servlet-name&amp;gt;      com.servlet.MyServlet&amp;lt;/servlet-class&amp;gt;        MyServlet&amp;lt;/servlet-name&amp;gt;      /MyServlet&amp;lt;/url-pattern&amp;gt;&amp;lt;/servlet-mapping&amp;gt; 现象">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160406230110998?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  531
+                  551
                 </span>
               
 
@@ -444,8 +444,9 @@
 
       
         <p>对比-原web.xml值:</p>
-<p><servlet><br>      <servlet-name>MyServlet</servlet-name><br>      <servlet-class>com.servlet.MyServlet</servlet-class><br></servlet></p>
-<p><servlet-mapping><br>      <servlet-name>MyServlet</servlet-name><br>      <url-pattern>/MyServlet</url-pattern><br></servlet-mapping></p>
+<p><servlet><br>      <servlet-name>MyServlet&lt;/servlet-name&gt;<br>      <servlet-class>com.servlet.MyServlet&lt;/servlet-class&gt;
+</servlet-class></servlet-name></servlet></p>
+<p><servlet-mapping><br>      <servlet-name>MyServlet&lt;/servlet-name&gt;<br>      <url-pattern>/MyServlet&lt;/url-pattern&gt;<br>&lt;/servlet-mapping&gt;</url-pattern></servlet-name></servlet-mapping></p>
 <p><a href="http://blog.csdn.net/xulianboblog/article/details/51079534" target="_blank" rel="noopener">现象</a>： 用Eclipse新版本新建servlet时候，发现创建Servlet后，Eclipse不会自动在web.xml中生成该Servlet对应的mapping信息，而是在Servlet代码中加入注解@WebServlet，如下 <img src="http://img.blog.csdn.net/20160406230110998?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""> 分析： 查找文档发现，这是Servlet3.0新特性(得Tomcat7.0版本及以上)，@WebServlet 用于将一个类声明为 Servlet，该注解将会在部署时被容器处理，容器将根据具体的属性配置将相应的类部署为 Servlet。该注解具有下表给出的一些常用属性（以下所有属性均为可选属性，但是 value 或者 urlPatterns 通常是必需的，且二者不能共存，如果同时指定，通常是忽略 value 的取值） <img src="http://img.blog.csdn.net/20160406230324530" alt=""> 解决方法： 在@WebServlet 中定义Servlet的name、urlPatterns等信息</p>
 <p>import javax.servlet.annotation.WebInitParam;<br>import javax.servlet.annotation.WebServlet;  </p>
 <p>@WebServlet(<br>displayName = “This is Login Action”, //描述<br>name = “LoginAction”, //servlet名称<br>urlPatterns = { “/servlet/LoginAction” },//url<br>loadOnStartup = 1, //启动项<br>initParams = { @WebInitParam(name = “username”, value = “张三”) }//初始化参数<br>)<br>public class LoginAction extends HttpServlet {<br>    /** </p>
@@ -640,7 +641,7 @@ public LoginAction() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -651,7 +652,7 @@ public LoginAction() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -662,7 +663,7 @@ public LoginAction() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -784,7 +785,7 @@ public LoginAction() {
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1410,6 +1411,28 @@ public LoginAction() {
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

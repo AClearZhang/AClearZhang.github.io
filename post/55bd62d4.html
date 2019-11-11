@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com   #include  #include  #include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0;">
+<meta name="description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com include include include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0; i &amp;lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STLvector">
 <meta property="og:url" content="http://blog.aclear.top/post/55bd62d4.html">
 <meta property="og:site_name" content="少年初心">
-<meta property="og:description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com   #include  #include  #include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0;">
+<meta property="og:description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com include include include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0; i &amp;lt;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-10-02T03:40:41.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STLvector">
-<meta name="twitter:description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com   #include  #include  #include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0;">
+<meta name="twitter:description" content="STL的一些源函数的代码，可查：  http://www.cplusplus.com include include include using namespace std;using std::vector;/int main(){ int arr[] = { 1,2,3,4,5,6,7,0 }; vector vec(arr,arr+8);for ( size_t i = 0; i &amp;lt;">
 
 
 
@@ -453,24 +453,20 @@
         <p><strong>S</strong>TL的一些源函数的代码，可查：</p>
 <blockquote>
 <p><a href="http://www.cplusplus.com" target="_blank" rel="noopener">http://www.cplusplus.com</a></p>
-</blockquote>
-<blockquote>
-<p>#include <iostream></iostream></p>
-<p>#include <algorithm></algorithm></p>
-<p>#include <vector><br>using namespace std;<br>using std::vector;<br>/<em>int main()<br>{<br> int arr[] = { 1,2,3,4,5,6,7,0 };<br> vector<int> vec(arr,arr+8);<br>for ( size_t i = 0; i &lt; vec.size() ;i++ )<br> { std::cout &lt;&lt; vec[i];}<br>std::cout &lt;&lt; std::endl;<br> for(vector<int>::iterator it = vec.begin(); it != vec.end();++it){<br>std::cout &lt;&lt; </int></int></em>it;<br>}<br>std::cout &lt;&lt; std::endl;<br>cout &lt;&lt; “Hello world!” &lt;&lt; endl;<br> return 0;<br>}<em>/<br>int main() //using reverse<br>{<br> int arr[] = { 1,2,3,4,5,0};<br> vector<int> vec(arr,arr+6);<br>for( size_t i = 0; i &lt; vec.size();i++){<br>cout &lt;&lt; vec[i];<br>}<br> cout &lt;&lt; endl;<br>reverse(vec.begin(),vec.end()); //为这一行新增#include <algorithm><br> for(vector<int>::iterator it = vec.begin(); it != vec.end();++it){<br>cout &lt;&lt; </int></algorithm></int></em>it;<br>}<br> return 0;<br>}<br>/*<em>size_t 类型定义在cstddef头文件中，该文件是C标准库的头文件stddef.h的C++版。它是一个与机器相关的unsigned类型，其大小足以保证存储内存中对象的大小。在用下标访问元素时，vector使用vector::size_type作为下标类型，而数组下标的正确类型则是size_t。vector使用的下标实际也是size_t，源码是typedef size_t size_type。<br>     在C++中，设计 size_t 就是为了适应多个平台的 。size_t的引入增强了程序在不同平台上的可移植性。size_t是针对系统定制的一种数据类型，一般是整型，因为C/C++标准只定义一最低的位 数，而不是必需的固定位数。而且在内存里，对数的高位对齐存储还是低位对齐存储各系统都不一样。为了提高代码的可移植性，就有必要定义这样的数据类型。一 般这种类型都会定义到它具体占几位内存等。当然，有些是编译器或系统已经给定义好的。经测试发现，在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。
-</em>/</vector></p>
+<h1 id="include"><a href="#include" class="headerlink" title="include "></a>include <iostream></iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include "></a>include <algorithm></algorithm></h1><h1 id="include-2"><a href="#include-2" class="headerlink" title="include "></a>include <vector></vector></h1><p>using namespace std;<br>using std::vector;<br>/<em>int main()<br>{<br> int arr[] = { 1,2,3,4,5,6,7,0 };<br> vector<int> vec(arr,arr+8);<br>for ( size_t i = 0; i &lt; vec.size() ;i++ )<br> { std::cout &lt;&lt; vec[i];}<br>std::cout &lt;&lt; std::endl;<br> for(vector<int>::iterator it = vec.begin(); it != vec.end();++it){<br>std::cout &lt;&lt; </int></int></em>it;<br>}<br>std::cout &lt;&lt; std::endl;<br>cout &lt;&lt; “Hello world!” &lt;&lt; endl;<br> return 0;<br>}<em>/<br>int main() //using reverse<br>{<br> int arr[] = { 1,2,3,4,5,0};<br> vector<int> vec(arr,arr+6);<br>for( size_t i = 0; i &lt; vec.size();i++){<br>cout &lt;&lt; vec[i];<br>}<br> cout &lt;&lt; endl;<br>reverse(vec.begin(),vec.end()); //为这一行新增#include <algorithm><br> for(vector<int>::iterator it = vec.begin(); it != vec.end();++it){<br>cout &lt;&lt; </int></algorithm></int></em>it;<br>}<br> return 0;<br>}<br>/<em>*size_t 类型定义在cstddef头文件中，该文件是C标准库的头文件stddef.h的C++版。它是一个与机器相关的unsigned类型，其大小足以保证存储内存中对象的大小。在用下标访问元素时，vector使用vector::size_type作为下标类型，而数组下标的正确类型则是size_t。vector使用的下标实际也是size_t，源码是typedef size_t size_type。<br>     在C++中，设计 size_t 就是为了适应多个平台的 。size_t的引入增强了程序在不同平台上的可移植性。size_t是针对系统定制的一种数据类型，一般是整型，因为C/C++标准只定义一最低的位 数，而不是必需的固定位数。而且在内存里，对数的高位对齐存储还是低位对齐存储各系统都不一样。为了提高代码的可移植性，就有必要定义这样的数据类型。一 般这种类型都会定义到它具体占几位内存等。当然，有些是编译器或系统已经给定义好的。经测试发现，在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。
+</em>/</p>
 </blockquote>
 <p>//portable 便携式，可移植的</p>
 <ol>
-<li>vector      empty()–true if the container size is 0, false otherwise</li>
-<li>front()/back()  –  return reference!</li>
-<li>push_back(reference)/pop_back() – jin chu!</li>
-<li>begin()/end() –  return iterator!</li>
-<li>at(0)  – access elements!</li>
+<li>vector      empty()—true if the container size is 0, false otherwise</li>
+<li>front()/back()  —  return reference!</li>
+<li>push_back(reference)/pop_back() — jin chu!</li>
+<li>begin()/end() —  return iterator!</li>
+<li>at(0)  — access elements!</li>
 <li>f00.swap(bar);</li>
 <li>往 set 里增加一个元素，区别在于新元素的构造上。emplace 使用直接构造，insert 使用复制构造。</li>
 </ol>
-<p>std::vector<int> myvector;<br> int sum (0);<br> myvector.push_back (100);<br> myvector.push_back (200);<br> myvector.push_back (300);<br> // vector<int>::iterator it = myvector.end();<br> // while ( it != myvector.begin())<br> // {<br> sum += myvector.back();<br> myvector.pop_back();<br> sum += myvector.back();<br> myvector.pop_back();<br> sum += myvector.back();<br> // }<br> std::cout &lt;&lt; “The elements of myvector add up to “ &lt;&lt; sum &lt;&lt; ‘\n’;<br> std::cout &lt;&lt; “The elements of myvector front element to “ &lt;&lt; myvector.at(0) &lt;&lt; ‘\n’;</int></int></p>
+<p>std::vector<int> myvector;<br> int sum (0);<br> myvector.push_back (100);<br> myvector.push_back (200);<br> myvector.push_back (300);<br> // vector<int>::iterator it = myvector.end();<br> // while ( it != myvector.begin())<br> // {<br> sum += myvector.back();<br> myvector.pop_back();<br> sum += myvector.back();<br> myvector.pop_back();<br> sum += myvector.back();<br> // }<br> std::cout &lt;&lt; “The elements of myvector add up to “ &lt;&lt; sum &lt;&lt; ‘\\n’;<br> std::cout &lt;&lt; “The elements of myvector front element to “ &lt;&lt; myvector.at(0) &lt;&lt; ‘\\n’;</int></int></p>
 
       
     </div>
@@ -630,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -648,7 +653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">206</span>
+                  <span class="site-state-item-count">209</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -659,7 +664,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -670,7 +675,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -758,6 +763,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">1.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-1"><span class="nav-number">2.</span> <span class="nav-text">include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-2"><span class="nav-number">3.</span> <span class="nav-text">include </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -792,7 +813,7 @@
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">445.2k</span>
+    <span title="本站总字数">443.3k</span>
   
 </div>
 
@@ -1418,6 +1439,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
