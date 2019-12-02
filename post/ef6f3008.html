@@ -95,7 +95,7 @@
 <meta property="og:description" content="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题 由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装. AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者. NVIDIA显卡驱动安装 禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouv">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20180826135534780?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhZWFzcmluZ25hcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2019-11-10T10:22:18.753Z">
+<meta property="og:updated_time" content="2019-12-02T11:34:22.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NVIDIA\CUDA\cuDNN环境安装(解决循环登录问题)和Anaconda安装使用">
 <meta name="twitter:description" content="关于Ubuntu显卡驱动的安装-解决循环登录\挂载\卸载问题 由于AC自己本人刚开始在实验室使用ubuntu系统时,电脑自带多张显卡 配置有点问题,导致循环登录—-噩梦般的两天未果,隧重装. AC的显卡驱动安装过程以及一些操作再次记录下来,以飨后来者. NVIDIA显卡驱动安装 禁用 nouveau 驱动（nouveau是 ubuntu16.04 默认安装的第三方开源驱动，安装cuda会跟nouv">
@@ -350,8 +350,8 @@
                 <i class="fa fa-calendar-check-o"></i> 
               </span>
               更新于
-              <time itemprop="dateUpdated" datetime="2019-11-10T18:22:18+08:00" content="2019-11-10">
-                2019-11-10
+              <time itemprop="dateUpdated" datetime="2019-12-02T19:34:22+08:00" content="2019-12-02">
+                2019-12-02
               </time>
             </span>
           
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.2k
+                  2.4k
                 </span>
               
 
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -569,12 +569,34 @@ options nouveau modeset=0</code></p>
 <h3 id="conda命令的使用"><a href="#conda命令的使用" class="headerlink" title="conda命令的使用"></a>conda命令的使用</h3><p>写在前面，conda默认的虚拟环境目录为：~/anaconda3/envs</p>
 <p>1、查看conda 版本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
-<p>2、更新conda<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure></p>
+<p>2、更新conda 以及 设置国内镜像</p>
+<ul>
+<li><p>更新conda</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br><span class="line">conda update anaconda</span><br><span class="line">conda update anaconda-navigator</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置国内镜像<br><strong>添加源</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 清华源：</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>查看源列表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --show channels</span><br></pre></td></tr></table></figure></p>
+<p><strong>删除镜像源</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda config --remove channels [源地址]</span><br><span class="line">conda config --remove-key channels 删除所有源地址</span><br></pre></td></tr></table></figure></p>
 <p>3、查看conda帮助</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda --help</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或</span></span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
 <p>4、新建虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;env_name&gt; &lt;package_names&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><br>即创建的环境名。建议以英文命名，且不加空格，名称两边不加尖括号“&lt;&gt;”。<br>即安装在环境中的包名。名称两边不加尖括号“&lt;&gt;”。<br>如果要安装指定的版本号，则只需要在包名后面以=和版本号的形式执行。如：conda create –name python2 python=2.7，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。<br>如果要在新创建的环境中创建多个包，则直接在后以空格隔开，添加多个包名即可。如：conda create -n conda-test python=3.6 numpy pandas，即创建一个名为“conda-test ”的环境，环境中安装版本为3.6的python，同时也安装了numpy和pandas。<br>–name同样可以替换为-n。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;env_name&gt; &lt;package_names&gt;</span><br><span class="line"><span class="meta">#</span><span class="bash"> eg: conda create -n python27 python=2.7</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>即创建的环境名。建议以英文命名，且不加空格，名称两边不加尖括号“&lt;&gt;”。</p>
+</li>
+<li><p>即安装在环境中的包名。名称两边不加尖括号“&lt;&gt;”。</p>
+</li>
+<li><p>如果要安装指定的版本号，则只需要在包名后面以=和版本号的形式执行。如：<code>conda create –name python2 python=2.7</code>，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。</p>
+</li>
+<li><p>如果要在新创建的环境中创建多个包，则直接在后以空格隔开，添加多个包名即可。如：<code>conda create -n conda-test python=3.6 numpy pandas</code>，即创建一个名为“conda-test ”的环境，环境中安装版本为3.6的python，同时也安装了numpy和pandas。</p>
+</li>
+<li><p>–name同样可以替换为-n。</p>
+</li>
+</ul>
 <p>5、切换conda环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate env_name</span><br></pre></td></tr></table></figure>
 <p>6、退出虚拟环境</p>
@@ -584,25 +606,59 @@ options nouveau modeset=0</code></p>
 <p><img src="https://img-blog.csdn.net/20180826135534780?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhZWFzcmluZ25hcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="查看环境"></p>
 <p>8、复制环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name new_env_name --clone copied_env_name</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><br><code>copied_env_name</code>即为被复制/克隆环境名。</p>
-<p><code>new_env_name</code>即为复制之后新环境的名称。<br>9、删除环境</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p><code>copied_env_name</code>即为被复制/克隆环境名。</p>
+</li>
+<li><p><code>new_env_name</code>即为复制之后新环境的名称。</p>
+</li>
+<li>其它：导出环境：<br><code>conda env export &gt; env.yaml</code><br><code>conda env create -n new_env -f env.yaml</code><br><code>pip freeze &gt; requirements.txt</code><br><code>pip install -r requirements.txt</code></li>
+</ul>
+<p>9、删除环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name env_name --all</span><br></pre></td></tr></table></figure>
 <p>10、包管理</p>
-<p>精确查找包</p>
+<ul>
+<li>精确查找包</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search --full-name 查找的包名</span><br></pre></td></tr></table></figure>
-<p>模糊查找包</p>
+<ul>
+<li>模糊查找包</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search 查找的内容</span><br></pre></td></tr></table></figure>
-<p>获取当前环境中已安装的包信息</p>
+<ul>
+<li>获取当前环境中已安装的包信息</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
-<p>指定环境安装包</p>
+<ul>
+<li>指定环境安装包</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name 环境名 要安装的包名</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><br>要指定版本时</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>要指定版本时</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name conda-test django=2.0.6</span><br></pre></td></tr></table></figure>
 <p>表示在conda-test环境中安装 django并制定版本为2.0.6</p>
-<p>在当前环境中安装包</p>
+<ol>
+<li>在当前环境中安装包</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install &lt;要安装的包名&gt;</span><br></pre></td></tr></table></figure>
-<p>最后，如果conda安装不上的包，或者没有的包，可以使用pip安装</p>
+<ol>
+<li>最后，如果conda安装不上的包，或者没有的包，可以使用pip安装（对应版本下载下来安装也可以）</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install &lt;安装的包名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定channel安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --channel https:...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新安装包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda update packagename=x.x.x </span><br><span class="line"># 或者</span><br><span class="line">conda update packagename</span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove packagename</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -797,7 +853,7 @@ options nouveau modeset=0</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-count">210</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -808,7 +864,7 @@ options nouveau modeset=0</code></p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">122</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -819,7 +875,7 @@ options nouveau modeset=0</code></p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -957,7 +1013,7 @@ options nouveau modeset=0</code></p>
     
       <span class="post-meta-item-text">本站总字数&#58;</span>
     
-    <span title="本站总字数">443.3k</span>
+    <span title="本站总字数">444.6k</span>
   
 </div>
 
